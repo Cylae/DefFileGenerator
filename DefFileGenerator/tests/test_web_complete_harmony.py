@@ -175,7 +175,7 @@ class TestWebCompleteHarmony:
         res = client.get("/api/library")
         assert res.status_code == 200
         items = res.json()
-        assert len(items) >= 1118
+        assert len(items) >= 1100
         # Filter by category
         inverters = [i for i in items if i["category"] == "Inverter"]
         assert len(inverters) >= 400

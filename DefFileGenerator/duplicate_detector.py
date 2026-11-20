@@ -172,6 +172,10 @@ class DuplicateDetector:
             cluster_reg_count = file_data[canonical]["reg_count"]
             cluster_models = [file_data[x]["model"] for x in flist]
 
+            # Files with 0 registers cannot share a register body
+            if cluster_reg_count == 0:
+                continue
+
             if has_oth and has_typed and len(stems) == 1:
                 # Direct category conflict for the exact same hardware
                 category_conflict_clusters.append(
@@ -247,6 +251,9 @@ class DuplicateDetector:
 
         clean_a = re.sub(r"_+", "_", clean_a).strip("_")
         clean_b = re.sub(r"_+", "_", clean_b).strip("_")
+
+        if not clean_a or not clean_b:
+            return False
 
         return clean_a == clean_b
 

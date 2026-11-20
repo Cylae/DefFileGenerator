@@ -1,8 +1,8 @@
 # Rapport d'Audit des Doublons — Suite de Production Webdyn
 
 - **Répertoire analysé** : `production`
-- **Total fichiers scannés** : **1118**
-- **Fichiers doublons identifiés** : **19**
+- **Total fichiers scannés** : **1109**
+- **Fichiers doublons identifiés** : **10**
 
 ---
 
@@ -12,11 +12,7 @@ Ces fichiers `OTH_` sont des doublons stricts d'équipements déjà qualifiés e
 
 | Fichier Canonique Qualifié | Doublon Redondant `OTH_` | Modèle Matériel | Registres | Recommandation |
 | :--- | :--- | :--- | :---: | :--- |
-| `BAT_SLEnergy_Generator.csv` | `OTH_SLEnergy_Generator.csv` | Generator | 16 | Supprimer le `OTH_` redondant |
-| `INV_Cefem_Table_Modbus_Trio-Sun_Trio-Top_2020_07_01.csv` | `OTH_Cefem_Table_Modbus_Trio-Sun_Trio-Top_2020_07_01.csv` | Table_Modbus_Trio-Sun_Trio-Top_2020_07_01 | 32 | Supprimer le `OTH_` redondant |
-| `MET_ChauvinArnoux_ULYS-TT_M.csv` | `OTH_ChauvinArnoux_ULYS-TT_M.csv` | ULYS-TT_M | 19 | Supprimer le `OTH_` redondant |
-| `SEN_Hukseflux_Generic.csv` | `OTH_Hukseflux_Generic.csv` | Generic | 27 | Supprimer le `OTH_` redondant |
-| `SEN_IngenieurBuro_Si-RS485TC-3T-MB.csv` | `OTH_IngenieurBuro_Si-RS485TC-3T-MB.csv` | Si-RS485TC-3T-MB | 10 | Supprimer le `OTH_` redondant |
+| Aucun | Aucun | - | - | Conforme |
 
 ---
 
@@ -26,10 +22,7 @@ Fichiers représentant le même équipement ou la même gamme sous deux désigna
 
 | Fichier Canonique | Alias / Synonyme | Description | Registres | Recommandation |
 | :--- | :--- | :--- | :---: | :--- |
-| `BAT_SLEnergy_bms5_p1_1.csv` | `BAT_SLEnergy_bms5_p1_1_1.csv`<br>`OTH_SLEnergy_bms5_p1_1.csv`<br>`OTH_SLEnergy_bms5_p1_1_1.csv` | Hardware model alias / synonymous naming sharing identical register map | 213 | Enregistrer dans le registre d'alias |
-| `INV_Goodwe_GT-SERIES.csv` | `INV_Goodwe_GT_Series.csv` | Hardware model alias / synonymous naming sharing identical register map | 305 | Enregistrer dans le registre d'alias |
-| `INV_Goodwe_HT1500.csv` | `INV_Goodwe_HT_1500V.csv` | Hardware model alias / synonymous naming sharing identical register map | 288 | Enregistrer dans le registre d'alias |
-| `INV_Kaco_NX1-NX3_ModbusRTU.csv` | `INV_Kaco_NX1_NX3_ModbusRTU.csv` | Hardware model alias / synonymous naming sharing identical register map | 182 | Enregistrer dans le registre d'alias |
+| `BAT_SLEnergy_bms5_p1_1.csv` | `OTH_SLEnergy_bms5_p1_1.csv`<br>`OTH_SLEnergy_bms5_p1_1_1.csv` | Hardware model alias / synonymous naming sharing identical register map | 213 | Enregistrer dans le registre d'alias |
 | `INV_PowerElectronics_Freesun_MODBUS_POWERELECTRONICS_RTU.csv` | `INV_PowerElectronics_Freesun_MODBUS_POWERELECTRONICS_TCP.csv` | Hardware model alias / synonymous naming sharing identical register map | 15 | Enregistrer dans le registre d'alias |
 | `INV_SolaX_X1-X3-GENERIC.csv` | `INV_SolaX_X1-X3-GENERIC_TCP.csv` | Hardware model alias / synonymous naming sharing identical register map | 156 | Enregistrer dans le registre d'alias |
 | `INV_Sungrow_RTU_PM.csv` | `INV_Sungrow_TCP_PM.csv` | Hardware model alias / synonymous naming sharing identical register map | 81 | Enregistrer dans le registre d'alias |

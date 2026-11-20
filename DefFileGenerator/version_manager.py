@@ -18,6 +18,8 @@ import datetime
 import hashlib
 import json
 import os
+import re
+import threading
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
@@ -73,6 +75,7 @@ class DefinitionVersionControl:
         self.blobs_dir = self.store_dir / "blobs"
         self.tags_dir = self.store_dir / "tags"
         self.index_file = self.store_dir / "index.json"
+        self._lock = threading.RLock()
 
         self._ensure_storage_structure()
 
@@ -115,13 +118,17 @@ class DefinitionVersionControl:
         return sha256
 
     def _read_blob(self, sha256: str) -> bytes:
-        """Reads blob content by hash."""
+        """Reads blob content by hash and verifies CAS integrity."""
         prefix = sha256[:2]
         rest = sha256[2:]
         blob_path = self.blobs_dir / prefix / rest
         if not blob_path.exists():
             raise FileNotFoundError(f"Blob {sha256} not found in version store")
-        return blob_path.read_bytes()
+        content = blob_path.read_bytes()
+        actual_sha = hashlib.sha256(content).hexdigest()
+        if actual_sha != sha256:
+            raise ValueError(f"CAS blob corruption detected: expected {sha256}, got {actual_sha}")
+        return content
 
     def get_head(self) -> str | None:
         """Returns the current HEAD commit ID."""
@@ -175,108 +182,114 @@ class DefinitionVersionControl:
         if not src.is_dir():
             raise NotADirectoryError(f"Source directory {src} does not exist")
 
-        head_id = self.get_head()
-        prev_commit = self.get_commit(head_id) if head_id else None
-        prev_manifest = prev_commit.manifest if prev_commit else {}
+        if files is not None:
+            for f_name in files:
+                if ".." in f_name or "/" in f_name or "\\" in f_name:
+                    raise ValueError(f"Path traversal detected in file argument: {f_name}")
 
-        target_files = sorted(src.glob("*.csv")) if files is None else [src / f for f in sorted(files) if (src / f).is_file()]
+        with self._lock:
+            head_id = self.get_head()
+            prev_commit = self.get_commit(head_id) if head_id else None
+            prev_manifest = prev_commit.manifest if prev_commit else {}
 
-        current_manifest: dict[str, FileManifestItem] = {}
-        total_regs = 0
-        total_tags = 0
+            target_files = sorted(src.glob("*.csv")) if files is None else [src / f for f in sorted(files) if (src / f).is_file()]
 
-        for f in target_files:
-            raw = f.read_bytes()
-            sha256 = self._store_blob(raw)
-            regs, tags_cnt, cat, mfg, model = self._parse_definition_metadata(f, raw)
+            current_manifest: dict[str, FileManifestItem] = {}
+            total_regs = 0
+            total_tags = 0
 
-            current_manifest[f.name] = FileManifestItem(
-                file_name=f.name,
-                sha256=sha256,
-                register_count=regs,
-                tag_count=tags_cnt,
-                category=cat,
-                manufacturer=mfg,
-                model=model,
-                size_bytes=len(raw),
+            for f in target_files:
+                raw = f.read_bytes()
+                sha256 = self._store_blob(raw)
+                regs, tags_cnt, cat, mfg, model = self._parse_definition_metadata(f, raw)
+
+                current_manifest[f.name] = FileManifestItem(
+                    file_name=f.name,
+                    sha256=sha256,
+                    register_count=regs,
+                    tag_count=tags_cnt,
+                    category=cat,
+                    manufacturer=mfg,
+                    model=model,
+                    size_bytes=len(raw),
+                )
+                total_regs += regs
+                total_tags += tags_cnt
+
+            # Calculate changes delta
+            added = 0
+            modified = 0
+            deleted = 0
+            unchanged = 0
+
+            for fn, item in current_manifest.items():
+                if fn not in prev_manifest:
+                    added += 1
+                elif prev_manifest[fn].sha256 != item.sha256:
+                    modified += 1
+                else:
+                    unchanged += 1
+
+            for fn in prev_manifest:
+                if fn not in current_manifest:
+                    deleted += 1
+
+            changes = {
+                "added": added,
+                "modified": modified,
+                "deleted": deleted,
+                "unchanged": unchanged,
+            }
+
+            # Generate unique deterministic commit ID
+            now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
+            manifest_digest = hashlib.sha256(
+                "".join(f"{k}:{v.sha256}" for k, v in sorted(current_manifest.items())).encode("utf-8")
+            ).hexdigest()
+
+            commit_hash_seed = f"{head_id}:{now_iso}:{author}:{message}:{manifest_digest}"
+            commit_id = hashlib.sha256(commit_hash_seed.encode("utf-8")).hexdigest()[:16]
+
+            commit_record = CommitInfo(
+                commit_id=commit_id,
+                parent_id=head_id,
+                timestamp=now_iso,
+                author=author,
+                message=message,
+                files_count=len(current_manifest),
+                total_registers=total_regs,
+                total_tags=total_tags,
+                changes_summary=changes,
+                manifest=current_manifest,
+                tags=tags or [],
             )
-            total_regs += regs
-            total_tags += tags_cnt
 
-        # Calculate changes delta
-        added = 0
-        modified = 0
-        deleted = 0
-        unchanged = 0
+            # Write commit JSON
+            commit_file = self.commits_dir / f"{commit_id}.json"
+            self._write_json_atomic(commit_file, commit_record.to_dict())
 
-        for fn, item in current_manifest.items():
-            if fn not in prev_manifest:
-                added += 1
-            elif prev_manifest[fn].sha256 != item.sha256:
-                modified += 1
-            else:
-                unchanged += 1
+            # Update index
+            with open(self.index_file, encoding="utf-8") as index_fp:
+                index_data = json.load(index_fp)
 
-        for fn in prev_manifest:
-            if fn not in current_manifest:
-                deleted += 1
+            index_data["head"] = commit_id
+            index_data["commits"].append({
+                "commit_id": commit_id,
+                "parent_id": head_id,
+                "timestamp": now_iso,
+                "author": author,
+                "message": message,
+                "files_count": len(current_manifest),
+                "changes": changes,
+            })
+            self._write_json_atomic(self.index_file, index_data)
 
-        changes = {
-            "added": added,
-            "modified": modified,
-            "deleted": deleted,
-            "unchanged": unchanged,
-        }
+            # Record tags if provided
+            if tags:
+                for t in tags:
+                    self.create_tag(t, commit_id)
 
-        # Generate unique deterministic commit ID
-        now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
-        manifest_digest = hashlib.sha256(
-            "".join(f"{k}:{v.sha256}" for k, v in sorted(current_manifest.items())).encode("utf-8")
-        ).hexdigest()
-
-        commit_hash_seed = f"{head_id}:{now_iso}:{author}:{message}:{manifest_digest}"
-        commit_id = hashlib.sha256(commit_hash_seed.encode("utf-8")).hexdigest()[:16]
-
-        commit_record = CommitInfo(
-            commit_id=commit_id,
-            parent_id=head_id,
-            timestamp=now_iso,
-            author=author,
-            message=message,
-            files_count=len(current_manifest),
-            total_registers=total_regs,
-            total_tags=total_tags,
-            changes_summary=changes,
-            manifest=current_manifest,
-            tags=tags or [],
-        )
-
-        # Write commit JSON
-        commit_file = self.commits_dir / f"{commit_id}.json"
-        self._write_json_atomic(commit_file, commit_record.to_dict())
-
-        # Update index
-        with open(self.index_file, encoding="utf-8") as index_fp:
-            index_data = json.load(index_fp)
-
-        index_data["head"] = commit_id
-        index_data["commits"].append({
-            "commit_id": commit_id,
-            "parent_id": head_id,
-            "timestamp": now_iso,
-            "author": author,
-            "message": message,
-            "files_count": len(current_manifest),
-            "changes": changes,
-        })
-        self._write_json_atomic(self.index_file, index_data)
-
-        # Record tags if provided
-        if tags:
-            for t in tags:
-                self.create_tag(t, commit_id)
-
-        return commit_record
+            return commit_record
 
     def get_commit(self, commit_id: str) -> CommitInfo:
         """Retrieves full commit object by ID."""
@@ -304,6 +317,9 @@ class DefinitionVersionControl:
         with open(self.index_file, encoding="utf-8") as f:
             index_data = json.load(f)
 
+        if file_name is not None and (".." in file_name or "/" in file_name or "\\" in file_name):
+            raise ValueError(f"Path traversal detected in file_name: {file_name}")
+
         entries = list(reversed(index_data.get("commits", [])))
         if file_name is None:
             return entries[:limit]
@@ -327,6 +343,8 @@ class DefinitionVersionControl:
 
     def get_file_content(self, commit_id: str, file_name: str) -> bytes | None:
         """Returns the raw bytes of a file as it existed in a specific commit."""
+        if ".." in file_name or "/" in file_name or "\\" in file_name:
+            raise ValueError(f"Path traversal detected in file_name: {file_name}")
         commit = self.get_commit(commit_id)
         if file_name not in commit.manifest:
             return None
@@ -342,6 +360,9 @@ class DefinitionVersionControl:
         """
         Computes detailed diff between commit_id_a and commit_id_b (or parent of A if B is None).
         """
+        if file_name is not None and (".." in file_name or "/" in file_name or "\\" in file_name):
+            raise ValueError(f"Path traversal detected in file_name: {file_name}")
+
         commit_a = self.get_commit(commit_id_a)
         if commit_id_b is not None:
             commit_b = self.get_commit(commit_id_b)
@@ -395,8 +416,15 @@ class DefinitionVersionControl:
         old_by_addr: dict[str, list[str]] = {r[2].strip(): r for r in old_reader if len(r) >= 11 and r[2].strip()}
         new_by_addr: dict[str, list[str]] = {r[2].strip(): r for r in new_reader if len(r) >= 11 and r[2].strip()}
 
-        added_addrs = sorted(set(new_by_addr.keys()) - set(old_by_addr.keys()), key=lambda x: int(x.split("_")[0]) if x.split("_")[0].isdigit() else 999999)
-        removed_addrs = sorted(set(old_by_addr.keys()) - set(new_by_addr.keys()), key=lambda x: int(x.split("_")[0]) if x.split("_")[0].isdigit() else 999999)
+        def _addr_sort_key(addr: str) -> tuple[int, str]:
+            stem = addr.split("_")[0]
+            try:
+                return (int(stem, 0), addr)
+            except (ValueError, TypeError):
+                return (999999999, addr)
+
+        added_addrs = sorted(set(new_by_addr.keys()) - set(old_by_addr.keys()), key=_addr_sort_key)
+        removed_addrs = sorted(set(old_by_addr.keys()) - set(new_by_addr.keys()), key=_addr_sort_key)
         common_addrs = set(old_by_addr.keys()) & set(new_by_addr.keys())
 
         modified_registers: list[dict[str, Any]] = []
@@ -450,40 +478,94 @@ class DefinitionVersionControl:
         files_to_restore = [file_name] if file_name else list(commit.manifest.keys())
         restored: list[Path] = []
 
-        for fn in files_to_restore:
-            if fn not in commit.manifest:
-                raise FileNotFoundError(f"File {fn} does not exist in commit {commit_id}")
-            sha256 = commit.manifest[fn].sha256
-            raw_content = self._read_blob(sha256)
-            dest_path = target / fn
+        with self._lock:
+            for fn in files_to_restore:
+                if fn not in commit.manifest:
+                    raise FileNotFoundError(f"File {fn} does not exist in commit {commit_id}")
+                if ".." in fn or "/" in fn or "\\" in fn:
+                    raise ValueError(f"Path traversal detected in file name: {fn}")
+                sha256 = commit.manifest[fn].sha256
+                raw_content = self._read_blob(sha256)
+                dest_path = (target / fn).resolve()
+                if not dest_path.is_relative_to(target):
+                    raise ValueError(f"Path traversal detected: {fn} escapes target directory {target}")
 
-            if not dry_run:
-                tmp_dest = dest_path.with_suffix(".restore_tmp")
-                tmp_dest.write_bytes(raw_content)
-                os.replace(tmp_dest, dest_path)
+                if not dry_run:
+                    tmp_dest = dest_path.with_suffix(".restore_tmp")
+                    tmp_dest.write_bytes(raw_content)
+                    os.replace(tmp_dest, dest_path)
 
-            restored.append(dest_path)
+                restored.append(dest_path)
 
         return restored
 
     def create_tag(self, tag_name: str, commit_id: str | None = None, description: str = "") -> dict[str, Any]:
         """Creates a named tag pointing to a commit."""
-        cid = commit_id or self.get_head()
-        if not cid:
-            raise ValueError("Cannot create tag: no commit specified and repository is empty")
+        if not tag_name or ".." in tag_name or "/" in tag_name or "\\" in tag_name or not re.match(r"^[\w\-.]+$", tag_name):
+            raise ValueError(f"Invalid tag name: {tag_name}")
 
-        # Verify commit exists
-        self.get_commit(cid)
+        with self._lock:
+            cid = commit_id or self.get_head()
+            if not cid:
+                raise ValueError("Cannot create tag: no commit specified and repository is empty")
 
-        tag_data = {
-            "name": tag_name,
-            "commit_id": cid,
-            "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-            "description": description,
+            # Verify commit exists
+            self.get_commit(cid)
+
+            tag_data = {
+                "name": tag_name,
+                "commit_id": cid,
+                "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                "description": description,
+            }
+            tag_file = self.tags_dir / f"{tag_name}.json"
+            self._write_json_atomic(tag_file, tag_data)
+            return tag_data
+
+    def verify_integrity(self) -> dict[str, Any]:
+        """
+        Audits the repository for missing, corrupted, or tampered CAS blobs
+        and validates all commit references.
+        """
+        report: dict[str, Any] = {
+            "corrupted_blobs": [],
+            "missing_blobs": [],
+            "valid_blobs_count": 0,
+            "commits_checked": 0,
+            "dangling_parents": [],
         }
-        tag_file = self.tags_dir / f"{tag_name}.json"
-        self._write_json_atomic(tag_file, tag_data)
-        return tag_data
+
+        with self._lock:
+            all_commits = self.log(limit=100000)
+            commit_ids = {c["commit_id"] for c in all_commits}
+
+            for c_entry in all_commits:
+                report["commits_checked"] += 1
+                cid = c_entry["commit_id"]
+                try:
+                    commit = self.get_commit(cid)
+                except Exception as e:
+                    report["corrupted_blobs"].append(f"commit:{cid}:{e}")
+                    continue
+
+                if commit.parent_id and commit.parent_id not in commit_ids:
+                    report["dangling_parents"].append(f"{cid}->{commit.parent_id}")
+
+                for fname, item in commit.manifest.items():
+                    sha = item.sha256
+                    prefix = sha[:2]
+                    rest = sha[2:]
+                    blob_path = self.blobs_dir / prefix / rest
+                    if not blob_path.exists():
+                        report["missing_blobs"].append(f"{fname}:{sha}")
+                    else:
+                        try:
+                            self._read_blob(sha)
+                            report["valid_blobs_count"] += 1
+                        except Exception as e:
+                            report["corrupted_blobs"].append(f"{fname}:{sha}:{e}")
+
+        return report
 
     def list_tags(self) -> dict[str, str]:
         """Returns all tags as a dictionary {tag_name: commit_id}."""

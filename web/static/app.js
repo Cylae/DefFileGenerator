@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     let libraryLoaded = false;
     let auditTrailLoaded = false;
+    let versionsLoaded = false;
+    let duplicatesLoaded = false;
     let currentLibrarySource = 'production';
     let currentCategoryFilter = '';
 
@@ -17,6 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
             paneId: 'tab-library',
             onActivate: () => {
                 if (!libraryLoaded) loadLibrary();
+            }
+        },
+        {
+            btnId: 'tabBtnVersions',
+            paneId: 'tab-versions',
+            onActivate: () => {
+                if (!versionsLoaded) loadVersions();
+            }
+        },
+        {
+            btnId: 'tabBtnDuplicates',
+            paneId: 'tab-duplicates',
+            onActivate: () => {
+                if (!duplicatesLoaded) loadDuplicates();
             }
         },
         {
@@ -1282,6 +1298,678 @@ document.addEventListener('DOMContentLoaded', () => {
                        (ev.details && ev.details.toLowerCase().includes(q));
             });
             renderAuditTrailTable(filtered);
+        });
+    }
+
+    // =========================================================================
+    // MODULE: Versions & Commits (/api/versions)
+    // =========================================================================
+    const versionsTableBody = document.getElementById('versionsTableBody');
+    const versionsCountBadge = document.getElementById('versionsCountBadge');
+    const refreshVersionsBtn = document.getElementById('refreshVersionsBtn');
+    const versionsSearchInput = document.getElementById('versionsSearchInput');
+
+    const versionDetailSection = document.getElementById('versionDetailSection');
+    const detailCommitHash = document.getElementById('detailCommitHash');
+    const detailMetaSummary = document.getElementById('detailMetaSummary');
+    const detailRestoreBtn = document.getElementById('detailRestoreBtn');
+    const closeDetailBtn = document.getElementById('closeDetailBtn');
+
+    const viewDiffTabBtn = document.getElementById('viewDiffTabBtn');
+    const viewManifestTabBtn = document.getElementById('viewManifestTabBtn');
+    const diffViewPane = document.getElementById('diffViewPane');
+    const manifestViewPane = document.getElementById('manifestViewPane');
+
+    const diffParentBadge = document.getElementById('diffParentBadge');
+    const diffAddedBadge = document.getElementById('diffAddedBadge');
+    const diffModifiedBadge = document.getElementById('diffModifiedBadge');
+    const diffRemovedBadge = document.getElementById('diffRemovedBadge');
+    const diffFileSelect = document.getElementById('diffFileSelect');
+    const diffContainer = document.getElementById('diffContainer');
+
+    const manifestFilesCount = document.getElementById('manifestFilesCount');
+    const manifestFilterInput = document.getElementById('manifestFilterInput');
+    const manifestTableBody = document.getElementById('manifestTableBody');
+
+    // Restore modal elements
+    const restoreModal = document.getElementById('restoreModal');
+    const closeRestoreModalBtn = document.getElementById('closeRestoreModalBtn');
+    const cancelRestoreBtn = document.getElementById('cancelRestoreBtn');
+    const confirmRestoreBtn = document.getElementById('confirmRestoreBtn');
+    const modalCommitId = document.getElementById('modalCommitId');
+    const modalAuthor = document.getElementById('modalAuthor');
+    const modalTimestamp = document.getElementById('modalTimestamp');
+    const modalMessage = document.getElementById('modalMessage');
+    const restoreTargetDir = document.getElementById('restoreTargetDir');
+    const restoreSpecificFile = document.getElementById('restoreSpecificFile');
+    const restorePreviewCountBadge = document.getElementById('restorePreviewCountBadge');
+    const restorePreviewList = document.getElementById('restorePreviewList');
+
+    let versionsList = [];
+    let currentCommitData = null;
+    let currentDiffData = null;
+    let pendingRestoreCommit = null;
+
+    async function loadVersions() {
+        if (!versionsTableBody) return;
+        try {
+            versionsTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">Chargement de l'historique...</td></tr>`;
+            const res = await fetch('/api/versions?limit=50');
+            if (!res.ok) {
+                throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+            }
+            versionsList = await res.json();
+            versionsLoaded = true;
+            if (versionsCountBadge) {
+                versionsCountBadge.textContent = `${versionsList.length} snapshot${versionsList.length > 1 ? 's' : ''}`;
+            }
+            renderVersionsTable(versionsList);
+        } catch (err) {
+            versionsTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Erreur lors du chargement des commits: ${escapeHtml(err.message)}</td></tr>`;
+            showToast(`Erreur historique commits: ${err.message}`, 'error');
+        }
+    }
+
+    function renderVersionsTable(commits) {
+        if (!versionsTableBody) return;
+        versionsTableBody.innerHTML = '';
+        if (!commits || commits.length === 0) {
+            versionsTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">Aucun commit répertorié dans definitions_history.</td></tr>`;
+            return;
+        }
+
+        commits.forEach(commit => {
+            const tr = document.createElement('tr');
+            const shortId = (commit.commit_id || '').substring(0, 10);
+            const ts = (commit.timestamp || '').replace('T', ' ').substring(0, 19);
+            const tagsHtml = (commit.tags || []).map(t => `<span class="tag-pill">🏷️ ${escapeHtml(t)}</span>`).join('') || '<span style="color: var(--text-secondary);">-</span>';
+            const fileCount = commit.files_count ?? 0;
+            const regCountHtml = commit.total_registers != null
+                ? `<span class="badge" style="background: rgba(255,255,255,0.08);">${commit.total_registers} regs</span>`
+                : (commit.changes ? `<span class="badge" style="background: rgba(255,255,255,0.08);">+${commit.changes.added || 0} ~${commit.changes.modified || 0} -${commit.changes.deleted || 0}</span>` : '');
+
+            tr.innerHTML = `
+                <td><code style="color: var(--accent); cursor: pointer;" title="Inspecter ce commit">${escapeHtml(shortId)}</code></td>
+                <td style="white-space: nowrap; font-size: 0.8rem; font-family: monospace;">${escapeHtml(ts)}</td>
+                <td><strong>${escapeHtml(commit.author || 'Inconnu')}</strong></td>
+                <td>${escapeHtml(commit.message || 'Sans message')}</td>
+                <td><span class="badge badge-info">${fileCount} fichiers</span> ${regCountHtml}</td>
+                <td>${tagsHtml}</td>
+                <td style="text-align: right; white-space: nowrap;">
+                    <button class="btn btn-secondary btn-sm btn-inspect" data-id="${escapeHtml(commit.commit_id)}">🔍 Diff & Détails</button>
+                    <button class="btn btn-primary btn-sm btn-restore" data-id="${escapeHtml(commit.commit_id)}">🔄 Restaurer</button>
+                </td>
+            `;
+
+            const codeEl = tr.querySelector('code');
+            if (codeEl) codeEl.addEventListener('click', () => inspectCommit(commit.commit_id));
+            const inspectBtn = tr.querySelector('.btn-inspect');
+            if (inspectBtn) inspectBtn.addEventListener('click', () => inspectCommit(commit.commit_id));
+            const restoreBtn = tr.querySelector('.btn-restore');
+            if (restoreBtn) restoreBtn.addEventListener('click', () => openRestoreModal(commit));
+            versionsTableBody.appendChild(tr);
+        });
+    }
+
+    async function inspectCommit(commitId) {
+        if (!versionDetailSection) return;
+        try {
+            showToast(`Chargement du commit ${commitId.substring(0, 8)}...`, 'info');
+            versionDetailSection.classList.remove('hidden');
+            if (detailCommitHash) detailCommitHash.textContent = commitId.substring(0, 12);
+            if (detailMetaSummary) detailMetaSummary.innerHTML = 'Chargement des métadonnées et du diff...';
+
+            const [commitRes, diffRes] = await Promise.all([
+                fetch(`/api/versions/${encodeURIComponent(commitId)}`),
+                fetch(`/api/versions/${encodeURIComponent(commitId)}/diff`)
+            ]);
+
+            if (!commitRes.ok) throw new Error(`Échec chargement commit: ${commitRes.status}`);
+            currentCommitData = await commitRes.json();
+            currentDiffData = diffRes.ok ? await diffRes.json() : null;
+
+            const ts = (currentCommitData.timestamp || '').replace('T', ' ').substring(0, 19);
+            const parentShort = currentCommitData.parent_id ? currentCommitData.parent_id.substring(0, 10) : 'aucun (initial)';
+            if (detailMetaSummary) {
+                detailMetaSummary.innerHTML = `
+                    <strong>Auteur :</strong> ${escapeHtml(currentCommitData.author)} | 
+                    <strong>Date :</strong> ${escapeHtml(ts)} UTC | 
+                    <strong>Parent :</strong> <code>${escapeHtml(parentShort)}</code> | 
+                    <strong>Message :</strong> <em>${escapeHtml(currentCommitData.message)}</em>
+                `;
+            }
+
+            // Populate diff files dropdown
+            if (diffFileSelect) {
+                diffFileSelect.innerHTML = `<option value="">Tous les fichiers modifiés</option>`;
+                if (currentDiffData) {
+                    const allDiffFiles = [
+                        ...(currentDiffData.added_files || []),
+                        ...(currentDiffData.modified_files || []),
+                        ...(currentDiffData.removed_files || [])
+                    ].sort();
+                    allDiffFiles.forEach(f => {
+                        const opt = document.createElement('option');
+                        opt.value = f;
+                        opt.textContent = f;
+                        diffFileSelect.appendChild(opt);
+                    });
+                }
+            }
+
+            renderCommitDiff(currentDiffData, diffFileSelect ? diffFileSelect.value : '');
+            renderCommitManifest(currentCommitData.manifest || {});
+
+            versionDetailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch (err) {
+            showToast(`Erreur inspection: ${err.message}`, 'error');
+            if (detailMetaSummary) detailMetaSummary.innerHTML = `<span style="color: #ef4444;">Erreur: ${escapeHtml(err.message)}</span>`;
+        }
+    }
+
+    function renderCommitDiff(diff, filterFile = '') {
+        if (!diffContainer) return;
+        diffContainer.innerHTML = '';
+
+        if (!diff) {
+            diffContainer.innerHTML = `<div style="text-align: center; color: var(--text-secondary); padding: 20px;">Aucune donnée de diff disponible.</div>`;
+            return;
+        }
+
+        const addedFiles = diff.added_files || [];
+        const modifiedFiles = diff.modified_files || [];
+        const removedFiles = diff.removed_files || [];
+
+        if (diffAddedBadge) diffAddedBadge.textContent = `+${addedFiles.length} ajoutés`;
+        if (diffModifiedBadge) diffModifiedBadge.textContent = `~${modifiedFiles.length} modifiés`;
+        if (diffRemovedBadge) diffRemovedBadge.textContent = `-${removedFiles.length} supprimés`;
+        if (diffParentBadge) {
+            diffParentBadge.textContent = diff.commit_b ? `Diff vs ${diff.commit_b.substring(0, 8)}` : `Snapshot Initial`;
+        }
+
+        if (addedFiles.length === 0 && modifiedFiles.length === 0 && removedFiles.length === 0) {
+            diffContainer.innerHTML = `<div style="text-align: center; color: #10b981; padding: 20px; background: rgba(16,185,129,0.08); border-radius: 8px;">Aucune différence de fichier ou de registre détectée par rapport au parent.</div>`;
+            return;
+        }
+
+        // Render added files
+        addedFiles.filter(f => !filterFile || f === filterFile).forEach(fn => {
+            const card = document.createElement('div');
+            card.className = 'diff-file-card';
+            card.innerHTML = `
+                <div class="diff-file-header diff-row-added">
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <span class="diff-badge-add">+ AJOUTÉ</span>
+                        <code>${escapeHtml(fn)}</code>
+                    </span>
+                    <span style="font-size: 0.8rem; color: #34d399;">Nouveau fichier de définition certifié</span>
+                </div>
+            `;
+            diffContainer.appendChild(card);
+        });
+
+        // Render removed files
+        removedFiles.filter(f => !filterFile || f === filterFile).forEach(fn => {
+            const card = document.createElement('div');
+            card.className = 'diff-file-card';
+            card.innerHTML = `
+                <div class="diff-file-header diff-row-removed">
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <span class="diff-badge-del">- SUPPRIMÉ</span>
+                        <code>${escapeHtml(fn)}</code>
+                    </span>
+                    <span style="font-size: 0.8rem; color: #f87171;">Fichier retiré ou archivé</span>
+                </div>
+            `;
+            diffContainer.appendChild(card);
+        });
+
+        // Render modified files with detailed register diffs
+        const fileDiffs = diff.file_diffs || {};
+        modifiedFiles.filter(f => !filterFile || f === filterFile).forEach(fn => {
+            const fd = fileDiffs[fn];
+            const card = document.createElement('div');
+            card.className = 'diff-file-card';
+
+            const addCount = fd ? (fd.added_registers_count || 0) : 0;
+            const delCount = fd ? (fd.removed_registers_count || 0) : 0;
+            const modCount = fd ? (fd.modified_registers_count || 0) : 0;
+
+            let bodyHtml = '';
+            if (fd) {
+                let parts = [];
+                if (fd.header_changed) {
+                    parts.push(`<div style="padding: 8px 14px; background: rgba(245,158,11,0.1); color: #fbbf24; font-size: 0.8rem; border-bottom: 1px solid var(--border);">⚠️ Entête CSV modifiée : <code>${escapeHtml(fd.old_header)}</code> ➔ <code>${escapeHtml(fd.new_header)}</code></div>`);
+                }
+
+                if (addCount > 0 && fd.added_addresses && fd.added_addresses.length) {
+                    const addPills = fd.added_addresses.map(a => `<span class="diff-badge-add">+${escapeHtml(a)}</span>`).join(' ');
+                    parts.push(`<div style="padding: 8px 14px; font-size: 0.8rem;"><strong>Registres ajoutés :</strong> ${addPills}</div>`);
+                }
+
+                if (delCount > 0 && fd.removed_addresses && fd.removed_addresses.length) {
+                    const delPills = fd.removed_addresses.map(a => `<span class="diff-badge-del">-${escapeHtml(a)}</span>`).join(' ');
+                    parts.push(`<div style="padding: 8px 14px; font-size: 0.8rem;"><strong>Registres supprimés :</strong> ${delPills}</div>`);
+                }
+
+                if (modCount > 0 && fd.modified_registers && fd.modified_registers.length) {
+                    let regRows = '';
+                    fd.modified_registers.forEach(m => {
+                        const changes = m.changes || {};
+                        const pills = Object.entries(changes).map(([k, [oldVal, newVal]]) => {
+                            return `<span class="diff-field-pill">${escapeHtml(k)}: <span class="val-old">${escapeHtml(oldVal || 'vide')}</span> ➔ <span class="val-new">${escapeHtml(newVal || 'vide')}</span></span>`;
+                        }).join(' ');
+
+                        regRows += `
+                            <tr class="diff-row-modified">
+                                <td style="width: 80px; font-family: monospace; font-weight: 600;">${escapeHtml(m.address)}</td>
+                                <td style="font-weight: 500;">${escapeHtml(m.name || '')}</td>
+                                <td>${pills}</td>
+                            </tr>
+                        `;
+                    });
+
+                    parts.push(`
+                        <div class="table-wrapper" style="max-height: 250px; border-left: none; border-right: none; border-bottom: none;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Adresse</th>
+                                        <th>Nom</th>
+                                        <th>Modifications Détectées</th>
+                                    </tr>
+                                </thead>
+                                <tbody>${regRows}</tbody>
+                            </table>
+                        </div>
+                    `);
+                }
+
+                bodyHtml = parts.join('');
+            }
+
+            card.innerHTML = `
+                <div class="diff-file-header diff-row-modified">
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <span class="diff-badge-mod">~ MODIFIÉ</span>
+                        <code>${escapeHtml(fn)}</code>
+                    </span>
+                    <span style="font-size: 0.8rem; display: flex; gap: 6px;">
+                        <span class="badge badge-success">+${addCount}</span>
+                        <span class="badge badge-warning">~${modCount}</span>
+                        <span class="badge badge-error">-${delCount}</span>
+                    </span>
+                </div>
+                ${bodyHtml}
+            `;
+            diffContainer.appendChild(card);
+        });
+    }
+
+    function renderCommitManifest(manifest) {
+        if (!manifestTableBody) return;
+        manifestTableBody.innerHTML = '';
+        const files = Object.values(manifest || {});
+        if (manifestFilesCount) manifestFilesCount.textContent = files.length;
+
+        if (files.length === 0) {
+            manifestTableBody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-secondary);">Aucun fichier dans ce manifeste.</td></tr>`;
+            return;
+        }
+
+        files.forEach(f => {
+            const tr = document.createElement('tr');
+            const shortSha = (f.sha256 || '').substring(0, 8);
+            const sizeKb = ((f.size_bytes || 0) / 1024).toFixed(1);
+
+            tr.innerHTML = `
+                <td><code>${escapeHtml(f.file_name)}</code></td>
+                <td><span class="badge badge-info">${escapeHtml(f.category || 'OTH')}</span></td>
+                <td><strong>${escapeHtml(f.manufacturer || '-')}</strong></td>
+                <td>${escapeHtml(f.model || '-')}</td>
+                <td>${escapeHtml(f.register_count ?? 0)}</td>
+                <td>${escapeHtml(f.tag_count ?? 0)}</td>
+                <td style="font-size: 0.8rem; color: var(--text-secondary);">${sizeKb} KB</td>
+                <td><code style="font-size: 0.75rem;">${escapeHtml(shortSha)}</code></td>
+            `;
+            manifestTableBody.appendChild(tr);
+        });
+    }
+
+    if (viewDiffTabBtn && viewManifestTabBtn && diffViewPane && manifestViewPane) {
+        viewDiffTabBtn.addEventListener('click', () => {
+            viewDiffTabBtn.classList.add('active');
+            viewManifestTabBtn.classList.remove('active');
+            diffViewPane.classList.remove('hidden');
+            manifestViewPane.classList.add('hidden');
+        });
+        viewManifestTabBtn.addEventListener('click', () => {
+            viewManifestTabBtn.classList.add('active');
+            viewDiffTabBtn.classList.remove('active');
+            manifestViewPane.classList.remove('hidden');
+            diffViewPane.classList.add('hidden');
+        });
+    }
+
+    if (diffFileSelect) {
+        diffFileSelect.addEventListener('change', () => {
+            if (currentDiffData) {
+                renderCommitDiff(currentDiffData, diffFileSelect.value);
+            }
+        });
+    }
+
+    if (closeDetailBtn && versionDetailSection) {
+        closeDetailBtn.addEventListener('click', () => {
+            versionDetailSection.classList.add('hidden');
+        });
+    }
+
+    if (refreshVersionsBtn) {
+        refreshVersionsBtn.addEventListener('click', () => loadVersions());
+    }
+
+    if (versionsSearchInput) {
+        versionsSearchInput.addEventListener('input', () => {
+            const q = versionsSearchInput.value.trim().toLowerCase();
+            if (!q) {
+                renderVersionsTable(versionsList);
+                return;
+            }
+            const filtered = versionsList.filter(c => {
+                const tagsStr = (c.tags || []).join(' ').toLowerCase();
+                return (c.commit_id && c.commit_id.toLowerCase().includes(q)) ||
+                       (c.message && c.message.toLowerCase().includes(q)) ||
+                       (c.author && c.author.toLowerCase().includes(q)) ||
+                       tagsStr.includes(q);
+            });
+            renderVersionsTable(filtered);
+        });
+    }
+
+    if (manifestFilterInput && manifestTableBody) {
+        setupTableFilter(manifestFilterInput, manifestTableBody);
+    }
+
+    // Modal restore helpers
+    function openRestoreModal(commit) {
+        if (!restoreModal) return;
+        pendingRestoreCommit = commit;
+        if (modalCommitId) modalCommitId.textContent = commit.commit_id;
+        if (modalAuthor) modalAuthor.textContent = commit.author || 'Inconnu';
+        if (modalTimestamp) modalTimestamp.textContent = (commit.timestamp || '').replace('T', ' ').substring(0, 19);
+        if (modalMessage) modalMessage.textContent = commit.message || 'Sans message';
+
+        if (restorePreviewList) {
+            const files = Object.keys(commit.manifest || {});
+            const total = files.length || commit.files_count || 0;
+            if (restorePreviewCountBadge) restorePreviewCountBadge.textContent = `${total} fichiers`;
+            if (files.length > 0) {
+                const sample = files.slice(0, 15).map(f => `• ${escapeHtml(f)}`).join('<br>');
+                const extra = files.length > 15 ? `<br><em>... et ${files.length - 15} autres fichiers</em>` : '';
+                restorePreviewList.innerHTML = `${sample}${extra}`;
+            } else {
+                restorePreviewList.innerHTML = `<em>Ce snapshot restaurera ${total} fichiers de définitions certifiées.</em>`;
+            }
+        }
+
+        restoreModal.classList.remove('hidden');
+    }
+
+    function closeRestoreModal() {
+        if (restoreModal) restoreModal.classList.add('hidden');
+        pendingRestoreCommit = null;
+    }
+
+    if (closeRestoreModalBtn) closeRestoreModalBtn.addEventListener('click', closeRestoreModal);
+    if (cancelRestoreBtn) cancelRestoreBtn.addEventListener('click', closeRestoreModal);
+    if (detailRestoreBtn) {
+        detailRestoreBtn.addEventListener('click', () => {
+            if (currentCommitData) openRestoreModal(currentCommitData);
+        });
+    }
+
+    if (confirmRestoreBtn) {
+        confirmRestoreBtn.addEventListener('click', async () => {
+            if (!pendingRestoreCommit) return;
+            const targetDir = (restoreTargetDir ? restoreTargetDir.value.trim() : '') || 'production';
+            const fileName = restoreSpecificFile && restoreSpecificFile.value.trim() ? restoreSpecificFile.value.trim() : null;
+
+            confirmRestoreBtn.disabled = true;
+            confirmRestoreBtn.textContent = 'Restauration en cours...';
+
+            try {
+                const res = await fetch('/api/versions/restore', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        commit_id: pendingRestoreCommit.commit_id,
+                        target_dir: targetDir,
+                        file_name: fileName
+                    })
+                });
+
+                if (!res.ok) {
+                    const errData = await res.json().catch(() => ({}));
+                    throw new Error(errData.detail || `Erreur HTTP ${res.status}`);
+                }
+
+                const data = await res.json();
+                showToast(`Restauration réussie ! ${data.restored_count} fichier(s) restauré(s) dans ${data.target_dir}.`, 'success');
+                closeRestoreModal();
+
+                // Refresh library if open
+                if (libraryLoaded && typeof loadLibrary === 'function') {
+                    loadLibrary(currentLibrarySource);
+                }
+            } catch (err) {
+                showToast(`Échec restauration: ${err.message}`, 'error');
+            } finally {
+                confirmRestoreBtn.disabled = false;
+                confirmRestoreBtn.textContent = 'Confirmer la Restauration';
+            }
+        });
+    }
+
+    // =========================================================================
+    // MODULE: Doublons & Qualité (/api/duplicates)
+    // =========================================================================
+    const dupPathInput = document.getElementById('dupPathInput');
+    const scanDuplicatesBtn = document.getElementById('scanDuplicatesBtn');
+    const dupGlobalStatusBadge = document.getElementById('dupGlobalStatusBadge');
+    const dupSearchInput = document.getElementById('dupSearchInput');
+
+    const kpiScannedFiles = document.getElementById('kpiScannedFiles');
+    const kpiTotalDuplicates = document.getElementById('kpiTotalDuplicates');
+    const kpiCategoryConflicts = document.getElementById('kpiCategoryConflicts');
+    const kpiAliasSynonyms = document.getElementById('kpiAliasSynonyms');
+    const kpiHardwareFamilies = document.getElementById('kpiHardwareFamilies');
+
+    const badgeCategoryConflictCount = document.getElementById('badgeCategoryConflictCount');
+    const badgeAliasCount = document.getElementById('badgeAliasCount');
+    const badgeHardwareFamilyCount = document.getElementById('badgeHardwareFamilyCount');
+
+    const categoryConflictBody = document.getElementById('categoryConflictBody');
+    const aliasBody = document.getElementById('aliasBody');
+    const hardwareFamilyBody = document.getElementById('hardwareFamilyBody');
+
+    let duplicatesReport = null;
+
+    async function loadDuplicates(path = 'production') {
+        if (!categoryConflictBody) return;
+        try {
+            if (scanDuplicatesBtn) {
+                scanDuplicatesBtn.disabled = true;
+                scanDuplicatesBtn.textContent = '⏳ Analyse...';
+            }
+            if (dupGlobalStatusBadge) {
+                dupGlobalStatusBadge.className = 'badge badge-info';
+                dupGlobalStatusBadge.textContent = 'Scan en cours...';
+            }
+
+            const target = path || (dupPathInput ? dupPathInput.value.trim() : 'production') || 'production';
+            const res = await fetch(`/api/duplicates?path=${encodeURIComponent(target)}`);
+            if (!res.ok) {
+                const errData = await res.json().catch(() => ({}));
+                throw new Error(errData.detail || `HTTP ${res.status}`);
+            }
+
+            duplicatesReport = await res.json();
+            duplicatesLoaded = true;
+            renderDuplicates(duplicatesReport);
+            showToast('Scan des doublons terminé avec succès', 'success');
+        } catch (err) {
+            showToast(`Erreur scan doublons: ${err.message}`, 'error');
+            if (dupGlobalStatusBadge) {
+                dupGlobalStatusBadge.className = 'badge badge-error';
+                dupGlobalStatusBadge.textContent = 'Échec scan';
+            }
+        } finally {
+            if (scanDuplicatesBtn) {
+                scanDuplicatesBtn.disabled = false;
+                scanDuplicatesBtn.textContent = '🔄 Scanner les Doublons';
+            }
+        }
+    }
+
+    function renderDuplicates(report) {
+        if (!report) return;
+
+        // KPIs
+        const scanned = report.total_files_scanned ?? 0;
+        const totalDupes = report.total_duplicate_files ?? 0;
+        const catClusters = report.category_conflict_clusters || [];
+        const aliasClusters = report.alias_clusters || [];
+        const bodyClusters = report.exact_body_clusters || [];
+
+        if (kpiScannedFiles) kpiScannedFiles.textContent = scanned;
+        if (kpiTotalDuplicates) kpiTotalDuplicates.textContent = totalDupes;
+        if (kpiCategoryConflicts) kpiCategoryConflicts.textContent = catClusters.length;
+        if (kpiAliasSynonyms) kpiAliasSynonyms.textContent = aliasClusters.length;
+        if (kpiHardwareFamilies) kpiHardwareFamilies.textContent = bodyClusters.length;
+
+        if (badgeCategoryConflictCount) {
+            badgeCategoryConflictCount.textContent = `${catClusters.length} conflit${catClusters.length > 1 ? 's' : ''}`;
+            badgeCategoryConflictCount.className = `badge ${catClusters.length > 0 ? 'badge-error' : 'badge-success'}`;
+        }
+        if (badgeAliasCount) {
+            badgeAliasCount.textContent = `${aliasClusters.length} alias`;
+            badgeAliasCount.className = `badge ${aliasClusters.length > 0 ? 'badge-warning' : 'badge-success'}`;
+        }
+        if (badgeHardwareFamilyCount) {
+            badgeHardwareFamilyCount.textContent = `${bodyClusters.length} famille${bodyClusters.length > 1 ? 's' : ''}`;
+            badgeHardwareFamilyCount.className = 'badge badge-success';
+        }
+
+        if (dupGlobalStatusBadge) {
+            if (catClusters.length === 0 && aliasClusters.length === 0) {
+                dupGlobalStatusBadge.className = 'badge badge-success';
+                dupGlobalStatusBadge.textContent = '✅ Conforme (0 conflit OTH_)';
+            } else {
+                dupGlobalStatusBadge.className = 'badge badge-warning';
+                dupGlobalStatusBadge.textContent = `⚠️ ${totalDupes} Doublons Détectés`;
+            }
+        }
+
+        renderCategoryConflicts(catClusters);
+        renderAliasClusters(aliasClusters);
+        renderHardwareFamilies(bodyClusters);
+    }
+
+    function renderCategoryConflicts(clusters) {
+        if (!categoryConflictBody) return;
+        categoryConflictBody.innerHTML = '';
+        if (clusters.length === 0) {
+            categoryConflictBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #10b981; padding: 16px;">✅ Aucun conflit de catégorie OTH_ détecté. Tous les fichiers de définitions sont typés conformément aux 5 Piliers.</td></tr>`;
+            return;
+        }
+
+        clusters.forEach(c => {
+            const tr = document.createElement('tr');
+            const dupes = (c.duplicate_files || []).map(d => `<code style="color: #f87171;">${escapeHtml(d)}</code>`).join('<br>');
+            const model = (c.models && c.models.length) ? c.models[0] : '-';
+
+            tr.innerHTML = `
+                <td><code style="color: #34d399; font-weight: 600;">${escapeHtml(c.canonical_file)}</code></td>
+                <td>${dupes}</td>
+                <td><strong>${escapeHtml(model)}</strong></td>
+                <td><span class="badge badge-info">${escapeHtml(c.register_count ?? 0)} regs</span></td>
+                <td><span class="badge badge-error">Supprimer OTH_ redondant</span></td>
+            `;
+            categoryConflictBody.appendChild(tr);
+        });
+    }
+
+    function renderAliasClusters(clusters) {
+        if (!aliasBody) return;
+        aliasBody.innerHTML = '';
+        if (clusters.length === 0) {
+            aliasBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #10b981; padding: 16px;">✅ Aucun alias non résolu détecté dans le catalogue.</td></tr>`;
+            return;
+        }
+
+        clusters.forEach(c => {
+            const tr = document.createElement('tr');
+            const dupes = (c.duplicate_files || []).map(d => `<code style="color: #fbbf24;">${escapeHtml(d)}</code>`).join('<br>');
+
+            tr.innerHTML = `
+                <td><code style="color: #38bdf8; font-weight: 600;">${escapeHtml(c.canonical_file)}</code></td>
+                <td>${dupes}</td>
+                <td style="font-size: 0.85rem; color: var(--text-secondary);">${escapeHtml(c.description || 'Variante de nommage')}</td>
+                <td><span class="badge badge-info">${escapeHtml(c.register_count ?? 0)} regs</span></td>
+                <td><span class="badge badge-warning">Enregistrer dans le registre d'alias</span></td>
+            `;
+            aliasBody.appendChild(tr);
+        });
+    }
+
+    function renderHardwareFamilies(clusters) {
+        if (!hardwareFamilyBody) return;
+        hardwareFamilyBody.innerHTML = '';
+        if (clusters.length === 0) {
+            hardwareFamilyBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 16px;">Aucune famille multi-modèles répertoriée.</td></tr>`;
+            return;
+        }
+
+        clusters.forEach(c => {
+            const tr = document.createElement('tr');
+            const models = (c.models || []).map(m => `<span class="model-pill">${escapeHtml(m)}</span>`).join(' ') || '-';
+            const dupes = (c.duplicate_files || []).map(d => `<code>${escapeHtml(d)}</code>`).join('<br>') || '-';
+
+            tr.innerHTML = `
+                <td><code style="color: #10b981; font-weight: 600;">${escapeHtml(c.canonical_file)}</code></td>
+                <td style="max-width: 320px;">${models}</td>
+                <td>${dupes}</td>
+                <td><span class="badge badge-info">${escapeHtml(c.register_count ?? 0)} regs</span></td>
+                <td><span class="badge badge-success">Gamme Matérielle Valide</span></td>
+            `;
+            hardwareFamilyBody.appendChild(tr);
+        });
+    }
+
+    if (scanDuplicatesBtn) {
+        scanDuplicatesBtn.addEventListener('click', () => {
+            const p = dupPathInput ? dupPathInput.value.trim() : 'production';
+            loadDuplicates(p);
+        });
+    }
+
+    if (dupSearchInput) {
+        dupSearchInput.addEventListener('input', () => {
+            const q = dupSearchInput.value.trim().toLowerCase();
+            const filterTable = (tbody) => {
+                if (!tbody) return;
+                const rows = tbody.children || [];
+                for (let i = 0; i < rows.length; i++) {
+                    const row = rows[i];
+                    if (!row) continue;
+                    const text = (row.textContent || '').toLowerCase();
+                    row.style.display = (!q || text.includes(q)) ? '' : 'none';
+                }
+            };
+            filterTable(categoryConflictBody);
+            filterTable(aliasBody);
+            filterTable(hardwareFamilyBody);
         });
     }
 });

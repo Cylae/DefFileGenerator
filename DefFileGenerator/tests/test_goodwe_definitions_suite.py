@@ -48,9 +48,7 @@ EXPECTED_GOODWE_FILES = [
     "INV_Goodwe_HT_Series.csv",
     "INV_Goodwe_HT1100.csv",
     "INV_Goodwe_HT_others_Series.csv",
-    "INV_Goodwe_HT_1500V.csv",
     "INV_Goodwe_HT1500.csv",
-    "INV_Goodwe_GT_Series.csv",
     "INV_Goodwe_GT-SERIES.csv",
     # Low-Voltage Hybrid Storage
     "INV_Goodwe_ES_EM_SBP.csv",
@@ -77,10 +75,10 @@ EXPECTED_GOODWE_FILES = [
 
 
 class TestGoodweDefinitionsSuite(unittest.TestCase):
-    """Test suite certifying all 34 GoodWe ecosystem definitions."""
+    """Test suite certifying all 32 GoodWe ecosystem definitions."""
 
     def test_all_files_exist_in_all_target_directories(self) -> None:
-        """Ensure all 34 files exist in production, Definitions/GoodWe, generated_definitions, and tagged_definitions."""
+        """Ensure all 32 files exist in production, Definitions/GoodWe, generated_definitions, and tagged_definitions."""
         for fname in EXPECTED_GOODWE_FILES:
             for d in (PRODUCTION_DIR, DEFINITIONS_GOODWE_DIR, DEFINITIONS_DIR, GENERATED_DIR, TAGGED_DIR):
                 fpath = d / fname

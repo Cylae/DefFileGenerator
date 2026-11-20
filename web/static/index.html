@@ -6,6 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebdynSunPM Studio & Générateur de Définitions Apollo</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        /* Modals */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            backdrop-filter: blur(4px);
+        }
+        .modal-dialog {
+            background: var(--bg-card, #1e293b);
+            border: 1px solid var(--border, #334155);
+            border-radius: 12px;
+            width: 92%;
+            max-width: 640px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border, #334155);
+        }
+
+        /* Diff Styles */
+        .diff-file-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border, #334155);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+        .diff-file-header {
+            background: rgba(30, 41, 59, 0.8);
+            padding: 10px 14px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border, #334155);
+            font-size: 0.9rem;
+        }
+        .diff-row-added {
+            background: rgba(16, 185, 129, 0.12) !important;
+        }
+        .diff-row-removed {
+            background: rgba(239, 68, 68, 0.12) !important;
+        }
+        .diff-row-modified {
+            background: rgba(245, 158, 11, 0.12) !important;
+        }
+        .diff-field-pill {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 4px;
+            padding: 2px 6px;
+            margin: 2px;
+            font-family: monospace;
+            font-size: 0.78rem;
+        }
+        .diff-field-pill .val-old {
+            color: #f87171;
+            text-decoration: line-through;
+            margin-right: 4px;
+        }
+        .diff-field-pill .val-new {
+            color: #34d399;
+            font-weight: 600;
+        }
+        .tag-pill {
+            display: inline-block;
+            background: rgba(2, 132, 199, 0.2);
+            color: #38bdf8;
+            border: 1px solid rgba(2, 132, 199, 0.4);
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            margin-right: 4px;
+            margin-bottom: 2px;
+        }
+        .model-pill {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            margin-right: 4px;
+            margin-bottom: 2px;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,6 +142,10 @@
                 aria-controls="tab-audit" tabindex="-1">🛡️ 5 Piliers & Auditor</button>
             <button class="nav-tab" id="tabBtnLibrary" data-tab="tab-library" role="tab" aria-selected="false"
                 aria-controls="tab-library" tabindex="-1">📚 Production Library (1,118)</button>
+            <button class="nav-tab" id="tabBtnVersions" data-tab="tab-versions" role="tab" aria-selected="false"
+                aria-controls="tab-versions" tabindex="-1">🕒 Versions & Commits</button>
+            <button class="nav-tab" id="tabBtnDuplicates" data-tab="tab-duplicates" role="tab" aria-selected="false"
+                aria-controls="tab-duplicates" tabindex="-1">🔍 Doublons & Qualité</button>
             <button class="nav-tab" id="tabBtnAuditTrail" data-tab="tab-audit-trail" role="tab" aria-selected="false"
                 aria-controls="tab-audit-trail" tabindex="-1">📜 Journal d'Audit</button>
         </nav>
@@ -594,7 +702,338 @@
                 </div>
             </section>
         </div>
+
+        <!-- ======================================================== -->
+        <!-- TAB 6: VERSIONS & COMMITS                                -->
+        <!-- ======================================================== -->
+        <div id="tab-versions" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnVersions">
+            <section class="card">
+                <div class="results-header" style="margin-bottom: 12px;">
+                    <div>
+                        <h2>🕒 Gestion des Versions & Commits Modbus</h2>
+                        <span id="versionsCountBadge" class="badge badge-success">0 snapshots</span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button id="refreshVersionsBtn" class="btn btn-secondary btn-sm">🔄 Actualiser</button>
+                    </div>
+                </div>
+                <p class="subtitle">Historique Git-like immuable des définitions Webdyn avec adressage par contenu (CAS), inspection de manifestes, diff sémantique de registres et restauration sécurisée.</p>
+
+                <!-- Search and Filters -->
+                <div class="search-bar" style="margin-bottom: 16px;">
+                    <input type="text" id="versionsSearchInput"
+                        placeholder="🔍 Filtrer les commits par message, auteur, hash ou tag...">
+                </div>
+
+                <!-- Commit History Table -->
+                <div class="table-wrapper" style="max-height: 420px; margin-bottom: 24px;">
+                    <table id="versionsTable">
+                        <thead>
+                            <tr>
+                                <th style="width: 110px;">Commit ID</th>
+                                <th>Date & Heure (UTC)</th>
+                                <th>Auteur</th>
+                                <th>Message</th>
+                                <th>Fichiers / Registres</th>
+                                <th>Tags</th>
+                                <th style="text-align: right; width: 200px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="versionsTableBody">
+                            <tr>
+                                <td colspan="7" style="text-align: center; color: var(--text-secondary);">Chargement de l'historique des commits...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Commit Detail & Semantic Modbus Diff Viewer -->
+                <div id="versionDetailSection" class="hidden" style="margin-top: 24px; border-top: 1px solid var(--border); padding-top: 20px;">
+                    <div class="results-header" style="margin-bottom: 16px;">
+                        <div>
+                            <h3 style="font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                                <span>Détails du Commit</span>
+                                <code id="detailCommitHash" style="background: var(--bg-hover); padding: 2px 6px; border-radius: 4px; color: var(--accent);"></code>
+                            </h3>
+                            <div id="detailMetaSummary" style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;"></div>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <button id="detailRestoreBtn" class="btn btn-primary btn-sm">🔄 Restaurer / Checkout ce Commit</button>
+                            <button id="closeDetailBtn" class="btn btn-secondary btn-sm">✕ Fermer</button>
+                        </div>
+                    </div>
+
+                    <!-- Tabs inside Commit: Diff vs Manifest -->
+                    <div style="display: flex; gap: 12px; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+                        <button id="viewDiffTabBtn" class="pill-btn active">📊 Visual Modbus Diff</button>
+                        <button id="viewManifestTabBtn" class="pill-btn">📦 Manifeste des Fichiers (<span id="manifestFilesCount">0</span>)</button>
+                    </div>
+
+                    <!-- Sub-pane 1: Visual Modbus Diff Viewer -->
+                    <div id="diffViewPane">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                            <div id="diffSummaryBadges" style="display: flex; gap: 8px; align-items: center;">
+                                <span class="badge badge-info" id="diffParentBadge">Diff vs Parent</span>
+                                <span class="badge badge-success" id="diffAddedBadge">+0 ajoutés</span>
+                                <span class="badge badge-warning" id="diffModifiedBadge">~0 modifiés</span>
+                                <span class="badge badge-error" id="diffRemovedBadge">-0 supprimés</span>
+                            </div>
+                            <div style="display: flex; gap: 8px; align-items: center;">
+                                <label for="diffFileSelect" style="font-size: 0.85rem; color: var(--text-secondary);">Fichier :</label>
+                                <select id="diffFileSelect" class="filter-input" style="padding: 4px 8px; font-size: 0.85rem; min-width: 240px;">
+                                    <option value="">Tous les fichiers modifiés</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="diffContainer" style="display: flex; flex-direction: column; gap: 16px;">
+                            <!-- Rendered file-by-file diff cards -->
+                        </div>
+                    </div>
+
+                    <!-- Sub-pane 2: File Manifest -->
+                    <div id="manifestViewPane" class="hidden">
+                        <div class="search-bar" style="margin-bottom: 12px;">
+                            <input type="text" id="manifestFilterInput" placeholder="🔍 Filtrer les fichiers du manifeste...">
+                        </div>
+                        <div class="table-wrapper" style="max-height: 400px;">
+                            <table id="manifestTable">
+                                <thead>
+                                    <tr>
+                                        <th>Nom du Fichier</th>
+                                        <th>Catégorie</th>
+                                        <th>Constructeur</th>
+                                        <th>Modèle</th>
+                                        <th>Registres</th>
+                                        <th>Tags</th>
+                                        <th>Taille</th>
+                                        <th>SHA-256</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="manifestTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- TAB 7: DOUBLONS & QUALITÉ (5 PILIERS)                    -->
+        <!-- ======================================================== -->
+        <div id="tab-duplicates" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnDuplicates">
+            <section class="card">
+                <div class="results-header" style="margin-bottom: 12px;">
+                    <div>
+                        <h2>🔍 Détection des Doublons & Audit Qualité 5 Piliers</h2>
+                        <span id="dupGlobalStatusBadge" class="badge badge-success">Audit Prêt</span>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <input type="text" id="dupPathInput" value="production" style="background: var(--bg-surface); border: 1px solid var(--border); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; width: 140px;" title="Répertoire cible">
+                        <button id="scanDuplicatesBtn" class="btn btn-primary btn-sm">🔄 Scanner les Doublons</button>
+                    </div>
+                </div>
+                <p class="subtitle">Analyse rigoureuse de collision d'empreintes et de corps : résout les conflits de catégorie (<code>OTH_</code> vs typé), harmonise les alias constructeurs et certifie les familles matérielles.</p>
+
+                <!-- 5 Pillars Quality Badges -->
+                <div style="margin-bottom: 20px;">
+                    <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;">🏛️ Les 5 Piliers d'Architecture Webdyn</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                        <div class="pillar-card pass">
+                            <span class="pillar-title">1. UTF-8 sans BOM</span>
+                            <span class="pillar-desc">Zéro octet d'entête parasite \xef\xbb\xbf</span>
+                            <span class="pillar-badge">CONFORME</span>
+                        </div>
+                        <div class="pillar-card pass">
+                            <span class="pillar-title">2. Terminaisons CRLF (\r\n)</span>
+                            <span class="pillar-desc">Conformité protocolaire passerelle</span>
+                            <span class="pillar-badge">CONFORME</span>
+                        </div>
+                        <div class="pillar-card pass">
+                            <span class="pillar-title">3. 11 Colonnes Strictes</span>
+                            <span class="pillar-desc">Séparateur point-virgule (;) uniforme</span>
+                            <span class="pillar-badge">CONFORME</span>
+                        </div>
+                        <div class="pillar-card pass">
+                            <span class="pillar-title">4. Index Séquentiel (1..N)</span>
+                            <span class="pillar-desc">Numérotation sans rupture ni doublon</span>
+                            <span class="pillar-badge">CONFORME</span>
+                        </div>
+                        <div class="pillar-card pass">
+                            <span class="pillar-title">5. Types & Tags Qualifiés</span>
+                            <span class="pillar-desc">Sémantique certifiée SunPM & Modbus</span>
+                            <span class="pillar-badge">CONFORME</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI Cards Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px;">
+                    <div style="background: var(--bg-surface, #1e293b); border: 1px solid var(--border); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Fichiers Scannés</div>
+                        <div id="kpiScannedFiles" style="font-size: 1.5rem; font-weight: 700; color: #fff;">-</div>
+                    </div>
+                    <div style="background: var(--bg-surface, #1e293b); border: 1px solid var(--border); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Total Doublons</div>
+                        <div id="kpiTotalDuplicates" style="font-size: 1.5rem; font-weight: 700; color: var(--accent);">-</div>
+                    </div>
+                    <div style="background: var(--bg-surface, #1e293b); border: 1px solid var(--border); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Conflits OTH vs Typé</div>
+                        <div id="kpiCategoryConflicts" style="font-size: 1.5rem; font-weight: 700; color: #ef4444;">-</div>
+                    </div>
+                    <div style="background: var(--bg-surface, #1e293b); border: 1px solid var(--border); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Alias & Synonymes</div>
+                        <div id="kpiAliasSynonyms" style="font-size: 1.5rem; font-weight: 700; color: #f59e0b;">-</div>
+                    </div>
+                    <div style="background: var(--bg-surface, #1e293b); border: 1px solid var(--border); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Familles Matérielles</div>
+                        <div id="kpiHardwareFamilies" style="font-size: 1.5rem; font-weight: 700; color: #10b981;">-</div>
+                    </div>
+                </div>
+
+                <!-- Filter Input -->
+                <div class="search-bar" style="margin-bottom: 20px;">
+                    <input type="text" id="dupSearchInput" placeholder="🔍 Filtrer les doublons par fichier, modèle ou fabricant...">
+                </div>
+
+                <!-- SECTION 1: Category Conflicts (OTH vs Typed) -->
+                <div style="margin-bottom: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h3 style="font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                            <span>⚠️ 1. Conflits de Catégorie (Classification OTH_ vs Fichier Typé)</span>
+                            <span id="badgeCategoryConflictCount" class="badge badge-error">0 conflit</span>
+                        </h3>
+                    </div>
+                    <p class="subtitle" style="margin-bottom: 10px;">Ces fichiers <code>OTH_</code> sont des doublons stricts d'équipements déjà qualifiés en tant qu'onduleurs (<code>INV_</code>), batteries (<code>BAT_</code>), compteurs (<code>MET_</code>) ou capteurs (<code>SEN_</code>).</p>
+                    <div class="table-wrapper" style="max-height: 280px;">
+                        <table id="categoryConflictTable">
+                            <thead>
+                                <tr>
+                                    <th>Fichier Canonique Qualifié</th>
+                                    <th>Doublon Redondant OTH_</th>
+                                    <th>Modèle Matériel</th>
+                                    <th>Registres</th>
+                                    <th>Recommandation</th>
+                                </tr>
+                            </thead>
+                            <tbody id="categoryConflictBody">
+                                <tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">Aucun conflit détecté. Cliquez sur 'Scanner'.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: Alias Synonyms -->
+                <div style="margin-bottom: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h3 style="font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                            <span>🏷️ 2. Alias Matériels & Variantes Synonymes de Nommage</span>
+                            <span id="badgeAliasCount" class="badge badge-warning">0 alias</span>
+                        </h3>
+                    </div>
+                    <p class="subtitle" style="margin-bottom: 10px;">Fichiers représentant le même équipement sous des désignations alternatives (tirets, casse, variantes de référence).</p>
+                    <div class="table-wrapper" style="max-height: 280px;">
+                        <table id="aliasTable">
+                            <thead>
+                                <tr>
+                                    <th>Fichier Canonique</th>
+                                    <th>Alias / Synonyme</th>
+                                    <th>Description / Gamme</th>
+                                    <th>Registres</th>
+                                    <th>Recommandation</th>
+                                </tr>
+                            </thead>
+                            <tbody id="aliasBody">
+                                <tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">Aucun alias détecté.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: Hardware Families -->
+                <div style="margin-bottom: 16px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h3 style="font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                            <span>🏭 3. Familles Matérielles (Modèles partageant les mêmes Registres)</span>
+                            <span id="badgeHardwareFamilyCount" class="badge badge-success">0 famille</span>
+                        </h3>
+                    </div>
+                    <p class="subtitle" style="margin-bottom: 10px;">Gammes de produits constructeur (ex: onduleurs multi-puissance) partageant une table de registres Modbus standardisée.</p>
+                    <div class="table-wrapper" style="max-height: 320px;">
+                        <table id="hardwareFamilyTable">
+                            <thead>
+                                <tr>
+                                    <th>Fichier de Référence</th>
+                                    <th>Modèles Inclus dans la Gamme</th>
+                                    <th>Fichiers Associés</th>
+                                    <th>Registres</th>
+                                    <th>Statut</th>
+                                </tr>
+                            </thead>
+                            <tbody id="hardwareFamilyBody">
+                                <tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">Aucune famille répertoriée.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
+
+    <!-- ======================================================== -->
+    <!-- RESTORE / CHECKOUT MODAL                                 -->
+    <!-- ======================================================== -->
+    <div id="restoreModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="restoreModalTitle">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="restoreModalTitle" style="margin: 0; font-size: 1.15rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                    <span>🔄 Restaurer les Définitions</span>
+                </h3>
+                <button id="closeRestoreModalBtn" class="btn-text" style="font-size: 1.2rem; line-height: 1;" title="Fermer">✕</button>
+            </div>
+            <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
+                <div style="background: rgba(2, 132, 199, 0.1); border: 1px solid rgba(2, 132, 199, 0.3); border-radius: 6px; padding: 12px;">
+                    <div style="font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 4px;">Informations du Snapshot :</div>
+                    <div style="font-size: 0.85rem; color: #fff;">
+                        <div><strong>Commit :</strong> <code id="modalCommitId"></code></div>
+                        <div><strong>Auteur :</strong> <span id="modalAuthor"></span></div>
+                        <div><strong>Date :</strong> <span id="modalTimestamp"></span></div>
+                        <div><strong>Message :</strong> <em id="modalMessage"></em></div>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="restoreTargetDir" style="display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 4px;">Répertoire de Destination :</label>
+                    <input type="text" id="restoreTargetDir" value="production" style="width: 100%; box-sizing: border-box; background: var(--bg-surface); border: 1px solid var(--border); color: #fff; padding: 8px; border-radius: 4px; font-size: 0.85rem;">
+                </div>
+
+                <div>
+                    <label for="restoreSpecificFile" style="display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 4px;">Fichier spécifique (Optionnel — laisser vide pour tous les fichiers) :</label>
+                    <input type="text" id="restoreSpecificFile" placeholder="ex: INV_Huawei_SUN2000.csv" style="width: 100%; box-sizing: border-box; background: var(--bg-surface); border: 1px solid var(--border); color: #fff; padding: 8px; border-radius: 4px; font-size: 0.85rem;">
+                </div>
+
+                <!-- Dry-Run Preview Area -->
+                <div id="restorePreviewArea" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; padding: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <span style="font-weight: 600; font-size: 0.85rem;">Aperçu Dry-Run :</span>
+                        <span id="restorePreviewCountBadge" class="badge badge-info">0 fichiers</span>
+                    </div>
+                    <div id="restorePreviewList" style="max-height: 120px; overflow-y: auto; font-family: monospace; font-size: 0.75rem; color: var(--text-secondary);">
+                        Chargement de l'aperçu...
+                    </div>
+                </div>
+
+                <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 10px; font-size: 0.8rem; color: #fbbf24;">
+                    ⚠️ Attention : Cette opération va restaurer les fichiers de ce commit dans le répertoire cible.
+                </div>
+            </div>
+            <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 8px; padding-top: 14px; border-top: 1px solid var(--border);">
+                <button id="cancelRestoreBtn" class="btn btn-secondary">Annuler</button>
+                <button id="confirmRestoreBtn" class="btn btn-primary">Confirmer la Restauration</button>
+            </div>
+        </div>
+    </div>
 
     <script src="/static/app.js"></script>
 </body>

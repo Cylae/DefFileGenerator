@@ -1,5 +1,5 @@
 {
-  "head": "77d829818ebc7abd",
+  "head": "1e8f571b1ca67d60",
   "commits": [
     {
       "commit_id": "77d829818ebc7abd",
@@ -13,6 +13,20 @@
         "modified": 0,
         "deleted": 0,
         "unchanged": 0
+      }
+    },
+    {
+      "commit_id": "1e8f571b1ca67d60",
+      "parent_id": "77d829818ebc7abd",
+      "timestamp": "2026-11-20T14:46:29.997430+00:00",
+      "author": "alexandre.calais",
+      "message": "chore(catalog): prune redundant OTH files and harmonize alias synonyms",
+      "files_count": 1109,
+      "changes": {
+        "added": 0,
+        "modified": 0,
+        "deleted": 9,
+        "unchanged": 1109
       }
     }
   ],

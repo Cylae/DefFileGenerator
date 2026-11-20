@@ -27,9 +27,9 @@ Enforces:
 from __future__ import annotations
 
 import csv
-from pathlib import Path
 import re
 import shutil
+from pathlib import Path
 from typing import Any
 
 from DefFileGenerator.production_governor import verify_file_pillars
@@ -871,10 +871,8 @@ def get_all_goodwe_targets(workspace_dir: Path | str | None = None) -> list[tupl
         ("INV_Goodwe_HT_Series.csv", "Inverter", mfg, "HT-Series", get_source_or_default("INV_Goodwe_HT_Series.csv", ht_rows)),
         ("INV_Goodwe_HT1100.csv", "Inverter", mfg, "HT1100", get_source_or_default("INV_Goodwe_HT1100.csv", ht_rows)),
         ("INV_Goodwe_HT_others_Series.csv", "Inverter", mfg, "HT-Others-Series", ht_rows),
-        ("INV_Goodwe_HT_1500V.csv", "Inverter", mfg, "HT-1500V-Series", get_source_or_default("INV_Goodwe_HT1500.csv", ht1500_rows)),
         ("INV_Goodwe_HT1500.csv", "Inverter", mfg, "HT1500", get_source_or_default("INV_Goodwe_HT1500.csv", ht1500_rows)),
-        ("INV_Goodwe_GT_Series.csv", "Inverter", mfg, "GT-Series", get_source_or_default("INV_Goodwe_GT_Series.csv", gt_rows)),
-        ("INV_Goodwe_GT-SERIES.csv", "Inverter", mfg, "GT-SERIES", get_source_or_default("INV_Goodwe_GT_Series.csv", gt_rows)),
+        ("INV_Goodwe_GT-SERIES.csv", "Inverter", mfg, "GT-SERIES", get_source_or_default("INV_Goodwe_GT-SERIES.csv", gt_rows)),
         # Hybrid Energy Storage (ESS)
         ("INV_Goodwe_ES_EM_SBP.csv", "Inverter", mfg, "ES-EM-SBP-Series", es_em_sbp_rows),
         ("INV_Goodwe_ES_EM_S-BP_BP_Series.csv", "Inverter", mfg, "ES-EM-S-BP-BP-Series", get_source_or_default("INV_Goodwe_ES_EM_S-BP_BP_Series.csv", es_em_sbp_rows)),
