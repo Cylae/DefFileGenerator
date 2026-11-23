@@ -202,6 +202,50 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
                 self.assertIn("U_AC_1", tags, f"Missing U_AC_1 in meter {fname}")
                 self.assertIn("I_AC_1", tags, f"Missing I_AC_1 in meter {fname}")
 
+    def test_sma_threephase_telemetry_correctness(self) -> None:
+        """Verify that SMA 3-phase telemetry maps registers accurately:
+        - 30775 is active power total (P_AC), NOT rating 30231
+        - 30231 is rated/limit capacity (P_RATED or empty), never P_AC
+        - 30807 is reactive power phase L1 (Q_AC_1), never S_AC
+        - 30813 is apparent power total (S_AC), never PF
+        - Power factor (PF) is mapped to cos phi registers (30821, 30825, 30949, 31221, or 40092)
+        """
+        stpx_path = PRODUCTION_DIR / "INV_SMA_STP_X.csv"
+        with open(stpx_path, encoding="utf-8", newline="") as fp:
+            rows = {r[2].strip(): (r[6].strip(), r[5].strip(), r[9].strip()) for r in csv.reader(fp, delimiter=";")}
+
+        self.assertEqual(rows.get("30775", ("", "", ""))[0], "P_AC")
+        self.assertNotEqual(rows.get("30231", ("", "", ""))[0], "P_AC")
+        self.assertEqual(rows.get("30805", ("", "", ""))[0], "Q_AC")
+        self.assertEqual(rows.get("30807", ("", "", ""))[0], "Q_AC_1")
+        self.assertEqual(rows.get("30809", ("", "", ""))[0], "Q_AC_2")
+        self.assertEqual(rows.get("30811", ("", "", ""))[0], "Q_AC_3")
+        self.assertEqual(rows.get("30813", ("", "", ""))[0], "S_AC")
+        self.assertEqual(rows.get("30815", ("", "", ""))[0], "S_AC_1")
+        self.assertEqual(rows.get("30817", ("", "", ""))[0], "S_AC_2")
+        self.assertEqual(rows.get("30819", ("", "", ""))[0], "S_AC_3")
+        self.assertEqual(rows.get("30949", ("", "", ""))[0], "PF")
+
+        # Check across all 3-phase SMA inverter models
+        for fname in (
+            "INV_SMA_STP_X.csv",
+            "INV_SMA_SunnyTripower_X.csv",
+            "INV_SMA_Generic.csv",
+            "INV_SMA_SC_Webbox.csv",
+            "INV_SMA_STP_5-10-SE40.csv",
+            "INV_SMA_SunnyTripower_SmartEnergy.csv",
+        ):
+            fpath = PRODUCTION_DIR / fname
+            with open(fpath, encoding="utf-8", newline="") as fp:
+                addr_map = {r[2].strip(): r[6].strip() for r in csv.reader(fp, delimiter=";")}
+
+            self.assertEqual(addr_map.get("30775"), "P_AC", f"30775 in {fname} must be P_AC")
+            self.assertNotEqual(addr_map.get("30231"), "P_AC", f"30231 in {fname} must not be P_AC")
+            if "30807" in addr_map:
+                self.assertEqual(addr_map.get("30807"), "Q_AC_1", f"30807 in {fname} must be Q_AC_1")
+            if "30813" in addr_map:
+                self.assertEqual(addr_map.get("30813"), "S_AC", f"30813 in {fname} must be S_AC")
+
     def test_sma_register_addressing_conventions(self) -> None:
         """Verify SMA address space conventions:
         1. SMA Standard Telemetry: base-30000 offset (30001..39999).
@@ -319,7 +363,7 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
                     elif tag == "PF":
                         self.assertIn(
                             ca,
-                            (0.001, 1.0),
+                            (0.001, 0.01, 1.0),
                             f"Unexpected power factor scale factor {ca} in {fname} at {addr}",
                         )
 

@@ -11,7 +11,7 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 10;3;30197;U32;;Number of the current event;FAULT_CODE;1.000000;0.000000;;4
 11;3;30199;U32;;Time until grid connection attempt;;1.000000;0.000000;s;4
 12;3;30201;U32;;Status of the device;STATE_INV;1.000000;0.000000;;4
-13;3;30203;U32;;Displays the maximum active power for status OK;P_AC;1.000000;0.000000;W;4
+13;3;30203;U32;;Displays the maximum active power for status OK;P_RATED;1.000000;0.000000;W;4
 14;3;30205;U32;;Displays the maximum active power for status Warning;;1.000000;0.000000;W;4
 15;3;30207;U32;;Displays the maximum active power for status Error;;1.000000;0.000000;W;4
 16;3;30211;U32;;Recommended action;;1.000000;0.000000;;4
@@ -132,9 +132,9 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 131;3;30599;U32;;Number of grid connections;;1.000000;0.000000;;4
 132;3;30601;U32;;Operating time of interior fan 3;;1.000000;0.000000;s;4
 133;3;30769;I32;;DC current input 1;I_DC_1;0.001000;0.000000;A;4
-134;3;30771;I32;;DC voltage input 1;P_DC_1;0.010000;0.000000;V;4
-135;3;30773;I32;;DC power input 1;U_DC_1;1.000000;0.000000;W;4
-136;3;30775;I32;;Active power on all line conductors;;1.000000;0.000000;W;4
+134;3;30771;I32;;DC voltage input 1;U_DC_1;0.010000;0.000000;V;4
+135;3;30773;I32;;DC power input 1;P_DC_1;1.000000;0.000000;W;4
+136;3;30775;I32;;Active power on all line conductors;P_AC;1.000000;0.000000;W;4
 137;3;30777;I32;;Active power of line conductor L1;P_AC_1;1.000000;0.000000;W;4
 138;3;30779;I32;;Active power of line conductor L2;P_AC_2;1.000000;0.000000;W;4
 139;3;30781;I32;;Active power of line conductor L3;P_AC_3;1.000000;0.000000;W;4
@@ -150,14 +150,14 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 149;3;30801;U32;;Line current of line conductor L3-1;;0.001000;0.000000;A;4
 150;3;30803;U32;;Power frequency;FREQ;0.010000;0.000000;Hz;4
 151;3;30805;I32;;Reactive power on all line conductors;Q_AC;1.000000;0.000000;VAr;4
-152;3;30807;I32;;Reactive power of line conductor L1;S_AC;1.000000;0.000000;VAr;4
+152;3;30807;I32;;Reactive power of line conductor L1;Q_AC_1;1.000000;0.000000;VAr;4
 153;3;30809;I32;;Reactive power of line conductor L2;Q_AC_2;1.000000;0.000000;VAr;4
 154;3;30811;I32;;Reactive power of line conductor L3;Q_AC_3;1.000000;0.000000;VAr;4
-155;3;30813;I32;;Apparent power on all line conductors;PF;1.000000;0.000000;VA;4
+155;3;30813;I32;;Apparent power on all line conductors;S_AC;1.000000;0.000000;VA;4
 156;3;30815;I32;;Apparent power of line conductor L1;S_AC_1;1.000000;0.000000;VA;4
 157;3;30817;I32;;Apparent power of line conductor L2;S_AC_2;1.000000;0.000000;VA;4
 158;3;30819;I32;;Apparent power of line conductor L3;S_AC_3;1.000000;0.000000;VA;4
-159;3;30821;U32;;Total displacement power factor of all line conductors;;0.010000;0.000000;;4
+159;3;30821;U32;;Total displacement power factor of all line conductors;PF;0.010000;0.000000;;4
 160;3;30823;U32;;Excitation type of cos;;1.000000;0.000000;;4
 161;3;30843;I32;;Battery current;I_BAT;0.001000;0.000000;A;4
 162;3;30845;U32;;Current battery state of charge;SOC;1.000000;0.000000;%;4
@@ -185,7 +185,7 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 184;3;30889;U32;;Power of external grid connection line conductor L2;;1.000000;0.000000;W;4
 185;3;30891;U32;;Power of external grid connection line conductor L3;;1.000000;0.000000;W;4
 186;3;30893;U32;;Reactive power of external grid connection;;1.000000;0.000000;Var;4
-187;3;30895;U32;;Reactive power of external grid connection line conductor L1;Q_AC_1;1.000000;0.000000;Var;4
+187;3;30895;U32;;Reactive power of external grid connection line conductor L1;;1.000000;0.000000;Var;4
 188;3;30897;U32;;Reactive power of external grid connection line conductor L2;;1.000000;0.000000;Var;4
 189;3;30899;U32;;Reactive power of external grid connection line conductor L3;;1.000000;0.000000;Var;4
 190;3;30901;U32;;Power frequency of external grid connection;;0.010000;0.000000;Hz;4
@@ -263,7 +263,7 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 262;3;31079;U32;;PV energy at solar charge controller 2;;1.000000;0.000000;Wh;4
 263;3;31081;U32;;PV energy at solar charge controller 3;;1.000000;0.000000;Wh;4
 264;3;31083;U32;;PV energy at solar charge controller 4;;1.000000;0.000000;Wh;4
-265;3;31085;U32;;Nominal power in OK mode;P_RATED;1.000000;0.000000;W;4
+265;3;31085;U32;;Nominal power in OK mode;;1.000000;0.000000;W;4
 266;3;31091;U32;;PV energy produced (today);;1.000000;0.000000;Wh;4
 267;3;31093;U32;;PV energy produced (yesterday);;1.000000;0.000000;Wh;4
 268;3;31095;U32;;PV energy produced (current month);;1.000000;0.000000;Wh;4

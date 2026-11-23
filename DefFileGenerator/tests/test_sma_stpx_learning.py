@@ -74,6 +74,10 @@ class TestSmaStpxLearning(unittest.TestCase):
             ("Résistance d'isolement", "R_ISO"),
             ("Rendement total_0", "E_TOT"),
             ("Temps de service_0", "TOT"),
+            ("Puissance active assignee WMaxOutRtg", "P_RATED"),
+            ("Maximum possible continuous active power Plimit", "P_RATED"),
+            ("Active power on all line conductors", "P_AC"),
+            ("AC active power across all phases W Pac", "P_AC"),
         ]
 
         for name, expected_tag in test_cases:

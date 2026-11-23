@@ -2,7 +2,7 @@ Modbus;Inverter;SMA;SC_Webbox;;;;;;;
 1;3;30057;U32;;Serial number Serial Number;SERIAL;1.000000;0.000000;;4
 2;3;30193;U32;;Reading the plant time UTC SerTm;;1.000000;0.000000;s;4
 3;3;30197;U32;;Event ID of the current event;WIND_SPEED;1.000000;0.000000;;4
-4;3;30231;U32;;Maximum possible continuous active power Plimit;P_AC;1.000000;0.000000;W;4
+4;3;30231;U32;;Maximum possible continuous active power Plimit;P_RATED;1.000000;0.000000;W;4
 5;3;30233;U32;;Permanent active power limitation Pmax;CMD_P_AC_SET_ABS;1.000000;0.000000;W;1
 6;3;30513;U64;;Total yield Wh E-total;E_TOT;1.000000;0.000000;Wh;4
 7;3;30517;U64;;Day yield Wh E-heute;E_DAY;1.000000;0.000000;Wh;4
@@ -14,16 +14,16 @@ Modbus;Inverter;SMA;SC_Webbox;;;;;;;
 13;3;30541;U32;;Operating time s h-on_1;;1.000000;0.000000;s;4
 14;3;30543;U32;;Feed-in time s h-Total;E_EXP;1.000000;0.000000;s;4
 15;3;30769;I32;;DC current input A Ipv;I_DC_1;0.001000;0.000000;A;4
-16;3;30771;I32;;DC voltage input V Vpv;P_DC_1;0.010000;0.000000;V;4
-17;3;30773;I32;;DC power input W Ppv;U_DC_1;1.000000;0.000000;W;4
-18;3;30775;I32;;AC active power across all phases W Pac;;1.000000;0.000000;W;4
+16;3;30771;I32;;DC voltage input V Vpv;U_DC_1;0.010000;0.000000;V;4
+17;3;30773;I32;;DC power input W Ppv;P_DC_1;1.000000;0.000000;W;4
+18;3;30775;I32;;AC active power across all phases W Pac;P_AC;1.000000;0.000000;W;4
 19;3;30789;U32;;Grid voltage phase AB V VacL12;U_AC_1;0.010000;0.000000;V;4
 20;3;30791;U32;;Grid voltage phase BC V VacL23;U_AC_2;0.010000;0.000000;V;4
 21;3;30793;U32;;Grid voltage phase CA V VacL31;U_AC_3;0.010000;0.000000;V;4
 22;3;30795;U32;;Grid current A Iac;I_AC;0.001000;0.000000;A;4
 23;3;30803;U32;;Power frequency Hz Fac;FREQ;0.010000;0.000000;Hz;4
 24;3;30805;I32;;Reactive power var Qac;Q_AC;1.000000;0.000000;var;4
-25;3;30813;I32;;Apparent power3 VA Sac;PF;1.000000;0.000000;VA;4
+25;3;30813;I32;;Apparent power3 VA Sac;S_AC;1.000000;0.000000;VA;4
 26;3;30837;U32;;Active power target value W P-WSpt;;1.000000;0.000000;W;4
 27;3;34109;I32;;Heat sink temperature 1 Degree Celsius TmpHs;;0.100000;0.000000;°C;4
 28;3;34113;I32;;Interior temperature 1 Degree Celsius TmpCab1;;0.100000;0.000000;°C;4
@@ -63,7 +63,7 @@ Modbus;Inverter;SMA;SC_Webbox;;;;;;;
 62;3;30601;U32;;Operating time interior fan 3 s;;1.000000;0.000000;s;4
 63;3;30799;U32;;Grid current L2 A IacL2;I_AC_2;0.001000;0.000000;A;4
 64;3;30801;U32;;Grid current L3 A IacL3;I_AC_3;0.001000;0.000000;A;4
-65;3;30821;U32;;Displacement power factor PF;;0.010000;0.000000;cos phi;4
+65;3;30821;U32;;Displacement power factor PF;PF;0.010000;0.000000;cos phi;4
 66;3;30823;U32;;Excitation type of cos phi PFExt;;1.000000;0.000000;;4
 67;3;30825;U32;;Operating mode of reactive power regulation;;1.000000;0.000000;;4
 68;3;30827;I32;;Reactive power target value var;;1.000000;0.000000;var;4
@@ -122,7 +122,7 @@ Modbus;Inverter;SMA;SC_Webbox;;;;;;;
 121;3;30779;I32;;Power L2 W InvPwrAtSlv1;P_AC_2;1.000000;0.000000;W;4
 122;3;30781;I32;;Power L3 W InvPwrAtSlv2;P_AC_3;1.000000;0.000000;W;4
 123;3;30787;U32;;Grid voltage phase L3 V;;0.010000;0.000000;V;4
-124;3;30807;I32;;Reactive power L1 var InvPwrRt;S_AC;1.000000;0.000000;var;4
+124;3;30807;I32;;Reactive power L1 var InvPwrRt;Q_AC_1;1.000000;0.000000;var;4
 125;3;30809;I32;;Reactive power L2 var InvPwrRtSlv1;Q_AC_2;1.000000;0.000000;var;4
 126;3;30811;I32;;Reactive power L3 var InvPwrRtSlv2;Q_AC_3;1.000000;0.000000;var;4
 127;3;30843;I32;;Battery current A TotBatCur;I_BAT;0.001000;0.000000;A;4
@@ -151,7 +151,7 @@ Modbus;Inverter;SMA;SC_Webbox;;;;;;;
 150;3;30889;U32;;Power external mains connection phase B W;;1.000000;0.000000;W;4
 151;3;30891;U32;;Power external mains connection phase C W;;1.000000;0.000000;W;4
 152;3;30893;U32;;Reactive power external mains connection var;;1.000000;0.000000;var;4
-153;3;30895;U32;;Reactive power external mains phase A var;Q_AC_1;1.000000;0.000000;var;4
+153;3;30895;U32;;Reactive power external mains phase A var;;1.000000;0.000000;var;4
 154;3;30897;U32;;Reactive power external mains phase B var;;1.000000;0.000000;var;4
 155;3;30899;U32;;Reactive power external mains phase C var;;1.000000;0.000000;var;4
 156;3;30901;U32;;Grid frequency external mains Hz;;0.010000;0.000000;Hz;4

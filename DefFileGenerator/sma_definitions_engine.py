@@ -2066,38 +2066,135 @@ def clean_and_enrich_raw_file(
         if not action.isdigit() or action not in ("0", "1", "4", "9", "10"):
             action = "4"
 
+        n_clean = name.lower().strip()
+        u_clean = unit.lower().strip()
+
+        # Sanitize excitation type (never let excitation type steal PF)
+        if tag == "PF" and "excitation" in n_clean:
+            tag = ""
+
+        is_rating_reg = (
+            addr in ("30231", "30203", "30205", "30207")
+            or "wmaxoutrtg" in n_clean
+            or "plimit" in n_clean
+            or "maximum active power for status" in n_clean
+            or "maximum possible permanent active power" in n_clean
+            or "puissance active assignee" in n_clean
+            or "puissance assignee" in n_clean
+            or "puissance nominale" in n_clean
+        )
+
+        # Sanitize known rating / limit registers (prevent stealing P_AC)
+        if is_rating_reg:
+            if tag == "P_AC":
+                tag = ""
+            if not tag and "P_RATED" not in seen_tags:
+                tag = "P_RATED"
+
         # Explicit Canonical SMA Modbus bindings
-        if addr in ("30513", "30529", "30583", "40102") or "rendement total" in name.lower():
+        elif addr in ("30513", "30529", "30583", "40102") or "rendement total" in n_clean:
             if "E_TOT" not in seen_tags:
                 tag = "E_TOT"
         elif addr in ("30517", "30531"):
             if "E_DAY" not in seen_tags:
                 tag = "E_DAY"
-        elif addr in ("30775", "40084"):
+        elif addr in ("30775", "40084") or n_clean in (
+            "puissance",
+            "grid active power total",
+            "active power on all line conductors",
+            "ac active power across all phases w pac",
+        ):
             if "P_AC" not in seen_tags:
                 tag = "P_AC"
-        elif addr in ("30803", "40086"):
+        elif addr in ("30803", "40086") or n_clean in ("frequence du reseau", "grid frequency"):
             if "FREQ" not in seen_tags:
                 tag = "FREQ"
-        elif addr in ("30805", "40090"):
+        elif addr in ("30805", "40090") or n_clean in (
+            "puissance reactive",
+            "reactive power total",
+            "reactive power",
+        ):
             if "Q_AC" not in seen_tags:
                 tag = "Q_AC"
-        elif addr in ("30807", "40088"):
-            if "S_AC" not in seen_tags:
+        elif addr == "30807":
+            if any(k in n_clean for k in ("reactive", "réactive")) or u_clean in ("var", "kvar"):
+                if "Q_AC_1" not in seen_tags:
+                    tag = "Q_AC_1"
+            elif any(k in n_clean for k in ("apparent", "apparente")) or u_clean in ("va", "kva"):
+                if "S_AC" not in seen_tags:
+                    tag = "S_AC"
+            elif tag == "S_AC":
+                tag = "Q_AC_1" if "Q_AC_1" not in seen_tags else ""
+            elif "Q_AC_1" not in seen_tags:
+                tag = "Q_AC_1"
+        elif addr == "30809" or n_clean in (
+            "puissance reactive l2",
+            "reactive power phase l2",
+            "reactive power of line conductor l2",
+        ):
+            if "Q_AC_2" not in seen_tags:
+                tag = "Q_AC_2"
+        elif addr == "30811" or n_clean in (
+            "puissance reactive l3",
+            "reactive power phase l3",
+            "reactive power of line conductor l3",
+        ):
+            if "Q_AC_3" not in seen_tags:
+                tag = "Q_AC_3"
+        elif addr == "30813":
+            if any(k in n_clean for k in ("apparent", "apparente")) or u_clean in ("va", "kva"):
+                if "S_AC" not in seen_tags:
+                    tag = "S_AC"
+            elif any(k in n_clean for k in ("factor", "facteur", "cos phi", "cosphi", "pf")):
+                if "PF" not in seen_tags:
+                    tag = "PF"
+            elif tag == "PF":
+                tag = "S_AC" if "S_AC" not in seen_tags else ""
+            elif "S_AC" not in seen_tags:
                 tag = "S_AC"
-        elif addr in ("30813", "40092"):
+        elif addr == "30815" or n_clean in (
+            "puissance apparente l1",
+            "apparent power phase l1",
+            "apparent power of line conductor l1",
+        ):
+            if "S_AC_1" not in seen_tags:
+                tag = "S_AC_1"
+        elif addr == "30817" or n_clean in (
+            "puissance apparente l2",
+            "apparent power phase l2",
+            "apparent power of line conductor l2",
+        ):
+            if "S_AC_2" not in seen_tags:
+                tag = "S_AC_2"
+        elif addr == "30819" or n_clean in (
+            "puissance apparente l3",
+            "apparent power phase l3",
+            "apparent power of line conductor l3",
+        ):
+            if "S_AC_3" not in seen_tags:
+                tag = "S_AC_3"
+        elif addr in ("30821", "30825", "30949", "31221") or any(
+            k in n_clean
+            for k in (
+                "facteur de decalage",
+                "facteur de décalage",
+                "facteur de dephasage",
+                "facteur de déphasage",
+                "power factor cos phi",
+            )
+        ):
             if "PF" not in seen_tags:
                 tag = "PF"
-        elif addr in ("30769", "31793") or name.lower() == "entree courant dc_1":
+        elif addr in ("30769", "31793") or n_clean == "entree courant dc_1":
             if "I_DC_1" not in seen_tags:
                 tag = "I_DC_1"
         elif addr in ("30771",):
-            if "P_DC_1" not in seen_tags:
-                tag = "P_DC_1"
-        elif addr in ("30773",):
             if "U_DC_1" not in seen_tags:
                 tag = "U_DC_1"
-        elif addr == "31803" or name.lower() == "entree courant dc_6":
+        elif addr in ("30773",):
+            if "P_DC_1" not in seen_tags:
+                tag = "P_DC_1"
+        elif addr == "31803" or n_clean == "entree courant dc_6":
             if "I_DC_6" not in seen_tags:
                 tag = "I_DC_6"
 
@@ -2148,7 +2245,7 @@ def clean_and_enrich_raw_file(
                 tag = tag_candidate
 
         # Tag inference and canonical mapping
-        if not tag:
+        if not tag and not is_rating_reg:
             if known_addr_map and addr in known_addr_map:
                 tag = known_addr_map[addr]
             else:

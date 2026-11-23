@@ -1184,12 +1184,29 @@ def infer_sunpm_tag(
         for k in (
             "start inverter",
             "turn on",
-            "power on",
             "démarrage onduleur",
             "demarrage onduleur",
             "einschalten",
             "wechselrichter starten",
             "kaiji",
+        )
+    ) or (
+        re.search(r"\bpower\s+on\b", n_lower)
+        and not any(
+            p in n_lower
+            for p in (
+                "active power",
+                "reactive power",
+                "puissance",
+                "power on all",
+                "power on phase",
+                "power on line",
+                "power on conductor",
+                "power on grid",
+                "power on l1",
+                "power on l2",
+                "power on l3",
+            )
         )
     ):
         return "CMD_ON"
@@ -1440,7 +1457,30 @@ def infer_sunpm_tag(
             return "Q_AC_3"
         return "Q_AC"
 
-    # 4. Active Power (P_AC_1, P_AC_2, P_AC_3, P_AC)
+    # 4a. Nominal / Rated Power / Rating limit (evaluated before dynamic Active Power)
+    if (
+        re.search(
+            r"\b(?:nominal|rated|nenn)\s+(?:active\s+)?power\b|\bnennleistung\b|\beding\s*gonglv\b",
+            n_lower,
+        )
+        or re.search(
+            r"\bpuissance\s+(?:active\s+)?(?:assignee|assignée|nominale)\b|\b(?:wmaxoutrtg|plimit)\b|\bmaximum\s+(?:possible\s+)?(?:continuous\s+|permanent\s+)?active\s+power\b",
+            n_lower,
+        )
+        or n_lower.strip()
+        in (
+            "nominal power",
+            "rated power",
+            "p_rated",
+            "prated",
+            "nennleistung",
+            "eding gonglv",
+            "puissance nominale",
+        )
+    ):
+        return "P_RATED"
+
+    # 4b. Active Power (P_AC_1, P_AC_2, P_AC_3, P_AC)
     is_active_power = (
         bool(
             re.search(
@@ -1499,20 +1539,6 @@ def infer_sunpm_tag(
         ):
             return "P_AC_3"
         return "P_AC"
-
-    # 4b. Nominal / Rated Power
-    if re.search(
-        r"\b(?:nominal|rated|nenn)\s+(?:active\s+)?power\b|\bnennleistung\b|\beding\s*gonglv\b",
-        n_lower,
-    ) or n_lower.strip() in (
-        "nominal power",
-        "rated power",
-        "p_rated",
-        "prated",
-        "nennleistung",
-        "eding gonglv",
-    ):
-        return "P_RATED"
 
     # 5. Apparent Power (S_AC_1, S_AC_2, S_AC_3, S_AC)
     if any(

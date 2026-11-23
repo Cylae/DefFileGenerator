@@ -1,5 +1,5 @@
 {
-  "head": "773298b41ec717fd",
+  "head": "5a76aaa03f2e3ad9",
   "commits": [
     {
       "commit_id": "77d829818ebc7abd",
@@ -83,6 +83,20 @@
         "modified": 43,
         "deleted": 0,
         "unchanged": 1066
+      }
+    },
+    {
+      "commit_id": "5a76aaa03f2e3ad9",
+      "parent_id": "773298b41ec717fd",
+      "timestamp": "2026-11-23T09:42:07.627788+00:00",
+      "author": "alexandre.calais",
+      "message": "fix(sma): overhaul SMA 3-phase telemetry mappings (P_AC, Q_AC_1, S_AC, PF) and synchronize catalog",
+      "files_count": 1109,
+      "changes": {
+        "added": 0,
+        "modified": 9,
+        "deleted": 0,
+        "unchanged": 1100
       }
     }
   ],
