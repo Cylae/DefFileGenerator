@@ -338,12 +338,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (version !== requestVersion) return;
 
                 if (!response.ok) {
-                    let errorDetail = 'Erreur lors de la conversion';
+                    let errorDetail = 'Error during conversion';
                     try {
                         const err = await response.json();
                         errorDetail = err.detail || errorDetail;
                     } catch (_) {
-                        errorDetail = `Erreur HTTP ${response.status}: ${response.statusText}`;
+                        errorDetail = `HTTP ${response.status} Error: ${response.statusText}`;
                     }
                     showToast(errorDetail, 'error');
                     if (convertErrorBox && convertErrorMessage) {
@@ -372,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (err) {
                 if (version === requestVersion && err.name !== 'AbortError') {
-                    const msg = `Erreur réseau ou serveur: ${err.message}`;
+                    const msg = `Network or server error: ${err.message}`;
                     showToast(msg, 'error');
                     if (convertErrorBox && convertErrorMessage) {
                         convertErrorMessage.textContent = msg;
@@ -567,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (discoveryResultsSection && discoveryResultsSection.classList) {
                 discoveryResultsSection.classList.add('hidden');
             }
-            updateDiscoveryStatus('Découverte en cours', 'En cours...', 'badge-info', `Recherche de la documentation constructeur officielle pour "${query}"...`);
+            updateDiscoveryStatus('Discovery in progress', 'In progress...', 'badge-info', `Searching official vendor documentation for "${query}"...`);
 
             try {
                 const res = await fetch('/api/discovery/lookup', {
@@ -581,33 +581,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!res.ok) {
-                    const err = await res.json().catch(() => ({ detail: 'Erreur HTTP ' + res.status }));
-                    updateDiscoveryStatus('Échec de la découverte', 'Erreur', 'badge-error', err.detail || 'Erreur lors de la requête de découverte.');
-                    showToast(err.detail || 'Erreur lors de la découverte', 'error');
+                    const err = await res.json().catch(() => ({ detail: 'HTTP Error ' + res.status }));
+                    updateDiscoveryStatus('Discovery failed', 'Error', 'badge-error', err.detail || 'Error during discovery query.');
+                    showToast(err.detail || 'Error during discovery', 'error');
                     return;
                 }
 
                 const data = await res.json();
                 if (data.success) {
                     updateDiscoveryStatus(
-                        'Découverte & Certification terminées',
-                        'Certifié',
+                        'Discovery & Certification complete',
+                        'Certified',
                         'badge-success',
-                        `Définition générée avec succès pour ${data.identity?.manufacturer || ''} ${data.identity?.exact_model || ''} (${data.model?.total_registers || 0} registres certifiés).`
+                        `Definition successfully generated for ${data.identity?.manufacturer || ''} ${data.identity?.exact_model || ''} (${data.model?.total_registers || 0} certified registers).`
                     );
                     renderDiscoveryResult(data);
-                    showToast('Définition Modbus découverte et certifiée avec succès !', 'success');
+                    showToast('Modbus definition discovered and certified successfully!', 'success');
                 } else {
-                    const errMsg = data.error_message || 'Impossible d\'extraire une table de registres certifiée pour cette référence.';
-                    updateDiscoveryStatus('Attention requise', data.status || 'Non résolu', 'badge-warning', errMsg);
+                    const errMsg = data.error_message || 'Could not extract certified register table for this reference.';
+                    updateDiscoveryStatus('Attention required', data.status || 'Unresolved', 'badge-warning', errMsg);
                     if (data.model && data.model.registers && data.model.registers.length > 0) {
                         renderDiscoveryResult(data);
                     }
                     showToast(errMsg, 'error');
                 }
             } catch (err) {
-                updateDiscoveryStatus('Erreur de connexion', 'Erreur', 'badge-error', `Erreur réseau : ${err.message}`);
-                showToast(`Erreur réseau: ${err.message}`, 'error');
+                updateDiscoveryStatus('Connection error', 'Error', 'badge-error', `Network error: ${err.message}`);
+                showToast(`Network error: ${err.message}`, 'error');
             } finally {
                 discoveryRunBtn.disabled = false;
             }
@@ -632,7 +632,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (discoveryResultsSection && discoveryResultsSection.classList) {
                 discoveryResultsSection.classList.add('hidden');
             }
-            updateDiscoveryStatus('Extraction locale en cours', 'En cours...', 'badge-info', `Analyse et normalisation du fichier secours "${file.name}"...`);
+            updateDiscoveryStatus('Local extraction in progress', 'In progress...', 'badge-info', `Analyzing and normalizing fallback file "${file.name}"...`);
 
             try {
                 const res = await fetch('/api/discovery/upload', {
@@ -641,33 +641,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!res.ok) {
-                    const err = await res.json().catch(() => ({ detail: 'Erreur HTTP ' + res.status }));
-                    updateDiscoveryStatus('Échec de l\'extraction', 'Erreur', 'badge-error', err.detail || 'Erreur lors du traitement du fichier.');
-                    showToast(err.detail || 'Erreur lors du traitement', 'error');
+                    const err = await res.json().catch(() => ({ detail: 'HTTP Error ' + res.status }));
+                    updateDiscoveryStatus('Extraction failed', 'Error', 'badge-error', err.detail || 'Error processing file.');
+                    showToast(err.detail || 'Error during processing', 'error');
                     return;
                 }
 
                 const data = await res.json();
                 if (data.success) {
                     updateDiscoveryStatus(
-                        'Extraction & Certification terminées',
-                        'Certifié',
+                        'Extraction & Certification complete',
+                        'Certified',
                         'badge-success',
-                        `Définition extraite avec succès depuis ${file.name} (${data.model?.total_registers || 0} registres).`
+                        `Definition extracted successfully from ${file.name} (${data.model?.total_registers || 0} registers).`
                     );
                     renderDiscoveryResult(data);
-                    showToast('Définition extraite et certifiée avec succès !', 'success');
+                    showToast('Definition extracted and certified successfully!', 'success');
                 } else {
-                    const errMsg = data.error_message || 'Validation échouée sur le document fourni.';
-                    updateDiscoveryStatus('Attention requise', data.status || 'Non résolu', 'badge-warning', errMsg);
+                    const errMsg = data.error_message || 'Validation failed on provided document.';
+                    updateDiscoveryStatus('Attention required', data.status || 'Unresolved', 'badge-warning', errMsg);
                     if (data.model && data.model.registers && data.model.registers.length > 0) {
                         renderDiscoveryResult(data);
                     }
                     showToast(errMsg, 'error');
                 }
             } catch (err) {
-                updateDiscoveryStatus('Erreur de traitement', 'Erreur', 'badge-error', `Erreur réseau : ${err.message}`);
-                showToast(`Erreur réseau: ${err.message}`, 'error');
+                updateDiscoveryStatus('Processing error', 'Error', 'badge-error', `Network error: ${err.message}`);
+                showToast(`Network error: ${err.message}`, 'error');
             } finally {
                 if (discoveryRunBtn) discoveryRunBtn.disabled = false;
                 if (discoveryManualFileInput) discoveryManualFileInput.value = '';
@@ -773,7 +773,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (tagErrorBox) tagErrorBox.classList.add('hidden');
 
             tagProcessBtn.disabled = true;
-            tagProcessBtn.textContent = 'Balisage SunPM en cours...';
+            tagProcessBtn.textContent = 'Tagging SunPM registers...';
 
             try {
                 const response = await fetch('/api/tag', {
@@ -782,12 +782,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!response.ok) {
-                    let errDetail = 'Erreur lors du balisage';
+                    let errDetail = 'Error during tagging';
                     try {
                         const err = await response.json();
                         errDetail = err.detail || errDetail;
                     } catch (_) {
-                        errDetail = `Erreur HTTP ${response.status}: ${response.statusText}`;
+                        errDetail = `HTTP Error ${response.status}: ${response.statusText}`;
                     }
                     showToast(errDetail, 'error');
                     if (tagErrorBox && tagErrorMessage) {
@@ -806,9 +806,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 renderTagPreview(data.preview || []);
                 tagResultsSection.classList.remove('hidden');
-                showToast(`Balisage terminé: ${data.tags_updated ?? 0} tags mis à jour !`, 'success');
+                showToast(`Tagging complete: ${data.tags_updated ?? 0} tags updated!`, 'success');
             } catch (err) {
-                const msg = `Erreur réseau: ${err.message}`;
+                const msg = `Network error: ${err.message}`;
                 showToast(msg, 'error');
                 if (tagErrorBox && tagErrorMessage) {
                     tagErrorMessage.textContent = msg;
@@ -816,7 +816,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } finally {
                 tagProcessBtn.disabled = false;
-                tagProcessBtn.textContent = 'Appliquer les Tags SunPM Canoniques';
+                tagProcessBtn.textContent = 'Apply Canonical SunPM Tags';
             }
         });
     }
@@ -848,7 +848,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (tagCopyBtn && tagCopyBtn.addEventListener) {
         tagCopyBtn.addEventListener('click', () => {
             if (!taggedCsvContent) return;
-            copyToClipboard(taggedCsvContent, 'Définition balisée copiée !');
+            copyToClipboard(taggedCsvContent, 'Tagged definition copied!');
         });
     }
     setupTableFilter(tagFilterInput, tagPreviewBody);
@@ -921,7 +921,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (auditErrorBox) auditErrorBox.classList.add('hidden');
             auditPillarsBtn.disabled = true;
-            auditPillarsBtn.textContent = 'Vérification 5 Piliers...';
+            auditPillarsBtn.textContent = 'Verifying 5 Pillars...';
 
             try {
                 const response = await fetch('/api/pillars', {
@@ -930,12 +930,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!response.ok) {
-                    let errDetail = 'Erreur lors de la vérification des 5 Piliers';
+                    let errDetail = 'Error verifying 5 Pillars';
                     try {
                         const err = await response.json();
                         errDetail = err.detail || errDetail;
                     } catch (_) {
-                        errDetail = `Erreur HTTP ${response.status}: ${response.statusText}`;
+                        errDetail = `HTTP Error ${response.status}: ${response.statusText}`;
                     }
                     showToast(errDetail, 'error');
                     if (auditErrorBox && auditErrorMessage) {
@@ -949,7 +949,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderPillarsReport(data);
                 if (pillarsResultsSection) pillarsResultsSection.classList.remove('hidden');
             } catch (err) {
-                const msg = `Erreur réseau: ${err.message}`;
+                const msg = `Network error: ${err.message}`;
                 showToast(msg, 'error');
                 if (auditErrorBox && auditErrorMessage) {
                     auditErrorMessage.textContent = msg;
@@ -957,7 +957,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } finally {
                 auditPillarsBtn.disabled = false;
-                auditPillarsBtn.textContent = 'Vérifier 5 Piliers Apollo';
+                auditPillarsBtn.textContent = 'Verify Apollo 5 Pillars';
             }
         });
     }
@@ -967,12 +967,12 @@ document.addEventListener('DOMContentLoaded', () => {
         pillarsGrid.innerHTML = '';
 
         const pillarsMeta = [
-            { id: 'naming', title: '1. Nommage Standard', desc: '<PREFIX>_<Fabricant>_<Modèle>.csv' },
-            { id: 'addressing', title: '2. Adressage Modbus', desc: 'Décimal exact 0..65535, suffixes STRING' },
-            { id: 'function_codes', title: '3. Codes Fonction', desc: 'Codes Modbus 1, 2, 3, 4' },
-            { id: 'action_codes', title: '4. Codes Action', desc: 'Codes Webdyn 0, 1, 2, 4, 8, 9, 10' },
-            { id: 'tags', title: '5. Tags Canoniques', desc: 'Tags SunPM sans doublons physiques' },
-            { id: 'encoding_schema', title: '6. Schéma & UTF-8', desc: 'Strict UTF-8 sans BOM, 11 colonnes' },
+            { id: 'naming', title: '1. Standard Naming', desc: '<PREFIX>_<Manufacturer>_<Model>.csv' },
+            { id: 'addressing', title: '2. Modbus Addressing', desc: 'Exact decimal 0..65535, STRING suffixes' },
+            { id: 'function_codes', title: '3. Function Codes', desc: 'Modbus function codes 1, 2, 3, 4' },
+            { id: 'action_codes', title: '4. Action Codes', desc: 'Webdyn action codes 0, 1, 2, 4, 8, 9, 10' },
+            { id: 'tags', title: '5. Canonical Tags', desc: 'SunPM tags without physical duplicates' },
+            { id: 'encoding_schema', title: '6. Schema & UTF-8', desc: 'Strict UTF-8 without BOM, 11 columns' },
         ];
 
         pillarsMeta.forEach(p => {
@@ -982,13 +982,13 @@ document.addEventListener('DOMContentLoaded', () => {
             card.innerHTML = `
                 <div class="pillar-title">${escapeHtml(p.title)}</div>
                 <div class="pillar-desc">${escapeHtml(p.desc)}</div>
-                <span class="pillar-badge">${pass ? '✓ CONFORME' : '✗ NON-CONFORME'}</span>
+                <span class="pillar-badge">${pass ? '✓ COMPLIANT' : '✗ NON-COMPLIANT'}</span>
             `;
             pillarsGrid.appendChild(card);
         });
 
         if (pillarsStatusBadge) {
-            pillarsStatusBadge.textContent = data.is_valid ? '100% Conforme aux 5 Piliers (PASS)' : 'Non-Conforme (Échecs détectés)';
+            pillarsStatusBadge.textContent = data.is_valid ? '100% 5-Pillar Compliant (PASS)' : 'Non-Compliant (Failures detected)';
             pillarsStatusBadge.className = `badge ${data.is_valid ? 'badge-success' : 'badge-error'}`;
         }
 
@@ -998,13 +998,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 data.issues.forEach(iss => {
                     const div = document.createElement('div');
                     div.className = 'audit-issue-card error';
-                    div.innerHTML = `<span class="issue-level">PILIER</span> <span>${escapeHtml(iss)}</span>`;
+                    div.innerHTML = `<span class="issue-level">PILLAR</span> <span>${escapeHtml(iss)}</span>`;
                     pillarsIssuesList.appendChild(div);
                 });
             } else {
                 const div = document.createElement('div');
                 div.className = 'audit-issue-card info';
-                div.innerHTML = `<span class="issue-level">INFO</span> <span>Toutes les règles des 5 Piliers Apollo sont scrupuleusement respectées.</span>`;
+                div.innerHTML = `<span class="issue-level">INFO</span> <span>All Apollo 5-Pillar rules are strictly satisfied.</span>`;
                 pillarsIssuesList.appendChild(div);
             }
         }
@@ -1025,7 +1025,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (auditErrorBox) auditErrorBox.classList.add('hidden');
             auditProcessBtn.disabled = true;
-            auditProcessBtn.textContent = 'Audit en cours...';
+            auditProcessBtn.textContent = 'Auditing in progress...';
 
             try {
                 const response = await fetch('/api/audit', {
@@ -1034,12 +1034,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!response.ok) {
-                    let errDetail = 'Erreur lors de l’audit';
+                    let errDetail = 'Error during audit';
                     try {
                         const err = await response.json();
                         errDetail = err.detail || errDetail;
                     } catch (_) {
-                        errDetail = `Erreur HTTP ${response.status}: ${response.statusText}`;
+                        errDetail = `HTTP Error ${response.status}: ${response.statusText}`;
                     }
                     showToast(errDetail, 'error');
                     if (auditErrorBox && auditErrorMessage) {
@@ -1071,13 +1071,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 auditIssuesList.innerHTML = '';
                 const issues = data.issues || [];
                 if (issues.length === 0) {
-                    auditIssuesList.innerHTML = `<div class="audit-issue-card info"><span class="issue-level">INFO</span><span>Aucun problème syntaxique ou collision d’adresses détecté.</span></div>`;
+                    auditIssuesList.innerHTML = `<div class="audit-issue-card info"><span class="issue-level">INFO</span><span>No syntax issues or address collisions detected.</span></div>`;
                 } else {
                     issues.forEach(iss => {
                         const level = iss.level || 'info';
                         const card = document.createElement('div');
                         card.className = `audit-issue-card ${level}`;
-                        const lineText = iss.line ? `Ligne ${iss.line}: ` : '';
+                        const lineText = iss.line ? `Line ${iss.line}: ` : '';
                         card.innerHTML = `<span class="issue-level">${level}</span> <span><strong>${escapeHtml(lineText)}</strong>${escapeHtml(iss.message || '')}</span>`;
                         auditIssuesList.appendChild(card);
                     });
@@ -1096,7 +1096,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (auditResultsSection) auditResultsSection.classList.remove('hidden');
             } catch (err) {
-                const msg = `Erreur serveur: ${err.message}`;
+                const msg = `Server error: ${err.message}`;
                 showToast(msg, 'error');
                 if (auditErrorBox && auditErrorMessage) {
                     auditErrorMessage.textContent = msg;
@@ -1104,7 +1104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } finally {
                 auditProcessBtn.disabled = false;
-                auditProcessBtn.textContent = 'Audit Syntaxique & Overlaps';
+                auditProcessBtn.textContent = 'Run Syntax & Overlap Audit';
             }
         });
     }
@@ -1119,7 +1119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (auditCopyFixedBtn && auditCopyFixedBtn.addEventListener) {
         auditCopyFixedBtn.addEventListener('click', () => {
             if (!auditFixedCsvContent) return;
-            copyToClipboard(auditFixedCsvContent, 'Définition réparée copiée !');
+            copyToClipboard(auditFixedCsvContent, 'Repaired definition copied!');
         });
     }
 
@@ -1147,7 +1147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const url = `/api/library?source=${encodeURIComponent(source)}${currentCategoryFilter ? `&category=${encodeURIComponent(currentCategoryFilter)}` : ''}`;
             const response = await fetch(url);
             if (!response.ok) {
-                libraryTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Échec du chargement du catalogue.</td></tr>`;
+                libraryTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Failed to load catalog.</td></tr>`;
                 return;
             }
             const data = await response.json();
@@ -1159,7 +1159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             renderLibraryTable(libraryItems);
         } catch (err) {
-            libraryTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Erreur réseau: ${escapeHtml(err.message)}</td></tr>`;
+            libraryTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Network error: ${escapeHtml(err.message)}</td></tr>`;
         }
     }
 
@@ -1167,7 +1167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!libraryTableBody) return;
         libraryTableBody.innerHTML = '';
         if (items.length === 0) {
-            libraryTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">Aucune définition correspondante trouvée.</td></tr>`;
+            libraryTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">No matching definitions found.</td></tr>`;
             return;
         }
 
@@ -1180,11 +1180,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td><strong>${escapeHtml(item.manufacturer || '')}</strong></td>
                 <td><code>${escapeHtml(item.model || '')}</code></td>
                 <td><span class="badge" style="background: rgba(255,255,255,0.08);">${regCount} regs</span></td>
-                <td><span class="badge badge-success" style="font-size: 0.72rem;">✓ 5 Piliers PASS</span></td>
+                <td><span class="badge badge-success" style="font-size: 0.72rem;">✓ 5 Pillars PASS</span></td>
                 <td>${sizeKb} KB</td>
                 <td>
                     <a href="/api/library/${encodeURIComponent(item.filename)}" class="btn btn-primary btn-sm" download>
-                        Télécharger CSV
+                        Download CSV
                     </a>
                 </td>
             `;
@@ -1242,14 +1242,14 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch('/api/audit-trail?limit=100');
             if (!response.ok) {
-                auditTrailBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Échec du chargement du journal d'audit.</td></tr>`;
+                auditTrailBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Failed to load audit trail.</td></tr>`;
                 return;
             }
             auditTrailItems = await response.json();
             auditTrailLoaded = true;
             renderAuditTrailTable(auditTrailItems);
         } catch (err) {
-            auditTrailBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Erreur réseau: ${escapeHtml(err.message)}</td></tr>`;
+            auditTrailBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Network error: ${escapeHtml(err.message)}</td></tr>`;
         }
     }
 
@@ -1257,7 +1257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!auditTrailBody) return;
         auditTrailBody.innerHTML = '';
         if (!items || items.length === 0) {
-            auditTrailBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">Aucun événement d'audit enregistré.</td></tr>`;
+            auditTrailBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">No audit events recorded.</td></tr>`;
             return;
         }
 
@@ -1353,7 +1353,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadVersions() {
         if (!versionsTableBody) return;
         try {
-            versionsTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">Chargement de l'historique...</td></tr>`;
+            versionsTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">Loading commit history...</td></tr>`;
             const res = await fetch('/api/versions?limit=50');
             if (!res.ok) {
                 throw new Error(`HTTP ${res.status}: ${res.statusText}`);
@@ -1365,8 +1365,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             renderVersionsTable(versionsList);
         } catch (err) {
-            versionsTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Erreur lors du chargement des commits: ${escapeHtml(err.message)}</td></tr>`;
-            showToast(`Erreur historique commits: ${err.message}`, 'error');
+            versionsTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Error loading commits: ${escapeHtml(err.message)}</td></tr>`;
+            showToast(`Commit history error: ${err.message}`, 'error');
         }
     }
 
@@ -1374,7 +1374,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!versionsTableBody) return;
         versionsTableBody.innerHTML = '';
         if (!commits || commits.length === 0) {
-            versionsTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">Aucun commit répertorié dans definitions_history.</td></tr>`;
+            versionsTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">No commits recorded in definitions_history.</td></tr>`;
             return;
         }
 
@@ -1389,15 +1389,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 : (commit.changes ? `<span class="badge" style="background: rgba(255,255,255,0.08);">+${commit.changes.added || 0} ~${commit.changes.modified || 0} -${commit.changes.deleted || 0}</span>` : '');
 
             tr.innerHTML = `
-                <td><code style="color: var(--accent); cursor: pointer;" title="Inspecter ce commit">${escapeHtml(shortId)}</code></td>
+                <td><code style="color: var(--accent); cursor: pointer;" title="Inspect this commit">${escapeHtml(shortId)}</code></td>
                 <td style="white-space: nowrap; font-size: 0.8rem; font-family: monospace;">${escapeHtml(ts)}</td>
-                <td><strong>${escapeHtml(commit.author || 'Inconnu')}</strong></td>
-                <td>${escapeHtml(commit.message || 'Sans message')}</td>
-                <td><span class="badge badge-info">${fileCount} fichiers</span> ${regCountHtml}</td>
+                <td><strong>${escapeHtml(commit.author || 'Unknown')}</strong></td>
+                <td>${escapeHtml(commit.message || 'No message')}</td>
+                <td><span class="badge badge-info">${fileCount} files</span> ${regCountHtml}</td>
                 <td>${tagsHtml}</td>
                 <td style="text-align: right; white-space: nowrap;">
-                    <button class="btn btn-secondary btn-sm btn-inspect" data-id="${escapeHtml(commit.commit_id)}">🔍 Diff & Détails</button>
-                    <button class="btn btn-primary btn-sm btn-restore" data-id="${escapeHtml(commit.commit_id)}">🔄 Restaurer</button>
+                    <button class="btn btn-secondary btn-sm btn-inspect" data-id="${escapeHtml(commit.commit_id)}">🔍 Diff & Details</button>
+                    <button class="btn btn-primary btn-sm btn-restore" data-id="${escapeHtml(commit.commit_id)}">🔄 Restore</button>
                 </td>
             `;
 
@@ -1414,34 +1414,34 @@ document.addEventListener('DOMContentLoaded', () => {
     async function inspectCommit(commitId) {
         if (!versionDetailSection) return;
         try {
-            showToast(`Chargement du commit ${commitId.substring(0, 8)}...`, 'info');
+            showToast(`Loading commit ${commitId.substring(0, 8)}...`, 'info');
             versionDetailSection.classList.remove('hidden');
             if (detailCommitHash) detailCommitHash.textContent = commitId.substring(0, 12);
-            if (detailMetaSummary) detailMetaSummary.innerHTML = 'Chargement des métadonnées et du diff...';
+            if (detailMetaSummary) detailMetaSummary.innerHTML = 'Loading metadata and diff...';
 
             const [commitRes, diffRes] = await Promise.all([
                 fetch(`/api/versions/${encodeURIComponent(commitId)}`),
                 fetch(`/api/versions/${encodeURIComponent(commitId)}/diff`)
             ]);
 
-            if (!commitRes.ok) throw new Error(`Échec chargement commit: ${commitRes.status}`);
+            if (!commitRes.ok) throw new Error(`Failed to load commit: ${commitRes.status}`);
             currentCommitData = await commitRes.json();
             currentDiffData = diffRes.ok ? await diffRes.json() : null;
 
             const ts = (currentCommitData.timestamp || '').replace('T', ' ').substring(0, 19);
-            const parentShort = currentCommitData.parent_id ? currentCommitData.parent_id.substring(0, 10) : 'aucun (initial)';
+            const parentShort = currentCommitData.parent_id ? currentCommitData.parent_id.substring(0, 10) : 'none (initial)';
             if (detailMetaSummary) {
                 detailMetaSummary.innerHTML = `
-                    <strong>Auteur :</strong> ${escapeHtml(currentCommitData.author)} | 
-                    <strong>Date :</strong> ${escapeHtml(ts)} UTC | 
-                    <strong>Parent :</strong> <code>${escapeHtml(parentShort)}</code> | 
-                    <strong>Message :</strong> <em>${escapeHtml(currentCommitData.message)}</em>
+                    <strong>Author:</strong> ${escapeHtml(currentCommitData.author)} | 
+                    <strong>Date:</strong> ${escapeHtml(ts)} UTC | 
+                    <strong>Parent:</strong> <code>${escapeHtml(parentShort)}</code> | 
+                    <strong>Message:</strong> <em>${escapeHtml(currentCommitData.message)}</em>
                 `;
             }
 
             // Populate diff files dropdown
             if (diffFileSelect) {
-                diffFileSelect.innerHTML = `<option value="">Tous les fichiers modifiés</option>`;
+                diffFileSelect.innerHTML = `<option value="">All modified files</option>`;
                 if (currentDiffData) {
                     const allDiffFiles = [
                         ...(currentDiffData.added_files || []),
@@ -1462,8 +1462,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             versionDetailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } catch (err) {
-            showToast(`Erreur inspection: ${err.message}`, 'error');
-            if (detailMetaSummary) detailMetaSummary.innerHTML = `<span style="color: #ef4444;">Erreur: ${escapeHtml(err.message)}</span>`;
+            showToast(`Inspection error: ${err.message}`, 'error');
+            if (detailMetaSummary) detailMetaSummary.innerHTML = `<span style="color: #ef4444;">Error: ${escapeHtml(err.message)}</span>`;
         }
     }
 
@@ -1472,7 +1472,7 @@ document.addEventListener('DOMContentLoaded', () => {
         diffContainer.innerHTML = '';
 
         if (!diff) {
-            diffContainer.innerHTML = `<div style="text-align: center; color: var(--text-secondary); padding: 20px;">Aucune donnée de diff disponible.</div>`;
+            diffContainer.innerHTML = `<div style="text-align: center; color: var(--text-secondary); padding: 20px;">No diff data available.</div>`;
             return;
         }
 
@@ -1480,15 +1480,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const modifiedFiles = diff.modified_files || [];
         const removedFiles = diff.removed_files || [];
 
-        if (diffAddedBadge) diffAddedBadge.textContent = `+${addedFiles.length} ajoutés`;
-        if (diffModifiedBadge) diffModifiedBadge.textContent = `~${modifiedFiles.length} modifiés`;
-        if (diffRemovedBadge) diffRemovedBadge.textContent = `-${removedFiles.length} supprimés`;
+        if (diffAddedBadge) diffAddedBadge.textContent = `+${addedFiles.length} added`;
+        if (diffModifiedBadge) diffModifiedBadge.textContent = `~${modifiedFiles.length} modified`;
+        if (diffRemovedBadge) diffRemovedBadge.textContent = `-${removedFiles.length} removed`;
         if (diffParentBadge) {
-            diffParentBadge.textContent = diff.commit_b ? `Diff vs ${diff.commit_b.substring(0, 8)}` : `Snapshot Initial`;
+            diffParentBadge.textContent = diff.commit_b ? `Diff vs ${diff.commit_b.substring(0, 8)}` : `Initial Snapshot`;
         }
 
         if (addedFiles.length === 0 && modifiedFiles.length === 0 && removedFiles.length === 0) {
-            diffContainer.innerHTML = `<div style="text-align: center; color: #10b981; padding: 20px; background: rgba(16,185,129,0.08); border-radius: 8px;">Aucune différence de fichier ou de registre détectée par rapport au parent.</div>`;
+            diffContainer.innerHTML = `<div style="text-align: center; color: #10b981; padding: 20px; background: rgba(16,185,129,0.08); border-radius: 8px;">No file or register differences detected relative to parent.</div>`;
             return;
         }
 
@@ -1499,10 +1499,10 @@ document.addEventListener('DOMContentLoaded', () => {
             card.innerHTML = `
                 <div class="diff-file-header diff-row-added">
                     <span style="display: flex; align-items: center; gap: 8px;">
-                        <span class="diff-badge-add">+ AJOUTÉ</span>
+                        <span class="diff-badge-add">+ ADDED</span>
                         <code>${escapeHtml(fn)}</code>
                     </span>
-                    <span style="font-size: 0.8rem; color: #34d399;">Nouveau fichier de définition certifié</span>
+                    <span style="font-size: 0.8rem; color: #34d399;">New certified definition file</span>
                 </div>
             `;
             diffContainer.appendChild(card);
@@ -1515,10 +1515,10 @@ document.addEventListener('DOMContentLoaded', () => {
             card.innerHTML = `
                 <div class="diff-file-header diff-row-removed">
                     <span style="display: flex; align-items: center; gap: 8px;">
-                        <span class="diff-badge-del">- SUPPRIMÉ</span>
+                        <span class="diff-badge-del">- REMOVED</span>
                         <code>${escapeHtml(fn)}</code>
                     </span>
-                    <span style="font-size: 0.8rem; color: #f87171;">Fichier retiré ou archivé</span>
+                    <span style="font-size: 0.8rem; color: #f87171;">File removed or archived</span>
                 </div>
             `;
             diffContainer.appendChild(card);
@@ -1539,17 +1539,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (fd) {
                 let parts = [];
                 if (fd.header_changed) {
-                    parts.push(`<div style="padding: 8px 14px; background: rgba(245,158,11,0.1); color: #fbbf24; font-size: 0.8rem; border-bottom: 1px solid var(--border);">⚠️ Entête CSV modifiée : <code>${escapeHtml(fd.old_header)}</code> ➔ <code>${escapeHtml(fd.new_header)}</code></div>`);
+                    parts.push(`<div style="padding: 8px 14px; background: rgba(245,158,11,0.1); color: #fbbf24; font-size: 0.8rem; border-bottom: 1px solid var(--border);">⚠️ CSV header changed: <code>${escapeHtml(fd.old_header)}</code> ➔ <code>${escapeHtml(fd.new_header)}</code></div>`);
                 }
 
                 if (addCount > 0 && fd.added_addresses && fd.added_addresses.length) {
                     const addPills = fd.added_addresses.map(a => `<span class="diff-badge-add">+${escapeHtml(a)}</span>`).join(' ');
-                    parts.push(`<div style="padding: 8px 14px; font-size: 0.8rem;"><strong>Registres ajoutés :</strong> ${addPills}</div>`);
+                    parts.push(`<div style="padding: 8px 14px; font-size: 0.8rem;"><strong>Registers added:</strong> ${addPills}</div>`);
                 }
 
                 if (delCount > 0 && fd.removed_addresses && fd.removed_addresses.length) {
                     const delPills = fd.removed_addresses.map(a => `<span class="diff-badge-del">-${escapeHtml(a)}</span>`).join(' ');
-                    parts.push(`<div style="padding: 8px 14px; font-size: 0.8rem;"><strong>Registres supprimés :</strong> ${delPills}</div>`);
+                    parts.push(`<div style="padding: 8px 14px; font-size: 0.8rem;"><strong>Registers removed:</strong> ${delPills}</div>`);
                 }
 
                 if (modCount > 0 && fd.modified_registers && fd.modified_registers.length) {
@@ -1557,7 +1557,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     fd.modified_registers.forEach(m => {
                         const changes = m.changes || {};
                         const pills = Object.entries(changes).map(([k, [oldVal, newVal]]) => {
-                            return `<span class="diff-field-pill">${escapeHtml(k)}: <span class="val-old">${escapeHtml(oldVal || 'vide')}</span> ➔ <span class="val-new">${escapeHtml(newVal || 'vide')}</span></span>`;
+                            return `<span class="diff-field-pill">${escapeHtml(k)}: <span class="val-old">${escapeHtml(oldVal || 'empty')}</span> ➔ <span class="val-new">${escapeHtml(newVal || 'empty')}</span></span>`;
                         }).join(' ');
 
                         regRows += `
@@ -1574,9 +1574,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Adresse</th>
-                                        <th>Nom</th>
-                                        <th>Modifications Détectées</th>
+                                        <th>Address</th>
+                                        <th>Name</th>
+                                        <th>Detected Modifications</th>
                                     </tr>
                                 </thead>
                                 <tbody>${regRows}</tbody>
@@ -1591,7 +1591,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.innerHTML = `
                 <div class="diff-file-header diff-row-modified">
                     <span style="display: flex; align-items: center; gap: 8px;">
-                        <span class="diff-badge-mod">~ MODIFIÉ</span>
+                        <span class="diff-badge-mod">~ MODIFIED</span>
                         <code>${escapeHtml(fn)}</code>
                     </span>
                     <span style="font-size: 0.8rem; display: flex; gap: 6px;">
@@ -1613,7 +1613,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (manifestFilesCount) manifestFilesCount.textContent = files.length;
 
         if (files.length === 0) {
-            manifestTableBody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-secondary);">Aucun fichier dans ce manifeste.</td></tr>`;
+            manifestTableBody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-secondary);">No files in this manifest.</td></tr>`;
             return;
         }
 
@@ -1696,20 +1696,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!restoreModal) return;
         pendingRestoreCommit = commit;
         if (modalCommitId) modalCommitId.textContent = commit.commit_id;
-        if (modalAuthor) modalAuthor.textContent = commit.author || 'Inconnu';
+        if (modalAuthor) modalAuthor.textContent = commit.author || 'Unknown';
         if (modalTimestamp) modalTimestamp.textContent = (commit.timestamp || '').replace('T', ' ').substring(0, 19);
-        if (modalMessage) modalMessage.textContent = commit.message || 'Sans message';
+        if (modalMessage) modalMessage.textContent = commit.message || 'No message';
 
         if (restorePreviewList) {
             const files = Object.keys(commit.manifest || {});
             const total = files.length || commit.files_count || 0;
-            if (restorePreviewCountBadge) restorePreviewCountBadge.textContent = `${total} fichiers`;
+            if (restorePreviewCountBadge) restorePreviewCountBadge.textContent = `${total} files`;
             if (files.length > 0) {
                 const sample = files.slice(0, 15).map(f => `• ${escapeHtml(f)}`).join('<br>');
-                const extra = files.length > 15 ? `<br><em>... et ${files.length - 15} autres fichiers</em>` : '';
+                const extra = files.length > 15 ? `<br><em>... and ${files.length - 15} other files</em>` : '';
                 restorePreviewList.innerHTML = `${sample}${extra}`;
             } else {
-                restorePreviewList.innerHTML = `<em>Ce snapshot restaurera ${total} fichiers de définitions certifiées.</em>`;
+                restorePreviewList.innerHTML = `<em>This snapshot will restore ${total} certified definition files.</em>`;
             }
         }
 
@@ -1736,7 +1736,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const fileName = restoreSpecificFile && restoreSpecificFile.value.trim() ? restoreSpecificFile.value.trim() : null;
 
             confirmRestoreBtn.disabled = true;
-            confirmRestoreBtn.textContent = 'Restauration en cours...';
+            confirmRestoreBtn.textContent = 'Restoring in progress...';
 
             try {
                 const res = await fetch('/api/versions/restore', {
@@ -1751,11 +1751,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!res.ok) {
                     const errData = await res.json().catch(() => ({}));
-                    throw new Error(errData.detail || `Erreur HTTP ${res.status}`);
+                    throw new Error(errData.detail || `HTTP Error ${res.status}`);
                 }
 
                 const data = await res.json();
-                showToast(`Restauration réussie ! ${data.restored_count} fichier(s) restauré(s) dans ${data.target_dir}.`, 'success');
+                showToast(`Restore successful! ${data.restored_count} file(s) restored into ${data.target_dir}.`, 'success');
                 closeRestoreModal();
 
                 // Refresh library if open
@@ -1763,10 +1763,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     loadLibrary(currentLibrarySource);
                 }
             } catch (err) {
-                showToast(`Échec restauration: ${err.message}`, 'error');
+                showToast(`Restore failed: ${err.message}`, 'error');
             } finally {
                 confirmRestoreBtn.disabled = false;
-                confirmRestoreBtn.textContent = 'Confirmer la Restauration';
+                confirmRestoreBtn.textContent = 'Confirm Restore';
             }
         });
     }
@@ -1800,11 +1800,11 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             if (scanDuplicatesBtn) {
                 scanDuplicatesBtn.disabled = true;
-                scanDuplicatesBtn.textContent = '⏳ Analyse...';
+                scanDuplicatesBtn.textContent = '⏳ Scanning...';
             }
             if (dupGlobalStatusBadge) {
                 dupGlobalStatusBadge.className = 'badge badge-info';
-                dupGlobalStatusBadge.textContent = 'Scan en cours...';
+                dupGlobalStatusBadge.textContent = 'Scanning in progress...';
             }
 
             const target = path || (dupPathInput ? dupPathInput.value.trim() : 'production') || 'production';
@@ -1817,17 +1817,17 @@ document.addEventListener('DOMContentLoaded', () => {
             duplicatesReport = await res.json();
             duplicatesLoaded = true;
             renderDuplicates(duplicatesReport);
-            showToast('Scan des doublons terminé avec succès', 'success');
+            showToast('Duplicates scan completed successfully', 'success');
         } catch (err) {
-            showToast(`Erreur scan doublons: ${err.message}`, 'error');
+            showToast(`Error scanning duplicates: ${err.message}`, 'error');
             if (dupGlobalStatusBadge) {
                 dupGlobalStatusBadge.className = 'badge badge-error';
-                dupGlobalStatusBadge.textContent = 'Échec scan';
+                dupGlobalStatusBadge.textContent = 'Scan failed';
             }
         } finally {
             if (scanDuplicatesBtn) {
                 scanDuplicatesBtn.disabled = false;
-                scanDuplicatesBtn.textContent = '🔄 Scanner les Doublons';
+                scanDuplicatesBtn.textContent = '🔄 Scan Duplicates';
             }
         }
     }
@@ -1849,25 +1849,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (kpiHardwareFamilies) kpiHardwareFamilies.textContent = bodyClusters.length;
 
         if (badgeCategoryConflictCount) {
-            badgeCategoryConflictCount.textContent = `${catClusters.length} conflit${catClusters.length > 1 ? 's' : ''}`;
+            badgeCategoryConflictCount.textContent = `${catClusters.length} conflict${catClusters.length > 1 ? 's' : ''}`;
             badgeCategoryConflictCount.className = `badge ${catClusters.length > 0 ? 'badge-error' : 'badge-success'}`;
         }
         if (badgeAliasCount) {
-            badgeAliasCount.textContent = `${aliasClusters.length} alias`;
+            badgeAliasCount.textContent = `${aliasClusters.length} alias${aliasClusters.length > 1 ? 'es' : ''}`;
             badgeAliasCount.className = `badge ${aliasClusters.length > 0 ? 'badge-warning' : 'badge-success'}`;
         }
         if (badgeHardwareFamilyCount) {
-            badgeHardwareFamilyCount.textContent = `${bodyClusters.length} famille${bodyClusters.length > 1 ? 's' : ''}`;
+            badgeHardwareFamilyCount.textContent = `${bodyClusters.length} famil${bodyClusters.length > 1 ? 'ies' : 'y'}`;
             badgeHardwareFamilyCount.className = 'badge badge-success';
         }
 
         if (dupGlobalStatusBadge) {
             if (catClusters.length === 0 && aliasClusters.length === 0) {
                 dupGlobalStatusBadge.className = 'badge badge-success';
-                dupGlobalStatusBadge.textContent = '✅ Conforme (0 conflit OTH_)';
+                dupGlobalStatusBadge.textContent = '✅ Compliant (0 OTH_ conflicts)';
             } else {
                 dupGlobalStatusBadge.className = 'badge badge-warning';
-                dupGlobalStatusBadge.textContent = `⚠️ ${totalDupes} Doublons Détectés`;
+                dupGlobalStatusBadge.textContent = `⚠️ ${totalDupes} Duplicates Detected`;
             }
         }
 
@@ -1880,7 +1880,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!categoryConflictBody) return;
         categoryConflictBody.innerHTML = '';
         if (clusters.length === 0) {
-            categoryConflictBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #10b981; padding: 16px;">✅ Aucun conflit de catégorie OTH_ détecté. Tous les fichiers de définitions sont typés conformément aux 5 Piliers.</td></tr>`;
+            categoryConflictBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #10b981; padding: 16px;">✅ No OTH_ category conflicts detected. All definition files are typed according to the 5 Pillars.</td></tr>`;
             return;
         }
 
@@ -1894,7 +1894,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${dupes}</td>
                 <td><strong>${escapeHtml(model)}</strong></td>
                 <td><span class="badge badge-info">${escapeHtml(c.register_count ?? 0)} regs</span></td>
-                <td><span class="badge badge-error">Supprimer OTH_ redondant</span></td>
+                <td><span class="badge badge-error">Delete redundant OTH_</span></td>
             `;
             categoryConflictBody.appendChild(tr);
         });
@@ -1904,7 +1904,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!aliasBody) return;
         aliasBody.innerHTML = '';
         if (clusters.length === 0) {
-            aliasBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #10b981; padding: 16px;">✅ Aucun alias non résolu détecté dans le catalogue.</td></tr>`;
+            aliasBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #10b981; padding: 16px;">✅ No unresolved aliases detected in the catalog.</td></tr>`;
             return;
         }
 
@@ -1915,9 +1915,9 @@ document.addEventListener('DOMContentLoaded', () => {
             tr.innerHTML = `
                 <td><code style="color: #38bdf8; font-weight: 600;">${escapeHtml(c.canonical_file)}</code></td>
                 <td>${dupes}</td>
-                <td style="font-size: 0.85rem; color: var(--text-secondary);">${escapeHtml(c.description || 'Variante de nommage')}</td>
+                <td style="font-size: 0.85rem; color: var(--text-secondary);">${escapeHtml(c.description || 'Naming variant')}</td>
                 <td><span class="badge badge-info">${escapeHtml(c.register_count ?? 0)} regs</span></td>
-                <td><span class="badge badge-warning">Enregistrer dans le registre d'alias</span></td>
+                <td><span class="badge badge-warning">Register in alias catalog</span></td>
             `;
             aliasBody.appendChild(tr);
         });
@@ -1927,7 +1927,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!hardwareFamilyBody) return;
         hardwareFamilyBody.innerHTML = '';
         if (clusters.length === 0) {
-            hardwareFamilyBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 16px;">Aucune famille multi-modèles répertoriée.</td></tr>`;
+            hardwareFamilyBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 16px;">No multi-model families recorded.</td></tr>`;
             return;
         }
 
@@ -1941,7 +1941,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td style="max-width: 320px;">${models}</td>
                 <td>${dupes}</td>
                 <td><span class="badge badge-info">${escapeHtml(c.register_count ?? 0)} regs</span></td>
-                <td><span class="badge badge-success">Gamme Matérielle Valide</span></td>
+                <td><span class="badge badge-success">Valid Hardware Family</span></td>
             `;
             hardwareFamilyBody.appendChild(tr);
         });

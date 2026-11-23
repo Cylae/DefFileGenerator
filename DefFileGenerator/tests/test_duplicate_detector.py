@@ -264,7 +264,21 @@ class TestDuplicateDetector(unittest.TestCase):
         """Markdown report must cleanly render all hardware family clusters when > 25 exist, without truncation."""
         # Create 30 distinct pairs of hardware families
         for i in range(30):
-            reg_row = [["1", "3", str(100 + i), "U16", "0", f"Param_{i}", f"TAG_{i}", "1.0", "0.0", "", "4"]]
+            reg_row = [
+                [
+                    "1",
+                    "3",
+                    str(100 + i),
+                    "U16",
+                    "0",
+                    f"Param_{i}",
+                    f"TAG_{i}",
+                    "1.0",
+                    "0.0",
+                    "",
+                    "4",
+                ]
+            ]
             self._write_csv(
                 f"INV_Brand_M{i:02d}_A.csv",
                 ["Modbus", "Inverter", "Brand", f"M{i:02d}_A", "1", "", "", "", "", "", ""],

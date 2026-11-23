@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebdynSunPM Studio & Générateur de Définitions Apollo</title>
+    <title>WebdynSunPM Studio & Apollo Definition Generator</title>
     <link rel="stylesheet" href="/static/styles.css">
     <style>
         /* Modals */
@@ -124,7 +124,7 @@
         <div class="header-badges" style="display: flex; gap: 8px; align-items: center;">
             <span id="knowledgePill" class="header-badge"
                 style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);">🧠
-                36 270+ variables</span>
+                36,270+ variables</span>
             <div class="header-badge">v1.0.0 Apollo Edition</div>
         </div>
     </header>
@@ -135,19 +135,19 @@
             <button class="nav-tab active" id="tabBtnConvert" data-tab="tab-convert" role="tab" aria-selected="true"
                 aria-controls="tab-convert" tabindex="0">📁 Convert Datasheet</button>
             <button class="nav-tab" id="tabBtnDiscovery" data-tab="tab-discovery" role="tab" aria-selected="false"
-                aria-controls="tab-discovery" tabindex="-1">🌐 Découverte Autonome</button>
+                aria-controls="tab-discovery" tabindex="-1">🌐 Autonomous Discovery</button>
             <button class="nav-tab" id="tabBtnTag" data-tab="tab-tag" role="tab" aria-selected="false"
                 aria-controls="tab-tag" tabindex="-1">🏷️ SunPM Tagger</button>
             <button class="nav-tab" id="tabBtnAudit" data-tab="tab-audit" role="tab" aria-selected="false"
-                aria-controls="tab-audit" tabindex="-1">🛡️ 5 Piliers & Auditor</button>
+                aria-controls="tab-audit" tabindex="-1">🛡️ 5 Pillars & Auditor</button>
             <button class="nav-tab" id="tabBtnLibrary" data-tab="tab-library" role="tab" aria-selected="false"
                 aria-controls="tab-library" tabindex="-1">📚 Production Library (1,118)</button>
             <button class="nav-tab" id="tabBtnVersions" data-tab="tab-versions" role="tab" aria-selected="false"
                 aria-controls="tab-versions" tabindex="-1">🕒 Versions & Commits</button>
             <button class="nav-tab" id="tabBtnDuplicates" data-tab="tab-duplicates" role="tab" aria-selected="false"
-                aria-controls="tab-duplicates" tabindex="-1">🔍 Doublons & Qualité</button>
+                aria-controls="tab-duplicates" tabindex="-1">🔍 Duplicates & Quality</button>
             <button class="nav-tab" id="tabBtnAuditTrail" data-tab="tab-audit-trail" role="tab" aria-selected="false"
-                aria-controls="tab-audit-trail" tabindex="-1">📜 Journal d'Audit</button>
+                aria-controls="tab-audit-trail" tabindex="-1">📜 Audit Trail</button>
         </nav>
 
         <!-- ======================================================== -->
@@ -195,12 +195,12 @@
                     <div class="form-group">
                         <label for="categorySelect">Category</label>
                         <select id="categorySelect">
-                            <option value="Inverter" selected>Inverter (Onduleur)</option>
-                            <option value="Meter">Meter (Compteur)</option>
-                            <option value="Sensor">Sensor (Capteur)</option>
+                            <option value="Inverter" selected>Inverter</option>
+                            <option value="Meter">Meter</option>
+                            <option value="Sensor">Sensor</option>
                             <option value="Battery">Battery (BESS / BMS)</option>
-                            <option value="Logger">Logger (Passerelle COM)</option>
-                            <option value="Other">Other (Autre / I/O)</option>
+                            <option value="Logger">Logger (Gateway COM)</option>
+                            <option value="Other">Other (I/O / Misc)</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -213,7 +213,7 @@
                     </div>
                     <div class="form-group" style="justify-content: center;">
                         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-top: 24px;">
-                            <input type="checkbox" id="autoTagCheck" checked> Enrichir avec tags SunPM
+                            <input type="checkbox" id="autoTagCheck" checked> Enrich with SunPM tags
                         </label>
                     </div>
                 </form>
@@ -231,7 +231,7 @@
                     <div style="display: flex; align-items: flex-start; gap: 10px;">
                         <span style="font-size: 1.2rem;">⚠️</span>
                         <div>
-                            <strong style="display: block; margin-bottom: 4px;">Erreur de conversion ou validation :</strong>
+                            <strong style="display: block; margin-bottom: 4px;">Conversion or validation error:</strong>
                             <span id="convertErrorMessage"></span>
                         </div>
                     </div>
@@ -285,20 +285,20 @@
         </div>
 
         <!-- ======================================================== -->
-        <!-- TAB DISCOVERY: AUTONOMOUS MODBUS DISCOVERY (PHASE B)     -->
+        <!-- TAB DISCOVERY: AUTONOMOUS MODBUS DISCOVERY               -->
         <!-- ======================================================== -->
         <div id="tab-discovery" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnDiscovery">
             <section class="card">
-                <h2>🌐 Découverte Autonome de Définitions Modbus</h2>
-                <p class="subtitle">Saisissez une référence équipement industrielle (ex: <code>Huawei SUN2000-100KTL</code>, <code>Sungrow SG110CX</code>, <code>Solplanet Ai-Logger</code>). Le pipeline recherche la documentation constructeur officielle, extrait la table de registres, normalise la sémantique et certifie le fichier de définition.</p>
+                <h2>🌐 Autonomous Modbus Definition Discovery</h2>
+                <p class="subtitle">Enter an industrial equipment reference (e.g., <code>Huawei SUN2000-100KTL</code>, <code>Sungrow SG110CX</code>, <code>Solplanet Ai-Logger</code>). The autonomous pipeline searches official vendor documentation, extracts register tables, normalizes semantics, and certifies the definition file.</p>
 
                 <div class="config-grid" style="grid-template-columns: 2fr 1fr 1fr; margin-bottom: 16px;">
                     <div class="form-group">
-                        <label for="discoveryQueryInput"><strong>Référence Équipement / Modèle :</strong></label>
-                        <input type="text" id="discoveryQueryInput" placeholder="Ex: Huawei SUN2000-100KTL-M1, Sungrow SG110CX...">
+                        <label for="discoveryQueryInput"><strong>Equipment Reference / Model:</strong></label>
+                        <input type="text" id="discoveryQueryInput" placeholder="e.g. Huawei SUN2000-100KTL-M1, Sungrow SG110CX...">
                     </div>
                     <div class="form-group">
-                        <label for="discoveryTargetSelect"><strong>Cible Export :</strong></label>
+                        <label for="discoveryTargetSelect"><strong>Export Target:</strong></label>
                         <select id="discoveryTargetSelect">
                             <option value="webdyn_sunpm">WebdynSunPM (Standard)</option>
                             <option value="webdyn_classic">WebdynSun Classic</option>
@@ -306,11 +306,11 @@
                     </div>
                     <div class="form-group" style="display: flex; align-items: flex-end;">
                         <button id="discoveryRunBtn" class="btn btn-primary" style="width: 100%;">
-                            🚀 Découvrir & Générer
+                            🚀 Discover & Generate
                         </button>
                     </div>
                     <div class="form-group" style="grid-column: 1 / -1; margin-top: -8px;">
-                        <span style="font-size: 0.8rem; color: var(--text-secondary); margin-right: 8px;">Exemples fréquents :</span>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary); margin-right: 8px;">Common presets:</span>
                         <div id="discoveryQuickPills" style="display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center;">
                             <button type="button" class="pill-btn" data-query="Huawei SUN2000-100KTL-M1">Huawei SUN2000-100KTL</button>
                             <button type="button" class="pill-btn" data-query="Sungrow SG110CX">Sungrow SG110CX</button>
@@ -324,14 +324,14 @@
                 </div>
 
                 <details style="margin-bottom: 16px; background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px;">
-                    <summary style="cursor: pointer; font-weight: 500; color: var(--text-secondary);">⚙️ Options avancées & Fallback manuel</summary>
+                    <summary style="cursor: pointer; font-weight: 500; color: var(--text-secondary);">⚙️ Advanced Options & Manual Fallback</summary>
                     <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">
                         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
                             <input type="checkbox" id="discoveryEnableOcr" checked>
-                            <span>Activer la désambiguïsation OCR bornée pour les PDF scannés</span>
+                            <span>Enable bounded OCR disambiguation for scanned PDFs</span>
                         </label>
                         <div style="border-top: 1px dashed var(--border-color); padding-top: 10px;">
-                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px;">Si le document n'est pas trouvable en ligne, vous pouvez téléverser un fichier local en secours :</p>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px;">If documentation is unavailable online, upload a local document fallback:</p>
                             <input type="file" id="discoveryManualFileInput" accept=".pdf,.xlsx,.csv">
                         </div>
                     </div>
@@ -339,8 +339,8 @@
 
                 <div id="discoveryStatusBox" class="hidden" style="margin-top: 16px; padding: 14px; border-radius: 8px; background: var(--bg-surface); border: 1px solid var(--border-color);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <strong id="discoveryStatusTitle">Statut du pipeline</strong>
-                        <span id="discoveryStatusBadge" class="badge">En attente</span>
+                        <strong id="discoveryStatusTitle">Pipeline Status</strong>
+                        <span id="discoveryStatusBadge" class="badge">Pending</span>
                     </div>
                     <p id="discoveryStatusDetail" style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;"></p>
                 </div>
@@ -349,14 +349,14 @@
             <section class="card results-card hidden" id="discoveryResultsSection">
                 <div class="results-header">
                     <div>
-                        <h2>Résultats de la Découverte & Certification</h2>
-                        <span id="discoveryRegistersBadge" class="badge badge-success">0 registres</span>
-                        <span id="discoveryPillarsBadge" class="badge badge-success">5 Piliers Conformes</span>
+                        <h2>Discovery & Certification Results</h2>
+                        <span id="discoveryRegistersBadge" class="badge badge-success">0 registers</span>
+                        <span id="discoveryPillarsBadge" class="badge badge-success">5 Pillars Compliant</span>
                     </div>
                     <div class="actions">
-                        <button id="discoveryCopyBtn" class="btn btn-secondary">📋 Copier CSV</button>
-                        <button id="discoveryDownloadBtn" class="btn btn-primary">⬇️ Télécharger CSV</button>
-                        <button id="discoveryEvidenceBtn" class="btn btn-secondary">📜 Rapport d'Audit</button>
+                        <button id="discoveryCopyBtn" class="btn btn-secondary">📋 Copy CSV</button>
+                        <button id="discoveryDownloadBtn" class="btn btn-primary">⬇️ Download CSV</button>
+                        <button id="discoveryEvidenceBtn" class="btn btn-secondary">📜 Audit Report</button>
                     </div>
                 </div>
 
@@ -366,12 +366,12 @@
                     <table id="discoveryPreviewTable">
                         <thead>
                             <tr>
-                                <th>Adresse</th>
-                                <th>Nom</th>
-                                <th>Tag SunPM</th>
+                                <th>Address</th>
+                                <th>Name</th>
+                                <th>SunPM Tag</th>
                                 <th>Type</th>
-                                <th>Facteur</th>
-                                <th>Unité</th>
+                                <th>Factor</th>
+                                <th>Unit</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -411,12 +411,12 @@
                         <label for="tagCategorySelect">Equipment Category</label>
                         <select id="tagCategorySelect">
                             <option value="" selected>(Auto-detect from CSV header)</option>
-                            <option value="Inverter">Inverter (Onduleur)</option>
-                            <option value="Meter">Meter (Compteur / Analyseur)</option>
-                            <option value="Sensor">Sensor (Capteur / Pyranomètre)</option>
+                            <option value="Inverter">Inverter</option>
+                            <option value="Meter">Meter / Analyzer</option>
+                            <option value="Sensor">Sensor / Pyranometer</option>
                             <option value="Battery">Battery (BESS / BMS)</option>
-                            <option value="Logger">Logger (Passerelle COM)</option>
-                            <option value="Other">Other (Autre / I/O)</option>
+                            <option value="Logger">Logger (Gateway COM)</option>
+                            <option value="Other">Other (I/O / Misc)</option>
                         </select>
                     </div>
                     <div class="form-group" style="justify-content: center;">
@@ -439,7 +439,7 @@
                     <div style="display: flex; align-items: flex-start; gap: 10px;">
                         <span style="font-size: 1.2rem;">⚠️</span>
                         <div>
-                            <strong style="display: block; margin-bottom: 4px;">Erreur de balisage SunPM :</strong>
+                            <strong style="display: block; margin-bottom: 4px;">SunPM tagging error:</strong>
                             <span id="tagErrorMessage"></span>
                         </div>
                     </div>
@@ -489,13 +489,12 @@
         </div>
 
         <!-- ======================================================== -->
-        <!-- TAB 3: VALIDATOR & AUDITOR (5 PILIERS APOLLO)             -->
+        <!-- TAB 3: VALIDATOR & AUDITOR (APOLLO 5 PILLARS)             -->
         <!-- ======================================================== -->
         <div id="tab-audit" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnAudit">
             <section class="card">
-                <h2>Definition Compliance & 5 Piliers Apollo Auditor</h2>
-                <p class="subtitle">Audite les fichiers de définition selon les 5 Piliers Apollo (Nommage standard,
-                    Adressage décimal, Codes fonction, Codes action, Tags SunPM, UTF-8 sans BOM).</p>
+                <h2>Definition Compliance & Apollo 5 Pillars Auditor</h2>
+                <p class="subtitle">Audits definition files against Apollo 5 Pillars (standard naming, decimal addressing, function codes, action codes, SunPM tags, strict UTF-8 without BOM).</p>
 
                 <div class="drop-zone" id="auditDropZone">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -515,13 +514,12 @@
                 <div class="config-grid" style="margin-top: 16px;">
                     <div class="form-group" style="justify-content: center;">
                         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-top: 24px;">
-                            <input type="checkbox" id="auditStrictOverlapCheck" checked> Traiter les chevauchements
-                            d'adresses en erreur
+                            <input type="checkbox" id="auditStrictOverlapCheck" checked> Treat address overlaps as errors
                         </label>
                     </div>
                     <div class="form-group" style="justify-content: center;">
                         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-top: 24px;">
-                            <input type="checkbox" id="auditAutoFixCheck"> Auto-réparation & normalisation SunPM
+                            <input type="checkbox" id="auditAutoFixCheck"> Auto-repair & SunPM normalization
                         </label>
                     </div>
                 </div>
@@ -532,7 +530,7 @@
                             stroke-width="2">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                         </svg>
-                        Vérifier 5 Piliers Apollo
+                        Verify Apollo 5 Pillars
                     </button>
                     <button id="auditProcessBtn" class="btn btn-primary" disabled>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -540,14 +538,14 @@
                             <circle cx="11" cy="11" r="8" />
                             <line x1="21" y1="21" x2="16.65" y2="16.65" />
                         </svg>
-                        Audit Syntaxique & Overlaps
+                        Run Syntax & Overlap Audit
                     </button>
                 </div>
                 <div id="auditErrorBox" class="hidden" style="margin-top: 14px; padding: 14px; border-radius: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #ef4444; font-size: 0.9rem;">
                     <div style="display: flex; align-items: flex-start; gap: 10px;">
                         <span style="font-size: 1.2rem;">⚠️</span>
                         <div>
-                            <strong style="display: block; margin-bottom: 4px;">Erreur lors de l'audit :</strong>
+                            <strong style="display: block; margin-bottom: 4px;">Audit error:</strong>
                             <span id="auditErrorMessage"></span>
                         </div>
                     </div>
@@ -558,8 +556,8 @@
             <section id="pillarsResultsSection" class="card results-card hidden" style="margin-top: 20px;">
                 <div class="results-header">
                     <div>
-                        <h2>🏛️ Rapport de Conformité 5 Piliers Apollo</h2>
-                        <span id="pillarsStatusBadge" class="badge badge-success">Conforme (PASS 100%)</span>
+                        <h2>🏛️ Apollo 5 Pillars Compliance Report</h2>
+                        <span id="pillarsStatusBadge" class="badge badge-success">Compliant (PASS 100%)</span>
                     </div>
                 </div>
                 <div id="pillarsGrid" class="config-grid"
@@ -605,53 +603,49 @@
             <section class="card">
                 <div class="results-header" style="margin-bottom: 12px;">
                     <div>
-                        <h2>Bibliothèque des Définitions de Production Certifiées</h2>
-                        <span id="libraryCountBadge" class="badge badge-success">1 118 modèles</span>
+                        <h2>Certified Production Definition Library</h2>
+                        <span id="libraryCountBadge" class="badge badge-success">1,118 models</span>
                     </div>
                     <div style="display: flex; gap: 8px;">
-                        <button id="sourceProductionBtn" class="btn btn-primary btn-sm">Répertoire Production (1
-                            118)</button>
-                        <button id="sourceDefinitionsBtn" class="btn btn-secondary btn-sm">Archives Historiques
-                            (136)</button>
+                        <button id="sourceProductionBtn" class="btn btn-primary btn-sm">Production Directory (1,118)</button>
+                        <button id="sourceDefinitionsBtn" class="btn btn-secondary btn-sm">Historical Archives (136)</button>
                     </div>
                 </div>
-                <p class="subtitle">Référentiel certifié 5 Piliers Apollo pour 137 constructeurs industriels (Huawei,
-                    Solplanet, Sungrow, SMA, Dyness, FoxESS, ABB...).</p>
+                <p class="subtitle">Certified Apollo 5-Pillar repository across 137 industrial manufacturers (Huawei, Solplanet, Sungrow, SMA, Dyness, FoxESS, ABB...).</p>
 
                 <!-- Category Pills Filter -->
                 <div id="categoryPills" class="category-pills"
                     style="display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0;">
-                    <button class="pill-btn active" data-cat="">Tous</button>
-                    <button class="pill-btn" data-cat="INV">⚡ Onduleurs (INV)</button>
-                    <button class="pill-btn" data-cat="MET">📊 Compteurs (MET)</button>
+                    <button class="pill-btn active" data-cat="">All</button>
+                    <button class="pill-btn" data-cat="INV">⚡ Inverters (INV)</button>
+                    <button class="pill-btn" data-cat="MET">📊 Meters (MET)</button>
                     <button class="pill-btn" data-cat="BAT">🔋 Batteries / BESS (BAT)</button>
-                    <button class="pill-btn" data-cat="SEN">☀️ Capteurs / Météo (SEN)</button>
-                    <button class="pill-btn" data-cat="COM">🌐 Passerelles / Loggers (COM)</button>
-                    <button class="pill-btn" data-cat="OTH">⚙️ Autres (OTH)</button>
+                    <button class="pill-btn" data-cat="SEN">☀️ Sensors / Weather (SEN)</button>
+                    <button class="pill-btn" data-cat="COM">🌐 Gateways / Loggers (COM)</button>
+                    <button class="pill-btn" data-cat="OTH">⚙️ Other (OTH)</button>
                 </div>
 
                 <div class="search-bar">
                     <input type="text" id="librarySearchInput"
-                        placeholder="🔍 Rechercher par constructeur, modèle ou préfixe (ex: Solplanet, Huawei, SUN2000, SDM630)...">
+                        placeholder="🔍 Search by manufacturer, model, or prefix (e.g. Solplanet, Huawei, SUN2000, SDM630)...">
                 </div>
 
                 <div class="table-wrapper" style="max-height: 520px; margin-top: 16px;">
                     <table id="libraryTable">
                         <thead>
                             <tr>
-                                <th>Catégorie</th>
-                                <th>Constructeur</th>
-                                <th>Identifiant Modèle</th>
-                                <th>Registres</th>
-                                <th>Conformité 5 Piliers</th>
-                                <th>Taille</th>
+                                <th>Category</th>
+                                <th>Manufacturer</th>
+                                <th>Model Identifier</th>
+                                <th>Registers</th>
+                                <th>5 Pillars Compliance</th>
+                                <th>Size</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="libraryTableBody">
                             <tr>
-                                <td colspan="7" style="text-align: center; color: var(--text-secondary);">Chargement du
-                                    catalogue certifié...</td>
+                                <td colspan="7" style="text-align: center; color: var(--text-secondary);">Loading certified catalog...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -666,36 +660,34 @@
             <section class="card">
                 <div class="results-header" style="margin-bottom: 12px;">
                     <div>
-                        <h2>📜 Journal d'Audit Opérationnel Immuable</h2>
-                        <span id="auditTrailBadge" class="badge badge-success">Traçabilité Active</span>
+                        <h2>📜 Immutable Operational Audit Trail</h2>
+                        <span id="auditTrailBadge" class="badge badge-success">Active Traceability</span>
                     </div>
-                    <button id="refreshAuditTrailBtn" class="btn btn-secondary btn-sm">🔄 Actualiser</button>
+                    <button id="refreshAuditTrailBtn" class="btn btn-secondary btn-sm">🔄 Refresh</button>
                 </div>
-                <p class="subtitle">Historique chronologique et vérifiable de toutes les intégrations, générations et
-                    certifications dans le référentiel.</p>
+                <p class="subtitle">Verifiable chronological history of all integrations, generations, and certifications in the repository.</p>
 
                 <div class="search-bar" style="margin-bottom: 16px;">
                     <input type="text" id="auditTrailSearchInput"
-                        placeholder="🔍 Filtrer les événements par constructeur, équipement ou action...">
+                        placeholder="🔍 Filter events by manufacturer, equipment, or action...">
                 </div>
 
                 <div class="table-wrapper" style="max-height: 500px;">
                     <table id="auditTrailTable">
                         <thead>
                             <tr>
-                                <th>Horodatage (UTC)</th>
+                                <th>Timestamp (UTC)</th>
                                 <th>Action</th>
-                                <th>Constructeur</th>
-                                <th>Équipement</th>
-                                <th>Définition(s)</th>
-                                <th>Statut</th>
-                                <th>Détails</th>
+                                <th>Manufacturer</th>
+                                <th>Equipment</th>
+                                <th>Definition(s)</th>
+                                <th>Status</th>
+                                <th>Details</th>
                             </tr>
                         </thead>
                         <tbody id="auditTrailBody">
                             <tr>
-                                <td colspan="7" style="text-align: center; color: var(--text-secondary);">Chargement du
-                                    journal d'audit...</td>
+                                <td colspan="7" style="text-align: center; color: var(--text-secondary);">Loading audit trail...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -710,19 +702,19 @@
             <section class="card">
                 <div class="results-header" style="margin-bottom: 12px;">
                     <div>
-                        <h2>🕒 Gestion des Versions & Commits Modbus</h2>
+                        <h2>🕒 Modbus Version & Commit Management</h2>
                         <span id="versionsCountBadge" class="badge badge-success">0 snapshots</span>
                     </div>
                     <div style="display: flex; gap: 8px;">
-                        <button id="refreshVersionsBtn" class="btn btn-secondary btn-sm">🔄 Actualiser</button>
+                        <button id="refreshVersionsBtn" class="btn btn-secondary btn-sm">🔄 Refresh</button>
                     </div>
                 </div>
-                <p class="subtitle">Historique Git-like immuable des définitions Webdyn avec adressage par contenu (CAS), inspection de manifestes, diff sémantique de registres et restauration sécurisée.</p>
+                <p class="subtitle">Immutable Git-like history of Webdyn definitions with Content-Addressable Storage (CAS), manifest inspection, semantic register diffing, and safe restoration.</p>
 
                 <!-- Search and Filters -->
                 <div class="search-bar" style="margin-bottom: 16px;">
                     <input type="text" id="versionsSearchInput"
-                        placeholder="🔍 Filtrer les commits par message, auteur, hash ou tag...">
+                        placeholder="🔍 Filter commits by message, author, hash, or tag...">
                 </div>
 
                 <!-- Commit History Table -->
@@ -731,17 +723,17 @@
                         <thead>
                             <tr>
                                 <th style="width: 110px;">Commit ID</th>
-                                <th>Date & Heure (UTC)</th>
-                                <th>Auteur</th>
+                                <th>Date & Time (UTC)</th>
+                                <th>Author</th>
                                 <th>Message</th>
-                                <th>Fichiers / Registres</th>
+                                <th>Files / Registers</th>
                                 <th>Tags</th>
                                 <th style="text-align: right; width: 200px;">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="versionsTableBody">
                             <tr>
-                                <td colspan="7" style="text-align: center; color: var(--text-secondary);">Chargement de l'historique des commits...</td>
+                                <td colspan="7" style="text-align: center; color: var(--text-secondary);">Loading commit history...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -752,21 +744,21 @@
                     <div class="results-header" style="margin-bottom: 16px;">
                         <div>
                             <h3 style="font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                                <span>Détails du Commit</span>
+                                <span>Commit Details</span>
                                 <code id="detailCommitHash" style="background: var(--bg-hover); padding: 2px 6px; border-radius: 4px; color: var(--accent);"></code>
                             </h3>
                             <div id="detailMetaSummary" style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;"></div>
                         </div>
                         <div style="display: flex; gap: 8px;">
-                            <button id="detailRestoreBtn" class="btn btn-primary btn-sm">🔄 Restaurer / Checkout ce Commit</button>
-                            <button id="closeDetailBtn" class="btn btn-secondary btn-sm">✕ Fermer</button>
+                            <button id="detailRestoreBtn" class="btn btn-primary btn-sm">🔄 Restore / Checkout this Commit</button>
+                            <button id="closeDetailBtn" class="btn btn-secondary btn-sm">✕ Close</button>
                         </div>
                     </div>
 
                     <!-- Tabs inside Commit: Diff vs Manifest -->
                     <div style="display: flex; gap: 12px; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
                         <button id="viewDiffTabBtn" class="pill-btn active">📊 Visual Modbus Diff</button>
-                        <button id="viewManifestTabBtn" class="pill-btn">📦 Manifeste des Fichiers (<span id="manifestFilesCount">0</span>)</button>
+                        <button id="viewManifestTabBtn" class="pill-btn">📦 File Manifest (<span id="manifestFilesCount">0</span>)</button>
                     </div>
 
                     <!-- Sub-pane 1: Visual Modbus Diff Viewer -->
@@ -774,14 +766,14 @@
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
                             <div id="diffSummaryBadges" style="display: flex; gap: 8px; align-items: center;">
                                 <span class="badge badge-info" id="diffParentBadge">Diff vs Parent</span>
-                                <span class="badge badge-success" id="diffAddedBadge">+0 ajoutés</span>
-                                <span class="badge badge-warning" id="diffModifiedBadge">~0 modifiés</span>
-                                <span class="badge badge-error" id="diffRemovedBadge">-0 supprimés</span>
+                                <span class="badge badge-success" id="diffAddedBadge">+0 added</span>
+                                <span class="badge badge-warning" id="diffModifiedBadge">~0 modified</span>
+                                <span class="badge badge-error" id="diffRemovedBadge">-0 removed</span>
                             </div>
                             <div style="display: flex; gap: 8px; align-items: center;">
-                                <label for="diffFileSelect" style="font-size: 0.85rem; color: var(--text-secondary);">Fichier :</label>
+                                <label for="diffFileSelect" style="font-size: 0.85rem; color: var(--text-secondary);">File:</label>
                                 <select id="diffFileSelect" class="filter-input" style="padding: 4px 8px; font-size: 0.85rem; min-width: 240px;">
-                                    <option value="">Tous les fichiers modifiés</option>
+                                    <option value="">All modified files</option>
                                 </select>
                             </div>
                         </div>
@@ -794,19 +786,19 @@
                     <!-- Sub-pane 2: File Manifest -->
                     <div id="manifestViewPane" class="hidden">
                         <div class="search-bar" style="margin-bottom: 12px;">
-                            <input type="text" id="manifestFilterInput" placeholder="🔍 Filtrer les fichiers du manifeste...">
+                            <input type="text" id="manifestFilterInput" placeholder="🔍 Filter manifest files...">
                         </div>
                         <div class="table-wrapper" style="max-height: 400px;">
                             <table id="manifestTable">
                                 <thead>
                                     <tr>
-                                        <th>Nom du Fichier</th>
-                                        <th>Catégorie</th>
-                                        <th>Constructeur</th>
-                                        <th>Modèle</th>
-                                        <th>Registres</th>
+                                        <th>File Name</th>
+                                        <th>Category</th>
+                                        <th>Manufacturer</th>
+                                        <th>Model</th>
+                                        <th>Registers</th>
                                         <th>Tags</th>
-                                        <th>Taille</th>
+                                        <th>Size</th>
                                         <th>SHA-256</th>
                                     </tr>
                                 </thead>
@@ -820,50 +812,50 @@
         </div>
 
         <!-- ======================================================== -->
-        <!-- TAB 7: DOUBLONS & QUALITÉ (5 PILIERS)                    -->
+        <!-- TAB 7: DUPLICATES & QUALITY (5 PILLARS)                  -->
         <!-- ======================================================== -->
         <div id="tab-duplicates" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnDuplicates">
             <section class="card">
                 <div class="results-header" style="margin-bottom: 12px;">
                     <div>
-                        <h2>🔍 Détection des Doublons & Audit Qualité 5 Piliers</h2>
-                        <span id="dupGlobalStatusBadge" class="badge badge-success">Audit Prêt</span>
+                        <h2>🔍 Duplicate Detection & 5-Pillar Quality Audit</h2>
+                        <span id="dupGlobalStatusBadge" class="badge badge-success">Audit Ready</span>
                     </div>
                     <div style="display: flex; gap: 8px; align-items: center;">
-                        <input type="text" id="dupPathInput" value="production" style="background: var(--bg-surface); border: 1px solid var(--border); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; width: 140px;" title="Répertoire cible">
-                        <button id="scanDuplicatesBtn" class="btn btn-primary btn-sm">🔄 Scanner les Doublons</button>
+                        <input type="text" id="dupPathInput" value="production" style="background: var(--bg-surface); border: 1px solid var(--border); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; width: 140px;" title="Target directory">
+                        <button id="scanDuplicatesBtn" class="btn btn-primary btn-sm">🔄 Scan Duplicates</button>
                     </div>
                 </div>
-                <p class="subtitle">Analyse rigoureuse de collision d'empreintes et de corps : résout les conflits de catégorie (<code>OTH_</code> vs typé), harmonise les alias constructeurs et certifie les familles matérielles.</p>
+                <p class="subtitle">Rigorous fingerprint and body collision analysis: resolves category conflicts (<code>OTH_</code> vs typed), aligns vendor aliases, and certifies hardware families.</p>
 
                 <!-- 5 Pillars Quality Badges -->
                 <div style="margin-bottom: 20px;">
-                    <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;">🏛️ Les 5 Piliers d'Architecture Webdyn</h3>
+                    <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;">🏛️ Webdyn Architectural 5 Pillars</h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
                         <div class="pillar-card pass">
-                            <span class="pillar-title">1. UTF-8 sans BOM</span>
-                            <span class="pillar-desc">Zéro octet d'entête parasite \xef\xbb\xbf</span>
-                            <span class="pillar-badge">CONFORME</span>
+                            <span class="pillar-title">1. UTF-8 without BOM</span>
+                            <span class="pillar-desc">Zero parasite header bytes \xef\xbb\xbf</span>
+                            <span class="pillar-badge">COMPLIANT</span>
                         </div>
                         <div class="pillar-card pass">
-                            <span class="pillar-title">2. Terminaisons CRLF (\r\n)</span>
-                            <span class="pillar-desc">Conformité protocolaire passerelle</span>
-                            <span class="pillar-badge">CONFORME</span>
+                            <span class="pillar-title">2. CRLF Line Endings (\r\n)</span>
+                            <span class="pillar-desc">Gateway protocol compliance</span>
+                            <span class="pillar-badge">COMPLIANT</span>
                         </div>
                         <div class="pillar-card pass">
-                            <span class="pillar-title">3. 11 Colonnes Strictes</span>
-                            <span class="pillar-desc">Séparateur point-virgule (;) uniforme</span>
-                            <span class="pillar-badge">CONFORME</span>
+                            <span class="pillar-title">3. Strict 11 Columns</span>
+                            <span class="pillar-desc">Uniform semicolon (;) delimiter</span>
+                            <span class="pillar-badge">COMPLIANT</span>
                         </div>
                         <div class="pillar-card pass">
-                            <span class="pillar-title">4. Index Séquentiel (1..N)</span>
-                            <span class="pillar-desc">Numérotation sans rupture ni doublon</span>
-                            <span class="pillar-badge">CONFORME</span>
+                            <span class="pillar-title">4. Sequential Index (1..N)</span>
+                            <span class="pillar-desc">Continuous indexing without gaps or dupes</span>
+                            <span class="pillar-badge">COMPLIANT</span>
                         </div>
                         <div class="pillar-card pass">
-                            <span class="pillar-title">5. Types & Tags Qualifiés</span>
-                            <span class="pillar-desc">Sémantique certifiée SunPM & Modbus</span>
-                            <span class="pillar-badge">CONFORME</span>
+                            <span class="pillar-title">5. Qualified Types & Tags</span>
+                            <span class="pillar-desc">Certified SunPM & Modbus semantics</span>
+                            <span class="pillar-badge">COMPLIANT</span>
                         </div>
                     </div>
                 </div>
@@ -871,54 +863,54 @@
                 <!-- KPI Cards Grid -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px;">
                     <div style="background: var(--bg-surface, #1e293b); border: 1px solid var(--border); border-radius: 8px; padding: 14px;">
-                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Fichiers Scannés</div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Scanned Files</div>
                         <div id="kpiScannedFiles" style="font-size: 1.5rem; font-weight: 700; color: #fff;">-</div>
                     </div>
                     <div style="background: var(--bg-surface, #1e293b); border: 1px solid var(--border); border-radius: 8px; padding: 14px;">
-                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Total Doublons</div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Total Duplicates</div>
                         <div id="kpiTotalDuplicates" style="font-size: 1.5rem; font-weight: 700; color: var(--accent);">-</div>
                     </div>
                     <div style="background: var(--bg-surface, #1e293b); border: 1px solid var(--border); border-radius: 8px; padding: 14px;">
-                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Conflits OTH vs Typé</div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">OTH vs Typed Conflicts</div>
                         <div id="kpiCategoryConflicts" style="font-size: 1.5rem; font-weight: 700; color: #ef4444;">-</div>
                     </div>
                     <div style="background: var(--bg-surface, #1e293b); border: 1px solid var(--border); border-radius: 8px; padding: 14px;">
-                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Alias & Synonymes</div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Aliases & Synonyms</div>
                         <div id="kpiAliasSynonyms" style="font-size: 1.5rem; font-weight: 700; color: #f59e0b;">-</div>
                     </div>
                     <div style="background: var(--bg-surface, #1e293b); border: 1px solid var(--border); border-radius: 8px; padding: 14px;">
-                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Familles Matérielles</div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Hardware Families</div>
                         <div id="kpiHardwareFamilies" style="font-size: 1.5rem; font-weight: 700; color: #10b981;">-</div>
                     </div>
                 </div>
 
                 <!-- Filter Input -->
                 <div class="search-bar" style="margin-bottom: 20px;">
-                    <input type="text" id="dupSearchInput" placeholder="🔍 Filtrer les doublons par fichier, modèle ou fabricant...">
+                    <input type="text" id="dupSearchInput" placeholder="🔍 Filter duplicates by file, model, or manufacturer...">
                 </div>
 
                 <!-- SECTION 1: Category Conflicts (OTH vs Typed) -->
                 <div style="margin-bottom: 24px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                         <h3 style="font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                            <span>⚠️ 1. Conflits de Catégorie (Classification OTH_ vs Fichier Typé)</span>
-                            <span id="badgeCategoryConflictCount" class="badge badge-error">0 conflit</span>
+                            <span>⚠️ 1. Category Conflicts (OTH_ Classification vs Typed File)</span>
+                            <span id="badgeCategoryConflictCount" class="badge badge-error">0 conflicts</span>
                         </h3>
                     </div>
-                    <p class="subtitle" style="margin-bottom: 10px;">Ces fichiers <code>OTH_</code> sont des doublons stricts d'équipements déjà qualifiés en tant qu'onduleurs (<code>INV_</code>), batteries (<code>BAT_</code>), compteurs (<code>MET_</code>) ou capteurs (<code>SEN_</code>).</p>
+                    <p class="subtitle" style="margin-bottom: 10px;">These <code>OTH_</code> files are strict duplicates of equipment already qualified as inverters (<code>INV_</code>), batteries (<code>BAT_</code>), meters (<code>MET_</code>), or sensors (<code>SEN_</code>).</p>
                     <div class="table-wrapper" style="max-height: 280px;">
                         <table id="categoryConflictTable">
                             <thead>
                                 <tr>
-                                    <th>Fichier Canonique Qualifié</th>
-                                    <th>Doublon Redondant OTH_</th>
-                                    <th>Modèle Matériel</th>
-                                    <th>Registres</th>
-                                    <th>Recommandation</th>
+                                    <th>Qualified Canonical File</th>
+                                    <th>Redundant OTH_ Duplicate</th>
+                                    <th>Hardware Model</th>
+                                    <th>Registers</th>
+                                    <th>Recommendation</th>
                                 </tr>
                             </thead>
                             <tbody id="categoryConflictBody">
-                                <tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">Aucun conflit détecté. Cliquez sur 'Scanner'.</td></tr>
+                                <tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">No conflicts detected. Click 'Scan Duplicates'.</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -928,24 +920,24 @@
                 <div style="margin-bottom: 24px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                         <h3 style="font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                            <span>🏷️ 2. Alias Matériels & Variantes Synonymes de Nommage</span>
-                            <span id="badgeAliasCount" class="badge badge-warning">0 alias</span>
+                            <span>🏷️ 2. Hardware Aliases & Synonym Naming Variants</span>
+                            <span id="badgeAliasCount" class="badge badge-warning">0 aliases</span>
                         </h3>
                     </div>
-                    <p class="subtitle" style="margin-bottom: 10px;">Fichiers représentant le même équipement sous des désignations alternatives (tirets, casse, variantes de référence).</p>
+                    <p class="subtitle" style="margin-bottom: 10px;">Files representing the same equipment under alternative designations (hyphens, casing, reference variants).</p>
                     <div class="table-wrapper" style="max-height: 280px;">
                         <table id="aliasTable">
                             <thead>
                                 <tr>
-                                    <th>Fichier Canonique</th>
-                                    <th>Alias / Synonyme</th>
-                                    <th>Description / Gamme</th>
-                                    <th>Registres</th>
-                                    <th>Recommandation</th>
+                                    <th>Canonical File</th>
+                                    <th>Alias / Synonym</th>
+                                    <th>Description / Family</th>
+                                    <th>Registers</th>
+                                    <th>Recommendation</th>
                                 </tr>
                             </thead>
                             <tbody id="aliasBody">
-                                <tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">Aucun alias détecté.</td></tr>
+                                <tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">No aliases detected.</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -955,24 +947,24 @@
                 <div style="margin-bottom: 16px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                         <h3 style="font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                            <span>🏭 3. Familles Matérielles (Modèles partageant les mêmes Registres)</span>
-                            <span id="badgeHardwareFamilyCount" class="badge badge-success">0 famille</span>
+                            <span>🏭 3. Hardware Families (Models sharing identical Register Maps)</span>
+                            <span id="badgeHardwareFamilyCount" class="badge badge-success">0 families</span>
                         </h3>
                     </div>
-                    <p class="subtitle" style="margin-bottom: 10px;">Gammes de produits constructeur (ex: onduleurs multi-puissance) partageant une table de registres Modbus standardisée.</p>
+                    <p class="subtitle" style="margin-bottom: 10px;">Manufacturer product series (e.g., multi-power inverters) sharing a standardized Modbus register map.</p>
                     <div class="table-wrapper" style="max-height: 320px;">
                         <table id="hardwareFamilyTable">
                             <thead>
                                 <tr>
-                                    <th>Fichier de Référence</th>
-                                    <th>Modèles Inclus dans la Gamme</th>
-                                    <th>Fichiers Associés</th>
-                                    <th>Registres</th>
-                                    <th>Statut</th>
+                                    <th>Reference File</th>
+                                    <th>Models Included in Family</th>
+                                    <th>Associated Files</th>
+                                    <th>Registers</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody id="hardwareFamilyBody">
-                                <tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">Aucune famille répertoriée.</td></tr>
+                                <tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">No families recorded.</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -988,49 +980,49 @@
         <div class="modal-dialog">
             <div class="modal-header">
                 <h3 id="restoreModalTitle" style="margin: 0; font-size: 1.15rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                    <span>🔄 Restaurer les Définitions</span>
+                    <span>🔄 Restore Definitions</span>
                 </h3>
-                <button id="closeRestoreModalBtn" class="btn-text" style="font-size: 1.2rem; line-height: 1;" title="Fermer">✕</button>
+                <button id="closeRestoreModalBtn" class="btn-text" style="font-size: 1.2rem; line-height: 1;" title="Close">✕</button>
             </div>
             <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
                 <div style="background: rgba(2, 132, 199, 0.1); border: 1px solid rgba(2, 132, 199, 0.3); border-radius: 6px; padding: 12px;">
-                    <div style="font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 4px;">Informations du Snapshot :</div>
+                    <div style="font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 4px;">Snapshot Information:</div>
                     <div style="font-size: 0.85rem; color: #fff;">
-                        <div><strong>Commit :</strong> <code id="modalCommitId"></code></div>
-                        <div><strong>Auteur :</strong> <span id="modalAuthor"></span></div>
-                        <div><strong>Date :</strong> <span id="modalTimestamp"></span></div>
-                        <div><strong>Message :</strong> <em id="modalMessage"></em></div>
+                        <div><strong>Commit:</strong> <code id="modalCommitId"></code></div>
+                        <div><strong>Author:</strong> <span id="modalAuthor"></span></div>
+                        <div><strong>Date:</strong> <span id="modalTimestamp"></span></div>
+                        <div><strong>Message:</strong> <em id="modalMessage"></em></div>
                     </div>
                 </div>
 
                 <div>
-                    <label for="restoreTargetDir" style="display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 4px;">Répertoire de Destination :</label>
+                    <label for="restoreTargetDir" style="display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 4px;">Destination Directory:</label>
                     <input type="text" id="restoreTargetDir" value="production" style="width: 100%; box-sizing: border-box; background: var(--bg-surface); border: 1px solid var(--border); color: #fff; padding: 8px; border-radius: 4px; font-size: 0.85rem;">
                 </div>
 
                 <div>
-                    <label for="restoreSpecificFile" style="display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 4px;">Fichier spécifique (Optionnel — laisser vide pour tous les fichiers) :</label>
-                    <input type="text" id="restoreSpecificFile" placeholder="ex: INV_Huawei_SUN2000.csv" style="width: 100%; box-sizing: border-box; background: var(--bg-surface); border: 1px solid var(--border); color: #fff; padding: 8px; border-radius: 4px; font-size: 0.85rem;">
+                    <label for="restoreSpecificFile" style="display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 4px;">Specific File (Optional — leave empty for all files):</label>
+                    <input type="text" id="restoreSpecificFile" placeholder="e.g. INV_Huawei_SUN2000.csv" style="width: 100%; box-sizing: border-box; background: var(--bg-surface); border: 1px solid var(--border); color: #fff; padding: 8px; border-radius: 4px; font-size: 0.85rem;">
                 </div>
 
                 <!-- Dry-Run Preview Area -->
                 <div id="restorePreviewArea" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; padding: 12px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                        <span style="font-weight: 600; font-size: 0.85rem;">Aperçu Dry-Run :</span>
-                        <span id="restorePreviewCountBadge" class="badge badge-info">0 fichiers</span>
+                        <span style="font-weight: 600; font-size: 0.85rem;">Dry-Run Preview:</span>
+                        <span id="restorePreviewCountBadge" class="badge badge-info">0 files</span>
                     </div>
                     <div id="restorePreviewList" style="max-height: 120px; overflow-y: auto; font-family: monospace; font-size: 0.75rem; color: var(--text-secondary);">
-                        Chargement de l'aperçu...
+                        Loading preview...
                     </div>
                 </div>
 
                 <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 10px; font-size: 0.8rem; color: #fbbf24;">
-                    ⚠️ Attention : Cette opération va restaurer les fichiers de ce commit dans le répertoire cible.
+                    ⚠️ Notice: This operation will restore files from this commit into the target directory.
                 </div>
             </div>
             <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 8px; padding-top: 14px; border-top: 1px solid var(--border);">
-                <button id="cancelRestoreBtn" class="btn btn-secondary">Annuler</button>
-                <button id="confirmRestoreBtn" class="btn btn-primary">Confirmer la Restauration</button>
+                <button id="cancelRestoreBtn" class="btn btn-secondary">Cancel</button>
+                <button id="confirmRestoreBtn" class="btn btn-primary">Confirm Restore</button>
             </div>
         </div>
     </div>

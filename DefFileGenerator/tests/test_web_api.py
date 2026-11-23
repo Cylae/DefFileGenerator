@@ -28,7 +28,7 @@ class TestWebApiAndStaticAssets(unittest.TestCase):
 
         self.assertIn('id="tabBtnDuplicates"', content)
         self.assertIn('data-tab="tab-duplicates"', content)
-        self.assertIn("Doublons & Qualité", content)
+        self.assertIn("Duplicates & Quality", content)
 
         # Tab Panes
         self.assertIn('id="tab-versions"', content)
@@ -41,11 +41,11 @@ class TestWebApiAndStaticAssets(unittest.TestCase):
         self.assertIn('id="restorePreviewList"', content)
 
         # 5 Pillars cards
-        self.assertIn("1. UTF-8 sans BOM", content)
-        self.assertIn("2. Terminaisons CRLF", content)
-        self.assertIn("3. 11 Colonnes Strictes", content)
-        self.assertIn("4. Index Séquentiel", content)
-        self.assertIn("5. Types & Tags Qualifiés", content)
+        self.assertIn("1. UTF-8 without BOM", content)
+        self.assertIn("2. CRLF Line Endings", content)
+        self.assertIn("3. Strict 11 Columns", content)
+        self.assertIn("4. Sequential Index", content)
+        self.assertIn("5. Qualified Types & Tags", content)
 
         # Duplicate section tables
         self.assertIn('id="categoryConflictTable"', content)

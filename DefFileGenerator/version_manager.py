@@ -67,23 +67,25 @@ class DefinitionVersionControl:
 
     DEFAULT_STORE_DIR = "definitions_history"
 
-    HISTORICAL_NORMALIZED_BLOBS: frozenset[str] = frozenset({
-        "2b3331bacf41d2c9ecd94e3f5c1d860cf07783688b51c07b0191cccee6e4cba7",
-        "36dd3b9c5c1c08f877b97bbb66b0b65c8cc69b8644f8276c4dc19e59b77e549c",
-        "562bcbfae022d2f9ce086c82c916327ae2010be8ab56e1a28cd3110df3307514",
-        "5db48678d2f1f6d9f9333bd33f1da64c1b0badcedf1717331f60a8f3d09af652",
-        "6170f05116f0b28ba06e223754241b0ce1dea8b39369633311df51fc8c3e386a",
-        "65938f8cc52f6c5197ab41c7e7fef05ecbd69ff151b211f3d225be0372d5ec94",
-        "73e477a4cc0b942844c7b8fb736778f5b2233ab0d4112850ed92f1b622cdc66d",
-        "771b856dbafcc4849a73907271350c509d2a7e46b633eab24dec3fe50508e7c3",
-        "80fd025acf2babbd5952e75da4e17de049532dc69b7e2dc97d7e31854ba24f33",
-        "858167ff29231b6367f0cda601372c10e560ff20198f1ef5d2ba406573f698d8",
-        "bb707ed42fe69c35d1f67697b24f9054e24b3386e72ac957f71a34a312d25693",
-        "c7bd637c96b98fd12aee9bbf464988c516e32d37425a35acc103644aa7c0876f",
-        "d9309c17bc22ab0ef9a2b4623add2d7486b02e86d2911d329ac307fe838daa06",
-        "dc7f04a9ff7884ff56dca680444c60c5d2707131e1cddcf5936257bcfe59a1ca",
-        "e0b4ed02b1cf5ccc597289c814bb9b7f60d11d5d295662706282d03f35df5bb5",
-    })
+    HISTORICAL_NORMALIZED_BLOBS: frozenset[str] = frozenset(
+        {
+            "2b3331bacf41d2c9ecd94e3f5c1d860cf07783688b51c07b0191cccee6e4cba7",
+            "36dd3b9c5c1c08f877b97bbb66b0b65c8cc69b8644f8276c4dc19e59b77e549c",
+            "562bcbfae022d2f9ce086c82c916327ae2010be8ab56e1a28cd3110df3307514",
+            "5db48678d2f1f6d9f9333bd33f1da64c1b0badcedf1717331f60a8f3d09af652",
+            "6170f05116f0b28ba06e223754241b0ce1dea8b39369633311df51fc8c3e386a",
+            "65938f8cc52f6c5197ab41c7e7fef05ecbd69ff151b211f3d225be0372d5ec94",
+            "73e477a4cc0b942844c7b8fb736778f5b2233ab0d4112850ed92f1b622cdc66d",
+            "771b856dbafcc4849a73907271350c509d2a7e46b633eab24dec3fe50508e7c3",
+            "80fd025acf2babbd5952e75da4e17de049532dc69b7e2dc97d7e31854ba24f33",
+            "858167ff29231b6367f0cda601372c10e560ff20198f1ef5d2ba406573f698d8",
+            "bb707ed42fe69c35d1f67697b24f9054e24b3386e72ac957f71a34a312d25693",
+            "c7bd637c96b98fd12aee9bbf464988c516e32d37425a35acc103644aa7c0876f",
+            "d9309c17bc22ab0ef9a2b4623add2d7486b02e86d2911d329ac307fe838daa06",
+            "dc7f04a9ff7884ff56dca680444c60c5d2707131e1cddcf5936257bcfe59a1ca",
+            "e0b4ed02b1cf5ccc597289c814bb9b7f60d11d5d295662706282d03f35df5bb5",
+        }
+    )
 
     def __init__(
         self, repo_root: Path | str | None = None, store_dir: Path | str | None = None
