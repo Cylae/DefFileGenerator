@@ -58,10 +58,7 @@ class TestPillar1EncodingUtf8WithoutBom:
 
     def test_verify_file_pillars_rejects_bom(self, tmp_path: Path):
         bom_file = tmp_path / "INV_Test_BOM.csv"
-        content = (
-            "Modbus;Inverter;Test;Model;;;;;;;\r\n"
-            "1;3;1000;U16;;Power;P_AC;1.0;0.0;W;4\r\n"
-        )
+        content = "Modbus;Inverter;Test;Model;;;;;;;\r\n1;3;1000;U16;;Power;P_AC;1.0;0.0;W;4\r\n"
         bom_file.write_bytes(b"\xef\xbb\xbf" + content.encode("utf-8"))
         is_valid, issues = verify_file_pillars(bom_file)
         assert is_valid is False
@@ -157,8 +154,7 @@ class TestPillar2EndOfLineCrlf:
     def test_verify_file_pillars_strict_crlf_mode(self, tmp_path: Path):
         crlf_file = tmp_path / "INV_Test_GoodCRLF.csv"
         crlf_file.write_bytes(
-            b"Modbus;Inverter;Test;Model;;;;;;;\r\n"
-            b"1;3;1000;U16;;Power;P_AC;1.0;0.0;W;4\r\n"
+            b"Modbus;Inverter;Test;Model;;;;;;;\r\n1;3;1000;U16;;Power;P_AC;1.0;0.0;W;4\r\n"
         )
         is_valid, issues = verify_file_pillars(crlf_file, strict_crlf=True)
         assert is_valid is True
@@ -166,8 +162,7 @@ class TestPillar2EndOfLineCrlf:
 
         lf_file = tmp_path / "INV_Test_BadLF.csv"
         lf_file.write_bytes(
-            b"Modbus;Inverter;Test;Model;;;;;;;\n"
-            b"1;3;1000;U16;;Power;P_AC;1.0;0.0;W;4\n"
+            b"Modbus;Inverter;Test;Model;;;;;;;\n1;3;1000;U16;;Power;P_AC;1.0;0.0;W;4\n"
         )
         is_valid_lf, issues_lf = verify_file_pillars(lf_file, strict_crlf=True)
         assert is_valid_lf is False
@@ -240,8 +235,7 @@ class TestPillar3StructureElevenColumns:
         # 10 columns instead of 11
         file_10 = tmp_path / "INV_Test_10cols.csv"
         file_10.write_text(
-            "Modbus;Inverter;Vendor;Model;;;;;;\r\n"
-            "1;3;1000;U16;;Power;P_AC;1.0;0.0;W\r\n",
+            "Modbus;Inverter;Vendor;Model;;;;;;\r\n1;3;1000;U16;;Power;P_AC;1.0;0.0;W\r\n",
             encoding="utf-8",
         )
         is_valid, issues = verify_file_pillars(file_10)

@@ -171,7 +171,9 @@ class BatchModbusParser:
                         summary["processed"] += 1
                         summary["failures"] += 1
                         summary["errors"].append({"name": fname, "error": str(exc)})
-                        summary["files"].append({"name": fname, "status": "failed", "error": str(exc)})
+                        summary["files"].append(
+                            {"name": fname, "status": "failed", "error": str(exc)}
+                        )
         else:
             for t in tasks:
                 fname = t["file_path"].name

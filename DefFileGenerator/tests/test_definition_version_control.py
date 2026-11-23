@@ -50,9 +50,25 @@ class TestDefinitionVersionControl(unittest.TestCase):
         ]
         if registers:
             for idx, (fc, addr, dtype, tag) in enumerate(registers, start=1):
-                rows.append([str(idx), fc, addr, dtype, "0", f"Reg_{addr}", tag, "1.000000", "0.000000", "W", "4"])
+                rows.append(
+                    [
+                        str(idx),
+                        fc,
+                        addr,
+                        dtype,
+                        "0",
+                        f"Reg_{addr}",
+                        tag,
+                        "1.000000",
+                        "0.000000",
+                        "W",
+                        "4",
+                    ]
+                )
         else:
-            rows.append(["1", "3", "100", "U16", "0", "AC Power", "P_AC", "1.000000", "0.000000", "W", "4"])
+            rows.append(
+                ["1", "3", "100", "U16", "0", "AC Power", "P_AC", "1.000000", "0.000000", "W", "4"]
+            )
 
         with open(p, "w", encoding="utf-8", newline="") as fp:
             writer = csv.writer(fp, delimiter=";")
@@ -188,47 +204,55 @@ class TestDefinitionVersionControl(unittest.TestCase):
         self._create_sample_file("INV_CLI.csv")
 
         # CLI commit
-        cli_main([
-            "commit",
-            "-m",
-            "CLI initial commit",
-            "--path",
-            str(self.work_dir),
-            "--store-dir",
-            str(self.store_dir),
-            "-t",
-            "cli-tag",
-        ])
+        cli_main(
+            [
+                "commit",
+                "-m",
+                "CLI initial commit",
+                "--path",
+                str(self.work_dir),
+                "--store-dir",
+                str(self.store_dir),
+                "-t",
+                "cli-tag",
+            ]
+        )
 
         head = self.vc.get_head()
         self.assertIsNotNone(head)
         assert head is not None
 
         # CLI history
-        cli_main([
-            "history",
-            "--store-dir",
-            str(self.store_dir),
-        ])
+        cli_main(
+            [
+                "history",
+                "--store-dir",
+                str(self.store_dir),
+            ]
+        )
 
         # CLI diff
-        cli_main([
-            "diff",
-            head,
-            "--store-dir",
-            str(self.store_dir),
-        ])
+        cli_main(
+            [
+                "diff",
+                head,
+                "--store-dir",
+                str(self.store_dir),
+            ]
+        )
 
         # CLI restore dry-run
-        cli_main([
-            "restore",
-            head,
-            "--dest",
-            str(self.work_dir),
-            "--dry-run",
-            "--store-dir",
-            str(self.store_dir),
-        ])
+        cli_main(
+            [
+                "restore",
+                head,
+                "--dest",
+                str(self.work_dir),
+                "--dry-run",
+                "--store-dir",
+                str(self.store_dir),
+            ]
+        )
 
 
 if __name__ == "__main__":

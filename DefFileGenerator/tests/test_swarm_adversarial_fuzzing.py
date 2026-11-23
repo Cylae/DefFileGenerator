@@ -274,7 +274,9 @@ class TestVersionControlPathTraversalSecurity(unittest.TestCase):
         for bad_restore in malicious_restores:
             with self.subTest(restore=bad_restore):
                 with self.assertRaises((ValueError, FileNotFoundError)):
-                    self.vc.restore(c.commit_id, target_dir=self.root / "out", file_name=bad_restore)
+                    self.vc.restore(
+                        c.commit_id, target_dir=self.root / "out", file_name=bad_restore
+                    )
 
     def test_tag_name_path_traversal_rejection(self) -> None:
         """
@@ -349,7 +351,9 @@ class TestVersionControlUnicodeAndMalformedCSV(unittest.TestCase):
         )
         p.write_text(content, encoding="utf-8")
 
-        commit = self.vc.commit(self.work_dir, message="Commit multilingual definition", author="Éléonore François")
+        commit = self.vc.commit(
+            self.work_dir, message="Commit multilingual definition", author="Éléonore François"
+        )
         self.assertEqual(commit.files_count, 1)
         self.assertEqual(commit.total_registers, 3)
         self.assertEqual(commit.total_tags, 3)
@@ -381,7 +385,7 @@ class TestVersionControlUnicodeAndMalformedCSV(unittest.TestCase):
             "short_header.csv": b"Modbus\n",
             "truncated_cols.csv": b"Modbus;INV;Vendor;Model;1\n1;3;100\n2;3;101;U16\n",
             "overflow_cols.csv": b"Modbus;INV;Vendor;Model;1;;;;;;;;;;;;;;;;;;;;;\n"
-                                 b"1;3;100;U16;0;Reg;Tag;1;0;W;4;extra1;extra2;extra3\n",
+            b"1;3;100;U16;0;Reg;Tag;1;0;W;4;extra1;extra2;extra3\n",
             "binary_with_null.csv": b"Modbus;INV;Vendor;Model;1\n\x00\x01\x02\xff;3;100\n",
         }
 
@@ -432,9 +436,21 @@ class TestVersionControlSemanticDiffStress(unittest.TestCase):
         rows_v1 = [header]
         for addr in range(1000, 11000):
             idx = addr - 999
-            rows_v1.append([
-                str(idx), "3", str(addr), "U16", "0", f"Register_{addr}", f"TAG_{addr}", "1.000000", "0.000000", "W", "4"
-            ])
+            rows_v1.append(
+                [
+                    str(idx),
+                    "3",
+                    str(addr),
+                    "U16",
+                    "0",
+                    f"Register_{addr}",
+                    f"TAG_{addr}",
+                    "1.000000",
+                    "0.000000",
+                    "W",
+                    "4",
+                ]
+            )
 
         with open(file_path, "w", encoding="utf-8", newline="") as fp:
             writer = csv.writer(fp, delimiter=";")
@@ -448,27 +464,75 @@ class TestVersionControlSemanticDiffStress(unittest.TestCase):
         # 2. Modify 3,000 registers (addr 6500 to 9499) with modified data type and tag
         # 3. Remove 1,500 registers (addr 9500 to 10999) - omitted from rows_v2
         # 4. Add 2,000 new registers (addr 20000 to 21999)
-        header_v2 = ["Modbus", "Inverter", "GiantMfg", "MegaInverter_V2", "1", "", "", "", "", "", ""]
+        header_v2 = [
+            "Modbus",
+            "Inverter",
+            "GiantMfg",
+            "MegaInverter_V2",
+            "1",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+        ]
         rows_v2 = [header_v2]
 
         cur_idx = 1
         for addr in range(1000, 6500):
-            rows_v2.append([
-                str(cur_idx), "3", str(addr), "U16", "0", f"Register_{addr}", f"TAG_{addr}", "1.000000", "0.000000", "W", "4"
-            ])
+            rows_v2.append(
+                [
+                    str(cur_idx),
+                    "3",
+                    str(addr),
+                    "U16",
+                    "0",
+                    f"Register_{addr}",
+                    f"TAG_{addr}",
+                    "1.000000",
+                    "0.000000",
+                    "W",
+                    "4",
+                ]
+            )
             cur_idx += 1
 
         for addr in range(6500, 9500):
             # Change U16 -> I32, and alter tag
-            rows_v2.append([
-                str(cur_idx), "3", str(addr), "I32", "0", f"Register_{addr}", f"TAG_{addr}_MOD", "0.100000", "0.000000", "kW", "4"
-            ])
+            rows_v2.append(
+                [
+                    str(cur_idx),
+                    "3",
+                    str(addr),
+                    "I32",
+                    "0",
+                    f"Register_{addr}",
+                    f"TAG_{addr}_MOD",
+                    "0.100000",
+                    "0.000000",
+                    "kW",
+                    "4",
+                ]
+            )
             cur_idx += 1
 
         for addr in range(20000, 22000):
-            rows_v2.append([
-                str(cur_idx), "3", str(addr), "U32", "0", f"NewReg_{addr}", f"NEW_TAG_{addr}", "1.000000", "0.000000", "V", "4"
-            ])
+            rows_v2.append(
+                [
+                    str(cur_idx),
+                    "3",
+                    str(addr),
+                    "U32",
+                    "0",
+                    f"NewReg_{addr}",
+                    f"NEW_TAG_{addr}",
+                    "1.000000",
+                    "0.000000",
+                    "V",
+                    "4",
+                ]
+            )
             cur_idx += 1
 
         with open(file_path, "w", encoding="utf-8", newline="") as fp:
@@ -553,7 +617,7 @@ class TestVersionControlConcurrencyAndLockSafety(unittest.TestCase):
             tdir.mkdir(parents=True, exist_ok=True)
             fname = f"INV_Worker_{i:02d}.csv"
             (tdir / fname).write_text(
-                f"Modbus;INV;Vendor;WorkerModel_{i};1\n1;3;{i*100};U16;0;Reg_{i};TAG_{i};1;0;W;4\n",
+                f"Modbus;INV;Vendor;WorkerModel_{i};1\n1;3;{i * 100};U16;0;Reg_{i};TAG_{i};1;0;W;4\n",
                 encoding="utf-8",
             )
             thread_dirs.append(tdir)
@@ -711,8 +775,12 @@ class TestDuplicateDetectorAdversarialFuzzing(unittest.TestCase):
 
         # Case 2: Distinct names whose stems both happen to contain stripped tokens ("generic", "series")
         # but are distinct models:
-        self._write_file("INV_Generic.csv", f"Modbus;INV;Brand;Generic;1\n{body}2;3;11;U16;0;R2;T2;1;0;;4\n")
-        self._write_file("INV_Series.csv", f"Modbus;INV;Brand;Series;1\n{body}2;3;11;U16;0;R2;T2;1;0;;4\n")
+        self._write_file(
+            "INV_Generic.csv", f"Modbus;INV;Brand;Generic;1\n{body}2;3;11;U16;0;R2;T2;1;0;;4\n"
+        )
+        self._write_file(
+            "INV_Series.csv", f"Modbus;INV;Brand;Series;1\n{body}2;3;11;U16;0;R2;T2;1;0;;4\n"
+        )
 
         detector = DuplicateDetector(self.work_dir)
         report = detector.scan()
@@ -809,7 +877,9 @@ class TestApolloInvariantsEnforcement(unittest.TestCase):
         target = self.root / "restored"
         self.vc.restore(c.commit_id, target_dir=target)
         restore_tmps = list(target.rglob("*.restore_tmp"))
-        self.assertEqual(len(restore_tmps), 0, f"Found leftover restore temporary files: {restore_tmps}")
+        self.assertEqual(
+            len(restore_tmps), 0, f"Found leftover restore temporary files: {restore_tmps}"
+        )
 
 
 if __name__ == "__main__":

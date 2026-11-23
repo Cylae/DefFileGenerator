@@ -3405,6 +3405,7 @@ def build_goodwe_smt_series_rows() -> list[dict[str, Any]]:
     Delegates to the authoritative GoodWe definitions engine.
     """
     from DefFileGenerator.goodwe_definitions_engine import build_goodwe_smt_mt_series_rows
+
     return build_goodwe_smt_mt_series_rows()
 
 
@@ -3414,8 +3415,8 @@ def build_goodwe_et_series_rows() -> list[dict[str, Any]]:
     Delegates to the authoritative GoodWe definitions engine.
     """
     from DefFileGenerator.goodwe_definitions_engine import build_goodwe_et_eh_hybrid_rows
-    return build_goodwe_et_eh_hybrid_rows()
 
+    return build_goodwe_et_eh_hybrid_rows()
 
 
 # ==============================================================================

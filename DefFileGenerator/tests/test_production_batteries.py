@@ -87,7 +87,9 @@ class TestProductionBatteriesAndSensorsSuite:
         is_valid, issues = verify_file_pillars(file_path)
         assert is_valid, f"{file_path.name} failed 5 pillars certification: {issues}"
 
-    @pytest.mark.parametrize("file_path", get_battery_files() + get_sensor_files(), ids=lambda p: p.name)
+    @pytest.mark.parametrize(
+        "file_path", get_battery_files() + get_sensor_files(), ids=lambda p: p.name
+    )
     def test_csv_structure_and_monotonic_indices(self, file_path: Path) -> None:
         """Verify 11 columns, monotonic 1..N indices, addressing, and scale factors."""
         with open(file_path, encoding="utf-8") as fp:
@@ -96,11 +98,15 @@ class TestProductionBatteriesAndSensorsSuite:
         assert len(reader) >= 2, f"{file_path.name}: file must have header + at least 1 row"
         header = reader[0]
         assert len(header) == 11, f"{file_path.name}: header length {len(header)} != 11"
-        assert header[0].strip().lower() == "modbus", f"{file_path.name}: protocol header must be 'Modbus'"
+        assert header[0].strip().lower() == "modbus", (
+            f"{file_path.name}: protocol header must be 'Modbus'"
+        )
 
         for idx, row in enumerate(reader[1:], 1):
             assert len(row) == 11, f"{file_path.name} L{idx}: column count {len(row)} != 11"
-            assert row[0].strip() == str(idx), f"{file_path.name} L{idx}: index mismatch {row[0]} != {idx}"
+            assert row[0].strip() == str(idx), (
+                f"{file_path.name} L{idx}: index mismatch {row[0]} != {idx}"
+            )
 
             fc = row[1].strip()
             assert fc in VALID_FUNCTION_CODES, f"{file_path.name} L{idx}: invalid fc {fc}"
@@ -109,19 +115,29 @@ class TestProductionBatteriesAndSensorsSuite:
             assert addr_str, f"{file_path.name} L{idx}: empty register address"
             dtype = row[3].strip().upper()
             if dtype == "STRING":
-                assert "_" in addr_str, f"{file_path.name} L{idx}: STRING missing length: {addr_str}"
+                assert "_" in addr_str, (
+                    f"{file_path.name} L{idx}: STRING missing length: {addr_str}"
+                )
             else:
                 base_addr = addr_str.split("_")[0]
-                assert base_addr.isdigit(), f"{file_path.name} L{idx}: non-numeric address {addr_str}"
+                assert base_addr.isdigit(), (
+                    f"{file_path.name} L{idx}: non-numeric address {addr_str}"
+                )
                 iaddr = int(base_addr)
-                assert 0 <= iaddr <= 65535, f"{file_path.name} L{idx}: address out of range: {iaddr}"
+                assert 0 <= iaddr <= 65535, (
+                    f"{file_path.name} L{idx}: address out of range: {iaddr}"
+                )
 
             coef_a_str = row[7].strip()
             coef_b_str = row[8].strip()
             if coef_a_str:
-                assert math.isfinite(float(coef_a_str)), f"{file_path.name} L{idx}: coef_a not finite"
+                assert math.isfinite(float(coef_a_str)), (
+                    f"{file_path.name} L{idx}: coef_a not finite"
+                )
             if coef_b_str:
-                assert math.isfinite(float(coef_b_str)), f"{file_path.name} L{idx}: coef_b not finite"
+                assert math.isfinite(float(coef_b_str)), (
+                    f"{file_path.name} L{idx}: coef_b not finite"
+                )
 
             action = row[10].strip()
             assert action in VALID_ACTIONS, f"{file_path.name} L{idx}: invalid action {action}"
@@ -160,11 +176,33 @@ class TestProductionBatteriesAndSensorsSuite:
             assert len(rows) >= 5, f"{f.name}: suspiciously few registers ({len(rows)})"
             tags = {r[6].strip() for r in rows if r[6].strip()}
             # Check presence of battery state metrics (standard SunPM tags, BMS metrics, or SunSpec DER 700-series storage registers)
-            has_bat_metrics = (
-                any(t in tags for t in ("SOC", "SOH", "U_DC", "I_DC", "P_DC", "TEMP_BAT", "TEMP_CELL", "PRESSURE"))
-                or any(any(kw in r[5].lower() for kw in ("soc", "soh", "cell", "voltage", "current", "battery", "bat", "bms", "stack", "temperature", "storage", "cha", "discha")) for r in rows)
+            has_bat_metrics = any(
+                t in tags
+                for t in ("SOC", "SOH", "U_DC", "I_DC", "P_DC", "TEMP_BAT", "TEMP_CELL", "PRESSURE")
+            ) or any(
+                any(
+                    kw in r[5].lower()
+                    for kw in (
+                        "soc",
+                        "soh",
+                        "cell",
+                        "voltage",
+                        "current",
+                        "battery",
+                        "bat",
+                        "bms",
+                        "stack",
+                        "temperature",
+                        "storage",
+                        "cha",
+                        "discha",
+                    )
+                )
+                for r in rows
             )
-            assert has_bat_metrics or "OTHER" in f.name, f"{f.name}: missing key battery telemetry tags"
+            assert has_bat_metrics or "OTHER" in f.name, (
+                f"{f.name}: missing key battery telemetry tags"
+            )
 
     def test_sl_energy_bess_ecosystem(self) -> None:
         """Deep domain audit of SL Energy battery and generator definitions."""
@@ -201,7 +239,9 @@ class TestProductionBatteriesAndSensorsSuite:
     def test_hukseflux_sensor_ecosystem(self) -> None:
         """Deep domain audit of Hukseflux pyranometers (SR05, SR20, SR30)."""
         hukseflux_files = sorted(PROD_DIR.glob("SEN_Hukseflux_*.csv"))
-        assert len(hukseflux_files) >= 4, f"Expected >= 4 Hukseflux files, found {len(hukseflux_files)}"
+        assert len(hukseflux_files) >= 4, (
+            f"Expected >= 4 Hukseflux files, found {len(hukseflux_files)}"
+        )
 
         for f in hukseflux_files:
             with open(f, encoding="utf-8") as fp:
@@ -218,7 +258,9 @@ class TestProductionBatteriesAndSensorsSuite:
     def test_ingenieurburo_sensor_ecosystem(self) -> None:
         """Deep domain audit of IngenieurBuro sensors."""
         ib_files = sorted(PROD_DIR.glob("SEN_IngenieurBuro_*.csv"))
-        assert len(ib_files) >= 6, f"Expected >= 6 IngenieurBuro sensor files, found {len(ib_files)}"
+        assert len(ib_files) >= 6, (
+            f"Expected >= 6 IngenieurBuro sensor files, found {len(ib_files)}"
+        )
 
         for f in ib_files:
             with open(f, encoding="utf-8") as fp:

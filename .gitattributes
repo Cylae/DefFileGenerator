@@ -1,0 +1,34 @@
+# Auto detect text files and perform LF normalization by default
+* text=auto
+
+# Python, documentation, configuration, and scripts
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.sh text eol=lf
+
+# Windows shell batch files
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# WebdynSunPM definition CSVs strictly require CRLF line endings on physical hardware gateways
+production/*.csv text eol=crlf
+Definitions/*.csv text eol=crlf
+tagged_definitions/*.csv text eol=crlf
+generated_definitions/*.csv text eol=crlf
+MarsRenewable_Definitions/*.csv text eol=crlf
+FoxESS_P3_H3_Pro_Definitions/*.csv text eol=crlf
+X7_Definitions/*.csv text eol=crlf
+
+# Raw telemetry captures in sources/ must preserve exact raw bytes and hashes for MANIFEST.json
+sources/telemetry/** -text
+
+# CAS object store blobs must strictly preserve exact binary bytes without line ending transformation
+definitions_history/blobs/** -text

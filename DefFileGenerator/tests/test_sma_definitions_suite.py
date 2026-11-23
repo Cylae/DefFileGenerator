@@ -73,7 +73,13 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
     def test_all_files_exist_in_all_target_directories(self) -> None:
         """Ensure all 27 files exist in production, Definitions/SMA, Definitions, generated_definitions, and tagged_definitions."""
         for fname in EXPECTED_SMA_FILES:
-            for d in (PRODUCTION_DIR, DEFINITIONS_SMA_DIR, DEFINITIONS_DIR, GENERATED_DIR, TAGGED_DIR):
+            for d in (
+                PRODUCTION_DIR,
+                DEFINITIONS_SMA_DIR,
+                DEFINITIONS_DIR,
+                GENERATED_DIR,
+                TAGGED_DIR,
+            ):
                 fpath = d / fname
                 self.assertTrue(fpath.is_file(), f"Missing {fname} in {d.name}")
 
@@ -203,7 +209,19 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
         3. Classic Sunny Central: 0-based relative holding offsets (0..500).
         4. Valid Webdyn data types and integer/length address formatting.
         """
-        valid_types = {"U16", "I16", "S16", "U32", "I32", "S32", "U64", "I64", "F32", "FLOAT32", "STRING"}
+        valid_types = {
+            "U16",
+            "I16",
+            "S16",
+            "U32",
+            "I32",
+            "S32",
+            "U64",
+            "I64",
+            "F32",
+            "FLOAT32",
+            "STRING",
+        }
 
         for fname in EXPECTED_SMA_FILES:
             fpath = PRODUCTION_DIR / fname
@@ -216,9 +234,15 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
                 tag = r[6].strip()
                 action = r[10].strip()
 
-                self.assertIn(dtype, valid_types, f"Invalid data type '{dtype}' in {fname} row {idx}")
+                self.assertIn(
+                    dtype, valid_types, f"Invalid data type '{dtype}' in {fname} row {idx}"
+                )
                 if tag.startswith("CMD_"):
-                    self.assertIn(action, ("0", "1"), f"Command tag '{tag}' must have action 0 or 1 in {fname} row {idx}")
+                    self.assertIn(
+                        action,
+                        ("0", "1"),
+                        f"Command tag '{tag}' must have action 0 or 1 in {fname} row {idx}",
+                    )
 
                 # Address format check: either integer or integer_length for STRING
                 addr_num = addr.split("_")[0]
@@ -259,8 +283,12 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
                 # Character purity: no duplicate degree signs, no mojibake
                 self.assertNotIn("°°", unit, f"Corrupted unit '{unit}' at row {idx} in {fname}")
                 self.assertNotIn("-¦", unit, f"Corrupted unit '{unit}' at row {idx} in {fname}")
-                self.assertNotIn("MA°", unit, f"Corrupted MAC unit '{unit}' at row {idx} in {fname}")
-                self.assertNotIn("PP°", unit, f"Corrupted PPC unit '{unit}' at row {idx} in {fname}")
+                self.assertNotIn(
+                    "MA°", unit, f"Corrupted MAC unit '{unit}' at row {idx} in {fname}"
+                )
+                self.assertNotIn(
+                    "PP°", unit, f"Corrupted PPC unit '{unit}' at row {idx} in {fname}"
+                )
 
                 # Scale factor conventions for SMA native registers (30000 series)
                 if addr.isdigit() and 30000 <= int(addr) < 40000:

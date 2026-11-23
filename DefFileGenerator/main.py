@@ -782,8 +782,6 @@ def _convert_single_doc(
         return False, doc.name, None, f"Exception: {e}"
 
 
-
-
 def batch_process_file(
     doc: Path | str,
     output_dir: str | Path,
@@ -1083,7 +1081,12 @@ def commit_command(args: argparse.Namespace) -> None:
     if not msg:
         now_str = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
         msg = f"Snapshot of {path} definitions ({now_str})"
-    author = getattr(args, "author", None) or os.environ.get("USERNAME") or os.environ.get("USER") or "System"
+    author = (
+        getattr(args, "author", None)
+        or os.environ.get("USERNAME")
+        or os.environ.get("USER")
+        or "System"
+    )
     tag_arg = getattr(args, "tag", None)
     tags = [t.strip() for t in tag_arg.split(",") if t.strip()] if tag_arg else None
 
@@ -1093,7 +1096,9 @@ def commit_command(args: argparse.Namespace) -> None:
     print(f"     Author   : {commit_res.author}")
     print(f"     Timestamp: {commit_res.timestamp}")
     print(f"     Message  : {commit_res.message}")
-    print(f"     Files    : {commit_res.files_count} files | {commit_res.total_registers} registers")
+    print(
+        f"     Files    : {commit_res.files_count} files | {commit_res.total_registers} registers"
+    )
     print(
         f"     Changes  : +{commit_res.changes_summary.get('added', 0)} added, "
         f"~{commit_res.changes_summary.get('modified', 0)} modified, "
@@ -1157,7 +1162,7 @@ def diff_command(args: argparse.Namespace) -> None:
         return
 
     print("=" * 80)
-    cmp_str = diff_data['commit_b'] or "Parent"
+    cmp_str = diff_data["commit_b"] or "Parent"
     print(f"DEFINITION DIFF: {diff_data['commit_a']} vs {cmp_str}")
     print("=" * 80)
     print(f"Files Added   : {len(diff_data['added_files'])}: {diff_data['added_files'][:10]}")
@@ -1229,6 +1234,10 @@ def duplicates_command(args: argparse.Namespace) -> None:
     print(f"Alias Synonym Clusters      : {len(report.alias_clusters)}")
     print(f"Hardware Family Clusters    : {len(report.exact_body_clusters)}")
     print("=" * 80)
+    if report.exact_hash_clusters:
+        print("\nExact SHA-256 Duplicates:")
+        for c in report.exact_hash_clusters[:5]:
+            print(f"  Canonical: {c.canonical_file} | Duplicates: {c.duplicate_files}")
     if report.category_conflict_clusters:
         print("\nCategory Conflicts (OTH_ vs Typed):")
         for c in report.category_conflict_clusters[:5]:
@@ -1560,53 +1569,90 @@ def _run_cli(argv: list[str] | None = None) -> None:
         "commit", help="Create a version snapshot of definition files in history store"
     )
     add_common_flags(parser_commit)
-    parser_commit.add_argument("-m", "--message", default=None, help="Commit message describing the changes")
+    parser_commit.add_argument(
+        "-m", "--message", default=None, help="Commit message describing the changes"
+    )
     parser_commit.add_argument("pos_message", nargs="?", default=None, help=argparse.SUPPRESS)
-    parser_commit.add_argument("--path", default="production", help="Directory containing definitions to snapshot (default: production)")
+    parser_commit.add_argument(
+        "--path",
+        default="production",
+        help="Directory containing definitions to snapshot (default: production)",
+    )
     parser_commit.add_argument("--author", help="Author of the commit")
-    parser_commit.add_argument("-t", "--tag", help="Comma-separated release tags to assign to this commit")
-    parser_commit.add_argument("--store-dir", help="Custom version store directory (default: definitions_history)")
+    parser_commit.add_argument(
+        "-t", "--tag", help="Comma-separated release tags to assign to this commit"
+    )
+    parser_commit.add_argument(
+        "--store-dir", help="Custom version store directory (default: definitions_history)"
+    )
 
     # History / Log Subparser
     parser_history = subparsers.add_parser(
         "history", aliases=["log"], help="Display version commit history log"
     )
     add_common_flags(parser_history)
-    parser_history.add_argument("-n", "--limit", type=int, default=20, help="Maximum number of commits to display")
-    parser_history.add_argument("-f", "--file", help="Filter history for a specific definition filename")
+    parser_history.add_argument(
+        "-n", "--limit", type=int, default=20, help="Maximum number of commits to display"
+    )
+    parser_history.add_argument(
+        "-f", "--file", help="Filter history for a specific definition filename"
+    )
     parser_history.add_argument("--json", action="store_true", help="Output history log as JSON")
-    parser_history.add_argument("--store-dir", help="Custom version store directory (default: definitions_history)")
+    parser_history.add_argument(
+        "--store-dir", help="Custom version store directory (default: definitions_history)"
+    )
 
     # Diff Subparser
     parser_diff = subparsers.add_parser(
         "diff", help="Show semantic Modbus differences between definition commits"
     )
     add_common_flags(parser_diff)
-    parser_diff.add_argument("commit_a", nargs="?", default=None, help="First commit ID (defaults to HEAD)")
-    parser_diff.add_argument("commit_b", nargs="?", help="Second commit ID (defaults to parent of commit_a)")
+    parser_diff.add_argument(
+        "commit_a", nargs="?", default=None, help="First commit ID (defaults to HEAD)"
+    )
+    parser_diff.add_argument(
+        "commit_b", nargs="?", help="Second commit ID (defaults to parent of commit_a)"
+    )
     parser_diff.add_argument("-f", "--file", help="Inspect diff for a single definition filename")
     parser_diff.add_argument("--json", action="store_true", help="Output diff as JSON")
-    parser_diff.add_argument("--store-dir", help="Custom version store directory (default: definitions_history)")
+    parser_diff.add_argument(
+        "--store-dir", help="Custom version store directory (default: definitions_history)"
+    )
 
     # Restore Subparser
-    parser_restore = subparsers.add_parser(
-        "restore", help="Restore definitions from a past commit"
-    )
+    parser_restore = subparsers.add_parser("restore", help="Restore definitions from a past commit")
     add_common_flags(parser_restore)
-    parser_restore.add_argument("commit_id", nargs="?", default=None, help="Commit ID to restore from (defaults to HEAD)")
-    parser_restore.add_argument("-d", "--dest", default="production", help="Destination directory (default: production)")
-    parser_restore.add_argument("-f", "--file", help="Restore only a single specific definition file")
-    parser_restore.add_argument("--dry-run", action="store_true", help="Simulate restore without writing files")
-    parser_restore.add_argument("--store-dir", help="Custom version store directory (default: definitions_history)")
+    parser_restore.add_argument(
+        "commit_id", nargs="?", default=None, help="Commit ID to restore from (defaults to HEAD)"
+    )
+    parser_restore.add_argument(
+        "-d", "--dest", default="production", help="Destination directory (default: production)"
+    )
+    parser_restore.add_argument(
+        "-f", "--file", help="Restore only a single specific definition file"
+    )
+    parser_restore.add_argument(
+        "--dry-run", action="store_true", help="Simulate restore without writing files"
+    )
+    parser_restore.add_argument(
+        "--store-dir", help="Custom version store directory (default: definitions_history)"
+    )
 
     # Duplicates Subparser
     parser_duplicates = subparsers.add_parser(
-        "duplicates", help="Audit and detect duplicate definition files and redundant classifications"
+        "duplicates",
+        help="Audit and detect duplicate definition files and redundant classifications",
     )
     add_common_flags(parser_duplicates)
-    parser_duplicates.add_argument("--path", default="production", help="Directory to analyze (default: production)")
-    parser_duplicates.add_argument("--report-out", help="Path to write detailed Markdown audit report")
-    parser_duplicates.add_argument("--json", action="store_true", help="Output duplicates report as JSON")
+    parser_duplicates.add_argument(
+        "--path", default="production", help="Directory to analyze (default: production)"
+    )
+    parser_duplicates.add_argument(
+        "--report-out", help="Path to write detailed Markdown audit report"
+    )
+    parser_duplicates.add_argument(
+        "--json", action="store_true", help="Output duplicates report as JSON"
+    )
 
     args = parser.parse_args(argv)
 

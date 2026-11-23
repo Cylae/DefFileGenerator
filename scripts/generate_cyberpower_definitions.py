@@ -22,7 +22,10 @@ from pathlib import Path
 WORKSPACE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(WORKSPACE_DIR))
 
-from DefFileGenerator.knowledge_miner import load_dataset_knowledge, normalize_tag_to_sunpm  # noqa: E402
+from DefFileGenerator.knowledge_miner import (  # noqa: E402
+    load_dataset_knowledge,
+    normalize_tag_to_sunpm,
+)
 from DefFileGenerator.production_governor import verify_file_pillars  # noqa: E402
 from scripts.audit_logger import log_event  # noqa: E402
 

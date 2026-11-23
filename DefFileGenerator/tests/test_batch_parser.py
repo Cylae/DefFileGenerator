@@ -48,7 +48,9 @@ class TestBatchParserAndPDF(unittest.TestCase):
 
     def _create_sample_csv(self, directory: str, filename: str) -> str:
         path = os.path.join(directory, filename)
-        content = "Address,Name,Type,Unit\n40001,Grid Voltage L1,U16,V\n40002,Grid Voltage L2,U16,V\n"
+        content = (
+            "Address,Name,Type,Unit\n40001,Grid Voltage L1,U16,V\n40002,Grid Voltage L2,U16,V\n"
+        )
         Path(path).write_text(content, encoding="utf-8")
         return path
 

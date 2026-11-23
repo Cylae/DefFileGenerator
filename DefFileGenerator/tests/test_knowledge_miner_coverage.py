@@ -29,40 +29,101 @@ class TestSunPMTaxonomyIntegrity(unittest.TestCase):
         """Verify all essential inverter and meter telemetry tags exist in SUNPM_CANONICAL_TAGS."""
         expected_tags = [
             # Active, Reactive, Apparent Power
-            "P_AC", "P_AC_1", "P_AC_2", "P_AC_3",
-            "Q_AC", "Q_AC_1", "Q_AC_2", "Q_AC_3",
-            "S_AC", "S_AC_1", "S_AC_2", "S_AC_3",
+            "P_AC",
+            "P_AC_1",
+            "P_AC_2",
+            "P_AC_3",
+            "Q_AC",
+            "Q_AC_1",
+            "Q_AC_2",
+            "Q_AC_3",
+            "S_AC",
+            "S_AC_1",
+            "S_AC_2",
+            "S_AC_3",
             # Voltages & Currents
-            "U_AC", "U_AC_1", "U_AC_2", "U_AC_3",
-            "U_AC_L1L2", "U_AC_L2L3", "U_AC_L3L1",
-            "I_AC", "I_AC_1", "I_AC_2", "I_AC_3",
+            "U_AC",
+            "U_AC_1",
+            "U_AC_2",
+            "U_AC_3",
+            "U_AC_L1L2",
+            "U_AC_L2L3",
+            "U_AC_L3L1",
+            "I_AC",
+            "I_AC_1",
+            "I_AC_2",
+            "I_AC_3",
             # Frequency & Power Factor
-            "FREQ", "FREQ_1", "FREQ_2", "FREQ_3",
-            "PF", "PF_1", "PF_2", "PF_3",
+            "FREQ",
+            "FREQ_1",
+            "FREQ_2",
+            "FREQ_3",
+            "PF",
+            "PF_1",
+            "PF_2",
+            "PF_3",
             # Energy
-            "E_DAY", "E_TOT", "E_TOT_1", "E_TOT_2", "E_TOT_3",
-            "E_EXP", "E_IMP",
+            "E_DAY",
+            "E_TOT",
+            "E_TOT_1",
+            "E_TOT_2",
+            "E_TOT_3",
+            "E_EXP",
+            "E_IMP",
             # Ratings & DC Parameters
-            "P_RATED", "Q_RATED",
-            "U_DC", "I_DC", "P_DC",
+            "P_RATED",
+            "Q_RATED",
+            "U_DC",
+            "I_DC",
+            "P_DC",
             # Temperatures
-            "TEMP", "TEMP_AMB", "TEMP_CELL", "TEMP_INT", "TEMP_MAX", "TEMP_MIN",
+            "TEMP",
+            "TEMP_AMB",
+            "TEMP_CELL",
+            "TEMP_INT",
+            "TEMP_MAX",
+            "TEMP_MIN",
             # Battery & BESS
-            "SOC", "SOH", "U_CELL_MAX", "U_CELL_MIN",
+            "SOC",
+            "SOH",
+            "U_CELL_MAX",
+            "U_CELL_MIN",
             # Sensors & Met
-            "POA", "GHI", "WIND_SPEED", "WIND_BEARING", "HUMIDITY", "PRESSURE", "RAIN",
+            "POA",
+            "GHI",
+            "WIND_SPEED",
+            "WIND_BEARING",
+            "HUMIDITY",
+            "PRESSURE",
+            "RAIN",
             # Diagnostics & State
-            "STATE", "STATE_1", "FAULT_CODE", "R_ISO",
+            "STATE",
+            "STATE_1",
+            "FAULT_CODE",
+            "R_ISO",
             # Metadata
-            "SERIAL", "MODEL", "MANUFACTURER", "UNIT_ID",
+            "SERIAL",
+            "MODEL",
+            "MANUFACTURER",
+            "UNIT_ID",
             # Remote Commands
-            "CMD_ON", "CMD_OFF", "CMD_P_AC_SET_PERCENT", "CMD_P_AC_SET_ABS",
-            "CMD_P_ENA", "CMD_RAMP_TIME_S", "CMD_REVERT_TIME_S",
-            "CMD_Q_AC_SET_PERCENT", "CMD_Q_AC_SET_ABS", "CMD_PF", "CMD_COMMIT",
+            "CMD_ON",
+            "CMD_OFF",
+            "CMD_P_AC_SET_PERCENT",
+            "CMD_P_AC_SET_ABS",
+            "CMD_P_ENA",
+            "CMD_RAMP_TIME_S",
+            "CMD_REVERT_TIME_S",
+            "CMD_Q_AC_SET_PERCENT",
+            "CMD_Q_AC_SET_ABS",
+            "CMD_PF",
+            "CMD_COMMIT",
         ]
         for tag in expected_tags:
             self.assertIn(tag, SUNPM_CANONICAL_TAGS, f"Missing canonical tag: {tag}")
-            self.assertTrue(is_canonical_sunpm_tag(tag), f"is_canonical_sunpm_tag returned False for {tag}")
+            self.assertTrue(
+                is_canonical_sunpm_tag(tag), f"is_canonical_sunpm_tag returned False for {tag}"
+            )
 
     def test_dynamic_pattern_canonical_tags(self) -> None:
         """Verify dynamic numbered tags for MPPTs, strings, alarms, and states."""
@@ -153,7 +214,11 @@ class TestMultiLanguagePatternRecognition(unittest.TestCase):
         ]
         for name, expected in cases:
             tag = infer_sunpm_tag(name, use_learned_dataset=False)
-            self.assertEqual(tag, expected, f"Failed English inference for '{name}': got '{tag}', expected '{expected}'")
+            self.assertEqual(
+                tag,
+                expected,
+                f"Failed English inference for '{name}': got '{tag}', expected '{expected}'",
+            )
 
     def test_french_inverter_and_meter_patterns(self) -> None:
         """Verify French telemetry and command inference."""
@@ -191,7 +256,11 @@ class TestMultiLanguagePatternRecognition(unittest.TestCase):
         ]
         for name, expected in cases:
             tag = infer_sunpm_tag(name, use_learned_dataset=False)
-            self.assertEqual(tag, expected, f"Failed French inference for '{name}': got '{tag}', expected '{expected}'")
+            self.assertEqual(
+                tag,
+                expected,
+                f"Failed French inference for '{name}': got '{tag}', expected '{expected}'",
+            )
 
     def test_german_inverter_and_meter_patterns(self) -> None:
         """Verify German telemetry and command inference."""
@@ -243,7 +312,11 @@ class TestMultiLanguagePatternRecognition(unittest.TestCase):
         ]
         for name, expected in cases:
             tag = infer_sunpm_tag(name, use_learned_dataset=False)
-            self.assertEqual(tag, expected, f"Failed German inference for '{name}': got '{tag}', expected '{expected}'")
+            self.assertEqual(
+                tag,
+                expected,
+                f"Failed German inference for '{name}': got '{tag}', expected '{expected}'",
+            )
 
     def test_chinese_transliteration_patterns(self) -> None:
         """Verify Chinese pinyin transliteration telemetry and command inference."""
@@ -291,7 +364,11 @@ class TestMultiLanguagePatternRecognition(unittest.TestCase):
         ]
         for name, expected in cases:
             tag = infer_sunpm_tag(name, use_learned_dataset=False)
-            self.assertEqual(tag, expected, f"Failed Chinese transliteration inference for '{name}': got '{tag}', expected '{expected}'")
+            self.assertEqual(
+                tag,
+                expected,
+                f"Failed Chinese transliteration inference for '{name}': got '{tag}', expected '{expected}'",
+            )
 
 
 class TestEnergyBlockIndentationAndEdgeCases(unittest.TestCase):
@@ -307,25 +384,45 @@ class TestEnergyBlockIndentationAndEdgeCases(unittest.TestCase):
         self.assertEqual(infer_sunpm_tag("Total Active Export", use_learned_dataset=False), "E_EXP")
         self.assertEqual(infer_sunpm_tag("Import kWh", use_learned_dataset=False), "E_IMP")
         self.assertEqual(infer_sunpm_tag("Export kWh", use_learned_dataset=False), "E_EXP")
-        self.assertEqual(infer_sunpm_tag("Active Import Energy", use_learned_dataset=False), "E_IMP")
-        self.assertEqual(infer_sunpm_tag("Active Export Energy", use_learned_dataset=False), "E_EXP")
+        self.assertEqual(
+            infer_sunpm_tag("Active Import Energy", use_learned_dataset=False), "E_IMP"
+        )
+        self.assertEqual(
+            infer_sunpm_tag("Active Export Energy", use_learned_dataset=False), "E_EXP"
+        )
 
     def test_power_vs_energy_exclusion(self) -> None:
         """Verify that variables with 'power' or 'puissance' are classified as power, not energy."""
         self.assertEqual(infer_sunpm_tag("Active Import Power", use_learned_dataset=False), "P_AC")
         self.assertEqual(infer_sunpm_tag("Active Export Power", use_learned_dataset=False), "P_AC")
-        self.assertEqual(infer_sunpm_tag("Puissance active import", use_learned_dataset=False), "P_AC")
-        self.assertEqual(infer_sunpm_tag("Puissance active export", use_learned_dataset=False), "P_AC")
+        self.assertEqual(
+            infer_sunpm_tag("Puissance active import", use_learned_dataset=False), "P_AC"
+        )
+        self.assertEqual(
+            infer_sunpm_tag("Puissance active export", use_learned_dataset=False), "P_AC"
+        )
 
     def test_autoconso_not_confused_with_e_imp(self) -> None:
         """Verify 'autoconso' does not match the 'conso' substring inside the E_IMP block."""
-        tag = infer_sunpm_tag("Taux d'autoconso", use_learned_dataset=False, equipment_type="Display")
+        tag = infer_sunpm_tag(
+            "Taux d'autoconso", use_learned_dataset=False, equipment_type="Display"
+        )
         self.assertNotEqual(tag, "E_IMP")
         self.assertEqual(tag, "SELF_CONSUMPTION_RATIO")
 
     def test_reserved_and_dummy_registers(self) -> None:
         """Verify reserved/placeholder names return empty string."""
-        for dummy in ["Reserved", "réservé", "Reserve", "Not Used", "unused", "N.U.", "None", "-", "--"]:
+        for dummy in [
+            "Reserved",
+            "réservé",
+            "Reserve",
+            "Not Used",
+            "unused",
+            "N.U.",
+            "None",
+            "-",
+            "--",
+        ]:
             self.assertEqual(infer_sunpm_tag(dummy), "")
             self.assertEqual(infer_sunpm_tag(dummy, use_learned_dataset=False), "")
 

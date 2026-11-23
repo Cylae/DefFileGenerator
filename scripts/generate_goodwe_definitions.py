@@ -124,6 +124,7 @@ def main() -> int:
     except Exception as exc:
         print(f"\n[FATAL ERROR] GoodWe generation failed: {exc}", file=sys.stderr)
         import traceback
+
         traceback.print_exc()
         return 1
 

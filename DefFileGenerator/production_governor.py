@@ -121,9 +121,7 @@ def verify_file_pillars(file_path: Path, strict_crlf: bool = False) -> tuple[boo
                 # Data Type
                 dtype = row[3].strip()
                 if not Generator.validate_type(dtype):
-                    issues.append(
-                        f"Line {idx} in '{filename}': invalid Webdyn data type '{dtype}'"
-                    )
+                    issues.append(f"Line {idx} in '{filename}': invalid Webdyn data type '{dtype}'")
 
                 # Address
                 addr = row[2].strip()

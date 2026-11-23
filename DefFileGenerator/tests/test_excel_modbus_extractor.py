@@ -39,7 +39,9 @@ class TestExcelModbusExtractor(unittest.TestCase):
         self.tmpdir.cleanup()
         logging.disable(logging.NOTSET)
 
-    def _create_workbook(self, sheets_dict: dict[str, list[list]], filename: str = "test.xlsx") -> str:
+    def _create_workbook(
+        self, sheets_dict: dict[str, list[list]], filename: str = "test.xlsx"
+    ) -> str:
         wb = openpyxl.Workbook()
         wb.remove(wb.active)  # Remove default empty sheet
         for sheet_title, rows in sheets_dict.items():
@@ -181,7 +183,7 @@ class TestExcelModbusExtractor(unittest.TestCase):
             {
                 "Formulas": [
                     ["Address", "Name", "Type"],
-                    ["=HEX2DEC(\"7530\")", "Base Register", "U32"],
+                    ['=HEX2DEC("7530")', "Base Register", "U32"],
                     ["=A2+1", "Secondary Register", "U32"],
                     ["=40000+10", "Holding Base", "U16"],
                 ]

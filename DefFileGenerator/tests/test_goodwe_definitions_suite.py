@@ -80,7 +80,13 @@ class TestGoodweDefinitionsSuite(unittest.TestCase):
     def test_all_files_exist_in_all_target_directories(self) -> None:
         """Ensure all 32 files exist in production, Definitions/GoodWe, generated_definitions, and tagged_definitions."""
         for fname in EXPECTED_GOODWE_FILES:
-            for d in (PRODUCTION_DIR, DEFINITIONS_GOODWE_DIR, DEFINITIONS_DIR, GENERATED_DIR, TAGGED_DIR):
+            for d in (
+                PRODUCTION_DIR,
+                DEFINITIONS_GOODWE_DIR,
+                DEFINITIONS_DIR,
+                GENERATED_DIR,
+                TAGGED_DIR,
+            ):
                 fpath = d / fname
                 self.assertTrue(fpath.is_file(), f"Missing {fname} in {d.name}")
 
@@ -117,7 +123,9 @@ class TestGoodweDefinitionsSuite(unittest.TestCase):
             header = reader[0]
             self.assertEqual(len(header), 11, f"Header of {fname} must have 11 columns")
             self.assertEqual(header[0], "Modbus", f"Header protocol of {fname} must be 'Modbus'")
-            self.assertEqual(header[2], "GoodWe", f"Header manufacturer of {fname} must be 'GoodWe'")
+            self.assertEqual(
+                header[2], "GoodWe", f"Header manufacturer of {fname} must be 'GoodWe'"
+            )
 
     def test_sequential_indexing_and_row_integrity(self) -> None:
         """Verify sequential index 1..N, valid FCs, decimal addresses, and valid action codes."""
@@ -187,18 +195,27 @@ class TestGoodweDefinitionsSuite(unittest.TestCase):
             if "HT" in fname:
                 self.assertIn("U_DC_STRING_1", tags, f"Missing U_DC_STRING_1 in {fname}")
                 self.assertIn("I_DC_STRING_1", tags, f"Missing I_DC_STRING_1 in {fname}")
-                self.assertIn("U_DC_STRING_24", tags, f"Missing U_DC_STRING_24 in 24-string HT {fname}")
-                self.assertIn("I_DC_STRING_24", tags, f"Missing I_DC_STRING_24 in 24-string HT {fname}")
+                self.assertIn(
+                    "U_DC_STRING_24", tags, f"Missing U_DC_STRING_24 in 24-string HT {fname}"
+                )
+                self.assertIn(
+                    "I_DC_STRING_24", tags, f"Missing I_DC_STRING_24 in 24-string HT {fname}"
+                )
 
             # Hybrid and Battery systems must report battery state of charge
-            if any(k in fname for k in ("_ET_", "-ET-", "_ES_", "-ES-", "Hybrid", "Lynx")) or fname.startswith("BAT_"):
+            if any(
+                k in fname for k in ("_ET_", "-ET-", "_ES_", "-ES-", "Hybrid", "Lynx")
+            ) or fname.startswith("BAT_"):
                 self.assertIn("SOC", tags, f"Missing SOC in storage/battery {fname}")
                 self.assertIn("U_BAT", tags, f"Missing U_BAT in storage/battery {fname}")
 
             # Meters must measure active power, energy, voltage, and current
             if fname.startswith("MET_"):
                 self.assertIn("P_AC", tags, f"Missing P_AC in meter {fname}")
-                self.assertTrue("E_TOT" in tags or "E_IMP" in tags, f"Missing energy yield/import in meter {fname}")
+                self.assertTrue(
+                    "E_TOT" in tags or "E_IMP" in tags,
+                    f"Missing energy yield/import in meter {fname}",
+                )
                 self.assertIn("U_AC_1", tags, f"Missing U_AC_1 in meter {fname}")
                 self.assertIn("I_AC_1", tags, f"Missing I_AC_1 in meter {fname}")
 

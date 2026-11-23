@@ -33,8 +33,23 @@ PROD_DIR = REPO_ROOT / "production"
 VALID_FUNCTION_CODES = {"1", "2", "3", "4"}
 VALID_ACTIONS = {str(i) for i in range(13)}
 VALID_TYPES = {
-    "U16", "I16", "U32", "I32", "F32", "STRING", "HEX", "BITS", "BIT", "FLOAT", "INT16", "UINT16",
-    "INT32", "UINT32", "U64", "I64", "ENUM"
+    "U16",
+    "I16",
+    "U32",
+    "I32",
+    "F32",
+    "STRING",
+    "HEX",
+    "BITS",
+    "BIT",
+    "FLOAT",
+    "INT16",
+    "UINT16",
+    "INT32",
+    "UINT32",
+    "U64",
+    "I64",
+    "ENUM",
 }
 
 
@@ -54,7 +69,9 @@ class TestProductionMetersSuite:
     def test_all_meters_exist_and_populated(self) -> None:
         """Verify that at least 200 meter definitions are present in production/."""
         meter_files = get_meter_files()
-        assert len(meter_files) >= 200, f"Expected at least 200 meter files, found {len(meter_files)}"
+        assert len(meter_files) >= 200, (
+            f"Expected at least 200 meter files, found {len(meter_files)}"
+        )
         for f in meter_files:
             assert f.is_file(), f"Not a valid file: {f}"
             assert f.stat().st_size > 50, f"File suspiciously small: {f.name}"
@@ -89,7 +106,9 @@ class TestProductionMetersSuite:
         assert len(reader) >= 2, f"{file_path.name}: file must have header + at least 1 row"
         header = reader[0]
         assert len(header) == 11, f"{file_path.name}: header length {len(header)} != 11"
-        assert header[0].strip().lower() == "modbus", f"{file_path.name}: protocol header must be 'Modbus'"
+        assert header[0].strip().lower() == "modbus", (
+            f"{file_path.name}: protocol header must be 'Modbus'"
+        )
 
         seen_single_tags: set[str] = set()
 
@@ -97,7 +116,9 @@ class TestProductionMetersSuite:
             assert len(row) == 11, f"{file_path.name} L{idx}: column count {len(row)} != 11"
 
             # Monotonic 1..N index
-            assert row[0].strip() == str(idx), f"{file_path.name} L{idx}: index mismatch {row[0]} != {idx}"
+            assert row[0].strip() == str(idx), (
+                f"{file_path.name} L{idx}: index mismatch {row[0]} != {idx}"
+            )
 
             # Function code
             fc = row[1].strip()
@@ -108,25 +129,39 @@ class TestProductionMetersSuite:
             assert addr_str, f"{file_path.name} L{idx}: empty register address"
             dtype = row[3].strip().upper()
             if dtype == "STRING":
-                assert "_" in addr_str, f"{file_path.name} L{idx}: STRING missing length suffix: {addr_str}"
+                assert "_" in addr_str, (
+                    f"{file_path.name} L{idx}: STRING missing length suffix: {addr_str}"
+                )
                 base_part, len_part = addr_str.split("_", 1)
-                assert base_part.isdigit(), f"{file_path.name} L{idx}: non-numeric string address {addr_str}"
-                assert len_part.isdigit(), f"{file_path.name} L{idx}: non-numeric string length {addr_str}"
+                assert base_part.isdigit(), (
+                    f"{file_path.name} L{idx}: non-numeric string address {addr_str}"
+                )
+                assert len_part.isdigit(), (
+                    f"{file_path.name} L{idx}: non-numeric string length {addr_str}"
+                )
             else:
                 base_addr = addr_str.split("_")[0]
-                assert base_addr.isdigit(), f"{file_path.name} L{idx}: non-numeric address {addr_str}"
+                assert base_addr.isdigit(), (
+                    f"{file_path.name} L{idx}: non-numeric address {addr_str}"
+                )
                 iaddr = int(base_addr)
-                assert 0 <= iaddr <= 65535, f"{file_path.name} L{idx}: address out of range: {iaddr}"
+                assert 0 <= iaddr <= 65535, (
+                    f"{file_path.name} L{idx}: address out of range: {iaddr}"
+                )
 
             # Scale factors
             coef_a_str = row[7].strip()
             coef_b_str = row[8].strip()
             if coef_a_str:
                 coef_a = float(coef_a_str)
-                assert math.isfinite(coef_a), f"{file_path.name} L{idx}: coef_a not finite {coef_a_str}"
+                assert math.isfinite(coef_a), (
+                    f"{file_path.name} L{idx}: coef_a not finite {coef_a_str}"
+                )
             if coef_b_str:
                 coef_b = float(coef_b_str)
-                assert math.isfinite(coef_b), f"{file_path.name} L{idx}: coef_b not finite {coef_b_str}"
+                assert math.isfinite(coef_b), (
+                    f"{file_path.name} L{idx}: coef_b not finite {coef_b_str}"
+                )
 
             # Action code
             action = row[10].strip()
@@ -135,7 +170,9 @@ class TestProductionMetersSuite:
             # SunPM Tag single-instance rule
             tag = row[6].strip()
             if tag in {"P_AC", "Q_AC", "S_AC", "FREQ", "PF", "E_TOT"}:
-                assert tag not in seen_single_tags, f"{file_path.name} L{idx}: duplicate single tag {tag}"
+                assert tag not in seen_single_tags, (
+                    f"{file_path.name} L{idx}: duplicate single tag {tag}"
+                )
                 seen_single_tags.add(tag)
 
     def test_chint_meter_ecosystem(self) -> None:
@@ -170,7 +207,9 @@ class TestProductionMetersSuite:
         schneider_iem_files = sorted(PROD_DIR.glob("MET_Schneider_iem3*.csv")) + sorted(
             PROD_DIR.glob("MET_Schneider_iEM3*.csv")
         )
-        assert len(schneider_iem_files) >= 10, f"Expected at least 10 Schneider iEM files, found {len(schneider_iem_files)}"
+        assert len(schneider_iem_files) >= 10, (
+            f"Expected at least 10 Schneider iEM files, found {len(schneider_iem_files)}"
+        )
 
         pm_files = sorted(PROD_DIR.glob("MET_Schneider_PM*.csv"))
         assert len(pm_files) >= 3, f"Expected Schneider PM files, found {len(pm_files)}"
@@ -192,7 +231,9 @@ class TestProductionMetersSuite:
             PROD_DIR.glob("MET_Socomec_COUNTIS*.csv")
         )
         assert len(socomec_diris) >= 8, f"Expected >= 8 Diris files, found {len(socomec_diris)}"
-        assert len(socomec_countis) >= 5, f"Expected >= 5 Countis files, found {len(socomec_countis)}"
+        assert len(socomec_countis) >= 5, (
+            f"Expected >= 5 Countis files, found {len(socomec_countis)}"
+        )
 
         for f in socomec_diris + socomec_countis:
             with open(f, encoding="utf-8") as fp:
@@ -234,4 +275,6 @@ class TestProductionMetersSuite:
                 checked_tags += 1
                 coef_a = float(r[7].strip() or "1.0")
                 assert math.isfinite(coef_a), f"{f.name} register {r[0]}: coef_a is not finite"
-        assert checked_tags > 500, f"Expected > 500 tagged registers across all meters, found {checked_tags}"
+        assert checked_tags > 500, (
+            f"Expected > 500 tagged registers across all meters, found {checked_tags}"
+        )

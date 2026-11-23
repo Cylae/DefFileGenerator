@@ -118,10 +118,21 @@ class DuplicateDetector:
             exact_hash_groups.setdefault(d["raw_hash"], []).append(fname)
 
         exact_hash_clusters: list[DuplicateCluster] = []
+        exact_hash_duplicate_files: set[str] = set()
+
         for h, flist in exact_hash_groups.items():
             if len(flist) > 1:
-                canonical = sorted(flist, key=lambda x: (self.PREFIX_PRIORITY.get(file_data[x]["prefix"], 0), -len(x)), reverse=True)[0]
+                canonical = sorted(
+                    flist,
+                    key=lambda x: (
+                        -self.PREFIX_PRIORITY.get(file_data[x]["prefix"], 0),
+                        bool(re.search(r"(?:copy|copie)", x, re.IGNORECASE)),
+                        len(x),
+                        x,
+                    ),
+                )[0]
                 dupes = [x for x in flist if x != canonical]
+                exact_hash_duplicate_files.update(dupes)
                 exact_hash_clusters.append(
                     DuplicateCluster(
                         cluster_id=f"hash_{h[:8]}",
@@ -131,13 +142,17 @@ class DuplicateDetector:
                         description=f"{len(flist)} byte-identical definition files",
                         register_count=file_data[canonical]["reg_count"],
                         models=[file_data[x]["model"] for x in flist],
-                        action_recommendation="delete_or_symlink_duplicates",
+                        action_recommendation="delete_strict_duplicate_or_alias",
                     )
                 )
 
         # 2. Exact Register Body Duplicates (different header line, identical registers 1..N)
+        # Non-canonical duplicate files from exact_hash_clusters are filtered out so that
+        # byte-identical files are never categorized as distinct hardware families to keep.
         exact_body_groups: dict[str, list[str]] = {}
         for fname, d in file_data.items():
+            if fname in exact_hash_duplicate_files:
+                continue
             exact_body_groups.setdefault(d["body_hash"], []).append(fname)
 
         exact_body_clusters: list[DuplicateCluster] = []
@@ -147,17 +162,25 @@ class DuplicateDetector:
         seen_in_body_clusters: set[str] = set()
 
         for bh, flist in exact_body_groups.items():
+            # Exclude exact SHA-256 byte duplicates so they never bleed into body clusters
+            flist = [x for x in flist if x not in exact_hash_duplicate_files]
             if len(flist) <= 1:
                 continue
 
-            # Pick canonical: prefer typed prefix (INV/BAT/MET/SEN/COM) over OTH, then shortest canonical name
+            # Invariant: a body cluster must never be formed by pure SHA-256 duplicate copies
+            unique_raw_hashes = {file_data[x]["raw_hash"] for x in flist}
+            if len(unique_raw_hashes) <= 1:
+                continue
+
+            # Pick canonical: prefer typed prefix (INV/BAT/MET/SEN/COM) over OTH, avoid copies, shorter name, alphabetical
             canonical = sorted(
                 flist,
                 key=lambda x: (
-                    self.PREFIX_PRIORITY.get(file_data[x]["prefix"], 0),
-                    -len(x),
+                    -self.PREFIX_PRIORITY.get(file_data[x]["prefix"], 0),
+                    bool(re.search(r"(?:copy|copie)", x, re.IGNORECASE)),
+                    len(x),
+                    x,
                 ),
-                reverse=True,
             )[0]
             dupes = [x for x in flist if x != canonical]
 
@@ -221,7 +244,15 @@ class DuplicateDetector:
 
             seen_in_body_clusters.update(flist)
 
-        total_dupe_files = sum(len(c.duplicate_files) for c in (category_conflict_clusters + alias_clusters + exact_hash_clusters))
+        exact_hash_clusters.sort(key=lambda c: c.canonical_file.lower())
+        category_conflict_clusters.sort(key=lambda c: c.canonical_file.lower())
+        alias_clusters.sort(key=lambda c: c.canonical_file.lower())
+        exact_body_clusters.sort(key=lambda c: c.canonical_file.lower())
+
+        total_dupe_files = sum(
+            len(c.duplicate_files)
+            for c in (exact_hash_clusters + category_conflict_clusters + alias_clusters)
+        )
 
         return DuplicateReport(
             target_directory=str(self.directory),
@@ -233,29 +264,38 @@ class DuplicateDetector:
             alias_clusters=alias_clusters,
         )
 
-    def _is_alias_pair(self, name_a: str, name_b: str) -> bool:
-        """Determines if two names are naming aliases of each other."""
-        clean_a = re.sub(r"\.csv$", "", name_a, flags=re.IGNORECASE)
-        clean_b = re.sub(r"\.csv$", "", name_b, flags=re.IGNORECASE)
+    def _normalize_alias_name(self, name: str) -> str:
+        """Normalizes a filename for alias and synonym comparison."""
+        clean = re.sub(r"\.csv$", "", name, flags=re.IGNORECASE)
+        clean = re.sub(r"^(INV|MET|SEN|BAT|COM|OTH)_", "", clean, flags=re.IGNORECASE)
+        clean = clean.lower()
+        clean = re.sub(r"[\s\-\(\)]+", "_", clean)
 
-        clean_a = re.sub(r"^(INV|MET|SEN|BAT|COM|OTH)_", "", clean_a).lower().replace("-", "_")
-        clean_b = re.sub(r"^(INV|MET|SEN|BAT|COM|OTH)_", "", clean_b).lower().replace("-", "_")
+        # Strip copy indicators (-_copie, _copie, -_copy, _copy, (copie), etc.)
+        clean = re.sub(r"_+(?:copie|copy)(?:_[0-9]+)?", "", clean)
+        clean = re.sub(r"^(?:copie_de|copy_of)_+", "", clean)
 
-        if clean_a == clean_b:
-            return True
+        # Normalize vendor tokens (fox_ess -> foxess, sl_energy -> slenergy)
+        clean = clean.replace("fox_ess", "foxess")
+        clean = clean.replace("sl_energy", "slenergy")
+        clean = re.sub(r"(foxess|slenergy)_(\1)", r"\1", clean)
 
         # Common synonym patterns
         for token in ("1500v", "1500", "series", "work", "tcp", "rtu", "generic"):
-            clean_a = clean_a.replace(token, "")
-            clean_b = clean_b.replace(token, "")
+            clean = clean.replace(token, "")
 
-        clean_a = re.sub(r"_+", "_", clean_a).strip("_")
-        clean_b = re.sub(r"_+", "_", clean_b).strip("_")
+        clean = re.sub(r"_+", "_", clean).strip("_")
+        return clean
 
-        if not clean_a or not clean_b:
+    def _is_alias_pair(self, name_a: str, name_b: str) -> bool:
+        """Determines if two names are naming aliases of each other."""
+        norm_a = self._normalize_alias_name(name_a)
+        norm_b = self._normalize_alias_name(name_b)
+
+        if not norm_a or not norm_b:
             return False
 
-        return clean_a == clean_b
+        return norm_a == norm_b
 
     def format_markdown_report(self, report: DuplicateReport) -> str:
         """Formats the duplicate report into detailed GitHub-flavored Markdown."""
@@ -265,63 +305,102 @@ class DuplicateDetector:
             f"- **Répertoire analysé** : `{report.target_directory}`",
             f"- **Total fichiers scannés** : **{report.total_files_scanned}**",
             f"- **Fichiers doublons identifiés** : **{report.total_duplicate_files}**",
+            f"- **Doublons stricts (SHA-256)** : **{len(report.exact_hash_clusters)}**",
+            f"- **Conflits de catégorie (OTH_)** : **{len(report.category_conflict_clusters)}**",
+            f"- **Alias & synonymes** : **{len(report.alias_clusters)}**",
+            f"- **Familles matérielles** : **{len(report.exact_body_clusters)}**",
             "",
             "---",
             "",
-            "## 1. Conflits de Catégorie (Classification Générique `OTH_` vs Fichier Typé)",
+            "## 1. Doublons Stricts (Empreinte SHA-256 Identique)",
             "",
-            "Ces fichiers `OTH_` sont des doublons stricts d'équipements déjà qualifiés en tant qu'onduleurs (`INV_`), compteurs (`MET_`), capteurs (`SEN_`) ou batteries (`BAT_`).",
+            "Ces fichiers sont rigoureusement identiques au niveau binaire (même empreinte SHA-256, même en-tête et mêmes registres).",
             "",
-            "| Fichier Canonique Qualifié | Doublon Redondant `OTH_` | Modèle Matériel | Registres | Recommandation |",
+            "| Fichier Canonique | Doublons Stricts | Modèle Matériel | Registres | Recommandation |",
             "| :--- | :--- | :--- | :---: | :--- |",
         ]
+
+        if not report.exact_hash_clusters:
+            lines.append("| Aucun | Aucun | - | - | Conforme |")
+        else:
+            for c in report.exact_hash_clusters:
+                dupes_str = "<br>".join(f"`{d}`" for d in c.duplicate_files)
+                model_str = c.models[0] if c.models and c.models[0] else "-"
+                lines.append(
+                    f"| `{c.canonical_file}` | {dupes_str} | {model_str} | {c.register_count} | Supprimer le doublon strict ou créer un alias |"
+                )
+
+        lines.extend(
+            [
+                "",
+                "---",
+                "",
+                "## 2. Conflits de Catégorie (Classification Générique `OTH_` vs Fichier Typé)",
+                "",
+                "Ces fichiers `OTH_` sont des doublons stricts d'équipements déjà qualifiés en tant qu'onduleurs (`INV_`), compteurs (`MET_`), capteurs (`SEN_`) ou batteries (`BAT_`).",
+                "",
+                "| Fichier Canonique Qualifié | Doublon Redondant `OTH_` | Modèle Matériel | Registres | Recommandation |",
+                "| :--- | :--- | :--- | :---: | :--- |",
+            ]
+        )
 
         if not report.category_conflict_clusters:
             lines.append("| Aucun | Aucun | - | - | Conforme |")
         else:
             for c in report.category_conflict_clusters:
                 dupes_str = "<br>".join(f"`{d}`" for d in c.duplicate_files)
-                model_str = c.models[0] if c.models else "-"
-                lines.append(f"| `{c.canonical_file}` | {dupes_str} | {model_str} | {c.register_count} | Supprimer le `OTH_` redondant |")
+                model_str = c.models[0] if c.models and c.models[0] else "-"
+                lines.append(
+                    f"| `{c.canonical_file}` | {dupes_str} | {model_str} | {c.register_count} | Supprimer le `OTH_` redondant |"
+                )
 
-        lines.extend([
-            "",
-            "---",
-            "",
-            "## 2. Alias Matériels et Variantes Synonymes de Nommage",
-            "",
-            "Fichiers représentant le même équipement ou la même gamme sous deux désignations alternatives.",
-            "",
-            "| Fichier Canonique | Alias / Synonyme | Description | Registres | Recommandation |",
-            "| :--- | :--- | :--- | :---: | :--- |",
-        ])
+        lines.extend(
+            [
+                "",
+                "---",
+                "",
+                "## 3. Alias Matériels et Variantes Synonymes de Nommage",
+                "",
+                "Fichiers représentant le même équipement ou la même gamme sous deux désignations alternatives.",
+                "",
+                "| Fichier Canonique | Alias / Synonyme | Description | Registres | Recommandation |",
+                "| :--- | :--- | :--- | :---: | :--- |",
+            ]
+        )
 
         if not report.alias_clusters:
             lines.append("| Aucun | Aucun | - | - | Conforme |")
         else:
             for c in report.alias_clusters:
                 dupes_str = "<br>".join(f"`{d}`" for d in c.duplicate_files)
-                lines.append(f"| `{c.canonical_file}` | {dupes_str} | {c.description} | {c.register_count} | Enregistrer dans le registre d'alias |")
+                lines.append(
+                    f"| `{c.canonical_file}` | {dupes_str} | {c.description} | {c.register_count} | Enregistrer dans le registre d'alias |"
+                )
 
-        lines.extend([
-            "",
-            "---",
-            "",
-            "## 3. Familles Matérielles Partageant la Même Carte Modbus",
-            "",
-            "Équipements distincts d'un même constructeur partageant rigoureusement le même profil de registres (ex. Schneider iEM3100..iEM3555, GoodWe ET/EH).",
-            "",
-            "| Modèle de Référence | Modèles de la Famille | Registres | Recommandation |",
-            "| :--- | :--- | :---: | :--- |",
-        ])
+        total_families = len(report.exact_body_clusters)
+        lines.extend(
+            [
+                "",
+                "---",
+                "",
+                "## 4. Familles Matérielles Partageant la Même Carte Modbus",
+                "",
+                f"Équipements distincts d'un même constructeur partageant rigoureusement le même profil de registres (ex. Schneider iEM3100..iEM3555, GoodWe ET/EH). Total : **{total_families}** famille{'s' if total_families > 1 else ''} répertoriée{'s' if total_families > 1 else ''}.",
+                "",
+                "| Modèle de Référence | Modèles de la Famille | Registres | Recommandation |",
+                "| :--- | :--- | :---: | :--- |",
+            ]
+        )
 
         if not report.exact_body_clusters:
             lines.append("| Aucun | Aucun | - | Conforme |")
         else:
-            for c in report.exact_body_clusters[:25]:
+            for c in report.exact_body_clusters:
                 dupes_str = ", ".join(f"`{d}`" for d in c.duplicate_files[:5])
                 if len(c.duplicate_files) > 5:
                     dupes_str += f" *(+{len(c.duplicate_files) - 5} autres)*"
-                lines.append(f"| `{c.canonical_file}` | {dupes_str} | {c.register_count} | Conserver (modèles réels distincts) |")
+                lines.append(
+                    f"| `{c.canonical_file}` | {dupes_str} | {c.register_count} | Conserver (modèles réels distincts) |"
+                )
 
         return "\n".join(lines)

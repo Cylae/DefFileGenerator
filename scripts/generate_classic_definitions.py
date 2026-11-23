@@ -43,7 +43,9 @@ WORKSPACE_DIR = Path(__file__).resolve().parent.parent
 if str(WORKSPACE_DIR) not in sys.path:
     sys.path.insert(0, str(WORKSPACE_DIR))
 
-from DefFileGenerator.classic_definitions_engine import generate_all_classic_definitions  # noqa: E402
+from DefFileGenerator.classic_definitions_engine import (  # noqa: E402
+    generate_all_classic_definitions,
+)
 from DefFileGenerator.production_governor import verify_file_pillars  # noqa: E402
 from scripts.audit_logger import log_event  # noqa: E402
 

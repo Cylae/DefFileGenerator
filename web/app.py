@@ -972,7 +972,6 @@ def get_knowledge_stats() -> dict[str, Any]:
     if not os.path.exists(kb_path):
         return {"total_mappings": 0, "unique_tags": 0}
 
-
     try:
         with open(kb_path, encoding="utf-8") as f:
             data = json.load(f)

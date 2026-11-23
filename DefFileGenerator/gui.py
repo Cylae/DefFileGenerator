@@ -597,7 +597,12 @@ def infer_metadata_from_path(file_path: str) -> dict[str, str]:
         category = "Inverter"
 
     # 3. Protocol detection
-    protocol = "Modbus"
+    if "tcp" in full_path_lower:
+        protocol = "modbusTCP"
+    elif "rtu" in full_path_lower:
+        protocol = "modbusRTU"
+    else:
+        protocol = "Modbus"
 
     # 4. Model detection
     clean_model = base_name
@@ -895,7 +900,9 @@ class DefFileGenApp:
             ctk.CTkLabel(params_frame, text="Protocol").grid(
                 row=2, column=0, sticky="w", padx=14, pady=(4, 2)
             )
-            self.opt_protocol = ctk.CTkOptionMenu(params_frame, values=["Modbus"])
+            self.opt_protocol = ctk.CTkOptionMenu(
+                params_frame, values=["Modbus", "modbusTCP", "modbusRTU"]
+            )
             self.opt_protocol.set("Modbus")
             self.opt_protocol.grid(row=3, column=0, sticky="ew", padx=14, pady=(0, 8))
 
@@ -961,7 +968,9 @@ class DefFileGenApp:
             ttk.Label(params_frame, text="Protocol").grid(
                 row=2, column=0, sticky="w", padx=10, pady=(4, 2)
             )
-            self.opt_protocol = ttk.Combobox(params_frame, values=["Modbus"], state="readonly")
+            self.opt_protocol = ttk.Combobox(
+                params_frame, values=["Modbus", "modbusTCP", "modbusRTU"], state="readonly"
+            )
             self.opt_protocol.set("Modbus")
             self.opt_protocol.grid(row=3, column=0, sticky="ew", padx=10, pady=(0, 6))
 

@@ -642,7 +642,11 @@ class Extractor:
                             col_scores[c]["addr"] += 1
                             # Preserve the preference for register-map addresses
                             # over small row indices/counts when both are present.
-                            if v_clean.startswith("0x") or v_clean.lower().endswith("h") or val_int >= 1000:
+                            if (
+                                v_clean.startswith("0x")
+                                or v_clean.lower().endswith("h")
+                                or val_int >= 1000
+                            ):
                                 col_scores[c]["preferred_addr"] += 1
                     except ValueError:
                         pass
@@ -857,10 +861,17 @@ class Extractor:
             # If compound header row (e.g. category row above subheaders), fill empty header cells from previous row
             if best_idx > 0:
                 prev_row = rows[best_idx - 1]
-                prev_text = " ".join(str(c) for c in prev_row if c is not None and str(c).strip()).lower()
-                if not any(k in prev_text for k in ("function code", "code fonction", "registre", "register type")):
+                prev_text = " ".join(
+                    str(c) for c in prev_row if c is not None and str(c).strip()
+                ).lower()
+                if not any(
+                    k in prev_text
+                    for k in ("function code", "code fonction", "registre", "register type")
+                ):
                     for c_idx in range(len(header_row)):
-                        if (header_row[c_idx] is None or str(header_row[c_idx]).strip() == "") and c_idx < len(prev_row):
+                        if (
+                            header_row[c_idx] is None or str(header_row[c_idx]).strip() == ""
+                        ) and c_idx < len(prev_row):
                             if prev_row[c_idx] is not None and str(prev_row[c_idx]).strip():
                                 header_row[c_idx] = prev_row[c_idx]
             data_rows = rows[best_idx + 1 :]
@@ -1011,12 +1022,17 @@ class Extractor:
                         ]
                         if hasattr(ws, "merged_cells") and ws.merged_cells:
                             for rlow, rhigh, clow, chigh in ws.merged_cells:
-                                if rlow < len(raw_rows) and clow < (len(raw_rows[0]) if raw_rows else 0):
+                                if rlow < len(raw_rows) and clow < (
+                                    len(raw_rows[0]) if raw_rows else 0
+                                ):
                                     top_left = raw_rows[rlow][clow]
                                     if top_left is not None:
                                         for r in range(rlow, min(rhigh, len(raw_rows))):
                                             for c in range(clow, min(chigh, len(raw_rows[r]))):
-                                                if raw_rows[r][c] is None or str(raw_rows[r][c]).strip() == "":
+                                                if (
+                                                    raw_rows[r][c] is None
+                                                    or str(raw_rows[r][c]).strip() == ""
+                                                ):
                                                     raw_rows[r][c] = top_left
                         yield from Extractor._process_sheet_rows(raw_rows)
 
@@ -1058,12 +1074,19 @@ class Extractor:
                                 ]
                                 if hasattr(ws, "merged_cells") and ws.merged_cells:
                                     for rlow, rhigh, clow, chigh in ws.merged_cells:
-                                        if rlow < len(raw_rows) and clow < (len(raw_rows[0]) if raw_rows else 0):
+                                        if rlow < len(raw_rows) and clow < (
+                                            len(raw_rows[0]) if raw_rows else 0
+                                        ):
                                             top_left = raw_rows[rlow][clow]
                                             if top_left is not None:
                                                 for r in range(rlow, min(rhigh, len(raw_rows))):
-                                                    for c in range(clow, min(chigh, len(raw_rows[r]))):
-                                                        if raw_rows[r][c] is None or str(raw_rows[r][c]).strip() == "":
+                                                    for c in range(
+                                                        clow, min(chigh, len(raw_rows[r]))
+                                                    ):
+                                                        if (
+                                                            raw_rows[r][c] is None
+                                                            or str(raw_rows[r][c]).strip() == ""
+                                                        ):
                                                             raw_rows[r][c] = top_left
                                 yield from Extractor._process_sheet_rows(raw_rows)
 
@@ -1097,12 +1120,16 @@ class Extractor:
                                 f"Sheet '{name}' exceeds the maximum expanded worksheet size "
                                 f"of {MAX_EXCEL_SHEET_CELLS} cells."
                             )
-                        rows = [list(r) for r in ws.iter_rows(max_col=effective_cols, values_only=True)]
+                        rows = [
+                            list(r) for r in ws.iter_rows(max_col=effective_cols, values_only=True)
+                        ]
                     else:
                         rows = [list(r) for r in ws.iter_rows(values_only=True)]
                     if hasattr(ws, "merged_cells") and ws.merged_cells:
                         for rng in list(ws.merged_cells.ranges):
-                            if rng.min_row <= len(rows) and rng.min_col <= (len(rows[0]) if rows else 0):
+                            if rng.min_row <= len(rows) and rng.min_col <= (
+                                len(rows[0]) if rows else 0
+                            ):
                                 top_left = rows[rng.min_row - 1][rng.min_col - 1]
                                 if top_left is not None:
                                     max_row_bound = min(rng.max_row, len(rows))
@@ -1110,7 +1137,10 @@ class Extractor:
                                         row_len = len(rows[r_idx])
                                         max_col_bound = min(rng.max_col, row_len)
                                         for c_idx in range(rng.min_col - 1, max_col_bound):
-                                            if rows[r_idx][c_idx] is None or str(rows[r_idx][c_idx]).strip() == "":
+                                            if (
+                                                rows[r_idx][c_idx] is None
+                                                or str(rows[r_idx][c_idx]).strip() == ""
+                                            ):
                                                 rows[r_idx][c_idx] = top_left
                     # If any cells are None, check if raw workbook has unevaluated formulas
                     if any(any(c is None for c in r) for r in rows):
@@ -1119,7 +1149,9 @@ class Extractor:
                             if name in wb_raw.sheetnames:
                                 ws_raw = wb_raw[name]
                                 if max_r * max_c > MAX_EXCEL_SHEET_CELLS:
-                                    rows_raw = list(ws_raw.iter_rows(max_col=effective_cols, values_only=True))
+                                    rows_raw = list(
+                                        ws_raw.iter_rows(max_col=effective_cols, values_only=True)
+                                    )
                                 else:
                                     rows_raw = list(ws_raw.iter_rows(values_only=True))
                                 for r_idx in range(min(len(rows), len(rows_raw))):

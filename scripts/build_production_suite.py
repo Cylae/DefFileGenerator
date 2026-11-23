@@ -611,10 +611,7 @@ def build_manifest() -> dict[str, Path]:
             lower_to_canonical[low] = tgt_name
 
     # Filter out pruned redundant files to preserve catalog curation
-    manifest = {
-        k: v for k, v in manifest.items()
-        if k.lower() not in PRUNED_REDUNDANT_FILES
-    }
+    manifest = {k: v for k, v in manifest.items() if k.lower() not in PRUNED_REDUNDANT_FILES}
 
     return manifest
 
@@ -656,11 +653,9 @@ def sanitize_and_normalize_definition(
         if raw_header[2].strip().lower() == mfg.lower():
             mfg = raw_header[2].strip()
     if len(raw_header) > 3 and raw_header[3].strip():
-        if (
-            raw_header[3].strip().lower() == model.lower()
-            or raw_header[3].strip().lower().replace("-", "_")
-            == model.lower().replace("-", "_")
-        ):
+        if raw_header[3].strip().lower() == model.lower() or raw_header[3].strip().lower().replace(
+            "-", "_"
+        ) == model.lower().replace("-", "_"):
             model = raw_header[3].strip()
 
     # Clean Header
@@ -912,7 +907,12 @@ def main():
                 shutil.copy2(src_path, out_path)
             # Enforce 5 Pillars: strict UTF-8 no BOM and CRLF
             raw_b = out_path.read_bytes()
-            if raw_b.startswith(b"\xef\xbb\xbf") or not raw_b.endswith(b"\r\n") or b"\r\n" not in raw_b or b"\r\r\n" in raw_b:
+            if (
+                raw_b.startswith(b"\xef\xbb\xbf")
+                or not raw_b.endswith(b"\r\n")
+                or b"\r\n" not in raw_b
+                or b"\r\r\n" in raw_b
+            ):
                 text_norm = raw_b.decode("utf-8-sig", errors="replace")
                 out_path.write_bytes(("\r\n".join(text_norm.splitlines()) + "\r\n").encode("utf-8"))
             with open(out_path, encoding="utf-8-sig", errors="ignore") as fp:
@@ -986,13 +986,16 @@ def main():
     # Record automated version commit
     try:
         from DefFileGenerator.version_manager import DefinitionVersionControl
+
         vc = DefinitionVersionControl(repo_root=WORKSPACE_DIR)
         commit = vc.commit(
             source_dir=PROD_DIR,
             message=f"Automated build: {len(stats_list)} production definitions ({sum(s['registers'] for s in stats_list):,} registers)",
             author="Production Governor",
         )
-        print(f"[VERSION CONTROL] Recorded commit {commit.commit_id} (+{commit.changes_summary.get('added', 0)} ~{commit.changes_summary.get('modified', 0)} -{commit.changes_summary.get('deleted', 0)})")
+        print(
+            f"[VERSION CONTROL] Recorded commit {commit.commit_id} (+{commit.changes_summary.get('added', 0)} ~{commit.changes_summary.get('modified', 0)} -{commit.changes_summary.get('deleted', 0)})"
+        )
     except Exception as e:
         print(f"[WARNING] Version control snapshot could not be recorded: {e}")
 

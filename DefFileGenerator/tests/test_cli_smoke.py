@@ -23,7 +23,9 @@ from DefFileGenerator._version import __version__
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
-def _run_cli_cmd(args: list[str], cwd: Path | str | None = None) -> subprocess.CompletedProcess[str]:
+def _run_cli_cmd(
+    args: list[str], cwd: Path | str | None = None
+) -> subprocess.CompletedProcess[str]:
     """Helper to run deffilegen via module invocation."""
     cmd = [sys.executable, "-m", "DefFileGenerator.main"] + args
     return subprocess.run(
@@ -128,23 +130,33 @@ class TestCliSmoke(unittest.TestCase):
             )
 
             # 1. Commit initial snapshot
-            res_c1 = _run_cli_cmd([
-                "commit",
-                "--path", str(prod_dir),
-                "--store-dir", str(store_dir),
-                "-m", "Initial test commit",
-                "--author", "Test Author",
-                "-t", "v1.0.0",
-            ])
+            res_c1 = _run_cli_cmd(
+                [
+                    "commit",
+                    "--path",
+                    str(prod_dir),
+                    "--store-dir",
+                    str(store_dir),
+                    "-m",
+                    "Initial test commit",
+                    "--author",
+                    "Test Author",
+                    "-t",
+                    "v1.0.0",
+                ]
+            )
             self.assertEqual(res_c1.returncode, 0, f"Commit 1 failed:\n{res_c1.stderr}")
             self.assertIn("[OK] Commit", res_c1.stdout)
 
             # 2. History check
-            res_h = _run_cli_cmd([
-                "history",
-                "--store-dir", str(store_dir),
-                "--json",
-            ])
+            res_h = _run_cli_cmd(
+                [
+                    "history",
+                    "--store-dir",
+                    str(store_dir),
+                    "--json",
+                ]
+            )
             self.assertEqual(res_h.returncode, 0)
             history = json.loads(res_h.stdout)
             self.assertEqual(len(history), 1)
@@ -158,42 +170,57 @@ class TestCliSmoke(unittest.TestCase):
                 "3;3;30003;U16;;ReactivePower;Q_AC;1.000000;0.000000;VAr;4\n",
                 encoding="utf-8",
             )
-            res_c2 = _run_cli_cmd([
-                "commit",
-                "--path", str(prod_dir),
-                "--store-dir", str(store_dir),
-            ])
+            res_c2 = _run_cli_cmd(
+                [
+                    "commit",
+                    "--path",
+                    str(prod_dir),
+                    "--store-dir",
+                    str(store_dir),
+                ]
+            )
             self.assertEqual(res_c2.returncode, 0, f"Commit 2 failed:\n{res_c2.stderr}")
 
             # 4. Diff between commits
-            res_diff = _run_cli_cmd([
-                "diff",
-                "--store-dir", str(store_dir),
-                "--json",
-            ])
+            res_diff = _run_cli_cmd(
+                [
+                    "diff",
+                    "--store-dir",
+                    str(store_dir),
+                    "--json",
+                ]
+            )
             self.assertEqual(res_diff.returncode, 0, f"Diff failed:\n{res_diff.stderr}")
             diff_obj = json.loads(res_diff.stdout)
             self.assertIn("INV_Sample_Model.csv", diff_obj.get("modified_files", []))
 
             # 5. Restore commit 1 in dry-run mode
-            res_rst_dry = _run_cli_cmd([
-                "restore",
-                cid1,
-                "--dest", str(restore_dir),
-                "--store-dir", str(store_dir),
-                "--dry-run",
-            ])
+            res_rst_dry = _run_cli_cmd(
+                [
+                    "restore",
+                    cid1,
+                    "--dest",
+                    str(restore_dir),
+                    "--store-dir",
+                    str(store_dir),
+                    "--dry-run",
+                ]
+            )
             self.assertEqual(res_rst_dry.returncode, 0)
             self.assertIn("(Dry-run)", res_rst_dry.stdout)
             self.assertFalse((restore_dir / "INV_Sample_Model.csv").exists())
 
             # 6. Actual restore commit 1
-            res_rst = _run_cli_cmd([
-                "restore",
-                cid1,
-                "--dest", str(restore_dir),
-                "--store-dir", str(store_dir),
-            ])
+            res_rst = _run_cli_cmd(
+                [
+                    "restore",
+                    cid1,
+                    "--dest",
+                    str(restore_dir),
+                    "--store-dir",
+                    str(store_dir),
+                ]
+            )
             self.assertEqual(res_rst.returncode, 0)
             restored_file = restore_dir / "INV_Sample_Model.csv"
             self.assertTrue(restored_file.exists())
