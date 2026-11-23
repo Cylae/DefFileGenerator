@@ -2,7 +2,7 @@
 
 Bibliothèque officielle de définitions d'équipements industriels validées pour déploiement en production sur les concentrateurs et passerelles Webdyn (SunPM, Hub, Flex).
 
-Comprend **1136 fichiers de définition certifiés** couvrant **338,802 registres Modbus** et **33,395 tags SunPM canoniques** à travers **191 constructeurs mondiaux**.
+Comprend **1167 fichiers de définition certifiés** couvrant **352,846 registres Modbus** et **35,036 tags SunPM canoniques** à travers **191 constructeurs mondiaux**.
 
 ---
 
@@ -10,11 +10,11 @@ Comprend **1136 fichiers de définition certifiés** couvrant **338,802 registre
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Tags Actifs | Exemples Constructeurs |
 |---|---|---|---|---|---|
-| Onduleurs & Convertisseurs (Inverter) | `INV_` | 439 | 118,062 | 16,179 | 5, ABB, APsystems, ATESS, AnswerDrives (+86) |
+| Onduleurs & Convertisseurs (Inverter) | `INV_` | 463 | 127,688 | 16,878 | 5, ABB, APsystems, ATESS, AnswerDrives (+86) |
 | Compteurs & Analyseurs Réseau (Meter) | `MET_` | 223 | 29,328 | 3,338 | ABB, AEberle, ALGODUE, Acrel, Algodue (+58) |
-| Systèmes BESS & Batteries (Battery) | `BAT_` | 53 | 52,489 | 3,217 | ATMOCE, AlroSolar, Dyness, FOX ESS, FoxESS (+11) |
+| Systèmes BESS & Batteries (Battery) | `BAT_` | 57 | 55,174 | 3,307 | ATMOCE, AlroSolar, Dyness, FOX ESS, FoxESS (+11) |
 | Capteurs Météo & Pyranomètres (Sensor) | `SEN_` | 53 | 1,326 | 169 | ATERSA, BD, Blet, DELTAOHM, DeltaOhm (+20) |
-| Passerelles & Loggers (Logger) | `COM_` | 34 | 31,653 | 1,585 | ATMOCE, FoxESS, GoodWe, Greenheiss, HOYMILES (+7) |
+| Passerelles & Loggers (Logger) | `COM_` | 38 | 33,386 | 2,437 | ATMOCE, FoxESS, GoodWe, Greenheiss, HOYMILES (+7) |
 | Modules IO & Afficheurs (Other) | `OTH_` | 364 | 105,944 | 8,907 | 5, ABB, AEberle, Advantech, Alan (+98) |
 
 ---
@@ -24,21 +24,21 @@ Comprend **1136 fichiers de définition certifiés** couvrant **338,802 registre
 | Constructeur | Modèles | Total Registres | Tags SunPM Actifs | Catégories Couvertes |
 |---|:---:|:---:|:---:|---|
 | **Schneider** | 77 | 11,933 | 1,201 | Inverter, Meter, Other |
-| **ABB** | 71 | 36,955 | 2,630 | Inverter, Meter, Other |
+| **ABB** | 74 | 39,452 | 2,635 | Inverter, Meter, Other |
+| **Huawei** | 70 | 11,800 | 2,284 | Battery, Inverter, Logger, Meter, Other |
 | **GoodWe** | 61 | 7,264 | 3,046 | Battery, Inverter, Logger, Meter |
 | **MarsEnergy** | 57 | 38,938 | 1,090 | Battery, Inverter, Logger, Meter, Other |
-| **Huawei** | 56 | 9,372 | 1,901 | Battery, Inverter, Logger, Meter, Other |
 | **Delta** | 35 | 20,387 | 1,095 | Inverter, Other |
 | **SMA** | 34 | 9,151 | 1,359 | Inverter, Logger, Meter, Other |
 | **Fronius** | 33 | 8,864 | 1,039 | Inverter, Meter, Other, Sensor |
+| **Sungrow** | 30 | 13,329 | 2,965 | Battery, Inverter, Logger, Other |
 | **CarloGavazzi** | 27 | 1,710 | 546 | Meter, Other |
 | **FoxESS** | 27 | 11,376 | 2,285 | Battery, Inverter, Logger, Meter, Other, Storage |
+| **Kaco** | 27 | 12,185 | 779 | Inverter, Other |
 | **Socomec** | 24 | 1,608 | 225 | Inverter, Meter, Other |
-| **Sungrow** | 24 | 9,329 | 1,986 | Battery, Inverter, Logger, Other |
 | **Ingeteam** | 19 | 1,099 | 296 | Inverter, Other |
 | **SAJ** | 19 | 3,187 | 391 | Inverter, Other |
 | **SLEnergy** | 18 | 6,794 | 1,019 | Battery, Inverter, Meter, Other |
-| **Kaco** | 17 | 6,896 | 480 | Inverter, Other |
 | **SolarEdge** | 17 | 902 | 263 | Inverter, Other |
 | **Growatt** | 16 | 5,647 | 1,894 | Inverter |
 | **Legrand** | 14 | 2,029 | 231 | Inverter, Meter, Other |
@@ -51,10 +51,10 @@ Comprend **1136 fichiers de définition certifiés** couvrant **338,802 registre
 | **SIEL** | 11 | 215 | 3 | Inverter |
 | **CyberPower** | 10 | 834 | 128 | Inverter, Other |
 | **KippZonen** | 10 | 346 | 17 | Other, Sensor |
-| **HUAWEI** | 9 | 1,235 | 180 | Battery, Inverter, Meter |
 | **Kostal** | 9 | 1,061 | 171 | Inverter, Other |
 | **Solax** | 9 | 1,429 | 78 | Inverter |
 | **Deye** | 8 | 1,601 | 122 | Inverter, Meter, Other |
+| **HUAWEI** | 8 | 1,065 | 155 | Battery, Inverter, Meter |
 | **Solis** | 8 | 2,521 | 191 | Inverter |
 | **Webdyn** | 8 | 225 | 18 | Other, Sensor |
 | **AlroSolar** | 7 | 1,904 | 184 | Battery, Other |
@@ -242,6 +242,7 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`OTH_ABB_10.0_et_12.5_ABB_PVIMODBUS.csv`](./OTH_ABB_10.0_et_12.5_ABB_PVIMODBUS.csv) | Other | ABB | 10.0_et_12.5_ABB_PVIMODBUS | Modbus | 19 | 8 |
 | [`INV_ABB_10.5.csv`](./INV_ABB_10.5.csv) | Inverter | ABB | 10.5 | Modbus | 19 | 3 |
 | [`INV_ABB_5583-CHEVALIERP2_SunSpec_inverter_ABB_3Q4200_2117B_modbusRTU.csv`](./INV_ABB_5583-CHEVALIERP2_SunSpec_inverter_ABB_3Q4200_2117B_modbusRTU.csv) | Inverter | ABB | 5583-CHEVALIERP2_SunSpec_inverter_ABB_3Q4200_2117B_modbusRTU | Modbus | 1,111 | 37 |
+| [`INV_ABB_AURORA_CENTRAL.csv`](./INV_ABB_AURORA_CENTRAL.csv) | Inverter | ABB | AURORA_Central | Modbus | 1,522 | 0 |
 | [`MET_ABB_B21-B23-B24.csv`](./MET_ABB_B21-B23-B24.csv) | Meter | ABB | B21-B23-B24 | Modbus | 137 | 5 |
 | [`MET_ABB_B21_B23_B24.csv`](./MET_ABB_B21_B23_B24.csv) | Meter | ABB | B21_B23_B24 | Modbus | 137 | 29 |
 | [`INV_ABB_LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv`](./INV_ABB_LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv) | Inverter | ABB | LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP | Modbus | 956 | 36 |
@@ -265,6 +266,7 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`OTH_ABB_Modbus_Ultra_Module.csv`](./OTH_ABB_Modbus_Ultra_Module.csv) | Other | ABB | Modbus_Ultra_Module | Modbus | 56 | 10 |
 | [`MET_ABB_Modbus_mapping_Meter_ABB_B21.csv`](./MET_ABB_Modbus_mapping_Meter_ABB_B21.csv) | Meter | ABB | Modbus_mapping_Meter_ABB_B21 | Modbus | 41 | 7 |
 | [`INV_ABB_PRO-33.0-TL.csv`](./INV_ABB_PRO-33.0-TL.csv) | Inverter | ABB | PRO-33.0-TL | Modbus | 62 | 12 |
+| [`INV_ABB_PVI-10.0_12.5.csv`](./INV_ABB_PVI-10.0_12.5.csv) | Inverter | ABB | PVI-10.0_12.5 | Modbus | 19 | 0 |
 | [`INV_ABB_PVI-110_275.csv`](./INV_ABB_PVI-110_275.csv) | Inverter | ABB | PVI-110_275 | Modbus | 441 | 9 |
 | [`INV_ABB_PVI-50_60.csv`](./INV_ABB_PVI-50_60.csv) | Inverter | ABB | PVI-50_60 | Modbus | 104 | 19 |
 | [`INV_ABB_PVI110-275.csv`](./INV_ABB_PVI110-275.csv) | Inverter | ABB | PVI110-275 | Modbus | 441 | 9 |
@@ -274,6 +276,7 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`OTH_ABB_PVS-100_120_PVS1xx_TCP_PICS.csv`](./OTH_ABB_PVS-100_120_PVS1xx_TCP_PICS.csv) | Other | ABB | PVS-100_120_PVS1xx_TCP_PICS | Modbus | 986 | 39 |
 | [`INV_ABB_PVS-10_12.5_15_20_30_33.csv`](./INV_ABB_PVS-10_12.5_15_20_30_33.csv) | Inverter | ABB | PVS-10_12.5_15_20_30_33 | Modbus | 963 | 33 |
 | [`INV_ABB_PVS-175.csv`](./INV_ABB_PVS-175.csv) | Inverter | ABB | PVS-175 | Modbus | 1,068 | 37 |
+| [`INV_ABB_PVS-30-TL.csv`](./INV_ABB_PVS-30-TL.csv) | Inverter | ABB | PVS-30-TL | Modbus | 956 | 5 |
 | [`INV_ABB_PVS-50_60.csv`](./INV_ABB_PVS-50_60.csv) | Inverter | ABB | PVS-50_60 | Modbus | 956 | 33 |
 | [`INV_ABB_PVS1xx_SunSpec.csv`](./INV_ABB_PVS1xx_SunSpec.csv) | Inverter | ABB | PVS1xx_SunSpec | Modbus | 673 | 27 |
 | [`INV_ABB_PVS50_MODBUS_light.csv`](./INV_ABB_PVS50_MODBUS_light.csv) | Inverter | ABB | PVS50_MODBUS_light | Modbus | 76 | 24 |
@@ -645,7 +648,6 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`INV_Huawei_7550606570-M0.csv`](./INV_Huawei_7550606570-M0.csv) | Inverter | HUAWEI | 7550606570-M0 | Modbus | 73 | 37 |
 | [`INV_Huawei_81012141820.csv`](./INV_Huawei_81012141820.csv) | Inverter | HUAWEI | 81012141820 | Modbus | 152 | 25 |
 | [`BAT_Huawei_INV_STORAGE.csv`](./BAT_Huawei_INV_STORAGE.csv) | Battery | HUAWEI | INV_STORAGE | Modbus | 272 | 13 |
-| [`BAT_Huawei_Luna2000.csv`](./BAT_Huawei_Luna2000.csv) | Battery | HUAWEI | Luna2000 | Modbus | 170 | 25 |
 | [`BAT_Huawei_Luna_2000.csv`](./BAT_Huawei_Luna_2000.csv) | Battery | HUAWEI | Luna_2000 | Modbus | 170 | 25 |
 | [`MET_Huawei_Power_Meter.csv`](./MET_Huawei_Power_Meter.csv) | Meter | HUAWEI | Power_Meter | Modbus | 44 | 4 |
 | [`INV_Huawei_V4_BATTERY.csv`](./INV_Huawei_V4_BATTERY.csv) | Inverter | HUAWEI | V4_BATTERY | Modbus | 140 | 9 |
@@ -672,6 +674,9 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`INV_Huawei_INV.csv`](./INV_Huawei_INV.csv) | Inverter | Huawei | INV | Modbus | 256 | 80 |
 | [`MET_Huawei_INV_METER.csv`](./MET_Huawei_INV_METER.csv) | Meter | Huawei | INV_METER | Modbus | 22 | 9 |
 | [`INV_Huawei_Inverter.csv`](./INV_Huawei_Inverter.csv) | Inverter | Huawei | Inverter | Modbus | 94 | 60 |
+| [`BAT_Huawei_LUNA2000.csv`](./BAT_Huawei_LUNA2000.csv) | Battery | Huawei | LUNA2000 | Modbus | 170 | 25 |
+| [`BAT_Huawei_Luna2000.csv`](./BAT_Huawei_Luna2000.csv) | Battery | Huawei | LUNA2000 | Modbus | 170 | 25 |
+| [`BAT_Huawei_LUNA2000_Storage.csv`](./BAT_Huawei_LUNA2000_Storage.csv) | Battery | Huawei | LUNA2000_Storage | Modbus | 272 | 13 |
 | [`OTH_Huawei_Luna_2000.csv`](./OTH_Huawei_Luna_2000.csv) | Other | Huawei | Luna_2000 | Modbus | 170 | 25 |
 | [`INV_Huawei_MODBUS_2345.csv`](./INV_Huawei_MODBUS_2345.csv) | Inverter | Huawei | MODBUS_2345 | Modbus | 47 | 22 |
 | [`OTH_Huawei_MODBUS_2345.csv`](./OTH_Huawei_MODBUS_2345.csv) | Other | Huawei | MODBUS_2345 | Modbus | 47 | 22 |
@@ -694,8 +699,18 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`OTH_Huawei_Modbus_All_V3.csv`](./OTH_Huawei_Modbus_All_V3.csv) | Other | Huawei | Modbus_All_V3 | Modbus | 97 | 15 |
 | [`MET_Huawei_PowerMeter.csv`](./MET_Huawei_PowerMeter.csv) | Meter | Huawei | PowerMeter | Modbus | 44 | 13 |
 | [`COM_Huawei_SL3000.csv`](./COM_Huawei_SL3000.csv) | Logger | Huawei | SL3000 | Modbus | 82 | 7 |
+| [`INV_Huawei_SUN2000-2_5KTL.csv`](./INV_Huawei_SUN2000-2_5KTL.csv) | Inverter | Huawei | SUN2000-2_5KTL | Modbus | 47 | 22 |
+| [`INV_Huawei_SUN2000-30_40KTL-M3.csv`](./INV_Huawei_SUN2000-30_40KTL-M3.csv) | Inverter | Huawei | SUN2000-30_40KTL-M3 | Modbus | 64 | 64 |
+| [`INV_Huawei_SUN2000-33A_36_42KTL.csv`](./INV_Huawei_SUN2000-33A_36_42KTL.csv) | Inverter | Huawei | SUN2000-33A_36_42KTL | Modbus | 192 | 35 |
+| [`INV_Huawei_SUN2000-50_70KTL-M0.csv`](./INV_Huawei_SUN2000-50_70KTL-M0.csv) | Inverter | Huawei | SUN2000-50_70KTL-M0 | Modbus | 73 | 37 |
+| [`INV_Huawei_SUN2000-60KTL-HV.csv`](./INV_Huawei_SUN2000-60KTL-HV.csv) | Inverter | Huawei | SUN2000-60KTL-HV | Modbus | 347 | 30 |
+| [`INV_Huawei_SUN2000-8_20KTL.csv`](./INV_Huawei_SUN2000-8_20KTL.csv) | Inverter | Huawei | SUN2000-8_20KTL | Modbus | 328 | 25 |
+| [`INV_Huawei_SUN2000-90_105KTL.csv`](./INV_Huawei_SUN2000-90_105KTL.csv) | Inverter | Huawei | SUN2000-90_105KTL | Modbus | 73 | 37 |
+| [`INV_Huawei_SUN2000-All_V3.csv`](./INV_Huawei_SUN2000-All_V3.csv) | Inverter | Huawei | SUN2000-All_V3 | Modbus | 97 | 15 |
 | [`INV_Huawei_SUN2000-M3.csv`](./INV_Huawei_SUN2000-M3.csv) | Inverter | Huawei | SUN2000-M3 | Modbus | 64 | 64 |
 | [`INV_Huawei_SUN2000-Utility.csv`](./INV_Huawei_SUN2000-Utility.csv) | Inverter | Huawei | SUN2000-Utility | Modbus | 88 | 88 |
+| [`INV_Huawei_SUN2000-V3.csv`](./INV_Huawei_SUN2000-V3.csv) | Inverter | Huawei | SUN2000-V3 | Modbus | 97 | 15 |
+| [`INV_Huawei_SUN2000-V4_Generic.csv`](./INV_Huawei_SUN2000-V4_Generic.csv) | Inverter | Huawei | SUN2000-V4_Generic | Modbus | 322 | 20 |
 | [`INV_Huawei_SUN2000C00.csv`](./INV_Huawei_SUN2000C00.csv) | Inverter | Huawei | SUN2000C00 | Modbus | 274 | 33 |
 | [`INV_Huawei_SUN2000C00_MODBUS_Protocol.csv`](./INV_Huawei_SUN2000C00_MODBUS_Protocol.csv) | Inverter | Huawei | SUN2000C00_MODBUS_Protocol | Modbus | 129 | 31 |
 | [`INV_Huawei_SUN2000C11.csv`](./INV_Huawei_SUN2000C11.csv) | Inverter | Huawei | SUN2000C11 | Modbus | 183 | 33 |
@@ -704,6 +719,7 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`INV_Huawei_SUN2000_V4.csv`](./INV_Huawei_SUN2000_V4.csv) | Inverter | Huawei | SUN2000_V4 | Modbus | 322 | 24 |
 | [`COM_Huawei_SmartLogger3000.csv`](./COM_Huawei_SmartLogger3000.csv) | Logger | Huawei | SmartLogger3000 | Modbus | 83 | 18 |
 | [`INV_Huawei_SmartLogger3000.csv`](./INV_Huawei_SmartLogger3000.csv) | Inverter | Huawei | SmartLogger3000 | Modbus | 11 | 4 |
+| [`COM_Huawei_SmartLogger_VSeries.csv`](./COM_Huawei_SmartLogger_VSeries.csv) | Logger | Huawei | SmartLogger_VSeries | Modbus | 176 | 20 |
 | [`INV_Huawei_V2.csv`](./INV_Huawei_V2.csv) | Inverter | Huawei | V2 | Modbus | 214 | 41 |
 | [`OTH_Huawei_V2.csv`](./OTH_Huawei_V2.csv) | Other | Huawei | V2 | Modbus | 214 | 46 |
 | [`INV_Huawei_V3.csv`](./INV_Huawei_V3.csv) | Inverter | Huawei | V3 | Modbus | 182 | 74 |
@@ -825,10 +841,20 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`INV_Kaco_NX1-NX3_ModbusRTU.csv`](./INV_Kaco_NX1-NX3_ModbusRTU.csv) | Inverter | Kaco | NX1-NX3_ModbusRTU | Modbus | 182 | 36 |
 | [`INV_Kaco_NX1-NX3_Series.csv`](./INV_Kaco_NX1-NX3_Series.csv) | Inverter | Kaco | NX1-NX3_Series | Modbus | 182 | 9 |
 | [`INV_Kaco_NX3_G2_G3_SunSpec.csv`](./INV_Kaco_NX3_G2_G3_SunSpec.csv) | Inverter | Kaco | NX3_G2_G3_SunSpec | Modbus | 458 | 30 |
+| [`INV_Kaco_Powador_60.0_TL3.csv`](./INV_Kaco_Powador_60.0_TL3.csv) | Inverter | Kaco | Powador_60.0_TL3 | Modbus | 101 | 34 |
 | [`OTH_Kaco_SUNSPEC_NX3_G2_G3_1xx_7xx.csv`](./OTH_Kaco_SUNSPEC_NX3_G2_G3_1xx_7xx.csv) | Other | Kaco | SUNSPEC_NX3_G2_G3_1xx_7xx | Modbus | 495 | 32 |
 | [`INV_Kaco_SunSpec_inverter_KACO_new_energy_blueplanet_100_NX3_M8_IEC_5.0.3.3-ec484f_modbusRTU.csv`](./INV_Kaco_SunSpec_inverter_KACO_new_energy_blueplanet_100_NX3_M8_IEC_5.0.3.3-ec484f_modbusRTU.csv) | Inverter | Kaco | SunSpec_inverter_KACO_new_energy_blueplanet_100_NX3_M8_IEC_5.0.3.3-ec484f_modbusRTU | Modbus | 908 | 37 |
 | [`INV_Kaco_Sunspec.csv`](./INV_Kaco_Sunspec.csv) | Inverter | Kaco | Sunspec | Modbus | 107 | 36 |
 | [`INV_Kaco_Sunspec_11.csv`](./INV_Kaco_Sunspec_11.csv) | Inverter | Kaco | Sunspec_11 | Modbus | 107 | 7 |
+| [`INV_Kaco_blueplanet_100_NX3_M8.csv`](./INV_Kaco_blueplanet_100_NX3_M8.csv) | Inverter | Kaco | blueplanet_100_NX3_M8 | Modbus | 908 | 37 |
+| [`INV_Kaco_blueplanet_125_NX3_M10.csv`](./INV_Kaco_blueplanet_125_NX3_M10.csv) | Inverter | Kaco | blueplanet_125_NX3_M10 | Modbus | 928 | 37 |
+| [`INV_Kaco_blueplanet_125_TL3.csv`](./INV_Kaco_blueplanet_125_TL3.csv) | Inverter | Kaco | blueplanet_125_TL3 | Modbus | 828 | 5 |
+| [`INV_Kaco_blueplanet_15.0_TL3.csv`](./INV_Kaco_blueplanet_15.0_TL3.csv) | Inverter | Kaco | blueplanet_15.0_TL3 | Modbus | 638 | 36 |
+| [`INV_Kaco_blueplanet_20.0_TL3.csv`](./INV_Kaco_blueplanet_20.0_TL3.csv) | Inverter | Kaco | blueplanet_20.0_TL3 | Modbus | 697 | 36 |
+| [`INV_Kaco_blueplanet_50.0_NX3_M5.csv`](./INV_Kaco_blueplanet_50.0_NX3_M5.csv) | Inverter | Kaco | blueplanet_50.0_NX3_M5 | Modbus | 197 | 6 |
+| [`INV_Kaco_blueplanet_50.0_TL3.csv`](./INV_Kaco_blueplanet_50.0_TL3.csv) | Inverter | Kaco | blueplanet_50.0_TL3 | Modbus | 628 | 37 |
+| [`INV_Kaco_blueplanet_NX1.csv`](./INV_Kaco_blueplanet_NX1.csv) | Inverter | Kaco | blueplanet_NX1 | Modbus | 182 | 35 |
+| [`INV_Kaco_blueplanet_NX3.csv`](./INV_Kaco_blueplanet_NX3.csv) | Inverter | Kaco | blueplanet_NX3 | Modbus | 182 | 36 |
 | [`OTH_Kaco_sunspec_information_model_reference.csv`](./OTH_Kaco_sunspec_information_model_reference.csv) | Other | Kaco | sunspec_information_model_reference | Modbus | 226 | 7 |
 | [`INV_Kaco_sunspec_information_model_reference_kaco.csv`](./INV_Kaco_sunspec_information_model_reference_kaco.csv) | Inverter | Kaco | sunspec_information_model_reference_kaco | Modbus | 28 | 0 |
 | [`INV_Kehua_Modbus_SinglePhase.csv`](./INV_Kehua_Modbus_SinglePhase.csv) | Inverter | Kehua | Modbus_SinglePhase | Modbus | 159 | 29 |
@@ -1312,17 +1338,23 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`OTH_Solplanet_v0.5.csv`](./OTH_Solplanet_v0.5.csv) | Other | Solplanet | v0.5 | Modbus | 139 | 58 |
 | [`BAT_Sungrow_Battery.csv`](./BAT_Sungrow_Battery.csv) | Battery | Sungrow | Battery | Modbus | 172 | 172 |
 | [`INV_Sungrow_Battery.csv`](./INV_Sungrow_Battery.csv) | Inverter | Sungrow | Battery | Modbus | 172 | 172 |
+| [`COM_Sungrow_EMS300CP.csv`](./COM_Sungrow_EMS300CP.csv) | Logger | Sungrow | EMS300CP | Modbus | 694 | 8 |
+| [`BAT_Sungrow_FullMap_v2.csv`](./BAT_Sungrow_FullMap_v2.csv) | Battery | Sungrow | FullMap_v2 | Modbus | 801 | 37 |
 | [`INV_Sungrow_GENERIC_V.1.1.58.csv`](./INV_Sungrow_GENERIC_V.1.1.58.csv) | Inverter | Sungrow | GENERIC_V.1.1.58 | Modbus | 200 | 95 |
 | [`INV_Sungrow_Generic.csv`](./INV_Sungrow_Generic.csv) | Inverter | Sungrow | Generic | Modbus | 164 | 80 |
 | [`BAT_Sungrow_LC3000.csv`](./BAT_Sungrow_LC3000.csv) | Battery | Sungrow | LC3000 | Modbus | 916 | 33 |
 | [`OTH_Sungrow_LC3000.csv`](./OTH_Sungrow_LC3000.csv) | Other | Sungrow | LC3000 | Modbus | 916 | 32 |
+| [`COM_Sungrow_LC300_Modbus.csv`](./COM_Sungrow_LC300_Modbus.csv) | Logger | Sungrow | LC300_Modbus | Modbus | 813 | 813 |
+| [`COM_Sungrow_Logger1000_3000.csv`](./COM_Sungrow_Logger1000_3000.csv) | Logger | Sungrow | Logger1000_3000 | Modbus | 50 | 11 |
 | [`INV_Sungrow_MODBUS_PM.csv`](./INV_Sungrow_MODBUS_PM.csv) | Inverter | Sungrow | MODBUS_PM | Modbus | 99 | 69 |
 | [`COM_Sungrow_MODBUS_SUNGROW_Logger1000-3000.csv`](./COM_Sungrow_MODBUS_SUNGROW_Logger1000-3000.csv) | Logger | Sungrow | MODBUS_SUNGROW_Logger1000-3000 | Modbus | 50 | 11 |
 | [`COM_Sungrow_MODBUS_SUNGROW_Logger1000-3000RTU.csv`](./COM_Sungrow_MODBUS_SUNGROW_Logger1000-3000RTU.csv) | Logger | Sungrow | MODBUS_SUNGROW_Logger1000-3000RTU | Modbus | 49 | 11 |
 | [`INV_Sungrow_PVCombinerBox.csv`](./INV_Sungrow_PVCombinerBox.csv) | Inverter | Sungrow | PVCombinerBox | Modbus | 64 | 5 |
 | [`OTH_Sungrow_PVCombinerBox.csv`](./OTH_Sungrow_PVCombinerBox.csv) | Other | Sungrow | PVCombinerBox | Modbus | 64 | 5 |
+| [`BAT_Sungrow_PowerStack_ST255CS.csv`](./BAT_Sungrow_PowerStack_ST255CS.csv) | Battery | Sungrow | PowerStack_ST255CS | Modbus | 1,442 | 15 |
 | [`INV_Sungrow_RTU_PM.csv`](./INV_Sungrow_RTU_PM.csv) | Inverter | Sungrow | RTU_PM | Modbus | 81 | 62 |
-| [`INV_Sungrow_SG_Series.csv`](./INV_Sungrow_SG_Series.csv) | Inverter | Sungrow | SG-Series | Modbus | 29 | 29 |
+| [`INV_Sungrow_SG_Series.csv`](./INV_Sungrow_SG_Series.csv) | Inverter | Sungrow | SG_Series | Modbus | 29 | 29 |
+| [`INV_Sungrow_SG_Series_Generic.csv`](./INV_Sungrow_SG_Series_Generic.csv) | Inverter | Sungrow | SG_Series_Generic | Modbus | 200 | 95 |
 | [`INV_Sungrow_TCP_PM.csv`](./INV_Sungrow_TCP_PM.csv) | Inverter | Sungrow | TCP_PM | Modbus | 81 | 62 |
 | [`COM_Sungrow_TI_20241202_EMS300CP_IEC104_Modbus_Communication_Protocol_P014_software_version_CN_EN.csv`](./COM_Sungrow_TI_20241202_EMS300CP_IEC104_Modbus_Communication_Protocol_P014_software_version_CN_EN.csv) | Logger | Sungrow | TI_20241202_EMS300CP_IEC104_Modbus_Communication_Protocol_P014_software_version_CN_EN | Modbus | 694 | 8 |
 | [`COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN.csv`](./COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN.csv) | Logger | Sungrow | TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN | Modbus | 1,382 | 32 |

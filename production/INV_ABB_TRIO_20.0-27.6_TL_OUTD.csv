@@ -58,7 +58,7 @@ Modbus;Inverter;ABB;TRIO_20.0-27.6_TL_OUTD;;;;;;;
 57;4;120;U16;;Onduleur  Semaine de production - Octet faible;;1.000000;0.000000;;4
 58;4;121;U16;;Onduleur  Annee de production - Octet fort;;1.000000;0.000000;;4
 59;4;122;U16;;Onduleur  Annee de production - Octet faible;;1.000000;0.000000;;4
-60;4;123;U16;;Onduleur  Etats (Octet 0)  Etat general;;1.000000;0.000000;;8
+60;4;123;U16;;Onduleur  Etats (Octet 0)  Etat general;;1.000000;0.000000;;4
 61;4;124;U16;;Onduleur  Etats (Octet 1)  Etat onduleur;;1.000000;0.000000;;4
 62;4;125;U16;;Onduleur  Etats (Octet 2)  Etat canal (MPPT) 1;;1.000000;0.000000;;4
 63;4;126;U16;;Onduleur  Etats (Octet 3)  Etat canal (MPPT) 2;;1.000000;0.000000;;4

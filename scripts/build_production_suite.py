@@ -35,6 +35,9 @@ GOODWE_DIR = WORKSPACE_DIR / "Definitions" / "GoodWe"
 SMA_DIR = WORKSPACE_DIR / "Definitions" / "SMA"
 CARLOGAVAZZI_DIR = WORKSPACE_DIR / "Definitions" / "CarloGavazzi"
 ABB_DIR = WORKSPACE_DIR / "Definitions" / "ABB"
+KACO_DIR = WORKSPACE_DIR / "Definitions" / "Kaco"
+SUNGROW_DIR = WORKSPACE_DIR / "Definitions" / "Sungrow"
+HUAWEI_DIR = WORKSPACE_DIR / "Definitions" / "Huawei"
 
 PREFIX_TO_CATEGORY = {
     "INV": "Inverter",
@@ -589,6 +592,21 @@ def build_manifest() -> dict[str, Path]:
         for abb_file in sorted(ABB_DIR.glob("*.csv")):
             manifest[abb_file.name] = abb_file
 
+    # 12. Complete KACO new energy Certified Ecosystem
+    if KACO_DIR.exists():
+        for kaco_file in sorted(KACO_DIR.glob("*.csv")):
+            manifest[kaco_file.name] = kaco_file
+
+    # 13. Complete Sungrow Certified Ecosystem
+    if SUNGROW_DIR.exists():
+        for sg_file in sorted(SUNGROW_DIR.glob("*.csv")):
+            manifest[sg_file.name] = sg_file
+
+    # 14. Complete Huawei Certified Ecosystem
+    if HUAWEI_DIR.exists():
+        for hw_file in sorted(HUAWEI_DIR.glob("*.csv")):
+            manifest[hw_file.name] = hw_file
+
     # 6. Comprehensive Ingestion from tagged_definitions/
     candidates_by_tgt: dict[str, list[Path]] = defaultdict(list)
     for f in sorted(TAGGED_DIR.glob("*.csv")):
@@ -966,6 +984,9 @@ def main():
                 FOXESS_DIR,
                 MARS_DIR,
                 DYNESS_DIR,
+                KACO_DIR,
+                SUNGROW_DIR,
+                HUAWEI_DIR,
             )
             if d.exists()
         )

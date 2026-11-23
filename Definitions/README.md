@@ -1,6 +1,6 @@
 # 📚 Webdyn Definitions Library
 
-Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **208 fichiers de définition** validés couvrant **37 671 registres Modbus** à travers plus de 60 constructeurs mondiaux.
+Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **246 fichiers de définition** validés couvrant **53 023 registres Modbus** à travers plus de 60 constructeurs mondiaux.
 
 ---
 
@@ -8,12 +8,12 @@ Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. 
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Constructeurs Notables |
 |-----------|---------|----------|-----------------|------------------------|
-| Onduleurs & Convertisseurs (Inverters) | `INV_` | 112 | 27 636 | ABB, Answer Drives, CyberPower, Cyberpower, EFACEC (+23) |
-| Compteurs & Analyseurs Réseau (Meters) | `MET_` | 56 | 5 246 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+17) |
-| Systèmes de Stockage BESS (Batteries) | `BAT_` | 5 | 3 718 | Dyness, GoodWe |
+| Onduleurs & Convertisseurs (Inverters) | `INV_` | 137 | 37 291 | ABB, Answer Drives, CyberPower, Cyberpower, EFACEC (+23) |
+| Compteurs & Analyseurs Réseau (Meters) | `MET_` | 57 | 5 290 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+18) |
+| Systèmes de Stockage BESS (Batteries) | `BAT_` | 11 | 7 491 | Dyness, GoodWe, Huawei, Sungrow |
 | Capteurs & Pyranomètres (Sensors) | `SEN_` | 21 | 446 | ATERSA, BD_SENSOR, DELTAOHM, DELTA_OHM, EKO (+11) |
-| Passerelles & Loggers de Communication | `COM_` | 8 | 396 | GoodWe, Huawei, SMA, Solplanet |
-| Autres Équipements (IO Modules & Afficheurs) | `OTH_` | 6 | 229 | ABB, ICPDAS, SIEBERT, Webdyn |
+| Passerelles & Loggers de Communication | `COM_` | 13 | 2 212 | GoodWe, Huawei, SMA, Solplanet, Sungrow |
+| Autres Équipements (IO Modules & Afficheurs) | `OTH_` | 7 | 293 | ABB, ICPDAS, SIEBERT, Sungrow, Webdyn |
 
 ---
 
@@ -58,17 +58,20 @@ Tous les fichiers suivent la convention canonique Webdyn :
 
 ## 📑 Catalogue Détaillé
 
-### Onduleurs & Convertisseurs (Inverters) (112 fichiers)
+### Onduleurs & Convertisseurs (Inverters) (137 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
 | [`INV_ABB_10.5.csv`](./INV_ABB_10.5.csv) | ABB | 10.5 | Modbus | 19 |
+| [`INV_ABB_AURORA_CENTRAL.csv`](./INV_ABB_AURORA_CENTRAL.csv) | ABB | AURORA_Central | Modbus | 1522 |
 | [`INV_ABB_PRO-33.0-TL.csv`](./INV_ABB_PRO-33.0-TL.csv) | ABB | PRO-33.0-TL | Modbus | 62 |
+| [`INV_ABB_PVI-10.0_12.5.csv`](./INV_ABB_PVI-10.0_12.5.csv) | ABB | PVI-10.0_12.5 | Modbus | 19 |
 | [`INV_ABB_PVI-110_275.csv`](./INV_ABB_PVI-110_275.csv) | ABB | PVI-110_275 | Modbus | 441 |
 | [`INV_ABB_PVI-50_60.csv`](./INV_ABB_PVI-50_60.csv) | ABB | PVI-50_60 | Modbus | 104 |
 | [`INV_ABB_PVS-100_120.csv`](./INV_ABB_PVS-100_120.csv) | ABB | PVS-100_120 | Modbus | 986 |
 | [`INV_ABB_PVS-10_12.5_15_20_30_33.csv`](./INV_ABB_PVS-10_12.5_15_20_30_33.csv) | ABB | PVS-10_12.5_15_20_30_33 | Modbus | 963 |
 | [`INV_ABB_PVS-175.csv`](./INV_ABB_PVS-175.csv) | ABB | PVS-175 | Modbus | 1068 |
+| [`INV_ABB_PVS-30-TL.csv`](./INV_ABB_PVS-30-TL.csv) | ABB | PVS-30-TL | Modbus | 956 |
 | [`INV_ABB_PVS-50_60.csv`](./INV_ABB_PVS-50_60.csv) | ABB | PVS-50_60 | Modbus | 956 |
 | [`INV_ABB_PVS800-57B.csv`](./INV_ABB_PVS800-57B.csv) | ABB | PVS800-57B | Modbus | 1053 |
 | [`INV_ABB_PVS800-57B_2.csv`](./INV_ABB_PVS800-57B_2.csv) | ABB | PVS800-57B | Modbus | 1053 |
@@ -115,11 +118,31 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_Growatt_TL-X_TL-XH_Series.csv`](./INV_Growatt_TL-X_TL-XH_Series.csv) | Growatt | TL-X_TL-XH_Series | Modbus | 425 |
 | [`INV_Growatt_TL3-X_Series.csv`](./INV_Growatt_TL3-X_Series.csv) | Growatt | TL3-X_Series | Modbus | 371 |
 | [`INV_Huawei_GENERIC.csv`](./INV_Huawei_GENERIC.csv) | Huawei | GENERIC | Modbus | 256 |
+| [`INV_Huawei_SUN2000-2_5KTL.csv`](./INV_Huawei_SUN2000-2_5KTL.csv) | Huawei | SUN2000-2_5KTL | Modbus | 47 |
+| [`INV_Huawei_SUN2000-30_40KTL-M3.csv`](./INV_Huawei_SUN2000-30_40KTL-M3.csv) | Huawei | SUN2000-30_40KTL-M3 | Modbus | 64 |
+| [`INV_Huawei_SUN2000-33A_36_42KTL.csv`](./INV_Huawei_SUN2000-33A_36_42KTL.csv) | Huawei | SUN2000-33A_36_42KTL | Modbus | 192 |
+| [`INV_Huawei_SUN2000-50_70KTL-M0.csv`](./INV_Huawei_SUN2000-50_70KTL-M0.csv) | Huawei | SUN2000-50_70KTL-M0 | Modbus | 73 |
+| [`INV_Huawei_SUN2000-60KTL-HV.csv`](./INV_Huawei_SUN2000-60KTL-HV.csv) | Huawei | SUN2000-60KTL-HV | Modbus | 347 |
+| [`INV_Huawei_SUN2000-8_20KTL.csv`](./INV_Huawei_SUN2000-8_20KTL.csv) | Huawei | SUN2000-8_20KTL | Modbus | 328 |
+| [`INV_Huawei_SUN2000-90_105KTL.csv`](./INV_Huawei_SUN2000-90_105KTL.csv) | Huawei | SUN2000-90_105KTL | Modbus | 73 |
+| [`INV_Huawei_SUN2000-All_V3.csv`](./INV_Huawei_SUN2000-All_V3.csv) | Huawei | SUN2000-All_V3 | Modbus | 97 |
+| [`INV_Huawei_SUN2000-V3.csv`](./INV_Huawei_SUN2000-V3.csv) | Huawei | SUN2000-V3 | Modbus | 97 |
+| [`INV_Huawei_SUN2000-V4_Generic.csv`](./INV_Huawei_SUN2000-V4_Generic.csv) | Huawei | SUN2000-V4_Generic | Modbus | 322 |
 | [`INV_Huawei_V4.csv`](./INV_Huawei_V4.csv) | Huawei | SUN2000_V4 | Modbus | 392 |
 | [`INV_Huawei_V2.csv`](./INV_Huawei_V2.csv) | Huawei | V2 | Modbus | 214 |
 | [`INV_Huawei_V3.csv`](./INV_Huawei_V3.csv) | Huawei | V3 | Modbus | 182 |
 | [`INV_JEMA_Generic.csv`](./INV_JEMA_Generic.csv) | JEMA | Generic | Modbus | 60 |
+| [`INV_Kaco_blueplanet_100_NX3_M8.csv`](./INV_Kaco_blueplanet_100_NX3_M8.csv) | Kaco | blueplanet_100_NX3_M8 | Modbus | 908 |
+| [`INV_Kaco_blueplanet_125_NX3_M10.csv`](./INV_Kaco_blueplanet_125_NX3_M10.csv) | Kaco | blueplanet_125_NX3_M10 | Modbus | 928 |
+| [`INV_Kaco_blueplanet_125_TL3.csv`](./INV_Kaco_blueplanet_125_TL3.csv) | Kaco | blueplanet_125_TL3 | Modbus | 828 |
+| [`INV_Kaco_blueplanet_15.0_TL3.csv`](./INV_Kaco_blueplanet_15.0_TL3.csv) | Kaco | blueplanet_15.0_TL3 | Modbus | 638 |
+| [`INV_Kaco_blueplanet_20.0_TL3.csv`](./INV_Kaco_blueplanet_20.0_TL3.csv) | Kaco | blueplanet_20.0_TL3 | Modbus | 697 |
+| [`INV_Kaco_blueplanet_50.0_NX3_M5.csv`](./INV_Kaco_blueplanet_50.0_NX3_M5.csv) | Kaco | blueplanet_50.0_NX3_M5 | Modbus | 197 |
+| [`INV_Kaco_blueplanet_50.0_TL3.csv`](./INV_Kaco_blueplanet_50.0_TL3.csv) | Kaco | blueplanet_50.0_TL3 | Modbus | 628 |
+| [`INV_Kaco_blueplanet_NX1.csv`](./INV_Kaco_blueplanet_NX1.csv) | Kaco | blueplanet_NX1 | Modbus | 182 |
+| [`INV_Kaco_blueplanet_NX3.csv`](./INV_Kaco_blueplanet_NX3.csv) | Kaco | blueplanet_NX3 | Modbus | 182 |
 | [`INV_Kaco_NX1-NX3_Series.csv`](./INV_Kaco_NX1-NX3_Series.csv) | Kaco | NX1-NX3_Series | Modbus | 182 |
+| [`INV_Kaco_Powador_60.0_TL3.csv`](./INV_Kaco_Powador_60.0_TL3.csv) | Kaco | Powador_60.0_TL3 | Modbus | 101 |
 | [`INV_Kehua_SinglePhase.csv`](./INV_Kehua_SinglePhase.csv) | Kehua | SinglePhase | Modbus | 159 |
 | [`INV_KEHUA_SPI_100K-250K-B.csv`](./INV_KEHUA_SPI_100K-250K-B.csv) | KEHUA | SPI_100K-250K-B | Modbus | 238 |
 | [`INV_Kehua_ThreePhase.csv`](./INV_Kehua_ThreePhase.csv) | Kehua | ThreePhase | Modbus | 84 |
@@ -171,11 +194,13 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_Solis_GENERIC.csv`](./INV_Solis_GENERIC.csv) | Solis | GENERIC | Modbus | 454 |
 | [`INV_Solplanet_Ai-Logger.csv`](./INV_Solplanet_Ai-Logger.csv) | Solplanet | Ai-Logger | Modbus | 106 |
 | [`INV_Sungrow_Generic.csv`](./INV_Sungrow_Generic.csv) | Sungrow | Generic | Modbus | 164 |
+| [`INV_Sungrow_SG_Series.csv`](./INV_Sungrow_SG_Series.csv) | Sungrow | SG_Series | Modbus | 29 |
+| [`INV_Sungrow_SG_Series_Generic.csv`](./INV_Sungrow_SG_Series_Generic.csv) | Sungrow | SG_Series_Generic | Modbus | 200 |
 | [`INV_TATA_Generic.csv`](./INV_TATA_Generic.csv) | TATA | Generic | Modbus | 20 |
 | [`INV_VICTRON_Generic.csv`](./INV_VICTRON_Generic.csv) | VICTRON | Generic | Modbus | 12 |
 | [`INV_Zucchetti_Azzuro-3PH.csv`](./INV_Zucchetti_Azzuro-3PH.csv) | Zucchetti | Azzuro-3PH | Modbus | 503 |
 
-### Compteurs & Analyseurs Réseau (Meters) (56 fichiers)
+### Compteurs & Analyseurs Réseau (Meters) (57 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
@@ -213,6 +238,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`MET_Goodwe_GM1000_GM3000.csv`](./MET_Goodwe_GM1000_GM3000.csv) | GoodWe | GM1000-GM3000 | Modbus | 18 |
 | [`MET_HAGER_Generic.csv`](./MET_HAGER_Generic.csv) | HAGER | Generic | Modbus | 102 |
 | [`MET_HUAWEI_Power_Meter.csv`](./MET_HUAWEI_Power_Meter.csv) | HUAWEI | Power_Meter | Modbus | 44 |
+| [`MET_Huawei_PowerMeter.csv`](./MET_Huawei_PowerMeter.csv) | Huawei | PowerMeter | Modbus | 44 |
 | [`MET_Inepro_PRO380-MOD-CT.csv`](./MET_Inepro_PRO380-MOD-CT.csv) | Inepro | PRO380-MOD-CT | Modbus | 24 |
 | [`MET_Janitza_Generic.csv`](./MET_Janitza_Generic.csv) | Janitza | Generic | Modbus | 61 |
 | [`MET_Legrand_LEG412052.csv`](./MET_Legrand_LEG412052.csv) | Legrand | LEG412052 | Modbus | 489 |
@@ -236,7 +262,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`MET_SOCOMEC_E33_E43.csv`](./MET_SOCOMEC_E33_E43.csv) | SOCOMEC | E33_E43 | Modbus | 73 |
 | [`MET_Weidmuller_610.csv`](./MET_Weidmuller_610.csv) | Weidmuller | 610 | Modbus | 122 |
 
-### Systèmes de Stockage BESS (Batteries) (5 fichiers)
+### Systèmes de Stockage BESS (Batteries) (11 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
@@ -245,6 +271,12 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`BAT_Dyness_DH200Y.csv`](./BAT_Dyness_DH200Y.csv) | Dyness | DH200Y | Modbus | 912 |
 | [`BAT_Dyness_DH_Series_Generic.csv`](./BAT_Dyness_DH_Series_Generic.csv) | Dyness | DH_Series_Generic | Modbus | 962 |
 | [`BAT_Goodwe_Lynx_Home_HV.csv`](./BAT_Goodwe_Lynx_Home_HV.csv) | GoodWe | Lynx-Home-HV | Modbus | 18 |
+| [`BAT_Huawei_LUNA2000.csv`](./BAT_Huawei_LUNA2000.csv) | Huawei | LUNA2000 | Modbus | 170 |
+| [`BAT_Huawei_LUNA2000_Storage.csv`](./BAT_Huawei_LUNA2000_Storage.csv) | Huawei | LUNA2000_Storage | Modbus | 272 |
+| [`BAT_Sungrow_Battery.csv`](./BAT_Sungrow_Battery.csv) | Sungrow | Battery | Modbus | 172 |
+| [`BAT_Sungrow_FullMap_v2.csv`](./BAT_Sungrow_FullMap_v2.csv) | Sungrow | FullMap_v2 | Modbus | 801 |
+| [`BAT_Sungrow_LC3000.csv`](./BAT_Sungrow_LC3000.csv) | Sungrow | LC3000 | Modbus | 916 |
+| [`BAT_Sungrow_PowerStack_ST255CS.csv`](./BAT_Sungrow_PowerStack_ST255CS.csv) | Sungrow | PowerStack_ST255CS | Modbus | 1442 |
 
 ### Capteurs & Pyranomètres (Sensors) (21 fichiers)
 
@@ -272,7 +304,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`SEN_Webdyn_RK100-01.csv`](./SEN_Webdyn_RK100-01.csv) | Webdyn | RK100-01 | Modbus | 2 |
 | [`SEN_Webdyn_Thermokon_AGS55.csv`](./SEN_Webdyn_Thermokon_AGS55.csv) | Webdyn | Thermokon_AGS55 | Modbus | 66 |
 
-### Passerelles & Loggers de Communication (8 fichiers)
+### Passerelles & Loggers de Communication (13 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
@@ -280,18 +312,24 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`COM_GoodWe_Ezlogger3000.csv`](./COM_GoodWe_Ezlogger3000.csv) | GoodWe | Ezlogger3000 | Modbus | 25 |
 | [`COM_Goodwe_SCB3000.csv`](./COM_Goodwe_SCB3000.csv) | GoodWe | SCB3000 | Modbus | 29 |
 | [`COM_Huawei_SL3000.csv`](./COM_Huawei_SL3000.csv) | Huawei | SL3000 | Modbus | 82 |
+| [`COM_Huawei_SmartLogger3000.csv`](./COM_Huawei_SmartLogger3000.csv) | Huawei | SmartLogger3000 | Modbus | 83 |
+| [`COM_Huawei_SmartLogger_VSeries.csv`](./COM_Huawei_SmartLogger_VSeries.csv) | Huawei | SmartLogger_VSeries | Modbus | 176 |
 | [`COM_SMA_ClusterController.csv`](./COM_SMA_ClusterController.csv) | SMA | ClusterController | Modbus | 24 |
 | [`COM_SMA_ComGateway.csv`](./COM_SMA_ComGateway.csv) | SMA | ComGateway | Modbus | 22 |
 | [`COM_SMA_DataManager_M.csv`](./COM_SMA_DataManager_M.csv) | SMA | DataManager-M | Modbus | 28 |
 | [`COM_Solplanet_Ai-Logger.csv`](./COM_Solplanet_Ai-Logger.csv) | Solplanet | Ai-Logger | Modbus | 161 |
+| [`COM_Sungrow_EMS300CP.csv`](./COM_Sungrow_EMS300CP.csv) | Sungrow | EMS300CP | Modbus | 694 |
+| [`COM_Sungrow_LC300_Modbus.csv`](./COM_Sungrow_LC300_Modbus.csv) | Sungrow | LC300_Modbus | Modbus | 813 |
+| [`COM_Sungrow_Logger1000_3000.csv`](./COM_Sungrow_Logger1000_3000.csv) | Sungrow | Logger1000_3000 | Modbus | 50 |
 
-### Autres Équipements (IO Modules & Afficheurs) (6 fichiers)
+### Autres Équipements (IO Modules & Afficheurs) (7 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
 | [`OTH_ABB_Terra_AC_Charger.csv`](./OTH_ABB_Terra_AC_Charger.csv) | ABB | Terra_AC_Charger | Modbus | 20 |
 | [`OTH_ICPDAS_M7028.csv`](./OTH_ICPDAS_M7028.csv) | ICPDAS | M7028 | Modbus | 70 |
 | [`OTH_SIEBERT_XC4XX.csv`](./OTH_SIEBERT_XC4XX.csv) | SIEBERT | XC4XX | Modbus | 3 |
+| [`OTH_Sungrow_PVCombinerBox.csv`](./OTH_Sungrow_PVCombinerBox.csv) | Sungrow | PVCombinerBox | Modbus | 64 |
 | [`OTH_Webdyn_Sens_IO_16DI.csv`](./OTH_Webdyn_Sens_IO_16DI.csv) | Webdyn | Sens_IO_16DI | Modbus | 60 |
 | [`OTH_Webdyn_Sens_IO_8AI.csv`](./OTH_Webdyn_Sens_IO_8AI.csv) | Webdyn | Sens_IO_8AI | Modbus | 34 |
 | [`OTH_Webdyn_Sens_IO_8DI-6DO.csv`](./OTH_Webdyn_Sens_IO_8DI-6DO.csv) | Webdyn | Sens_IO_8DI-6DO | Modbus | 42 |

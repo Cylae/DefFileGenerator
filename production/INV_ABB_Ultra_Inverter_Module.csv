@@ -17,11 +17,11 @@ Modbus;Inverter;ABB;ULTRA_Inverter_Module;;;;;;;
 16;4;134_2;STRING;;Trafo Type Module x;;1.000000;0.000000;;1
 17;4;135_2;STRING;;Wind Type Module x;;1.000000;0.000000;;1
 18;4;136_8;STRING;;Date Production Module x;;1.000000;0.000000;;1
-19;4;140;U16;;Status0 Module x (Global State);;1.000000;0.000000;;8
-20;4;141;U16;;Status1 Module x (Inverter State);;1.000000;0.000000;;8
-21;4;142;U16;;Status2 Module x (Dc_Dc Ch1);;1.000000;0.000000;;8
-22;4;143;U16;;Status3 Module x (Dc_Dc Ch2);;1.000000;0.000000;;8
-23;4;144;U16;;Status4 Module x (Alarm State);;1.000000;0.000000;;8
+19;4;140;U16;;Status0 Module x (Global State);;1.000000;0.000000;;4
+20;4;141;U16;;Status1 Module x (Inverter State);;1.000000;0.000000;;4
+21;4;142;U16;;Status2 Module x (Dc_Dc Ch1);;1.000000;0.000000;;4
+22;4;143;U16;;Status3 Module x (Dc_Dc Ch2);;1.000000;0.000000;;4
+23;4;144;U16;;Status4 Module x (Alarm State);;1.000000;0.000000;;4
 24;4;145;U16;;Type MPPT Module x;;1.000000;0.000000;;1
 25;4;146;F32;;Daily Energy Module x;E_DAY;1.000000;0.000000;Wh;4
 26;4;148;F32;;Total Energy Module x;E_TOT;1.000000;0.000000;Wh;4

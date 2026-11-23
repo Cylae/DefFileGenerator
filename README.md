@@ -77,7 +77,7 @@ The **v0.4.0** release delivers major industrial equipment suites, enhanced secu
   - Native French Modbus register inference for phase-to-phase voltages (`l1 et l2`, `l2 contre l3` -> `U_AC_L1L2`, `U_AC_L2L3`), grid current (`courant du reseau` -> `I_AC`), per-phase active power (`Puissance L1/L2/L3` -> `P_AC_1/2/3`), internal cabinet temperature (`interieure`/`intérieure` -> `TEMP_INT`), and DC intermediate bus voltage (`circuit intermediaire` -> `U_DC`).
   - Production definitions synchronized with 37 canonical, unique SunPM tags and strict UTF-8 without BOM.
 - 🏭 **Five-Pillar Production Registry Audit Suite (`scripts/validate_production.py`)**:
-  - Full automated validation of **1,136 production definition files** (100% compliant) across 5 non-negotiable pillars: exact 11-column header, sequential 1-based indexing, valid Modbus address ranges (0..65535), zero duplicate tags, and strict UTF-8 without BOM.
+  - Full automated validation of **1,167 production definition files** (100% compliant) across 5 non-negotiable pillars: exact 11-column header, sequential 1-based indexing, valid Modbus address ranges (0..65535), zero duplicate tags, and strict UTF-8 without BOM.
 - 🏛️ **Autonomous Engineering Audit & 29 Remediated Findings (FIND-001 through FIND-029)**:
   - Zero open in-scope defects across static analysis, typing, security, runtime, and packaging.
   - Test suite expanded to **3,542 automated tests (3,537 passed, 5 offline skipped, 0 failed)** with **92% statement coverage**.
@@ -799,7 +799,7 @@ DefFileGenerator/
 ├── web/                      # FastAPI Web Application & UI
 │   ├── app.py                # REST API endpoints (/api/convert, /api/validate)
 │   └── static/               # Responsive Vanilla JS / CSS frontend
-├── production/               # Production Webdyn CSV definitions (1,136 models, 100% 5-pillar compliant)
+├── production/               # Production Webdyn CSV definitions (1,167 models, 100% 5-pillar compliant)
 ├── Definitions/              # Reference industrial equipment definitions library (135 models)
 ├── Dyness_DH_Series_Definitions/ # Dedicated Dyness DH-series definitions
 ├── FoxESS_P3_H3_Pro_Definitions/ # Dedicated FoxESS P3 / H3 Pro definitions

@@ -1,9 +1,9 @@
 {
-  "total_files": 1136,
+  "total_files": 1167,
   "prefixes": {
-    "BAT": 52,
-    "COM": 31,
-    "INV": 414,
+    "BAT": 55,
+    "COM": 35,
+    "INV": 438,
     "MET": 222,
     "OTH": 364,
     "SEN": 53
@@ -11,22 +11,22 @@
   "manufacturers_count": 139,
   "manufacturers": {
     "Schneider": 79,
-    "ABB": 71,
+    "Huawei": 77,
+    "ABB": 74,
     "MarsEnergy": 66,
-    "Huawei": 65,
     "Delta": 37,
     "Socomec": 36,
     "SMA": 34,
     "Fronius": 34,
     "FoxESS": 30,
+    "Sungrow": 30,
     "Goodwe": 29,
+    "Kaco": 27,
     "CarloGavazzi": 27,
     "Ingeteam": 26,
-    "Sungrow": 24,
     "SolarEdge": 20,
     "SAJ": 19,
     "SLEnergy": 18,
-    "Kaco": 17,
     "Growatt": 16,
     "Legrand": 16,
     "Siel": 15,
@@ -320,6 +320,14 @@
       "size_bytes": 9267
     },
     {
+      "filename": "BAT_Huawei_LUNA2000_Storage.csv",
+      "prefix": "BAT",
+      "manufacturer": "Huawei",
+      "model": "LUNA2000_Storage",
+      "registers": 272,
+      "size_bytes": 28566
+    },
+    {
       "filename": "BAT_Huawei_Luna_2000.csv",
       "prefix": "BAT",
       "manufacturer": "Huawei",
@@ -512,12 +520,28 @@
       "size_bytes": 9329
     },
     {
+      "filename": "BAT_Sungrow_FullMap_v2.csv",
+      "prefix": "BAT",
+      "manufacturer": "Sungrow",
+      "model": "FullMap_v2",
+      "registers": 801,
+      "size_bytes": 37273
+    },
+    {
       "filename": "BAT_Sungrow_LC3000.csv",
       "prefix": "BAT",
       "manufacturer": "Sungrow",
       "model": "LC3000",
       "registers": 916,
       "size_bytes": 45279
+    },
+    {
+      "filename": "BAT_Sungrow_PowerStack_ST255CS.csv",
+      "prefix": "BAT",
+      "manufacturer": "Sungrow",
+      "model": "PowerStack_ST255CS",
+      "registers": 1442,
+      "size_bytes": 73708
     },
     {
       "filename": "BAT_Sungrow_v2.csv",
@@ -688,6 +712,14 @@
       "size_bytes": 5126
     },
     {
+      "filename": "COM_Huawei_SmartLogger_VSeries.csv",
+      "prefix": "COM",
+      "manufacturer": "Huawei",
+      "model": "SmartLogger_VSeries",
+      "registers": 176,
+      "size_bytes": 9517
+    },
+    {
       "filename": "COM_MarsEnergy_EMS_Slave247.csv",
       "prefix": "COM",
       "manufacturer": "MarsEnergy",
@@ -776,6 +808,30 @@
       "size_bytes": 12000
     },
     {
+      "filename": "COM_Sungrow_EMS300CP.csv",
+      "prefix": "COM",
+      "manufacturer": "Sungrow",
+      "model": "EMS300CP",
+      "registers": 694,
+      "size_bytes": 36099
+    },
+    {
+      "filename": "COM_Sungrow_LC300_Modbus.csv",
+      "prefix": "COM",
+      "manufacturer": "Sungrow",
+      "model": "LC300_Modbus",
+      "registers": 813,
+      "size_bytes": 74499
+    },
+    {
+      "filename": "COM_Sungrow_Logger1000_3000.csv",
+      "prefix": "COM",
+      "manufacturer": "Sungrow",
+      "model": "Logger1000_3000",
+      "registers": 50,
+      "size_bytes": 2668
+    },
+    {
       "filename": "COM_Sungrow_MODBUS_SUNGROW_Logger1000-3000.csv",
       "prefix": "COM",
       "manufacturer": "Sungrow",
@@ -848,6 +904,14 @@
       "size_bytes": 60615
     },
     {
+      "filename": "INV_ABB_AURORA_CENTRAL.csv",
+      "prefix": "INV",
+      "manufacturer": "ABB",
+      "model": "AURORA_CENTRAL",
+      "registers": 1522,
+      "size_bytes": 78123
+    },
+    {
       "filename": "INV_ABB_LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
       "prefix": "INV",
       "manufacturer": "ABB",
@@ -912,6 +976,14 @@
       "size_bytes": 2702
     },
     {
+      "filename": "INV_ABB_PVI-10.0_12.5.csv",
+      "prefix": "INV",
+      "manufacturer": "ABB",
+      "model": "PVI-10.0_12.5",
+      "registers": 19,
+      "size_bytes": 663
+    },
+    {
       "filename": "INV_ABB_PVI-110_275.csv",
       "prefix": "INV",
       "manufacturer": "ABB",
@@ -974,6 +1046,14 @@
       "model": "PVS-175",
       "registers": 1068,
       "size_bytes": 41374
+    },
+    {
+      "filename": "INV_ABB_PVS-30-TL.csv",
+      "prefix": "INV",
+      "manufacturer": "ABB",
+      "model": "PVS-30-TL",
+      "registers": 956,
+      "size_bytes": 59093
     },
     {
       "filename": "INV_ABB_PVS-50_60.csv",
@@ -2304,6 +2384,70 @@
       "size_bytes": 679
     },
     {
+      "filename": "INV_Huawei_SUN2000-2_5KTL.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-2_5KTL",
+      "registers": 47,
+      "size_bytes": 2600
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-30_40KTL-M3.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-30_40KTL-M3",
+      "registers": 64,
+      "size_bytes": 4622
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-33A_36_42KTL.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-33A_36_42KTL",
+      "registers": 192,
+      "size_bytes": 10892
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-50_70KTL-M0.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-50_70KTL-M0",
+      "registers": 73,
+      "size_bytes": 4091
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-60KTL-HV.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-60KTL-HV",
+      "registers": 347,
+      "size_bytes": 19262
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-8_20KTL.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-8_20KTL",
+      "registers": 328,
+      "size_bytes": 18063
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-90_105KTL.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-90_105KTL",
+      "registers": 73,
+      "size_bytes": 4078
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-All_V3.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-All_V3",
+      "registers": 97,
+      "size_bytes": 6083
+    },
+    {
       "filename": "INV_Huawei_SUN2000-M3.csv",
       "prefix": "INV",
       "manufacturer": "Huawei",
@@ -2318,6 +2462,22 @@
       "model": "SUN2000-Utility",
       "registers": 88,
       "size_bytes": 6394
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-V3.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-V3",
+      "registers": 97,
+      "size_bytes": 4939
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-V4_Generic.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-V4_Generic",
+      "registers": 322,
+      "size_bytes": 20307
     },
     {
       "filename": "INV_Huawei_SUN2000_V4.csv",
@@ -2640,6 +2800,78 @@
       "size_bytes": 50384
     },
     {
+      "filename": "INV_Kaco_blueplanet_100_NX3_M8.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_100_NX3_M8",
+      "registers": 908,
+      "size_bytes": 49289
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_125_NX3_M10.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_125_NX3_M10",
+      "registers": 928,
+      "size_bytes": 50308
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_125_TL3.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_125_TL3",
+      "registers": 828,
+      "size_bytes": 51052
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_15.0_TL3.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_15.0_TL3",
+      "registers": 638,
+      "size_bytes": 34593
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_20.0_TL3.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_20.0_TL3",
+      "registers": 697,
+      "size_bytes": 37859
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_50.0_NX3_M5.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_50.0_NX3_M5",
+      "registers": 197,
+      "size_bytes": 11269
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_50.0_TL3.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_50.0_TL3",
+      "registers": 628,
+      "size_bytes": 33919
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_NX1.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_NX1",
+      "registers": 182,
+      "size_bytes": 14467
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_NX3.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_NX3",
+      "registers": 182,
+      "size_bytes": 13121
+    },
+    {
       "filename": "INV_Kaco_CHAZE_SunSpec_inverter_KACO_new_energy_blueplanet_50.0_TL3_WM_V3.52_modbusTCP.csv",
       "prefix": "INV",
       "manufacturer": "Kaco",
@@ -2710,6 +2942,14 @@
       "model": "NX3_G2_G3_SunSpec",
       "registers": 458,
       "size_bytes": 22980
+    },
+    {
+      "filename": "INV_Kaco_Powador_60.0_TL3.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "Powador_60.0_TL3",
+      "registers": 101,
+      "size_bytes": 5530
     },
     {
       "filename": "INV_Kaco_Sunspec.csv",
@@ -3982,6 +4222,14 @@
       "model": "SG_Series",
       "registers": 29,
       "size_bytes": 1913
+    },
+    {
+      "filename": "INV_Sungrow_SG_Series_Generic.csv",
+      "prefix": "INV",
+      "manufacturer": "Sungrow",
+      "model": "SG_Series_Generic",
+      "registers": 200,
+      "size_bytes": 10621
     },
     {
       "filename": "INV_Sungrow_short.csv",
@@ -8581,7 +8829,7 @@
       "manufacturer": "Sungrow",
       "model": "PVCombinerBox",
       "registers": 64,
-      "size_bytes": 3193
+      "size_bytes": 3167
     },
     {
       "filename": "OTH_Sungrow_Updated.csv",
@@ -9410,6 +9658,14 @@
       "size_bytes": 9267
     },
     {
+      "filename": "BAT_Huawei_LUNA2000_Storage.csv",
+      "prefix": "BAT",
+      "manufacturer": "Huawei",
+      "model": "LUNA2000_Storage",
+      "registers": 272,
+      "size_bytes": 28566
+    },
+    {
       "filename": "BAT_Huawei_Luna_2000.csv",
       "prefix": "BAT",
       "manufacturer": "Huawei",
@@ -9602,12 +9858,28 @@
       "size_bytes": 9329
     },
     {
+      "filename": "BAT_Sungrow_FullMap_v2.csv",
+      "prefix": "BAT",
+      "manufacturer": "Sungrow",
+      "model": "FullMap_v2",
+      "registers": 801,
+      "size_bytes": 37273
+    },
+    {
       "filename": "BAT_Sungrow_LC3000.csv",
       "prefix": "BAT",
       "manufacturer": "Sungrow",
       "model": "LC3000",
       "registers": 916,
       "size_bytes": 45279
+    },
+    {
+      "filename": "BAT_Sungrow_PowerStack_ST255CS.csv",
+      "prefix": "BAT",
+      "manufacturer": "Sungrow",
+      "model": "PowerStack_ST255CS",
+      "registers": 1442,
+      "size_bytes": 73708
     },
     {
       "filename": "BAT_Sungrow_v2.csv",
@@ -9778,6 +10050,14 @@
       "size_bytes": 5126
     },
     {
+      "filename": "COM_Huawei_SmartLogger_VSeries.csv",
+      "prefix": "COM",
+      "manufacturer": "Huawei",
+      "model": "SmartLogger_VSeries",
+      "registers": 176,
+      "size_bytes": 9517
+    },
+    {
       "filename": "COM_MarsEnergy_EMS_Slave247.csv",
       "prefix": "COM",
       "manufacturer": "MarsEnergy",
@@ -9866,6 +10146,30 @@
       "size_bytes": 12000
     },
     {
+      "filename": "COM_Sungrow_EMS300CP.csv",
+      "prefix": "COM",
+      "manufacturer": "Sungrow",
+      "model": "EMS300CP",
+      "registers": 694,
+      "size_bytes": 36099
+    },
+    {
+      "filename": "COM_Sungrow_LC300_Modbus.csv",
+      "prefix": "COM",
+      "manufacturer": "Sungrow",
+      "model": "LC300_Modbus",
+      "registers": 813,
+      "size_bytes": 74499
+    },
+    {
+      "filename": "COM_Sungrow_Logger1000_3000.csv",
+      "prefix": "COM",
+      "manufacturer": "Sungrow",
+      "model": "Logger1000_3000",
+      "registers": 50,
+      "size_bytes": 2668
+    },
+    {
       "filename": "COM_Sungrow_MODBUS_SUNGROW_Logger1000-3000.csv",
       "prefix": "COM",
       "manufacturer": "Sungrow",
@@ -9938,6 +10242,14 @@
       "size_bytes": 60615
     },
     {
+      "filename": "INV_ABB_AURORA_CENTRAL.csv",
+      "prefix": "INV",
+      "manufacturer": "ABB",
+      "model": "AURORA_CENTRAL",
+      "registers": 1522,
+      "size_bytes": 78123
+    },
+    {
       "filename": "INV_ABB_LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
       "prefix": "INV",
       "manufacturer": "ABB",
@@ -10002,6 +10314,14 @@
       "size_bytes": 2702
     },
     {
+      "filename": "INV_ABB_PVI-10.0_12.5.csv",
+      "prefix": "INV",
+      "manufacturer": "ABB",
+      "model": "PVI-10.0_12.5",
+      "registers": 19,
+      "size_bytes": 663
+    },
+    {
       "filename": "INV_ABB_PVI-110_275.csv",
       "prefix": "INV",
       "manufacturer": "ABB",
@@ -10064,6 +10384,14 @@
       "model": "PVS-175",
       "registers": 1068,
       "size_bytes": 41374
+    },
+    {
+      "filename": "INV_ABB_PVS-30-TL.csv",
+      "prefix": "INV",
+      "manufacturer": "ABB",
+      "model": "PVS-30-TL",
+      "registers": 956,
+      "size_bytes": 59093
     },
     {
       "filename": "INV_ABB_PVS-50_60.csv",
@@ -11394,6 +11722,70 @@
       "size_bytes": 679
     },
     {
+      "filename": "INV_Huawei_SUN2000-2_5KTL.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-2_5KTL",
+      "registers": 47,
+      "size_bytes": 2600
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-30_40KTL-M3.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-30_40KTL-M3",
+      "registers": 64,
+      "size_bytes": 4622
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-33A_36_42KTL.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-33A_36_42KTL",
+      "registers": 192,
+      "size_bytes": 10892
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-50_70KTL-M0.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-50_70KTL-M0",
+      "registers": 73,
+      "size_bytes": 4091
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-60KTL-HV.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-60KTL-HV",
+      "registers": 347,
+      "size_bytes": 19262
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-8_20KTL.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-8_20KTL",
+      "registers": 328,
+      "size_bytes": 18063
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-90_105KTL.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-90_105KTL",
+      "registers": 73,
+      "size_bytes": 4078
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-All_V3.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-All_V3",
+      "registers": 97,
+      "size_bytes": 6083
+    },
+    {
       "filename": "INV_Huawei_SUN2000-M3.csv",
       "prefix": "INV",
       "manufacturer": "Huawei",
@@ -11408,6 +11800,22 @@
       "model": "SUN2000-Utility",
       "registers": 88,
       "size_bytes": 6394
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-V3.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-V3",
+      "registers": 97,
+      "size_bytes": 4939
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-V4_Generic.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-V4_Generic",
+      "registers": 322,
+      "size_bytes": 20307
     },
     {
       "filename": "INV_Huawei_SUN2000_V4.csv",
@@ -11730,6 +12138,78 @@
       "size_bytes": 50384
     },
     {
+      "filename": "INV_Kaco_blueplanet_100_NX3_M8.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_100_NX3_M8",
+      "registers": 908,
+      "size_bytes": 49289
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_125_NX3_M10.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_125_NX3_M10",
+      "registers": 928,
+      "size_bytes": 50308
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_125_TL3.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_125_TL3",
+      "registers": 828,
+      "size_bytes": 51052
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_15.0_TL3.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_15.0_TL3",
+      "registers": 638,
+      "size_bytes": 34593
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_20.0_TL3.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_20.0_TL3",
+      "registers": 697,
+      "size_bytes": 37859
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_50.0_NX3_M5.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_50.0_NX3_M5",
+      "registers": 197,
+      "size_bytes": 11269
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_50.0_TL3.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_50.0_TL3",
+      "registers": 628,
+      "size_bytes": 33919
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_NX1.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_NX1",
+      "registers": 182,
+      "size_bytes": 14467
+    },
+    {
+      "filename": "INV_Kaco_blueplanet_NX3.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "blueplanet_NX3",
+      "registers": 182,
+      "size_bytes": 13121
+    },
+    {
       "filename": "INV_Kaco_CHAZE_SunSpec_inverter_KACO_new_energy_blueplanet_50.0_TL3_WM_V3.52_modbusTCP.csv",
       "prefix": "INV",
       "manufacturer": "Kaco",
@@ -11800,6 +12280,14 @@
       "model": "NX3_G2_G3_SunSpec",
       "registers": 458,
       "size_bytes": 22980
+    },
+    {
+      "filename": "INV_Kaco_Powador_60.0_TL3.csv",
+      "prefix": "INV",
+      "manufacturer": "Kaco",
+      "model": "Powador_60.0_TL3",
+      "registers": 101,
+      "size_bytes": 5530
     },
     {
       "filename": "INV_Kaco_Sunspec.csv",
@@ -13072,6 +13560,14 @@
       "model": "SG_Series",
       "registers": 29,
       "size_bytes": 1913
+    },
+    {
+      "filename": "INV_Sungrow_SG_Series_Generic.csv",
+      "prefix": "INV",
+      "manufacturer": "Sungrow",
+      "model": "SG_Series_Generic",
+      "registers": 200,
+      "size_bytes": 10621
     },
     {
       "filename": "INV_Sungrow_short.csv",
@@ -17671,7 +18167,7 @@
       "manufacturer": "Sungrow",
       "model": "PVCombinerBox",
       "registers": 64,
-      "size_bytes": 3193
+      "size_bytes": 3167
     },
     {
       "filename": "OTH_Sungrow_Updated.csv",

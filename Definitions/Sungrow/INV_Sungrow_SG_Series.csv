@@ -1,4 +1,4 @@
-Modbus;Inverter;Sungrow;SG-Series;;;;;;;
+Modbus;Inverter;Sungrow;SG_Series;;;;;;;
 1;4;4989_20;STRING;;Device serial number;SERIAL;1.000000;0.000000;;4
 2;4;4999;U16;;Device type code;MODEL;1.000000;0.000000;;4
 3;4;5000;U16;;Nominal active power;P_RATED;0.100000;0.000000;kW;4

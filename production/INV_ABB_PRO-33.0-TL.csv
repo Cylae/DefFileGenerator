@@ -1,7 +1,7 @@
 Modbus;Inverter;ABB;PRO-33.0-TL;;;;;;;
 1;3;3644_14;STRING;;PN;;1.0;0.0;;1
 2;3;3664_14;STRING;;SN;SERIAL;1.0;0.0;;1
-3;3;0;U16;;Inverter operation;;1.0;0.0;;8
+3;3;0;U16;;Inverter operation;;1.0;0.0;;4
 4;3;1;U16;;External power limit;CMD_P_AC_SET_ABS;1.0;0.0;;1
 5;3;2;U16;;User Qref;;1.0;0.0;;4
 6;3;3;U16;;DC voltage;U_DC;0.0;0.0;;4
@@ -19,7 +19,7 @@ Modbus;Inverter;ABB;PRO-33.0-TL;;;;;;;
 18;3;15;U16;;Active warning 4;;1.0;0.0;;9
 19;3;16;U16;;Active warning 5;;1.0;0.0;;9
 20;3;17;U16;;Latest warning;;1.0;0.0;;9
-21;3;18;U16;;Main status word;;1.0;0.0;;8
+21;3;18;U16;;Main status word;;1.0;0.0;;4
 22;3;19;U16;;Cpu usage;;1.0;0.0;;4
 23;3;20;U32;;Connection status;;1.0;0.0;;4
 24;3;22;U32;;Disconnect diagnostic;;1.0;0.0;;4
@@ -57,7 +57,7 @@ Modbus;Inverter;ABB;PRO-33.0-TL;;;;;;;
 56;3;59;U16;;Control board boot;;1.0;0.0;;4
 57;3;89;U16;;Reset Error Registers;;1.0;0.0;;9
 58;3;90;U16;;Error Function Code;;1.0;0.0;;9
-59;3;91;U16;;Error Code;;1.0;0.0;;8
+59;3;91;U16;;Error Code;;1.0;0.0;;4
 60;3;92;U16;;Failed Register;;1.0;0.0;;4
 61;3;93;U16;;Last Register Written Successfully;;1.0;0.0;;4
 62;3;94;U16;;Last Register Read Successfully;;1.0;0.0;;4

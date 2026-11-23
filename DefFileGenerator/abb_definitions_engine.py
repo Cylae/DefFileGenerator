@@ -86,6 +86,17 @@ class AbbDefinitionsEngine:
         output_path.write_bytes(content.encode("utf-8"))
 
     @classmethod
+    def _find_source(cls, repo_root: Path, local_name: str, network_rel_path: str) -> Path | None:
+        """Find source CSV either in local production directory or on network share."""
+        p_local = repo_root / "production" / local_name
+        if p_local.exists():
+            return p_local
+        p_net = Path(r"\\WDN-FILES.WEBDYN.COM\Support\Equipementiers\PowerOne") / network_rel_path
+        if p_net.exists():
+            return p_net
+        return None
+
+    @classmethod
     def load_source_csv(cls, source_path: Path) -> list[ModbusRegisterDef]:
         """Load and sanitize registers from an existing verified CSV definition."""
         regs: list[ModbusRegisterDef] = []
@@ -101,21 +112,24 @@ class AbbDefinitionsEngine:
                 addr = row[2] if len(row) > 2 and row[2] else "0"
                 dtype = row[3] if len(row) > 3 and row[3] else "U16"
                 res = row[4] if len(row) > 4 else ""
-                name = row[5] if len(row) > 5 else ""
+                name = (row[5] if len(row) > 5 else "").replace(";", " - ")
                 tag = row[6] if len(row) > 6 else ""
-                coef_a = row[7] if len(row) > 7 and row[7] else "1.000000"
-                coef_b = row[8] if len(row) > 8 and row[8] else "0.000000"
-                unit = row[9] if len(row) > 9 and row[9] != "None" else ""
-                action = row[10] if len(row) > 10 and row[10] else "4"
+                raw_coef_a = row[7] if len(row) > 7 and row[7] else "1.000000"
+                raw_coef_b = row[8] if len(row) > 8 and row[8] else "0.000000"
+                unit = row[9] if len(row) > 9 and row[9] not in ("None", "/", "-") else ""
+                action = row[10] if len(row) > 10 and row[10] in ("0", "1", "2", "4", "9") else "4"
 
-                if not fc:
+                def _is_num(val: str) -> bool:
+                    try:
+                        float(val)
+                        return True
+                    except ValueError:
+                        return False
+
+                coef_a = raw_coef_a if _is_num(raw_coef_a) else "1.000000"
+                coef_b = raw_coef_b if _is_num(raw_coef_b) else "0.000000"
+                if not fc or fc not in ("1", "2", "3", "4"):
                     fc = "3"
-                if not coef_a:
-                    coef_a = "1.000000"
-                if not coef_b:
-                    coef_b = "0.000000"
-                if not action:
-                    action = "4"
 
                 regs.append(
                     ModbusRegisterDef(
@@ -231,6 +245,33 @@ class AbbDefinitionsEngine:
         if terra_src.exists():
             regs = cls.load_source_csv(terra_src)
             models["Terra_AC_Charger"] = ("Other", "OTH_ABB_Terra_AC_Charger.csv", regs)
+
+        # 16. PVS-30-TL SunSpec Inverter
+        src_pvs30 = cls._find_source(
+            repo_root,
+            "INV_ABB_PVS-30-TL.csv",
+            "Sunspec/Fichiers PM/Gamme PVS 30/LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
+        )
+        if src_pvs30:
+            models["PVS-30-TL"] = ("Inverter", "INV_ABB_PVS-30-TL.csv", cls.load_source_csv(src_pvs30))
+
+        # 17. AURORA Central Inverter
+        src_aurora = cls._find_source(
+            repo_root,
+            "INV_ABB_AURORA_CENTRAL.csv",
+            "Modbus/Central/INV_ABB_AURORA_CENTRAL_TEST.csv",
+        )
+        if src_aurora:
+            models["AURORA_Central"] = ("Inverter", "INV_ABB_AURORA_CENTRAL.csv", cls.load_source_csv(src_aurora))
+
+        # 18. PVI-10.0 / 12.5 String Inverter
+        src_pvi10 = cls._find_source(
+            repo_root,
+            "INV_ABB_PVI-10.0_12.5.csv",
+            "Modbus/Fichiers PM/Gamme PVI/10.0 et 12.5 ABB_PVIMODBUS.csv",
+        )
+        if src_pvi10:
+            models["PVI-10.0_12.5"] = ("Inverter", "INV_ABB_PVI-10.0_12.5.csv", cls.load_source_csv(src_pvi10))
 
         return models
 

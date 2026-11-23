@@ -16,9 +16,9 @@ DefFileGenerator/
 │   └── production_governor.py   # Moteur de certification des 5 Piliers Apollo
 │
 ├── production/                  # 🏭 RÉFÉRENTIEL OFFICIEL DE PRODUCTION
-│   ├── CATALOG.json             # Index complet des 1 136 définitions certifiées (191 constructeurs)
+│   ├── CATALOG.json             # Index complet des 1 167 définitions certifiées (191 constructeurs)
 │   ├── README.md                # Documentation des 5 Piliers et statistiques
-│   └── <PREFIX>_<Fabricant>_<Modèle>.csv (1 136 fichiers 100% validés)
+│   └── <PREFIX>_<Fabricant>_<Modèle>.csv (1 167 fichiers 100% validés)
 │
 ├── sources/                     # 📚 SOURCES BRUTES CONSTRUCTEURS & TERRAIN
 │   ├── MANIFEST.json            # Registre cryptographique (SHA-256) des documents sources

@@ -42,6 +42,9 @@ ABB_MODELS = [
     ("MET", "M2M"),
     ("MET", "M4M"),
     ("OTH", "Terra_AC_Charger"),
+    ("INV", "PVS-30-TL"),
+    ("INV", "AURORA_Central"),
+    ("INV", "PVI-10.0_12.5"),
 ]
 
 
