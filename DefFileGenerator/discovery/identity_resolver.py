@@ -96,7 +96,8 @@ class IdentityResolver:
             try:
                 with open(self.catalog_path, encoding="utf-8") as f:
                     data = json.load(f)
-                for entry in data.get("definitions", []):
+                items = data.get("items", []) or data.get("definitions", [])
+                for entry in items:
                     mfg = entry.get("manufacturer", "").strip()
                     model = entry.get("model", "").strip()
                     if mfg and model:

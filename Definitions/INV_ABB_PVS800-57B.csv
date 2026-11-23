@@ -17,33 +17,33 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 16;3;25887;I32_W;;CosPhi;PF;0.010000;0.000000;;4
 17;3;25895;U32_W;;Converter current;;0.010000;0.000000;A;4
 18;3;25983;U32_W;;Nominal power;P_RATED;1.000000;0.000000;kW;4
-19;3;26625;U32_W;;Tripping fault;FAULT_CODE;1.000000;0.000000;;4
-20;3;26627;U32_W;;Active fault 2;;1.000000;0.000000;;4
-21;3;26629;U32_W;;Active fault 3;;1.000000;0.000000;;4
-22;3;26631;U32_W;;Active fault 4;;1.000000;0.000000;;4
-23;3;26633;U32_W;;Active fault 5;;1.000000;0.000000;;4
-24;3;26635;U32_W;;Active warning 1;;1.000000;0.000000;;4
-25;3;26637;U32_W;;Active warning 2;;1.000000;0.000000;;4
-26;3;26639;U32_W;;Active warning 3;;1.000000;0.000000;;4
-27;3;26641;U32_W;;Active warning 4;;1.000000;0.000000;;4
-28;3;26643;U32_W;;Active warning 5;;1.000000;0.000000;;4
-29;3;26645;U32_W;;Latest fault;;1.000000;0.000000;;4
-30;3;26647;U32_W;;2nd latest fault;;1.000000;0.000000;;4
-31;3;26649;U32_W;;3rd latest fault;;1.000000;0.000000;;4
-32;3;26651;U32_W;;4th latest fault;;1.000000;0.000000;;4
-33;3;26653;U32_W;;5th latest fault;;1.000000;0.000000;;4
-34;3;26655;U32_W;;Latest warning;;1.000000;0.000000;;4
-35;3;26657;U32_W;;2nd latest warning;;1.000000;0.000000;;4
-36;3;26659;U32_W;;3rd latest warning;;1.000000;0.000000;;4
-37;3;26661;U32_W;;4th latest warning;;1.000000;0.000000;;4
-38;3;26663;U32_W;;5th latest warning;;1.000000;0.000000;;4
+19;3;26625;U32_W;;Tripping fault;FAULT_CODE;1.000000;0.000000;;9
+20;3;26627;U32_W;;Active fault 2;;1.000000;0.000000;;9
+21;3;26629;U32_W;;Active fault 3;;1.000000;0.000000;;9
+22;3;26631;U32_W;;Active fault 4;;1.000000;0.000000;;9
+23;3;26633;U32_W;;Active fault 5;;1.000000;0.000000;;9
+24;3;26635;U32_W;;Active warning 1;;1.000000;0.000000;;9
+25;3;26637;U32_W;;Active warning 2;;1.000000;0.000000;;9
+26;3;26639;U32_W;;Active warning 3;;1.000000;0.000000;;9
+27;3;26641;U32_W;;Active warning 4;;1.000000;0.000000;;9
+28;3;26643;U32_W;;Active warning 5;;1.000000;0.000000;;9
+29;3;26645;U32_W;;Latest fault;;1.000000;0.000000;;9
+30;3;26647;U32_W;;2nd latest fault;;1.000000;0.000000;;9
+31;3;26649;U32_W;;3rd latest fault;;1.000000;0.000000;;9
+32;3;26651;U32_W;;4th latest fault;;1.000000;0.000000;;9
+33;3;26653;U32_W;;5th latest fault;;1.000000;0.000000;;9
+34;3;26655;U32_W;;Latest warning;;1.000000;0.000000;;9
+35;3;26657;U32_W;;2nd latest warning;;1.000000;0.000000;;9
+36;3;26659;U32_W;;3rd latest warning;;1.000000;0.000000;;9
+37;3;26661;U32_W;;4th latest warning;;1.000000;0.000000;;9
+38;3;26663;U32_W;;5th latest warning;;1.000000;0.000000;;9
 39;3;27397;U32_W;;Rating id;;1.000000;0.000000;;4
 40;3;27399;U32_W;;Firmware name;;1.000000;0.000000;;4
 41;3;27401;U32_W;;Firmware ver;;1.000000;0.000000;;4
 42;3;27403;U32_W;;Loading package name;;1.000000;0.000000;;4
 43;3;27405;U32_W;;Loading package version;;1.000000;0.000000;;4
 44;3;27407;U32_W;;Bootloader version;;1.000000;0.000000;;4
-45;3;27409;U32_W;;Preboot version;;1.000000;0.000000;;4
+45;3;27409;U32_W;;Preboot version;;1.000000;0.000000;;1
 46;3;27411;U32_W;;Safety critical hash;;1.000000;0.000000;;4
 47;3;27413;U32_W;;Cpu usage;;1.000000;0.000000;%;4
 48;3;27415;U32_W;;PU logic version name;;1.000000;0.000000;;4
@@ -67,8 +67,8 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 66;3;30491;U32_W;;Ext2 ctrl mode1;;1.000000;0.000000;;4
 67;3;30495;U32_W;;Local ctrl mode;;1.000000;0.000000;;4
 68;3;30497;U32_W;;Local ctrl disable;;1.000000;0.000000;;4
-69;3;30977;U32_W;;Fast power off mode;;1.000000;0.000000;;4
-70;3;30979;U32_W;;Fast power off source;;1.000000;0.000000;;4
+69;3;30977;U32_W;;Fast power off mode;;1.000000;0.000000;;1
+70;3;30979;U32_W;;Fast power off source;;1.000000;0.000000;;1
 71;3;31489;U32_W;;User DC voltage ref;;0.010000;0.000000;V;4
 72;3;31491;U32_W;;DC ref sel;;1.000000;0.000000;;4
 73;3;31493;U32_W;;DC voltage ref 1;;0.010000;0.000000;V;4
@@ -147,7 +147,7 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 146;3;32069;I32_W;;Frt Ipow ref out %;;0.100000;0.000000;%;4
 147;3;32071;U32_W;;Gs after dip time;;1.000000;0.000000;ms;4
 148;3;32073;U32_W;;Frt Imax %;;1.000000;0.000000;%;4
-149;3;32097;U32_W;;Gs prefault average time;;1.000000;0.000000;s;4
+149;3;32097;U32_W;;Gs prefault average time;;1.000000;0.000000;s;9
 150;3;32099;U32_W;;Gs base current;;1.000000;0.000000;;4
 151;3;32101;U32_W;;Gs reference voltage;;1.000000;0.000000;;4
 152;3;32103;U32_W;;Gs average voltage;;1.000000;0.000000;;4
@@ -206,7 +206,7 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 205;3;33417;U32_W;;P(f) activation delay;;1.000000;0.000000;ms;4
 206;3;33419;U32_W;;Connect limit type;;1.000000;0.000000;;4
 207;3;33421;U32_W;;Connect limit ramp;;1.000000;0.000000;%/min;4
-208;3;33423;U32_W;;Grid fault ramp;;1.000000;0.000000;%/min;4
+208;3;33423;U32_W;;Grid fault ramp;;1.000000;0.000000;%/min;9
 209;3;33429;U32_W;;External power limit;cmdPwrPct;1.000000;0.000000;%;4
 210;3;33431;U32_W;;P(U) limiter;;1.000000;0.000000;;4
 211;3;33433;U32_W;;P(U) trigger level;;1.000000;0.000000;%;4
@@ -728,28 +728,28 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 727;3;45057;U32_W;;Spare AI1;;1.000000;0.000000;;4
 728;3;45077;U32_W;;PLC CPU RO 0 source;;1.000000;0.000000;;4
 729;3;45079;U32_W;;PCC CPU RO 1 source;;1.000000;0.000000;;4
-730;3;45097;U32_W;;External fault 1 source;;1.000000;0.000000;;4
-731;3;45099;U32_W;;External fault 1 action;;1.000000;0.000000;;4
-732;3;45101;U32_W;;External fault 1 action delay;;1.000000;0.000000;s;4
-733;3;45103;U32_W;;External fault 1 failure logic;;1.000000;0.000000;;4
-734;3;45107;U32_W;;External fault 2 source;;1.000000;0.000000;;4
-735;3;45109;U32_W;;External fault 2 action;;1.000000;0.000000;;4
-736;3;45111;U32_W;;External fault 2 action delay;;1.000000;0.000000;s;4
-737;3;45113;U32_W;;External fault 2 failure logic;;1.000000;0.000000;;4
-738;3;45117;U32_W;;External fault 3 source;;1.000000;0.000000;;4
-739;3;45119;U32_W;;External fault 3 action;;1.000000;0.000000;;4
-740;3;45121;U32_W;;External fault 3 action delay;;1.000000;0.000000;s;4
-741;3;45123;U32_W;;External fault 3 failure logic;;1.000000;0.000000;;4
-742;3;45333;U32_W;;MV temperature alarm source;;1.000000;0.000000;;4
-743;3;45335;U32_W;;Transformer temperature alarm action;;1.000000;0.000000;;4
-744;3;45337;U32_W;;Transformer temperature alarm delay;;1.000000;0.000000;s;4
-745;3;45339;U32_W;;Transformer temperature alarm current;;1.000000;0.000000;A;4
-746;3;45341;U32_W;;Transformer temperature alarm failure logic;;1.000000;0.000000;;4
-747;3;45343;U32_W;;MV temperature fault source;;1.000000;0.000000;;4
-748;3;45345;U32_W;;Transformer temperature fault action;;1.000000;0.000000;;4
-749;3;45347;U32_W;;Transformer temperature fault delay;;1.000000;0.000000;s;4
-750;3;45349;U32_W;;Transformer temperature fault current limit;;1.000000;0.000000;A;4
-751;3;45351;U32_W;;Transformer temperature fault failure logic;;1.000000;0.000000;;4
+730;3;45097;U32_W;;External fault 1 source;;1.000000;0.000000;;9
+731;3;45099;U32_W;;External fault 1 action;;1.000000;0.000000;;9
+732;3;45101;U32_W;;External fault 1 action delay;;1.000000;0.000000;s;9
+733;3;45103;U32_W;;External fault 1 failure logic;;1.000000;0.000000;;9
+734;3;45107;U32_W;;External fault 2 source;;1.000000;0.000000;;9
+735;3;45109;U32_W;;External fault 2 action;;1.000000;0.000000;;9
+736;3;45111;U32_W;;External fault 2 action delay;;1.000000;0.000000;s;9
+737;3;45113;U32_W;;External fault 2 failure logic;;1.000000;0.000000;;9
+738;3;45117;U32_W;;External fault 3 source;;1.000000;0.000000;;9
+739;3;45119;U32_W;;External fault 3 action;;1.000000;0.000000;;9
+740;3;45121;U32_W;;External fault 3 action delay;;1.000000;0.000000;s;9
+741;3;45123;U32_W;;External fault 3 failure logic;;1.000000;0.000000;;9
+742;3;45333;U32_W;;MV temperature alarm source;;1.000000;0.000000;;9
+743;3;45335;U32_W;;Transformer temperature alarm action;;1.000000;0.000000;;9
+744;3;45337;U32_W;;Transformer temperature alarm delay;;1.000000;0.000000;s;9
+745;3;45339;U32_W;;Transformer temperature alarm current;;1.000000;0.000000;A;9
+746;3;45341;U32_W;;Transformer temperature alarm failure logic;;1.000000;0.000000;;9
+747;3;45343;U32_W;;MV temperature fault source;;1.000000;0.000000;;9
+748;3;45345;U32_W;;Transformer temperature fault action;;1.000000;0.000000;;9
+749;3;45347;U32_W;;Transformer temperature fault delay;;1.000000;0.000000;s;9
+750;3;45349;U32_W;;Transformer temperature fault current limit;;1.000000;0.000000;A;9
+751;3;45351;U32_W;;Transformer temperature fault failure logic;;1.000000;0.000000;;9
 752;3;45353;U32_W;;MV low oil level source;;1.000000;0.000000;;4
 753;3;45355;U32_W;;Transformer low oil level action;;1.000000;0.000000;;4
 754;3;45357;U32_W;;Transformer low oil level delay;;1.000000;0.000000;s;4
@@ -784,8 +784,8 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 783;3;45415;I32_W;;Transformer coil temperature;;0.100000;0.000000;°C;4
 784;3;45417;I32_W;;Transformer coil temperature at 4 mA current;;1.000000;0.000000;°C;4
 785;3;45419;I32_W;;Transformer coil temperature at 20 mA current;;1.000000;0.000000;°C;4
-786;3;45421;U32_W;;Transformer coil temperature warning limit;;1.000000;0.000000;°C;4
-787;3;45423;U32_W;;Transformer coil temperature fault limit;;1.000000;0.000000;°C;4
+786;3;45421;U32_W;;Transformer coil temperature warning limit;;1.000000;0.000000;°C;9
+787;3;45423;U32_W;;Transformer coil temperature fault limit;;1.000000;0.000000;°C;9
 788;3;45425;U32_W;;Transformer coil, current limit temperature 1;;1.000000;0.000000;°C;4
 789;3;45427;U32_W;;Transformer coil, current limit temperature 2;;1.000000;0.000000;°C;4
 790;3;45429;U32_W;;Transformer coil, current limit temperature 3;;1.000000;0.000000;°C;4
@@ -795,15 +795,15 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 794;3;45439;I32_W;;Transformer oil temperature;;0.100000;0.000000;°C;4
 795;3;45441;I32_W;;Transformer oil temperature at 4 mA current;;1.000000;0.000000;°C;4
 796;3;45443;I32_W;;Transformer oil temperature at 20 mA current;;1.000000;0.000000;°C;4
-797;3;45445;U32_W;;Transformer oil temperature warning limit;;1.000000;0.000000;°C;4
-798;3;45447;U32_W;;Transformer oil temperature fault limit;;1.000000;0.000000;°C;4
+797;3;45445;U32_W;;Transformer oil temperature warning limit;;1.000000;0.000000;°C;9
+798;3;45447;U32_W;;Transformer oil temperature fault limit;;1.000000;0.000000;°C;9
 799;3;45449;U32_W;;Transformer oil, current limit temperature 1;;1.000000;0.000000;°C;4
 800;3;45451;U32_W;;Transformer oil, current limit temperature 2;;1.000000;0.000000;°C;4
 801;3;45453;U32_W;;Transformer oil, current limit temperature 3;;1.000000;0.000000;°C;4
 802;3;45455;U32_W;;Transformer oil, current limit current 1;;1.000000;0.000000;A;4
 803;3;45457;U32_W;;Transformer oil, current limit current 2;;1.000000;0.000000;A;4
 804;3;45473;U16;;MV breaker opening status;;1.000000;0.000000;;0
-805;3;47105;U32_W;;Startup date;;1.000000;0.000000;day;4
+805;3;47105;U32_W;;Startup date;;1.000000;0.000000;day;1
 806;3;47107;U32_W;;Last Boot Time, Days;;1.000000;0.000000;day;4
 807;3;47109;U32_W;;Last Boot Time, Ticks;;1.000000;0.000000;;4
 808;3;47115;U32_W;;Total energy;E_TOT;1.000000;0.000000;kWh;4
@@ -829,10 +829,10 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 828;3;48389;U32_W;;IO transfer trip source;;1.000000;0.000000;;4
 829;3;48391;U32_W;;SCADA transfer trip;;1.000000;0.000000;;4
 830;3;48393;U32_W;;Transfer trip event;;1.000000;0.000000;;4
-831;3;48395;U32_W;;IO shutdown source;;1.000000;0.000000;;4
-832;3;48397;U32_W;;SCADA shutdown;;1.000000;0.000000;;4
-833;3;48399;U32_W;;Shutdown event;;1.000000;0.000000;;4
-834;3;48405;U32_W;;Reset active faults;;1.000000;0.000000;;4
+831;3;48395;U32_W;;IO shutdown source;;1.000000;0.000000;;1
+832;3;48397;U32_W;;SCADA shutdown;;1.000000;0.000000;;1
+833;3;48399;U32_W;;Shutdown event;;1.000000;0.000000;;1
+834;3;48405;U32_W;;Reset active faults;;1.000000;0.000000;;9
 835;3;48641;U32_W;;Phase voltage U1;;0.010000;0.000000;V;4
 836;3;48643;U32_W;;Phase voltage V1;;0.010000;0.000000;V;4
 837;3;48645;U32_W;;Phase voltage W1;;0.010000;0.000000;V;4
@@ -926,13 +926,13 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 925;3;52499;U32_W;;DC input current 22;;1.000000;0.000000;;4
 926;3;52501;U32_W;;DC input current 23;;1.000000;0.000000;;4
 927;3;52503;U32_W;;DC input current 24;;1.000000;0.000000;;4
-928;3;52505;U32_W;;PLC error class;;1.000000;0.000000;;4
-929;3;52507;U32_W;;PLC error component;;1.000000;0.000000;;4
-930;3;52509;U32_W;;PLC error device;;1.000000;0.000000;;4
-931;3;52511;U32_W;;PLC error module;;1.000000;0.000000;;4
-932;3;52513;U32_W;;PLC error channel;;1.000000;0.000000;;4
-933;3;52515;U32_W;;PLC error identifier;;1.000000;0.000000;;4
-934;3;52517;U32_W;;PLC error state;;1.000000;0.000000;;4
+928;3;52505;U32_W;;PLC error class;;1.000000;0.000000;;9
+929;3;52507;U32_W;;PLC error component;;1.000000;0.000000;;9
+930;3;52509;U32_W;;PLC error device;;1.000000;0.000000;;9
+931;3;52511;U32_W;;PLC error module;;1.000000;0.000000;;9
+932;3;52513;U32_W;;PLC error channel;;1.000000;0.000000;;9
+933;3;52515;U32_W;;PLC error identifier;;1.000000;0.000000;;9
+934;3;52517;U32_W;;PLC error state;;1.000000;0.000000;;9
 935;3;52519;U32_W;;PLC CPU load;;1.000000;0.000000;;4
 936;3;52625;U32_W;;PLC SW version, lower bits;;1.000000;0.000000;;4
 937;3;52627;U32_W;;PLC SW version, upper bits;;1.000000;0.000000;;4
@@ -943,15 +943,15 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 942;3;52637;U32_W;;PLC software MD5 hash #2;;1.000000;0.000000;;4
 943;3;52639;U32_W;;PLC software MD5 hash #3;;1.000000;0.000000;;4
 944;3;52641;U32_W;;PLC software MD5 hash #4;;1.000000;0.000000;;4
-945;3;52725;U32_W;;PLC error code;;1.000000;0.000000;;4
+945;3;52725;U32_W;;PLC error code;;1.000000;0.000000;;9
 946;3;52481;U16;;PLC Relay Outputs 1;;1.000000;0.000000;;4
 947;3;52483;U16;;PLC Relay Outputs 2;;1.000000;0.000000;;4
 948;3;52485;U16;;PLC Relay Outputs 3;;1.000000;0.000000;;4
 949;3;52487;U32_W;;PLC watchdog write;;1.000000;0.000000;;4
 950;3;52489;U32_W;;PLC diagnostics counter;;1.000000;0.000000;;4
 951;3;52491;U32_W;;PLC watchdog threshold;;1.000000;0.000000;ms;4
-952;3;52493;U32_W;;PLC CPU reboot;;1.000000;0.000000;;4
-953;3;52495;U32_W;;PLC error acknowledgement;;1.000000;0.000000;;4
+952;3;52493;U32_W;;PLC CPU reboot;;1.000000;0.000000;;1
+953;3;52495;U32_W;;PLC error acknowledgement;;1.000000;0.000000;;9
 954;3;52497;U32_W;;PLC configuration code;;1.000000;0.000000;;4
 955;3;53109;U32_W;;Iout limit 1;;0.010000;0.000000;p.u.;4
 956;3;53111;U32_W;;Iout limit scaled;;0.010000;0.000000;p.u.;4
@@ -968,7 +968,7 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 967;3;53765;U32_W;;Grounding state;;1.000000;0.000000;;4
 968;3;53767;U32_W;;Ignore insulation resistance;;1.000000;0.000000;;4
 969;3;53769;U32_W;;Ungrounded operation;;1.000000;0.000000;;4
-970;3;53771;U32_W;;Unground on fault;;1.000000;0.000000;;4
+970;3;53771;U32_W;;Unground on fault;;1.000000;0.000000;;9
 971;3;53773;U32_W;;Night grounding;;1.000000;0.000000;;4
 972;3;53775;U32_W;;Wake-up voltage;;1.000000;0.000000;V;4
 973;3;53777;U32_W;;Night mode voltage;;1.000000;0.000000;V;4
@@ -978,9 +978,9 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 977;3;53785;U32_W;;Grounding current limit;;0.010000;0.000000;A;4
 978;3;53787;U32_W;;Total grounding current;;0.001000;0.000000;A;4
 979;3;53789;I32_W;;Resistive grounding current;;0.001000;0.000000;A;4
-980;3;53791;U32_W;;Grounding current fault action;;1.000000;0.000000;;4
+980;3;53791;U32_W;;Grounding current fault action;;1.000000;0.000000;;9
 981;3;53793;U32_W;;Grounding current time limit;;0.001000;0.000000;s;4
-982;3;53795;U32_W;;Sudden change current fault action;;1.000000;0.000000;;4
+982;3;53795;U32_W;;Sudden change current fault action;;1.000000;0.000000;;9
 983;3;53797;U32_W;;Step 1 current limit;;0.001000;0.000000;A;4
 984;3;53799;U32_W;;Step 2 current limit;;0.001000;0.000000;A;4
 985;3;53801;U32_W;;Step 3 current limit;;0.001000;0.000000;A;4
@@ -991,13 +991,13 @@ Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 990;3;53813;U32_W;;Insulation resistance device state;;1.000000;0.000000;;4
 991;3;53815;U32_W;;Insulation resistance limit;;1.000000;0.000000;Ohm;4
 992;3;53817;U32_W;;Insulation resistance;R_ISO;1.000000;0.000000;;4
-993;3;53819;U32_W;;Insulation resistance fault action;;1.000000;0.000000;;4
+993;3;53819;U32_W;;Insulation resistance fault action;;1.000000;0.000000;;9
 994;3;53821;U32_W;;Minimum Riso measurement time;;1.000000;0.000000;min;4
 995;3;53823;U32_W;;Maximum Riso measurement time;;1.000000;0.000000;min;4
 996;3;53825;U32_W;;MIRU self-test;;1.000000;0.000000;;4
 997;3;53827;U32_W;;Self-test voltage;;1.000000;0.000000;V;4
 998;3;53829;U16;;Status word;;1.000000;0.000000;;4
-999;3;53831;U32_W;;Sudden change warning indication time;;1.000000;0.000000;s;4
+999;3;53831;U32_W;;Sudden change warning indication time;;1.000000;0.000000;s;9
 1000;3;54017;I32_W;;Ambient temperature;TEMP_AMB;0.100000;0.000000;°C;4
 1001;3;54019;I32_W;;Control board temperature;TEMP_INT;0.100000;0.000000;°C;4
 1002;3;54021;I32_W;;PU1 IGBT T1;;0.100000;0.000000;°C;4

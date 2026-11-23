@@ -3207,6 +3207,90 @@ class CarloGavazziDefinitionsEngine:
         return regs
 
     # =========================================================================
+    # 7. EM24-DIN (Official Modbus Table CP Rev. 4, exact 55 registers)
+    # =========================================================================
+
+    @classmethod
+    def get_em24_registers(cls) -> list[ModbusRegisterDef]:
+        """
+        Build register definitions for Carlo Gavazzi EM24-DIN.
+        Source: em24_modbus_table.pdf (EM24-DIN PFA, PFB & X models Communication Protocol).
+        """
+        regs: list[ModbusRegisterDef] = []
+        # Phase voltages L-N
+        regs.append(ModbusRegisterDef("3", "0", "I32", "", "Voltage L1-N", "U_AC_1", "0.100000", "0.000000", "V", "4"))
+        regs.append(ModbusRegisterDef("3", "2", "I32", "", "Voltage L2-N", "U_AC_2", "0.100000", "0.000000", "V", "4"))
+        regs.append(ModbusRegisterDef("3", "4", "I32", "", "Voltage L3-N", "U_AC_3", "0.100000", "0.000000", "V", "4"))
+        # Phase voltages L-L
+        regs.append(ModbusRegisterDef("3", "6", "I32", "", "Voltage L1-L2", "U_AC_L1L2", "0.100000", "0.000000", "V", "4"))
+        regs.append(ModbusRegisterDef("3", "8", "I32", "", "Voltage L2-L3", "U_AC_L2L3", "0.100000", "0.000000", "V", "4"))
+        regs.append(ModbusRegisterDef("3", "10", "I32", "", "Voltage L3-L1", "U_AC_L3L1", "0.100000", "0.000000", "V", "4"))
+        # Phase currents
+        regs.append(ModbusRegisterDef("3", "12", "I32", "", "Current L1", "I_AC_1", "0.001000", "0.000000", "A", "4"))
+        regs.append(ModbusRegisterDef("3", "14", "I32", "", "Current L2", "I_AC_2", "0.001000", "0.000000", "A", "4"))
+        regs.append(ModbusRegisterDef("3", "16", "I32", "", "Current L3", "I_AC_3", "0.001000", "0.000000", "A", "4"))
+        # Active powers per phase
+        regs.append(ModbusRegisterDef("3", "18", "I32", "", "Active Power L1", "P_AC_1", "0.100000", "0.000000", "W", "4"))
+        regs.append(ModbusRegisterDef("3", "20", "I32", "", "Active Power L2", "P_AC_2", "0.100000", "0.000000", "W", "4"))
+        regs.append(ModbusRegisterDef("3", "22", "I32", "", "Active Power L3", "P_AC_3", "0.100000", "0.000000", "W", "4"))
+        # Apparent powers per phase
+        regs.append(ModbusRegisterDef("3", "24", "I32", "", "Apparent Power L1", "S_AC_1", "0.100000", "0.000000", "VA", "4"))
+        regs.append(ModbusRegisterDef("3", "26", "I32", "", "Apparent Power L2", "S_AC_2", "0.100000", "0.000000", "VA", "4"))
+        regs.append(ModbusRegisterDef("3", "28", "I32", "", "Apparent Power L3", "S_AC_3", "0.100000", "0.000000", "VA", "4"))
+        # Reactive powers per phase
+        regs.append(ModbusRegisterDef("3", "30", "I32", "", "Reactive Power L1", "Q_AC_1", "0.100000", "0.000000", "var", "4"))
+        regs.append(ModbusRegisterDef("3", "32", "I32", "", "Reactive Power L2", "Q_AC_2", "0.100000", "0.000000", "var", "4"))
+        regs.append(ModbusRegisterDef("3", "34", "I32", "", "Reactive Power L3", "Q_AC_3", "0.100000", "0.000000", "var", "4"))
+        # System variables
+        regs.append(ModbusRegisterDef("3", "36", "I32", "", "System Voltage L-N", "U_AC", "0.100000", "0.000000", "V", "4"))
+        regs.append(ModbusRegisterDef("3", "38", "I32", "", "System Voltage L-L", "U_AC_LL", "0.100000", "0.000000", "V", "4"))
+        regs.append(ModbusRegisterDef("3", "40", "I32", "", "System Active Power", "P_AC", "0.100000", "0.000000", "W", "4"))
+        regs.append(ModbusRegisterDef("3", "42", "I32", "", "System Apparent Power", "S_AC", "0.100000", "0.000000", "VA", "4"))
+        regs.append(ModbusRegisterDef("3", "44", "I32", "", "System Reactive Power", "Q_AC", "0.100000", "0.000000", "var", "4"))
+        regs.append(ModbusRegisterDef("3", "46", "I32", "", "Demand Active Power", "", "0.100000", "0.000000", "W", "4"))
+        regs.append(ModbusRegisterDef("3", "48", "I32", "", "Demand Apparent Power", "", "0.100000", "0.000000", "VA", "4"))
+        # Power factors
+        regs.append(ModbusRegisterDef("3", "50", "I16", "", "Power Factor L1", "PF_1", "0.001000", "0.000000", "", "4"))
+        regs.append(ModbusRegisterDef("3", "51", "I16", "", "Power Factor L2", "PF_2", "0.001000", "0.000000", "", "4"))
+        regs.append(ModbusRegisterDef("3", "52", "I16", "", "Power Factor L3", "PF_3", "0.001000", "0.000000", "", "4"))
+        regs.append(ModbusRegisterDef("3", "53", "I16", "", "System Power Factor", "PF", "0.001000", "0.000000", "", "4"))
+        regs.append(ModbusRegisterDef("3", "54", "I16", "", "Phase Sequence", "", "1.000000", "0.000000", "", "4"))
+        regs.append(ModbusRegisterDef("3", "55", "I16", "", "Frequency", "FREQ", "0.100000", "0.000000", "Hz", "4"))
+        # Demands max
+        regs.append(ModbusRegisterDef("3", "56", "I32", "", "Maximum Demand Active Power", "", "0.100000", "0.000000", "W", "4"))
+        regs.append(ModbusRegisterDef("3", "58", "I32", "", "Maximum Demand Apparent Power", "", "0.100000", "0.000000", "VA", "4"))
+        regs.append(ModbusRegisterDef("3", "60", "I32", "", "Maximum Demand Current", "", "0.001000", "0.000000", "A", "4"))
+        # Energy meters
+        regs.append(ModbusRegisterDef("3", "62", "I32", "", "Total Active Energy Import (+)", "E_TOT", "0.100000", "0.000000", "kWh", "4"))
+        regs.append(ModbusRegisterDef("3", "64", "I32", "", "Total Reactive Energy Import (+)", "", "0.100000", "0.000000", "kvarh", "4"))
+        regs.append(ModbusRegisterDef("3", "66", "I32", "", "Partial Active Energy Import (+)", "E_DAY", "0.100000", "0.000000", "kWh", "4"))
+        regs.append(ModbusRegisterDef("3", "68", "I32", "", "Partial Reactive Energy Import (+)", "", "0.100000", "0.000000", "kvarh", "4"))
+        regs.append(ModbusRegisterDef("3", "70", "I32", "", "Active Energy L1", "", "0.100000", "0.000000", "kWh", "4"))
+        regs.append(ModbusRegisterDef("3", "72", "I32", "", "Active Energy L2", "", "0.100000", "0.000000", "kWh", "4"))
+        regs.append(ModbusRegisterDef("3", "74", "I32", "", "Active Energy L3", "", "0.100000", "0.000000", "kWh", "4"))
+        # Tariffs
+        regs.append(ModbusRegisterDef("3", "76", "I32", "", "Active Energy T1", "", "0.100000", "0.000000", "kWh", "4"))
+        regs.append(ModbusRegisterDef("3", "78", "I32", "", "Active Energy T2", "", "0.100000", "0.000000", "kWh", "4"))
+        regs.append(ModbusRegisterDef("3", "80", "I32", "", "Active Energy T3", "", "0.100000", "0.000000", "kWh", "4"))
+        regs.append(ModbusRegisterDef("3", "82", "I32", "", "Active Energy T4", "", "0.100000", "0.000000", "kWh", "4"))
+        regs.append(ModbusRegisterDef("3", "84", "I32", "", "Reactive Energy T1", "", "0.100000", "0.000000", "kvarh", "4"))
+        regs.append(ModbusRegisterDef("3", "86", "I32", "", "Reactive Energy T2", "", "0.100000", "0.000000", "kvarh", "4"))
+        regs.append(ModbusRegisterDef("3", "88", "I32", "", "Reactive Energy T3", "", "0.100000", "0.000000", "kvarh", "4"))
+        regs.append(ModbusRegisterDef("3", "90", "I32", "", "Reactive Energy T4", "", "0.100000", "0.000000", "kvarh", "4"))
+        # Export energy
+        regs.append(ModbusRegisterDef("3", "92", "I32", "", "Total Active Energy Export (-)", "E_EXP_TOT", "0.100000", "0.000000", "kWh", "4"))
+        regs.append(ModbusRegisterDef("3", "94", "I32", "", "Total Reactive Energy Export (-)", "", "0.100000", "0.000000", "kvarh", "4"))
+        # Counters
+        regs.append(ModbusRegisterDef("3", "96", "I32", "", "Hour Counter", "OPERATING_HOURS", "0.010000", "0.000000", "Hours", "4"))
+        regs.append(ModbusRegisterDef("3", "98", "I32", "", "Digital Input Counter 1", "", "1.000000", "0.000000", "", "4"))
+        regs.append(ModbusRegisterDef("3", "100", "I32", "", "Digital Input Counter 2", "", "1.000000", "0.000000", "", "4"))
+        regs.append(ModbusRegisterDef("3", "102", "I32", "", "Digital Input Counter 3", "", "1.000000", "0.000000", "", "4"))
+        # Tariff and version
+        regs.append(ModbusRegisterDef("3", "769", "U16", "", "Current Tariff", "", "1.000000", "0.000000", "", "4"))
+        regs.append(ModbusRegisterDef("3", "770", "U16", "", "Version Code", "", "1.000000", "0.000000", "", "4"))
+        return regs
+
+    # =========================================================================
     # Master Generation Dispatcher
     # =========================================================================
 
@@ -3216,6 +3300,7 @@ class CarloGavazziDefinitionsEngine:
         return {
             "EM210_MV": cls.get_em210_registers(is_mv=True),
             "EM210": cls.get_em210_registers(is_mv=False),
+            "EM24": cls.get_em24_registers(),
             "EM530": cls.get_em500_registers(),
             "EM540": cls.get_em500_registers(),
             "EM111": cls.get_em100_registers("EM111"),
@@ -3229,6 +3314,8 @@ class CarloGavazziDefinitionsEngine:
             "EM271": cls.get_em271_registers(),
             "WM15": cls.get_wm15_registers(),
             "WM20": cls.get_wm20_wm50_registers("WM20"),
+            "WM30": cls.get_wm20_wm50_registers("WM30"),
+            "WM40": cls.get_wm20_wm50_registers("WM40"),
             "WM50": cls.get_wm20_wm50_registers("WM50"),
         }
 

@@ -28,6 +28,7 @@ PROD_DIR = REPO_ROOT / "production"
 CG_MODELS = [
     "EM210_MV",
     "EM210",
+    "EM24",
     "EM530",
     "EM540",
     "EM111",
@@ -41,6 +42,8 @@ CG_MODELS = [
     "EM271",
     "WM15",
     "WM20",
+    "WM30",
+    "WM40",
     "WM50",
 ]
 
@@ -148,6 +151,41 @@ class TestCarloGavazziDefinitionsSuite:
                 assert e_tot is not None and e_tot[6] == "E_TOT"
                 assert float(e_tot[7]) == 0.1
                 assert e_tot[9] == "kWh"
+
+    def test_em24_domain_spec(self) -> None:
+        """Verify Carlo Gavazzi EM24-DIN official Modbus specifications."""
+        file_path = PROD_DIR / "MET_CarloGavazzi_EM24.csv"
+        with open(file_path, encoding="utf-8") as f:
+            reader = csv.reader(f, delimiter=";")
+            header = next(reader)
+            assert header[3] == "EM24"
+            rows = list(reader)
+            assert len(rows) == 57, f"Expected 57 registers, got {len(rows)}"
+
+            # Voltage L1-N at 0
+            v_l1 = next((r for r in rows if r[2] == "0"), None)
+            assert v_l1 is not None and v_l1[6] == "U_AC_1"
+            assert float(v_l1[7]) == 0.1
+
+            # System active power at 40
+            p_sys = next((r for r in rows if r[2] == "40"), None)
+            assert p_sys is not None and p_sys[6] == "P_AC"
+            assert float(p_sys[7]) == 0.1
+
+            # System PF at 53
+            pf_sys = next((r for r in rows if r[2] == "53"), None)
+            assert pf_sys is not None and pf_sys[6] == "PF"
+            assert float(pf_sys[7]) == 0.001
+
+            # Frequency at 55
+            freq = next((r for r in rows if r[2] == "55"), None)
+            assert freq is not None and freq[6] == "FREQ"
+            assert float(freq[7]) == 0.1
+
+            # Total active energy at 62
+            e_tot = next((r for r in rows if r[2] == "62"), None)
+            assert e_tot is not None and e_tot[6] == "E_TOT"
+            assert float(e_tot[7]) == 0.1
 
     def test_em100_series_spec(self) -> None:
         """Verify EM111, EM112, ET112 1-phase specifications."""

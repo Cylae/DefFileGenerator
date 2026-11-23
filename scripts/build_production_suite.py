@@ -10,6 +10,7 @@ Enforces the 5 Apollo-standard pillars on all definition files entering `product
 """
 
 import csv
+import json
 import re
 import shutil
 import sys
@@ -33,6 +34,7 @@ CLASSIC_DIR = WORKSPACE_DIR / "Definitions" / "Classic"
 GOODWE_DIR = WORKSPACE_DIR / "Definitions" / "GoodWe"
 SMA_DIR = WORKSPACE_DIR / "Definitions" / "SMA"
 CARLOGAVAZZI_DIR = WORKSPACE_DIR / "Definitions" / "CarloGavazzi"
+ABB_DIR = WORKSPACE_DIR / "Definitions" / "ABB"
 
 PREFIX_TO_CATEGORY = {
     "INV": "Inverter",
@@ -582,6 +584,11 @@ def build_manifest() -> dict[str, Path]:
         for cg_file in sorted(CARLOGAVAZZI_DIR.glob("*.csv")):
             manifest[cg_file.name] = cg_file
 
+    # 11. Complete ABB / Fimer Certified Ecosystem
+    if ABB_DIR.exists():
+        for abb_file in sorted(ABB_DIR.glob("*.csv")):
+            manifest[abb_file.name] = abb_file
+
     # 6. Comprehensive Ingestion from tagged_definitions/
     candidates_by_tgt: dict[str, list[Path]] = defaultdict(list)
     for f in sorted(TAGGED_DIR.glob("*.csv")):
@@ -752,10 +759,19 @@ def sanitize_and_normalize_definition(
 
 
 def generate_production_catalog(manifest_stats: list[dict]):
-    """Generates a professional README.md catalog in the production folder."""
+    """Generates a professional README.md catalog in the production folder.
+
+    Uses the actual count of CSV files present in ``production/`` as the
+    authoritative file total so that the header matches the CATALOG.json count
+    even when the manifest contains canonical alias duplicates that resolve to
+    the same physical output file.
+    """
     catalog_path = PROD_DIR / "README.md"
 
-    total_files = len(manifest_stats)
+    # Count physical files rather than manifest entries: the manifest may map
+    # multiple alias names to the same canonical CSV (e.g. GoodWe case variants),
+    # so len(manifest_stats) can exceed the actual number of files on disk.
+    total_files = len(list(PROD_DIR.glob("*.csv")))
     total_regs = sum(item["registers"] for item in manifest_stats)
     total_tags = sum(item["tags"] for item in manifest_stats)
     total_mfgs = len(set(item["mfg"] for item in manifest_stats))
@@ -858,6 +874,50 @@ def generate_production_catalog(manifest_stats: list[dict]):
     with open(catalog_path, "w", encoding="utf-8", newline="") as fp:
         fp.write("\n".join(content))
 
+    # Also synchronize production/CATALOG.json
+    json_catalog_path = PROD_DIR / "CATALOG.json"
+    prefix_counts: dict[str, int] = defaultdict(int)
+    mfg_counts: dict[str, int] = defaultdict(int)
+    items_list = []
+
+    for csv_file in sorted(PROD_DIR.glob("*.csv")):
+        size_bytes = csv_file.stat().st_size
+        parts = csv_file.stem.split("_", 2)
+        pfx = parts[0] if parts else ""
+        mfg = parts[1] if len(parts) > 1 else ""
+        model = parts[2] if len(parts) > 2 else ""
+
+        reg_count = 0
+        try:
+            with open(csv_file, encoding="utf-8", errors="ignore") as f:
+                reg_count = max(0, sum(1 for line in f if line.strip()) - 1)
+        except Exception:
+            pass
+
+        prefix_counts[pfx] += 1
+        mfg_counts[mfg] += 1
+        item_entry = {
+            "filename": csv_file.name,
+            "prefix": pfx,
+            "manufacturer": mfg,
+            "model": model,
+            "registers": reg_count,
+            "size_bytes": size_bytes,
+        }
+        items_list.append(item_entry)
+
+    catalog_data = {
+        "total_files": len(items_list),
+        "prefixes": dict(sorted(prefix_counts.items())),
+        "manufacturers_count": len(mfg_counts),
+        "manufacturers": dict(sorted(mfg_counts.items(), key=lambda x: -x[1])),
+        "items": items_list,
+        "definitions": items_list,
+    }
+
+    with open(json_catalog_path, "w", encoding="utf-8") as jf:
+        json.dump(catalog_data, jf, indent=2, ensure_ascii=False)
+
 
 def main():
     print("=" * 80)
@@ -897,6 +957,7 @@ def main():
         is_already_certified = any(
             src_path.resolve().is_relative_to(d.resolve())
             for d in (
+                ABB_DIR,
                 CARLOGAVAZZI_DIR,
                 GOODWE_DIR,
                 SMA_DIR,

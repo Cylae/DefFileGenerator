@@ -1,6 +1,6 @@
 # 📚 Webdyn Definitions Library
 
-Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **193 fichiers de définition** validés couvrant **31 417 registres Modbus** à travers plus de 60 constructeurs mondiaux.
+Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **208 fichiers de définition** validés couvrant **37 671 registres Modbus** à travers plus de 60 constructeurs mondiaux.
 
 ---
 
@@ -8,12 +8,12 @@ Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. 
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Constructeurs Notables |
 |-----------|---------|----------|-----------------|------------------------|
-| Onduleurs & Convertisseurs (Inverters) | `INV_` | 104 | 22 100 | ABB, Answer Drives, CyberPower, Cyberpower, EFACEC (+23) |
-| Compteurs & Analyseurs Réseau (Meters) | `MET_` | 50 | 4 548 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+17) |
+| Onduleurs & Convertisseurs (Inverters) | `INV_` | 112 | 27 636 | ABB, Answer Drives, CyberPower, Cyberpower, EFACEC (+23) |
+| Compteurs & Analyseurs Réseau (Meters) | `MET_` | 56 | 5 246 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+17) |
 | Systèmes de Stockage BESS (Batteries) | `BAT_` | 5 | 3 718 | Dyness, GoodWe |
 | Capteurs & Pyranomètres (Sensors) | `SEN_` | 21 | 446 | ATERSA, BD_SENSOR, DELTAOHM, DELTA_OHM, EKO (+11) |
 | Passerelles & Loggers de Communication | `COM_` | 8 | 396 | GoodWe, Huawei, SMA, Solplanet |
-| Autres Équipements (IO Modules & Afficheurs) | `OTH_` | 5 | 209 | ICPDAS, SIEBERT, Webdyn |
+| Autres Équipements (IO Modules & Afficheurs) | `OTH_` | 6 | 229 | ABB, ICPDAS, SIEBERT, Webdyn |
 
 ---
 
@@ -34,8 +34,8 @@ Pour une lisibilité et une maintenabilité optimales, les fichiers de définiti
 | [`Definitions/Growatt/`](./Growatt/) | Growatt New Energy | 16 | Onduleurs string MAX, MOD, MIN, TL-X, TL3-X, hybrides et stockage |
 | [`Definitions/Fronius/`](./Fronius/) | Fronius International | 34 | Gammes Symo, Primo, Eco, Gen24 Plus, cartes d'entrées/capteurs IG |
 | [`Definitions/SolarEdge/`](./SolarEdge/) | SolarEdge Technologies | 20 | Onduleurs string SE monophasés/triphasés, blocs de contrôle de puissance active/réactive |
-| [`Definitions/CarloGavazzi/`](./CarloGavazzi/) | Carlo Gavazzi Automation | 25 | Compteurs d'énergie et analyseurs EM24, EM210, EM210_MV, EM530, EM540, EM100, EM300, WM |
-| [`Definitions/ABB/`](./ABB/) | ABB / Fimer | 61 | Onduleurs centraux PVS800, Trio, Pro33, modules de puissance Ultra |
+| [`Definitions/CarloGavazzi/`](./CarloGavazzi/) | Carlo Gavazzi Automation | 27 | Compteurs d'énergie et analyseurs EM24, EM210, EM210_MV, EM530, EM540, EM100, EM300, WM |
+| [`Definitions/ABB/`](./ABB/) | ABB / Fimer | 71 | Onduleurs PVS (10..175, 800), Trio, Pro33, Ultra, compteurs B21/23/24, M2M, M4M, Terra AC |
 | [`Definitions/Dyness/`](./Dyness/) | Dyness Renewable | 4 | Systèmes de stockage batteries haute tension BESS DH100F, DH200F, DH200Y |
 | [`Definitions/Classic/`](./Classic/) | Grands Classiques Multi-Constructeurs | 18 | Profils unifiés et standardisés des 18 équipements les plus déployés |
 | [`Definitions/X7/`](./X7/) | X7 C&I BESS | 7 | Définitions ultra-détaillées du conteneur de stockage X7 100kW/215kWh |
@@ -58,15 +58,23 @@ Tous les fichiers suivent la convention canonique Webdyn :
 
 ## 📑 Catalogue Détaillé
 
-### Onduleurs & Convertisseurs (Inverters) (104 fichiers)
+### Onduleurs & Convertisseurs (Inverters) (112 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
 | [`INV_ABB_10.5.csv`](./INV_ABB_10.5.csv) | ABB | 10.5 | Modbus | 19 |
+| [`INV_ABB_PRO-33.0-TL.csv`](./INV_ABB_PRO-33.0-TL.csv) | ABB | PRO-33.0-TL | Modbus | 62 |
+| [`INV_ABB_PVI-110_275.csv`](./INV_ABB_PVI-110_275.csv) | ABB | PVI-110_275 | Modbus | 441 |
+| [`INV_ABB_PVI-50_60.csv`](./INV_ABB_PVI-50_60.csv) | ABB | PVI-50_60 | Modbus | 104 |
+| [`INV_ABB_PVS-100_120.csv`](./INV_ABB_PVS-100_120.csv) | ABB | PVS-100_120 | Modbus | 986 |
+| [`INV_ABB_PVS-10_12.5_15_20_30_33.csv`](./INV_ABB_PVS-10_12.5_15_20_30_33.csv) | ABB | PVS-10_12.5_15_20_30_33 | Modbus | 963 |
+| [`INV_ABB_PVS-175.csv`](./INV_ABB_PVS-175.csv) | ABB | PVS-175 | Modbus | 1068 |
+| [`INV_ABB_PVS-50_60.csv`](./INV_ABB_PVS-50_60.csv) | ABB | PVS-50_60 | Modbus | 956 |
 | [`INV_ABB_PVS800-57B.csv`](./INV_ABB_PVS800-57B.csv) | ABB | PVS800-57B | Modbus | 1053 |
 | [`INV_ABB_PVS800-57B_2.csv`](./INV_ABB_PVS800-57B_2.csv) | ABB | PVS800-57B | Modbus | 1053 |
+| [`INV_ABB_TRIO-50.0-TM-OUTD.csv`](./INV_ABB_TRIO-50.0-TM-OUTD.csv) | ABB | TRIO-50.0-TM-OUTD | Modbus | 956 |
 | [`INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv`](./INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv) | ABB | TRIO_20.0-27.6_TL_OUTD | Modbus | 89 |
-| [`INV_ABB_Ultra_Inverter_Module.csv`](./INV_ABB_Ultra_Inverter_Module.csv) | ABB | Ultra_Inverter_Module | Modbus | 57 |
+| [`INV_ABB_Ultra_Inverter_Module.csv`](./INV_ABB_Ultra_Inverter_Module.csv) | ABB | ULTRA_Inverter_Module | Modbus | 57 |
 | [`INV_AnswerDrives_Solargate.csv`](./INV_AnswerDrives_Solargate.csv) | Answer Drives | Solargate | Modbus | 288 |
 | [`INV_CyberPower_1-Phase.csv`](./INV_CyberPower_1-Phase.csv) | CyberPower | 1-Phase | Modbus | 85 |
 | [`INV_CyberPower_3-Phases.csv`](./INV_CyberPower_3-Phases.csv) | CyberPower | 3-Phases | Modbus | 71 |
@@ -167,12 +175,15 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_VICTRON_Generic.csv`](./INV_VICTRON_Generic.csv) | VICTRON | Generic | Modbus | 12 |
 | [`INV_Zucchetti_Azzuro-3PH.csv`](./INV_Zucchetti_Azzuro-3PH.csv) | Zucchetti | Azzuro-3PH | Modbus | 503 |
 
-### Compteurs & Analyseurs Réseau (Meters) (50 fichiers)
+### Compteurs & Analyseurs Réseau (Meters) (56 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
 | [`MET_ABB_B21-B23-B24.csv`](./MET_ABB_B21-B23-B24.csv) | ABB | B21-B23-B24 | Modbus | 137 |
+| [`MET_ABB_B21_B23_B24.csv`](./MET_ABB_B21_B23_B24.csv) | ABB | B21_B23_B24 | Modbus | 137 |
+| [`MET_ABB_M2M.csv`](./MET_ABB_M2M.csv) | ABB | M2M | Modbus | 126 |
 | [`MET_ABB_M2M_Meter.csv`](./MET_ABB_M2M_Meter.csv) | ABB | M2M_Meter | Modbus | 126 |
+| [`MET_ABB_M4M.csv`](./MET_ABB_M4M.csv) | ABB | M4M | Modbus | 298 |
 | [`MET_Algodue_UPM209-309.csv`](./MET_Algodue_UPM209-309.csv) | Algodue | UPM209-309 | Modbus | 98 |
 | [`MET_Carlo_Gavazzi_EM210.csv`](./MET_Carlo_Gavazzi_EM210.csv) | Carlo_Gavazzi | EM210 | Modbus | 115 |
 | [`MET_CarloGavazzi_EM111.csv`](./MET_CarloGavazzi_EM111.csv) | CarloGavazzi | EM111 | Modbus | 41 |
@@ -180,6 +191,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`MET_CarloGavazzi_EM21.csv`](./MET_CarloGavazzi_EM21.csv) | CarloGavazzi | EM21 | Modbus | 35 |
 | [`MET_CarloGavazzi_EM210.csv`](./MET_CarloGavazzi_EM210.csv) | CarloGavazzi | EM210 | Modbus | 115 |
 | [`MET_CarloGavazzi_EM210_MV.csv`](./MET_CarloGavazzi_EM210_MV.csv) | CarloGavazzi | EM210_MV | Modbus | 115 |
+| [`MET_CarloGavazzi_EM24.csv`](./MET_CarloGavazzi_EM24.csv) | CarloGavazzi | EM24 | Modbus | 57 |
 | [`MET_CarloGavazzi_EM271.csv`](./MET_CarloGavazzi_EM271.csv) | CarloGavazzi | EM271 | Modbus | 25 |
 | [`MET_CarloGavazzi_EM330.csv`](./MET_CarloGavazzi_EM330.csv) | CarloGavazzi | EM330 | Modbus | 65 |
 | [`MET_CarloGavazzi_EM340.csv`](./MET_CarloGavazzi_EM340.csv) | CarloGavazzi | EM340 | Modbus | 65 |
@@ -190,6 +202,8 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`MET_CarloGavazzi_ET340.csv`](./MET_CarloGavazzi_ET340.csv) | CarloGavazzi | ET340 | Modbus | 65 |
 | [`MET_CarloGavazzi_WM15.csv`](./MET_CarloGavazzi_WM15.csv) | CarloGavazzi | WM15 | Modbus | 33 |
 | [`MET_CarloGavazzi_WM20.csv`](./MET_CarloGavazzi_WM20.csv) | CarloGavazzi | WM20 | Modbus | 40 |
+| [`MET_CarloGavazzi_WM30.csv`](./MET_CarloGavazzi_WM30.csv) | CarloGavazzi | WM30 | Modbus | 40 |
+| [`MET_CarloGavazzi_WM40.csv`](./MET_CarloGavazzi_WM40.csv) | CarloGavazzi | WM40 | Modbus | 40 |
 | [`MET_CarloGavazzi_WM50.csv`](./MET_CarloGavazzi_WM50.csv) | CarloGavazzi | WM50 | Modbus | 40 |
 | [`MET_CHAUVIN-ARNOUX_Ulys_TT-M.csv`](./MET_CHAUVIN-ARNOUX_Ulys_TT-M.csv) | CHAUVIN-ARNOUX | Ulys_TT-M | Modbus | 19 |
 | [`MET_CHINT_DTSU666.csv`](./MET_CHINT_DTSU666.csv) | CHINT | DTSU666 | Modbus | 41 |
@@ -271,10 +285,11 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`COM_SMA_DataManager_M.csv`](./COM_SMA_DataManager_M.csv) | SMA | DataManager-M | Modbus | 28 |
 | [`COM_Solplanet_Ai-Logger.csv`](./COM_Solplanet_Ai-Logger.csv) | Solplanet | Ai-Logger | Modbus | 161 |
 
-### Autres Équipements (IO Modules & Afficheurs) (5 fichiers)
+### Autres Équipements (IO Modules & Afficheurs) (6 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
+| [`OTH_ABB_Terra_AC_Charger.csv`](./OTH_ABB_Terra_AC_Charger.csv) | ABB | Terra_AC_Charger | Modbus | 20 |
 | [`OTH_ICPDAS_M7028.csv`](./OTH_ICPDAS_M7028.csv) | ICPDAS | M7028 | Modbus | 70 |
 | [`OTH_SIEBERT_XC4XX.csv`](./OTH_SIEBERT_XC4XX.csv) | SIEBERT | XC4XX | Modbus | 3 |
 | [`OTH_Webdyn_Sens_IO_16DI.csv`](./OTH_Webdyn_Sens_IO_16DI.csv) | Webdyn | Sens_IO_16DI | Modbus | 60 |
