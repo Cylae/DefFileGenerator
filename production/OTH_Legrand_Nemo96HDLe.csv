@@ -22,7 +22,7 @@ Modbus;Other;Legrand;Nemo96HDLe;;;;;;;
 21;4;4128;U16;;3-phase : negative active energy;;1.0;0.0;;4
 22;4;4130;U16;;3-phase : negative reactive energy;;1.0;0.0;;4
 23;4;4132;U16;;3-phase : power factor;PF;1.0;0.0;;4
-24;4;4133;U16;;3-phase : sector of power factor (0:PF = 1  1:ind  2:cap);;1.0;0.0;;4
+24;4;4133;U16;;3-phase : sector of power factor (0:PF = 1 1:ind 2:cap);;1.0;0.0;;4
 25;4;4134;U16;;Frequency;FREQ;1.0;0.0;Hz;4
 26;4;4135;U16;;3-phase : average power;;1.0;0.0;;4
 27;4;4137;U16;;3-phase : peak maximum demand;;1.0;0.0;;4

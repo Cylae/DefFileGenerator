@@ -5,16 +5,16 @@ Modbus;Inverter;INVT;Generic;;;;;;;
 4;3;14356;U16;;R grid phase voltage;;0.1;0;V;4
 5;3;14357;U16;;S grid phase voltage;;0.1;0;V;4
 6;3;14358;U16;;T grid phase voltage;;0.1;0;V;4
-7;3;14359;I16;;R-phase  grid-connected current;;0.01;0;A;4
-8;3;14360;I16;;S  phase  grid-connected current;;0.01;0;A;4
-9;3;14361;I16;;T-phase   grid-connected current;;0.01;0;A;4
+7;3;14359;I16;;R-phase grid-connected current;;0.01;0;A;4
+8;3;14360;I16;;S phase grid-connected current;;0.01;0;A;4
+9;3;14361;I16;;T-phase grid-connected current;;0.01;0;A;4
 10;3;14362;U16;;RS grid Frequency;FREQ;0.01;0;Hz;4
 11;3;14364;U16;;Load power;;0.1;0;kW;4
 12;3;14365;I32;;Active Power;P_AC;0.1;0;W;4
 13;3;14367;I32;;reactive power;Q_AC;0.1;0;VAR;4
 14;3;14369;I16;;Power Factor;PF;0.001;0;;4
 15;3;14383;U16;;Daily Generation;;0.1;0;kWh;4
-16;3;14384;U32;;Total  power  generation;E_TOT;0.1;0;kWh;4
+16;3;14384;U32;;Total power generation;E_TOT;0.1;0;kWh;4
 17;3;14390;U16;;PV1 input voltage;U_DC_STRING_1;0.1;0;V;4
 18;3;14391;I16;;PV1 input current;I_DC_STRING_1;0.01;0;A;4
 19;3;14392;U16;;PV2 input voltage;U_DC_STRING_2;0.1;0;V;4

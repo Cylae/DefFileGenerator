@@ -67,7 +67,7 @@ Modbus;Other;Weidmuller;610;;;;;;;
 66;4;19012;U16;;Current, L1;I_AC_1;1.0;0.0;A;4
 67;4;19014;U16;;Current, L2;I_AC_2;1.0;0.0;A;4
 68;4;19016;U16;;Current, L3;I_AC_3;1.0;0.0;A;4
-69;4;19018;U16;;Vektor sum  IN = I1 + I2 + I3;;1.0;0.0;A;4
+69;4;19018;U16;;Vektor sum IN = I1 + I2 + I3;;1.0;0.0;A;4
 70;4;19020;U16;;Real power L1;P_AC_1;1.0;0.0;Wh;4
 71;4;19022;U16;;Real power L2;P_AC_2;1.0;0.0;Wh;4
 72;4;19024;U16;;Real power L3;P_AC_3;1.0;0.0;Wh;4
@@ -80,9 +80,9 @@ Modbus;Other;Weidmuller;610;;;;;;;
 79;4;19038;U16;;Fund. reactive power (mains frequency) Q L2;Q_AC_2;1.0;0.0;var;4
 80;4;19040;U16;;Fund. reactive power (mains frequency) Q L3;Q_AC_3;1.0;0.0;var;4
 81;4;19042;U16;;Qsum3;;1.0;0.0;var;4
-82;4;19044;U16;;Fund. power factor, CosPhi  U L1-N IL1;PF_1;1.0;0.0;;4
-83;4;19046;U16;;Fund. power factor, CosPhi  U L2-N IL2;PF_2;1.0;0.0;;4
-84;4;19048;U16;;Fund. power factor, CosPhi  U L3-N IL3;PF_3;1.0;0.0;;4
+82;4;19044;U16;;Fund. power factor, CosPhi U L1-N IL1;PF_1;1.0;0.0;;4
+83;4;19046;U16;;Fund. power factor, CosPhi U L2-N IL2;PF_2;1.0;0.0;;4
+84;4;19048;U16;;Fund. power factor, CosPhi U L3-N IL3;PF_3;1.0;0.0;;4
 85;4;19050;U16;;Measured frequency;;1.0;0.0;Hz;4
 86;4;19052;U16;;Rotation field;;1.0;0.0;;4
 87;4;19054;U16;;Real energy L1;;1.0;0.0;Wh;4

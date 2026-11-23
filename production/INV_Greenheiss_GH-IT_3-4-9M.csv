@@ -1,8 +1,7 @@
 Modbus;Inverter;GREENHEISS;GH-IT_3-4-9M;;;;;;;
 1;4;36608;U16;;Type;;1;0;;4
 2;4;36609;U16;;SubType;;1;0;;4
-3;4;36610;U16;;"CommProVersio
-n";;0.001;0;;4
+3;4;36610;U16;;CommProVersio n;;0.001;0;;4
 4;4;36611_20;STRING;;SN;SERIAL;1;0;;4
 5;4;36621_20;STRING;;PC;;1;0;;4
 6;4;36631;U16;;DV;;0.001;0;;4
@@ -10,8 +9,7 @@ n";;0.001;0;;4
 8;4;36633;U16;;SCV;;0.001;0;;4
 9;4;36634;U16;;DispHWVersion;;0.001;0;;4
 10;4;36635;U16;;CtrlHWVersion;;0.001;0;;4
-11;4;36636;U16;;"PowerHWVersio
-n";;0.001;0;;4
+11;4;36636;U16;;PowerHWVersio n;;0.001;0;;4
 12;4;256;U16;;MPVMode;;1;0;;4
 13;4;257_12;STRING;;FaultMSG;;1;0;;9
 14;4;263;U16;;PV1Volt;;0.1;0;V;4
@@ -226,66 +224,38 @@ n";;0.001;0;;4
 223;4;16562;U16;;TIntelligentLoadPower;;1;0;W;4
 224;4;16572;U16;;Today_Hour;;0.1;0;H;4
 225;4;16573;U32;;Total_Hour;;0.1;0;H;4
-226;4;16575;U32;;Today_PVEnergy;;0.01;0;"Kw
-h";4
-227;4;16577;U32;;Month_PVEnergy;;0.01;0;"Kw
-h";4
-228;4;16579;U32;;Year_PVEnergy;;0.01;0;"Kw
-h";4
-229;4;16581;U32;;Total_PVEnergy;;0.01;0;"Kw
-h";4
-230;4;16583;U32;;Today_BatChgEnergy;;0.01;0;"Kw
-h";4
-231;4;16585;U32;;Month_BatChgEnergy;;0.01;0;"Kw
-h";4
-232;4;16587;U32;;Year_BatChgEnergy;;0.01;0;"Kw
-h";4
-233;4;16589;U32;;Total_BatChgEnergy;;0.01;0;"Kw
-h";4
-234;4;16591;U32;;Today_BatDisEnergy;;0.01;0;"Kw
-h";4
+226;4;16575;U32;;Today_PVEnergy;;0.01;0;Kw h;4
+227;4;16577;U32;;Month_PVEnergy;;0.01;0;Kw h;4
+228;4;16579;U32;;Year_PVEnergy;;0.01;0;Kw h;4
+229;4;16581;U32;;Total_PVEnergy;;0.01;0;Kw h;4
+230;4;16583;U32;;Today_BatChgEnergy;;0.01;0;Kw h;4
+231;4;16585;U32;;Month_BatChgEnergy;;0.01;0;Kw h;4
+232;4;16587;U32;;Year_BatChgEnergy;;0.01;0;Kw h;4
+233;4;16589;U32;;Total_BatChgEnergy;;0.01;0;Kw h;4
+234;4;16591;U32;;Today_BatDisEnergy;;0.01;0;Kw h;4
 235;4;16593;U32;;Month_BatDisEnergy;;0.01;0;kwh;4
-236;4;16595;U32;;Year_BatDisEnergy;;0.01;0;"Kw
-h";4
-237;4;16597;U32;;Total_BatDisEnergy;;0.01;0;"Kw
-h";4
-238;4;16599;U32;;Today_InvGenEnergy;;0.01;0;"Kw
-h";4
-239;4;16601;U32;;Month_InvGenEnergy;;0.01;0;"Kw
-h";4
+236;4;16595;U32;;Year_BatDisEnergy;;0.01;0;Kw h;4
+237;4;16597;U32;;Total_BatDisEnergy;;0.01;0;Kw h;4
+238;4;16599;U32;;Today_InvGenEnergy;;0.01;0;Kw h;4
+239;4;16601;U32;;Month_InvGenEnergy;;0.01;0;Kw h;4
 240;4;16603;U32;;Year_InvGenEnergy;;0.01;0;kwh;4
-241;4;16605;U32;;Total_InvGenEnergy;;0.01;0;"Kw
-h";4
-242;4;16607;U32;;Today_TotalLoadEnergy;;0.01;0;"Kw
-h";4
-243;4;16609;U32;;Month_TotalLoadEnergy;;0.01;0;"Kw
-h";4
-244;4;16611;U32;;Year_TotalLoadEnergy;;0.01;0;"Kw
-h";4
-245;4;16613;U32;;Total_TotalLoadEnergy;;0.01;0;"Kw
-h";4
-246;4;16615;U32;;Today_BackupLoadEnergy;;0.01;0;"Kw
-h";4
+241;4;16605;U32;;Total_InvGenEnergy;;0.01;0;Kw h;4
+242;4;16607;U32;;Today_TotalLoadEnergy;;0.01;0;Kw h;4
+243;4;16609;U32;;Month_TotalLoadEnergy;;0.01;0;Kw h;4
+244;4;16611;U32;;Year_TotalLoadEnergy;;0.01;0;Kw h;4
+245;4;16613;U32;;Total_TotalLoadEnergy;;0.01;0;Kw h;4
+246;4;16615;U32;;Today_BackupLoadEnergy;;0.01;0;Kw h;4
 247;4;16617;U32;;Month_BackupLoadEnergy;;0.01;0;Kw h;4
-248;4;16619;U32;;Year_BackupLoadEnergy;;0.01;0;"Kw
-h";4
-249;4;16621;U32;;Total_BackupLoadEnergy;;0.01;0;"Kw
-h";4
+248;4;16619;U32;;Year_BackupLoadEnergy;;0.01;0;Kw h;4
+249;4;16621;U32;;Total_BackupLoadEnergy;;0.01;0;Kw h;4
 250;4;16623;U32;;Today_SellEnergy;;0.01;0;kwh;4
-251;4;16625;U32;;Month_SellEnergy;;0.01;0;"Kw
-h";4
-252;4;16627;U32;;Year_SellEnergy;;0.01;0;"Kw
-h";4
-253;4;16629;U32;;Total_SellEnergy;;0.01;0;"Kw
-h";4
-254;4;16631;U32;;Today_FeedInEnergy;;0.01;0;"Kw
-h";4
-255;4;16633;U32;;Month_FeedInEnergy;;0.01;0;"Kw
-h";4
-256;4;16635;U32;;Year_FeedInEnergy;;0.01;0;"Kw
-h";4
-257;4;16637;U32;;Total_FeedInEnergy;;0.01;0;"Kw
-h";4
+251;4;16625;U32;;Month_SellEnergy;;0.01;0;Kw h;4
+252;4;16627;U32;;Year_SellEnergy;;0.01;0;Kw h;4
+253;4;16629;U32;;Total_SellEnergy;;0.01;0;Kw h;4
+254;4;16631;U32;;Today_FeedInEnergy;;0.01;0;Kw h;4
+255;4;16633;U32;;Month_FeedInEnergy;;0.01;0;Kw h;4
+256;4;16635;U32;;Year_FeedInEnergy;;0.01;0;Kw h;4
+257;4;16637;U32;;Total_FeedInEnergy;;0.01;0;Kw h;4
 258;4;24576;U64;;Time;;1;0;;4
 259;4;24580;U32;;TotalEnergy;;0.01;0;kWh;4
 260;4;24582;U32;;YearEnergy;;0.01;0;kWh;4
@@ -401,8 +371,7 @@ h";4
 370;3;4104;U16;;SafetyType;;1;0;;4
 371;3;4105;U16;;FunMask;;1;0;;4
 372;3;4121;U16;;ISOLimit;;1;0;kOhm;4
-373;3;4124;U16;;"PowerLimit
-ed";;0.001;0;;4
+373;3;4124;U16;;PowerLimit ed;;0.001;0;;4
 374;3;4125;U16;;ReactiveMo de;;1;0;;4
 375;3;4126;U16;;ReactiveVa lue;;0.001;0;;4
 376;3;4151;U16;;PowerAdjCo ff3;;1;0;/;4

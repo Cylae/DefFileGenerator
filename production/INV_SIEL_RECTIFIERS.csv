@@ -10,7 +10,7 @@ Modbus;Inverter;SIEL;RECTIFIERS;;;;;;;
 9;3;9;I16;;VINR1_T _Input voltage of rectifier 1_ phase T (V);;1.000000;0.000000;V;4
 10;3;10;I16;;VINR2_R _Input voltage of rectifier 2_ phase R (V);;1.000000;0.000000;V;4
 11;3;11;I16;;VINR2_S _Input voltage of rectifier 2_ phase S (V);;1.000000;0.000000;V;4
-12;3;12;I16;;VINR2_T  _Input voltage of rectifier 2_ phase T (V);;1.000000;0.000000;V;4
+12;3;12;I16;;VINR2_T _Input voltage of rectifier 2_ phase T (V);;1.000000;0.000000;V;4
 13;3;13;I16;;VoutR1 _Rectifier output voltage 1 (V);;1.000000;0.000000;V;4
 14;3;14;I16;;VoutR2 _Rectifier output voltage 2 (V);;1.000000;0.000000;V;4
 15;3;15;I16;;ALMSTR1;;1.000000;0.000000;;8

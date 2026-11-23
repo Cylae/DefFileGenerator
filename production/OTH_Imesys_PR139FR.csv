@@ -19,9 +19,7 @@ Modbus;Other;IMESYS;PR139FR;;;;;;;
 18;4;4128;U16;;3-phase : negative active energy;;1.0;0.0;-4;4
 19;4;4130;U16;;3-phase : negative reactive energy;;1.0;0.0;-4;4
 20;4;4132;U16;;3-phase : power factor;PF;1.0;0.0;1/100 signed;4
-21;4;4133;U16;;3-phase : sector of power factor (cap or ind);;1.0;0.0;"0 : PF = 1
-1 : ind
-2 : cap";4
+21;4;4133;U16;;3-phase : sector of power factor (cap or ind);;1.0;0.0;0 : PF = 1 1 : ind 2 : cap;4
 22;4;4134;U16;;Frequency;FREQ;1.0;0.0;Hz/10;4
 23;4;4135;U16;;3-phase : average power;;1.0;0.0;-3;4
 24;4;4137;U16;;3-phase : peak maximum demand;;1.0;0.0;-3;4
@@ -44,15 +42,9 @@ Modbus;Other;IMESYS;PR139FR;;;;;;;
 41;4;4164;U16;;Phase 1 : power factor;PF_1;1.0;0.0;1/100 signed;4
 42;4;4165;U16;;Phase 2 : power factor;PF_2;1.0;0.0;1/100 signed;4
 43;4;4166;U16;;Phase 3 : power factor;PF_3;1.0;0.0;1/100 signed;4
-44;4;4167;U16;;Phase 1 : power factor sector;;1.0;0.0;"0 : PF = 1
-1 : ind
-2 : cap";4
-45;4;4168;U16;;Phase 2 : power factor sector;;1.0;0.0;"0 : PF = 1
-1 : ind
-2 : cap";4
-46;4;4169;U16;;Phase 3 : power factor sector;;1.0;0.0;"0 : PF = 1
-1 : ind
-2 : cap";4
+44;4;4167;U16;;Phase 1 : power factor sector;;1.0;0.0;0 : PF = 1 1 : ind 2 : cap;4
+45;4;4168;U16;;Phase 2 : power factor sector;;1.0;0.0;0 : PF = 1 1 : ind 2 : cap;4
+46;4;4169;U16;;Phase 3 : power factor sector;;1.0;0.0;0 : PF = 1 1 : ind 2 : cap;4
 47;4;4170;U16;;Phase 1 : THD V1;;1.0;0.0;1/10 %;4
 48;4;4171;U16;;Phase 2 : THD V2;;1.0;0.0;1/10 %;4
 49;4;4172;U16;;Phase 3 : THD V3;;1.0;0.0;1/10 %;4
@@ -60,8 +52,7 @@ Modbus;Other;IMESYS;PR139FR;;;;;;;
 51;4;258;U16;;Write Voltage transformer ratio (KTV);;1.0;0.0;;4
 52;4;8192;U16;;Write Standard setup parameters;;1.0;0.0;;4
 53;4;8704;U16;;Write Programming parameters of pulse output (slot 2);;1.0;0.0;;4
-54;4;9216;U16;;"Reset Hour Meter, Maximum Powers, Maximum Voltages, Maximum Currents, Minimum Voltages, Active Partial
-Energy, Reactive Partial Energy";;1.0;0.0;;4
+54;4;9216;U16;;Reset Hour Meter, Maximum Powers, Maximum Voltages, Maximum Currents, Minimum Voltages, Active Partial Energy, Reactive Partial Energy;;1.0;0.0;;4
 55;4;9728;U16;;Saving in EEPROM parameters changed by Remote commands;;1.0;0.0;;4
 56;4;9984;U16;;Enable Remote Writing Operation;;1.0;0.0;;4
 57;4;10240;U16;;Load previous setup parameters stored in EEPROM;;1.0;0.0;;4

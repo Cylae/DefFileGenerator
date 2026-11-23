@@ -1,4 +1,4 @@
-Modbus;Inverter;SOLIS;GENERIC_GridTied;;;;;;;
+Modbus;Inverter;Solis;GENERIC_GridTied;;;;;;;
 1;4;2999;U16;;Product model;MODEL;1.0;0.0;;4
 2;4;3000;U16;;DSP software version;;1.0;0.0;;4
 3;4;3001;U16;;LCD software version;;1.0;0.0;;4
@@ -22,7 +22,7 @@ Modbus;Inverter;SOLIS;GENERIC_GridTied;;;;;;;
 21;4;3026;U16;;DC current 3;;0.1;0.0;A;4
 22;4;3027;U16;;DC voltage 4;;0.1;0.0;V;4
 23;4;3028;U16;;DC current 4;;0.1;0.0;A;4
-24;4;3029;U16;;Alarm code data;;1.0;0.0;;8
+24;4;3029;U16;;Alarm code data;;1.0;0.0;;9
 25;4;3030;U16;;Initialize ground voltage;;0.1;0.0;V;4
 26;4;3031;U16;;DC busbar voltage;;1.0;0.0;;4
 27;4;3032;U16;;DC half-busbar voltage;;0.1;0.0;V;4
@@ -36,7 +36,7 @@ Modbus;Inverter;SOLIS;GENERIC_GridTied;;;;;;;
 35;4;3040;U16;;Working mode;;1.0;0.0;;4
 36;4;3041;U16;;Inverter temperature;TEMP_INT;0.1;0.0;C;4
 37;4;3042;U16;;Grid Frequency;FREQ;0.01;0.0;Hz;4
-38;4;3043;U16;;Inverter status;;1.0;0.0;;8
+38;4;3043;U16;;Inverter status;;1.0;0.0;;4
 39;4;3044;I32;;Limit active power adjustement rated power;LimitP;1.0;0.0;W;4
 40;4;3046;I32;;Limit reactive power adjustment rated power;LimitQ;1.0;0.0;Var;4
 41;4;3048;U16;;Inverter control word;ControlRead;1.0;0.0;;4
@@ -94,7 +94,7 @@ Modbus;Inverter;SOLIS;GENERIC_GridTied;;;;;;;
 93;4;3113;U16;;EPM real time backflow power;;0.1;0.0;W;1
 94;4;3114;U16;;Internal EPM Hard Switch for AU 2020 Code;;1.0;0.0;;1
 95;4;3115;I16;;Internal EPM Hard Limit for AU 2020 Code;;0.01;0.0;W;1
-96;4;3116;U16;;Total Energy  Decimal Part;;0.001;0.0;kWh;1
+96;4;3116;U16;;Total Energy Decimal Part;;0.001;0.0;kWh;1
 97;4;3117;U16;;CT Link Test;;1.0;0.0;;1
 98;4;3118;U16;;G100 Running Status;;1.0;0.0;;1
 99;4;3119;U16;;ARC-Fault Number of occurrences;;1.0;0.0;;1
@@ -501,7 +501,7 @@ Modbus;Inverter;SOLIS;GENERIC_GridTied;;;;;;;
 500;3;3112;U16;;Startup V lower limit;;0.1;0.0;V;1
 501;3;3113;U16;;Startup F upper limit;;0.01;0.0;Hz;1
 502;3;3114;U16;;Startup F lower limit;;0.01;0.0;Hz;1
-503;3;3115;U16;;Denmark Freq  Change Protection Threshold;;0.1;0.0;Hz;4
+503;3;3115;U16;;Denmark Freq Change Protection Threshold;;0.1;0.0;Hz;4
 504;3;3116;U16;;Denmark Freq Change Protection Time;;1.0;0.0;ms;4
 505;3;3117;U16;;Working mode control switch;;1.0;0.0;;4
 506;3;3118;U16;;OV-G-V03;;0.1;0.0;V;4
@@ -644,9 +644,9 @@ Modbus;Inverter;SOLIS;GENERIC_GridTied;;;;;;;
 643;3;43506;U16;;Query sequence number of fault/warning records;;1.0;0.0;;9
 644;4;36000;U16;;[EPM] AC V A;;1.0;0.0;V;4
 645;4;36001;U16;;[EPM] AC I A;;1.0;0.0;A;4
-646;4;36002;U16;;[EPM]  AC V B;;1.0;0.0;V;4
+646;4;36002;U16;;[EPM] AC V B;;1.0;0.0;V;4
 647;4;36003;U16;;[EPM] AC I B;;1.0;0.0;A;4
-648;4;36004;U16;;[EPM]  AC V C;;1.0;0.0;V;4
+648;4;36004;U16;;[EPM] AC V C;;1.0;0.0;V;4
 649;4;36005;U16;;[EPM] AC I C;;1.0;0.0;A;4
 650;4;36006;I16;;[EPM] Power A;;1.0;0.0;W;4
 651;4;36007;I16;;[EPM] Power B;;1.0;0.0;W;4
@@ -654,7 +654,7 @@ Modbus;Inverter;SOLIS;GENERIC_GridTied;;;;;;;
 653;4;36009;I32_W;;[EPM] Power Total;;1.0;0.0;W;4
 654;4;36011;I32_W;;[EPM] Inverter Total Power;;1.0;0.0;W;4
 655;4;36013;U16;;[EPM] Inverter Model Number;;1.0;0.0;;4
-656;4;36014;U16;;[EPM]  firmware version;;1.0;0.0;;4
+656;4;36014;U16;;[EPM] firmware version;;1.0;0.0;;4
 657;4;36015;U16;;[EPM] Power control percent;;1.0;0.0;%;4
 658;4;36016;U16;;[EPM] CT ratio;;1.0;0.0;;4
 659;4;36017;I16;;[EPM] Backflow power setting value;;1.0;0.0;;4

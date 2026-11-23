@@ -5,7 +5,7 @@ Modbus;Sensor;THIES;Wind_Transmitter_Thies;;;;;;;
 4;4;30007;U32;;Current standard deviation of the wind velocity, calculated with the current calibration table (35007) 1;;0.1;0;m/s;4
 5;4;30009;U32;;Current minimum value of the wind velocity of the last 1min., calculated with the current calibration table (35009) 1;;0.1;0;m/s;4
 6;4;30011;U32;;Current gust of the wind velocity of the last 1min., calculated with the current calibration table (35011)1;;0.1;0;m/s;4
-7;4;30013;U32;;Wind velocity8  (compensated for air pressure) (35013)1;;0.01;0;m/s;4
+7;4;30013;U32;;Wind velocity8 (compensated for air pressure) (35013)1;;0.01;0;m/s;4
 8;4;30403;I32;;Housing interior temperature of the wind transmitter (35019) 1;;0.1;0;C;4
 9;4;30801;U32;;Absolute air pressure (35021)1;PRESSURE;0.01;0;hPa;4
 10;4;30803;U32;;Relative air pressure (35023)1;;0.01;0;hPa;4
@@ -27,7 +27,7 @@ Modbus;Sensor;THIES;Wind_Transmitter_Thies;;;;;;;
 26;4;35007;U32;;Current standard deviation of the wind velocity, calculated with the current calibration table (30007) 1;;0.1;0;m/s;4
 27;4;35009;U32;;Current minimum value of the wind velocity of the last 1min., calculated with the current calibration table (30009) 1;;0.1;0;m/s;4
 28;4;35011;U32;;Current gust of the wind velocity of the last 1min., calculated with the current calibration table;;0.1;0;m/s;4
-29;4;35013;U32;;Wind velocity8  (compensated for air pressure);;0.01;0;m/s;4
+29;4;35013;U32;;Wind velocity8 (compensated for air pressure);;0.01;0;m/s;4
 30;4;35019;I32;;Housing interior temperature of the wind transmitter;;0.1;0;C;4
 31;4;35021;U32;;Absolute air pressure;;0.01;0;hPa;4
 32;4;35023;U32;;Relative air pressure (30803) 1;;0.01;0;hPa;4
@@ -49,34 +49,34 @@ Modbus;Sensor;THIES;Wind_Transmitter_Thies;;;;;;;
 48;4;35057;U32;;Degree of turbulence;;0.01;0;;4
 49;4;35059;I32;;Temperature of the pressure sensor;;0.1;0;C;4
 50;4;35100;U32;;Time since the last measured value query;;1;0;ms;4
-51;4;35102;U16;;Measured value2  [0] (most recent) according to UC;;0.1;0;m/s;4
-52;4;35103;U16;;Measured value2  [1] according to UC;;0.1;0;m/s;4
-53;4;35104;U16;;Measured value2  [2] according to UC;;0.1;0;m/s;4
-54;4;35105;U16;;Measured value2  [3] according to UC;;0.1;0;m/s;4
-55;4;35106;U16;;Measured value2  [4] according to UC;;0.1;0;m/s;4
-56;4;35107;U16;;Measured value2  [5] according to UC;;0.1;0;m/s;4
-57;4;35108;U16;;Measured value2  [6] according to UC;;0.1;0;m/s;4
-58;4;35109;U16;;Measured value2  [7] according to UC;;0.1;0;m/s;4
-59;4;35110;U16;;Measured value2  [8] according to UC;;0.1;0;m/s;4
-60;4;35111;U16;;Measured value2  [9] according to UC;;0.1;0;m/s;4
-61;4;35112;U16;;Measured value2  [10] according to UC;;0.1;0;m/s;4
-62;4;35113;U16;;Measured value2  [11] according to UC;;0.1;0;m/s;4
-63;4;35114;U16;;Measured value2  [12] according to UC;;0.1;0;m/s;4
-64;4;35115;U16;;Measured value2  [13] according to UC;;0.1;0;m/s;4
-65;4;35116;U16;;Measured value2  [14] according to UC;;0.1;0;m/s;4
-66;4;35117;U16;;Measured value2  [15] (oldest) ac- cording to UC;;0.1;0;m/s;4
-67;4;36001;U32;;Wind speed Uncorrected5  (30005) 1;;0.1;0;m/s;4
+51;4;35102;U16;;Measured value2 [0] (most recent) according to UC;;0.1;0;m/s;4
+52;4;35103;U16;;Measured value2 [1] according to UC;;0.1;0;m/s;4
+53;4;35104;U16;;Measured value2 [2] according to UC;;0.1;0;m/s;4
+54;4;35105;U16;;Measured value2 [3] according to UC;;0.1;0;m/s;4
+55;4;35106;U16;;Measured value2 [4] according to UC;;0.1;0;m/s;4
+56;4;35107;U16;;Measured value2 [5] according to UC;;0.1;0;m/s;4
+57;4;35108;U16;;Measured value2 [6] according to UC;;0.1;0;m/s;4
+58;4;35109;U16;;Measured value2 [7] according to UC;;0.1;0;m/s;4
+59;4;35110;U16;;Measured value2 [8] according to UC;;0.1;0;m/s;4
+60;4;35111;U16;;Measured value2 [9] according to UC;;0.1;0;m/s;4
+61;4;35112;U16;;Measured value2 [10] according to UC;;0.1;0;m/s;4
+62;4;35113;U16;;Measured value2 [11] according to UC;;0.1;0;m/s;4
+63;4;35114;U16;;Measured value2 [12] according to UC;;0.1;0;m/s;4
+64;4;35115;U16;;Measured value2 [13] according to UC;;0.1;0;m/s;4
+65;4;35116;U16;;Measured value2 [14] according to UC;;0.1;0;m/s;4
+66;4;35117;U16;;Measured value2 [15] (oldest) ac- cording to UC;;0.1;0;m/s;4
+67;4;36001;U32;;Wind speed Uncorrected5 (30005) 1;;0.1;0;m/s;4
 68;4;36003;U32;;Wind speed 3;;0.1;0;m/s;4
-69;4;36005;U32;;Wind speed 8  (compensated for air pressure, 30013)1;;0.01;0;m/s;4
+69;4;36005;U32;;Wind speed 8 (compensated for air pressure, 30013)1;;0.01;0;m/s;4
 70;4;36007;U32;;Sensor status (34811)1;;1;0;;4
 71;4;36101;U32;;Wind speed 5;;0.1;0;m/s;4
 72;4;36103;U32;;Wind speed 3_1;;0.1;0;m/s;4
-73;4;36105;U32;;Wind speed 8  (compensated for air pressure, 300131);;0.01;0;m/s;4
+73;4;36105;U32;;Wind speed 8 (compensated for air pressure, 300131);;0.01;0;m/s;4
 74;4;36107;U32;;Absolute air pressure_1;;0.01;0;hPa;4
 75;4;36109;U32;;Sensor status_1;;1;0;;4
 76;4;36201;U32;;Wind speed 5_1;;0.1;0;m/s;4
 77;4;36203;U32;;Wind speed 3_2;;0.1;0;m/s;4
-78;4;36205;U32;;Wind speed 8  (compensated for air pressure);;0.01;0;m/s;4
+78;4;36205;U32;;Wind speed 8 (compensated for air pressure);;0.01;0;m/s;4
 79;4;36207;U32;;Absolute air pressure (30801) 1;;0.01;0;hPa;4
 80;4;36209;I32;;Inclination angle ? Angle be- tween the Z-axis and the vertical (34819)1;;0.1;0;;4
 81;4;36211;I32;;Inclination angle ?;;0.1;0;;4

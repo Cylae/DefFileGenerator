@@ -273,7 +273,7 @@ Modbus;Battery;Sungrow;LC3000;;;;;;;
 272;3;1144;U16;;Discharging status;;1;0;;4
 273;3;1145;U16;;Cell over voltage alarm;;1;0;;9
 274;3;1146;U16;;Cell under voltage alarm;;1;0;;9
-275;3;1147;U16;;Total  over voltage alarm;;1;0;;9
+275;3;1147;U16;;Total over voltage alarm;;1;0;;9
 276;3;1148;U16;;Total under voltage alarm;;1;0;;9
 277;3;1149;U16;;Cell voltage difference alarm;;1;0;;9
 278;3;1150;U16;;Cell over temperature alarm;TEMP_CELL;1;0;;9
@@ -294,7 +294,7 @@ Modbus;Battery;Sungrow;LC3000;;;;;;;
 293;3;1172;U16;;Temperature rise alarm;;1;0;;9
 294;3;1177;U16;;Cell over voltage alarm;;1;0;;9
 295;3;1178;U16;;Cell under voltage alarm;;1;0;;9
-296;3;1179;U16;;Total  over voltage alarm;;1;0;;9
+296;3;1179;U16;;Total over voltage alarm;;1;0;;9
 297;3;1180;U16;;Total under voltage alarm;;1;0;;9
 298;3;1181;U16;;Cell voltage difference alarm;;1;0;;9
 299;3;1182;U16;;Cell over temperature alarm;;1;0;;9
@@ -351,7 +351,7 @@ Modbus;Battery;Sungrow;LC3000;;;;;;;
 350;3;2333;U16;;Maintain mode;;1;0;;4
 351;3;2341;U16;;Cell over voltage alarm;;1;0;;9
 352;3;2342;U16;;Cell under voltage alarm;;1;0;;9
-353;3;2343;U16;;Total  over voltage alarm;;1;0;;9
+353;3;2343;U16;;Total over voltage alarm;;1;0;;9
 354;3;2344;U16;;Total under voltage alarm;;1;0;;9
 355;3;2345;U16;;Cell voltage difference alarm;;1;0;;9
 356;3;2346;U16;;Cell over temperature alarm;;1;0;;9
@@ -372,7 +372,7 @@ Modbus;Battery;Sungrow;LC3000;;;;;;;
 371;3;2368;U16;;Temperature rise alarm;;1;0;;9
 372;3;2373;U16;;Cell over voltage alarm;;1;0;;9
 373;3;2374;U16;;Cell under voltage alarm;;1;0;;9
-374;3;2375;U16;;Total  over voltage alarm;;1;0;;9
+374;3;2375;U16;;Total over voltage alarm;;1;0;;9
 375;3;2376;U16;;Total under voltage alarm;;1;0;;9
 376;3;2377;U16;;Cell voltage difference alarm;;1;0;;9
 377;3;2378;U16;;Cell over temperature alarm;;1;0;;9
@@ -605,7 +605,7 @@ Modbus;Battery;Sungrow;LC3000;;;;;;;
 604;3;33674;U16;;Alarm status;;1;0;;9
 605;3;33675;U16;;Running Status;;1;0;;4
 606;3;33676;U16;;Parts running Status;;1;0;;4
-607;3;33677;U16;;Device  type;MODEL;1;0;;4
+607;3;33677;U16;;Device type;MODEL;1;0;;4
 608;3;33678;I16;;Dew point temperature;;1;0;degC;4
 609;3;33679;U16;;Working status;;1;0;;4
 610;3;33680;U16;;Device status;;1;0;;4
@@ -700,14 +700,14 @@ Modbus;Battery;Sungrow;LC3000;;;;;;;
 699;3;34577;U16;;Total discharge energy;;1;0;Wh;4
 700;3;34578;U16;;Total charge capacity;;0.01;0;Ah;4
 701;3;34579;U16;;Total discharge capacity;;0.01;0;Ah;4
-702;3;34580;I16;;Number of  onboard temperature;;1;0;PCS;4
+702;3;34580;I16;;Number of onboard temperature;;1;0;PCS;4
 703;3;34581;U16;;Number of BMUs;;1;0;PCS;4
 704;3;34582;U16;;1#Number of cell voltage;;1;0;PCS;4
 705;3;34583;I16;;1#Number of cell temperature;;1;0;PCS;4
-706;3;34584;I16;;1#Number of  onboard temperature;;1;0;PCS;4
+706;3;34584;I16;;1#Number of onboard temperature;;1;0;PCS;4
 707;3;34609;U16;;20#Number of cell voltage;;1;0;PCS;4
 708;3;34610;I16;;20#Number of cell temperature;;1;0;PCS;4
-709;3;34611;I16;;20#Number of  onboard temperature;;1;0;PCS;4
+709;3;34611;I16;;20#Number of onboard temperature;;1;0;PCS;4
 710;3;34612;U16;;CMU Version;;1;0;;4
 711;3;34626;U16;;BATP Version;;1;0;;4
 712;3;34627;U16;;CMU Online flag;;1;0;;4

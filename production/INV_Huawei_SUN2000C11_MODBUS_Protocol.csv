@@ -8,9 +8,8 @@ Modbus;Inverter;Huawei;SUN2000C11_MODBUS_Protocol;;;;;;;
 7;4;40012;U16;;OVP protect 10min.;;1.0;0.0;V;1
 8;4;40013;U16;;OVP time 10min;;1.0;0.0;ms;1
 9;4;40022;U16;;ISO detect setting;;1.0;0.0;MΩ;1
-10;4;40023;U16;;Grid Voltage-Unbalance setting;U_AC_L1L2;1.0;0.0;%;1
-11;4;40051;U16;;"Enable LVRT function
-(available for VDE-AR-N-4105)";;1.0;0.0;N/A;1
+10;4;40023;U16;;Grid Voltage-Unbalance setting;U_AC_L1L2;1.0;0.0;%;1
+11;4;40051;U16;;Enable LVRT function (available for VDE-AR-N-4105);;1.0;0.0;N/A;1
 12;4;40052;U16;;Enable islanding detection;;1.0;0.0;N/A;1
 13;4;40053;U16;;Soft-start time;;1.0;0.0;Sec;1
 14;4;40054;U16;;OVP of level1;;1.0;0.0;V;1

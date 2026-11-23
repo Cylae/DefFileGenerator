@@ -51,8 +51,8 @@ Modbus;Inverter;Eastron;SMART-X96-5E;;;;;;;
 50;4;30163;U16;;Current phase sequence / (normal=1 , reverse=2);;1.0;0.0;;4
 51;4;30193;U16;;Nature of the load / Resistive =1 , inductive=2 , capacitive=3);;1.0;0.0;;4
 52;4;30195;U16;;Nature of L1 load / Resistive =1 , inductive=2 , capacitive=3);;1.0;0.0;;4
-53;4;30197;U16;;Nature of L2 load / Resistive =1 , inductive=2  , capacitive=3 );;1.0;0.0;;4
-54;4;30199;U16;;Nature of L3 load / Resistive =1 , inductive=2  , capacitive=3 );;1.0;0.0;;4
+53;4;30197;U16;;Nature of L2 load / Resistive =1 , inductive=2 , capacitive=3 );;1.0;0.0;;4
+54;4;30199;U16;;Nature of L3 load / Resistive =1 , inductive=2 , capacitive=3 );;1.0;0.0;;4
 55;4;30201;U16;;Line 1 to Line 2 volts;U_AC_L1L2;1.0;0.0;V;4
 56;4;30203;U16;;Line 2 to Line 3 volts;U_AC_L2L3;1.0;0.0;V;4
 57;4;30205;U16;;Line 3 to Line 1 volts;U_AC_L3L1;1.0;0.0;V;4

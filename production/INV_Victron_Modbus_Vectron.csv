@@ -75,10 +75,10 @@ Modbus;Inverter;Victron;Modbus_Vectron;;;;;;;
 74;3;1233;U16;;Checksum;;0.001;0;;4
 75;3;1487;U16;;Controller Status;;1;0;;4
 76;3;2000;I16;;Active Energy High Word;;1;0;;4
-77;3;2001;I16;;Active Energy Low  Word;;0.001;0;;4
+77;3;2001;I16;;Active Energy Low Word;;0.001;0;;4
 78;3;3000;I16;;Working Hours Counter High;;0.01;0;;4
 79;3;3001;I16;;Working Hours Counter Low Word;;0.01;0;;4
-80;3;4000;I16;;Operation Hours Counter High  Word;;0.1;0;;4
-81;3;4001;I16;;Operation Hours Counter Low  Word;;0.001;0;;4
-82;3;5000;I16;;Energy Negative High  Word;;1;0;;4
-83;3;5001;I16;;Energy Negative Low  Word;;1;0;;4
+80;3;4000;I16;;Operation Hours Counter High Word;;0.1;0;;4
+81;3;4001;I16;;Operation Hours Counter Low Word;;0.001;0;;4
+82;3;5000;I16;;Energy Negative High Word;;1;0;;4
+83;3;5001;I16;;Energy Negative Low Word;;1;0;;4

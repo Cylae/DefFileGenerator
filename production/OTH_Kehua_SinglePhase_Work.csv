@@ -36,25 +36,20 @@ Modbus;Other;Kehua;SinglePhase_Work;;;;;;;
 35;4;4535;U16;;Battery discharging power;;1.0;0.0;;4
 36;4;4536;U16;;Battery charging power;;1.0;0.0;;4
 37;4;4537;U16;;PV total power;E_TOT;1.0;0.0;;4
-38;4;4538;U16;;"Grid-connected power total
-generation high word";;1.0;0.0;;4
-39;4;4539;U16;;"Grid-connected power total generation low word (Grid output electric
-quantity)";;1.0;0.0;;4
+38;4;4538;U16;;Grid-connected power total generation high word;;1.0;0.0;;4
+39;4;4539;U16;;Grid-connected power total generation low word (Grid output electric quantity);;1.0;0.0;;4
 40;4;4540;U16;;PV total generation high word;;1.0;0.0;;4
 41;4;4541;U16;;PV total generation low word;;1.0;0.0;;4
-42;4;4542;U16;;"Running time high
-word (on-grid、 off-grid)";;1.0;0.0;;4
+42;4;4542;U16;;Running time high word (on-grid、 off-grid);;1.0;0.0;;4
 43;4;4543;U16;;Running time low word;;1.0;0.0;;4
 44;4;4544;U16;;Battery SOC;SOC;1.0;0.0;;4
 45;4;4545;U16;;Maximum single battery voltage;;1.0;0.0;;4
 46;4;4546;U16;;Minimum single battery voltage;;1.0;0.0;;4
 47;4;4547;U16;;Battery SOH;SOH;1.0;0.0;;4
-48;4;4551;U16;;"Load total power
-consumption high word";;1.0;0.0;;4
+48;4;4551;U16;;Load total power consumption high word;;1.0;0.0;;4
 49;4;4552;U16;;Load total power consumption low word;;1.0;0.0;;4
 50;4;4553;U16;;Grid-connected total power consumption high word;;1.0;0.0;;4
-51;4;4554;U16;;"Grid-connected total power consumption
-low word (Grid input)";;1.0;0.0;;4
+51;4;4554;U16;;Grid-connected total power consumption low word (Grid input);;1.0;0.0;;4
 52;4;4555;U16;;Secondary load voltage;;1.0;0.0;;4
 53;4;4556;U16;;Secondary load current;;1.0;0.0;;4
 54;4;4557;U16;;Secondary load active power;;1.0;0.0;;4
@@ -91,8 +86,7 @@ low word (Grid input)";;1.0;0.0;;4
 85;4;5500;U16;;DC component of the inverter voltage;;1.0;0.0;;4
 86;4;5501;U16;;DC component of the inverter current;;1.0;0.0;;4
 87;4;5502;U16;;Busbar voltage;;1.0;0.0;;4
-88;4;5503;U16;;"battery up and down
-voltage inductive current";;1.0;0.0;;4
+88;4;5503;U16;;battery up and down voltage inductive current;;1.0;0.0;;4
 89;4;5504;U16;;Radiator temperature;;1.0;0.0;;4
 90;4;5505;U16;;AC leakage current;;1.0;0.0;;4
 91;4;5506;U16;;Insulation resistance;R_ISO;1.0;0.0;;4

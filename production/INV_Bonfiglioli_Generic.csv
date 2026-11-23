@@ -35,7 +35,7 @@ Modbus;Inverter;BONFIGLIOLI;Generic;;;;;;;
 34;3;3874;I16;;Modulation;;1;0;%;4
 35;3;3875;I16;;Reference Percentage Value;;1;0;%;4
 36;3;3876;I16;;Active Energy High Word;;1;0;;4
-37;3;3877;I16;;Active Energy Low  Word;;1;0;;4
+37;3;3877;I16;;Active Energy Low Word;;1;0;;4
 38;3;3878;I16;;Digital Inputs hardware;;1;0;;4
 39;3;3879;I16;;Active Data Set;;1;0;;4
 40;3;3880;I16;;Analog Input MFI1A;;1;0;%;4
@@ -46,8 +46,8 @@ Modbus;Inverter;BONFIGLIOLI;Generic;;;;;;;
 45;3;3885;I16;;STO Status;;1;0;;4
 46;3;3887;I16;;Working Hours Counter High;;1;0;;4
 47;3;3888;I16;;Working Hours Counter Low Word;;1;0;;4
-48;3;3889;I16;;Operation Hours Counter High  Word;;1;0;;4
-49;3;3890;I16;;Operation Hours Counter Low  Word;;1;0;;4
+48;3;3889;I16;;Operation Hours Counter High Word;;1;0;;4
+49;3;3890;I16;;Operation Hours Counter Low Word;;1;0;;4
 50;3;3899;I16;;Power Factor Phase a;PF_1;1;0;;4
 51;3;3900;I16;;Power Factor Phase b;PF_2;1;0;;4
 52;3;3901;I16;;Power Factor Phase c;PF_3;1;0;;4

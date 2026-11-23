@@ -246,7 +246,7 @@ Modbus;Inverter;Solax;FORTH-MEGA_GENERIC;;;;;;;
 245;3;8706;U16;;Restore factory;;1;0;;1
 246;3;8707;U16;;Clear History Log;;1;0;;1
 247;3;8709;I16;;Energy Compensation;;0.1;0;kWh;1
-248;3;8710;U16;;Grid-connected  control Set;;1;0;;1
+248;3;8710;U16;;Grid-connected control Set;;1;0;;1
 249;3;8711;U16;;BUS voltage setting;U_DC;0.1;0;V;1
 250;3;8832;U16;;System Time;;1;0;;1
 251;3;8837;U16;;Scheduled boot time;;1;0;Secs;1
@@ -254,7 +254,7 @@ Modbus;Inverter;Solax;FORTH-MEGA_GENERIC;;;;;;;
 253;3;8839;U16;;Command ON/OFF;;1;0;;1
 254;3;8840;U16;;Meter Negate Enable;;1;0;;1
 255;3;8962;U16;;Backflow preventionPercent;WIND_SPEED;0.1;0;% Wmax;1
-256;3;8963;U16;;Maximum  power  output Percent;;0.1;0;% Wmax;1
+256;3;8963;U16;;Maximum power output Percent;;0.1;0;% Wmax;1
 257;3;8964;U16;;Real-time active power percent;;1;0;;1
 258;3;8965;U16;;Real-time reactive power percent;;1;0;;1
 259;3;8966;U16;;active power rising slope;;0.1;0;%;1

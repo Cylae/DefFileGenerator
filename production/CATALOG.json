@@ -1,30 +1,30 @@
 {
-  "total_files": 1167,
+  "total_files": 1193,
   "prefixes": {
     "BAT": 55,
     "COM": 35,
-    "INV": 438,
-    "MET": 222,
+    "INV": 456,
+    "MET": 228,
     "OTH": 364,
-    "SEN": 53
+    "SEN": 55
   },
   "manufacturers_count": 139,
   "manufacturers": {
-    "Schneider": 79,
+    "Schneider": 82,
     "Huawei": 77,
     "ABB": 74,
     "MarsEnergy": 66,
+    "Fronius": 48,
     "Delta": 37,
-    "Socomec": 36,
+    "Socomec": 37,
     "SMA": 34,
-    "Fronius": 34,
     "FoxESS": 30,
     "Sungrow": 30,
     "Goodwe": 29,
     "Kaco": 27,
     "CarloGavazzi": 27,
     "Ingeteam": 26,
-    "SolarEdge": 20,
+    "SolarEdge": 24,
     "SAJ": 19,
     "SLEnergy": 18,
     "Growatt": 16,
@@ -34,13 +34,13 @@
     "Lettel": 14,
     "Solplanet": 13,
     "Cyberpower": 13,
+    "Solis": 13,
     "Janitza": 13,
     "SolaX": 12,
     "Kostal": 12,
     "IngenieurBuro": 12,
     "KippZonen": 11,
     "SofarSolar": 9,
-    "Solis": 9,
     "Deye": 8,
     "Efacec": 8,
     "Jema": 8,
@@ -312,10 +312,10 @@
       "size_bytes": 28561
     },
     {
-      "filename": "BAT_Huawei_Luna2000.csv",
+      "filename": "BAT_Huawei_LUNA2000.csv",
       "prefix": "BAT",
       "manufacturer": "Huawei",
-      "model": "Luna2000",
+      "model": "LUNA2000",
       "registers": 170,
       "size_bytes": 9267
     },
@@ -413,7 +413,7 @@
       "manufacturer": "MarsEnergy",
       "model": "MarsLocalController_V7.0_webdyn",
       "registers": 192,
-      "size_bytes": 9579
+      "size_bytes": 9577
     },
     {
       "filename": "BAT_MarsEnergy_MarsRenewable_LocalControler_Bank_Rack_Cell.csv",
@@ -509,7 +509,7 @@
       "manufacturer": "SolaX",
       "model": "EMS1000-PRO",
       "registers": 347,
-      "size_bytes": 16302
+      "size_bytes": 16292
     },
     {
       "filename": "BAT_Sungrow_Battery.csv",
@@ -533,7 +533,7 @@
       "manufacturer": "Sungrow",
       "model": "LC3000",
       "registers": 916,
-      "size_bytes": 45279
+      "size_bytes": 45271
     },
     {
       "filename": "BAT_Sungrow_PowerStack_ST255CS.csv",
@@ -652,8 +652,8 @@
       "prefix": "COM",
       "manufacturer": "Greenheiss",
       "model": "GH-I_Style_GH-IT_2M_Modbus_Communication_Protocol",
-      "registers": 458,
-      "size_bytes": 17114
+      "registers": 408,
+      "size_bytes": 17014
     },
     {
       "filename": "COM_Greenheiss_GH-IT_3-4-9M_Modbus_Communication_Protocol.csv",
@@ -669,7 +669,7 @@
       "manufacturer": "Hoymiles",
       "model": "GENERIC",
       "registers": 4963,
-      "size_bytes": 368818
+      "size_bytes": 368808
     },
     {
       "filename": "COM_Hoymiles_METER.csv",
@@ -677,7 +677,7 @@
       "manufacturer": "Hoymiles",
       "model": "METER",
       "registers": 291,
-      "size_bytes": 21626
+      "size_bytes": 21616
     },
     {
       "filename": "COM_Hoymiles_MICROINVERTER.csv",
@@ -813,7 +813,7 @@
       "manufacturer": "Sungrow",
       "model": "EMS300CP",
       "registers": 694,
-      "size_bytes": 36099
+      "size_bytes": 36096
     },
     {
       "filename": "COM_Sungrow_LC300_Modbus.csv",
@@ -821,7 +821,7 @@
       "manufacturer": "Sungrow",
       "model": "LC300_Modbus",
       "registers": 813,
-      "size_bytes": 74499
+      "size_bytes": 73971
     },
     {
       "filename": "COM_Sungrow_Logger1000_3000.csv",
@@ -852,8 +852,8 @@
       "prefix": "COM",
       "manufacturer": "Sungrow",
       "model": "TI_20241202_EMS300CP_IEC104_Modbus_Communication_Protocol_P014_software_version_CN_EN",
-      "registers": 868,
-      "size_bytes": 36685
+      "registers": 694,
+      "size_bytes": 36334
     },
     {
       "filename": "COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN.csv",
@@ -861,7 +861,7 @@
       "manufacturer": "Sungrow",
       "model": "TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN",
       "registers": 1382,
-      "size_bytes": 67125
+      "size_bytes": 67117
     },
     {
       "filename": "COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN.csv",
@@ -869,7 +869,7 @@
       "manufacturer": "Sungrow",
       "model": "TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN",
       "registers": 813,
-      "size_bytes": 74856
+      "size_bytes": 74292
     },
     {
       "filename": "INV_5_Generic.csv",
@@ -997,7 +997,7 @@
       "manufacturer": "ABB",
       "model": "PVI-50_60",
       "registers": 104,
-      "size_bytes": 6891
+      "size_bytes": 6887
     },
     {
       "filename": "INV_ABB_PVI110-275.csv",
@@ -1013,7 +1013,7 @@
       "manufacturer": "ABB",
       "model": "PVI50-60",
       "registers": 104,
-      "size_bytes": 6890
+      "size_bytes": 6886
     },
     {
       "filename": "INV_ABB_PVS-100_120.csv",
@@ -1045,7 +1045,7 @@
       "manufacturer": "ABB",
       "model": "PVS-175",
       "registers": 1068,
-      "size_bytes": 41374
+      "size_bytes": 41373
     },
     {
       "filename": "INV_ABB_PVS-30-TL.csv",
@@ -1181,7 +1181,7 @@
       "manufacturer": "ABB",
       "model": "TRIO_20.0-27.6_TL_OUTD",
       "registers": 89,
-      "size_bytes": 7532
+      "size_bytes": 7490
     },
     {
       "filename": "INV_ABB_TRIO_200_276_FR.csv",
@@ -1189,7 +1189,7 @@
       "manufacturer": "ABB",
       "model": "TRIO_200_276_FR",
       "registers": 89,
-      "size_bytes": 7482
+      "size_bytes": 7431
     },
     {
       "filename": "INV_ABB_Ultra_Inverter_Module.csv",
@@ -1269,7 +1269,7 @@
       "manufacturer": "Atess",
       "model": "Generic",
       "registers": 243,
-      "size_bytes": 12263
+      "size_bytes": 12261
     },
     {
       "filename": "INV_Autarco_Solis_table2023.csv",
@@ -1277,15 +1277,15 @@
       "manufacturer": "Autarco",
       "model": "Solis_table2023",
       "registers": 476,
-      "size_bytes": 21283
+      "size_bytes": 21280
     },
     {
       "filename": "INV_BlueSun_Hybrid_Inverter_Modbus_Protocol.csv",
       "prefix": "INV",
       "manufacturer": "BlueSun",
       "model": "Hybrid_Inverter_Modbus_Protocol",
-      "registers": 8,
-      "size_bytes": 389
+      "registers": 6,
+      "size_bytes": 385
     },
     {
       "filename": "INV_Bonfiglioli_Generic.csv",
@@ -1293,7 +1293,7 @@
       "manufacturer": "Bonfiglioli",
       "model": "Generic",
       "registers": 55,
-      "size_bytes": 2692
+      "size_bytes": 2689
     },
     {
       "filename": "INV_Bonfiglioli_inverter.csv",
@@ -1332,8 +1332,8 @@
       "prefix": "INV",
       "manufacturer": "Cefem",
       "model": "Table_Modbus_Trio-Sun_Trio-Top_2020_07_01",
-      "registers": 33,
-      "size_bytes": 1684
+      "registers": 32,
+      "size_bytes": 1681
     },
     {
       "filename": "INV_Cyberpower_1-Phase.csv",
@@ -1509,7 +1509,7 @@
       "manufacturer": "Deye",
       "model": "GENERICreg-1",
       "registers": 86,
-      "size_bytes": 4100
+      "size_bytes": 4097
     },
     {
       "filename": "INV_Deye_GENERICreg1.csv",
@@ -1517,7 +1517,7 @@
       "manufacturer": "Deye",
       "model": "GENERICreg1",
       "registers": 86,
-      "size_bytes": 4100
+      "size_bytes": 4097
     },
     {
       "filename": "INV_Eastron_SMART-X96-5E.csv",
@@ -1525,7 +1525,7 @@
       "manufacturer": "Eastron",
       "model": "SMART-X96-5E",
       "registers": 125,
-      "size_bytes": 7145
+      "size_bytes": 7143
     },
     {
       "filename": "INV_Efacec_Efasolar.csv",
@@ -1549,7 +1549,7 @@
       "manufacturer": "Efacec",
       "model": "PV550_Efacec_MODBUS",
       "registers": 145,
-      "size_bytes": 6474
+      "size_bytes": 6473
     },
     {
       "filename": "INV_FoxESS_FOX_ESS_G-MAX_EMS.csv",
@@ -1589,7 +1589,7 @@
       "manufacturer": "FoxESS",
       "model": "Modbus_Protocol",
       "registers": 387,
-      "size_bytes": 32227
+      "size_bytes": 32232
     },
     {
       "filename": "INV_FoxESS_P3_H3_PRO.csv",
@@ -1672,6 +1672,30 @@
       "size_bytes": 12777
     },
     {
+      "filename": "INV_Fronius_ECO_Series.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "ECO_Series",
+      "registers": 257,
+      "size_bytes": 12755
+    },
+    {
+      "filename": "INV_Fronius_Gen24_Primo_Symo_Float.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Gen24_Primo_Symo_Float",
+      "registers": 262,
+      "size_bytes": 13152
+    },
+    {
+      "filename": "INV_Fronius_Gen24_Primo_Symo_IntSF.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Gen24_Primo_Symo_IntSF",
+      "registers": 269,
+      "size_bytes": 13425
+    },
+    {
       "filename": "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Float.csv",
       "prefix": "INV",
       "manufacturer": "Fronius",
@@ -1744,6 +1768,22 @@
       "size_bytes": 12289
     },
     {
+      "filename": "INV_Fronius_Symo_10_20.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Symo_10_20",
+      "registers": 177,
+      "size_bytes": 9803
+    },
+    {
+      "filename": "INV_Fronius_Symo_GEN24_Plus.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Symo_GEN24_Plus",
+      "registers": 223,
+      "size_bytes": 12269
+    },
+    {
       "filename": "INV_Fronius_Symo_Primo_Gen24.csv",
       "prefix": "INV",
       "manufacturer": "Fronius",
@@ -1752,12 +1792,28 @@
       "size_bytes": 1797
     },
     {
+      "filename": "INV_Fronius_Tauro_50-3-D.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Tauro_50-3-D",
+      "registers": 193,
+      "size_bytes": 8541
+    },
+    {
       "filename": "INV_Fronius_Tauro_50-3-D_1.35.4-1_Float.csv",
       "prefix": "INV",
       "manufacturer": "Fronius",
       "model": "Tauro_50-3-D_1.35.4-1_Float",
       "registers": 193,
       "size_bytes": 8556
+    },
+    {
+      "filename": "INV_Fronius_Tauro_ECO_100-3-D.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Tauro_ECO_100-3-D",
+      "registers": 167,
+      "size_bytes": 9256
     },
     {
       "filename": "INV_Fronius_Tauro_ECO_Inverter_Register_Map_Float.csv",
@@ -1790,6 +1846,22 @@
       "model": "Tauro_Inverter_Register_Map_Int_SF",
       "registers": 287,
       "size_bytes": 14407
+    },
+    {
+      "filename": "INV_Fronius_Verto_3MPPT.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Verto_3MPPT",
+      "registers": 279,
+      "size_bytes": 14060
+    },
+    {
+      "filename": "INV_Fronius_Verto_4MPPT.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Verto_4MPPT",
+      "registers": 299,
+      "size_bytes": 15130
     },
     {
       "filename": "INV_Fronius_Verto_Inverter_Register_Map_3MPPT_Float.csv",
@@ -2092,8 +2164,8 @@
       "prefix": "INV",
       "manufacturer": "Greenheiss",
       "model": "GH-IT_3-4-9M",
-      "registers": 416,
-      "size_bytes": 15489
+      "registers": 385,
+      "size_bytes": 15427
     },
     {
       "filename": "INV_Growatt_125kw.csv",
@@ -2117,7 +2189,7 @@
       "manufacturer": "Growatt",
       "model": "MAX1500V_MAX-XLV_Series",
       "registers": 468,
-      "size_bytes": 29644
+      "size_bytes": 29687
     },
     {
       "filename": "INV_Growatt_MAX_Series.csv",
@@ -2133,7 +2205,7 @@
       "manufacturer": "Growatt",
       "model": "MOD_TL3-XH_Series",
       "registers": 409,
-      "size_bytes": 25557
+      "size_bytes": 25602
     },
     {
       "filename": "INV_Growatt_Modbus.csv",
@@ -2157,7 +2229,7 @@
       "manufacturer": "Growatt",
       "model": "PV_Inverter_V3.14",
       "registers": 136,
-      "size_bytes": 8924
+      "size_bytes": 8923
     },
     {
       "filename": "INV_Growatt_RTU_Protocol_II.csv",
@@ -2173,7 +2245,7 @@
       "manufacturer": "Growatt",
       "model": "TL-X_TL-XH_Series",
       "registers": 425,
-      "size_bytes": 26509
+      "size_bytes": 26554
     },
     {
       "filename": "INV_Growatt_TL3-X_Series.csv",
@@ -2181,7 +2253,7 @@
       "manufacturer": "Growatt",
       "model": "TL3-X_Series",
       "registers": 371,
-      "size_bytes": 23268
+      "size_bytes": 23311
     },
     {
       "filename": "INV_Growatt_W_Growatt_Generic.csv",
@@ -2261,7 +2333,7 @@
       "manufacturer": "Huawei",
       "model": "7550606570-M0",
       "registers": 73,
-      "size_bytes": 4085
+      "size_bytes": 4012
     },
     {
       "filename": "INV_Huawei_81012141820.csv",
@@ -2301,7 +2373,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_2345",
       "registers": 47,
-      "size_bytes": 2597
+      "size_bytes": 2553
     },
     {
       "filename": "INV_Huawei_Modbus_364233-A.csv",
@@ -2317,7 +2389,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_60-HV",
       "registers": 347,
-      "size_bytes": 19259
+      "size_bytes": 19258
     },
     {
       "filename": "INV_Huawei_MODBUS_7550606570-M0.csv",
@@ -2325,7 +2397,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_7550606570-M0",
       "registers": 73,
-      "size_bytes": 4081
+      "size_bytes": 4008
     },
     {
       "filename": "INV_Huawei_MODBUS_81012141820.csv",
@@ -2333,7 +2405,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_81012141820",
       "registers": 328,
-      "size_bytes": 18066
+      "size_bytes": 18065
     },
     {
       "filename": "INV_Huawei_MODBUS_9095100105.csv",
@@ -2341,7 +2413,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_9095100105",
       "registers": 73,
-      "size_bytes": 4078
+      "size_bytes": 4005
     },
     {
       "filename": "INV_Huawei_Modbus_All_V3.csv",
@@ -2389,7 +2461,7 @@
       "manufacturer": "Huawei",
       "model": "SUN2000-2_5KTL",
       "registers": 47,
-      "size_bytes": 2600
+      "size_bytes": 2556
     },
     {
       "filename": "INV_Huawei_SUN2000-30_40KTL-M3.csv",
@@ -2413,7 +2485,7 @@
       "manufacturer": "Huawei",
       "model": "SUN2000-50_70KTL-M0",
       "registers": 73,
-      "size_bytes": 4091
+      "size_bytes": 4018
     },
     {
       "filename": "INV_Huawei_SUN2000-60KTL-HV.csv",
@@ -2421,7 +2493,7 @@
       "manufacturer": "Huawei",
       "model": "SUN2000-60KTL-HV",
       "registers": 347,
-      "size_bytes": 19262
+      "size_bytes": 19261
     },
     {
       "filename": "INV_Huawei_SUN2000-8_20KTL.csv",
@@ -2429,7 +2501,7 @@
       "manufacturer": "Huawei",
       "model": "SUN2000-8_20KTL",
       "registers": 328,
-      "size_bytes": 18063
+      "size_bytes": 18062
     },
     {
       "filename": "INV_Huawei_SUN2000-90_105KTL.csv",
@@ -2437,7 +2509,7 @@
       "manufacturer": "Huawei",
       "model": "SUN2000-90_105KTL",
       "registers": 73,
-      "size_bytes": 4078
+      "size_bytes": 4005
     },
     {
       "filename": "INV_Huawei_SUN2000-All_V3.csv",
@@ -2493,15 +2565,15 @@
       "manufacturer": "Huawei",
       "model": "SUN2000C00",
       "registers": 274,
-      "size_bytes": 17535
+      "size_bytes": 17533
     },
     {
       "filename": "INV_Huawei_SUN2000C00_MODBUS_Protocol.csv",
       "prefix": "INV",
       "manufacturer": "Huawei",
       "model": "SUN2000C00_MODBUS_Protocol",
-      "registers": 130,
-      "size_bytes": 7353
+      "registers": 129,
+      "size_bytes": 7350
     },
     {
       "filename": "INV_Huawei_SUN2000C11.csv",
@@ -2509,15 +2581,15 @@
       "manufacturer": "Huawei",
       "model": "SUN2000C11",
       "registers": 183,
-      "size_bytes": 12687
+      "size_bytes": 12684
     },
     {
       "filename": "INV_Huawei_SUN2000C11_MODBUS_Protocol.csv",
       "prefix": "INV",
       "manufacturer": "Huawei",
       "model": "SUN2000C11_MODBUS_Protocol",
-      "registers": 130,
-      "size_bytes": 7353
+      "registers": 129,
+      "size_bytes": 7350
     },
     {
       "filename": "INV_Huawei_SUN2000MA_V100R001C00.csv",
@@ -2725,7 +2797,7 @@
       "manufacturer": "INVT",
       "model": "Generic",
       "registers": 41,
-      "size_bytes": 2332
+      "size_bytes": 2325
     },
     {
       "filename": "INV_INVT_ModbusRTU_INVT_Generic.csv",
@@ -2733,7 +2805,7 @@
       "manufacturer": "INVT",
       "model": "ModbusRTU_INVT_Generic",
       "registers": 41,
-      "size_bytes": 2347
+      "size_bytes": 2340
     },
     {
       "filename": "INV_Jema_Generic.csv",
@@ -3029,7 +3101,7 @@
       "manufacturer": "Kehua",
       "model": "ThreePhase",
       "registers": 84,
-      "size_bytes": 4939
+      "size_bytes": 4935
     },
     {
       "filename": "INV_Kehua_ThreePhase_nondefinitif.csv",
@@ -3037,7 +3109,7 @@
       "manufacturer": "Kehua",
       "model": "ThreePhase_nondefinitif",
       "registers": 84,
-      "size_bytes": 4125
+      "size_bytes": 4121
     },
     {
       "filename": "INV_Kerneli_Sistemi_ST124-22.csv",
@@ -3109,7 +3181,7 @@
       "manufacturer": "Kstar",
       "model": "KIG1-250K",
       "registers": 254,
-      "size_bytes": 16248
+      "size_bytes": 16239
     },
     {
       "filename": "INV_Kstar_KSG1-250K.csv",
@@ -3117,7 +3189,7 @@
       "manufacturer": "Kstar",
       "model": "KSG1-250K",
       "registers": 254,
-      "size_bytes": 16781
+      "size_bytes": 16772
     },
     {
       "filename": "INV_Kstar_Modbus.csv",
@@ -3392,6 +3464,14 @@
       "size_bytes": 3043
     },
     {
+      "filename": "INV_Schneider_Conext_CL.csv",
+      "prefix": "INV",
+      "manufacturer": "Schneider",
+      "model": "Conext_CL",
+      "registers": 61,
+      "size_bytes": 4005
+    },
+    {
       "filename": "INV_Schneider_Conext_CL_30-33-50.csv",
       "prefix": "INV",
       "manufacturer": "Schneider",
@@ -3404,8 +3484,8 @@
       "prefix": "INV",
       "manufacturer": "Schneider",
       "model": "CONEXT_CORE_XC",
-      "registers": 207,
-      "size_bytes": 12814
+      "registers": 210,
+      "size_bytes": 10609
     },
     {
       "filename": "INV_Schneider_CONEXT_CORE_XC_RTU.csv",
@@ -3485,7 +3565,7 @@
       "manufacturer": "Siel",
       "model": "RECTIFIERS",
       "registers": 19,
-      "size_bytes": 1394
+      "size_bytes": 1393
     },
     {
       "filename": "INV_Siel_Solar_Converters.csv",
@@ -3869,7 +3949,7 @@
       "manufacturer": "SofarSolar",
       "model": "SOFAR_Modbus_Protocol_English_G3_V1.17",
       "registers": 145,
-      "size_bytes": 17653
+      "size_bytes": 17609
     },
     {
       "filename": "INV_SolarEdge_66KW.csv",
@@ -3886,6 +3966,14 @@
       "model": "ActivePowerControl",
       "registers": 16,
       "size_bytes": 1025
+    },
+    {
+      "filename": "INV_SolarEdge_EnhancedPowerControl.csv",
+      "prefix": "INV",
+      "manufacturer": "SolarEdge",
+      "model": "EnhancedPowerControl",
+      "registers": 18,
+      "size_bytes": 1311
     },
     {
       "filename": "INV_SolarEdge_EnhancedPowerControlBlock.csv",
@@ -3910,6 +3998,22 @@
       "model": "Modbus_Sunspec",
       "registers": 46,
       "size_bytes": 2189
+    },
+    {
+      "filename": "INV_SolarEdge_SE25K_SunSpec.csv",
+      "prefix": "INV",
+      "manufacturer": "SolarEdge",
+      "model": "SE25K_SunSpec",
+      "registers": 53,
+      "size_bytes": 2795
+    },
+    {
+      "filename": "INV_SolarEdge_SE33.3K_SunSpec.csv",
+      "prefix": "INV",
+      "manufacturer": "SolarEdge",
+      "model": "SE33.3K_SunSpec",
+      "registers": 69,
+      "size_bytes": 3836
     },
     {
       "filename": "INV_SolarEdge_SE33.3K_SunSpec_regul.csv",
@@ -3960,12 +4064,20 @@
       "size_bytes": 1996
     },
     {
+      "filename": "INV_SolarEdge_SunSpec_Generic.csv",
+      "prefix": "INV",
+      "manufacturer": "SolarEdge",
+      "model": "SunSpec_Generic",
+      "registers": 46,
+      "size_bytes": 2190
+    },
+    {
       "filename": "INV_SolaX_EMS1000-PRO.csv",
       "prefix": "INV",
       "manufacturer": "SolaX",
       "model": "EMS1000-PRO",
       "registers": 347,
-      "size_bytes": 20720
+      "size_bytes": 20710
     },
     {
       "filename": "INV_SolaX_EMS1000-PRO_v2.csv",
@@ -3981,7 +4093,7 @@
       "manufacturer": "SolaX",
       "model": "FORTH-MEGA_GENERIC",
       "registers": 326,
-      "size_bytes": 15156
+      "size_bytes": 15153
     },
     {
       "filename": "INV_SolaX_Generic.csv",
@@ -4048,12 +4160,20 @@
       "size_bytes": 2496
     },
     {
+      "filename": "INV_Solis_50_25_SunPM.csv",
+      "prefix": "INV",
+      "manufacturer": "Solis",
+      "model": "50_25_SunPM",
+      "registers": 47,
+      "size_bytes": 2760
+    },
+    {
       "filename": "INV_Solis_GENERIC.csv",
       "prefix": "INV",
       "manufacturer": "Solis",
       "model": "GENERIC",
-      "registers": 454,
-      "size_bytes": 24181
+      "registers": 455,
+      "size_bytes": 19931
     },
     {
       "filename": "INV_Solis_GENERIC_GridTied.csv",
@@ -4061,7 +4181,7 @@
       "manufacturer": "Solis",
       "model": "GENERIC_GridTied",
       "registers": 690,
-      "size_bytes": 34941
+      "size_bytes": 34936
     },
     {
       "filename": "INV_Solis_GENERIC_Work.csv",
@@ -4069,7 +4189,7 @@
       "manufacturer": "Solis",
       "model": "GENERIC_Work",
       "registers": 654,
-      "size_bytes": 36240
+      "size_bytes": 36237
     },
     {
       "filename": "INV_Solis_Inverter.csv",
@@ -4077,7 +4197,7 @@
       "manufacturer": "Solis",
       "model": "Inverter",
       "registers": 93,
-      "size_bytes": 4383
+      "size_bytes": 4392
     },
     {
       "filename": "INV_Solis_Modbus.csv",
@@ -4104,12 +4224,36 @@
       "size_bytes": 19811
     },
     {
+      "filename": "INV_Solis_SOLIS_GENERIC.csv",
+      "prefix": "INV",
+      "manufacturer": "Solis",
+      "model": "SOLIS_GENERIC",
+      "registers": 455,
+      "size_bytes": 19937
+    },
+    {
+      "filename": "INV_Solis_SOLIS_GENERIC_GridTied.csv",
+      "prefix": "INV",
+      "manufacturer": "Solis",
+      "model": "SOLIS_GENERIC_GridTied",
+      "registers": 690,
+      "size_bytes": 34942
+    },
+    {
       "filename": "INV_Solis_sunspec-pics-solis-25-66k-us-001-for-white-labeling_1_2_updated_7-15.csv",
       "prefix": "INV",
       "manufacturer": "Solis",
       "model": "sunspec-pics-solis-25-66k-us-001-for-white-labeling_1_2_updated_7-15",
       "registers": 308,
       "size_bytes": 12105
+    },
+    {
+      "filename": "INV_Solis_SunSpec_25_66K.csv",
+      "prefix": "INV",
+      "manufacturer": "Solis",
+      "model": "SunSpec_25_66K",
+      "registers": 308,
+      "size_bytes": 12051
     },
     {
       "filename": "INV_Solis_table2023.csv",
@@ -4309,7 +4453,7 @@
       "manufacturer": "Victron",
       "model": "Modbus_Vectron",
       "registers": 83,
-      "size_bytes": 4167
+      "size_bytes": 4162
     },
     {
       "filename": "INV_Waaree_new.csv",
@@ -4381,7 +4525,7 @@
       "manufacturer": "ABB",
       "model": "B21-B23-B24",
       "registers": 137,
-      "size_bytes": 8625
+      "size_bytes": 8624
     },
     {
       "filename": "MET_ABB_B21_B23_B24.csv",
@@ -4389,7 +4533,7 @@
       "manufacturer": "ABB",
       "model": "B21_B23_B24",
       "registers": 137,
-      "size_bytes": 7112
+      "size_bytes": 7111
     },
     {
       "filename": "MET_ABB_M2M.csv",
@@ -4445,7 +4589,7 @@
       "manufacturer": "AEberle",
       "model": "14178-PM_MODBUS_RTU_CPT_PQPLUS_UMD96",
       "registers": 126,
-      "size_bytes": 7185
+      "size_bytes": 7180
     },
     {
       "filename": "MET_AEberle_PQPlus_Generic.csv",
@@ -4477,7 +4621,7 @@
       "manufacturer": "Anexo",
       "model": "METER",
       "registers": 14,
-      "size_bytes": 849
+      "size_bytes": 848
     },
     {
       "filename": "MET_Bender_ISOMETER.csv",
@@ -4773,7 +4917,7 @@
       "manufacturer": "Deye",
       "model": "Modbus_-Required_Basic_Parameter_Pour_Kyaw_Thu_Hein_Client_Aaron_Hsu",
       "registers": 477,
-      "size_bytes": 25108
+      "size_bytes": 25096
     },
     {
       "filename": "MET_Eastron_SMART-X96-5E.csv",
@@ -4781,7 +4925,7 @@
       "manufacturer": "Eastron",
       "model": "SMART-X96-5E",
       "registers": 125,
-      "size_bytes": 7142
+      "size_bytes": 7140
     },
     {
       "filename": "MET_EcoAdapt_MODBUS_PowerElec6.csv",
@@ -4821,7 +4965,7 @@
       "manufacturer": "EDMI",
       "model": "Mk6",
       "registers": 59,
-      "size_bytes": 3262
+      "size_bytes": 3257
     },
     {
       "filename": "MET_Eflex4u_OTMETRIC_EFLEX4U.csv",
@@ -4904,6 +5048,22 @@
       "size_bytes": 8408
     },
     {
+      "filename": "MET_Fronius_Smart_Meter_50kA-3.csv",
+      "prefix": "MET",
+      "manufacturer": "Fronius",
+      "model": "Smart_Meter_50kA-3",
+      "registers": 72,
+      "size_bytes": 4141
+    },
+    {
+      "filename": "MET_Fronius_Smart_Meter_IntSF.csv",
+      "prefix": "MET",
+      "manufacturer": "Fronius",
+      "model": "Smart_Meter_IntSF",
+      "registers": 165,
+      "size_bytes": 8241
+    },
+    {
       "filename": "MET_Fronius_Smart_Meter_Register_Map_Float.csv",
       "prefix": "MET",
       "manufacturer": "Fronius",
@@ -4918,6 +5078,14 @@
       "model": "Smart_Meter_Register_Map_Int_SF",
       "registers": 165,
       "size_bytes": 8255
+    },
+    {
+      "filename": "MET_Fronius_Smart_Meter_TS.csv",
+      "prefix": "MET",
+      "manufacturer": "Fronius",
+      "model": "Smart_Meter_TS",
+      "registers": 144,
+      "size_bytes": 7308
     },
     {
       "filename": "MET_Goodwe_GM1000_GM3000.csv",
@@ -4941,7 +5109,7 @@
       "manufacturer": "Hoymiles",
       "model": "METER",
       "registers": 291,
-      "size_bytes": 21695
+      "size_bytes": 21685
     },
     {
       "filename": "MET_Huawei_DTSU666-H.csv",
@@ -5021,7 +5189,7 @@
       "manufacturer": "Imesys",
       "model": "NEMO_96HDLe",
       "registers": 797,
-      "size_bytes": 53807
+      "size_bytes": 53456
     },
     {
       "filename": "MET_Inepro_PRO380-MOD-CT.csv",
@@ -5229,7 +5397,7 @@
       "manufacturer": "Legrand",
       "model": "Nemo96HDLe",
       "registers": 151,
-      "size_bytes": 8278
+      "size_bytes": 8276
     },
     {
       "filename": "MET_Lettel_MAP4-34RJ.csv",
@@ -5237,7 +5405,7 @@
       "manufacturer": "Lettel",
       "model": "MAP4-34RJ",
       "registers": 405,
-      "size_bytes": 21335
+      "size_bytes": 21329
     },
     {
       "filename": "MET_Lettel_MAP4_345M.csv",
@@ -5245,7 +5413,7 @@
       "manufacturer": "Lettel",
       "model": "MAP4_345M",
       "registers": 300,
-      "size_bytes": 22296
+      "size_bytes": 22289
     },
     {
       "filename": "MET_Lettel_MAP4_34RJ.csv",
@@ -5253,7 +5421,7 @@
       "manufacturer": "Lettel",
       "model": "MAP4_34RJ",
       "registers": 405,
-      "size_bytes": 21418
+      "size_bytes": 21412
     },
     {
       "filename": "MET_Lettel_MCT4-45.csv",
@@ -5285,7 +5453,7 @@
       "manufacturer": "Lettel",
       "model": "MCX4-34",
       "registers": 139,
-      "size_bytes": 9723
+      "size_bytes": 9678
     },
     {
       "filename": "MET_Lettel_MCX4-34V.csv",
@@ -5293,7 +5461,7 @@
       "manufacturer": "Lettel",
       "model": "MCX4-34V",
       "registers": 102,
-      "size_bytes": 7095
+      "size_bytes": 7063
     },
     {
       "filename": "MET_Lettel_MCX4-34V_FLOAT.csv",
@@ -5301,7 +5469,7 @@
       "manufacturer": "Lettel",
       "model": "MCX4-34V_FLOAT",
       "registers": 102,
-      "size_bytes": 6336
+      "size_bytes": 6330
     },
     {
       "filename": "MET_Lettel_MCX4_34V.csv",
@@ -5325,7 +5493,7 @@
       "manufacturer": "Lettel",
       "model": "W_Lettel_MCX4-34V-FLOAT",
       "registers": 102,
-      "size_bytes": 5632
+      "size_bytes": 5630
     },
     {
       "filename": "MET_Lettel_W_Lettel_MCX4-34V-INT.csv",
@@ -5333,7 +5501,7 @@
       "manufacturer": "Lettel",
       "model": "W_Lettel_MCX4-34V-INT",
       "registers": 139,
-      "size_bytes": 8059
+      "size_bytes": 8057
     },
     {
       "filename": "MET_Lufft_MODBUS_RTU_Lufft_WS10.csv",
@@ -5341,7 +5509,7 @@
       "manufacturer": "Lufft",
       "model": "MODBUS_RTU_Lufft_WS10",
       "registers": 23,
-      "size_bytes": 1253
+      "size_bytes": 1252
     },
     {
       "filename": "MET_Lufft_WS600.csv",
@@ -5445,7 +5613,7 @@
       "manufacturer": "Polier",
       "model": "MTR5LMOD",
       "registers": 33,
-      "size_bytes": 1843
+      "size_bytes": 1837
     },
     {
       "filename": "MET_Polier_MTROGMOD.csv",
@@ -5485,7 +5653,7 @@
       "manufacturer": "Schneider",
       "model": "EM1200",
       "registers": 96,
-      "size_bytes": 5171
+      "size_bytes": 5121
     },
     {
       "filename": "MET_Schneider_EM6433.csv",
@@ -5680,6 +5848,14 @@
       "size_bytes": 2059
     },
     {
+      "filename": "MET_Schneider_PM5xxx_Series.csv",
+      "prefix": "MET",
+      "manufacturer": "Schneider",
+      "model": "PM5xxx_Series",
+      "registers": 875,
+      "size_bytes": 49083
+    },
+    {
       "filename": "MET_Schneider_PM820_SERM.csv",
       "prefix": "MET",
       "manufacturer": "Schneider",
@@ -5694,6 +5870,14 @@
       "model": "PMC",
       "registers": 517,
       "size_bytes": 31682
+    },
+    {
+      "filename": "MET_Schneider_PowerLogic_PMC.csv",
+      "prefix": "MET",
+      "manufacturer": "Schneider",
+      "model": "PowerLogic_PMC",
+      "registers": 517,
+      "size_bytes": 31690
     },
     {
       "filename": "MET_Schneider_RELAYP5.csv",
@@ -5797,7 +5981,7 @@
       "manufacturer": "Socomec",
       "model": "COUNTIS_E23",
       "registers": 59,
-      "size_bytes": 4611
+      "size_bytes": 4673
     },
     {
       "filename": "MET_Socomec_Countis_E23_2448.csv",
@@ -5821,13 +6005,21 @@
       "manufacturer": "Socomec",
       "model": "Countis_E33_E43",
       "registers": 73,
-      "size_bytes": 4824
+      "size_bytes": 4818
     },
     {
       "filename": "MET_Socomec_COUNTIS_E50-E53.csv",
       "prefix": "MET",
       "manufacturer": "Socomec",
       "model": "COUNTIS_E50-E53",
+      "registers": 141,
+      "size_bytes": 7113
+    },
+    {
+      "filename": "MET_Socomec_Countis_E50_E53.csv",
+      "prefix": "MET",
+      "manufacturer": "Socomec",
+      "model": "Countis_E50_E53",
       "registers": 141,
       "size_bytes": 7113
     },
@@ -5845,7 +6037,7 @@
       "manufacturer": "Socomec",
       "model": "Diris_A10",
       "registers": 75,
-      "size_bytes": 5134
+      "size_bytes": 5201
     },
     {
       "filename": "MET_Socomec_Diris_A40.csv",
@@ -5853,7 +6045,7 @@
       "manufacturer": "Socomec",
       "model": "Diris_A40",
       "registers": 35,
-      "size_bytes": 2379
+      "size_bytes": 2434
     },
     {
       "filename": "MET_Socomec_Diris_A_Countis_E.csv",
@@ -5869,7 +6061,7 @@
       "manufacturer": "Socomec",
       "model": "Diris_Axx",
       "registers": 25,
-      "size_bytes": 1069
+      "size_bytes": 1068
     },
     {
       "filename": "MET_Socomec_DIRIS_B10.csv",
@@ -5877,7 +6069,7 @@
       "manufacturer": "Socomec",
       "model": "DIRIS_B10",
       "registers": 23,
-      "size_bytes": 1466
+      "size_bytes": 1479
     },
     {
       "filename": "MET_Socomec_Diris_B30.csv",
@@ -5885,7 +6077,7 @@
       "manufacturer": "Socomec",
       "model": "Diris_B30",
       "registers": 20,
-      "size_bytes": 1295
+      "size_bytes": 1308
     },
     {
       "filename": "MET_Socomec_DIRIS_DIGIWARE_I35.csv",
@@ -5893,7 +6085,7 @@
       "manufacturer": "Socomec",
       "model": "DIRIS_DIGIWARE_I35",
       "registers": 26,
-      "size_bytes": 1361
+      "size_bytes": 1342
     },
     {
       "filename": "MET_Socomec_Diris_I30.csv",
@@ -6125,7 +6317,7 @@
       "manufacturer": "Weidmuller",
       "model": "610",
       "registers": 122,
-      "size_bytes": 7740
+      "size_bytes": 7736
     },
     {
       "filename": "MET_X7_Meters.csv",
@@ -6300,8 +6492,8 @@
       "prefix": "OTH",
       "manufacturer": "ABB",
       "model": "SUNSPEC_PVS-100_120_PICS_Rev_005",
-      "registers": 1145,
-      "size_bytes": 46142
+      "registers": 1143,
+      "size_bytes": 46139
     },
     {
       "filename": "OTH_ABB_SUNSPEC_PVS-10_12.5_15_20_30_33_PICS_Rev_001.csv",
@@ -6316,8 +6508,8 @@
       "prefix": "OTH",
       "manufacturer": "ABB",
       "model": "SUNSPEC_PVS-175_PICS_Rev_003",
-      "registers": 1070,
-      "size_bytes": 42910
+      "registers": 1068,
+      "size_bytes": 42907
     },
     {
       "filename": "OTH_ABB_SUNSPEC_PVS-50_60_PICS_Rev_3.csv",
@@ -6365,7 +6557,7 @@
       "manufacturer": "ABB",
       "model": "TRIO_200_276_FR",
       "registers": 89,
-      "size_bytes": 6691
+      "size_bytes": 6654
     },
     {
       "filename": "OTH_Advantech_6224.csv",
@@ -6389,7 +6581,7 @@
       "manufacturer": "AEberle",
       "model": "14178-PM_MODBUS_RTU_CPT_PQPLUS_UMD96",
       "registers": 110,
-      "size_bytes": 6445
+      "size_bytes": 6440
     },
     {
       "filename": "OTH_Alan_india_Alan_Annunciator.csv",
@@ -6461,7 +6653,7 @@
       "manufacturer": "Autarco",
       "model": "Modbus_Table",
       "registers": 75,
-      "size_bytes": 3662
+      "size_bytes": 3661
     },
     {
       "filename": "OTH_Axun_SunSpecInformationModelReference.csv",
@@ -6477,7 +6669,7 @@
       "manufacturer": "Bonfiglioli",
       "model": "Generic",
       "registers": 55,
-      "size_bytes": 2910
+      "size_bytes": 2907
     },
     {
       "filename": "OTH_CarloGavazzi_72RVV23XOSX.csv",
@@ -6677,7 +6869,7 @@
       "manufacturer": "Delta",
       "model": "protocol_v1.11_20180725",
       "registers": 92,
-      "size_bytes": 4670
+      "size_bytes": 4637
     },
     {
       "filename": "OTH_Delta_protocol_v1.12_20190403.csv",
@@ -6685,7 +6877,7 @@
       "manufacturer": "Delta",
       "model": "protocol_v1.12_20190403",
       "registers": 93,
-      "size_bytes": 4718
+      "size_bytes": 4685
     },
     {
       "filename": "OTH_Delta_protocol_v1_03_20170907.csv",
@@ -6725,7 +6917,7 @@
       "manufacturer": "Delta",
       "model": "Sunspec_protocol_v1.11_20180725",
       "registers": 92,
-      "size_bytes": 4678
+      "size_bytes": 4645
     },
     {
       "filename": "OTH_Delta_Sunspec_protocol_v1.12_20190403.csv",
@@ -6733,7 +6925,7 @@
       "manufacturer": "Delta",
       "model": "Sunspec_protocol_v1.12_20190403",
       "registers": 93,
-      "size_bytes": 4726
+      "size_bytes": 4693
     },
     {
       "filename": "OTH_Delta_Sunspec_protocol_v1.16_20210318.csv",
@@ -6741,7 +6933,7 @@
       "manufacturer": "Delta",
       "model": "Sunspec_protocol_v1.16_20210318",
       "registers": 122,
-      "size_bytes": 6481
+      "size_bytes": 6448
     },
     {
       "filename": "OTH_Delta_Sunspec_protocol_v1.23_20220906.csv",
@@ -6749,7 +6941,7 @@
       "manufacturer": "Delta",
       "model": "Sunspec_protocol_v1.23_20220906",
       "registers": 126,
-      "size_bytes": 6741
+      "size_bytes": 6708
     },
     {
       "filename": "OTH_Delta_Sunspec_protocol_v1_03_20170907.csv",
@@ -6781,7 +6973,7 @@
       "manufacturer": "Deye",
       "model": "GENERIC",
       "registers": 86,
-      "size_bytes": 5180
+      "size_bytes": 5177
     },
     {
       "filename": "OTH_Deye_GENERICreg-1.csv",
@@ -6789,7 +6981,7 @@
       "manufacturer": "Deye",
       "model": "GENERICreg-1",
       "registers": 86,
-      "size_bytes": 5185
+      "size_bytes": 5182
     },
     {
       "filename": "OTH_Deye_GENERICreg1.csv",
@@ -6797,7 +6989,7 @@
       "manufacturer": "Deye",
       "model": "GENERICreg1",
       "registers": 86,
-      "size_bytes": 5185
+      "size_bytes": 5182
     },
     {
       "filename": "OTH_Deye_Sunspec-PICS-DEYE-SUN-0820.csv",
@@ -6821,7 +7013,7 @@
       "manufacturer": "EDMI",
       "model": "Mk6",
       "registers": 59,
-      "size_bytes": 2660
+      "size_bytes": 2655
     },
     {
       "filename": "OTH_Efacec_Efasolar.csv",
@@ -6845,7 +7037,7 @@
       "manufacturer": "Efacec",
       "model": "ntu-pv500.mbmap-0.2.3",
       "registers": 156,
-      "size_bytes": 8576
+      "size_bytes": 8573
     },
     {
       "filename": "OTH_Efacec_PV250HE_PV375HE_PV500HE.csv",
@@ -6877,7 +7069,7 @@
       "manufacturer": "EKO",
       "model": "MS80",
       "registers": 40,
-      "size_bytes": 2248
+      "size_bytes": 2245
     },
     {
       "filename": "OTH_FoxESS_G-MAX_WebdynSunPM_BMS.csv",
@@ -6981,7 +7173,7 @@
       "manufacturer": "Hoymiles",
       "model": "GENERIC",
       "registers": 4963,
-      "size_bytes": 369127
+      "size_bytes": 369117
     },
     {
       "filename": "OTH_Huawei_2345.csv",
@@ -6989,7 +7181,7 @@
       "manufacturer": "Huawei",
       "model": "2345",
       "registers": 47,
-      "size_bytes": 2533
+      "size_bytes": 2489
     },
     {
       "filename": "OTH_Huawei_364233-A.csv",
@@ -7013,7 +7205,7 @@
       "manufacturer": "Huawei",
       "model": "60-HV",
       "registers": 343,
-      "size_bytes": 22482
+      "size_bytes": 22481
     },
     {
       "filename": "OTH_Huawei_7550606570-M0.csv",
@@ -7021,7 +7213,7 @@
       "manufacturer": "Huawei",
       "model": "7550606570-M0",
       "registers": 73,
-      "size_bytes": 4764
+      "size_bytes": 4691
     },
     {
       "filename": "OTH_Huawei_81012141820.csv",
@@ -7037,7 +7229,7 @@
       "manufacturer": "Huawei",
       "model": "9095100105",
       "registers": 73,
-      "size_bytes": 4017
+      "size_bytes": 3944
     },
     {
       "filename": "OTH_Huawei_Etude_Huawei.csv",
@@ -7061,7 +7253,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_2345",
       "registers": 47,
-      "size_bytes": 3031
+      "size_bytes": 2987
     },
     {
       "filename": "OTH_Huawei_Modbus_364233-A.csv",
@@ -7077,7 +7269,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_60-HV",
       "registers": 347,
-      "size_bytes": 22672
+      "size_bytes": 22671
     },
     {
       "filename": "OTH_Huawei_MODBUS_7550606570-M0.csv",
@@ -7085,7 +7277,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_7550606570-M0",
       "registers": 73,
-      "size_bytes": 4760
+      "size_bytes": 4687
     },
     {
       "filename": "OTH_Huawei_MODBUS_81012141820.csv",
@@ -7093,7 +7285,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_81012141820",
       "registers": 328,
-      "size_bytes": 21273
+      "size_bytes": 21272
     },
     {
       "filename": "OTH_Huawei_MODBUS_9095100105.csv",
@@ -7101,7 +7293,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_9095100105",
       "registers": 73,
-      "size_bytes": 4757
+      "size_bytes": 4684
     },
     {
       "filename": "OTH_Huawei_Modbus_All_V3.csv",
@@ -7205,15 +7397,15 @@
       "manufacturer": "Imesys",
       "model": "NEMO_96HDLe",
       "registers": 797,
-      "size_bytes": 56303
+      "size_bytes": 55961
     },
     {
       "filename": "OTH_Imesys_PR139FR.csv",
       "prefix": "OTH",
       "manufacturer": "Imesys",
       "model": "PR139FR",
-      "registers": 66,
-      "size_bytes": 3737
+      "registers": 57,
+      "size_bytes": 3727
     },
     {
       "filename": "OTH_Inaccess_MODBUS_Inaccess.csv",
@@ -7325,7 +7517,7 @@
       "manufacturer": "Ingeteam",
       "model": "MODBUS_INGETEAM_Stringbox",
       "registers": 52,
-      "size_bytes": 2726
+      "size_bytes": 2723
     },
     {
       "filename": "OTH_Ingeteam_Modbus_Map_Rapid_Fusion_EN.csv",
@@ -7381,7 +7573,7 @@
       "manufacturer": "INVT",
       "model": "ModbusRTU_INVT_Generic",
       "registers": 41,
-      "size_bytes": 2408
+      "size_bytes": 2401
     },
     {
       "filename": "OTH_Jema_Generic_revG.csv",
@@ -7460,8 +7652,8 @@
       "prefix": "OTH",
       "manufacturer": "Kehua",
       "model": "SinglePhase_Work",
-      "registers": 155,
-      "size_bytes": 7143
+      "registers": 149,
+      "size_bytes": 7131
     },
     {
       "filename": "OTH_Kehua_SPI100-250K-B.csv",
@@ -7477,7 +7669,7 @@
       "manufacturer": "Kehua",
       "model": "SPI5-60B-K_Work",
       "registers": 210,
-      "size_bytes": 13212
+      "size_bytes": 13199
     },
     {
       "filename": "OTH_Kehua_ThreePhase.csv",
@@ -7493,7 +7685,7 @@
       "manufacturer": "Kehua",
       "model": "ThreePhase_nondefinitif",
       "registers": 84,
-      "size_bytes": 5012
+      "size_bytes": 5008
     },
     {
       "filename": "OTH_Kerneli_Sistemi_ST124-22.csv",
@@ -7637,15 +7829,15 @@
       "manufacturer": "Legrand",
       "model": "Nemo96HDLe",
       "registers": 151,
-      "size_bytes": 8773
+      "size_bytes": 8771
     },
     {
       "filename": "OTH_Legrand_Nemo_Work.csv",
       "prefix": "OTH",
       "manufacturer": "Legrand",
       "model": "Nemo_Work",
-      "registers": 172,
-      "size_bytes": 9693
+      "registers": 169,
+      "size_bytes": 9689
     },
     {
       "filename": "OTH_Legrand_Trimod.csv",
@@ -7668,8 +7860,8 @@
       "prefix": "OTH",
       "manufacturer": "Lettel",
       "model": "map4-345m_table_modbus_fr",
-      "registers": 349,
-      "size_bytes": 20767
+      "registers": 326,
+      "size_bytes": 20725
     },
     {
       "filename": "OTH_LSI_SRL_LSILASTEM_DPA870-873.csv",
@@ -7685,7 +7877,7 @@
       "manufacturer": "Lufft",
       "model": "MODBUS_RTU_Lufft_WS10",
       "registers": 23,
-      "size_bytes": 1331
+      "size_bytes": 1330
     },
     {
       "filename": "OTH_Lufft_WS600.csv",
@@ -7757,7 +7949,7 @@
       "manufacturer": "MarsEnergy",
       "model": "MarsLocalController_IO_List_ModbusTCP_V7.0",
       "registers": 251,
-      "size_bytes": 15361
+      "size_bytes": 15359
     },
     {
       "filename": "OTH_MarsEnergy_MarsLocalController_V7.0_EMS_Slave247.csv",
@@ -7781,7 +7973,7 @@
       "manufacturer": "MarsEnergy",
       "model": "MarsLocalController_V7.0_webdyn",
       "registers": 192,
-      "size_bytes": 12152
+      "size_bytes": 12150
     },
     {
       "filename": "OTH_MarsEnergy_MarsRenewable.csv",
@@ -7925,7 +8117,7 @@
       "manufacturer": "MCI",
       "model": "contax_1m_100a_031277_mapping_Modbus_20102017",
       "registers": 32,
-      "size_bytes": 1895
+      "size_bytes": 1872
     },
     {
       "filename": "OTH_MCI_contax_d_tri_80a_mid_modbus_ref_031333_-_mapping_modbus_V3.csv",
@@ -7957,7 +8149,7 @@
       "manufacturer": "Monichek",
       "model": "CombinerBox",
       "registers": 524,
-      "size_bytes": 38543
+      "size_bytes": 38537
     },
     {
       "filename": "OTH_OG_NHEOBOX_OG_NHEOBOX.csv",
@@ -7989,7 +8181,7 @@
       "manufacturer": "Polier",
       "model": "MTR5LMOD",
       "registers": 33,
-      "size_bytes": 1585
+      "size_bytes": 1579
     },
     {
       "filename": "OTH_Power_One.csv",
@@ -8029,7 +8221,7 @@
       "manufacturer": "Refusol",
       "model": "REFU-Modbus_Protocol_English_G3_V1.17_ONLY_SOLAR",
       "registers": 144,
-      "size_bytes": 17599
+      "size_bytes": 17555
     },
     {
       "filename": "OTH_Riello_AROS_GENERIC.csv",
@@ -8469,7 +8661,7 @@
       "manufacturer": "Secure",
       "model": "Elite_440-_Modbus_Mapping",
       "registers": 198,
-      "size_bytes": 10862
+      "size_bytes": 10859
     },
     {
       "filename": "OTH_Siebert_AFFICHEUR_SIEBERT_XC4XX.csv",
@@ -8549,7 +8741,7 @@
       "manufacturer": "Siemens",
       "model": "DCMonitor_Monichek_CombinerBox",
       "registers": 6292,
-      "size_bytes": 390026
+      "size_bytes": 390012
     },
     {
       "filename": "OTH_Siemens_GD458914_R6_PROTEUS_PV-INV-EN-ICD_MONITORING.csv",
@@ -8821,7 +9013,7 @@
       "manufacturer": "Sungrow",
       "model": "LC3000",
       "registers": 916,
-      "size_bytes": 48691
+      "size_bytes": 48683
     },
     {
       "filename": "OTH_Sungrow_PVCombinerBox.csv",
@@ -8877,7 +9069,7 @@
       "manufacturer": "Thies",
       "model": "Wind_Transmitter_Thies",
       "registers": 91,
-      "size_bytes": 7093
+      "size_bytes": 7071
     },
     {
       "filename": "OTH_Ticmaster_Mapping_-_FW41.48.csv",
@@ -8925,7 +9117,7 @@
       "manufacturer": "Victron",
       "model": "CCGX-Modbus-TCP-register-list-2.07",
       "registers": 290,
-      "size_bytes": 25363
+      "size_bytes": 26101
     },
     {
       "filename": "OTH_Victron_CCGX-Modbus-TCP-register-list-2.23.csv",
@@ -8933,7 +9125,7 @@
       "manufacturer": "Victron",
       "model": "CCGX-Modbus-TCP-register-list-2.23",
       "registers": 326,
-      "size_bytes": 27753
+      "size_bytes": 28540
     },
     {
       "filename": "OTH_Victron_CCGX-Modbus-TCP-register-list-2.80.csv",
@@ -8941,7 +9133,7 @@
       "manufacturer": "Victron",
       "model": "CCGX-Modbus-TCP-register-list-2.80",
       "registers": 565,
-      "size_bytes": 44149
+      "size_bytes": 45185
     },
     {
       "filename": "OTH_Victron_Modbus_Vectron.csv",
@@ -8949,7 +9141,7 @@
       "manufacturer": "Victron",
       "model": "Modbus_Vectron",
       "registers": 83,
-      "size_bytes": 4327
+      "size_bytes": 4322
     },
     {
       "filename": "OTH_Waaree_new.csv",
@@ -8997,7 +9189,7 @@
       "manufacturer": "Webdyn",
       "model": "Sens_IOs_Modbus_definition",
       "registers": 28,
-      "size_bytes": 1572
+      "size_bytes": 1570
     },
     {
       "filename": "OTH_Webdyn_WebdynBridge_TableDesRegistres.csv",
@@ -9013,7 +9205,7 @@
       "manufacturer": "Weidmuller",
       "model": "610",
       "registers": 122,
-      "size_bytes": 6663
+      "size_bytes": 6659
     },
     {
       "filename": "OTH_Weidmuller_Transclinic.csv",
@@ -9125,7 +9317,15 @@
       "manufacturer": "EKO",
       "model": "MS80",
       "registers": 40,
-      "size_bytes": 1689
+      "size_bytes": 1686
+    },
+    {
+      "filename": "SEN_Fronius_Card.csv",
+      "prefix": "SEN",
+      "manufacturer": "Fronius",
+      "model": "Card",
+      "registers": 54,
+      "size_bytes": 2541
     },
     {
       "filename": "SEN_Fronius_IG_Sensor_Card_Register_Map_Float_and_Int_SF_v1.0.csv",
@@ -9134,6 +9334,14 @@
       "model": "IG_Sensor_Card_Register_Map_Float_and_Int_SF_v1.0",
       "registers": 54,
       "size_bytes": 2586
+    },
+    {
+      "filename": "SEN_Fronius_Sensor_Card.csv",
+      "prefix": "SEN",
+      "manufacturer": "Fronius",
+      "model": "Sensor_Card",
+      "registers": 54,
+      "size_bytes": 2548
     },
     {
       "filename": "SEN_Hukseflux_Generic.csv",
@@ -9325,7 +9533,7 @@
       "manufacturer": "Lufft",
       "model": "WS10",
       "registers": 23,
-      "size_bytes": 1533
+      "size_bytes": 1532
     },
     {
       "filename": "SEN_MarsEnergy_PV.csv",
@@ -9356,8 +9564,8 @@
       "prefix": "SEN",
       "manufacturer": "MeierNT",
       "model": "MEIER_ADL-SR",
-      "registers": 19,
-      "size_bytes": 995
+      "registers": 18,
+      "size_bytes": 992
     },
     {
       "filename": "SEN_SESAutomation_WT-485-PRO.csv",
@@ -9381,7 +9589,7 @@
       "manufacturer": "Seven",
       "model": "3S-IS_8.0",
       "registers": 42,
-      "size_bytes": 2383
+      "size_bytes": 2382
     },
     {
       "filename": "SEN_Seven_3S-IS_8.csv",
@@ -9389,7 +9597,7 @@
       "manufacturer": "Seven",
       "model": "3S-IS_8",
       "registers": 41,
-      "size_bytes": 2223
+      "size_bytes": 2222
     },
     {
       "filename": "SEN_Seven_3S-IS_SUNSPEC.csv",
@@ -9445,7 +9653,7 @@
       "manufacturer": "Thermokon",
       "model": "AGS55_tcp",
       "registers": 66,
-      "size_bytes": 3265
+      "size_bytes": 3263
     },
     {
       "filename": "SEN_Thies_CLIMA.csv",
@@ -9461,7 +9669,7 @@
       "manufacturer": "Thies",
       "model": "Wind_Transmitter_Thies",
       "registers": 91,
-      "size_bytes": 6860
+      "size_bytes": 6838
     },
     {
       "filename": "SEN_Trackso_SOZ03.csv",
@@ -9650,10 +9858,10 @@
       "size_bytes": 28561
     },
     {
-      "filename": "BAT_Huawei_Luna2000.csv",
+      "filename": "BAT_Huawei_LUNA2000.csv",
       "prefix": "BAT",
       "manufacturer": "Huawei",
-      "model": "Luna2000",
+      "model": "LUNA2000",
       "registers": 170,
       "size_bytes": 9267
     },
@@ -9751,7 +9959,7 @@
       "manufacturer": "MarsEnergy",
       "model": "MarsLocalController_V7.0_webdyn",
       "registers": 192,
-      "size_bytes": 9579
+      "size_bytes": 9577
     },
     {
       "filename": "BAT_MarsEnergy_MarsRenewable_LocalControler_Bank_Rack_Cell.csv",
@@ -9847,7 +10055,7 @@
       "manufacturer": "SolaX",
       "model": "EMS1000-PRO",
       "registers": 347,
-      "size_bytes": 16302
+      "size_bytes": 16292
     },
     {
       "filename": "BAT_Sungrow_Battery.csv",
@@ -9871,7 +10079,7 @@
       "manufacturer": "Sungrow",
       "model": "LC3000",
       "registers": 916,
-      "size_bytes": 45279
+      "size_bytes": 45271
     },
     {
       "filename": "BAT_Sungrow_PowerStack_ST255CS.csv",
@@ -9990,8 +10198,8 @@
       "prefix": "COM",
       "manufacturer": "Greenheiss",
       "model": "GH-I_Style_GH-IT_2M_Modbus_Communication_Protocol",
-      "registers": 458,
-      "size_bytes": 17114
+      "registers": 408,
+      "size_bytes": 17014
     },
     {
       "filename": "COM_Greenheiss_GH-IT_3-4-9M_Modbus_Communication_Protocol.csv",
@@ -10007,7 +10215,7 @@
       "manufacturer": "Hoymiles",
       "model": "GENERIC",
       "registers": 4963,
-      "size_bytes": 368818
+      "size_bytes": 368808
     },
     {
       "filename": "COM_Hoymiles_METER.csv",
@@ -10015,7 +10223,7 @@
       "manufacturer": "Hoymiles",
       "model": "METER",
       "registers": 291,
-      "size_bytes": 21626
+      "size_bytes": 21616
     },
     {
       "filename": "COM_Hoymiles_MICROINVERTER.csv",
@@ -10151,7 +10359,7 @@
       "manufacturer": "Sungrow",
       "model": "EMS300CP",
       "registers": 694,
-      "size_bytes": 36099
+      "size_bytes": 36096
     },
     {
       "filename": "COM_Sungrow_LC300_Modbus.csv",
@@ -10159,7 +10367,7 @@
       "manufacturer": "Sungrow",
       "model": "LC300_Modbus",
       "registers": 813,
-      "size_bytes": 74499
+      "size_bytes": 73971
     },
     {
       "filename": "COM_Sungrow_Logger1000_3000.csv",
@@ -10190,8 +10398,8 @@
       "prefix": "COM",
       "manufacturer": "Sungrow",
       "model": "TI_20241202_EMS300CP_IEC104_Modbus_Communication_Protocol_P014_software_version_CN_EN",
-      "registers": 868,
-      "size_bytes": 36685
+      "registers": 694,
+      "size_bytes": 36334
     },
     {
       "filename": "COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN.csv",
@@ -10199,7 +10407,7 @@
       "manufacturer": "Sungrow",
       "model": "TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN",
       "registers": 1382,
-      "size_bytes": 67125
+      "size_bytes": 67117
     },
     {
       "filename": "COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN.csv",
@@ -10207,7 +10415,7 @@
       "manufacturer": "Sungrow",
       "model": "TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN",
       "registers": 813,
-      "size_bytes": 74856
+      "size_bytes": 74292
     },
     {
       "filename": "INV_5_Generic.csv",
@@ -10335,7 +10543,7 @@
       "manufacturer": "ABB",
       "model": "PVI-50_60",
       "registers": 104,
-      "size_bytes": 6891
+      "size_bytes": 6887
     },
     {
       "filename": "INV_ABB_PVI110-275.csv",
@@ -10351,7 +10559,7 @@
       "manufacturer": "ABB",
       "model": "PVI50-60",
       "registers": 104,
-      "size_bytes": 6890
+      "size_bytes": 6886
     },
     {
       "filename": "INV_ABB_PVS-100_120.csv",
@@ -10383,7 +10591,7 @@
       "manufacturer": "ABB",
       "model": "PVS-175",
       "registers": 1068,
-      "size_bytes": 41374
+      "size_bytes": 41373
     },
     {
       "filename": "INV_ABB_PVS-30-TL.csv",
@@ -10519,7 +10727,7 @@
       "manufacturer": "ABB",
       "model": "TRIO_20.0-27.6_TL_OUTD",
       "registers": 89,
-      "size_bytes": 7532
+      "size_bytes": 7490
     },
     {
       "filename": "INV_ABB_TRIO_200_276_FR.csv",
@@ -10527,7 +10735,7 @@
       "manufacturer": "ABB",
       "model": "TRIO_200_276_FR",
       "registers": 89,
-      "size_bytes": 7482
+      "size_bytes": 7431
     },
     {
       "filename": "INV_ABB_Ultra_Inverter_Module.csv",
@@ -10607,7 +10815,7 @@
       "manufacturer": "Atess",
       "model": "Generic",
       "registers": 243,
-      "size_bytes": 12263
+      "size_bytes": 12261
     },
     {
       "filename": "INV_Autarco_Solis_table2023.csv",
@@ -10615,15 +10823,15 @@
       "manufacturer": "Autarco",
       "model": "Solis_table2023",
       "registers": 476,
-      "size_bytes": 21283
+      "size_bytes": 21280
     },
     {
       "filename": "INV_BlueSun_Hybrid_Inverter_Modbus_Protocol.csv",
       "prefix": "INV",
       "manufacturer": "BlueSun",
       "model": "Hybrid_Inverter_Modbus_Protocol",
-      "registers": 8,
-      "size_bytes": 389
+      "registers": 6,
+      "size_bytes": 385
     },
     {
       "filename": "INV_Bonfiglioli_Generic.csv",
@@ -10631,7 +10839,7 @@
       "manufacturer": "Bonfiglioli",
       "model": "Generic",
       "registers": 55,
-      "size_bytes": 2692
+      "size_bytes": 2689
     },
     {
       "filename": "INV_Bonfiglioli_inverter.csv",
@@ -10670,8 +10878,8 @@
       "prefix": "INV",
       "manufacturer": "Cefem",
       "model": "Table_Modbus_Trio-Sun_Trio-Top_2020_07_01",
-      "registers": 33,
-      "size_bytes": 1684
+      "registers": 32,
+      "size_bytes": 1681
     },
     {
       "filename": "INV_Cyberpower_1-Phase.csv",
@@ -10847,7 +11055,7 @@
       "manufacturer": "Deye",
       "model": "GENERICreg-1",
       "registers": 86,
-      "size_bytes": 4100
+      "size_bytes": 4097
     },
     {
       "filename": "INV_Deye_GENERICreg1.csv",
@@ -10855,7 +11063,7 @@
       "manufacturer": "Deye",
       "model": "GENERICreg1",
       "registers": 86,
-      "size_bytes": 4100
+      "size_bytes": 4097
     },
     {
       "filename": "INV_Eastron_SMART-X96-5E.csv",
@@ -10863,7 +11071,7 @@
       "manufacturer": "Eastron",
       "model": "SMART-X96-5E",
       "registers": 125,
-      "size_bytes": 7145
+      "size_bytes": 7143
     },
     {
       "filename": "INV_Efacec_Efasolar.csv",
@@ -10887,7 +11095,7 @@
       "manufacturer": "Efacec",
       "model": "PV550_Efacec_MODBUS",
       "registers": 145,
-      "size_bytes": 6474
+      "size_bytes": 6473
     },
     {
       "filename": "INV_FoxESS_FOX_ESS_G-MAX_EMS.csv",
@@ -10927,7 +11135,7 @@
       "manufacturer": "FoxESS",
       "model": "Modbus_Protocol",
       "registers": 387,
-      "size_bytes": 32227
+      "size_bytes": 32232
     },
     {
       "filename": "INV_FoxESS_P3_H3_PRO.csv",
@@ -11010,6 +11218,30 @@
       "size_bytes": 12777
     },
     {
+      "filename": "INV_Fronius_ECO_Series.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "ECO_Series",
+      "registers": 257,
+      "size_bytes": 12755
+    },
+    {
+      "filename": "INV_Fronius_Gen24_Primo_Symo_Float.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Gen24_Primo_Symo_Float",
+      "registers": 262,
+      "size_bytes": 13152
+    },
+    {
+      "filename": "INV_Fronius_Gen24_Primo_Symo_IntSF.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Gen24_Primo_Symo_IntSF",
+      "registers": 269,
+      "size_bytes": 13425
+    },
+    {
       "filename": "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Float.csv",
       "prefix": "INV",
       "manufacturer": "Fronius",
@@ -11082,6 +11314,22 @@
       "size_bytes": 12289
     },
     {
+      "filename": "INV_Fronius_Symo_10_20.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Symo_10_20",
+      "registers": 177,
+      "size_bytes": 9803
+    },
+    {
+      "filename": "INV_Fronius_Symo_GEN24_Plus.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Symo_GEN24_Plus",
+      "registers": 223,
+      "size_bytes": 12269
+    },
+    {
       "filename": "INV_Fronius_Symo_Primo_Gen24.csv",
       "prefix": "INV",
       "manufacturer": "Fronius",
@@ -11090,12 +11338,28 @@
       "size_bytes": 1797
     },
     {
+      "filename": "INV_Fronius_Tauro_50-3-D.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Tauro_50-3-D",
+      "registers": 193,
+      "size_bytes": 8541
+    },
+    {
       "filename": "INV_Fronius_Tauro_50-3-D_1.35.4-1_Float.csv",
       "prefix": "INV",
       "manufacturer": "Fronius",
       "model": "Tauro_50-3-D_1.35.4-1_Float",
       "registers": 193,
       "size_bytes": 8556
+    },
+    {
+      "filename": "INV_Fronius_Tauro_ECO_100-3-D.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Tauro_ECO_100-3-D",
+      "registers": 167,
+      "size_bytes": 9256
     },
     {
       "filename": "INV_Fronius_Tauro_ECO_Inverter_Register_Map_Float.csv",
@@ -11128,6 +11392,22 @@
       "model": "Tauro_Inverter_Register_Map_Int_SF",
       "registers": 287,
       "size_bytes": 14407
+    },
+    {
+      "filename": "INV_Fronius_Verto_3MPPT.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Verto_3MPPT",
+      "registers": 279,
+      "size_bytes": 14060
+    },
+    {
+      "filename": "INV_Fronius_Verto_4MPPT.csv",
+      "prefix": "INV",
+      "manufacturer": "Fronius",
+      "model": "Verto_4MPPT",
+      "registers": 299,
+      "size_bytes": 15130
     },
     {
       "filename": "INV_Fronius_Verto_Inverter_Register_Map_3MPPT_Float.csv",
@@ -11430,8 +11710,8 @@
       "prefix": "INV",
       "manufacturer": "Greenheiss",
       "model": "GH-IT_3-4-9M",
-      "registers": 416,
-      "size_bytes": 15489
+      "registers": 385,
+      "size_bytes": 15427
     },
     {
       "filename": "INV_Growatt_125kw.csv",
@@ -11455,7 +11735,7 @@
       "manufacturer": "Growatt",
       "model": "MAX1500V_MAX-XLV_Series",
       "registers": 468,
-      "size_bytes": 29644
+      "size_bytes": 29687
     },
     {
       "filename": "INV_Growatt_MAX_Series.csv",
@@ -11471,7 +11751,7 @@
       "manufacturer": "Growatt",
       "model": "MOD_TL3-XH_Series",
       "registers": 409,
-      "size_bytes": 25557
+      "size_bytes": 25602
     },
     {
       "filename": "INV_Growatt_Modbus.csv",
@@ -11495,7 +11775,7 @@
       "manufacturer": "Growatt",
       "model": "PV_Inverter_V3.14",
       "registers": 136,
-      "size_bytes": 8924
+      "size_bytes": 8923
     },
     {
       "filename": "INV_Growatt_RTU_Protocol_II.csv",
@@ -11511,7 +11791,7 @@
       "manufacturer": "Growatt",
       "model": "TL-X_TL-XH_Series",
       "registers": 425,
-      "size_bytes": 26509
+      "size_bytes": 26554
     },
     {
       "filename": "INV_Growatt_TL3-X_Series.csv",
@@ -11519,7 +11799,7 @@
       "manufacturer": "Growatt",
       "model": "TL3-X_Series",
       "registers": 371,
-      "size_bytes": 23268
+      "size_bytes": 23311
     },
     {
       "filename": "INV_Growatt_W_Growatt_Generic.csv",
@@ -11599,7 +11879,7 @@
       "manufacturer": "Huawei",
       "model": "7550606570-M0",
       "registers": 73,
-      "size_bytes": 4085
+      "size_bytes": 4012
     },
     {
       "filename": "INV_Huawei_81012141820.csv",
@@ -11639,7 +11919,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_2345",
       "registers": 47,
-      "size_bytes": 2597
+      "size_bytes": 2553
     },
     {
       "filename": "INV_Huawei_Modbus_364233-A.csv",
@@ -11655,7 +11935,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_60-HV",
       "registers": 347,
-      "size_bytes": 19259
+      "size_bytes": 19258
     },
     {
       "filename": "INV_Huawei_MODBUS_7550606570-M0.csv",
@@ -11663,7 +11943,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_7550606570-M0",
       "registers": 73,
-      "size_bytes": 4081
+      "size_bytes": 4008
     },
     {
       "filename": "INV_Huawei_MODBUS_81012141820.csv",
@@ -11671,7 +11951,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_81012141820",
       "registers": 328,
-      "size_bytes": 18066
+      "size_bytes": 18065
     },
     {
       "filename": "INV_Huawei_MODBUS_9095100105.csv",
@@ -11679,7 +11959,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_9095100105",
       "registers": 73,
-      "size_bytes": 4078
+      "size_bytes": 4005
     },
     {
       "filename": "INV_Huawei_Modbus_All_V3.csv",
@@ -11727,7 +12007,7 @@
       "manufacturer": "Huawei",
       "model": "SUN2000-2_5KTL",
       "registers": 47,
-      "size_bytes": 2600
+      "size_bytes": 2556
     },
     {
       "filename": "INV_Huawei_SUN2000-30_40KTL-M3.csv",
@@ -11751,7 +12031,7 @@
       "manufacturer": "Huawei",
       "model": "SUN2000-50_70KTL-M0",
       "registers": 73,
-      "size_bytes": 4091
+      "size_bytes": 4018
     },
     {
       "filename": "INV_Huawei_SUN2000-60KTL-HV.csv",
@@ -11759,7 +12039,7 @@
       "manufacturer": "Huawei",
       "model": "SUN2000-60KTL-HV",
       "registers": 347,
-      "size_bytes": 19262
+      "size_bytes": 19261
     },
     {
       "filename": "INV_Huawei_SUN2000-8_20KTL.csv",
@@ -11767,7 +12047,7 @@
       "manufacturer": "Huawei",
       "model": "SUN2000-8_20KTL",
       "registers": 328,
-      "size_bytes": 18063
+      "size_bytes": 18062
     },
     {
       "filename": "INV_Huawei_SUN2000-90_105KTL.csv",
@@ -11775,7 +12055,7 @@
       "manufacturer": "Huawei",
       "model": "SUN2000-90_105KTL",
       "registers": 73,
-      "size_bytes": 4078
+      "size_bytes": 4005
     },
     {
       "filename": "INV_Huawei_SUN2000-All_V3.csv",
@@ -11831,15 +12111,15 @@
       "manufacturer": "Huawei",
       "model": "SUN2000C00",
       "registers": 274,
-      "size_bytes": 17535
+      "size_bytes": 17533
     },
     {
       "filename": "INV_Huawei_SUN2000C00_MODBUS_Protocol.csv",
       "prefix": "INV",
       "manufacturer": "Huawei",
       "model": "SUN2000C00_MODBUS_Protocol",
-      "registers": 130,
-      "size_bytes": 7353
+      "registers": 129,
+      "size_bytes": 7350
     },
     {
       "filename": "INV_Huawei_SUN2000C11.csv",
@@ -11847,15 +12127,15 @@
       "manufacturer": "Huawei",
       "model": "SUN2000C11",
       "registers": 183,
-      "size_bytes": 12687
+      "size_bytes": 12684
     },
     {
       "filename": "INV_Huawei_SUN2000C11_MODBUS_Protocol.csv",
       "prefix": "INV",
       "manufacturer": "Huawei",
       "model": "SUN2000C11_MODBUS_Protocol",
-      "registers": 130,
-      "size_bytes": 7353
+      "registers": 129,
+      "size_bytes": 7350
     },
     {
       "filename": "INV_Huawei_SUN2000MA_V100R001C00.csv",
@@ -12063,7 +12343,7 @@
       "manufacturer": "INVT",
       "model": "Generic",
       "registers": 41,
-      "size_bytes": 2332
+      "size_bytes": 2325
     },
     {
       "filename": "INV_INVT_ModbusRTU_INVT_Generic.csv",
@@ -12071,7 +12351,7 @@
       "manufacturer": "INVT",
       "model": "ModbusRTU_INVT_Generic",
       "registers": 41,
-      "size_bytes": 2347
+      "size_bytes": 2340
     },
     {
       "filename": "INV_Jema_Generic.csv",
@@ -12367,7 +12647,7 @@
       "manufacturer": "Kehua",
       "model": "ThreePhase",
       "registers": 84,
-      "size_bytes": 4939
+      "size_bytes": 4935
     },
     {
       "filename": "INV_Kehua_ThreePhase_nondefinitif.csv",
@@ -12375,7 +12655,7 @@
       "manufacturer": "Kehua",
       "model": "ThreePhase_nondefinitif",
       "registers": 84,
-      "size_bytes": 4125
+      "size_bytes": 4121
     },
     {
       "filename": "INV_Kerneli_Sistemi_ST124-22.csv",
@@ -12447,7 +12727,7 @@
       "manufacturer": "Kstar",
       "model": "KIG1-250K",
       "registers": 254,
-      "size_bytes": 16248
+      "size_bytes": 16239
     },
     {
       "filename": "INV_Kstar_KSG1-250K.csv",
@@ -12455,7 +12735,7 @@
       "manufacturer": "Kstar",
       "model": "KSG1-250K",
       "registers": 254,
-      "size_bytes": 16781
+      "size_bytes": 16772
     },
     {
       "filename": "INV_Kstar_Modbus.csv",
@@ -12730,6 +13010,14 @@
       "size_bytes": 3043
     },
     {
+      "filename": "INV_Schneider_Conext_CL.csv",
+      "prefix": "INV",
+      "manufacturer": "Schneider",
+      "model": "Conext_CL",
+      "registers": 61,
+      "size_bytes": 4005
+    },
+    {
       "filename": "INV_Schneider_Conext_CL_30-33-50.csv",
       "prefix": "INV",
       "manufacturer": "Schneider",
@@ -12742,8 +13030,8 @@
       "prefix": "INV",
       "manufacturer": "Schneider",
       "model": "CONEXT_CORE_XC",
-      "registers": 207,
-      "size_bytes": 12814
+      "registers": 210,
+      "size_bytes": 10609
     },
     {
       "filename": "INV_Schneider_CONEXT_CORE_XC_RTU.csv",
@@ -12823,7 +13111,7 @@
       "manufacturer": "Siel",
       "model": "RECTIFIERS",
       "registers": 19,
-      "size_bytes": 1394
+      "size_bytes": 1393
     },
     {
       "filename": "INV_Siel_Solar_Converters.csv",
@@ -13207,7 +13495,7 @@
       "manufacturer": "SofarSolar",
       "model": "SOFAR_Modbus_Protocol_English_G3_V1.17",
       "registers": 145,
-      "size_bytes": 17653
+      "size_bytes": 17609
     },
     {
       "filename": "INV_SolarEdge_66KW.csv",
@@ -13224,6 +13512,14 @@
       "model": "ActivePowerControl",
       "registers": 16,
       "size_bytes": 1025
+    },
+    {
+      "filename": "INV_SolarEdge_EnhancedPowerControl.csv",
+      "prefix": "INV",
+      "manufacturer": "SolarEdge",
+      "model": "EnhancedPowerControl",
+      "registers": 18,
+      "size_bytes": 1311
     },
     {
       "filename": "INV_SolarEdge_EnhancedPowerControlBlock.csv",
@@ -13248,6 +13544,22 @@
       "model": "Modbus_Sunspec",
       "registers": 46,
       "size_bytes": 2189
+    },
+    {
+      "filename": "INV_SolarEdge_SE25K_SunSpec.csv",
+      "prefix": "INV",
+      "manufacturer": "SolarEdge",
+      "model": "SE25K_SunSpec",
+      "registers": 53,
+      "size_bytes": 2795
+    },
+    {
+      "filename": "INV_SolarEdge_SE33.3K_SunSpec.csv",
+      "prefix": "INV",
+      "manufacturer": "SolarEdge",
+      "model": "SE33.3K_SunSpec",
+      "registers": 69,
+      "size_bytes": 3836
     },
     {
       "filename": "INV_SolarEdge_SE33.3K_SunSpec_regul.csv",
@@ -13298,12 +13610,20 @@
       "size_bytes": 1996
     },
     {
+      "filename": "INV_SolarEdge_SunSpec_Generic.csv",
+      "prefix": "INV",
+      "manufacturer": "SolarEdge",
+      "model": "SunSpec_Generic",
+      "registers": 46,
+      "size_bytes": 2190
+    },
+    {
       "filename": "INV_SolaX_EMS1000-PRO.csv",
       "prefix": "INV",
       "manufacturer": "SolaX",
       "model": "EMS1000-PRO",
       "registers": 347,
-      "size_bytes": 20720
+      "size_bytes": 20710
     },
     {
       "filename": "INV_SolaX_EMS1000-PRO_v2.csv",
@@ -13319,7 +13639,7 @@
       "manufacturer": "SolaX",
       "model": "FORTH-MEGA_GENERIC",
       "registers": 326,
-      "size_bytes": 15156
+      "size_bytes": 15153
     },
     {
       "filename": "INV_SolaX_Generic.csv",
@@ -13386,12 +13706,20 @@
       "size_bytes": 2496
     },
     {
+      "filename": "INV_Solis_50_25_SunPM.csv",
+      "prefix": "INV",
+      "manufacturer": "Solis",
+      "model": "50_25_SunPM",
+      "registers": 47,
+      "size_bytes": 2760
+    },
+    {
       "filename": "INV_Solis_GENERIC.csv",
       "prefix": "INV",
       "manufacturer": "Solis",
       "model": "GENERIC",
-      "registers": 454,
-      "size_bytes": 24181
+      "registers": 455,
+      "size_bytes": 19931
     },
     {
       "filename": "INV_Solis_GENERIC_GridTied.csv",
@@ -13399,7 +13727,7 @@
       "manufacturer": "Solis",
       "model": "GENERIC_GridTied",
       "registers": 690,
-      "size_bytes": 34941
+      "size_bytes": 34936
     },
     {
       "filename": "INV_Solis_GENERIC_Work.csv",
@@ -13407,7 +13735,7 @@
       "manufacturer": "Solis",
       "model": "GENERIC_Work",
       "registers": 654,
-      "size_bytes": 36240
+      "size_bytes": 36237
     },
     {
       "filename": "INV_Solis_Inverter.csv",
@@ -13415,7 +13743,7 @@
       "manufacturer": "Solis",
       "model": "Inverter",
       "registers": 93,
-      "size_bytes": 4383
+      "size_bytes": 4392
     },
     {
       "filename": "INV_Solis_Modbus.csv",
@@ -13442,12 +13770,36 @@
       "size_bytes": 19811
     },
     {
+      "filename": "INV_Solis_SOLIS_GENERIC.csv",
+      "prefix": "INV",
+      "manufacturer": "Solis",
+      "model": "SOLIS_GENERIC",
+      "registers": 455,
+      "size_bytes": 19937
+    },
+    {
+      "filename": "INV_Solis_SOLIS_GENERIC_GridTied.csv",
+      "prefix": "INV",
+      "manufacturer": "Solis",
+      "model": "SOLIS_GENERIC_GridTied",
+      "registers": 690,
+      "size_bytes": 34942
+    },
+    {
       "filename": "INV_Solis_sunspec-pics-solis-25-66k-us-001-for-white-labeling_1_2_updated_7-15.csv",
       "prefix": "INV",
       "manufacturer": "Solis",
       "model": "sunspec-pics-solis-25-66k-us-001-for-white-labeling_1_2_updated_7-15",
       "registers": 308,
       "size_bytes": 12105
+    },
+    {
+      "filename": "INV_Solis_SunSpec_25_66K.csv",
+      "prefix": "INV",
+      "manufacturer": "Solis",
+      "model": "SunSpec_25_66K",
+      "registers": 308,
+      "size_bytes": 12051
     },
     {
       "filename": "INV_Solis_table2023.csv",
@@ -13647,7 +13999,7 @@
       "manufacturer": "Victron",
       "model": "Modbus_Vectron",
       "registers": 83,
-      "size_bytes": 4167
+      "size_bytes": 4162
     },
     {
       "filename": "INV_Waaree_new.csv",
@@ -13719,7 +14071,7 @@
       "manufacturer": "ABB",
       "model": "B21-B23-B24",
       "registers": 137,
-      "size_bytes": 8625
+      "size_bytes": 8624
     },
     {
       "filename": "MET_ABB_B21_B23_B24.csv",
@@ -13727,7 +14079,7 @@
       "manufacturer": "ABB",
       "model": "B21_B23_B24",
       "registers": 137,
-      "size_bytes": 7112
+      "size_bytes": 7111
     },
     {
       "filename": "MET_ABB_M2M.csv",
@@ -13783,7 +14135,7 @@
       "manufacturer": "AEberle",
       "model": "14178-PM_MODBUS_RTU_CPT_PQPLUS_UMD96",
       "registers": 126,
-      "size_bytes": 7185
+      "size_bytes": 7180
     },
     {
       "filename": "MET_AEberle_PQPlus_Generic.csv",
@@ -13815,7 +14167,7 @@
       "manufacturer": "Anexo",
       "model": "METER",
       "registers": 14,
-      "size_bytes": 849
+      "size_bytes": 848
     },
     {
       "filename": "MET_Bender_ISOMETER.csv",
@@ -14111,7 +14463,7 @@
       "manufacturer": "Deye",
       "model": "Modbus_-Required_Basic_Parameter_Pour_Kyaw_Thu_Hein_Client_Aaron_Hsu",
       "registers": 477,
-      "size_bytes": 25108
+      "size_bytes": 25096
     },
     {
       "filename": "MET_Eastron_SMART-X96-5E.csv",
@@ -14119,7 +14471,7 @@
       "manufacturer": "Eastron",
       "model": "SMART-X96-5E",
       "registers": 125,
-      "size_bytes": 7142
+      "size_bytes": 7140
     },
     {
       "filename": "MET_EcoAdapt_MODBUS_PowerElec6.csv",
@@ -14159,7 +14511,7 @@
       "manufacturer": "EDMI",
       "model": "Mk6",
       "registers": 59,
-      "size_bytes": 3262
+      "size_bytes": 3257
     },
     {
       "filename": "MET_Eflex4u_OTMETRIC_EFLEX4U.csv",
@@ -14242,6 +14594,22 @@
       "size_bytes": 8408
     },
     {
+      "filename": "MET_Fronius_Smart_Meter_50kA-3.csv",
+      "prefix": "MET",
+      "manufacturer": "Fronius",
+      "model": "Smart_Meter_50kA-3",
+      "registers": 72,
+      "size_bytes": 4141
+    },
+    {
+      "filename": "MET_Fronius_Smart_Meter_IntSF.csv",
+      "prefix": "MET",
+      "manufacturer": "Fronius",
+      "model": "Smart_Meter_IntSF",
+      "registers": 165,
+      "size_bytes": 8241
+    },
+    {
       "filename": "MET_Fronius_Smart_Meter_Register_Map_Float.csv",
       "prefix": "MET",
       "manufacturer": "Fronius",
@@ -14256,6 +14624,14 @@
       "model": "Smart_Meter_Register_Map_Int_SF",
       "registers": 165,
       "size_bytes": 8255
+    },
+    {
+      "filename": "MET_Fronius_Smart_Meter_TS.csv",
+      "prefix": "MET",
+      "manufacturer": "Fronius",
+      "model": "Smart_Meter_TS",
+      "registers": 144,
+      "size_bytes": 7308
     },
     {
       "filename": "MET_Goodwe_GM1000_GM3000.csv",
@@ -14279,7 +14655,7 @@
       "manufacturer": "Hoymiles",
       "model": "METER",
       "registers": 291,
-      "size_bytes": 21695
+      "size_bytes": 21685
     },
     {
       "filename": "MET_Huawei_DTSU666-H.csv",
@@ -14359,7 +14735,7 @@
       "manufacturer": "Imesys",
       "model": "NEMO_96HDLe",
       "registers": 797,
-      "size_bytes": 53807
+      "size_bytes": 53456
     },
     {
       "filename": "MET_Inepro_PRO380-MOD-CT.csv",
@@ -14567,7 +14943,7 @@
       "manufacturer": "Legrand",
       "model": "Nemo96HDLe",
       "registers": 151,
-      "size_bytes": 8278
+      "size_bytes": 8276
     },
     {
       "filename": "MET_Lettel_MAP4-34RJ.csv",
@@ -14575,7 +14951,7 @@
       "manufacturer": "Lettel",
       "model": "MAP4-34RJ",
       "registers": 405,
-      "size_bytes": 21335
+      "size_bytes": 21329
     },
     {
       "filename": "MET_Lettel_MAP4_345M.csv",
@@ -14583,7 +14959,7 @@
       "manufacturer": "Lettel",
       "model": "MAP4_345M",
       "registers": 300,
-      "size_bytes": 22296
+      "size_bytes": 22289
     },
     {
       "filename": "MET_Lettel_MAP4_34RJ.csv",
@@ -14591,7 +14967,7 @@
       "manufacturer": "Lettel",
       "model": "MAP4_34RJ",
       "registers": 405,
-      "size_bytes": 21418
+      "size_bytes": 21412
     },
     {
       "filename": "MET_Lettel_MCT4-45.csv",
@@ -14623,7 +14999,7 @@
       "manufacturer": "Lettel",
       "model": "MCX4-34",
       "registers": 139,
-      "size_bytes": 9723
+      "size_bytes": 9678
     },
     {
       "filename": "MET_Lettel_MCX4-34V.csv",
@@ -14631,7 +15007,7 @@
       "manufacturer": "Lettel",
       "model": "MCX4-34V",
       "registers": 102,
-      "size_bytes": 7095
+      "size_bytes": 7063
     },
     {
       "filename": "MET_Lettel_MCX4-34V_FLOAT.csv",
@@ -14639,7 +15015,7 @@
       "manufacturer": "Lettel",
       "model": "MCX4-34V_FLOAT",
       "registers": 102,
-      "size_bytes": 6336
+      "size_bytes": 6330
     },
     {
       "filename": "MET_Lettel_MCX4_34V.csv",
@@ -14663,7 +15039,7 @@
       "manufacturer": "Lettel",
       "model": "W_Lettel_MCX4-34V-FLOAT",
       "registers": 102,
-      "size_bytes": 5632
+      "size_bytes": 5630
     },
     {
       "filename": "MET_Lettel_W_Lettel_MCX4-34V-INT.csv",
@@ -14671,7 +15047,7 @@
       "manufacturer": "Lettel",
       "model": "W_Lettel_MCX4-34V-INT",
       "registers": 139,
-      "size_bytes": 8059
+      "size_bytes": 8057
     },
     {
       "filename": "MET_Lufft_MODBUS_RTU_Lufft_WS10.csv",
@@ -14679,7 +15055,7 @@
       "manufacturer": "Lufft",
       "model": "MODBUS_RTU_Lufft_WS10",
       "registers": 23,
-      "size_bytes": 1253
+      "size_bytes": 1252
     },
     {
       "filename": "MET_Lufft_WS600.csv",
@@ -14783,7 +15159,7 @@
       "manufacturer": "Polier",
       "model": "MTR5LMOD",
       "registers": 33,
-      "size_bytes": 1843
+      "size_bytes": 1837
     },
     {
       "filename": "MET_Polier_MTROGMOD.csv",
@@ -14823,7 +15199,7 @@
       "manufacturer": "Schneider",
       "model": "EM1200",
       "registers": 96,
-      "size_bytes": 5171
+      "size_bytes": 5121
     },
     {
       "filename": "MET_Schneider_EM6433.csv",
@@ -15018,6 +15394,14 @@
       "size_bytes": 2059
     },
     {
+      "filename": "MET_Schneider_PM5xxx_Series.csv",
+      "prefix": "MET",
+      "manufacturer": "Schneider",
+      "model": "PM5xxx_Series",
+      "registers": 875,
+      "size_bytes": 49083
+    },
+    {
       "filename": "MET_Schneider_PM820_SERM.csv",
       "prefix": "MET",
       "manufacturer": "Schneider",
@@ -15032,6 +15416,14 @@
       "model": "PMC",
       "registers": 517,
       "size_bytes": 31682
+    },
+    {
+      "filename": "MET_Schneider_PowerLogic_PMC.csv",
+      "prefix": "MET",
+      "manufacturer": "Schneider",
+      "model": "PowerLogic_PMC",
+      "registers": 517,
+      "size_bytes": 31690
     },
     {
       "filename": "MET_Schneider_RELAYP5.csv",
@@ -15135,7 +15527,7 @@
       "manufacturer": "Socomec",
       "model": "COUNTIS_E23",
       "registers": 59,
-      "size_bytes": 4611
+      "size_bytes": 4673
     },
     {
       "filename": "MET_Socomec_Countis_E23_2448.csv",
@@ -15159,13 +15551,21 @@
       "manufacturer": "Socomec",
       "model": "Countis_E33_E43",
       "registers": 73,
-      "size_bytes": 4824
+      "size_bytes": 4818
     },
     {
       "filename": "MET_Socomec_COUNTIS_E50-E53.csv",
       "prefix": "MET",
       "manufacturer": "Socomec",
       "model": "COUNTIS_E50-E53",
+      "registers": 141,
+      "size_bytes": 7113
+    },
+    {
+      "filename": "MET_Socomec_Countis_E50_E53.csv",
+      "prefix": "MET",
+      "manufacturer": "Socomec",
+      "model": "Countis_E50_E53",
       "registers": 141,
       "size_bytes": 7113
     },
@@ -15183,7 +15583,7 @@
       "manufacturer": "Socomec",
       "model": "Diris_A10",
       "registers": 75,
-      "size_bytes": 5134
+      "size_bytes": 5201
     },
     {
       "filename": "MET_Socomec_Diris_A40.csv",
@@ -15191,7 +15591,7 @@
       "manufacturer": "Socomec",
       "model": "Diris_A40",
       "registers": 35,
-      "size_bytes": 2379
+      "size_bytes": 2434
     },
     {
       "filename": "MET_Socomec_Diris_A_Countis_E.csv",
@@ -15207,7 +15607,7 @@
       "manufacturer": "Socomec",
       "model": "Diris_Axx",
       "registers": 25,
-      "size_bytes": 1069
+      "size_bytes": 1068
     },
     {
       "filename": "MET_Socomec_DIRIS_B10.csv",
@@ -15215,7 +15615,7 @@
       "manufacturer": "Socomec",
       "model": "DIRIS_B10",
       "registers": 23,
-      "size_bytes": 1466
+      "size_bytes": 1479
     },
     {
       "filename": "MET_Socomec_Diris_B30.csv",
@@ -15223,7 +15623,7 @@
       "manufacturer": "Socomec",
       "model": "Diris_B30",
       "registers": 20,
-      "size_bytes": 1295
+      "size_bytes": 1308
     },
     {
       "filename": "MET_Socomec_DIRIS_DIGIWARE_I35.csv",
@@ -15231,7 +15631,7 @@
       "manufacturer": "Socomec",
       "model": "DIRIS_DIGIWARE_I35",
       "registers": 26,
-      "size_bytes": 1361
+      "size_bytes": 1342
     },
     {
       "filename": "MET_Socomec_Diris_I30.csv",
@@ -15463,7 +15863,7 @@
       "manufacturer": "Weidmuller",
       "model": "610",
       "registers": 122,
-      "size_bytes": 7740
+      "size_bytes": 7736
     },
     {
       "filename": "MET_X7_Meters.csv",
@@ -15638,8 +16038,8 @@
       "prefix": "OTH",
       "manufacturer": "ABB",
       "model": "SUNSPEC_PVS-100_120_PICS_Rev_005",
-      "registers": 1145,
-      "size_bytes": 46142
+      "registers": 1143,
+      "size_bytes": 46139
     },
     {
       "filename": "OTH_ABB_SUNSPEC_PVS-10_12.5_15_20_30_33_PICS_Rev_001.csv",
@@ -15654,8 +16054,8 @@
       "prefix": "OTH",
       "manufacturer": "ABB",
       "model": "SUNSPEC_PVS-175_PICS_Rev_003",
-      "registers": 1070,
-      "size_bytes": 42910
+      "registers": 1068,
+      "size_bytes": 42907
     },
     {
       "filename": "OTH_ABB_SUNSPEC_PVS-50_60_PICS_Rev_3.csv",
@@ -15703,7 +16103,7 @@
       "manufacturer": "ABB",
       "model": "TRIO_200_276_FR",
       "registers": 89,
-      "size_bytes": 6691
+      "size_bytes": 6654
     },
     {
       "filename": "OTH_Advantech_6224.csv",
@@ -15727,7 +16127,7 @@
       "manufacturer": "AEberle",
       "model": "14178-PM_MODBUS_RTU_CPT_PQPLUS_UMD96",
       "registers": 110,
-      "size_bytes": 6445
+      "size_bytes": 6440
     },
     {
       "filename": "OTH_Alan_india_Alan_Annunciator.csv",
@@ -15799,7 +16199,7 @@
       "manufacturer": "Autarco",
       "model": "Modbus_Table",
       "registers": 75,
-      "size_bytes": 3662
+      "size_bytes": 3661
     },
     {
       "filename": "OTH_Axun_SunSpecInformationModelReference.csv",
@@ -15815,7 +16215,7 @@
       "manufacturer": "Bonfiglioli",
       "model": "Generic",
       "registers": 55,
-      "size_bytes": 2910
+      "size_bytes": 2907
     },
     {
       "filename": "OTH_CarloGavazzi_72RVV23XOSX.csv",
@@ -16015,7 +16415,7 @@
       "manufacturer": "Delta",
       "model": "protocol_v1.11_20180725",
       "registers": 92,
-      "size_bytes": 4670
+      "size_bytes": 4637
     },
     {
       "filename": "OTH_Delta_protocol_v1.12_20190403.csv",
@@ -16023,7 +16423,7 @@
       "manufacturer": "Delta",
       "model": "protocol_v1.12_20190403",
       "registers": 93,
-      "size_bytes": 4718
+      "size_bytes": 4685
     },
     {
       "filename": "OTH_Delta_protocol_v1_03_20170907.csv",
@@ -16063,7 +16463,7 @@
       "manufacturer": "Delta",
       "model": "Sunspec_protocol_v1.11_20180725",
       "registers": 92,
-      "size_bytes": 4678
+      "size_bytes": 4645
     },
     {
       "filename": "OTH_Delta_Sunspec_protocol_v1.12_20190403.csv",
@@ -16071,7 +16471,7 @@
       "manufacturer": "Delta",
       "model": "Sunspec_protocol_v1.12_20190403",
       "registers": 93,
-      "size_bytes": 4726
+      "size_bytes": 4693
     },
     {
       "filename": "OTH_Delta_Sunspec_protocol_v1.16_20210318.csv",
@@ -16079,7 +16479,7 @@
       "manufacturer": "Delta",
       "model": "Sunspec_protocol_v1.16_20210318",
       "registers": 122,
-      "size_bytes": 6481
+      "size_bytes": 6448
     },
     {
       "filename": "OTH_Delta_Sunspec_protocol_v1.23_20220906.csv",
@@ -16087,7 +16487,7 @@
       "manufacturer": "Delta",
       "model": "Sunspec_protocol_v1.23_20220906",
       "registers": 126,
-      "size_bytes": 6741
+      "size_bytes": 6708
     },
     {
       "filename": "OTH_Delta_Sunspec_protocol_v1_03_20170907.csv",
@@ -16119,7 +16519,7 @@
       "manufacturer": "Deye",
       "model": "GENERIC",
       "registers": 86,
-      "size_bytes": 5180
+      "size_bytes": 5177
     },
     {
       "filename": "OTH_Deye_GENERICreg-1.csv",
@@ -16127,7 +16527,7 @@
       "manufacturer": "Deye",
       "model": "GENERICreg-1",
       "registers": 86,
-      "size_bytes": 5185
+      "size_bytes": 5182
     },
     {
       "filename": "OTH_Deye_GENERICreg1.csv",
@@ -16135,7 +16535,7 @@
       "manufacturer": "Deye",
       "model": "GENERICreg1",
       "registers": 86,
-      "size_bytes": 5185
+      "size_bytes": 5182
     },
     {
       "filename": "OTH_Deye_Sunspec-PICS-DEYE-SUN-0820.csv",
@@ -16159,7 +16559,7 @@
       "manufacturer": "EDMI",
       "model": "Mk6",
       "registers": 59,
-      "size_bytes": 2660
+      "size_bytes": 2655
     },
     {
       "filename": "OTH_Efacec_Efasolar.csv",
@@ -16183,7 +16583,7 @@
       "manufacturer": "Efacec",
       "model": "ntu-pv500.mbmap-0.2.3",
       "registers": 156,
-      "size_bytes": 8576
+      "size_bytes": 8573
     },
     {
       "filename": "OTH_Efacec_PV250HE_PV375HE_PV500HE.csv",
@@ -16215,7 +16615,7 @@
       "manufacturer": "EKO",
       "model": "MS80",
       "registers": 40,
-      "size_bytes": 2248
+      "size_bytes": 2245
     },
     {
       "filename": "OTH_FoxESS_G-MAX_WebdynSunPM_BMS.csv",
@@ -16319,7 +16719,7 @@
       "manufacturer": "Hoymiles",
       "model": "GENERIC",
       "registers": 4963,
-      "size_bytes": 369127
+      "size_bytes": 369117
     },
     {
       "filename": "OTH_Huawei_2345.csv",
@@ -16327,7 +16727,7 @@
       "manufacturer": "Huawei",
       "model": "2345",
       "registers": 47,
-      "size_bytes": 2533
+      "size_bytes": 2489
     },
     {
       "filename": "OTH_Huawei_364233-A.csv",
@@ -16351,7 +16751,7 @@
       "manufacturer": "Huawei",
       "model": "60-HV",
       "registers": 343,
-      "size_bytes": 22482
+      "size_bytes": 22481
     },
     {
       "filename": "OTH_Huawei_7550606570-M0.csv",
@@ -16359,7 +16759,7 @@
       "manufacturer": "Huawei",
       "model": "7550606570-M0",
       "registers": 73,
-      "size_bytes": 4764
+      "size_bytes": 4691
     },
     {
       "filename": "OTH_Huawei_81012141820.csv",
@@ -16375,7 +16775,7 @@
       "manufacturer": "Huawei",
       "model": "9095100105",
       "registers": 73,
-      "size_bytes": 4017
+      "size_bytes": 3944
     },
     {
       "filename": "OTH_Huawei_Etude_Huawei.csv",
@@ -16399,7 +16799,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_2345",
       "registers": 47,
-      "size_bytes": 3031
+      "size_bytes": 2987
     },
     {
       "filename": "OTH_Huawei_Modbus_364233-A.csv",
@@ -16415,7 +16815,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_60-HV",
       "registers": 347,
-      "size_bytes": 22672
+      "size_bytes": 22671
     },
     {
       "filename": "OTH_Huawei_MODBUS_7550606570-M0.csv",
@@ -16423,7 +16823,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_7550606570-M0",
       "registers": 73,
-      "size_bytes": 4760
+      "size_bytes": 4687
     },
     {
       "filename": "OTH_Huawei_MODBUS_81012141820.csv",
@@ -16431,7 +16831,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_81012141820",
       "registers": 328,
-      "size_bytes": 21273
+      "size_bytes": 21272
     },
     {
       "filename": "OTH_Huawei_MODBUS_9095100105.csv",
@@ -16439,7 +16839,7 @@
       "manufacturer": "Huawei",
       "model": "MODBUS_9095100105",
       "registers": 73,
-      "size_bytes": 4757
+      "size_bytes": 4684
     },
     {
       "filename": "OTH_Huawei_Modbus_All_V3.csv",
@@ -16543,15 +16943,15 @@
       "manufacturer": "Imesys",
       "model": "NEMO_96HDLe",
       "registers": 797,
-      "size_bytes": 56303
+      "size_bytes": 55961
     },
     {
       "filename": "OTH_Imesys_PR139FR.csv",
       "prefix": "OTH",
       "manufacturer": "Imesys",
       "model": "PR139FR",
-      "registers": 66,
-      "size_bytes": 3737
+      "registers": 57,
+      "size_bytes": 3727
     },
     {
       "filename": "OTH_Inaccess_MODBUS_Inaccess.csv",
@@ -16663,7 +17063,7 @@
       "manufacturer": "Ingeteam",
       "model": "MODBUS_INGETEAM_Stringbox",
       "registers": 52,
-      "size_bytes": 2726
+      "size_bytes": 2723
     },
     {
       "filename": "OTH_Ingeteam_Modbus_Map_Rapid_Fusion_EN.csv",
@@ -16719,7 +17119,7 @@
       "manufacturer": "INVT",
       "model": "ModbusRTU_INVT_Generic",
       "registers": 41,
-      "size_bytes": 2408
+      "size_bytes": 2401
     },
     {
       "filename": "OTH_Jema_Generic_revG.csv",
@@ -16798,8 +17198,8 @@
       "prefix": "OTH",
       "manufacturer": "Kehua",
       "model": "SinglePhase_Work",
-      "registers": 155,
-      "size_bytes": 7143
+      "registers": 149,
+      "size_bytes": 7131
     },
     {
       "filename": "OTH_Kehua_SPI100-250K-B.csv",
@@ -16815,7 +17215,7 @@
       "manufacturer": "Kehua",
       "model": "SPI5-60B-K_Work",
       "registers": 210,
-      "size_bytes": 13212
+      "size_bytes": 13199
     },
     {
       "filename": "OTH_Kehua_ThreePhase.csv",
@@ -16831,7 +17231,7 @@
       "manufacturer": "Kehua",
       "model": "ThreePhase_nondefinitif",
       "registers": 84,
-      "size_bytes": 5012
+      "size_bytes": 5008
     },
     {
       "filename": "OTH_Kerneli_Sistemi_ST124-22.csv",
@@ -16975,15 +17375,15 @@
       "manufacturer": "Legrand",
       "model": "Nemo96HDLe",
       "registers": 151,
-      "size_bytes": 8773
+      "size_bytes": 8771
     },
     {
       "filename": "OTH_Legrand_Nemo_Work.csv",
       "prefix": "OTH",
       "manufacturer": "Legrand",
       "model": "Nemo_Work",
-      "registers": 172,
-      "size_bytes": 9693
+      "registers": 169,
+      "size_bytes": 9689
     },
     {
       "filename": "OTH_Legrand_Trimod.csv",
@@ -17006,8 +17406,8 @@
       "prefix": "OTH",
       "manufacturer": "Lettel",
       "model": "map4-345m_table_modbus_fr",
-      "registers": 349,
-      "size_bytes": 20767
+      "registers": 326,
+      "size_bytes": 20725
     },
     {
       "filename": "OTH_LSI_SRL_LSILASTEM_DPA870-873.csv",
@@ -17023,7 +17423,7 @@
       "manufacturer": "Lufft",
       "model": "MODBUS_RTU_Lufft_WS10",
       "registers": 23,
-      "size_bytes": 1331
+      "size_bytes": 1330
     },
     {
       "filename": "OTH_Lufft_WS600.csv",
@@ -17095,7 +17495,7 @@
       "manufacturer": "MarsEnergy",
       "model": "MarsLocalController_IO_List_ModbusTCP_V7.0",
       "registers": 251,
-      "size_bytes": 15361
+      "size_bytes": 15359
     },
     {
       "filename": "OTH_MarsEnergy_MarsLocalController_V7.0_EMS_Slave247.csv",
@@ -17119,7 +17519,7 @@
       "manufacturer": "MarsEnergy",
       "model": "MarsLocalController_V7.0_webdyn",
       "registers": 192,
-      "size_bytes": 12152
+      "size_bytes": 12150
     },
     {
       "filename": "OTH_MarsEnergy_MarsRenewable.csv",
@@ -17263,7 +17663,7 @@
       "manufacturer": "MCI",
       "model": "contax_1m_100a_031277_mapping_Modbus_20102017",
       "registers": 32,
-      "size_bytes": 1895
+      "size_bytes": 1872
     },
     {
       "filename": "OTH_MCI_contax_d_tri_80a_mid_modbus_ref_031333_-_mapping_modbus_V3.csv",
@@ -17295,7 +17695,7 @@
       "manufacturer": "Monichek",
       "model": "CombinerBox",
       "registers": 524,
-      "size_bytes": 38543
+      "size_bytes": 38537
     },
     {
       "filename": "OTH_OG_NHEOBOX_OG_NHEOBOX.csv",
@@ -17327,7 +17727,7 @@
       "manufacturer": "Polier",
       "model": "MTR5LMOD",
       "registers": 33,
-      "size_bytes": 1585
+      "size_bytes": 1579
     },
     {
       "filename": "OTH_Power_One.csv",
@@ -17367,7 +17767,7 @@
       "manufacturer": "Refusol",
       "model": "REFU-Modbus_Protocol_English_G3_V1.17_ONLY_SOLAR",
       "registers": 144,
-      "size_bytes": 17599
+      "size_bytes": 17555
     },
     {
       "filename": "OTH_Riello_AROS_GENERIC.csv",
@@ -17807,7 +18207,7 @@
       "manufacturer": "Secure",
       "model": "Elite_440-_Modbus_Mapping",
       "registers": 198,
-      "size_bytes": 10862
+      "size_bytes": 10859
     },
     {
       "filename": "OTH_Siebert_AFFICHEUR_SIEBERT_XC4XX.csv",
@@ -17887,7 +18287,7 @@
       "manufacturer": "Siemens",
       "model": "DCMonitor_Monichek_CombinerBox",
       "registers": 6292,
-      "size_bytes": 390026
+      "size_bytes": 390012
     },
     {
       "filename": "OTH_Siemens_GD458914_R6_PROTEUS_PV-INV-EN-ICD_MONITORING.csv",
@@ -18159,7 +18559,7 @@
       "manufacturer": "Sungrow",
       "model": "LC3000",
       "registers": 916,
-      "size_bytes": 48691
+      "size_bytes": 48683
     },
     {
       "filename": "OTH_Sungrow_PVCombinerBox.csv",
@@ -18215,7 +18615,7 @@
       "manufacturer": "Thies",
       "model": "Wind_Transmitter_Thies",
       "registers": 91,
-      "size_bytes": 7093
+      "size_bytes": 7071
     },
     {
       "filename": "OTH_Ticmaster_Mapping_-_FW41.48.csv",
@@ -18263,7 +18663,7 @@
       "manufacturer": "Victron",
       "model": "CCGX-Modbus-TCP-register-list-2.07",
       "registers": 290,
-      "size_bytes": 25363
+      "size_bytes": 26101
     },
     {
       "filename": "OTH_Victron_CCGX-Modbus-TCP-register-list-2.23.csv",
@@ -18271,7 +18671,7 @@
       "manufacturer": "Victron",
       "model": "CCGX-Modbus-TCP-register-list-2.23",
       "registers": 326,
-      "size_bytes": 27753
+      "size_bytes": 28540
     },
     {
       "filename": "OTH_Victron_CCGX-Modbus-TCP-register-list-2.80.csv",
@@ -18279,7 +18679,7 @@
       "manufacturer": "Victron",
       "model": "CCGX-Modbus-TCP-register-list-2.80",
       "registers": 565,
-      "size_bytes": 44149
+      "size_bytes": 45185
     },
     {
       "filename": "OTH_Victron_Modbus_Vectron.csv",
@@ -18287,7 +18687,7 @@
       "manufacturer": "Victron",
       "model": "Modbus_Vectron",
       "registers": 83,
-      "size_bytes": 4327
+      "size_bytes": 4322
     },
     {
       "filename": "OTH_Waaree_new.csv",
@@ -18335,7 +18735,7 @@
       "manufacturer": "Webdyn",
       "model": "Sens_IOs_Modbus_definition",
       "registers": 28,
-      "size_bytes": 1572
+      "size_bytes": 1570
     },
     {
       "filename": "OTH_Webdyn_WebdynBridge_TableDesRegistres.csv",
@@ -18351,7 +18751,7 @@
       "manufacturer": "Weidmuller",
       "model": "610",
       "registers": 122,
-      "size_bytes": 6663
+      "size_bytes": 6659
     },
     {
       "filename": "OTH_Weidmuller_Transclinic.csv",
@@ -18463,7 +18863,15 @@
       "manufacturer": "EKO",
       "model": "MS80",
       "registers": 40,
-      "size_bytes": 1689
+      "size_bytes": 1686
+    },
+    {
+      "filename": "SEN_Fronius_Card.csv",
+      "prefix": "SEN",
+      "manufacturer": "Fronius",
+      "model": "Card",
+      "registers": 54,
+      "size_bytes": 2541
     },
     {
       "filename": "SEN_Fronius_IG_Sensor_Card_Register_Map_Float_and_Int_SF_v1.0.csv",
@@ -18472,6 +18880,14 @@
       "model": "IG_Sensor_Card_Register_Map_Float_and_Int_SF_v1.0",
       "registers": 54,
       "size_bytes": 2586
+    },
+    {
+      "filename": "SEN_Fronius_Sensor_Card.csv",
+      "prefix": "SEN",
+      "manufacturer": "Fronius",
+      "model": "Sensor_Card",
+      "registers": 54,
+      "size_bytes": 2548
     },
     {
       "filename": "SEN_Hukseflux_Generic.csv",
@@ -18663,7 +19079,7 @@
       "manufacturer": "Lufft",
       "model": "WS10",
       "registers": 23,
-      "size_bytes": 1533
+      "size_bytes": 1532
     },
     {
       "filename": "SEN_MarsEnergy_PV.csv",
@@ -18694,8 +19110,8 @@
       "prefix": "SEN",
       "manufacturer": "MeierNT",
       "model": "MEIER_ADL-SR",
-      "registers": 19,
-      "size_bytes": 995
+      "registers": 18,
+      "size_bytes": 992
     },
     {
       "filename": "SEN_SESAutomation_WT-485-PRO.csv",
@@ -18719,7 +19135,7 @@
       "manufacturer": "Seven",
       "model": "3S-IS_8.0",
       "registers": 42,
-      "size_bytes": 2383
+      "size_bytes": 2382
     },
     {
       "filename": "SEN_Seven_3S-IS_8.csv",
@@ -18727,7 +19143,7 @@
       "manufacturer": "Seven",
       "model": "3S-IS_8",
       "registers": 41,
-      "size_bytes": 2223
+      "size_bytes": 2222
     },
     {
       "filename": "SEN_Seven_3S-IS_SUNSPEC.csv",
@@ -18783,7 +19199,7 @@
       "manufacturer": "Thermokon",
       "model": "AGS55_tcp",
       "registers": 66,
-      "size_bytes": 3265
+      "size_bytes": 3263
     },
     {
       "filename": "SEN_Thies_CLIMA.csv",
@@ -18799,7 +19215,7 @@
       "manufacturer": "Thies",
       "model": "Wind_Transmitter_Thies",
       "registers": 91,
-      "size_bytes": 6860
+      "size_bytes": 6838
     },
     {
       "filename": "SEN_Trackso_SOZ03.csv",

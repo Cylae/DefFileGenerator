@@ -34,7 +34,7 @@ Modbus;Meter;Lettel;W_Lettel_MCX4-34V-INT;;;;;;;
 33;3;56;U32;;Average line to line volts;;0.01;0;V;0
 34;3;58;U32;;Average line current;;0.001;0;A;0
 35;3;60;U32;;Neutral current;;0.001;0;A;4
-36;3;70;U16;;Nature of L1   load;;1;0;;0
+36;3;70;U16;;Nature of L1 load;;1;0;;0
 37;3;71;U16;;Nature of L2 load;;1;0;;0
 38;3;72;U16;;Nature of L3 load;;1;0;;0
 39;3;73;U16;;Nature of the system load;;1;0;;4

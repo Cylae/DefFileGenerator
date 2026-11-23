@@ -133,9 +133,9 @@ Modbus;Meter;Schneider;iEM3400_3500;;;;;;;
 132;3;45001;U16;;Configuration de l'alarme de surcharge;;1;0;;1
 133;3;45002;F32;;Seuil d'activation alarme de surcharge;;1;0;kW;1
 134;3;45004;U16;;Sortie logique associe à l'alarme;;1;0;;1
-135;3;45005;U16;;tat d'activation de l'alarme;;1;0;;9
-136;3;45006;U16;;tat non acquitt de l'alarme;;1;0;;9
-137;3;45007;U64;;Horodatage de la dernire alarme;;1;0;;9
-138;3;45011;F32;;Valeur de la dernire alarme;;1;0;kW;9
+135;3;45005;U16;;tat d'activation de l'alarme;;1;0;;4
+136;3;45006;U16;;tat non acquitt de l'alarme;;1;0;;4
+137;3;45007;U64;;Horodatage de la dernire alarme;;1;0;;4
+138;3;45011;F32;;Valeur de la dernire alarme;;1;0;kW;4
 139;3;57015;F32;;Compensation d'angle;;1;0;rad;1
 140;3;57017;F32;;Compensation de rapport;;1;0;;1

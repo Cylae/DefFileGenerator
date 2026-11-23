@@ -200,7 +200,7 @@ Modbus;Other;Kehua;SPI5-60B-K_Work;;;;;;;
 199;3;6002;U16;;Power factor;;1.000000;0.000000;;4
 200;3;6003;U16;;Reactive power;;1.000000;0.000000;;4
 201;3;6004;I16;;Grid control power;;1.000000;0.000000;;4
-202;3;6005;I16;;Battery      charge/discharge power;;1.000000;0.000000;;4
+202;3;6005;I16;;Battery charge/discharge power;;1.000000;0.000000;;4
 203;3;6020;U16;;Occupied;;1.000000;0.000000;;4
 204;3;6200;I16;;Grid-teid recover time;;1.000000;0.000000;;4
 205;3;6201;U16;;MPPT disturbance step;;1.000000;0.000000;;4
@@ -208,4 +208,4 @@ Modbus;Other;Kehua;SPI5-60B-K_Work;;;;;;;
 207;3;6203;U16;;Max charge current;;1.000000;0.000000;;4
 208;3;6204;U16;;Max sidcharge current;I_DC;1.000000;0.000000;;4
 209;3;6205;U16;;Battery max charge power;;1.000000;0.000000;;4
-210;3;6206;U16;;Battery     max     discharge power;;1.000000;0.000000;;4
+210;3;6206;U16;;Battery max discharge power;;1.000000;0.000000;;4

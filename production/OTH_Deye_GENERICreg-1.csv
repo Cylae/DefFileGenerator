@@ -10,9 +10,9 @@ Modbus;Other;Deye;GENERICreg-1;;;;;;;
 9;3;72;U16;;Grid voltage A;I_AC;0.100000;0.000000;V;4
 10;3;73;U16;;Grid voltage B;;0.100000;0.000000;V;4
 11;3;74;U16;;Grid voltage C;;0.100000;0.000000;V;4
-12;3;75;U16;;Grid  current A;;0.100000;0.000000;A;4
-13;3;76;U16;;Grid  current B;;0.100000;0.000000;A;4
-14;3;77;U16;;Grid  current C;;0.100000;0.000000;A;4
+12;3;75;U16;;Grid current A;;0.100000;0.000000;A;4
+13;3;76;U16;;Grid current B;;0.100000;0.000000;A;4
+14;3;77;U16;;Grid current C;;0.100000;0.000000;A;4
 15;3;78;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
 16;3;90;U16;;IGBT temperature;;0.100000;0.000000;C;4
 17;3;92;U16;;power factor;PF;1.000000;0.000000;;4

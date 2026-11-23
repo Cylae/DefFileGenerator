@@ -12,9 +12,9 @@ Modbus;Sensor;EKO;MS80;;;;;;;
 11;3;99;U16;;Hardware version;;1;0;;4
 12;3;100;U16;;Model;;1;0;;4
 13;3;101;U16;;Modbus Address;UNIT_ID;1;0;;4
-14;3;102;U16;;Serial  communication setting;;1;0;;4
+14;3;102;U16;;Serial communication setting;;1;0;;4
 15;3;103;U16;;Register Type;;1;0;;4
-16;3;106;U16;;Setting  the  analog outputs;;1;0;;4
+16;3;106;U16;;Setting the analog outputs;;1;0;;4
 17;3;131;F32;;0-1V loading resistor;;1;0;Ohm;4
 18;3;133;F32;;Irradiance (0-1Vmode 0V);POA;1;0;W/m 2;4
 19;3;135;F32;;Irradiance (0-1Vmode 1V);;1;0;W/m 2;4

@@ -12,7 +12,6 @@ Enforces the 5 Apollo-standard pillars on all definition files entering `product
 import csv
 import json
 import re
-import shutil
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -38,6 +37,12 @@ ABB_DIR = WORKSPACE_DIR / "Definitions" / "ABB"
 KACO_DIR = WORKSPACE_DIR / "Definitions" / "Kaco"
 SUNGROW_DIR = WORKSPACE_DIR / "Definitions" / "Sungrow"
 HUAWEI_DIR = WORKSPACE_DIR / "Definitions" / "Huawei"
+FRONIUS_DIR = WORKSPACE_DIR / "Definitions" / "Fronius"
+SOLAREDGE_DIR = WORKSPACE_DIR / "Definitions" / "SolarEdge"
+SCHNEIDER_DIR = WORKSPACE_DIR / "Definitions" / "Schneider"
+SOCOMEC_DIR = WORKSPACE_DIR / "Definitions" / "Socomec"
+GROWATT_DIR = WORKSPACE_DIR / "Definitions" / "Growatt"
+SOLIS_DIR = WORKSPACE_DIR / "Definitions" / "Solis"
 
 PREFIX_TO_CATEGORY = {
     "INV": "Inverter",
@@ -532,7 +537,6 @@ def build_manifest() -> dict[str, Path]:
 
     # 6. Additional Key Certified Models
     extra_map = {
-        "BAT_Huawei_Luna2000.csv": TAGGED_DIR / "BAT_Huawei_Luna_2000.csv",
         "BAT_Hoymiles_HoyUltra2.csv": TAGGED_DIR / "BAT_Hoymiles_HOYMILES_BATTERY_HOYULTRA2.csv",
         "INV_Huawei_GENERIC.csv": DEFINITIONS_DIR / "INV_Huawei_GENERIC.csv",
         "INV_Atess_Generic.csv": TAGGED_DIR / "INV_Atess_Power_ATESS_GENERIC.csv",
@@ -607,6 +611,36 @@ def build_manifest() -> dict[str, Path]:
         for hw_file in sorted(HUAWEI_DIR.glob("*.csv")):
             manifest[hw_file.name] = hw_file
 
+    # 15. Complete Fronius Certified Ecosystem
+    if FRONIUS_DIR.exists():
+        for f_file in sorted(FRONIUS_DIR.glob("*.csv")):
+            manifest[f_file.name] = f_file
+
+    # 16. Complete SolarEdge Certified Ecosystem
+    if SOLAREDGE_DIR.exists():
+        for se_file in sorted(SOLAREDGE_DIR.glob("*.csv")):
+            manifest[se_file.name] = se_file
+
+    # 17. Complete Schneider Certified Ecosystem
+    if SCHNEIDER_DIR.exists():
+        for sch_file in sorted(SCHNEIDER_DIR.glob("*.csv")):
+            manifest[sch_file.name] = sch_file
+
+    # 18. Complete Socomec Certified Ecosystem
+    if SOCOMEC_DIR.exists():
+        for soc_file in sorted(SOCOMEC_DIR.glob("*.csv")):
+            manifest[soc_file.name] = soc_file
+
+    # 19. Complete Growatt Certified Ecosystem
+    if GROWATT_DIR.exists():
+        for gw_file in sorted(GROWATT_DIR.glob("*.csv")):
+            manifest[gw_file.name] = gw_file
+
+    # 20. Complete Solis Certified Ecosystem
+    if SOLIS_DIR.exists():
+        for sol_file in sorted(SOLIS_DIR.glob("*.csv")):
+            manifest[sol_file.name] = sol_file
+
     # 6. Comprehensive Ingestion from tagged_definitions/
     candidates_by_tgt: dict[str, list[Path]] = defaultdict(list)
     for f in sorted(TAGGED_DIR.glob("*.csv")):
@@ -645,6 +679,23 @@ def build_manifest() -> dict[str, Path]:
     manifest = {k: v for k, v in manifest.items() if k.lower() not in PRUNED_REDUNDANT_FILES}
 
     return manifest
+
+
+def clean_cell_str(val: str) -> str:
+    """Strips embedded newlines, carriage returns, and semicolons to guarantee single-line 11-column integrity."""
+    s = str(val).replace("\r", " ").replace("\n", " ").replace(";", " - ")
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def write_clean_csv(path: Path, header: list[str], rows: list[list[str]]) -> None:
+    """Writes strict Apollo 5-pillars CSV: UTF-8 without BOM, CRLF, clean cells, no embedded delimiters."""
+    clean_lines = []
+    clean_lines.append(";".join(clean_cell_str(c) for c in header))
+    for r in rows:
+        clean_lines.append(";".join(clean_cell_str(c) for c in r))
+    content_bytes = ("\r\n".join(clean_lines) + "\r\n").encode("utf-8")
+    if not path.exists() or path.read_bytes() != content_bytes:
+        path.write_bytes(content_bytes)
 
 
 def sanitize_and_normalize_definition(
@@ -703,15 +754,15 @@ def sanitize_and_normalize_definition(
         while len(row) < 11:
             row.append("")
 
-        fc = row[1].strip() or "3"
-        addr = row[2].strip()
-        dtype = row[3].strip() or "U16"
-        name = row[5].strip()
-        tag = row[6].strip()
-        coef_a = row[7].strip() or "1.000000"
-        coef_b = row[8].strip() or "0.000000"
-        unit = row[9].strip()
-        action = row[10].strip() or "4"
+        fc = clean_cell_str(row[1]) or "3"
+        addr = clean_cell_str(row[2])
+        dtype = clean_cell_str(row[3]) or "U16"
+        name = clean_cell_str(row[5])
+        tag = clean_cell_str(row[6])
+        coef_a = clean_cell_str(row[7]) or "1.000000"
+        coef_b = clean_cell_str(row[8]) or "0.000000"
+        unit = clean_cell_str(row[9])
+        action = clean_cell_str(row[10]) or "4"
 
         # Validate/Normalize function code
         if fc not in ("1", "2", "3", "4"):
@@ -987,51 +1038,39 @@ def main():
                 KACO_DIR,
                 SUNGROW_DIR,
                 HUAWEI_DIR,
+                FRONIUS_DIR,
+                SOLAREDGE_DIR,
+                SCHNEIDER_DIR,
+                SOCOMEC_DIR,
+                GROWATT_DIR,
+                SOLIS_DIR,
             )
             if d.exists()
         )
 
         if is_already_certified:
-            if not out_path.exists() or out_path.read_bytes() != src_path.read_bytes():
-                shutil.copy2(src_path, out_path)
-            # Enforce 5 Pillars: strict UTF-8 no BOM and CRLF
-            raw_b = out_path.read_bytes()
+            raw_src = src_path.read_bytes()
             if (
-                raw_b.startswith(b"\xef\xbb\xbf")
-                or not raw_b.endswith(b"\r\n")
-                or b"\r\n" not in raw_b
-                or b"\r\r\n" in raw_b
+                raw_src.startswith(b"\xef\xbb\xbf")
+                or not raw_src.endswith(b"\r\n")
+                or b"\r\n" not in raw_src
+                or b"\r\r\n" in raw_src
             ):
-                text_norm = raw_b.decode("utf-8-sig", errors="replace")
-                out_path.write_bytes(("\r\n".join(text_norm.splitlines()) + "\r\n").encode("utf-8"))
+                text_norm = raw_src.decode("utf-8-sig", errors="replace")
+                content_bytes = ("\r\n".join(text_norm.splitlines()) + "\r\n").encode("utf-8")
+            else:
+                content_bytes = raw_src
+
+            if not out_path.exists() or out_path.read_bytes() != content_bytes:
+                out_path.write_bytes(content_bytes)
+
             with open(out_path, encoding="utf-8-sig", errors="ignore") as fp:
                 rdr = csv.reader(fp, delimiter=";")
                 header = next(rdr, [])
                 rows = list(rdr)
         else:
             header, rows = sanitize_and_normalize_definition(tgt_filename, src_path)
-
-            buf = []
-            header_line = ";".join(header)
-            buf.append(header_line)
-            for r in rows:
-                buf.append(";".join(r))
-            new_content = "\n".join(buf) + "\n"
-
-            need_write = True
-            if out_path.exists():
-                try:
-                    with open(out_path, encoding="utf-8") as existing_fp:
-                        if existing_fp.read().replace("\r\n", "\n") == new_content:
-                            need_write = False
-                except Exception:
-                    pass
-
-            if need_write:
-                with open(out_path, "w", encoding="utf-8", newline="") as fp:
-                    writer = csv.writer(fp, delimiter=";")
-                    writer.writerow(header)
-                    writer.writerows(rows)
+            write_clean_csv(out_path, header, rows)
 
         # Validate with def_gen
         val_rep = generator.validate_csv_detailed(str(out_path), strict=True, strict_overlap=False)

@@ -50,41 +50,41 @@ Modbus;Inverter;ABB;TRIO_20.0-27.6_TL_OUTD;;;;;;;
 49;4;112;U16;;PN3;;1.000000;0.000000;;4
 50;4;113;U16;;PN4;;1.000000;0.000000;;4
 51;4;114;U16;;PN5;;1.000000;0.000000;;4
-52;4;115;U16;;Onduleur  Identifiant;;1.000000;0.000000;;4
-53;4;116;U16;;Onduleur  Code pays;;1.000000;0.000000;;4
-54;4;117;U16;;Onduleur  Isolation galvanique;;1.000000;0.000000;;4
-55;4;118;U16;;Onduleur  Type;;1.000000;0.000000;;4
-56;4;119;U16;;Onduleur  Semaine de production - Octet fort;;1.000000;0.000000;;4
-57;4;120;U16;;Onduleur  Semaine de production - Octet faible;;1.000000;0.000000;;4
-58;4;121;U16;;Onduleur  Annee de production - Octet fort;;1.000000;0.000000;;4
-59;4;122;U16;;Onduleur  Annee de production - Octet faible;;1.000000;0.000000;;4
-60;4;123;U16;;Onduleur  Etats (Octet 0)  Etat general;;1.000000;0.000000;;4
-61;4;124;U16;;Onduleur  Etats (Octet 1)  Etat onduleur;;1.000000;0.000000;;4
-62;4;125;U16;;Onduleur  Etats (Octet 2)  Etat canal (MPPT) 1;;1.000000;0.000000;;4
-63;4;126;U16;;Onduleur  Etats (Octet 3)  Etat canal (MPPT) 2;;1.000000;0.000000;;4
-64;4;127;U16;;Onduleur  Etats (Octet 4)  Etat alarmes;;1.000000;0.000000;;9
-65;4;128;U16;;Carte de controle de l afficheur  Etat;;1.000000;0.000000;;4
-66;4;129;U16;;Carte de communication  Etat;;1.000000;0.000000;;4
-67;4;130;U16;;Carte porte-fusibles  Etat;;1.000000;0.000000;;4
-68;4;131;F32_W;;Onduleur  Energie journaliere;E_DAY;1.000000;0.000000;Wh;4
-69;4;133;F32_W;;Onduleur  Energie totale;E_TOT;1.000000;0.000000;kWh;4
-70;4;135;F32_W;;Onduleur  Energie partielle;;1.000000;0.000000;kWh;4
-71;4;137;F32_W;;Onduleur  Energie hebdomadaire;;1.000000;0.000000;kWh;4
-72;4;139;F32_W;;Onduleur  Energie mensuelle;;1.000000;0.000000;kWh;4
-73;4;141;F32_W;;Onduleur  Energie annuelle;;1.000000;0.000000;kWh;4
-74;4;143;F32_W;;Onduleur  Tension du reseau 2;;1.000000;0.000000;V;4
-75;4;145;F32_W;;Onduleur  Courant injecte;;1.000000;0.000000;A;4
-76;4;147;F32_W;;Onduleur  Puissance d injection;;1.000000;0.000000;W;4
-77;4;149;F32_W;;Onduleur  Frequence du reseau;FREQ;1.000000;0.000000;Hz;4
-78;4;151;F32_W;;Onduleur  Puissance MPPT1;;1.000000;0.000000;W;4
-79;4;153;F32_W;;Onduleur  Tension MPPT1;;1.000000;0.000000;V;4
-80;4;155;F32_W;;Onduleur  Courant MPPT1;;1.000000;0.000000;A;4
-81;4;157;F32_W;;Onduleur  Puissance MPPT2;;1.000000;0.000000;W;4
-82;4;159;F32_W;;Onduleur  Tension MPPT2;;1.000000;0.000000;V;4
-83;4;161;F32_W;;Onduleur  Courant MPPT2;;1.000000;0.000000;A;4
-84;4;163;F32_W;;Onduleur  Temperature onduleur;;1.000000;0.000000;C;4
-85;4;165;F32_W;;Onduleur  Temperature booster;;1.000000;0.000000;C;4
-86;4;167;F32_W;;Onduleur  Resistance d isolement (Riso);;1.000000;0.000000;MOhm;4
-87;4;169;F32_W;;Onduleur  Frequence (onduleur eolien uniquement);;1.000000;0.000000;Hz;4
-88;4;171;F32_W;;Onduleur  Cos phi;PF;1.000000;0.000000;;4
+52;4;115;U16;;Onduleur Identifiant;;1.000000;0.000000;;4
+53;4;116;U16;;Onduleur Code pays;;1.000000;0.000000;;4
+54;4;117;U16;;Onduleur Isolation galvanique;;1.000000;0.000000;;4
+55;4;118;U16;;Onduleur Type;;1.000000;0.000000;;4
+56;4;119;U16;;Onduleur Semaine de production - Octet fort;;1.000000;0.000000;;4
+57;4;120;U16;;Onduleur Semaine de production - Octet faible;;1.000000;0.000000;;4
+58;4;121;U16;;Onduleur Annee de production - Octet fort;;1.000000;0.000000;;4
+59;4;122;U16;;Onduleur Annee de production - Octet faible;;1.000000;0.000000;;4
+60;4;123;U16;;Onduleur Etats (Octet 0) Etat general;;1.000000;0.000000;;4
+61;4;124;U16;;Onduleur Etats (Octet 1) Etat onduleur;;1.000000;0.000000;;4
+62;4;125;U16;;Onduleur Etats (Octet 2) Etat canal (MPPT) 1;;1.000000;0.000000;;4
+63;4;126;U16;;Onduleur Etats (Octet 3) Etat canal (MPPT) 2;;1.000000;0.000000;;4
+64;4;127;U16;;Onduleur Etats (Octet 4) Etat alarmes;;1.000000;0.000000;;9
+65;4;128;U16;;Carte de controle de l afficheur Etat;;1.000000;0.000000;;4
+66;4;129;U16;;Carte de communication Etat;;1.000000;0.000000;;4
+67;4;130;U16;;Carte porte-fusibles Etat;;1.000000;0.000000;;4
+68;4;131;F32_W;;Onduleur Energie journaliere;E_DAY;1.000000;0.000000;Wh;4
+69;4;133;F32_W;;Onduleur Energie totale;E_TOT;1.000000;0.000000;kWh;4
+70;4;135;F32_W;;Onduleur Energie partielle;;1.000000;0.000000;kWh;4
+71;4;137;F32_W;;Onduleur Energie hebdomadaire;;1.000000;0.000000;kWh;4
+72;4;139;F32_W;;Onduleur Energie mensuelle;;1.000000;0.000000;kWh;4
+73;4;141;F32_W;;Onduleur Energie annuelle;;1.000000;0.000000;kWh;4
+74;4;143;F32_W;;Onduleur Tension du reseau 2;;1.000000;0.000000;V;4
+75;4;145;F32_W;;Onduleur Courant injecte;;1.000000;0.000000;A;4
+76;4;147;F32_W;;Onduleur Puissance d injection;;1.000000;0.000000;W;4
+77;4;149;F32_W;;Onduleur Frequence du reseau;FREQ;1.000000;0.000000;Hz;4
+78;4;151;F32_W;;Onduleur Puissance MPPT1;;1.000000;0.000000;W;4
+79;4;153;F32_W;;Onduleur Tension MPPT1;;1.000000;0.000000;V;4
+80;4;155;F32_W;;Onduleur Courant MPPT1;;1.000000;0.000000;A;4
+81;4;157;F32_W;;Onduleur Puissance MPPT2;;1.000000;0.000000;W;4
+82;4;159;F32_W;;Onduleur Tension MPPT2;;1.000000;0.000000;V;4
+83;4;161;F32_W;;Onduleur Courant MPPT2;;1.000000;0.000000;A;4
+84;4;163;F32_W;;Onduleur Temperature onduleur;;1.000000;0.000000;C;4
+85;4;165;F32_W;;Onduleur Temperature booster;;1.000000;0.000000;C;4
+86;4;167;F32_W;;Onduleur Resistance d isolement (Riso);;1.000000;0.000000;MOhm;4
+87;4;169;F32_W;;Onduleur Frequence (onduleur eolien uniquement);;1.000000;0.000000;Hz;4
+88;4;171;F32_W;;Onduleur Cos phi;PF;1.000000;0.000000;;4
 89;4;173;U16;;Onduleur - Presence - Indicates status of board to inverter;;1.000000;0.000000;;4

@@ -8,7 +8,7 @@ Modbus;Inverter;Huawei;SUN2000C11;;;;;;;
 7;3;40012;U16;;OVP protect 10min.;;0.010000;0.000000;V;4
 8;3;40013;U32;;OVP time 10min;;1.000000;0.000000;ms;4
 9;3;40022;U16;;ISO detect setting;;0.001000;0.000000;MOhms;4
-10;3;40023;U16;;Grid Voltage-Unbalance setting;U_AC_L1L2;1.000000;0.000000;'%;4
+10;3;40023;U16;;Grid Voltage-Unbalance setting;U_AC_L1L2;1.000000;0.000000;'%;4
 11;3;40051;U16;;Enable LVRT function (available for VDE-AR-N-4105);;1.000000;0.000000;;4
 12;3;40052;U16;;Enable islanding detection;;1.000000;0.000000;;4
 13;3;40053;U16;;Soft-start time;;1.000000;0.000000;Sec;4
@@ -132,7 +132,7 @@ Modbus;Inverter;Huawei;SUN2000C11;;;;;;;
 131;3;50024_0_1;BITS;;Cabinet Over-Temp_321_1;;1.000000;0.000000;;8
 132;3;50025_0_1;BITS;;Cabinet Over-Temp_321_2;;1.000000;0.000000;;8
 133;3;50031_0_1;BITS;;System Fault_400_5;;1.000000;0.000000;;8
-134;3;50032_0_1;BITS;;Low  Array Insulation Resistance_313_1;R_ISO;1.000000;0.000000;;8
+134;3;50032_0_1;BITS;;Low Array Insulation Resistance_313_1;R_ISO;1.000000;0.000000;;8
 135;3;50037_0_1;BITS;;Residual current abnormal_318_2;;1.000000;0.000000;;8
 136;3;50038_0_1;BITS;;Over-Temp_321_6;;1.000000;0.000000;;8
 137;3;50041_0_1;BITS;;Sting 3 Reverse_122_1;;1.000000;0.000000;;4
@@ -177,7 +177,7 @@ Modbus;Inverter;Huawei;SUN2000C11;;;;;;;
 176;3;50124_0_1;BITS;;Grid Voltage Abnormal_301_12;;1.000000;0.000000;;8
 177;3;50134_0_1;BITS;;Frequency Fault_305_2;;1.000000;0.000000;;8
 178;3;50135_0_1;BITS;;Frequency Fault_305_4;;1.000000;0.000000;;8
-179;3;50136_0_1;BITS;;Grid Voltage-Unbalance_301_28;;1.000000;0.000000;;8
+179;3;50136_0_1;BITS;;Grid Voltage-Unbalance_301_28;;1.000000;0.000000;;8
 180;3;50137_0_1;BITS;;Grid power-down_301_29;;1.000000;0.000000;;8
 181;3;50138_0_1;BITS;;Electrical grounding Fault_326_1;;1.000000;0.000000;;8
 182;3;50139_0_1;BITS;;Grid Voltage Fault_301_26;;1.000000;0.000000;;8

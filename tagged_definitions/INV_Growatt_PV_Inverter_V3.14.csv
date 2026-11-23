@@ -1,4 +1,4 @@
-Modbus;Inverter;Growatt;Growatt_PV_Inverter_V3.14;;;;;;;
+Modbus;Inverter;Growatt;PV_Inverter_V3.14;;;;;;;
 1;3;0;U16;;The Inverter On/Off state and the auto start state, The low byte is the on/off(1/0), the high byte is the auto start state or not(1/0).;;1.000000;0.000000;;4
 2;3;1;U16;;SPI(system protection interface) function enable;;1.000000;0.000000;;4
 3;3;2;U16;;Set the following 3,4,5,99 CMD will be memory or not(1/0), if not, these settings are the initial value.;;1.000000;0.000000;;4
@@ -73,7 +73,7 @@ Modbus;Inverter;Growatt;Growatt_PV_Inverter_V3.14;;;;;;;
 72;3;116;U16;;Above 6KwSystem for CEI021;;1.000000;0.000000;;4
 73;3;117;U16;;Frequency Derating Enable;;1.000000;0.000000;;4
 74;3;118;U16;;Q(v) lock Out active power of CEI021;;1.000000;0.000000;Perce nt;4
-75;3;119;U16;;"Restart Delay Time after fault back;";;1.000000;0.000000;s;9
+75;3;119;U16;;Restart Delay Time after fault back -;;1.000000;0.000000;s;9
 76;3;120;U16;;Reactive Rate in LVFRT;;1.000000;0.000000;;4
 77;3;121;U16;;LVFRT low fault value 1;;1.000000;0.000000;0.1V;9
 78;3;122;U16;;LVFRT low fault time 1;;1.000000;0.000000;1ms;9

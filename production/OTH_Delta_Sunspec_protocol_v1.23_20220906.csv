@@ -78,8 +78,8 @@ Modbus;Other;Delta;Sunspec_protocol_v1.23_20220906;;;;;;;
 77;3;614;U16;;NoUse64041;;1.000000;610.000000;;4
 78;3;168;U32;;Event_Time[0..29];WIND_SPEED;1.000000;166.000000;second;4
 79;3;228;U32;;Nouse_U32[0..119];;1.000000;226.000000;;4
-80;3;468;U32;;Current event -                 Int Fan Fail;;1.000000;0.000000;;9
-81;3;470;U32;;Current event -                  Ext Fan Fail;;1.000000;2.000000;;9
+80;3;468;U32;;Current event - Int Fan Fail;;1.000000;0.000000;;9
+81;3;470;U32;;Current event - Ext Fan Fail;;1.000000;2.000000;;9
 82;3;472;U16;;NoUse[0..6];;1.000000;0.000000;;4
 83;3;479;U16;;Derating Records Occur Flags;;1.000000;0.000000;;4
 84;3;480;U32;;Derating Records for Thermal;;1.000000;1.000000;second;4

@@ -32,7 +32,7 @@ Modbus;Inverter;Kehua;ThreePhase;;;;;;;
 31;4;5023;U16;;Output apparent power;;0.100000;0.000000;Kva;4
 32;4;5024;I16;;Output active power;P_AC;0.100000;0.000000;kW;4
 33;4;5025;I16;;Output reactive power;;0.100000;0.000000;kVar;4
-34;4;5026;U16;;Output   apparent   power (U);;0.100000;0.000000;kVA;4
+34;4;5026;U16;;Output apparent power (U);;0.100000;0.000000;kVA;4
 35;4;5027;I16;;Output active power (U);;0.100000;0.000000;kW;4
 36;4;5028;I16;;Power factor (U);;0.010000;0.000000;;4
 37;4;5029;U16;;Load ratio(U);;0.010000;0.000000;;4

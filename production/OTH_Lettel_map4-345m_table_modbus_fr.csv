@@ -3,12 +3,12 @@ Modbus;Other;Lettel;map4-345m_table_modbus_fr;;;;;;;
 2;4;4;U16;;Angle de phase 1 entre tension et courant;U_AC_1;1.0;0.0;0.1º;4
 3;4;6;U16;;Angle de phase L2 entre tension et courant;U_AC_2;1.0;0.0;0.1º;4
 4;4;8;U16;;Angle de phase L3 entre phase et courant;I_AC_3;1.0;0.0;0.1º;4
-5;4;10;U16;;Tension  L1-L2;U_AC_L1L2;1.0;0.0;0.1V;4
-6;4;12;U16;;Tension  L3-L2;;1.0;0.0;0.1V;4
-7;4;14;U16;;Tension  L1-L3;;1.0;0.0;0.1V;4
-8;4;16;U16;;Tension  L1-N;;1.0;0.0;0.1V;4
-9;4;18;U16;;Tension  L2-N;;1.0;0.0;0.1V;4
-10;4;20;U16;;Tension  L3-N;U_AC_3;1.0;0.0;0.1V;4
+5;4;10;U16;;Tension L1-L2;U_AC_L1L2;1.0;0.0;0.1V;4
+6;4;12;U16;;Tension L3-L2;;1.0;0.0;0.1V;4
+7;4;14;U16;;Tension L1-L3;;1.0;0.0;0.1V;4
+8;4;16;U16;;Tension L1-N;;1.0;0.0;0.1V;4
+9;4;18;U16;;Tension L2-N;;1.0;0.0;0.1V;4
+10;4;20;U16;;Tension L3-N;U_AC_3;1.0;0.0;0.1V;4
 11;4;22;U16;;Courant L1;I_AC_1;1.0;0.0;0.001A;4
 12;4;24;U16;;Courant L2;I_AC_2;1.0;0.0;0.001A;4
 13;4;26;U16;;Courant L3;;1.0;0.0;0.001A;4
@@ -67,8 +67,7 @@ Modbus;Other;Lettel;map4-345m_table_modbus_fr;;;;;;;
 66;4;4097;U16;;Impédance L2;;1.0;0.0;0.01 ohms;4
 67;4;4098;U16;;Impédance L3;;1.0;0.0;0.01 ohms;4
 68;4;4099;U16;;Distorsion harmonique totale de la tension L1;;1.0;0.0;0.0001;4
-69;4;4100;U16;;"3ème harmonique THD
-de la tension L1";;1.0;0.0;0.0001;4
+69;4;4100;U16;;3ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
 70;4;4101;U16;;5ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
 71;4;4102;U16;;7ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
 72;4;4103;U16;;9èm harmonique THD de la tension L1;;1.0;0.0;0.0001;4
@@ -76,14 +75,12 @@ de la tension L1";;1.0;0.0;0.0001;4
 74;4;4105;U16;;13ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
 75;4;4106;U16;;15ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
 76;4;4107;U16;;17ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
-77;4;4108;U16;;"19ème harmonique THD
-de la tension L1";;1.0;0.0;0.0001;4
+77;4;4108;U16;;19ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
 78;4;4109;U16;;21ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
 79;4;4110;U16;;23ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
 80;4;4111;U16;;25ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
 81;4;4112;U16;;27ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
-82;4;4113;U16;;"29ème harmonique THD
-de la tension L1";;1.0;0.0;0.0001;4
+82;4;4113;U16;;29ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
 83;4;4114;U16;;31ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
 84;4;4115;U16;;33ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
 85;4;4116;U16;;35ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
@@ -98,26 +95,19 @@ de la tension L1";;1.0;0.0;0.0001;4
 94;4;4125;U16;;9ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
 95;4;4126;U16;;11ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
 96;4;4127;U16;;13ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
-97;4;4128;U16;;"15ème harmonique THD
-de la tension L2";;1.0;0.0;0.0001;4
-98;4;4129;U16;;"17ème harmonique THD
-de la tension L2";;1.0;0.0;0.0001;4
-99;4;4130;U16;;"19ème harmonique THD
-de la tension L2";;1.0;0.0;0.0001;4
+97;4;4128;U16;;15ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+98;4;4129;U16;;17ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+99;4;4130;U16;;19ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
 100;4;4131;U16;;21ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
-101;4;4132;U16;;"23ème harmonique THD
-de la tension L2";;1.0;0.0;0.0001;4
-102;4;4133;U16;;"25ème harmonique THD
-de la tension L2";;1.0;0.0;0.0001;4
+101;4;4132;U16;;23ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+102;4;4133;U16;;25ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
 103;4;4134;U16;;27ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
 104;4;4135;U16;;29ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
 105;4;4136;U16;;31ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
 106;4;4137;U16;;33ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
-107;4;4138;U16;;"35ème harmonique THD
-de la tension L2";;1.0;0.0;0.0001;4
+107;4;4138;U16;;35ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
 108;4;4139;U16;;37ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
-109;4;4140;U16;;"39ème harmonique THD
-de la tension L2";;1.0;0.0;0.0001;4
+109;4;4140;U16;;39ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
 110;4;4141;U16;;41ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
 111;4;4142;U16;;Distorsion Harmonique de la tension L2;;1.0;0.0;0.0001;4
 112;4;4143;U16;;Distorsion Harmonique Totale du Courant L3;;1.0;0.0;0.0001;4
@@ -183,8 +173,7 @@ de la tension L2";;1.0;0.0;0.0001;4
 172;4;4424;U16;;Puissance active L2 max;;1.0;0.0;0.001kW;4
 173;4;4426;U16;;Puissance active L2 min;;1.0;0.0;0.001kW;4
 174;4;4428;U16;;Puissance active L2 moyenne;;1.0;0.0;0.001kW;4
-175;4;4430;U16;;"Instantané de
-puissance active L2";;1.0;0.0;0.001kW;4
+175;4;4430;U16;;Instantané de puissance active L2;;1.0;0.0;0.001kW;4
 176;4;4432;U16;;Puissance apparente L2 max;;1.0;0.0;0.001kVA;4
 177;4;4434;U16;;Puissance apparente L2 min;;1.0;0.0;0.001kVA;4
 178;4;4436;U16;;Puissance apparente L2 moyenne;;1.0;0.0;0.001kVA;4
@@ -277,25 +266,13 @@ puissance active L2";;1.0;0.0;0.001kW;4
 265;4;4908;U16;;Demande maximale de puissance active exportée totale;;1.0;0.0;0.001kW;4
 266;4;4910;U16;;Demande maximale de puissance active totale;;1.0;0.0;0.001kW;4
 267;4;4912;U16;;Demande totale de puissance apparente;;1.0;0.0;0.001kVA;4
-268;4;4914;U16;;Demande maximale de puissance  apparente totale;;1.0;0.0;0.001kVA;4
+268;4;4914;U16;;Demande maximale de puissance apparente totale;;1.0;0.0;0.001kVA;4
 269;4;4916;U16;;Demande totale de puissance réactive du système;;1.0;0.0;0.001kVAR;4
 270;4;4918;U16;;Demande maximale de puissance réactive du système;;1.0;0.0;0.001kVAR;4
 271;4;4920;U16;;None;;1.0;0.0;/;4
-272;4;12289;U16;;"Heure du profil de charge Dernier 1 kWh actif total Dernier 1 kWh actif importé
-Dernier 1 kWh actif exporté";;1.0;0.0;"/ 0.01kWh
-0.01kWh
-0.01kWh";4
-273;4;12290;U16;;"Heure de l'avant dernier profil de charge
-Dernier 2 kWh actif total Dernier 2 kWh actif importé
-Dernier 2 kWh actif exporté";;1.0;0.0;"/ 0.01kWh
-0.01kWh
-0.01kWh";4
-274;4;16383;U16;;"Dernier profil de charge 4095 temps
-Dernier 4095 kWh actif total Dernier 4095 kWh actif importé
-Dernier 4095 kWh actif exporté";;1.0;0.0;"/
-0.01kWh
-0.01kWh
-0.01kWh";4
+272;4;12289;U16;;Heure du profil de charge Dernier 1 kWh actif total Dernier 1 kWh actif importé Dernier 1 kWh actif exporté;;1.0;0.0;/ 0.01kWh 0.01kWh 0.01kWh;4
+273;4;12290;U16;;Heure de l'avant dernier profil de charge Dernier 2 kWh actif total Dernier 2 kWh actif importé Dernier 2 kWh actif exporté;;1.0;0.0;/ 0.01kWh 0.01kWh 0.01kWh;4
+274;4;16383;U16;;Dernier profil de charge 4095 temps Dernier 4095 kWh actif total Dernier 4095 kWh actif importé Dernier 4095 kWh actif exporté;;1.0;0.0;/ 0.01kWh 0.01kWh 0.01kWh;4
 275;4;1316;U16;;Identifiant Modbus;;1.0;0.0;HEX(0001);1
 276;4;1317;U16;;Débit en bauds;;1.0;0.0;HEX(2580);1
 277;4;1318;U16;;Paramètre de parité;;1.0;0.0;HEX(0000);1
@@ -310,7 +287,7 @@ Dernier 4095 kWh actif exporté";;1.0;0.0;"/
 286;4;1400;U16;;Temps Époque UTC (ms);;1.0;0.0;;1
 287;4;64512;U16;;RTC - Année - Mois;;1.0;0.0;;1
 288;4;64513;U16;;RTC - Date - Heure;;1.0;0.0;;1
-289;4;64514;U16;;RTC -  Minute - Seconde;;1.0;0.0;;1
+289;4;64514;U16;;RTC - Minute - Seconde;;1.0;0.0;;1
 290;4;64515;U16;;RTC - Semaine - 00H (Fixe);;1.0;0.0;;1
 291;4;65024;U16;;1er code d'aVichage de défilement;;1.0;0.0;;1
 292;4;65025;U16;;2em code d'aVichage de défilement;;1.0;0.0;;1

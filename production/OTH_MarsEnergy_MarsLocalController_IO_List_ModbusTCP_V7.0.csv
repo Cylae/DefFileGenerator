@@ -38,7 +38,7 @@ Modbus;Other;MarsEnergy;MarsLocalController_IO_List_ModbusTCP_V7.0;;;;;;;
 37;4;46;F32;;Phase C AC Power Factor;PF_3;1.000000;0.000000;;4
 38;4;48;F32;;IGBT Module Temperature;TEMP_CELL;1.000000;0.000000;℃;4
 39;4;50;F32;;Ambient Temperature;TEMP_AMB;1.000000;0.000000;℃;4
-40;4;52;F32;;Total  AC Charging Energy;E_TOT;1.000000;0.000000;kWh;4
+40;4;52;F32;;Total AC Charging Energy;E_TOT;1.000000;0.000000;kWh;4
 41;4;54;F32;;Total AC Discharging Energy;;1.000000;0.000000;kWh;4
 42;4;56;F32;;Daily AC Charging Energy;E_DAY;1.000000;0.000000;kWh;4
 43;4;58;F32;;Daily AC Discharging Energy;;1.000000;0.000000;kWh;4
@@ -233,7 +233,7 @@ Modbus;Other;MarsEnergy;MarsLocalController_IO_List_ModbusTCP_V7.0;;;;;;;
 232;4;25046;F32;;Phase C AC Power Factor;;0.010000;0.000000;;4
 233;4;25048;F32;;IGBT Module Temperature;;0.100000;0.000000;℃;4
 234;4;25050;F32;;Ambient Temperature;;0.100000;0.000000;℃;4
-235;4;25052;F32;;Total  AC Charging Energy;;0.100000;0.000000;kWh;4
+235;4;25052;F32;;Total AC Charging Energy;;0.100000;0.000000;kWh;4
 236;4;25054;F32;;Total AC Discharging Energy;;0.100000;0.000000;kWh;4
 237;4;25056;F32;;Daily AC Charging Energy;;0.100000;0.000000;kWh;4
 238;4;25058;F32;;Daily AC Discharging Energy;;0.100000;0.000000;kWh;4

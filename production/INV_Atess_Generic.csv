@@ -181,7 +181,7 @@ Modbus;Inverter;ATESS;GENERIC;;;;;;;
 180;4;186;U16;;Fault alarm bit information6;;1;0;;9
 181;4;187;U16;;Fault alarm bit information7;;1;0;;9
 182;4;188;U16;;Fault alarm bit information8;;1;0;;9
-183;4;191;U16;;Running state  Bitwise;;1;0;;4
+183;4;191;U16;;Running state Bitwise;;1;0;;4
 184;4;192;U16;;Operation mode;;1;0;;4
 185;4;193;U16;;Running state_3;;1;0;;4
 186;4;194;U16;;Fault alarm bit information1_2;;1;0;;9
@@ -192,7 +192,7 @@ Modbus;Inverter;ATESS;GENERIC;;;;;;;
 191;4;199;U16;;Fault alarm bit information6_2;;1;0;;9
 192;4;200;U16;;Fault alarm bit information7_2;;1;0;;9
 193;4;201;U16;;Fault alarm bit information8_2;;1;0;;9
-194;4;203;U16;;Running state  Bitwise_2;;1;0;;4
+194;4;203;U16;;Running state Bitwise_2;;1;0;;4
 195;4;205;U16;;Operation mode_2;;1;0;;4
 196;4;206;U16;;Running state_4;;1;0;;4
 197;4;207;U16;;Fault alarm bit information1_3;;1;0;;9

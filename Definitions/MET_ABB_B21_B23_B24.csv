@@ -103,7 +103,7 @@ Modbus;Meter;ABB;B21_B23_B24;;;;;;;
 102;3;35088;U16;;Modbus_mapping_version;;1;0;;4
 103;3;35168_12;STRING;;Type_designation;;1;0;;4
 104;3;35844;U32;;Current transformer ratio numerator;;1;0;;4
-105;3;35848;U32;;Current transformer ratio  denominator;;1;0;;4
+105;3;35848;U32;;Current transformer ratio denominator;;1;0;;4
 106;3;36068;U16;;LED source (0 = active energy, 1 = reactive energy);;1;0;;4
 107;3;36069;U16;;Number of elements (values 13);;1;0;;4
 108;3;36608;U16;;Reset power fail counter;;1;0;;4

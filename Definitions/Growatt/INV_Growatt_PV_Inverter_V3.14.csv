@@ -73,7 +73,7 @@ Modbus;Inverter;Growatt;PV_Inverter_V3.14;;;;;;;
 72;3;116;U16;;Above 6KwSystem for CEI021;;1.000000;0.000000;;4
 73;3;117;U16;;Frequency Derating Enable;;1.000000;0.000000;;4
 74;3;118;U16;;Q(v) lock Out active power of CEI021;;1.000000;0.000000;Perce nt;4
-75;3;119;U16;;"Restart Delay Time after fault back;";;1.000000;0.000000;s;9
+75;3;119;U16;;Restart Delay Time after fault back -;;1.000000;0.000000;s;9
 76;3;120;U16;;Reactive Rate in LVFRT;;1.000000;0.000000;;4
 77;3;121;U16;;LVFRT low fault value 1;;1.000000;0.000000;0.1V;9
 78;3;122;U16;;LVFRT low fault time 1;;1.000000;0.000000;1ms;9

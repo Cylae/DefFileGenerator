@@ -34,10 +34,10 @@ Modbus;Meter;Lettel;MCX4-34V;;;;;;;
 33;4;64;F32;;Average line to line volts.;;1.000000;0.000000;V;4
 34;4;66;F32;;Average line current.;;1.000000;0.000000;A;4
 35;4;68;F32;;Neutral current.;;1.000000;0.000000;A;4
-36;4;78;F32;;Nature   of   L1   load   (Resistive_1_   inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
-37;4;80;F32;;Nature   of   L2   load   (Resistive_1_   inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
-38;4;82;F32;;Nature   of   L3   load   (Resistive_1_   inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
-39;4;84;F32;;Nature  of  the system load(Resistive_1_ inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
+36;4;78;F32;;Nature of L1 load (Resistive_1_ inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
+37;4;80;F32;;Nature of L2 load (Resistive_1_ inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
+38;4;82;F32;;Nature of L3 load (Resistive_1_ inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
+39;4;84;F32;;Nature of the system load(Resistive_1_ inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
 40;4;124;F32;;Phase 1 voltage THD (2).;;1.000000;0.000000;Percent;4
 41;4;126;F32;;Phase 2 voltage THD (2).;;1.000000;0.000000;Percent;4
 42;4;128;F32;;Phase 3 voltage THD (2).;;1.000000;0.000000;Percent;4

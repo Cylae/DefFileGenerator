@@ -62,7 +62,7 @@ Modbus;Inverter;Autarco;Solis_table2023;;;;;;;
 61;4;3086;U16;;Insulation resistance protection value;R_ISO;1;0.0;kOhm;4
 62;4;3089;U16;;Power limit switch;CMD_P_AC_SET_ABS;1;0.0;;1
 63;4;3090;U16;;Reactive power switch;CMD_Q_ENA;1;0.0;;1
-64;4;3091;U16;;Real Time PV insulation  resistance;;1;0.0;kOhm;4
+64;4;3091;U16;;Real Time PV insulation resistance;;1;0.0;kOhm;4
 65;4;3092;I16;;Inverter Temperature;;0.1;0.0;C;4
 66;4;3093;U16;;Inverter installation Method;;1;0;;4
 67;4;3105;U16;;Ileak Real time data;;1;0;mA;4
@@ -72,7 +72,7 @@ Modbus;Inverter;Autarco;Solis_table2023;;;;;;;
 71;4;3113;U16;;Internal PELD real time backflow power;;10;0;W;4
 72;4;3114;U16;;Internal PELD Hard Switch for AU 2020 Code;;1;0;;4
 73;4;3115;U16;;Internal PELD Hard Limit for AU 2020 Code;;100;0;W;4
-74;4;3116;U16;;Total Energy  Decimal Part;;0.001;0;kWh;4
+74;4;3116;U16;;Total Energy Decimal Part;;0.001;0;kWh;4
 75;4;3120;U16;;Italy Single Self-Test;;1.0;0.0;;4
 76;4;3121;U16;;Italy Full Self-test;;1.0;0.0;;4
 77;4;3122;U16;;01-59.S1 Voltage;;0.1;0.0;V;1
@@ -141,7 +141,7 @@ Modbus;Inverter;Autarco;Solis_table2023;;;;;;;
 140;4;3280;U16;;Meter Power factor;;0.001;0.0;Hz;1
 141;4;3281;U32;;Meter Grid frequency;;0.01;0.0;Hz;1
 142;4;3282;U32;;Meter Grid power total active energy;;0.01;0.0;kWh;1
-143;4;3284;U32;;Meter Grid power transmission total active  energy;;0.01;0;kW;4
+143;4;3284;U32;;Meter Grid power transmission total active energy;;0.01;0;kW;4
 144;4;3286;U16;;PV string voltage and Current Combination Description;;1;0.0;;4
 145;4;3288;I16;;PV21I;;0.1;0.0;A;4
 146;4;3289;I16;;PV22I;;0.1;0.0;A;4

@@ -33,7 +33,7 @@ Modbus;Sensor;Seven;3S-IS_8.0;;;;;;;
 32;3;30043;I16;;Daily Average Soiling Ratio;;0.01;0;;4
 33;3;30044;I16;;Instant Soiling Level;;0.01;0;;4
 34;3;30045;I16;;Daily Average Soiling Level;;0.01;0;;4
-35;3;30046;I16;;Instant Soiling Level  Percentage;;0.1;0;%;4
+35;3;30046;I16;;Instant Soiling Level Percentage;;0.1;0;%;4
 36;3;30047;I16;;Daily Average Soiling Level Percentage;;0.1;0;%;4
 37;3;30048;I16;;Soiling Rate;;0.1;0;%;4
 38;3;30050;I16;;Wash Tank Status;;1;0;;4

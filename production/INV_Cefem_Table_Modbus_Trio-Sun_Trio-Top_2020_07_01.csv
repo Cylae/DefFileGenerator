@@ -30,5 +30,4 @@ Modbus;Inverter;CEFEM;Table_Modbus_Trio-Sun_Trio-Top_2020_07_01;;;;;;;
 29;4;28;U16;;Production journalière ( En Wh);;1.0;0.0;;4
 30;4;29;U16;;Production journalière ( En Wh);;1.0;0.0;;4
 31;4;30;U16;;Numéro de fabrication 2;;1.0;0.0;;4
-32;4;31;U16;;"Limitationde puissance de l'onduleur 
-(En Watts)";;1.0;0.0;;4
+32;4;31;U16;;Limitationde puissance de l'onduleur (En Watts);;1.0;0.0;;4

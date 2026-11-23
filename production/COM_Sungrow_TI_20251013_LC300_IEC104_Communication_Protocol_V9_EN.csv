@@ -444,7 +444,7 @@ Modbus;Logger;Sungrow;TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN;;;;;
 443;4;1144;U16;;Discharging status;;1.0;0.0;;9
 444;4;1145;U16;;Cell over voltage alarm;;1.0;0.0;;9
 445;4;1146;U16;;Cell under voltage alarm;;1.0;0.0;;9
-446;4;1147;U16;;Total  over voltage alarm;;1.0;0.0;;9
+446;4;1147;U16;;Total over voltage alarm;;1.0;0.0;;9
 447;4;1148;U16;;Total under voltage alarm;;1.0;0.0;;9
 448;4;1149;U16;;Cell voltage difference alarm;;1.0;0.0;;9
 449;4;1150;U16;;Cell over temperature alarm;TEMP_CELL;1.0;0.0;;9
@@ -476,7 +476,7 @@ Modbus;Logger;Sungrow;TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN;;;;;
 475;4;1176;U16;;Reserved;;1.0;0.0;;0
 476;4;1177;U16;;Cell over voltage alarm;;1.0;0.0;;9
 477;4;1178;U16;;Cell under voltage alarm;;1.0;0.0;;9
-478;4;1179;U16;;Total  over voltage alarm;;1.0;0.0;;9
+478;4;1179;U16;;Total over voltage alarm;;1.0;0.0;;9
 479;4;1180;U16;;Total under voltage alarm;;1.0;0.0;;9
 480;4;1181;U16;;Cell voltage difference alarm;;1.0;0.0;;9
 481;4;1182;U16;;Cell over temperature alarm;;1.0;0.0;;9
@@ -556,7 +556,7 @@ Modbus;Logger;Sungrow;TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN;;;;;
 555;4;2340;U16;;Reserved;;1.0;0.0;;0
 556;4;2341;U16;;Cell over voltage alarm;;1.0;0.0;;9
 557;4;2342;U16;;Cell under voltage alarm;;1.0;0.0;;9
-558;4;2343;U16;;Total  over voltage alarm;;1.0;0.0;;9
+558;4;2343;U16;;Total over voltage alarm;;1.0;0.0;;9
 559;4;2344;U16;;Total under voltage alarm;;1.0;0.0;;9
 560;4;2345;U16;;Cell voltage difference alarm;;1.0;0.0;;9
 561;4;2346;U16;;Cell over temperature alarm;;1.0;0.0;;9
@@ -588,7 +588,7 @@ Modbus;Logger;Sungrow;TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN;;;;;
 587;4;2372;U16;;Reserved;;1.0;0.0;;0
 588;4;2373;U16;;Cell over voltage alarm;;1.0;0.0;;9
 589;4;2374;U16;;Cell under voltage alarm;;1.0;0.0;;9
-590;4;2375;U16;;Total  over voltage alarm;;1.0;0.0;;9
+590;4;2375;U16;;Total over voltage alarm;;1.0;0.0;;9
 591;4;2376;U16;;Total under voltage alarm;;1.0;0.0;;9
 592;4;2377;U16;;Cell voltage difference alarm;;1.0;0.0;;9
 593;4;2378;U16;;Cell over temperature alarm;;1.0;0.0;;9
@@ -979,7 +979,7 @@ Modbus;Logger;Sungrow;TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN;;;;;
 978;4;33674;U16;;Alarm status;;1.0;0.0;/;9
 979;4;33675;U16;;Running Status;;1.0;0.0;/;9
 980;4;33676;U16;;Parts running Status;;1.0;0.0;/;9
-981;4;33677;U16;;Device  type;MODEL;1.0;0.0;/;4
+981;4;33677;U16;;Device type;MODEL;1.0;0.0;/;4
 982;4;33678;U16;;Dew point temperature;;1.0;0.0;℃;4
 983;4;33679;U16;;Working status;;1.0;0.0;/;9
 984;4;33680;U16;;Device status;;1.0;0.0;/;9
@@ -1084,14 +1084,14 @@ Modbus;Logger;Sungrow;TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN;;;;;
 1083;4;34577;U16;;Total discharge energy;;1;0.0;Wh;4
 1084;4;34578;U16;;Total charge capacity;;0;0.0;Ah;4
 1085;4;34579;U16;;Total discharge capacity;;0;0.0;Ah;4
-1086;4;34580;U16;;Number of  onboard temperature;;1.0;0.0;PCS;4
+1086;4;34580;U16;;Number of onboard temperature;;1.0;0.0;PCS;4
 1087;4;34581;U16;;Number of BMUs;;1.0;0.0;PCS;4
 1088;4;34582;U16;;1#Number of cell voltage;;1.0;0.0;PCS;4
 1089;4;34583;U16;;1#Number of cell temperature;;1.0;0.0;PCS;4
-1090;4;34584;U16;;1#Number of  onboard temperature;;1.0;0.0;PCS;4
+1090;4;34584;U16;;1#Number of onboard temperature;;1.0;0.0;PCS;4
 1091;4;34609;U16;;20#Number of cell voltage;;1.0;0.0;PCS;4
 1092;4;34610;U16;;20#Number of cell temperature;;1.0;0.0;PCS;4
-1093;4;34611;U16;;20#Number of  onboard temperature;;1.0;0.0;PCS;4
+1093;4;34611;U16;;20#Number of onboard temperature;;1.0;0.0;PCS;4
 1094;4;34612;U16;;CMU Version;;1.0;0.0;/;4
 1095;4;34613;U16;;None;;1.0;0.0;None;4
 1096;4;34614;U16;;None;;1.0;0.0;None;4

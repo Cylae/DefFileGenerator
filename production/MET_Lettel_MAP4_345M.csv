@@ -3,12 +3,12 @@ Modbus;Meter;Lettel;MAP4_345M;;;;;;;
 2;3;4;F32;;Angle de phase 1 entre tension et courant;U_AC_1;1.000000;0.000000;0.1º;4
 3;3;6;F32;;Angle de phase L2 entre tension et courant;U_AC_2;1.000000;0.000000;0.1º;4
 4;3;8;F32;;Angle de phase L3 entre phase et courant;I_AC_3;1.000000;0.000000;0.1º;4
-5;3;10;F32;;Tension  L1-L2;U_AC_L1L2;1.000000;0.000000;0.1V;4
-6;3;12;F32;;Tension  L3-L2;;1.000000;0.000000;0.1V;4
-7;3;14;F32;;Tension  L1-L3;;1.000000;0.000000;0.1V;4
-8;3;16;F32;;Tension  L1-N;;1.000000;0.000000;0.1V;4
-9;3;18;F32;;Tension  L2-N;;1.000000;0.000000;0.1V;4
-10;3;20;F32;;Tension  L3-N;U_AC_3;1.000000;0.000000;0.1V;4
+5;3;10;F32;;Tension L1-L2;U_AC_L1L2;1.000000;0.000000;0.1V;4
+6;3;12;F32;;Tension L3-L2;;1.000000;0.000000;0.1V;4
+7;3;14;F32;;Tension L1-L3;;1.000000;0.000000;0.1V;4
+8;3;16;F32;;Tension L1-N;;1.000000;0.000000;0.1V;4
+9;3;18;F32;;Tension L2-N;;1.000000;0.000000;0.1V;4
+10;3;20;F32;;Tension L3-N;U_AC_3;1.000000;0.000000;0.1V;4
 11;3;22;F32;;Courant L1;I_AC_1;1.000000;0.000000;0.001A;4
 12;3;24;F32;;Courant L2;I_AC_2;1.000000;0.000000;0.001A;4
 13;3;26;F32;;Courant L3;;1.000000;0.000000;0.001A;4
@@ -265,7 +265,7 @@ Modbus;Meter;Lettel;MAP4_345M;;;;;;;
 264;3;4908;F32;;Demande maximale de puissance active exportée totale;;1.000000;0.000000;0.001kW;4
 265;3;4910;F32;;Demande maximale de puissance active totale;;1.000000;0.000000;0.001kW;4
 266;3;4912;F32;;Demande totale de puissance apparente;;1.000000;0.000000;0.001kVA;4
-267;3;4914;F32;;Demande maximale de puissance  apparente totale;;1.000000;0.000000;0.001kVA;4
+267;3;4914;F32;;Demande maximale de puissance apparente totale;;1.000000;0.000000;0.001kVA;4
 268;3;4916;F32;;Demande totale de puissance réactive du système;;1.000000;0.000000;0.001kVAR;4
 269;3;4918;F32;;Demande maximale de puissance réactive du système;;1.000000;0.000000;0.001kVAR;4
 270;3;12289;F32;;Heure du profil de charge Dernier 1 kWh actif total Dernier 1 kWh actif importé Dernier 1 kWh actif exporté;;1.000000;0.000000;/ 0.01kWh 0.01kWh 0.01kWh;1

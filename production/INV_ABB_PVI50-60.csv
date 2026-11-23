@@ -6,7 +6,7 @@ Modbus;Inverter;ABB;PVI50-60;;;;;;;
 5;4;197;U16;;Definition du comportement transitoire;;1.0;0.0;;1
 6;4;199;U16;;Mode dynamique - gestion de la puissance reactive via un facteur de puissance fixe (cos phi);Q_AC;1.0;0.0;;1
 7;4;201;U16;;Mode permanent - gestion de la puissance reactive via le facteur de puissance (cos phi);;1.0;0.0;;1
-8;4;204;U16;;Mode permanent - facteur de puissance remis à  1;PF;1.0;0.0;;1
+8;4;204;U16;;Mode permanent - facteur de puissance remis à 1;PF;1.0;0.0;;1
 9;4;209;U16;;Mode dynamique - regulation de la puissance active maximale de sortie en %;P_AC;1.0;0.0;%;1
 10;4;211;U16;;Mode permanent - regulation de la puissance active maximale de sortie en %;;1.0;0.0;%;1
 11;4;214;U16;;Mode permanent - Reset de la regulation de puissance active;;1.0;0.0;;1
@@ -24,7 +24,7 @@ Modbus;Inverter;ABB;PVI50-60;;;;;;;
 23;4;502;U16;;Mode permanent et dynamique - Intervalle de temps pour la montee en puissance (reactif);;1.0;0.0;s;1
 24;4;503;U16;;Mode dynamique - Tempo - Duree des consignes 2;;1.0;0.0;min;1
 25;4;504;U16;;Definition du comportement transitoire 2;;1.0;0.0;;1
-26;4;505;U16;;Definition de la quantite de puissance reactive à  fournir;;1.0;0.0;;1
+26;4;505;U16;;Definition de la quantite de puissance reactive à fournir;;1.0;0.0;;1
 27;4;506;U16;;Mode dynamique - gestion de la puissance reactive en %;;1.0;0.0;%;1
 28;4;507;U16;;Mode dynamique - regulation de la puissance active maximale de sortie en % ou ‰;;1.0;0.0;%;1
 29;4;508;U16;;Mode dynamique - gestion de la puissance reactive via le facteur de puissance (cos phi) 2;;1.0;0.0;;1

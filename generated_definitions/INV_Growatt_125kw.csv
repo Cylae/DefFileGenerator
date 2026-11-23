@@ -55,9 +55,9 @@ Modbus;Inverter;Growatt;125kw;;;;;;;
 54;4;54;U16;;Today generate energy (low);;1.0;0.0;;4
 55;4;55;U16;;Total generate energy (high);E_TOT;1.0;0.0;;4
 56;4;56;U16;;Total generate energy (low);;1.0;0.0;;4
-57;4;104;U16;;DeratingMode;;1.0;0.0;;8
-58;4;105;U16;;Inverter fault code;;1.0;0.0;;8
-59;4;106;U16;;Inverter warning code;;1.0;0.0;;8
+57;4;104;U16;;DeratingMode;;1.0;0.0;;4
+58;4;105;U16;;Inverter fault code;;1.0;0.0;;4
+59;4;106;U16;;Inverter warning code;;1.0;0.0;;4
 60;4;0;U16;;Inverter_status;;1.0;0.0;;4
 61;4;142;U16;;String_1 voltage;;1.0;0.0;;4
 62;4;143;U16;;String_1 current;;1.0;0.0;;4

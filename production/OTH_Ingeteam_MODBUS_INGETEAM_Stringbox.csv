@@ -31,7 +31,7 @@ Modbus;Other;Ingeteam;MODBUS_INGETEAM_Stringbox;;;;;;;
 30;4;30026;U32;;Grid frequency;FREQ;0.001;0;;4
 31;4;30034;U16;;Sun position azimut;;1;0;;4
 32;4;30035;U16;;Sun position cenit;;1;0;;4
-33;4;30036;U16;;Suntracker 1, ModSeg_1  _;;1;0;;4
+33;4;30036;U16;;Suntracker 1, ModSeg_1 _;;1;0;;4
 34;4;30037;U16;;Suntracker 1, Est_MotSeg_1 state;;1;0;;4
 35;4;30038;U16;;Suntracker 1, GPor10MotSeg_1;;10;0;;4
 36;4;30039;U16;;Suntracker 1, GPor10PosConsig_1;;10;0;;4
@@ -49,5 +49,5 @@ Modbus;Other;Ingeteam;MODBUS_INGETEAM_Stringbox;;;;;;;
 48;4;30051;U16;;Analog Input 2;;1;0;;4
 49;4;30052;U16;;Analog Input 3;;1;0;;4
 50;4;30053;U16;;Analog Input 4;;1;0;;4
-51;4;30054;U16;;Analog Input 5  PT100 n 1;;1;0;;4
-52;4;30055;U16;;Analog Input 6  PT100 n 2;;1;0;;4
+51;4;30054;U16;;Analog Input 5 PT100 n 1;;1;0;;4
+52;4;30055;U16;;Analog Input 6 PT100 n 2;;1;0;;4

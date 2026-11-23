@@ -18,7 +18,7 @@ DefFileGenerator/
 ├── production/                  # 🏭 RÉFÉRENTIEL OFFICIEL DE PRODUCTION
 │   ├── CATALOG.json             # Index complet des 1 167 définitions certifiées (191 constructeurs)
 │   ├── README.md                # Documentation des 5 Piliers et statistiques
-│   └── <PREFIX>_<Fabricant>_<Modèle>.csv (1 167 fichiers 100% validés)
+│   └── <PREFIX>_<Fabricant>_<Modèle>.csv (1 193 fichiers 100% validés, 358 875 registres, 35 970 tags SunPM)
 │
 ├── sources/                     # 📚 SOURCES BRUTES CONSTRUCTEURS & TERRAIN
 │   ├── MANIFEST.json            # Registre cryptographique (SHA-256) des documents sources

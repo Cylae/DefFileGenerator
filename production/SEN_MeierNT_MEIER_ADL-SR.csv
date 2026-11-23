@@ -16,5 +16,4 @@ Modbus;Sensor;MeierNT;MEIER_ADL-SR;;;;;;;
 15;3;40208;U16;;RS485 - Response delay in ms;;1;0;ms;1
 16;3;40214;U16;;baud rate;;1;0;;1
 17;3;40219;I32;;Calibration time stamp;;1;0;;1
-18;3;40221;U16;;"0xF0 = RS485-Termination disabled 
-0x00 = RS485-Termination enabled";;1;0;;1
+18;3;40221;U16;;0xF0 = RS485-Termination disabled 0x00 = RS485-Termination enabled;;1;0;;1

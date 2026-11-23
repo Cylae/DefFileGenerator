@@ -3,7 +3,7 @@ Modbus;Inverter;SolarEdge;ActivePowerControl;;;;;;;
 2;3;61441;U16;;Active Power Limit;cmdPwrPercent2;1.000000;0.000000;%;4
 3;3;61442;F32;;CosPhi;PF;1.000000;0.000000;;4
 4;3;61696;I16;;Commit Power Control Settings;WMaxLim_Ena_3=1;1.000000;0.000000;;4
-5;3;61697;I16;;Restore Power Control Default Settings;;1.000000;0.000000;;9
+5;3;61697;I16;;Restore Power Control Default Settings;;1.000000;0.000000;;4
 6;3;61698;I32;;PwrFrqDeratingConfig;;1.000000;0.000000;;4
 7;3;61700;I32;;ReactivePwrConfig;WMaxLim_Ena_2=4;1.000000;0.000000;;4
 8;3;61702;U32;;ReactPwrIterTime;;1.000000;0.000000;ms;4

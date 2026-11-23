@@ -1,4 +1,4 @@
-Modbus;Meter;SOCOMEC;Diris_A40;;;;;;;
+Modbus;Meter;Socomec;Diris_A40;;;;;;;
 1;3;50512;U32;;Hour Meter;;0.010000;0.000000;h;0
 2;3;50514;U32;;Phase to Phase Voltage _ U12;;0.010000;0.000000;V;4
 3;3;50516;U32;;Phase to Phase Voltage _ U23;;0.010000;0.000000;V;4
@@ -14,7 +14,7 @@ Modbus;Meter;SOCOMEC;Diris_A40;;;;;;;
 13;3;50536;I32;;Tot Active Power __- _ P;P_AC;0.001000;0.000000;kW;4
 14;3;50538;I32;;Tot reactive Power __- _ Q;Q_AC;0.100000;0.000000;var;4
 15;3;50540;U32;;Tot apparent power _ S;S_AC;0.100000;0.000000;VA;4
-16;3;50542;I32;;Tot power factor _  -_ leading et _ _ lagging _ PF;PF;0.001000;0.000000;;4
+16;3;50542;I32;;Tot power factor _ -_ leading et _ _ lagging _ PF;PF;0.001000;0.000000;;4
 17;3;50544;I32;;Active Power phase 1 __- _ P1;P_AC_1;0.001000;0.000000;kW;4
 18;3;50546;I32;;Active Power phase 2 __- _ P2;P_AC_2;0.001000;0.000000;kW;4
 19;3;50548;I32;;Active Power phase 3 __- _ P3;P_AC_3;0.001000;0.000000;kW;4
@@ -24,9 +24,9 @@ Modbus;Meter;SOCOMEC;Diris_A40;;;;;;;
 23;3;50556;U32;;Apparent power phase 1 _ S1;S_AC_1;0.100000;0.000000;VA;4
 24;3;50558;U32;;Apparent power phase 2 _ S2;S_AC_2;0.100000;0.000000;VA;4
 25;3;50560;U32;;Apparent power phase 3 _ S3;S_AC_3;0.100000;0.000000;VA;4
-26;3;50562;I32;;Power Factor phase 1  -_ leading and _ _ lagging  _ PF1;PF_1;0.001000;0.000000;;4
-27;3;50564;I32;;Power Factor phase 2  -_ leading and _ _ lagging  _ PF2;PF_2;0.001000;0.000000;;4
-28;3;50566;I32;;Power Factor phase 3  -_ leading and _ _ lagging  _ PF3;PF_3;0.001000;0.000000;;4
+26;3;50562;I32;;Power Factor phase 1 -_ leading and _ _ lagging _ PF1;PF_1;0.001000;0.000000;;4
+27;3;50564;I32;;Power Factor phase 2 -_ leading and _ _ lagging _ PF2;PF_2;0.001000;0.000000;;4
+28;3;50566;I32;;Power Factor phase 3 -_ leading and _ _ lagging _ PF3;PF_3;0.001000;0.000000;;4
 29;3;50780;U32;;Number of pulse counters;;1.000000;0.000000;;4
 30;3;50782;U32;;Pulse counter 1;;1.000000;0.000000;;4
 31;3;50784;U32;;Pulse counter 2;;1.000000;0.000000;;4

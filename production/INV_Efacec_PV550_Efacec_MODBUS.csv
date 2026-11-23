@@ -142,5 +142,5 @@ Modbus;Inverter;Efacec;PV550_Efacec_MODBUS;;;;;;;
 141;4;40515;U16;;SolarRaise;;1.0;0.0;0-1000 = 6*Pref/Pnom;4
 142;4;40516;U16;;SolarLower;;1.0;0.0;0-1000 = 6*Pref/Pnom;4
 143;4;40517;U16;;Qnight_command;;1.0;0.0;0-1 DISABLE / ENABLE;4
-144;4;40518;I16;;Qnight_ref;;1.0;0.0;[-1000,1000]  Snom *Qref/ 1000;4
+144;4;40518;I16;;Qnight_ref;;1.0;0.0;[-1000,1000] Snom *Qref/ 1000;4
 145;4;40519;I16;;Pref_NTU;;1.0;0.0;;4

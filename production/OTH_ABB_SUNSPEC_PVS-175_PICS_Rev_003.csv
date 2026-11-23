@@ -1056,9 +1056,7 @@ Modbus;Other;ABB;SUNSPEC_PVS-175_PICS_Rev_003;;;;;;;
 1055;4;41365;U16;;Night_Mod_State;;1.0;0.0;None;4
 1056;4;41366;U16;;DS_Ena;;1.0;0.0;None;1
 1057;4;41367;U16;;Night_Mod;;1.0;0.0;None;1
-1058;4;41368;U16;;QFixVArMaxPct;;1.0;0.0;"% VAMax or
-% WMax or 
-% VArMax";1
+1058;4;41368;U16;;QFixVArMaxPct;;1.0;0.0;% VAMax or % WMax or % VArMax;1
 1059;4;41369;U16;;Anti_PID_State;;1.0;0.0;None;4
 1060;4;41370;U16;;Anti_PID_Mod;;1.0;0.0;None;1
 1061;4;41371;U16;;PID_VRef;;1.0;0.0;None;1

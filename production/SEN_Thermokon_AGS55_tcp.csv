@@ -19,8 +19,8 @@ Modbus;Sensor;Thermokon;AGS55_tcp;;;;;;;
 18;3;62;I32;;Low/High Illumination 2;;1;0;Lux;4
 19;3;90;I16;;Input 1 -TemperatureNTC10k;;0.1;0;°C;4
 20;3;91;I16;;Input 2 -TemperatureNTC10k;;0.1;0;°C;4
-21;3;92;I16;;Input 1  Switch contact;;1;0;;4
-22;3;93;I16;;Input 2  Switch contact;;1;0;;4
+21;3;92;I16;;Input 1 Switch contact;;1;0;;4
+22;3;93;I16;;Input 2 Switch contact;;1;0;;4
 23;3;100;I16;;Offset Temperature1;;0.1;0;°C;4
 24;3;101;I16;;Offset relative humidity;;1;0;%rF;4
 25;3;102;I16;;Offset CO2;;1;0;ppm;4

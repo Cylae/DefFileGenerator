@@ -7,9 +7,9 @@ Modbus;Meter;POLIER;MTR5LMOD;;;;;;;
 6;3;3;U16;;Password;;1.000000;0.000000;;4
 7;3;4;U16;;Serial number;;1.000000;0.000000;;4
 8;3;5;U16;;Serial number_1;;1.000000;0.000000;;4
-9;3;4096;U32;;L1-N   PhaseA voltage;;0.010000;0.000000;V;4
-10;3;4098;U32;;L2-N   PhaseB voltage;;0.010000;0.000000;V;4
-11;3;4100;U32;;L3-N   PhaseC voltage;;0.010000;0.000000;V;4
+9;3;4096;U32;;L1-N PhaseA voltage;;0.010000;0.000000;V;4
+10;3;4098;U32;;L2-N PhaseB voltage;;0.010000;0.000000;V;4
+11;3;4100;U32;;L3-N PhaseC voltage;;0.010000;0.000000;V;4
 12;3;4108;U32;;PhaseA current;;0.001000;0.000000;A;4
 13;3;4110;U32;;PhaseB current;;0.001000;0.000000;A;4
 14;3;4112;U32;;PhaseC current;;0.001000;0.000000;A;4

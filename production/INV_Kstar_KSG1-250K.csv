@@ -120,7 +120,7 @@ Modbus;Inverter;Kstar;KSG1-250K;;;;;;;
 119;4;3111;U16;;Minute;;1.000000;0.000000;;1
 120;4;3112;I16;;Second;;1.000000;0.000000;;1
 121;4;3113;U16;;Week;;1.000000;0.000000;;1
-122;4;3114;I16;;Back-current  Power  Limit Setting;;1.000000;0.000000;W;4
+122;4;3114;I16;;Back-current Power Limit Setting;;1.000000;0.000000;W;4
 123;4;3115;U16;;Active Power of Soft Start Change Rate;;1.000000;0.000000;'%/min;4
 124;4;3117;U16;;485Address(2);;1.000000;0.000000;;4
 125;4;3118;U16;;485 Baud Rate (2);;1.000000;0.000000;;4
@@ -158,10 +158,10 @@ Modbus;Inverter;Kstar;KSG1-250K;;;;;;;
 157;4;3195;U16;;Bluetooth name format;;1.000000;0.000000;;4
 158;4;3196;U16;;Setting value of rated power for anti backflow;P_RATED;1.000000;0.000000;;4
 159;4;3197;U16;;Upper limit of fuse detection;;0.010000;0.000000;A;4
-160;4;3198;U16;;Lower limit of  fuse detection;;0.010000;0.000000;A;4
+160;4;3198;U16;;Lower limit of fuse detection;;0.010000;0.000000;A;4
 161;4;3199;U32;;Fuse detection enable;;1.000000;0.000000;;4
 162;4;3201;U32;;Fuse alarm information;;1.000000;0.000000;;9
-163;4;3203;U16;;Anti  backflow  meter configuration;;1.000000;0.000000;;4
+163;4;3203;U16;;Anti backflow meter configuration;;1.000000;0.000000;;4
 164;4;3204;U16;;Correction value of anti reverse current meter;;1.000000;0.000000;;4
 165;4;3205;U16;;CT ratio;;1.000000;0.000000;;4
 166;4;3206;U32;;Inverter power;;1.000000;0.000000;W;4
@@ -191,10 +191,10 @@ Modbus;Inverter;Kstar;KSG1-250K;;;;;;;
 190;4;3234;U16;;Underfrequency amplification coefficient;;1.000000;0.000000;Pn%/Hz;4
 191;4;3235;U16;;Maximum Derating;;1.000000;0.000000;'%;4
 192;4;3236;U16;;Maximum increase;;1.000000;0.000000;'%;4
-193;4;3237;I16;;Debugging  coefficient 1;;1.000000;0.000000;;4
-194;4;3238;I16;;Debugging  coefficient 2;;1.000000;0.000000;;4
-195;4;3239;I16;;Debugging  coefficient 3;;1.000000;0.000000;;4
-196;4;3240;I16;;Debugging  coefficient 4;;1.000000;0.000000;;4
+193;4;3237;I16;;Debugging coefficient 1;;1.000000;0.000000;;4
+194;4;3238;I16;;Debugging coefficient 2;;1.000000;0.000000;;4
+195;4;3239;I16;;Debugging coefficient 3;;1.000000;0.000000;;4
+196;4;3240;I16;;Debugging coefficient 4;;1.000000;0.000000;;4
 197;4;3241;U16;;Daily power generation;;0.100000;0.000000;kWh;4
 198;4;3242;U32;;Accumulated load electricity consumption on the grid side;;1.000000;0.000000;kWh;4
 199;4;3244;U16;;Frequency response hysteresis function;;1.000000;0.000000;;4

@@ -350,8 +350,8 @@ Modbus;Meter;Lettel;MAP4-34RJ;;;;;;;
 349;3;2102;I16;;_1 Demand slip time(t);;1.000000;0.000000;s;4
 350;3;2103;I16;;_1 Demand calculation time(T);;1.000000;0.000000;t;4
 351;3;2304;F32;;L1 total multi-rate energy;;1.000000;0.000000;kWh;4
-352;3;2306;F32;;L1 total multi-rate    energy [P1];;1.000000;0.000000;kWh;4
-353;3;2308;F32;;L1 total multi-rate    energy [P2];;1.000000;0.000000;kWh;4
+352;3;2306;F32;;L1 total multi-rate energy [P1];;1.000000;0.000000;kWh;4
+353;3;2308;F32;;L1 total multi-rate energy [P2];;1.000000;0.000000;kWh;4
 354;3;2310;F32;;L1 total multi-rate energy [P3];;1.000000;0.000000;kWh;4
 355;3;2312;F32;;L1 total multi-rate energy [P4];;1.000000;0.000000;kWh;4
 356;3;2314;F32;;L2 total multi-rate energy_ as above;;1.000000;0.000000;kWh;4

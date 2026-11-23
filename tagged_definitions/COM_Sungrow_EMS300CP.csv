@@ -317,9 +317,9 @@ Modbus;Logger;Sungrow;EMS300CP;;;;;;;
 316;4;25189;U16;;频率调差系数 Frequency Regulation Coefficient;;1.0;0.0;;4
 317;4;25190;U16;;调频死区 Frequency Regulation Dead Zone;;1.0;0.0;Hz;4
 318;4;25191;U16;;最大输出有功功率 Maximum Active Power Output;;1.0;0.0;kW;4
-319;4;25192;U16;;最大吸收有功功率  Maximum Active Power Absorbed;;1.0;0.0;kW;4
-320;4;25193;U16;;有功功率限幅系数下限  Lower Limit of Active Power Limit Coefficient;;1.0;0.0;;4
-321;4;25194;U16;;有功功率限幅系数上限  Upper Limit of Active Power Limit Coefficient;;1.0;0.0;;4
+319;4;25192;U16;;最大吸收有功功率 Maximum Active Power Absorbed;;1.0;0.0;kW;4
+320;4;25193;U16;;有功功率限幅系数下限 Lower Limit of Active Power Limit Coefficient;;1.0;0.0;;4
+321;4;25194;U16;;有功功率限幅系数上限 Upper Limit of Active Power Limit Coefficient;;1.0;0.0;;4
 322;4;25195;U16;;调频二段调差系数 Frequency Regulation II Regulation Coefficient;;1.0;0.0;;4
 323;4;25196;U16;;调频二段死区 Frequency Regulation II Dead Zone;;1.0;0.0;Hz;4
 324;4;25197;U16;;并离网启动控制字 And Off-network Start Control Word;;1.0;0.0;;4

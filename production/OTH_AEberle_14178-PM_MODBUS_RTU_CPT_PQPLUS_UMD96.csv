@@ -8,8 +8,8 @@ Modbus;Other;AEberle;14178-PM_MODBUS_RTU_CPT_PQPLUS_UMD96;;;;;;;
 7;4;2080;U16;;Device Address (COM2);UNIT_ID;1.0;0.0;;4
 8;4;2081;U16;;Remote Baud Rate;;1.0;0.0;;4
 9;4;2083;U16;;Parity;;1.0;0.0;;4
-10;4;2084;U16;;Data  Bit;;1.0;0.0;;4
-11;4;2085;U16;;Stop  Bit;;1.0;0.0;;4
+10;4;2084;U16;;Data Bit;;1.0;0.0;;4
+11;4;2085;U16;;Stop Bit;;1.0;0.0;;4
 12;4;2112;U16;;DHCP;;1.0;0.0;;4
 13;4;2113;U16;;IP Address;;1.0;0.0;;4
 14;4;2115;U16;;Netmask;;1.0;0.0;;4
@@ -26,7 +26,7 @@ Modbus;Other;AEberle;14178-PM_MODBUS_RTU_CPT_PQPLUS_UMD96;;;;;;;
 25;4;8192;U16;;3-phase imported active Energy - 3EP;;1.0;0.0;kWh;4
 26;4;8196;U16;;3-phase exported active Energy - 3EP-;;1.0;0.0;kWh;4
 27;4;8200;U16;;3-phase inductive reactive Energy - 3EQL;;1.0;0.0;kVArh;4
-28;4;8204;U16;;3-phase  capacitive reactive Energy - 3EQC;;1.0;0.0;kVArh;4
+28;4;8204;U16;;3-phase capacitive reactive Energy - 3EQC;;1.0;0.0;kVArh;4
 29;4;8208;U16;;L1 imported active Energy - EP1;;1.0;0.0;kWh;4
 30;4;8212;U16;;L2 imported active Energy - EP2;;1.0;0.0;kWh;4
 31;4;8216;U16;;L3 imported active Energy - EP3;;1.0;0.0;kWh;4
@@ -44,8 +44,8 @@ Modbus;Other;AEberle;14178-PM_MODBUS_RTU_CPT_PQPLUS_UMD96;;;;;;;
 43;4;8264;U16;;L3 capacitive reactive Energy - EQC3;;1.0;0.0;kVArh;4
 44;4;8268;U16;;L4 capacitive reactive Energy - EQC4;;1.0;0.0;kVArh;4
 45;4;9216;U16;;3-phase imported inductive reactive Energy - 3EQL;;1.0;0.0;kVArh;4
-46;4;9220;U16;;3-phase exported  inductive reactive Energy - 3EQL-;;1.0;0.0;kVArh;4
-47;4;9224;U16;;3-phase imported  capacitive reactive Energy - 3EQC;;1.0;0.0;kVArh;4
+46;4;9220;U16;;3-phase exported inductive reactive Energy - 3EQL-;;1.0;0.0;kVArh;4
+47;4;9224;U16;;3-phase imported capacitive reactive Energy - 3EQC;;1.0;0.0;kVArh;4
 48;4;9228;U16;;3-phase imported inductive reactive Energy - 3EQC-;;1.0;0.0;kVArh;4
 49;4;19000;U16;;L1 voltage - U1;;1.0;0.0;V;4
 50;4;19002;U16;;L2 voltage - U2;;1.0;0.0;V;4

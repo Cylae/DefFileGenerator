@@ -1,4 +1,4 @@
-Modbus;Inverter;Solis;Inverter;;;;;;;
+Modbus;Inverter;Solis;Inverter_Standard;;;;;;;
 1;4;3000;U16;;Product model;MODEL;1;0;;4
 2;4;3001;U16;;DSP software version;;1;0;;4
 3;4;3002;U16;;LCD software version;;1;0;;4
@@ -35,7 +35,7 @@ Modbus;Inverter;Solis;Inverter;;;;;;;
 34;4;3040;U16;;Reserved_4;;1;0;°C;4
 35;4;3041;U16;;Inverter temperature;TEMP_INT;1;0;°C;4
 36;4;3042;U16;;Grid Frequency;FREQ;1;0;°C;4
-37;4;3043;U16;;Inverter status;;1;0;°C;8
+37;4;3043;U16;;Inverter status;;1;0;°C;4
 38;4;3055;U32;;Reactive power;Q_AC;1;0;A;4
 39;4;3057;U32;;Apparent power;S_AC;1;0;A;4
 40;4;3059;U16;;Real time power factor;PF;1;0;A;4

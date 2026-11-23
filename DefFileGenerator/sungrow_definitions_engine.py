@@ -268,8 +268,9 @@ class SungrowDefinitionsEngine:
             d.mkdir(parents=True, exist_ok=True)
 
         for model, (cat, filename, regs) in models.items():
+            model_header = "SG-Series" if model == "SG_Series" else model
             prod_file = prod_dir / filename
-            cls.write_definition_file(prod_file, cat, model, regs)
+            cls.write_definition_file(prod_file, cat, model_header, regs)
             output_paths[model] = prod_file
 
             # Mirror to target synchronization directories

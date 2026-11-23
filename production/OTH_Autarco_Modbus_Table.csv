@@ -42,7 +42,7 @@ Modbus;Other;Autarco;Modbus_Table;;;;;;;
 41;4;3047;U16;;Reserved;;1.0;0.0;None;0
 42;4;3048;U16;;Reserved;;1.0;0.0;None;0
 43;4;3049;U16;;Reserved;;1.0;0.0;None;0
-44;4;3050;U16;;Actual value of limited Active  power;;1.0;0.0;0.01;4
+44;4;3050;U16;;Actual value of limited Active power;;1.0;0.0;0.01;4
 45;4;3051;U16;;Actual adjust value of power factor;PF;1.0;0.0;0.01;4
 46;4;3052;U16;;Reserved;;1.0;0.0;None;0
 47;4;3053;U16;;Reserved;;1.0;0.0;None;0

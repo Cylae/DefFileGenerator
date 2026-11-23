@@ -204,10 +204,10 @@ Modbus;Other;Monichek;CombinerBox;;;;;;;
 203;2;821_0_1;BITS;;Channel 12 current low alarm state;;1.000000;0.000000;;9
 204;2;822_0_1;BITS;;Channel 13 current low alarm state;;1.000000;0.000000;;9
 205;2;823_0_1;BITS;;Channel 24 current too high alarm state;;1.000000;0.000000;;9
-206;4;256;U16;;Broadcast time  (year month);;1.000000;0.000000;;4
-207;4;257;U16;;Broadcast time  (day  hour);;1.000000;0.000000;;4
-208;4;258;U16;;Broadcast time  (minutes seconds);;1.000000;0.000000;;4
-209;4;259;U16;;Broadcast time  milliseconds;;1.000000;0.000000;;4
+206;4;256;U16;;Broadcast time (year month);;1.000000;0.000000;;4
+207;4;257;U16;;Broadcast time (day hour);;1.000000;0.000000;;4
+208;4;258;U16;;Broadcast time (minutes seconds);;1.000000;0.000000;;4
+209;4;259;U16;;Broadcast time milliseconds;;1.000000;0.000000;;4
 210;4;260;U16;;Bus voltage;udc_v;1.000000;0.000000;V;2
 211;4;261;I16;;Temperature sensor 1-1;;0.100000;0.000000;C;4
 212;4;262;I16;;Temperature sensor 2-1;;0.100000;0.000000;C;4
@@ -381,7 +381,7 @@ Modbus;Other;Monichek;CombinerBox;;;;;;;
 380;4;2593;I16;;Log trip 22 channel arc probability;;1.000000;0.000000;;4
 381;4;2594;I16;;Log trip 23 channel arc probability;;1.000000;0.000000;;4
 382;4;2595;I16;;Log trip 24 channel arc probability;;1.000000;0.000000;;4
-383;4;2596;I16;;Log trip 1  channel current;;1.000000;0.000000;;4
+383;4;2596;I16;;Log trip 1 channel current;;1.000000;0.000000;;4
 384;4;2597;I16;;Log trip 2 channel current;;1.000000;0.000000;;4
 385;4;2598;I16;;Log trip 3 channel current;;1.000000;0.000000;;4
 386;4;2599;I16;;Log trip 4 channel current;;1.000000;0.000000;;4

@@ -1,5 +1,5 @@
 Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
-1;4;10000;U16;;0xAA：并网模式（On-grid mode） 0x55 :   离网模式（Off-grid mode） 0xBB ：VSG模式（VSG mode）;v_0xaaongrid_mode0x55_offgrid_mode0xbb_vsgvsg_mode;100.000000;0.000000;;4
+1;4;10000;U16;;0xAA：并网模式（On-grid mode） 0x55 : 离网模式（Off-grid mode） 0xBB ：VSG模式（VSG mode）;v_0xaaongrid_mode0x55_offgrid_mode0xbb_vsgvsg_mode;100.000000;0.000000;;4
 2;4;10001;U16;;See Reference;see_reference;100.000000;0.000000;;4
 3;4;10002;U32;;Register_10002;register_10002;10.000000;0.000000;kW;4
 4;4;10003;U16;;Register_10003;register_10003;1.000000;0.000000;;4
@@ -48,10 +48,10 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 47;4;10046;U16;;Register_10046;register_10046;100.000000;0.000000;;4
 48;3;10000;U16;;1:Start 2:Stop 3:Standby;v_1start2stop3standby;100.000000;0.000000;;4
 49;3;10001;U16;;0xAA: 并网模式(On-grid mode) 0x55: 离网模式(Off-grid mode) 0xBB: VSG模式(VSG mode);v_0xaa_ongrid_mode0x55_offgrid_mode0xbb_vsgvsg_mode;100.000000;0.000000;;4
-50;3;10002;I32;;postive for discharge, negtive for charge.(正放负充) only func 0x10 valid, and it is necessary to set the values of multiple registers at the same time while sending this command.                                                                                          只支持0x10功能码，下发指令时需要同时设置多个寄存器的值。;postive_for_discharge_negtive_for_chargeonly_func_0x10_valid_and_it_is_necessary_to_set_the_values_of_multiple_registers_at_the_same_time_while_sending_this_command_0x10;100.000000;0.000000;kW;4
+50;3;10002;I32;;postive for discharge, negtive for charge.(正放负充) only func 0x10 valid, and it is necessary to set the values of multiple registers at the same time while sending this command. 只支持0x10功能码，下发指令时需要同时设置多个寄存器的值。;postive_for_discharge_negtive_for_chargeonly_func_0x10_valid_and_it_is_necessary_to_set_the_values_of_multiple_registers_at_the_same_time_while_sending_this_command_0x10;100.000000;0.000000;kW;4
 51;3;10004;U16;;1. 0x55(关闭) 2. 0xA1(功率因数设置) 3. 0xA2(无功比例设置);v_1_0x552_0xa13_0xa2;100.000000;0.000000;;4
-52;3;10005;I16;;range:-1000 ~ 1000 must set reactive mode = 0xA1 first, and then set this register.                                                                                     需要先将无功工作模式设置为功率因数模式，然后再设置功率因数。;range1000_1000must_set_reactive_mode_0xa1_first_and_then_set_this_register;1000.000000;0.000000;;4
-53;3;10006;I32;;must set reactive mode = 0xA2 first, and then set this register.                                                                                           only func 0x10 valid, and it is necessary to set the values of multiple registers at the same time while sending this command. 需要先将无功工作模式设置为无功比例模式，然后再设置该无功功率值。                                                                   只支持0x10功能码，下发指令时需要同时设置多个寄存器的值。;must_set_reactive_mode_0xa2_first_and_then_set_this_register_only_func_0x10_valid_and_it_is_necessary_to_set_the_values_of_multiple_registers_at_the_same_time_while_sending_this_command_0x10;100.000000;0.000000;kvar;4
+52;3;10005;I16;;range:-1000 ~ 1000 must set reactive mode = 0xA1 first, and then set this register. 需要先将无功工作模式设置为功率因数模式，然后再设置功率因数。;range1000_1000must_set_reactive_mode_0xa1_first_and_then_set_this_register;1000.000000;0.000000;;4
+53;3;10006;I32;;must set reactive mode = 0xA2 first, and then set this register. only func 0x10 valid, and it is necessary to set the values of multiple registers at the same time while sending this command. 需要先将无功工作模式设置为无功比例模式，然后再设置该无功功率值。 只支持0x10功能码，下发指令时需要同时设置多个寄存器的值。;must_set_reactive_mode_0xa2_first_and_then_set_this_register_only_func_0x10_valid_and_it_is_necessary_to_set_the_values_of_multiple_registers_at_the_same_time_while_sending_this_command_0x10;100.000000;0.000000;kvar;4
 54;4;10050;U16;;0xAA：On-grid Mode 0x55：Off-grid Mode 0xBB：VSG Mode;v_0xaaongrid_mode0x55offgrid_mode0xbbvsg_mode;100.000000;0.000000;;4
 55;4;10051;U16;;See Reference：Working Status;see_referenceworking_status;100.000000;0.000000;;9
 56;4;10052;U32;;Low byte in the front;low_byte_in_the_front;10.000000;0.000000;kWh;4
@@ -135,10 +135,10 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 134;4;10197;U32;;See Reference：System not ready falut;see_referencesystem_not_ready_falut;1.000000;0.000000;;4
 135;4;10198;U16;;Register_10198;register_10198;1.000000;0.000000;;4
 136;4;10200;U16;;0x55：No need for power supply 0xAA：Need for power supply;v_0x55no_need_for_power_supply0xaaneed_for_power_supply;100.000000;0.000000;;4
-137;4;10201;U16;;0：No power reduction needed  1：Request load reduction 2：Request lower charging power If the power reduction request exists for 10s, a system stop will be triggered.;v_0no_power_reduction_needed_1request_load_reduction2request_lower_charging_powerif_the_power_reduction_request_exists_for_10s_a_system_stop_will_be_triggered;100.000000;0.000000;;4
+137;4;10201;U16;;0：No power reduction needed 1：Request load reduction 2：Request lower charging power If the power reduction request exists for 10s, a system stop will be triggered.;v_0no_power_reduction_needed_1request_load_reduction2request_lower_charging_powerif_the_power_reduction_request_exists_for_10s_a_system_stop_will_be_triggered;100.000000;0.000000;;4
 138;4;10206;U32;;See Reference;see_reference_1;1.000000;0.000000;;4
 139;4;10207;U16;;Register_10207;register_10207;1.000000;0.000000;;4
-140;4;10208;U16;;0：Not support  1：Support;v_0not_support_1support;100.000000;0.000000;;4
+140;4;10208;U16;;0：Not support 1：Support;v_0not_support_1support;100.000000;0.000000;;4
 141;4;10209;U16;;Parsed as ASCII code. No communication uploaded "- -";parsed_as_ascii_code_no_communication_uploaded_2;1.000000;0.000000;;4
 142;4;10220;U16;;Register_10220;register_10220;1.000000;0.000000;;4
 143;3;10050;U16;;Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued.;only_the_0x10_function_codes_are_supported_and_multiple_register_values_need_to_be_set_at_the_same_time_when_instructions_are_issued;100.000000;0.000000;;4
@@ -159,7 +159,7 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 158;3;10101;U16;;PCS frequency on offgrid-mode;pcs_frequency_on_offgridmode;100.000000;0.000000;Hz;4
 159;3;10102;U16;;Register_10102;register_10102;1.000000;0.000000;;1
 160;3;10103;I16;;You need to set the reactive working mode to power factor mode first and then set the power factor.;you_need_to_set_the_reactive_working_mode_to_power_factor_mode_first_and_then_set_the_power_factor;1000.000000;0.000000;;4
-161;3;10104;I32;;You need to set the reactive power working mode to the reactive power percentage mode first, and then set that reactive power value.                                                                    Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued.  In DC-coupled systems, the unit of reactive power points is % within the range of [-1000, 1000];you_need_to_set_the_reactive_power_working_mode_to_the_reactive_power_percentage_mode_first_and_then_set_that_reactive_power_value_only_the_0x10_function_codes_are_supported_and_multiple_register_values_need_to_be_set_at_the_same_time_when_instructions_are_issued_in_dccoupled_systems_the_unit_of_reactive_power_points_is_within_the_range_of_1000_1000;10.000000;0.000000;kvar;4
+161;3;10104;I32;;You need to set the reactive power working mode to the reactive power percentage mode first, and then set that reactive power value. Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued. In DC-coupled systems, the unit of reactive power points is % within the range of [-1000, 1000];you_need_to_set_the_reactive_power_working_mode_to_the_reactive_power_percentage_mode_first_and_then_set_that_reactive_power_value_only_the_0x10_function_codes_are_supported_and_multiple_register_values_need_to_be_set_at_the_same_time_when_instructions_are_issued_in_dccoupled_systems_the_unit_of_reactive_power_points_is_within_the_range_of_1000_1000;10.000000;0.000000;kvar;4
 162;3;10106;U16;;0x55: Disable, 0xBB: Overload Test Mode;v_0x55_disable_0xbb_overload_test_mode;1.000000;0.000000;;4
 163;3;10107;U16;;Register_10107;register_10107;1.000000;0.000000;;1
 164;3;10109;U16;;0: No Overload 1: 1.1x Overload 2: 1.2x Overload;v_0_no_overload_1_11x_overload_2_12x_overload;1.000000;0.000000;;4
@@ -168,9 +168,9 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 167;3;10114;U16;;0:Upper computer communication fault enable is disable 1~120:The heartbeat settings value should change in this time;v_0upper_computer_communication_fault_enable_is_disable1120the_heartbeat_settings_value_should_change_in_this_time;100.000000;0.000000;s;9
 168;3;10115;U16;;0xAA: Enable；0x55: Disable;v_0xaa_enable0x55_disable;100.000000;0.000000;;4
 169;3;10116;U16;;Register_10116;register_10116;1.000000;0.000000;;1
-170;3;10125;U16;;0xAA: On-grid Mode 0x55: Off-grid Mode                     0xBB: VSG Mode;v_0xaa_ongrid_mode0x55_offgrid_mode_0xbb_vsg_mode;100.000000;0.000000;;4
+170;3;10125;U16;;0xAA: On-grid Mode 0x55: Off-grid Mode 0xBB: VSG Mode;v_0xaa_ongrid_mode0x55_offgrid_mode_0xbb_vsg_mode;100.000000;0.000000;;4
 171;3;10126;U16;;0x04: On-grid constant power AC;v_0x04_ongrid_constant_power_ac;100.000000;0.000000;;4
-172;3;10127;I32;;Positive electrode for discharge and negative electrode for charge                                                                                     Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued.;positive_electrode_for_discharge_and_negative_electrode_for_charge_only_the_0x10_function_codes_are_supported_and_multiple_register_values_need_to_be_set_at_the_same_time_when_instructions_are_issued;10.000000;0.000000;kW;4
+172;3;10127;I32;;Positive electrode for discharge and negative electrode for charge Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued.;positive_electrode_for_discharge_and_negative_electrode_for_charge_only_the_0x10_function_codes_are_supported_and_multiple_register_values_need_to_be_set_at_the_same_time_when_instructions_are_issued;10.000000;0.000000;kW;4
 173;3;10129;U16;;0x05：Power On 0x03：Power Off;v_0x05power_on0x03power_off;100.000000;0.000000;;1
 174;3;10130;U16;;Register_10130;register_10130;1.000000;0.000000;;1
 175;3;10131;U16;;Register_10131;register_10131;10.000000;0.000000;V;1
@@ -219,9 +219,9 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 218;3;11014;U16;;Register_11014;register_11014;100.000000;0.000000;ppm;1
 219;3;11015;U16;;Register_11015;register_11015;100.000000;0.000000;ppm;1
 220;3;11016;U16;;Register_11016;register_11016;100.000000;0.000000;ppm;1
-221;3;11017;U16;;0xAA: Enable -  0x55: Disable;v_0xaa_enable_0x55_disable;100.000000;0.000000;;4
+221;3;11017;U16;;0xAA: Enable - 0x55: Disable;v_0xaa_enable_0x55_disable;100.000000;0.000000;;4
 222;3;11018;U16;;0x55：disable 0xAA：enable;v_0x55disable0xaaenable_2;100.000000;0.000000;;4
-223;3;11019;U16;;1:Running   2：Non-running   4Fault;v_1running_2nonrunning_4fault;100.000000;0.000000;;9
+223;3;11019;U16;;1:Running 2：Non-running 4Fault;v_1running_2nonrunning_4fault;100.000000;0.000000;;9
 224;3;11020;U16;;0x55：disable 0xAA：enable;v_0x55disable0xaaenable_3;100.000000;0.000000;;4
 225;3;11021;U16;;0： Automatic control mode；1：Cooling Mode；2：Heating Mode；3：Pump Cycle；4：Stop Mode.;v_0_automatic_control_mode1cooling_mode2heating_mode3pump_cycle4stop_mode;100.000000;0.000000;;4
 226;3;11022;U16;;Register_11022;register_11022;100.000000;0.000000;%;1
@@ -233,7 +233,7 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 232;3;11029;U16;;Each bit of data represents the model of input nodes with corresponding numbers. corresponding to DO1-DO10 0: close；1: open;each_bit_of_data_represents_the_model_of_input_nodes_with_corresponding_numberscorresponding_to_do1do100_close1_open;1.000000;0.000000;;4
 233;3;11030;U16;;0x55：Disable 0xAA：Enable;v_0x55disable0xaaenable_4;1.000000;0.000000;;4
 234;3;11031;U16;;0x55：Disable 0xAA：Enable;v_0x55disable0xaaenable_5;1.000000;0.000000;;4
-235;3;11095;U16;;Reference SC100&110&125CX info-3x  : Country (Region) Codes Used for Inverter Communication;reference_sc100110125cx_info3x_country_region_codes_used_for_inverter_communication;100.000000;0.000000;;4
+235;3;11095;U16;;Reference SC100&110&125CX info-3x : Country (Region) Codes Used for Inverter Communication;reference_sc100110125cx_info3x_country_region_codes_used_for_inverter_communication;100.000000;0.000000;;4
 236;4;32000;U16;;See Reference;see_reference_2;100.000000;0.000000;;4
 237;4;32001;U16;;Register_32001;register_32001;10.000000;0.000000;V;4
 238;4;32002;I16;;Register_32002;register_32002;10.000000;0.000000;A;4
@@ -276,9 +276,9 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 275;4;32039;I16;;Register_32039;register_32039;10.000000;0.000000;℃;4
 276;4;32040;I16;;Register_32040;register_32040;10.000000;0.000000;℃;4
 277;4;32041;U16;;Register_32041;register_32041;100.000000;0.000000;;4
-278;4;32042;U16;;High Byte: Second high cell temperature location BMU ID  Low Byte: Second high cell temperature position CELL ID;high_byte_second_high_cell_temperature_location_bmu_id_low_byte_second_high_cell_temperature_position_cell_id;100.000000;0.000000;;4
+278;4;32042;U16;;High Byte: Second high cell temperature location BMU ID Low Byte: Second high cell temperature position CELL ID;high_byte_second_high_cell_temperature_location_bmu_id_low_byte_second_high_cell_temperature_position_cell_id;100.000000;0.000000;;4
 279;4;32043;U16;;Register_32043;register_32043;100.000000;0.000000;;4
-280;4;32044;U16;;High Byte: Second low cell temperature position BMU ID  Low Byte: Second low cell temperature position CELL ID;high_byte_second_low_cell_temperature_position_bmu_id_low_byte_second_low_cell_temperature_position_cell_id;100.000000;0.000000;;4
+280;4;32044;U16;;High Byte: Second low cell temperature position BMU ID Low Byte: Second low cell temperature position CELL ID;high_byte_second_low_cell_temperature_position_bmu_id_low_byte_second_low_cell_temperature_position_cell_id;100.000000;0.000000;;4
 281;4;32045;U32;;Register_32045;register_32045;100.000000;0.000000;V;4
 282;4;32046;U16;;Register_32046;register_32046;1.000000;0.000000;;4
 283;4;32047;U32;;Register_32047;register_32047;100.000000;0.000000;V;4
@@ -342,7 +342,7 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 341;4;32147;U16;;Register_32147;register_32147;1.000000;0.000000;mA;4
 342;4;32148;U16;;0x00：Communication abnorma 0x01：Communication normal;v_0x00communication_abnorma0x01communication_normal;100.000000;0.000000;;4
 343;4;32149;U16;;Register_32149;register_32149;1.000000;0.000000;;4
-344;4;32150;U16;;0：Not self-check status  1：Self-checking;v_0not_selfcheck_status_1selfchecking;1.000000;0.000000;;9
+344;4;32150;U16;;0：Not self-check status 1：Self-checking;v_0not_selfcheck_status_1selfchecking;1.000000;0.000000;;9
 345;4;32151;U16;;Register_32151;register_32151;1.000000;0.000000;;4
 346;4;32182;U16;;Register_32182;register_32182;100.000000;0.000000;;4
 347;4;32183;U16;;1：Dehumidifying 0：Not dehumidifying;v_1dehumidifying0not_dehumidifying;1.000000;0.000000;;4
@@ -352,10 +352,10 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 351;4;32187;U16;;Register_32187;register_32187;1.000000;0.000000;RPM;4
 352;4;32188;U16;;0x00：Communication abnorma 0x01：Communication normal;v_0x00communication_abnorma0x01communication_normal_1;1.000000;0.000000;;4
 353;4;32189;U16;;0: idle, 1: ready to start, 2: running, 3: delayed shutdown, 4: shutdown fault;v_0_idle_1_ready_to_start_2_running_3_delayed_shutdown_4_shutdown_fault;1.000000;0.000000;;9
-354;4;32190;U16;;0:close, 1:open  bit1 Semiconductor chilling plate, bit2 fan, bit4 Total alarm information;v_0close_1open_bit1_semiconductor_chilling_plate_bit2_fan_bit4_total_alarm_information;1.000000;0.000000;;9
+354;4;32190;U16;;0:close, 1:open bit1 Semiconductor chilling plate, bit2 fan, bit4 Total alarm information;v_0close_1open_bit1_semiconductor_chilling_plate_bit2_fan_bit4_total_alarm_information;1.000000;0.000000;;9
 355;4;32191;U16;;0:DBS, 1 :TF, 2:ADS, 3:Standard;v_0dbs_1_tf_2ads_3standard;1.000000;0.000000;;4
 356;4;32192;I16;;Register_32192;register_32192;1.000000;0.000000;℃;4
-357;4;32193;U16;;ADS dehumidifier: bit0 Compressor running status, bit1 Fan running status, bit2 Defrost status  Standard dehumidifier: 0：not dehumidifying ；1：ready to dehumidify；2：dehumidifying；3：defrosting;ads_dehumidifier_bit0_compressor_running_status_bit1_fan_running_status_bit2_defrost_status_standard_dehumidifier_0not_dehumidifying_1ready_to_dehumidify2dehumidifying3defrosting;1.000000;0.000000;;9
+357;4;32193;U16;;ADS dehumidifier: bit0 Compressor running status, bit1 Fan running status, bit2 Defrost status Standard dehumidifier: 0：not dehumidifying ；1：ready to dehumidify；2：dehumidifying；3：defrosting;ads_dehumidifier_bit0_compressor_running_status_bit1_fan_running_status_bit2_defrost_status_standard_dehumidifier_0not_dehumidifying_1ready_to_dehumidify2dehumidifying3defrosting;1.000000;0.000000;;9
 358;4;32194;U16;;0：normal； 1：device alarm；2：device fault;v_0normal_1device_alarm2device_fault;1.000000;0.000000;;9
 359;4;32195;U32;;Each manufacturer defines itself;each_manufacturer_defines_itself;1.000000;0.000000;;4
 360;4;32196;U16;;Register_32196;register_32196;1.000000;0.000000;;4
@@ -419,9 +419,9 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 418;4;40092;U16;;0：Non-upgradeable；1：Upgradeable;v_0nonupgradeable1upgradeable_1;100.000000;0.000000;;4
 419;4;40093;U16;;0：Disconnect；1：Closed;v_0disconnect1closed;100.000000;0.000000;;4
 420;4;40094;I16;;Register_40094;register_40094;10.000000;0.000000;℃;4
-421;4;40095;U16;;High Byte: Second high cell temperature location BMU ID  Low Byte: Second high cell temperature position CELL ID;high_byte_second_high_cell_temperature_location_bmu_id_low_byte_second_high_cell_temperature_position_cell_id_1;100.000000;0.000000;;4
+421;4;40095;U16;;High Byte: Second high cell temperature location BMU ID Low Byte: Second high cell temperature position CELL ID;high_byte_second_high_cell_temperature_location_bmu_id_low_byte_second_high_cell_temperature_position_cell_id_1;100.000000;0.000000;;4
 422;4;40096;I16;;Register_40096;register_40096;10.000000;0.000000;℃;4
-423;4;40097;U16;;High Byte: Second low cell temperature position BMU ID  Low Byte: Second low cell temperature position CELL ID;high_byte_second_low_cell_temperature_position_bmu_id_low_byte_second_low_cell_temperature_position_cell_id_1;100.000000;0.000000;;4
+423;4;40097;U16;;High Byte: Second low cell temperature position BMU ID Low Byte: Second low cell temperature position CELL ID;high_byte_second_low_cell_temperature_position_bmu_id_low_byte_second_low_cell_temperature_position_cell_id_1;100.000000;0.000000;;4
 424;4;40098;U16;;0：Closed；1：Opend;v_0closed1opend;100.000000;0.000000;;4
 425;4;40099;U16;;Register_40099;register_40099;100.000000;0.000000;;4
 426;4;40101;U16;;Register_40101;register_40101;10.000000;0.000000;mV;4
@@ -463,9 +463,9 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 462;4;10254;I16;;Register_10254;register_10254;10.000000;0.000000;A;4
 463;4;10255;I16;;Register_10255;register_10255;10.000000;0.000000;A;4
 464;4;10256;I16;;Register_10256;register_10256;10.000000;0.000000;A;4
-465;4;10257;U16;;0x0B30：SC125CX  0x0B31：SC110CX  0x0B32：SC100CX  0x0B40：SC210HX 0x0B41：SC210HX_UL 0x0B42：SC125HX 0x0B43：SC105HX_FM 0x0B44：SC140HX;v_0x0b30sc125cx_0x0b31sc110cx_0x0b32sc100cx_0x0b40sc210hx0x0b41sc210hx_ul0x0b42sc125hx0x0b43sc105hx_fm0x0b44sc140hx;1.000000;0.000000;;4
+465;4;10257;U16;;0x0B30：SC125CX 0x0B31：SC110CX 0x0B32：SC100CX 0x0B40：SC210HX 0x0B41：SC210HX_UL 0x0B42：SC125HX 0x0B43：SC105HX_FM 0x0B44：SC140HX;v_0x0b30sc125cx_0x0b31sc110cx_0x0b32sc100cx_0x0b40sc210hx0x0b41sc210hx_ul0x0b42sc125hx0x0b43sc105hx_fm0x0b44sc140hx;1.000000;0.000000;;4
 466;4;10258;U16;;Register_10258;register_10258;10.000000;0.000000;kW;4
-467;4;10259;U16;;0：Single-phase  1：Three-phase Four-wire  2：Three-phase Three-wire;v_0singlephase_1threephase_fourwire_2threephase_threewire;1.000000;0.000000;;4
+467;4;10259;U16;;0：Single-phase 1：Three-phase Four-wire 2：Three-phase Three-wire;v_0singlephase_1threephase_fourwire_2threephase_threewire;1.000000;0.000000;;4
 468;4;10260;U16;;Register_10260;register_10260;10.000000;0.000000;kvar;4
 469;4;10261;U16;;Register_10261;register_10261;1.000000;0.000000;;4
 470;4;10262;U16;;Register_10262;register_10262;1000.000000;0.000000;;4
@@ -763,7 +763,7 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 762;3;131;U16;;Register_131;register_131;1.000000;0.000000;;1
 763;3;132;U16;;Register_132;register_132;1.000000;0.000000;;1
 764;4;56001;U16;;见 System alarm status;system_alarm_status;1.000000;0.000000;;9
-765;4;56002;U16;;见 System fault  status;system_fault_status;1.000000;0.000000;;9
+765;4;56002;U16;;见 System fault status;system_fault_status;1.000000;0.000000;;9
 766;4;56003;U16;;Register_56003;register_56003;1.000000;0.000000;;4
 767;4;56004;U16;;Register_56004;register_56004;1.000000;0.000000;;4
 768;4;56005;U16;;Register_56005;register_56005;100.000000;0.000000;;4
@@ -785,7 +785,7 @@ Modbus;Logger;Sungrow;LC300_Modbus;;;;;;;
 784;4;56021;U16;;Register_56021;register_56021;100.000000;0.000000;;4
 785;4;56022;U16;;0xAA:紧急停机。0x55：非紧急停机;v_0xaa0x55;100.000000;0.000000;;4
 786;4;56053;U16;;Register_56053;register_56053;1.000000;0.000000;;4
-787;4;56054;U16;;0:离线  1:在线;v_0_1;100.000000;0.000000;;4
+787;4;56054;U16;;0:离线 1:在线;v_0_1;100.000000;0.000000;;4
 788;4;56060;U16;;Register_56060;register_56060;1.000000;0.000000;;4
 789;4;56061;U16;;水泵转速百分比。0代表停机，大于0代表运行;v_00;100.000000;0.000000;%;4
 790;4;56062;U16;;0停机，1运行;v_01;100.000000;0.000000;;4

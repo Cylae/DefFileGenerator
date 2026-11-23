@@ -7,9 +7,9 @@ Modbus;Other;Polier;MTR5LMOD;;;;;;;
 6;4;3;U16;;Password;;1.0;0.0;;4
 7;4;4;U16;;Serial number;SERIAL;1.0;0.0;;4
 8;4;5;U16;;Serial number_1;;1.0;0.0;;4
-9;4;4096;U16;;L1-N   PhaseA voltage;U_AC_1;1.0;0.0;V;4
-10;4;4098;U16;;L2-N   PhaseB voltage;U_AC_2;1.0;0.0;V;4
-11;4;4100;U16;;L3-N   PhaseC voltage;U_AC_3;1.0;0.0;V;4
+9;4;4096;U16;;L1-N PhaseA voltage;U_AC_1;1.0;0.0;V;4
+10;4;4098;U16;;L2-N PhaseB voltage;U_AC_2;1.0;0.0;V;4
+11;4;4100;U16;;L3-N PhaseC voltage;U_AC_3;1.0;0.0;V;4
 12;4;4108;U16;;PhaseA current;I_AC_1;1.0;0.0;A;4
 13;4;4110;U16;;PhaseB current;I_AC_2;1.0;0.0;A;4
 14;4;4112;U16;;PhaseC current;I_AC_3;1.0;0.0;A;4

@@ -34,9 +34,9 @@ Modbus;Meter;Lettel;MCX4-34;;;;;;;
 33;3;56;U32;;Average line to line volts.;;0.010000;0.000000;V;4
 34;3;58;U32;;Average line current.;;0.001000;0.000000;A;4
 35;3;60;U32;;Neutral current.;;0.001000;0.000000;A;4
-36;3;70;U16;;Nature    of    L1    load    (Resistive_1_    inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
-37;3;71;U16;;Nature    of    L2    load    (Resistive_1_    inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
-38;3;72;U16;;Nature    of    L3    load    (Resistive_1_    inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
+36;3;70;U16;;Nature of L1 load (Resistive_1_ inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
+37;3;71;U16;;Nature of L2 load (Resistive_1_ inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
+38;3;72;U16;;Nature of L3 load (Resistive_1_ inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
 39;3;73;U16;;Nature of the system load(Resistive_1_ inductive_2_ capacitive _3_ Non Load_4);;1.000000;0.000000;;4
 40;3;93;U16;;Phase 1 voltage THD (2).;;0.010000;0.000000;Percent;4
 41;3;94;U16;;Phase 2 voltage THD (2).;;0.010000;0.000000;Percent;4

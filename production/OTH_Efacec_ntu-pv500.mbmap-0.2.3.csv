@@ -100,10 +100,10 @@ Modbus;Other;Efacec;ntu-pv500.mbmap-0.2.3;;;;;;;
 99;4;130;U16;;Phase S Reactive Power;;1.0;0.0;KVAR;4
 100;4;131;U16;;Phase T Reactive Power;;1.0;0.0;KVAR;4
 101;4;138;U16;;Estimated produced active power counter;;1.0;0.0;KWh;4
-102;4;140;U16;;Estimated produced capacitive  power counter;;1.0;0.0;KVArh;4
+102;4;140;U16;;Estimated produced capacitive power counter;;1.0;0.0;KVArh;4
 103;4;142;U16;;Estimated produced inductive power counter;;1.0;0.0;KVArh;4
 104;4;144;U16;;Estimated consumed active power counter;;1.0;0.0;KWh;4
-105;4;146;U16;;Estimated consumed capacitive  power counter;;1.0;0.0;KVArh;4
+105;4;146;U16;;Estimated consumed capacitive power counter;;1.0;0.0;KVArh;4
 106;4;148;U16;;Estimated consumed inductive power counter;;1.0;0.0;KVArh;4
 107;4;156;U16;;Inverter Status;;1.0;0.0;See Inverter Status table;9
 108;4;157;U16;;DSP Digital I/O Status;;1.0;0.0;Debugger only;9
@@ -153,5 +153,5 @@ Modbus;Other;Efacec;ntu-pv500.mbmap-0.2.3;;;;;;;
 152;4;514;U16;;Power Output increase Ramp up;;1.0;0.0;[0-1000] = 6*Pref/Pnom;4
 153;4;515;U16;;Power Output decrease Ramp up;;1.0;0.0;[0-1000] = 6*Pref/Pnom;4
 154;4;516;U16;;Statcom Mode;;1.0;0.0;[0-1] DISABLE / ENABLE;4
-155;4;517;U16;;Reactive power referece;;1.0;0.0;[-1000,1000]  Snom *Qref/ 1000;4
+155;4;517;U16;;Reactive power referece;;1.0;0.0;[-1000,1000] Snom *Qref/ 1000;4
 156;4;518;U16;;Not used;;1.0;0.0;-;4

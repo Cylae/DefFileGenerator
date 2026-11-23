@@ -7,9 +7,9 @@ Modbus;Other;Webdyn;Sens_IOs_Modbus_definition;;;;;;;
 6;3;9;I16;;Baudrate Setting;;0.0;0.0;-;4
 7;1;16;I16;;Status digital Input channel 1;;0.0;0.0;-;4
 8;4;101;I16;;Open collector output 0;;0.0;0.0;-;4
-9;4;102;I16;;High word  for counter input 1;;0.0;0.0;-;4
+9;4;102;I16;;High word for counter input 1;;0.0;0.0;-;4
 10;4;103;I16;;Low word for counter input 1;;0.0;0.0;-;4
-11;4;104;I16;;High word  for counter input 2;;0.0;0.0;-;4
+11;4;104;I16;;High word for counter input 2;;0.0;0.0;-;4
 12;4;105;I16;;Low word for counter input 2;;0.0;0.0;-;4
 13;4;106;I16;;High word for counter input 3;;0.0;0.0;-;4
 14;4;107;I16;;Low word for counter input 3;;0.0;0.0;-;4

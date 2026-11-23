@@ -37,7 +37,7 @@ Modbus;Meter;Lettel;W_Lettel_MCX4-34V-FLOAT;;;;;;;
 36;4;78;F32;;Nature of L1 load;;1;0;;0
 37;4;80;F32;;Nature of L2 load;;1;0;;0
 38;4;82;F32;;Nature of L3 load;;1;0;;0
-39;4;84;F32;;Nature  of  the system load);;1;0;;4
+39;4;84;F32;;Nature of the system load);;1;0;;4
 40;4;124;F32;;Phase 1 voltage THD;;1;0;Percent;0
 41;4;126;F32;;Phase 2 voltage THD;;1;0;Percent;0
 42;4;128;F32;;Phase 3 voltage THD;;1;0;Percent;0

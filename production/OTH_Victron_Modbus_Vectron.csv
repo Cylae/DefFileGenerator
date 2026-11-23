@@ -75,10 +75,10 @@ Modbus;Other;Victron;Modbus_Vectron;;;;;;;
 74;4;1233;U16;;Checksum;;1.0;0.0;;4
 75;4;1487;U16;;Controller Status;;1.0;0.0;;4
 76;4;2000;U16;;Active Energy High Word;;1.0;0.0;;4
-77;4;2001;U16;;Active Energy Low  Word;;1.0;0.0;;4
+77;4;2001;U16;;Active Energy Low Word;;1.0;0.0;;4
 78;4;3000;U16;;Working Hours Counter High;;1.0;0.0;;4
 79;4;3001;U16;;Working Hours Counter Low Word;;1.0;0.0;;4
-80;4;4000;U16;;Operation Hours Counter High  Word;;1.0;0.0;;4
-81;4;4001;U16;;Operation Hours Counter Low  Word;;1.0;0.0;;4
-82;4;5000;U16;;Energy Negative High  Word;;1.0;0.0;;4
-83;4;5001;U16;;Energy Negative Low  Word;;1.0;0.0;;4
+80;4;4000;U16;;Operation Hours Counter High Word;;1.0;0.0;;4
+81;4;4001;U16;;Operation Hours Counter Low Word;;1.0;0.0;;4
+82;4;5000;U16;;Energy Negative High Word;;1.0;0.0;;4
+83;4;5001;U16;;Energy Negative Low Word;;1.0;0.0;;4

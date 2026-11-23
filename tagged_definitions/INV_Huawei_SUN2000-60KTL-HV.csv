@@ -306,7 +306,7 @@ Modbus;Inverter;Huawei;SUN2000-60KTL-HV;;;;;;;
 305;3;50133_0_1;BITS;;0x05_50133;;1.0;0.0;;0
 306;3;50134_0_1;BITS;;60 0X06 Frequency Abnormal;;1.0;0.0;;4
 307;3;50135_0_1;BITS;;61 0X07 Frequency Abnormal;;1.0;0.0;;4
-308;3;50136_0_1;BITS;;62  0X08 Abnormal Grid Volt.;;1.0;0.0;;4
+308;3;50136_0_1;BITS;;62 0X08 Abnormal Grid Volt.;;1.0;0.0;;4
 309;3;50137_0_1;BITS;;63 0X09 Abnormal Grid Volt.;;1.0;0.0;;4
 310;3;50138_0_1;BITS;;64 0X0A Abnormal Ground.;;1.0;0.0;;4
 311;3;50139_0_1;BITS;;65 0X0B Abnormal Grid Volt.;;1.0;0.0;;4

@@ -38,12 +38,12 @@ Modbus;Meter;Lettel;MCX4-34V_FLOAT;;;;;;;
 37;4;80;U16;;Type de charge phase 2 (resistive=1 inductive=2 capacitive=3);;1.0;0.0;;4
 38;4;82;U16;;Type de charge phase 3 (resistive=1 ,inductive=2 capacitive=3);;1.0;0.0;;4
 39;4;84;U16;;Type de charge systeme (resistive=1 ,inductive=2 capacitive=3);;1.0;0.0;;4
-40;4;124;U16;;THD tension phase 1  (2);;1.0;0.0;Percent;4
-41;4;126;U16;;THD tension phase 2  (2);;1.0;0.0;Percent;4
-42;4;128;U16;;THD tension phase 3  (2);;1.0;0.0;Percent;4
-43;4;130;U16;;THD courant phase 1  (2);;1.0;0.0;Percent;4
-44;4;132;U16;;THD courant phase 2  (2);;1.0;0.0;Percent;4
-45;4;134;U16;;THD courant phase 3  (2);;1.0;0.0;Percent;4
+40;4;124;U16;;THD tension phase 1 (2);;1.0;0.0;Percent;4
+41;4;126;U16;;THD tension phase 2 (2);;1.0;0.0;Percent;4
+42;4;128;U16;;THD tension phase 3 (2);;1.0;0.0;Percent;4
+43;4;130;U16;;THD courant phase 1 (2);;1.0;0.0;Percent;4
+44;4;132;U16;;THD courant phase 2 (2);;1.0;0.0;Percent;4
+45;4;134;U16;;THD courant phase 3 (2);;1.0;0.0;Percent;4
 46;4;136;U16;;THD moyen des tensions (2);;1.0;0.0;Percent;4
 47;4;138;U16;;THD moyen des courants (2);;1.0;0.0;Percent;4
 48;4;140;U16;;Demande puissance active totale (3);;1.0;0.0;W;4
