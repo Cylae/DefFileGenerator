@@ -1,6 +1,6 @@
 # 📚 Webdyn Definitions Library
 
-Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **177 fichiers de définition** validés couvrant **30 221 registres Modbus** à travers plus de 60 constructeurs mondiaux.
+Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **193 fichiers de définition** validés couvrant **31 417 registres Modbus** à travers plus de 60 constructeurs mondiaux.
 
 ---
 
@@ -8,11 +8,11 @@ Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. 
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Constructeurs Notables |
 |-----------|---------|----------|-----------------|------------------------|
-| Onduleurs & Convertisseurs (Inverters) | `INV_` | 104 | 21 941 | ABB, Answer Drives, CyberPower, Cyberpower, EFACEC (+23) |
-| Compteurs & Analyseurs Réseau (Meters) | `MET_` | 34 | 3 476 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+16) |
+| Onduleurs & Convertisseurs (Inverters) | `INV_` | 104 | 22 100 | ABB, Answer Drives, CyberPower, Cyberpower, EFACEC (+23) |
+| Compteurs & Analyseurs Réseau (Meters) | `MET_` | 50 | 4 548 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+17) |
 | Systèmes de Stockage BESS (Batteries) | `BAT_` | 5 | 3 718 | Dyness, GoodWe |
 | Capteurs & Pyranomètres (Sensors) | `SEN_` | 21 | 446 | ATERSA, BD_SENSOR, DELTAOHM, DELTA_OHM, EKO (+11) |
-| Passerelles & Loggers de Communication | `COM_` | 8 | 431 | GoodWe, Huawei, SMA, Solplanet |
+| Passerelles & Loggers de Communication | `COM_` | 8 | 396 | GoodWe, Huawei, SMA, Solplanet |
 | Autres Équipements (IO Modules & Afficheurs) | `OTH_` | 5 | 209 | ICPDAS, SIEBERT, Webdyn |
 
 ---
@@ -34,7 +34,7 @@ Pour une lisibilité et une maintenabilité optimales, les fichiers de définiti
 | [`Definitions/Growatt/`](./Growatt/) | Growatt New Energy | 16 | Onduleurs string MAX, MOD, MIN, TL-X, TL3-X, hybrides et stockage |
 | [`Definitions/Fronius/`](./Fronius/) | Fronius International | 34 | Gammes Symo, Primo, Eco, Gen24 Plus, cartes d'entrées/capteurs IG |
 | [`Definitions/SolarEdge/`](./SolarEdge/) | SolarEdge Technologies | 20 | Onduleurs string SE monophasés/triphasés, blocs de contrôle de puissance active/réactive |
-| [`Definitions/CarloGavazzi/`](./CarloGavazzi/) | Carlo Gavazzi Automation | 10 | Compteurs d'énergie et analyseurs EM24, EM300, EM210 |
+| [`Definitions/CarloGavazzi/`](./CarloGavazzi/) | Carlo Gavazzi Automation | 25 | Compteurs d'énergie et analyseurs EM24, EM210, EM210_MV, EM530, EM540, EM100, EM300, WM |
 | [`Definitions/ABB/`](./ABB/) | ABB / Fimer | 61 | Onduleurs centraux PVS800, Trio, Pro33, modules de puissance Ultra |
 | [`Definitions/Dyness/`](./Dyness/) | Dyness Renewable | 4 | Systèmes de stockage batteries haute tension BESS DH100F, DH200F, DH200Y |
 | [`Definitions/Classic/`](./Classic/) | Grands Classiques Multi-Constructeurs | 18 | Profils unifiés et standardisés des 18 équipements les plus déployés |
@@ -74,30 +74,30 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_Cyberpower_CPSPV120K-140K.csv`](./INV_Cyberpower_CPSPV120K-140K.csv) | Cyberpower | CPSPV120K-140K | Modbus | 244 |
 | [`INV_CyberPower_GENERIC.csv`](./INV_CyberPower_GENERIC.csv) | Cyberpower | GENERIC | Modbus | 244 |
 | [`INV_EFACEC_Efasolar.csv`](./INV_EFACEC_Efasolar.csv) | EFACEC | Efasolar | Modbus | 58 |
+| [`INV_Goodwe_ES_EM_S-BP_BP_Series.csv`](./INV_Goodwe_ES_EM_S-BP_BP_Series.csv) | GoodWe | ES-EM-S-BP-BP-Series | Modbus | 370 |
 | [`INV_Goodwe_ES-EM-SBP-BP.csv`](./INV_Goodwe_ES-EM-SBP-BP.csv) | GoodWe | ES-EM-SBP-BP | Modbus | 49 |
 | [`INV_Goodwe_ES_EM_SBP.csv`](./INV_Goodwe_ES_EM_SBP.csv) | GoodWe | ES-EM-SBP-Series | Modbus | 49 |
-| [`INV_Goodwe_ES_EM_S-BP_BP_Series.csv`](./INV_Goodwe_ES_EM_S-BP_BP_Series.csv) | GoodWe | ES_EM_S-BP_BP_Series | Modbus | 370 |
+| [`INV_GoodWe_ET_EH_BT_BH_EHB_AES_ABP_BTC_Series.csv`](./INV_GoodWe_ET_EH_BT_BH_EHB_AES_ABP_BTC_Series.csv) | GoodWe | ET-EH-BT-BH-EHB-Series | Modbus | 530 |
 | [`INV_Goodwe_ET_EH_Hybrid_Series.csv`](./INV_Goodwe_ET_EH_Hybrid_Series.csv) | GoodWe | ET-EH-Hybrid-Series | Modbus | 79 |
 | [`INV_Goodwe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv`](./INV_Goodwe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv) | GoodWe | ET-EH-ModbusRTU | Modbus | 79 |
 | [`INV_Goodwe_ET_EH_Series.csv`](./INV_Goodwe_ET_EH_Series.csv) | GoodWe | ET-EH-Series | Modbus | 79 |
 | [`INV_Goodwe_ET_Series.csv`](./INV_Goodwe_ET_Series.csv) | GoodWe | ET-Series | Modbus | 79 |
-| [`INV_GoodWe_ET_EH_BT_BH_EHB_AES_ABP_BTC_Series.csv`](./INV_GoodWe_ET_EH_BT_BH_EHB_AES_ABP_BTC_Series.csv) | GoodWe | ET_EH_BT_BH_EHB_AES_ABP_BTC_Series | Modbus | 530 |
-| [`INV_Goodwe_GT-SERIES.csv`](./INV_Goodwe_GT-SERIES.csv) | GoodWe | GT-SERIES | Modbus | 91 |
-| [`INV_Goodwe_GT_Series.csv`](./INV_Goodwe_GT_Series.csv) | GoodWe | GT_Series | Modbus | 305 |
-| [`INV_Goodwe_HT_1500V.csv`](./INV_Goodwe_HT_1500V.csv) | GoodWe | HT-1500V-Series | Modbus | 92 |
-| [`INV_Goodwe_HT1100.csv`](./INV_Goodwe_HT1100.csv) | GoodWe | HT1100 | Modbus | 276 |
-| [`INV_Goodwe_HT1500.csv`](./INV_Goodwe_HT1500.csv) | GoodWe | HT1500 | Modbus | 287 |
-| [`INV_Goodwe_HT_others_Series.csv`](./INV_Goodwe_HT_others_Series.csv) | GoodWe | HT_others_Series | Modbus | 290 |
-| [`INV_Goodwe_HT_Series.csv`](./INV_Goodwe_HT_Series.csv) | GoodWe | HT_Series | Modbus | 293 |
+| [`INV_Goodwe_GT-SERIES.csv`](./INV_Goodwe_GT-SERIES.csv) | GoodWe | GT-SERIES | Modbus | 305 |
+| [`INV_Goodwe_GT_Series.csv`](./INV_Goodwe_GT_Series.csv) | GoodWe | GT-Series | Modbus | 305 |
+| [`INV_Goodwe_HT_1500V.csv`](./INV_Goodwe_HT_1500V.csv) | GoodWe | HT-1500V-Series | Modbus | 288 |
+| [`INV_Goodwe_HT_others_Series.csv`](./INV_Goodwe_HT_others_Series.csv) | GoodWe | HT-Others-Series | Modbus | 91 |
+| [`INV_Goodwe_HT_Series.csv`](./INV_Goodwe_HT_Series.csv) | GoodWe | HT-Series | Modbus | 294 |
+| [`INV_Goodwe_HT1100.csv`](./INV_Goodwe_HT1100.csv) | GoodWe | HT1100 | Modbus | 277 |
+| [`INV_Goodwe_HT1500.csv`](./INV_Goodwe_HT1500.csv) | GoodWe | HT1500 | Modbus | 288 |
 | [`INV_Goodwe_MS_DNS_XS.csv`](./INV_Goodwe_MS_DNS_XS.csv) | GoodWe | MS-DNS-XS | Modbus | 50 |
 | [`INV_Goodwe_MT.csv`](./INV_Goodwe_MT.csv) | GoodWe | MT | Modbus | 95 |
+| [`INV_Goodwe_MT_series.csv`](./INV_Goodwe_MT_series.csv) | GoodWe | MT-Series | Modbus | 68 |
 | [`INV_Goodwe_MT-Series_ModbusRTU.csv`](./INV_Goodwe_MT-Series_ModbusRTU.csv) | GoodWe | MT-Series-ModbusRTU | Modbus | 68 |
-| [`INV_Goodwe_MT_series.csv`](./INV_Goodwe_MT_series.csv) | GoodWe | MT_series | Modbus | 123 |
 | [`INV_Goodwe_SDT_G2_G3.csv`](./INV_Goodwe_SDT_G2_G3.csv) | GoodWe | SDT-G2-G3-Series | Modbus | 60 |
 | [`INV_Goodwe_SDTG2.csv`](./INV_Goodwe_SDTG2.csv) | GoodWe | SDTG2 | Modbus | 116 |
 | [`INV_Goodwe_SMT.csv`](./INV_Goodwe_SMT.csv) | GoodWe | SMT | Modbus | 115 |
 | [`INV_Goodwe_SMT_Series.csv`](./INV_Goodwe_SMT_Series.csv) | GoodWe | SMT-Series | Modbus | 68 |
-| [`INV_Goodwe_SMT50K_SMT60K.csv`](./INV_Goodwe_SMT50K_SMT60K.csv) | GoodWe | SMT50K_SMT60K | Modbus | 119 |
+| [`INV_Goodwe_SMT50K_SMT60K.csv`](./INV_Goodwe_SMT50K_SMT60K.csv) | GoodWe | SMT50K-SMT60K | Modbus | 119 |
 | [`INV_Goodwe_ThreePhase_SunSpec.csv`](./INV_Goodwe_ThreePhase_SunSpec.csv) | GoodWe | ThreePhase-SunSpec | Modbus | 29 |
 | [`INV_Goodwe_XS-DNS-MS-SDT-G3_SERIES.csv`](./INV_Goodwe_XS-DNS-MS-SDT-G3_SERIES.csv) | GoodWe | XS-DNS-MS-SDT-G3-Series | Modbus | 50 |
 | [`INV_Goodwe_XS_DNS_MS.csv`](./INV_Goodwe_XS_DNS_MS.csv) | GoodWe | XS-DNS-MS-Series | Modbus | 50 |
@@ -167,7 +167,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_VICTRON_Generic.csv`](./INV_VICTRON_Generic.csv) | VICTRON | Generic | Modbus | 12 |
 | [`INV_Zucchetti_Azzuro-3PH.csv`](./INV_Zucchetti_Azzuro-3PH.csv) | Zucchetti | Azzuro-3PH | Modbus | 503 |
 
-### Compteurs & Analyseurs Réseau (Meters) (34 fichiers)
+### Compteurs & Analyseurs Réseau (Meters) (50 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
@@ -175,6 +175,22 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`MET_ABB_M2M_Meter.csv`](./MET_ABB_M2M_Meter.csv) | ABB | M2M_Meter | Modbus | 126 |
 | [`MET_Algodue_UPM209-309.csv`](./MET_Algodue_UPM209-309.csv) | Algodue | UPM209-309 | Modbus | 98 |
 | [`MET_Carlo_Gavazzi_EM210.csv`](./MET_Carlo_Gavazzi_EM210.csv) | Carlo_Gavazzi | EM210 | Modbus | 115 |
+| [`MET_CarloGavazzi_EM111.csv`](./MET_CarloGavazzi_EM111.csv) | CarloGavazzi | EM111 | Modbus | 41 |
+| [`MET_CarloGavazzi_EM112.csv`](./MET_CarloGavazzi_EM112.csv) | CarloGavazzi | EM112 | Modbus | 41 |
+| [`MET_CarloGavazzi_EM21.csv`](./MET_CarloGavazzi_EM21.csv) | CarloGavazzi | EM21 | Modbus | 35 |
+| [`MET_CarloGavazzi_EM210.csv`](./MET_CarloGavazzi_EM210.csv) | CarloGavazzi | EM210 | Modbus | 115 |
+| [`MET_CarloGavazzi_EM210_MV.csv`](./MET_CarloGavazzi_EM210_MV.csv) | CarloGavazzi | EM210_MV | Modbus | 115 |
+| [`MET_CarloGavazzi_EM271.csv`](./MET_CarloGavazzi_EM271.csv) | CarloGavazzi | EM271 | Modbus | 25 |
+| [`MET_CarloGavazzi_EM330.csv`](./MET_CarloGavazzi_EM330.csv) | CarloGavazzi | EM330 | Modbus | 65 |
+| [`MET_CarloGavazzi_EM340.csv`](./MET_CarloGavazzi_EM340.csv) | CarloGavazzi | EM340 | Modbus | 65 |
+| [`MET_CarloGavazzi_EM530.csv`](./MET_CarloGavazzi_EM530.csv) | CarloGavazzi | EM530 | Modbus | 143 |
+| [`MET_CarloGavazzi_EM540.csv`](./MET_CarloGavazzi_EM540.csv) | CarloGavazzi | EM540 | Modbus | 143 |
+| [`MET_CarloGavazzi_ET112.csv`](./MET_CarloGavazzi_ET112.csv) | CarloGavazzi | ET112 | Modbus | 41 |
+| [`MET_CarloGavazzi_ET330.csv`](./MET_CarloGavazzi_ET330.csv) | CarloGavazzi | ET330 | Modbus | 65 |
+| [`MET_CarloGavazzi_ET340.csv`](./MET_CarloGavazzi_ET340.csv) | CarloGavazzi | ET340 | Modbus | 65 |
+| [`MET_CarloGavazzi_WM15.csv`](./MET_CarloGavazzi_WM15.csv) | CarloGavazzi | WM15 | Modbus | 33 |
+| [`MET_CarloGavazzi_WM20.csv`](./MET_CarloGavazzi_WM20.csv) | CarloGavazzi | WM20 | Modbus | 40 |
+| [`MET_CarloGavazzi_WM50.csv`](./MET_CarloGavazzi_WM50.csv) | CarloGavazzi | WM50 | Modbus | 40 |
 | [`MET_CHAUVIN-ARNOUX_Ulys_TT-M.csv`](./MET_CHAUVIN-ARNOUX_Ulys_TT-M.csv) | CHAUVIN-ARNOUX | Ulys_TT-M | Modbus | 19 |
 | [`MET_CHINT_DTSU666.csv`](./MET_CHINT_DTSU666.csv) | CHINT | DTSU666 | Modbus | 41 |
 | [`MET_CIRCUTOR_CVME3MINI.csv`](./MET_CIRCUTOR_CVME3MINI.csv) | CIRCUTOR | CVME3MINI | Modbus | 31 |
@@ -247,7 +263,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
 | [`COM_Goodwe_EzLogger_Pro.csv`](./COM_Goodwe_EzLogger_Pro.csv) | GoodWe | EzLogger-Pro | Modbus | 25 |
-| [`COM_GoodWe_Ezlogger3000.csv`](./COM_GoodWe_Ezlogger3000.csv) | GoodWe | Ezlogger3000 | Modbus | 60 |
+| [`COM_GoodWe_Ezlogger3000.csv`](./COM_GoodWe_Ezlogger3000.csv) | GoodWe | Ezlogger3000 | Modbus | 25 |
 | [`COM_Goodwe_SCB3000.csv`](./COM_Goodwe_SCB3000.csv) | GoodWe | SCB3000 | Modbus | 29 |
 | [`COM_Huawei_SL3000.csv`](./COM_Huawei_SL3000.csv) | Huawei | SL3000 | Modbus | 82 |
 | [`COM_SMA_ClusterController.csv`](./COM_SMA_ClusterController.csv) | SMA | ClusterController | Modbus | 24 |

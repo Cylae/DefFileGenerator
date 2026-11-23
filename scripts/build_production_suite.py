@@ -32,6 +32,7 @@ X7_DIR = WORKSPACE_DIR / "X7_Definitions"
 CLASSIC_DIR = WORKSPACE_DIR / "Definitions" / "Classic"
 GOODWE_DIR = WORKSPACE_DIR / "Definitions" / "GoodWe"
 SMA_DIR = WORKSPACE_DIR / "Definitions" / "SMA"
+CARLOGAVAZZI_DIR = WORKSPACE_DIR / "Definitions" / "CarloGavazzi"
 
 PREFIX_TO_CATEGORY = {
     "INV": "Inverter",
@@ -576,6 +577,11 @@ def build_manifest() -> dict[str, Path]:
         for sma_file in sorted(SMA_DIR.glob("*.csv")):
             manifest[sma_file.name] = sma_file
 
+    # 10. Complete Carlo Gavazzi Certified Ecosystem
+    if CARLOGAVAZZI_DIR.exists():
+        for cg_file in sorted(CARLOGAVAZZI_DIR.glob("*.csv")):
+            manifest[cg_file.name] = cg_file
+
     # 6. Comprehensive Ingestion from tagged_definitions/
     candidates_by_tgt: dict[str, list[Path]] = defaultdict(list)
     for f in sorted(TAGGED_DIR.glob("*.csv")):
@@ -891,6 +897,7 @@ def main():
         is_already_certified = any(
             src_path.resolve().is_relative_to(d.resolve())
             for d in (
+                CARLOGAVAZZI_DIR,
                 GOODWE_DIR,
                 SMA_DIR,
                 CLASSIC_DIR,

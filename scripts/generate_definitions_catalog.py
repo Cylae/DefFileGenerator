@@ -98,7 +98,7 @@ def generate_catalog():
             "| [`Definitions/Growatt/`](./Growatt/) | Growatt New Energy | 16 | Onduleurs string MAX, MOD, MIN, TL-X, TL3-X, hybrides et stockage |",
             "| [`Definitions/Fronius/`](./Fronius/) | Fronius International | 34 | Gammes Symo, Primo, Eco, Gen24 Plus, cartes d'entrées/capteurs IG |",
             "| [`Definitions/SolarEdge/`](./SolarEdge/) | SolarEdge Technologies | 20 | Onduleurs string SE monophasés/triphasés, blocs de contrôle de puissance active/réactive |",
-            "| [`Definitions/CarloGavazzi/`](./CarloGavazzi/) | Carlo Gavazzi Automation | 10 | Compteurs d'énergie et analyseurs EM24, EM300, EM210 |",
+            "| [`Definitions/CarloGavazzi/`](./CarloGavazzi/) | Carlo Gavazzi Automation | 25 | Compteurs d'énergie et analyseurs EM24, EM210, EM210_MV, EM530, EM540, EM100, EM300, WM |",
             "| [`Definitions/ABB/`](./ABB/) | ABB / Fimer | 61 | Onduleurs centraux PVS800, Trio, Pro33, modules de puissance Ultra |",
             "| [`Definitions/Dyness/`](./Dyness/) | Dyness Renewable | 4 | Systèmes de stockage batteries haute tension BESS DH100F, DH200F, DH200Y |",
             "| [`Definitions/Classic/`](./Classic/) | Grands Classiques Multi-Constructeurs | 18 | Profils unifiés et standardisés des 18 équipements les plus déployés |",

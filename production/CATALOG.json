@@ -1,40 +1,206 @@
 {
-  "total_files": 1118,
+  "total_files": 1124,
   "prefixes": {
-    "BAT": 48,
-    "COM": 29,
-    "INV": 418,
-    "MET": 194,
-    "OTH": 376,
+    "BAT": 52,
+    "COM": 31,
+    "INV": 406,
+    "MET": 218,
+    "OTH": 364,
     "SEN": 53
   },
-  "manufacturers_count": 137,
+  "manufacturers_count": 191,
   "manufacturers": {
-    "Schneider": 78,
-    "MarsEnergy": 66,
-    "Huawei": 62,
+    "Schneider": 77,
     "ABB": 61,
-    "Goodwe": 47,
-    "SMA": 41,
-    "Delta": 37,
-    "Socomec": 35,
+    "MarsEnergy": 57,
+    "Huawei": 56,
+    "Delta": 35,
+    "SMA": 34,
     "Fronius": 33,
-    "FoxESS": 30,
-    "Ingeteam": 26,
-    "Sungrow": 23,
-    "SLEnergy": 20,
+    "GoodWe": 31,
+    "FoxESS": 27,
+    "CarloGavazzi": 25,
+    "Sungrow": 24,
+    "Socomec": 24,
+    "Ingeteam": 19,
     "SAJ": 19,
-    "SolarEdge": 19,
-    "Kaco": 18,
-    "Legrand": 16,
-    "Growatt": 15,
-    "Siel": 15,
-    "Kehua": 14,
+    "SLEnergy": 18,
+    "Kaco": 17,
+    "SolarEdge": 17,
+    "Growatt": 16,
+    "Legrand": 14,
     "Lettel": 14,
-    "Cyberpower": 13,
     "Janitza": 13,
-    "IngenieurBuro": 13,
-    "SolaX": 12
+    "Solplanet": 12,
+    "Kehua": 12,
+    "SOCOMEC": 12,
+    "IngenieurBuro": 12,
+    "SIEL": 11,
+    "CyberPower": 10,
+    "KippZonen": 10,
+    "HUAWEI": 9,
+    "Kostal": 9,
+    "Solax": 9,
+    "Deye": 8,
+    "Solis": 8,
+    "Webdyn": 8,
+    "AlroSolar": 7,
+    "X7": 7,
+    "Efacec": 7,
+    "INGETEAM": 7,
+    "SofarSolar": 7,
+    "Hyxi": 6,
+    "Jema": 6,
+    "IME": 6,
+    "Hukseflux": 6,
+    "AnswerDrives": 5,
+    "CEFEM": 5,
+    "Kstar": 5,
+    "MarsRenewable": 5,
+    "Victron": 5,
+    "CHINT": 5,
+    "Lufft": 5,
+    "Seven": 5,
+    "ATMOCE": 4,
+    "Dyness": 4,
+    "Hoymiles": 4,
+    "Mars Energy": 4,
+    "Greenheiss": 4,
+    "PowerElectronics": 4,
+    "Zucchetti": 4,
+    "ChauvinArnoux": 4,
+    "MCI": 4,
+    "Ticmaster": 4,
+    "EKO": 4,
+    "Siel": 4,
+    "Thermokon": 4,
+    "HOYMILES": 3,
+    "Bonfiglioli": 3,
+    "Cyberpower": 3,
+    "INVT": 3,
+    "Kerneli": 3,
+    "KOSTAL": 3,
+    "KSTAR": 3,
+    "Siemens": 3,
+    "Tata": 3,
+    "AEberle": 3,
+    "CIRCUTOR": 3,
+    "EcoAdapt": 3,
+    "IMESYS": 3,
+    "Inepro": 3,
+    "POLIER": 3,
+    "SolarLog": 3,
+    "TicMaster": 3,
+    "Universal": 3,
+    "Weidmuller": 3,
+    "LSI": 3,
+    "MeierNT": 3,
+    "SIEBERT": 3,
+    "SRegeltechnik": 3,
+    "ZeverSolar": 3,
+    "FOX ESS": 2,
+    "Robestec": 2,
+    "5": 2,
+    "APsystems": 2,
+    "Autarco": 2,
+    "DELTA": 2,
+    "GREENHEISS": 2,
+    "Hitachi": 2,
+    "JEMA": 2,
+    "k": 2,
+    "KEHUA": 2,
+    "LEGRAND": 2,
+    "POWERELECTRONICS": 2,
+    "SATCON": 2,
+    "SNEF": 2,
+    "SOFARSOLAR": 2,
+    "SOLAREDGE": 2,
+    "SolaX": 2,
+    "TMEIC": 2,
+    "Waaree": 2,
+    "Algodue": 2,
+    "EcsOptec": 2,
+    "EDMI": 2,
+    "Emu": 2,
+    "HAGER": 2,
+    "OG": 2,
+    "Panasonic": 2,
+    "PhoenixContact": 2,
+    "Socorel": 2,
+    "Zelec": 2,
+    "Advantech": 2,
+    "ICPDAS": 2,
+    "Maximet": 2,
+    "Refusol": 2,
+    "Siebert": 2,
+    "Thies": 2,
+    "DeltaOhm": 2,
+    "SOLAX": 1,
+    "ATESS": 1,
+    "BlueSun": 1,
+    "BONFIGLIOLI": 1,
+    "Eastron": 1,
+    "EFACEC": 1,
+    "FOX_ESS": 1,
+    "fronius": 1,
+    "Gamesa": 1,
+    "Goodwe": 1,
+    "Nidec": 1,
+    "REFUSOL": 1,
+    "SALICRU": 1,
+    "SCHNEIDER": 1,
+    "SIGENERGY": 1,
+    "SINENG": 1,
+    "Solaredge": 1,
+    "SOLIS": 1,
+    "SOLPLANET": 1,
+    "TATA": 1,
+    "VICTRON": 1,
+    "Zeversolar": 1,
+    "ZEVERSOLAR": 1,
+    "ZUCCHETTI": 1,
+    "Acrel": 1,
+    "ALGODUE": 1,
+    "Anexo": 1,
+    "Bender": 1,
+    "Cefem": 1,
+    "EASTRON": 1,
+    "Eflex4u": 1,
+    "Elster": 1,
+    "Enerfox": 1,
+    "LACECAL": 1,
+    "map": 1,
+    "SACI": 1,
+    "schneider": 1,
+    "SOLARLOG": 1,
+    "Alan": 1,
+    "Atmoce": 1,
+    "Axun": 1,
+    "Hopewind": 1,
+    "Hypercharger": 1,
+    "Inaccess": 1,
+    "Intelec": 1,
+    "K": 1,
+    "Lacecal": 1,
+    "Monichek": 1,
+    "Polier": 1,
+    "Power": 1,
+    "Riello": 1,
+    "Saci": 1,
+    "Salgueirinha": 1,
+    "Satcon": 1,
+    "Secure": 1,
+    "Sigenergy": 1,
+    "Sineng": 1,
+    "ATERSA": 1,
+    "BD": 1,
+    "Blet": 1,
+    "DELTAOHM": 1,
+    "KIPPZONEN": 1,
+    "SESAutomation": 1,
+    "Termasgard": 1,
+    "THIES": 1,
+    "TRACKSO": 1
   },
   "items": [
     {
@@ -56,7 +222,7 @@
     {
       "filename": "BAT_Atmoce_MC-MG.csv",
       "prefix": "BAT",
-      "manufacturer": "Atmoce",
+      "manufacturer": "ATMOCE",
       "model": "MC-MG",
       "registers": 47,
       "size_bytes": 3478
@@ -67,7 +233,7 @@
       "manufacturer": "Dyness",
       "model": "DH100F",
       "registers": 913,
-      "size_bytes": 57039
+      "size_bytes": 57044
     },
     {
       "filename": "BAT_Dyness_DH200F.csv",
@@ -75,7 +241,7 @@
       "manufacturer": "Dyness",
       "model": "DH200F",
       "registers": 913,
-      "size_bytes": 57039
+      "size_bytes": 57044
     },
     {
       "filename": "BAT_Dyness_DH200Y.csv",
@@ -83,7 +249,7 @@
       "manufacturer": "Dyness",
       "model": "DH200Y",
       "registers": 912,
-      "size_bytes": 56829
+      "size_bytes": 56839
     },
     {
       "filename": "BAT_Dyness_DH_Series_Generic.csv",
@@ -91,7 +257,7 @@
       "manufacturer": "Dyness",
       "model": "DH_Series_Generic",
       "registers": 962,
-      "size_bytes": 60134
+      "size_bytes": 60144
     },
     {
       "filename": "BAT_FoxESS_FOX_ESS_G-MAX_EMS.csv",
@@ -121,15 +287,15 @@
       "filename": "BAT_FoxESS_GMax_Storage.csv",
       "prefix": "BAT",
       "manufacturer": "FoxESS",
-      "model": "GMax_Storage",
+      "model": "G-MAX Series",
       "registers": 894,
-      "size_bytes": 97260
+      "size_bytes": 97257
     },
     {
       "filename": "BAT_FoxESS_H3_Pro.csv",
       "prefix": "BAT",
       "manufacturer": "FoxESS",
-      "model": "H3_Pro",
+      "model": "H3 Pro",
       "registers": 893,
       "size_bytes": 63387
     },
@@ -153,17 +319,17 @@
       "filename": "BAT_FoxESS_P3_Pro.csv",
       "prefix": "BAT",
       "manufacturer": "FoxESS",
-      "model": "P3_Pro",
+      "model": "P3 Pro",
       "registers": 893,
       "size_bytes": 63387
     },
     {
       "filename": "BAT_FoxESS_RSeries.csv",
       "prefix": "BAT",
-      "manufacturer": "FoxESS",
-      "model": "RSeries",
+      "manufacturer": "FOX ESS",
+      "model": "R SERIES Storage",
       "registers": 49,
-      "size_bytes": 2563
+      "size_bytes": 2573
     },
     {
       "filename": "BAT_FoxESS_RSERIES_BATTERY.csv",
@@ -172,6 +338,14 @@
       "model": "RSERIES_BATTERY",
       "registers": 49,
       "size_bytes": 2571
+    },
+    {
+      "filename": "BAT_Goodwe_Lynx_Home_HV.csv",
+      "prefix": "BAT",
+      "manufacturer": "GoodWe",
+      "model": "Lynx-Home-HV",
+      "registers": 18,
+      "size_bytes": 1433
     },
     {
       "filename": "BAT_Hoymiles_HoyUltra2.csv",
@@ -184,7 +358,7 @@
     {
       "filename": "BAT_Huawei_INV_STORAGE.csv",
       "prefix": "BAT",
-      "manufacturer": "Huawei",
+      "manufacturer": "HUAWEI",
       "model": "INV_STORAGE",
       "registers": 272,
       "size_bytes": 28561
@@ -192,7 +366,7 @@
     {
       "filename": "BAT_Huawei_Luna2000.csv",
       "prefix": "BAT",
-      "manufacturer": "Huawei",
+      "manufacturer": "HUAWEI",
       "model": "Luna2000",
       "registers": 170,
       "size_bytes": 9267
@@ -200,7 +374,7 @@
     {
       "filename": "BAT_Huawei_Luna_2000.csv",
       "prefix": "BAT",
-      "manufacturer": "Huawei",
+      "manufacturer": "HUAWEI",
       "model": "Luna_2000",
       "registers": 170,
       "size_bytes": 9268
@@ -240,18 +414,18 @@
     {
       "filename": "BAT_MarsEnergy_LocalController_AllInOne.csv",
       "prefix": "BAT",
-      "manufacturer": "MarsEnergy",
-      "model": "LocalController_AllInOne",
+      "manufacturer": "Mars Energy",
+      "model": "MarsLocalController All-In-One V7.0",
       "registers": 16746,
-      "size_bytes": 1217527
+      "size_bytes": 1217633
     },
     {
       "filename": "BAT_MarsEnergy_LocalController_V7.0.csv",
       "prefix": "BAT",
-      "manufacturer": "MarsEnergy",
-      "model": "LocalController_V7.0",
+      "manufacturer": "Mars Energy",
+      "model": "MarsLocalController V7.0",
       "registers": 11704,
-      "size_bytes": 883455
+      "size_bytes": 883554
     },
     {
       "filename": "BAT_MarsEnergy_MARS_LocalController_V7_Rack_Un_seul_element_WebdynSunPM.csv",
@@ -275,7 +449,7 @@
       "manufacturer": "MarsEnergy",
       "model": "MarsLocalController_V7.0_RackCell_SlaveN",
       "registers": 37,
-      "size_bytes": 2974
+      "size_bytes": 2971
     },
     {
       "filename": "BAT_MarsEnergy_MarsLocalController_V7.0_webdyn.csv",
@@ -328,10 +502,10 @@
     {
       "filename": "BAT_MarsEnergy_RackCell_SlaveN.csv",
       "prefix": "BAT",
-      "manufacturer": "MarsEnergy",
-      "model": "RackCell_SlaveN",
+      "manufacturer": "Mars Energy",
+      "model": "MarsLocalController Rack V7.0",
       "registers": 5030,
-      "size_bytes": 327111
+      "size_bytes": 327127
     },
     {
       "filename": "BAT_Robestec_BESS.csv",
@@ -358,14 +532,6 @@
       "size_bytes": 16558
     },
     {
-      "filename": "BAT_SLEnergy_bms5_p1_1_1.csv",
-      "prefix": "BAT",
-      "manufacturer": "SLEnergy",
-      "model": "bms5_p1_1_1",
-      "registers": 213,
-      "size_bytes": 16560
-    },
-    {
       "filename": "BAT_SLEnergy_Generator.csv",
       "prefix": "BAT",
       "manufacturer": "SLEnergy",
@@ -384,7 +550,7 @@
     {
       "filename": "BAT_SolaX_EMS1000-PRO.csv",
       "prefix": "BAT",
-      "manufacturer": "SolaX",
+      "manufacturer": "SOLAX",
       "model": "EMS1000-PRO",
       "registers": 347,
       "size_bytes": 16302
@@ -422,9 +588,41 @@
       "size_bytes": 73692
     },
     {
+      "filename": "BAT_X7_BESS-AllInOne.csv",
+      "prefix": "BAT",
+      "manufacturer": "X7",
+      "model": "BESS-AllInOne",
+      "registers": 794,
+      "size_bytes": 68104
+    },
+    {
+      "filename": "BAT_X7_BMS-Cells.csv",
+      "prefix": "BAT",
+      "manufacturer": "X7",
+      "model": "BMS-Cells",
+      "registers": 368,
+      "size_bytes": 32832
+    },
+    {
+      "filename": "BAT_X7_BMS.csv",
+      "prefix": "BAT",
+      "manufacturer": "X7",
+      "model": "BMS",
+      "registers": 24,
+      "size_bytes": 2085
+    },
+    {
+      "filename": "BAT_X7_EMS.csv",
+      "prefix": "BAT",
+      "manufacturer": "X7",
+      "model": "EMS",
+      "registers": 164,
+      "size_bytes": 14168
+    },
+    {
       "filename": "COM_Atmoce_Gateway_V1.2_WebdynSunPM_COMPLET.csv",
       "prefix": "COM",
-      "manufacturer": "Atmoce",
+      "manufacturer": "ATMOCE",
       "model": "Gateway_V1.2_WebdynSunPM_COMPLET",
       "registers": 47,
       "size_bytes": 3007
@@ -432,15 +630,15 @@
     {
       "filename": "COM_Atmoce_MC-MG.csv",
       "prefix": "COM",
-      "manufacturer": "Atmoce",
+      "manufacturer": "ATMOCE",
       "model": "MC-MG",
       "registers": 47,
-      "size_bytes": 3477
+      "size_bytes": 3474
     },
     {
       "filename": "COM_Atmoce_MC100_MC100-T_MG100.csv",
       "prefix": "COM",
-      "manufacturer": "Atmoce",
+      "manufacturer": "ATMOCE",
       "model": "MC100_MC100-T_MG100",
       "registers": 47,
       "size_bytes": 2961
@@ -456,41 +654,33 @@
     {
       "filename": "COM_Goodwe_Ezlogger3000.csv",
       "prefix": "COM",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "Ezlogger3000",
-      "registers": 60,
-      "size_bytes": 3686
+      "registers": 25,
+      "size_bytes": 1986
     },
     {
-      "filename": "COM_Goodwe_LOG_GOODWE_EZLOGGER3000.csv",
+      "filename": "COM_Goodwe_EzLogger_Pro.csv",
       "prefix": "COM",
-      "manufacturer": "Goodwe",
-      "model": "LOG_GOODWE_EZLOGGER3000",
-      "registers": 60,
-      "size_bytes": 3139
+      "manufacturer": "GoodWe",
+      "model": "EzLogger-Pro",
+      "registers": 25,
+      "size_bytes": 1986
     },
     {
-      "filename": "COM_Goodwe_ModbusTCP_GOODWE_Ezlogger.csv",
+      "filename": "COM_Goodwe_SCB3000.csv",
       "prefix": "COM",
-      "manufacturer": "Goodwe",
-      "model": "ModbusTCP_GOODWE_Ezlogger",
-      "registers": 230,
-      "size_bytes": 12577
-    },
-    {
-      "filename": "COM_Goodwe_W_GoodWe_Ezlogger3000.csv",
-      "prefix": "COM",
-      "manufacturer": "Goodwe",
-      "model": "W_GoodWe_Ezlogger3000",
-      "registers": 60,
-      "size_bytes": 3756
+      "manufacturer": "GoodWe",
+      "model": "SCB3000",
+      "registers": 29,
+      "size_bytes": 2332
     },
     {
       "filename": "COM_Greenheiss_GH-I_Style_GH-IT_2M_Modbus_Communication_Protocol.csv",
       "prefix": "COM",
       "manufacturer": "Greenheiss",
       "model": "GH-I_Style_GH-IT_2M_Modbus_Communication_Protocol",
-      "registers": 458,
+      "registers": 408,
       "size_bytes": 17114
     },
     {
@@ -504,7 +694,7 @@
     {
       "filename": "COM_Hoymiles_GENERIC.csv",
       "prefix": "COM",
-      "manufacturer": "Hoymiles",
+      "manufacturer": "HOYMILES",
       "model": "GENERIC",
       "registers": 4963,
       "size_bytes": 368818
@@ -512,7 +702,7 @@
     {
       "filename": "COM_Hoymiles_METER.csv",
       "prefix": "COM",
-      "manufacturer": "Hoymiles",
+      "manufacturer": "HOYMILES",
       "model": "METER",
       "registers": 291,
       "size_bytes": 21626
@@ -520,7 +710,7 @@
     {
       "filename": "COM_Hoymiles_MICROINVERTER.csv",
       "prefix": "COM",
-      "manufacturer": "Hoymiles",
+      "manufacturer": "HOYMILES",
       "model": "MICROINVERTER",
       "registers": 4264,
       "size_bytes": 316528
@@ -552,10 +742,10 @@
     {
       "filename": "COM_MarsEnergy_EMS_Slave247.csv",
       "prefix": "COM",
-      "manufacturer": "MarsEnergy",
-      "model": "EMS_Slave247",
+      "manufacturer": "Mars Energy",
+      "model": "MarsLocalController EMS V7.0",
       "registers": 12,
-      "size_bytes": 877
+      "size_bytes": 889
     },
     {
       "filename": "COM_MarsEnergy_MARS_LocalController_V7_1_Slave.csv",
@@ -606,6 +796,30 @@
       "size_bytes": 82269
     },
     {
+      "filename": "COM_SMA_ClusterController.csv",
+      "prefix": "COM",
+      "manufacturer": "SMA",
+      "model": "ClusterController",
+      "registers": 24,
+      "size_bytes": 1741
+    },
+    {
+      "filename": "COM_SMA_ComGateway.csv",
+      "prefix": "COM",
+      "manufacturer": "SMA",
+      "model": "ComGateway",
+      "registers": 22,
+      "size_bytes": 1568
+    },
+    {
+      "filename": "COM_SMA_DataManager_M.csv",
+      "prefix": "COM",
+      "manufacturer": "SMA",
+      "model": "DataManager-M",
+      "registers": 28,
+      "size_bytes": 2042
+    },
+    {
       "filename": "COM_Solplanet_Ai-Logger.csv",
       "prefix": "COM",
       "manufacturer": "Solplanet",
@@ -634,7 +848,7 @@
       "prefix": "COM",
       "manufacturer": "Sungrow",
       "model": "TI_20241202_EMS300CP_IEC104_Modbus_Communication_Protocol_P014_software_version_CN_EN",
-      "registers": 868,
+      "registers": 694,
       "size_bytes": 36685
     },
     {
@@ -659,7 +873,7 @@
       "manufacturer": "5",
       "model": "Generic",
       "registers": 49,
-      "size_bytes": 2637
+      "size_bytes": 2634
     },
     {
       "filename": "INV_ABB_10.0_et_12.5_ABB_PVIMODBUS.csv",
@@ -691,7 +905,7 @@
       "manufacturer": "ABB",
       "model": "LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP",
       "registers": 956,
-      "size_bytes": 52354
+      "size_bytes": 52351
     },
     {
       "filename": "INV_ABB_Modbus_ABB_SunSpec_Light.csv",
@@ -843,7 +1057,7 @@
       "manufacturer": "ABB",
       "model": "SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP",
       "registers": 956,
-      "size_bytes": 52350
+      "size_bytes": 52347
     },
     {
       "filename": "INV_ABB_SUNSPEC_PVS1xx_PICS_V002_GL20181011.csv",
@@ -899,7 +1113,7 @@
       "manufacturer": "ABB",
       "model": "Velux_SunSpec_inverter_FIMER_-3Q15-_2201B_modbusTCP",
       "registers": 1111,
-      "size_bytes": 60609
+      "size_bytes": 60606
     },
     {
       "filename": "INV_AnswerDrives_2009_WebdynSunPM.csv",
@@ -960,8 +1174,8 @@
     {
       "filename": "INV_Atess_Generic.csv",
       "prefix": "INV",
-      "manufacturer": "Atess",
-      "model": "Generic",
+      "manufacturer": "ATESS",
+      "model": "GENERIC",
       "registers": 243,
       "size_bytes": 12263
     },
@@ -978,13 +1192,13 @@
       "prefix": "INV",
       "manufacturer": "BlueSun",
       "model": "Hybrid_Inverter_Modbus_Protocol",
-      "registers": 8,
+      "registers": 6,
       "size_bytes": 389
     },
     {
       "filename": "INV_Bonfiglioli_Generic.csv",
       "prefix": "INV",
-      "manufacturer": "Bonfiglioli",
+      "manufacturer": "BONFIGLIOLI",
       "model": "Generic",
       "registers": 55,
       "size_bytes": 2692
@@ -1000,7 +1214,7 @@
     {
       "filename": "INV_Cefem_DEF_InverterTrioSun.csv",
       "prefix": "INV",
-      "manufacturer": "Cefem",
+      "manufacturer": "CEFEM",
       "model": "DEF_InverterTrioSun",
       "registers": 42,
       "size_bytes": 1966
@@ -1008,7 +1222,7 @@
     {
       "filename": "INV_Cefem_DEF_InverterTrioSun36KVA_FichierFourniParCEFEM.csv",
       "prefix": "INV",
-      "manufacturer": "Cefem",
+      "manufacturer": "CEFEM",
       "model": "DEF_InverterTrioSun36KVA_FichierFourniParCEFEM",
       "registers": 55,
       "size_bytes": 3046
@@ -1016,7 +1230,7 @@
     {
       "filename": "INV_Cefem_Modbus_TrioSunTrioTop.csv",
       "prefix": "INV",
-      "manufacturer": "Cefem",
+      "manufacturer": "CEFEM",
       "model": "Modbus_TrioSunTrioTop",
       "registers": 68,
       "size_bytes": 2773
@@ -1024,15 +1238,15 @@
     {
       "filename": "INV_Cefem_Table_Modbus_Trio-Sun_Trio-Top_2020_07_01.csv",
       "prefix": "INV",
-      "manufacturer": "Cefem",
+      "manufacturer": "CEFEM",
       "model": "Table_Modbus_Trio-Sun_Trio-Top_2020_07_01",
-      "registers": 33,
+      "registers": 32,
       "size_bytes": 1684
     },
     {
       "filename": "INV_Cyberpower_1-Phase.csv",
       "prefix": "INV",
-      "manufacturer": "Cyberpower",
+      "manufacturer": "CyberPower",
       "model": "1-Phase",
       "registers": 85,
       "size_bytes": 4944
@@ -1040,7 +1254,7 @@
     {
       "filename": "INV_Cyberpower_3-Phases.csv",
       "prefix": "INV",
-      "manufacturer": "Cyberpower",
+      "manufacturer": "CyberPower",
       "model": "3-Phases",
       "registers": 71,
       "size_bytes": 4041
@@ -1048,7 +1262,7 @@
     {
       "filename": "INV_Cyberpower_50000ETL.csv",
       "prefix": "INV",
-      "manufacturer": "Cyberpower",
+      "manufacturer": "CyberPower",
       "model": "50000ETL",
       "registers": 80,
       "size_bytes": 3664
@@ -1056,7 +1270,7 @@
     {
       "filename": "INV_Cyberpower_CPSHB6000ETL48-CPSHB6000ETLFR.csv",
       "prefix": "INV",
-      "manufacturer": "Cyberpower",
+      "manufacturer": "CyberPower",
       "model": "CPSHB6000ETL48-CPSHB6000ETLFR",
       "registers": 103,
       "size_bytes": 6071
@@ -1064,8 +1278,8 @@
     {
       "filename": "INV_Cyberpower_CPSHB6000ETL48_CPSHB6000ETLFR.csv",
       "prefix": "INV",
-      "manufacturer": "Cyberpower",
-      "model": "CPSHB6000ETL48_CPSHB6000ETLFR",
+      "manufacturer": "CyberPower",
+      "model": "CPSHB6000ETL48-CPSHB6000ETLFR",
       "registers": 103,
       "size_bytes": 4899
     },
@@ -1088,7 +1302,7 @@
     {
       "filename": "INV_Cyberpower_Modbus_1Ph.csv",
       "prefix": "INV",
-      "manufacturer": "Cyberpower",
+      "manufacturer": "CyberPower",
       "model": "Modbus_1Ph",
       "registers": 85,
       "size_bytes": 3841
@@ -1096,7 +1310,7 @@
     {
       "filename": "INV_Cyberpower_Modbus_3Ph.csv",
       "prefix": "INV",
-      "manufacturer": "Cyberpower",
+      "manufacturer": "CyberPower",
       "model": "Modbus_3Ph",
       "registers": 71,
       "size_bytes": 3139
@@ -1152,7 +1366,7 @@
     {
       "filename": "INV_Delta_MODBUS_DELTA_M15A_Flex_Sunspec.csv",
       "prefix": "INV",
-      "manufacturer": "Delta",
+      "manufacturer": "DELTA",
       "model": "MODBUS_DELTA_M15A_Flex_Sunspec",
       "registers": 112,
       "size_bytes": 4220
@@ -1176,7 +1390,7 @@
     {
       "filename": "INV_Delta_Sunspec_Light.csv",
       "prefix": "INV",
-      "manufacturer": "Delta",
+      "manufacturer": "DELTA",
       "model": "Sunspec_Light",
       "registers": 84,
       "size_bytes": 3197
@@ -1224,7 +1438,7 @@
     {
       "filename": "INV_Efacec_Efasolar.csv",
       "prefix": "INV",
-      "manufacturer": "Efacec",
+      "manufacturer": "EFACEC",
       "model": "Efasolar",
       "registers": 58,
       "size_bytes": 3269
@@ -1265,15 +1479,15 @@
       "filename": "INV_FoxESS_G_MAX_ModbusTCP.csv",
       "prefix": "INV",
       "manufacturer": "FoxESS",
-      "model": "G_MAX_ModbusTCP",
+      "model": "G-MAX_ModbusTCP",
       "registers": 246,
-      "size_bytes": 17409
+      "size_bytes": 17406
     },
     {
       "filename": "INV_FoxESS_H3_Pro.csv",
       "prefix": "INV",
       "manufacturer": "FoxESS",
-      "model": "H3_Pro",
+      "model": "H3 Pro",
       "registers": 285,
       "size_bytes": 17736
     },
@@ -1297,9 +1511,9 @@
       "filename": "INV_FoxESS_P3_H3_Pro_AllInOne.csv",
       "prefix": "INV",
       "manufacturer": "FoxESS",
-      "model": "P3_H3_Pro_AllInOne",
+      "model": "P3 Pro / H3 Pro",
       "registers": 1233,
-      "size_bytes": 85302
+      "size_bytes": 85299
     },
     {
       "filename": "INV_FoxESS_P3_H3_PRO_INVERTER.csv",
@@ -1313,7 +1527,7 @@
       "filename": "INV_FoxESS_P3_Pro.csv",
       "prefix": "INV",
       "manufacturer": "FoxESS",
-      "model": "P3_Pro",
+      "model": "P3 Pro",
       "registers": 285,
       "size_bytes": 17736
     },
@@ -1328,10 +1542,10 @@
     {
       "filename": "INV_FoxESS_RSeries.csv",
       "prefix": "INV",
-      "manufacturer": "FoxESS",
-      "model": "RSeries",
+      "manufacturer": "FOX ESS",
+      "model": "R SERIES",
       "registers": 448,
-      "size_bytes": 25508
+      "size_bytes": 25510
     },
     {
       "filename": "INV_FoxESS_RSeries_Inverter.csv",
@@ -1352,10 +1566,10 @@
     {
       "filename": "INV_FoxESS_SunSpec_RV_H3Plus.csv",
       "prefix": "INV",
-      "manufacturer": "FoxESS",
-      "model": "SunSpec_RV_H3Plus",
+      "manufacturer": "FOX_ESS",
+      "model": "R_V_H3plus",
       "registers": 87,
-      "size_bytes": 3808
+      "size_bytes": 3802
     },
     {
       "filename": "INV_Fronius_ECO_Inverter_Register_Map_Int_SF.csv",
@@ -1403,7 +1617,7 @@
       "manufacturer": "Fronius",
       "model": "Modbus_SunS_Fronius_IntSF",
       "registers": 55,
-      "size_bytes": 2199
+      "size_bytes": 2196
     },
     {
       "filename": "INV_Fronius_Register_Map_Float_v1.0_with_SYMOHYBRID_MODEL_124.csv",
@@ -1427,7 +1641,7 @@
       "manufacturer": "Fronius",
       "model": "Sunspec_IntSF",
       "registers": 55,
-      "size_bytes": 2187
+      "size_bytes": 2184
     },
     {
       "filename": "INV_Fronius_SunSpec_inverter_Fronius_Symo_GEN24.csv",
@@ -1438,9 +1652,17 @@
       "size_bytes": 12289
     },
     {
-      "filename": "INV_Fronius_Tauro_50-3-D_1.35.4-1_Float.csv",
+      "filename": "INV_Fronius_Symo_Primo_Gen24.csv",
       "prefix": "INV",
       "manufacturer": "Fronius",
+      "model": "Symo-Primo-Gen24",
+      "registers": 26,
+      "size_bytes": 1797
+    },
+    {
+      "filename": "INV_Fronius_Tauro_50-3-D_1.35.4-1_Float.csv",
+      "prefix": "INV",
+      "manufacturer": "fronius",
       "model": "Tauro_50-3-D_1.35.4-1_Float",
       "registers": 193,
       "size_bytes": 8556
@@ -1550,65 +1772,73 @@
       "size_bytes": 742
     },
     {
-      "filename": "INV_Goodwe_CHARP1.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "CHARP1",
-      "registers": 539,
-      "size_bytes": 29643
-    },
-    {
-      "filename": "INV_Goodwe_diff_goodwe_ne_pas_utiliser.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "diff_goodwe_ne_pas_utiliser",
-      "registers": 539,
-      "size_bytes": 29664
-    },
-    {
       "filename": "INV_Goodwe_ES-EM-SBP-BP.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ES-EM-SBP-BP",
-      "registers": 395,
-      "size_bytes": 17958
+      "registers": 49,
+      "size_bytes": 3515
     },
     {
       "filename": "INV_Goodwe_ES_EM_S-BP_BP_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "ES_EM_S-BP_BP_Series",
+      "manufacturer": "GoodWe",
+      "model": "ES-EM-S-BP-BP-Series",
       "registers": 370,
-      "size_bytes": 21429
+      "size_bytes": 21542
+    },
+    {
+      "filename": "INV_Goodwe_ES_EM_SBP.csv",
+      "prefix": "INV",
+      "manufacturer": "GoodWe",
+      "model": "ES-EM-SBP-Series",
+      "registers": 49,
+      "size_bytes": 3519
     },
     {
       "filename": "INV_Goodwe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU",
-      "registers": 527,
-      "size_bytes": 23715
+      "manufacturer": "GoodWe",
+      "model": "ET-EH-ModbusRTU",
+      "registers": 79,
+      "size_bytes": 5834
     },
     {
       "filename": "INV_Goodwe_ET_EH_BT_BH_EHB_AES_ABP_BTC_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "ET_EH_BT_BH_EHB_AES_ABP_BTC_Series",
+      "manufacturer": "GoodWe",
+      "model": "ET-EH-BT-BH-EHB-Series",
       "registers": 530,
-      "size_bytes": 30774
+      "size_bytes": 30901
     },
     {
       "filename": "INV_Goodwe_ET_EH_Hybrid_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "ET_EH_Hybrid_Series",
-      "registers": 527,
-      "size_bytes": 30757
+      "manufacturer": "GoodWe",
+      "model": "ET-EH-Hybrid-Series",
+      "registers": 79,
+      "size_bytes": 5838
     },
     {
-      "filename": "INV_Goodwe_G3_Series.csv",
+      "filename": "INV_Goodwe_ET_EH_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
+      "model": "ET-EH-Series",
+      "registers": 79,
+      "size_bytes": 5831
+    },
+    {
+      "filename": "INV_Goodwe_ET_Series.csv",
+      "prefix": "INV",
+      "manufacturer": "GoodWe",
+      "model": "ET-Series",
+      "registers": 79,
+      "size_bytes": 5828
+    },
+    {
+      "filename": "INV_GoodWe_G3_Series.csv",
+      "prefix": "INV",
+      "manufacturer": "GoodWe",
       "model": "G3_Series",
       "registers": 120,
       "size_bytes": 5872
@@ -1616,271 +1846,151 @@
     {
       "filename": "INV_Goodwe_GT-SERIES.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "GT-SERIES",
-      "registers": 278,
-      "size_bytes": 19898
-    },
-    {
-      "filename": "INV_Goodwe_GT_Series.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "GT_Series",
       "registers": 305,
       "size_bytes": 21714
     },
     {
-      "filename": "INV_Goodwe_HT-customer_version.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "HT-customer_version",
-      "registers": 240,
-      "size_bytes": 17824
-    },
-    {
       "filename": "INV_Goodwe_HT1100.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "HT1100",
-      "registers": 276,
-      "size_bytes": 19655
+      "registers": 277,
+      "size_bytes": 19721
     },
     {
       "filename": "INV_Goodwe_HT1500.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "HT1500",
-      "registers": 287,
-      "size_bytes": 20501
+      "registers": 288,
+      "size_bytes": 20567
     },
     {
       "filename": "INV_Goodwe_HT_others_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "HT_others_Series",
-      "registers": 290,
-      "size_bytes": 20706
+      "manufacturer": "GoodWe",
+      "model": "HT-Others-Series",
+      "registers": 91,
+      "size_bytes": 6648
     },
     {
       "filename": "INV_Goodwe_HT_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "HT_Series",
-      "registers": 293,
-      "size_bytes": 20265
+      "manufacturer": "GoodWe",
+      "model": "HT-Series",
+      "registers": 294,
+      "size_bytes": 20985
     },
     {
-      "filename": "INV_Goodwe_Modbus.csv",
+      "filename": "INV_GoodWe_Modbus.csv",
       "prefix": "INV",
       "manufacturer": "Goodwe",
       "model": "Modbus",
       "registers": 36,
-      "size_bytes": 2013
+      "size_bytes": 2010
     },
     {
       "filename": "INV_Goodwe_MS_DNS_XS.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "MS_DNS_XS",
-      "registers": 40,
-      "size_bytes": 2684
+      "manufacturer": "GoodWe",
+      "model": "MS-DNS-XS",
+      "registers": 50,
+      "size_bytes": 3415
     },
     {
       "filename": "INV_Goodwe_MT-Series_ModbusRTU.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "MT-Series_ModbusRTU",
-      "registers": 108,
-      "size_bytes": 4642
+      "manufacturer": "GoodWe",
+      "model": "MT-Series-ModbusRTU",
+      "registers": 68,
+      "size_bytes": 4720
     },
     {
       "filename": "INV_Goodwe_MT.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "MT",
       "registers": 95,
-      "size_bytes": 6213
+      "size_bytes": 6222
     },
     {
-      "filename": "INV_Goodwe_MT_series.csv",
+      "filename": "INV_GoodWe_MT_series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "MT_series",
-      "registers": 123,
-      "size_bytes": 8008
+      "manufacturer": "GoodWe",
+      "model": "MT-Series",
+      "registers": 68,
+      "size_bytes": 4710
     },
     {
-      "filename": "INV_Goodwe_MT_series_customer_version.csv",
+      "filename": "INV_Goodwe_SDT_G2_G3.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "MT_series_customer_version",
-      "registers": 123,
-      "size_bytes": 7247
-    },
-    {
-      "filename": "INV_Goodwe_MT_series_customer_version_Copergreen.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "MT_series_customer_version_Copergreen",
-      "registers": 123,
-      "size_bytes": 7174
-    },
-    {
-      "filename": "INV_Goodwe_new_100kw.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "new_100kw",
-      "registers": 58,
-      "size_bytes": 2091
+      "manufacturer": "GoodWe",
+      "model": "SDT-G2-G3-Series",
+      "registers": 60,
+      "size_bytes": 4165
     },
     {
       "filename": "INV_Goodwe_SDTG2.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SDTG2",
       "registers": 116,
       "size_bytes": 7653
     },
     {
-      "filename": "INV_Goodwe_single_phase_grid-tied_inverter_PICS_v2.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "single_phase_grid-tied_inverter_PICS_v2",
-      "registers": 516,
-      "size_bytes": 20847
-    },
-    {
       "filename": "INV_Goodwe_SMT.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SMT",
       "registers": 115,
-      "size_bytes": 7614
+      "size_bytes": 7618
     },
     {
       "filename": "INV_Goodwe_SMT50K_SMT60K.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "SMT50K_SMT60K",
+      "manufacturer": "GoodWe",
+      "model": "SMT50K-SMT60K",
       "registers": 119,
-      "size_bytes": 7909
-    },
-    {
-      "filename": "INV_Goodwe_SMT60K-G2_SMT80K_GT.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "SMT60K-G2_SMT80K_GT",
-      "registers": 285,
-      "size_bytes": 20942
-    },
-    {
-      "filename": "INV_Goodwe_SMT60K-G2_SMT80K_GT_V1.2_COMPLET_WebdynSunPM.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "SMT60K-G2_SMT80K_GT_V1.2_COMPLET_WebdynSunPM",
-      "registers": 398,
-      "size_bytes": 25547
-    },
-    {
-      "filename": "INV_Goodwe_SMT60K-G2_SMT80K_GT_V1.2_WebdynSunPM_COMPLET.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "SMT60K-G2_SMT80K_GT_V1.2_WebdynSunPM_COMPLET",
-      "registers": 284,
-      "size_bytes": 17323
-    },
-    {
-      "filename": "INV_Goodwe_SMT60K-G2_V1.2_COMPLET_WebdynSunPM.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "SMT60K-G2_V1.2_COMPLET_WebdynSunPM",
-      "registers": 397,
-      "size_bytes": 26560
+      "size_bytes": 7913
     },
     {
       "filename": "INV_Goodwe_SMT_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "SMT_Series",
-      "registers": 198,
-      "size_bytes": 14119
-    },
-    {
-      "filename": "INV_Goodwe_SMT_Sunspec_faitalamain.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "SMT_Sunspec_faitalamain",
-      "registers": 539,
-      "size_bytes": 29660
-    },
-    {
-      "filename": "INV_Goodwe_three_phase_grid-tied_inverter_PICS.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "three_phase_grid-tied_inverter_PICS",
-      "registers": 506,
-      "size_bytes": 20408
+      "manufacturer": "GoodWe",
+      "model": "SMT-Series",
+      "registers": 68,
+      "size_bytes": 4711
     },
     {
       "filename": "INV_Goodwe_ThreePhase_SunSpec.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "ThreePhase_SunSpec",
-      "registers": 483,
-      "size_bytes": 24260
-    },
-    {
-      "filename": "INV_Goodwe_W_Goodwe_HT1100.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "W_Goodwe_HT1100",
-      "registers": 276,
-      "size_bytes": 19664
-    },
-    {
-      "filename": "INV_Goodwe_W_Goodwe_HT1500.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "W_Goodwe_HT1500",
-      "registers": 287,
-      "size_bytes": 20520
-    },
-    {
-      "filename": "INV_Goodwe_W_Goodwe_HT_others_Series.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "W_Goodwe_HT_others_Series",
-      "registers": 290,
-      "size_bytes": 20725
-    },
-    {
-      "filename": "INV_Goodwe_W_Goodwe_HT_Series.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "W_Goodwe_HT_Series",
-      "registers": 293,
-      "size_bytes": 20721
-    },
-    {
-      "filename": "INV_Goodwe_W_Goodwe_SMT50K_SMT60K.csv",
-      "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "W_Goodwe_SMT50K_SMT60K",
-      "registers": 119,
-      "size_bytes": 7975
+      "manufacturer": "GoodWe",
+      "model": "ThreePhase-SunSpec",
+      "registers": 29,
+      "size_bytes": 2002
     },
     {
       "filename": "INV_Goodwe_XS-DNS-MS-SDT-G3_SERIES.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
-      "model": "XS-DNS-MS-SDT-G3_SERIES",
-      "registers": 120,
-      "size_bytes": 5860
+      "manufacturer": "GoodWe",
+      "model": "XS-DNS-MS-SDT-G3-Series",
+      "registers": 50,
+      "size_bytes": 3429
+    },
+    {
+      "filename": "INV_Goodwe_XS_DNS_MS.csv",
+      "prefix": "INV",
+      "manufacturer": "GoodWe",
+      "model": "XS-DNS-MS-Series",
+      "registers": 50,
+      "size_bytes": 3422
     },
     {
       "filename": "INV_Greenheiss_GH-I_Style_GH-IT_2M.csv",
       "prefix": "INV",
-      "manufacturer": "Greenheiss",
+      "manufacturer": "GREENHEISS",
       "model": "GH-I_Style_GH-IT_2M",
       "registers": 219,
       "size_bytes": 8490
@@ -1888,9 +1998,9 @@
     {
       "filename": "INV_Greenheiss_GH-IT_3-4-9M.csv",
       "prefix": "INV",
-      "manufacturer": "Greenheiss",
+      "manufacturer": "GREENHEISS",
       "model": "GH-IT_3-4-9M",
-      "registers": 416,
+      "registers": 385,
       "size_bytes": 15489
     },
     {
@@ -1916,6 +2026,14 @@
       "model": "MAX1500V_MAX-XLV_Series",
       "registers": 468,
       "size_bytes": 29644
+    },
+    {
+      "filename": "INV_Growatt_MAX_Series.csv",
+      "prefix": "INV",
+      "manufacturer": "Growatt",
+      "model": "MAX-Series",
+      "registers": 29,
+      "size_bytes": 1944
     },
     {
       "filename": "INV_Growatt_MOD_TL3-XH_Series.csv",
@@ -2040,7 +2158,7 @@
     {
       "filename": "INV_Huawei_364233-A_noBF.csv",
       "prefix": "INV",
-      "manufacturer": "Huawei",
+      "manufacturer": "HUAWEI",
       "model": "364233-A_noBF",
       "registers": 192,
       "size_bytes": 11223
@@ -2048,7 +2166,7 @@
     {
       "filename": "INV_Huawei_7550606570-M0.csv",
       "prefix": "INV",
-      "manufacturer": "Huawei",
+      "manufacturer": "HUAWEI",
       "model": "7550606570-M0",
       "registers": 73,
       "size_bytes": 4085
@@ -2056,7 +2174,7 @@
     {
       "filename": "INV_Huawei_81012141820.csv",
       "prefix": "INV",
-      "manufacturer": "Huawei",
+      "manufacturer": "HUAWEI",
       "model": "81012141820",
       "registers": 152,
       "size_bytes": 8966
@@ -2171,7 +2289,23 @@
       "manufacturer": "Huawei",
       "model": "SmartLogger3000",
       "registers": 11,
-      "size_bytes": 682
+      "size_bytes": 679
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-M3.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-M3",
+      "registers": 64,
+      "size_bytes": 4613
+    },
+    {
+      "filename": "INV_Huawei_SUN2000-Utility.csv",
+      "prefix": "INV",
+      "manufacturer": "Huawei",
+      "model": "SUN2000-Utility",
+      "registers": 88,
+      "size_bytes": 6394
     },
     {
       "filename": "INV_Huawei_SUN2000_V4.csv",
@@ -2194,7 +2328,7 @@
       "prefix": "INV",
       "manufacturer": "Huawei",
       "model": "SUN2000C00_MODBUS_Protocol",
-      "registers": 130,
+      "registers": 129,
       "size_bytes": 7353
     },
     {
@@ -2210,7 +2344,7 @@
       "prefix": "INV",
       "manufacturer": "Huawei",
       "model": "SUN2000C11_MODBUS_Protocol",
-      "registers": 130,
+      "registers": 129,
       "size_bytes": 7353
     },
     {
@@ -2248,7 +2382,7 @@
     {
       "filename": "INV_Huawei_V4_BATTERY.csv",
       "prefix": "INV",
-      "manufacturer": "Huawei",
+      "manufacturer": "HUAWEI",
       "model": "V4_BATTERY",
       "registers": 140,
       "size_bytes": 10647
@@ -2256,7 +2390,7 @@
     {
       "filename": "INV_Huawei_V4_METER.csv",
       "prefix": "INV",
-      "manufacturer": "Huawei",
+      "manufacturer": "HUAWEI",
       "model": "V4_METER",
       "registers": 22,
       "size_bytes": 1249
@@ -2312,7 +2446,7 @@
     {
       "filename": "INV_Ingeteam_1play_ABE1000.csv",
       "prefix": "INV",
-      "manufacturer": "Ingeteam",
+      "manufacturer": "INGETEAM",
       "model": "1play_ABE1000",
       "registers": 45,
       "size_bytes": 2373
@@ -2320,7 +2454,7 @@
     {
       "filename": "INV_Ingeteam_1play_ABF1000.csv",
       "prefix": "INV",
-      "manufacturer": "Ingeteam",
+      "manufacturer": "INGETEAM",
       "model": "1play_ABF1000",
       "registers": 45,
       "size_bytes": 2328
@@ -2328,15 +2462,15 @@
     {
       "filename": "INV_Ingeteam_3Phases.csv",
       "prefix": "INV",
-      "manufacturer": "Ingeteam",
-      "model": "3Phases",
+      "manufacturer": "INGETEAM",
+      "model": "3phases",
       "registers": 111,
-      "size_bytes": 4823
+      "size_bytes": 4820
     },
     {
       "filename": "INV_Ingeteam_3play_ABI_1000_ABI_1004.csv",
       "prefix": "INV",
-      "manufacturer": "Ingeteam",
+      "manufacturer": "INGETEAM",
       "model": "3play_ABI_1000_ABI_1004",
       "registers": 59,
       "size_bytes": 3283
@@ -2344,7 +2478,7 @@
     {
       "filename": "INV_Ingeteam_3play_ABS1004_todo.csv",
       "prefix": "INV",
-      "manufacturer": "Ingeteam",
+      "manufacturer": "INGETEAM",
       "model": "3play_ABS1004_todo",
       "registers": 56,
       "size_bytes": 3227
@@ -2400,7 +2534,7 @@
     {
       "filename": "INV_Ingeteam_PowerBlock_ABK1000.csv",
       "prefix": "INV",
-      "manufacturer": "Ingeteam",
+      "manufacturer": "INGETEAM",
       "model": "PowerBlock_ABK1000",
       "registers": 76,
       "size_bytes": 3982
@@ -2408,7 +2542,7 @@
     {
       "filename": "INV_Ingeteam_PowerMax_centraux.csv",
       "prefix": "INV",
-      "manufacturer": "Ingeteam",
+      "manufacturer": "INGETEAM",
       "model": "PowerMax_centraux",
       "registers": 31,
       "size_bytes": 1289
@@ -2432,7 +2566,7 @@
     {
       "filename": "INV_Jema_Generic.csv",
       "prefix": "INV",
-      "manufacturer": "Jema",
+      "manufacturer": "JEMA",
       "model": "Generic",
       "registers": 60,
       "size_bytes": 3835
@@ -2440,7 +2574,7 @@
     {
       "filename": "INV_Jema_Generic_revG.csv",
       "prefix": "INV",
-      "manufacturer": "Jema",
+      "manufacturer": "JEMA",
       "model": "Generic_revG",
       "registers": 60,
       "size_bytes": 3535
@@ -2491,7 +2625,7 @@
       "manufacturer": "Kaco",
       "model": "97636-CARTOUX_SunSpec_inverter_KACO_new_energy_blueplanet_125_NX3_M10_IEC_5.1.10.1-1e3c4_modbusTCP",
       "registers": 928,
-      "size_bytes": 50387
+      "size_bytes": 50384
     },
     {
       "filename": "INV_Kaco_CHAZE_SunSpec_inverter_KACO_new_energy_blueplanet_50.0_TL3_WM_V3.52_modbusTCP.csv",
@@ -2499,7 +2633,7 @@
       "manufacturer": "Kaco",
       "model": "CHAZE_SunSpec_inverter_KACO_new_energy_blueplanet_50.0_TL3_WM_V3.52_modbusTCP",
       "registers": 101,
-      "size_bytes": 5594
+      "size_bytes": 5591
     },
     {
       "filename": "INV_Kaco_CHRISTIAENS_SunSpec_inverter_KACO_new_energy_Powador_60.0_TL3_V3.52_modbusTCP.csv",
@@ -2507,7 +2641,7 @@
       "manufacturer": "Kaco",
       "model": "CHRISTIAENS_SunSpec_inverter_KACO_new_energy_Powador_60.0_TL3_V3.52_modbusTCP",
       "registers": 101,
-      "size_bytes": 5594
+      "size_bytes": 5591
     },
     {
       "filename": "INV_Kaco_CHRISTIANS_SunSpec_inverter_KACO_new_energy_blueplanet_15.0_TL3_V5.20_modbusTCP_1.csv",
@@ -2515,7 +2649,7 @@
       "manufacturer": "Kaco",
       "model": "CHRISTIANS_SunSpec_inverter_KACO_new_energy_blueplanet_15.0_TL3_V5.20_modbusTCP_1",
       "registers": 638,
-      "size_bytes": 34658
+      "size_bytes": 34655
     },
     {
       "filename": "INV_Kaco_GOUSSARD_SunSpec_inverter_KACO_new_energy_blueplanet_50.0_TL3_WM_V5.24_modbusTCP.csv",
@@ -2523,7 +2657,7 @@
       "manufacturer": "Kaco",
       "model": "GOUSSARD_SunSpec_inverter_KACO_new_energy_blueplanet_50.0_TL3_WM_V5.24_modbusTCP",
       "registers": 628,
-      "size_bytes": 33983
+      "size_bytes": 33980
     },
     {
       "filename": "INV_Kaco_MOURLON_SunSpec_inverter_KACO_new_energy_blueplanet_20.0_TL3_V5.20_modbusTCP_1.csv",
@@ -2531,7 +2665,7 @@
       "manufacturer": "Kaco",
       "model": "MOURLON_SunSpec_inverter_KACO_new_energy_blueplanet_20.0_TL3_V5.20_modbusTCP_1",
       "registers": 697,
-      "size_bytes": 37921
+      "size_bytes": 37918
     },
     {
       "filename": "INV_Kaco_NX1-NX3_ModbusRTU.csv",
@@ -2558,14 +2692,6 @@
       "size_bytes": 14456
     },
     {
-      "filename": "INV_Kaco_NX1_NX3_ModbusRTU.csv",
-      "prefix": "INV",
-      "manufacturer": "Kaco",
-      "model": "NX1_NX3_ModbusRTU",
-      "registers": 182,
-      "size_bytes": 13124
-    },
-    {
       "filename": "INV_Kaco_NX3_G2_G3_SunSpec.csv",
       "prefix": "INV",
       "manufacturer": "Kaco",
@@ -2587,7 +2713,7 @@
       "manufacturer": "Kaco",
       "model": "Sunspec_11",
       "registers": 107,
-      "size_bytes": 5797
+      "size_bytes": 5794
     },
     {
       "filename": "INV_Kaco_sunspec_information_model_reference_kaco.csv",
@@ -2632,7 +2758,7 @@
     {
       "filename": "INV_Kehua_SPI100-250K-B.csv",
       "prefix": "INV",
-      "manufacturer": "Kehua",
+      "manufacturer": "KEHUA",
       "model": "SPI100-250K-B",
       "registers": 238,
       "size_bytes": 13153
@@ -2640,7 +2766,7 @@
     {
       "filename": "INV_Kehua_SPI_100K-250K-B.csv",
       "prefix": "INV",
-      "manufacturer": "Kehua",
+      "manufacturer": "KEHUA",
       "model": "SPI_100K-250K-B",
       "registers": 238,
       "size_bytes": 14220
@@ -2680,7 +2806,7 @@
     {
       "filename": "INV_Kostal_PIKO_CI.csv",
       "prefix": "INV",
-      "manufacturer": "Kostal",
+      "manufacturer": "KOSTAL",
       "model": "PIKO_CI",
       "registers": 78,
       "size_bytes": 4764
@@ -2688,7 +2814,7 @@
     {
       "filename": "INV_Kostal_PIKOCI_Modbus.csv",
       "prefix": "INV",
-      "manufacturer": "Kostal",
+      "manufacturer": "KOSTAL",
       "model": "PIKOCI_Modbus",
       "registers": 78,
       "size_bytes": 3816
@@ -2696,10 +2822,10 @@
     {
       "filename": "INV_Kostal_PLENTICORE.csv",
       "prefix": "INV",
-      "manufacturer": "Kostal",
+      "manufacturer": "KOSTAL",
       "model": "PLENTICORE",
       "registers": 154,
-      "size_bytes": 10006
+      "size_bytes": 10003
     },
     {
       "filename": "INV_Kostal_SunSpec_Float.csv",
@@ -2712,7 +2838,7 @@
     {
       "filename": "INV_Kstar_Generic.csv",
       "prefix": "INV",
-      "manufacturer": "Kstar",
+      "manufacturer": "KSTAR",
       "model": "Generic",
       "registers": 52,
       "size_bytes": 3262
@@ -2720,7 +2846,7 @@
     {
       "filename": "INV_Kstar_HYBRID.csv",
       "prefix": "INV",
-      "manufacturer": "Kstar",
+      "manufacturer": "KSTAR",
       "model": "HYBRID",
       "registers": 176,
       "size_bytes": 7707
@@ -2728,7 +2854,7 @@
     {
       "filename": "INV_Kstar_KIG1-250K.csv",
       "prefix": "INV",
-      "manufacturer": "Kstar",
+      "manufacturer": "KSTAR",
       "model": "KIG1-250K",
       "registers": 254,
       "size_bytes": 16248
@@ -2755,12 +2881,12 @@
       "manufacturer": "Legrand",
       "model": "Trimod",
       "registers": 42,
-      "size_bytes": 2175
+      "size_bytes": 2172
     },
     {
       "filename": "INV_Legrand_Trimod_RTU.csv",
       "prefix": "INV",
-      "manufacturer": "Legrand",
+      "manufacturer": "LEGRAND",
       "model": "Trimod_RTU",
       "registers": 42,
       "size_bytes": 2009
@@ -2768,7 +2894,7 @@
     {
       "filename": "INV_MarsEnergy_AirCooling.csv",
       "prefix": "INV",
-      "manufacturer": "MarsEnergy",
+      "manufacturer": "MarsRenewable",
       "model": "AirCooling",
       "registers": 1600,
       "size_bytes": 109126
@@ -2779,13 +2905,13 @@
       "manufacturer": "MarsEnergy",
       "model": "LC_1Unit",
       "registers": 18,
-      "size_bytes": 1459
+      "size_bytes": 1456
     },
     {
       "filename": "INV_MarsEnergy_LC_AC.csv",
       "prefix": "INV",
-      "manufacturer": "MarsEnergy",
-      "model": "LC_AC",
+      "manufacturer": "MarsRenewable",
+      "model": "LC-AC",
       "registers": 3400,
       "size_bytes": 255285
     },
@@ -2803,7 +2929,7 @@
       "manufacturer": "MarsEnergy",
       "model": "LC_V7",
       "registers": 174,
-      "size_bytes": 11983
+      "size_bytes": 11980
     },
     {
       "filename": "INV_MarsEnergy_LiquidCooling-AC.csv",
@@ -2811,12 +2937,12 @@
       "manufacturer": "MarsEnergy",
       "model": "LiquidCooling-AC",
       "registers": 18,
-      "size_bytes": 1286
+      "size_bytes": 1283
     },
     {
       "filename": "INV_MarsEnergy_LiquidCooling.csv",
       "prefix": "INV",
-      "manufacturer": "MarsEnergy",
+      "manufacturer": "MarsRenewable",
       "model": "LiquidCooling",
       "registers": 1800,
       "size_bytes": 145109
@@ -2843,7 +2969,7 @@
       "manufacturer": "MarsEnergy",
       "model": "Rack-Cell",
       "registers": 42,
-      "size_bytes": 1920
+      "size_bytes": 1917
     },
     {
       "filename": "INV_MarsEnergy_Rack_V7.csv",
@@ -2872,7 +2998,7 @@
     {
       "filename": "INV_PowerElectronics_Freesun_MODBUS_POWERELECTRONICS_RTU.csv",
       "prefix": "INV",
-      "manufacturer": "PowerElectronics",
+      "manufacturer": "POWERELECTRONICS",
       "model": "Freesun_MODBUS_POWERELECTRONICS_RTU",
       "registers": 15,
       "size_bytes": 703
@@ -2880,10 +3006,10 @@
     {
       "filename": "INV_PowerElectronics_Freesun_MODBUS_POWERELECTRONICS_TCP.csv",
       "prefix": "INV",
-      "manufacturer": "PowerElectronics",
+      "manufacturer": "POWERELECTRONICS",
       "model": "Freesun_MODBUS_POWERELECTRONICS_TCP",
       "registers": 15,
-      "size_bytes": 706
+      "size_bytes": 703
     },
     {
       "filename": "INV_PowerElectronics_Freesun_POWER_ELECTRONICS_FREESUN_HE_HEC_HES.csv",
@@ -2896,8 +3022,8 @@
     {
       "filename": "INV_Refusol_Generic.csv",
       "prefix": "INV",
-      "manufacturer": "Refusol",
-      "model": "Generic",
+      "manufacturer": "REFUSOL",
+      "model": "GENERIC",
       "registers": 536,
       "size_bytes": 21461
     },
@@ -2953,7 +3079,7 @@
       "filename": "INV_SAJ_sunTrioTL.csv",
       "prefix": "INV",
       "manufacturer": "SAJ",
-      "model": "sunTrioTL",
+      "model": "SunTrioTL",
       "registers": 45,
       "size_bytes": 1663
     },
@@ -2976,7 +3102,7 @@
     {
       "filename": "INV_Salicru_EQUINOX2.csv",
       "prefix": "INV",
-      "manufacturer": "Salicru",
+      "manufacturer": "SALICRU",
       "model": "EQUINOX2",
       "registers": 249,
       "size_bytes": 12749
@@ -2984,15 +3110,15 @@
     {
       "filename": "INV_Satcon_Generic.csv",
       "prefix": "INV",
-      "manufacturer": "Satcon",
+      "manufacturer": "SATCON",
       "model": "Generic",
       "registers": 95,
-      "size_bytes": 4351
+      "size_bytes": 4348
     },
     {
       "filename": "INV_Satcon_PowerGate.csv",
       "prefix": "INV",
-      "manufacturer": "Satcon",
+      "manufacturer": "SATCON",
       "model": "PowerGate",
       "registers": 96,
       "size_bytes": 5693
@@ -3000,7 +3126,7 @@
     {
       "filename": "INV_Schneider_30-33-50-CL.csv",
       "prefix": "INV",
-      "manufacturer": "Schneider",
+      "manufacturer": "SCHNEIDER",
       "model": "30-33-50-CL",
       "registers": 73,
       "size_bytes": 3960
@@ -3056,7 +3182,7 @@
     {
       "filename": "INV_Siel_10_TL_SOLAR_INVERTER.csv",
       "prefix": "INV",
-      "manufacturer": "Siel",
+      "manufacturer": "SIEL",
       "model": "10_TL_SOLAR_INVERTER",
       "registers": 17,
       "size_bytes": 808
@@ -3064,7 +3190,7 @@
     {
       "filename": "INV_Siel_10TL.csv",
       "prefix": "INV",
-      "manufacturer": "Siel",
+      "manufacturer": "SIEL",
       "model": "10TL",
       "registers": 17,
       "size_bytes": 560
@@ -3072,7 +3198,7 @@
     {
       "filename": "INV_Siel_DSP-DSPX.csv",
       "prefix": "INV",
-      "manufacturer": "Siel",
+      "manufacturer": "SIEL",
       "model": "DSP-DSPX",
       "registers": 21,
       "size_bytes": 671
@@ -3080,7 +3206,7 @@
     {
       "filename": "INV_Siel_DSPX.csv",
       "prefix": "INV",
-      "manufacturer": "Siel",
+      "manufacturer": "SIEL",
       "model": "DSPX",
       "registers": 21,
       "size_bytes": 955
@@ -3088,7 +3214,7 @@
     {
       "filename": "INV_Siel_FUEL_CELL.csv",
       "prefix": "INV",
-      "manufacturer": "Siel",
+      "manufacturer": "SIEL",
       "model": "FUEL_CELL",
       "registers": 22,
       "size_bytes": 1029
@@ -3096,7 +3222,7 @@
     {
       "filename": "INV_Siel_Monophase.csv",
       "prefix": "INV",
-      "manufacturer": "Siel",
+      "manufacturer": "SIEL",
       "model": "Monophase",
       "registers": 11,
       "size_bytes": 627
@@ -3104,7 +3230,7 @@
     {
       "filename": "INV_Siel_RECTIFIERS.csv",
       "prefix": "INV",
-      "manufacturer": "Siel",
+      "manufacturer": "SIEL",
       "model": "RECTIFIERS",
       "registers": 19,
       "size_bytes": 1394
@@ -3112,7 +3238,7 @@
     {
       "filename": "INV_Siel_Solar_Converters.csv",
       "prefix": "INV",
-      "manufacturer": "Siel",
+      "manufacturer": "SIEL",
       "model": "Solar_Converters",
       "registers": 19,
       "size_bytes": 876
@@ -3120,7 +3246,7 @@
     {
       "filename": "INV_Siel_STS.csv",
       "prefix": "INV",
-      "manufacturer": "Siel",
+      "manufacturer": "SIEL",
       "model": "STS",
       "registers": 25,
       "size_bytes": 1113
@@ -3128,7 +3254,7 @@
     {
       "filename": "INV_Siel_UPS_UNITS.csv",
       "prefix": "INV",
-      "manufacturer": "Siel",
+      "manufacturer": "SIEL",
       "model": "UPS_UNITS",
       "registers": 22,
       "size_bytes": 961
@@ -3136,7 +3262,7 @@
     {
       "filename": "INV_Siel_WINDWAVE.csv",
       "prefix": "INV",
-      "manufacturer": "Siel",
+      "manufacturer": "SIEL",
       "model": "WINDWAVE",
       "registers": 21,
       "size_bytes": 985
@@ -3147,12 +3273,12 @@
       "manufacturer": "Siemens",
       "model": "GAMESA_Proteus",
       "registers": 743,
-      "size_bytes": 40470
+      "size_bytes": 40467
     },
     {
       "filename": "INV_Sigenergy_Generic.csv",
       "prefix": "INV",
-      "manufacturer": "Sigenergy",
+      "manufacturer": "SIGENERGY",
       "model": "Generic",
       "registers": 194,
       "size_bytes": 10950
@@ -3160,7 +3286,7 @@
     {
       "filename": "INV_Sineng_HYBRID.csv",
       "prefix": "INV",
-      "manufacturer": "Sineng",
+      "manufacturer": "SINENG",
       "model": "HYBRID",
       "registers": 443,
       "size_bytes": 23460
@@ -3198,52 +3324,28 @@
       "size_bytes": 32324
     },
     {
-      "filename": "INV_SMA_16KW.csv",
+      "filename": "INV_SMA_Core1.csv",
       "prefix": "INV",
       "manufacturer": "SMA",
-      "model": "16KW",
-      "registers": 30,
-      "size_bytes": 1650
+      "model": "Core1",
+      "registers": 105,
+      "size_bytes": 7693
     },
     {
-      "filename": "INV_SMA_25_updated_10.csv",
+      "filename": "INV_SMA_Core1_Core2.csv",
       "prefix": "INV",
       "manufacturer": "SMA",
-      "model": "25_updated_10",
-      "registers": 18,
-      "size_bytes": 880
-    },
-    {
-      "filename": "INV_SMA_ClusterControler1.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "ClusterControler1",
-      "registers": 197,
-      "size_bytes": 9613
-    },
-    {
-      "filename": "INV_SMA_ClusterControler2.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "ClusterControler2",
-      "registers": 41,
-      "size_bytes": 3138
+      "model": "Core1_Core2",
+      "registers": 77,
+      "size_bytes": 5264
     },
     {
       "filename": "INV_SMA_Core2.csv",
       "prefix": "INV",
       "manufacturer": "SMA",
       "model": "Core2",
-      "registers": 288,
-      "size_bytes": 14117
-    },
-    {
-      "filename": "INV_SMA_EDL210606_bis_SunSpec_inverter_SMA_STP50-40_4.00.06.R_modbusTCP.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "EDL210606_bis_SunSpec_inverter_SMA_STP50-40_4.00.06.R_modbusTCP",
-      "registers": 591,
-      "size_bytes": 32328
+      "registers": 1211,
+      "size_bytes": 66563
     },
     {
       "filename": "INV_SMA_Generic.csv",
@@ -3251,47 +3353,15 @@
       "manufacturer": "SMA",
       "model": "Generic",
       "registers": 857,
-      "size_bytes": 64433
-    },
-    {
-      "filename": "INV_SMA_HEDL02770_SMA_STP50-40_FONCTIONNEL.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "HEDL02770_SMA_STP50-40_FONCTIONNEL",
-      "registers": 591,
-      "size_bytes": 32543
-    },
-    {
-      "filename": "INV_SMA_Modbus-TI-en-22.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "Modbus-TI-en-22",
-      "registers": 1580,
-      "size_bytes": 73582
-    },
-    {
-      "filename": "INV_SMA_Modbus-TI-en-23.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "Modbus-TI-en-23",
-      "registers": 1660,
-      "size_bytes": 75763
-    },
-    {
-      "filename": "INV_SMA_Modbus-TI-en-29.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "Modbus-TI-en-29",
-      "registers": 2035,
-      "size_bytes": 88719
+      "size_bytes": 65101
     },
     {
       "filename": "INV_SMA_Modbus.csv",
       "prefix": "INV",
       "manufacturer": "SMA",
       "model": "Modbus",
-      "registers": 857,
-      "size_bytes": 53700
+      "registers": 29,
+      "size_bytes": 1931
     },
     {
       "filename": "INV_SMA_MODBUS_SMA_Sunspec.csv",
@@ -3299,7 +3369,7 @@
       "manufacturer": "SMA",
       "model": "MODBUS_SMA_Sunspec",
       "registers": 45,
-      "size_bytes": 2575
+      "size_bytes": 2572
     },
     {
       "filename": "INV_SMA_SC2xxx.csv",
@@ -3307,7 +3377,7 @@
       "manufacturer": "SMA",
       "model": "SC2xxx",
       "registers": 78,
-      "size_bytes": 3830
+      "size_bytes": 3864
     },
     {
       "filename": "INV_SMA_SC_Webbox.csv",
@@ -3315,31 +3385,15 @@
       "manufacturer": "SMA",
       "model": "SC_Webbox",
       "registers": 350,
-      "size_bytes": 19262
+      "size_bytes": 23816
     },
     {
-      "filename": "INV_SMA_SMA.csv",
+      "filename": "INV_SMA_STP_110-60.csv",
       "prefix": "INV",
       "manufacturer": "SMA",
-      "model": "SMA",
-      "registers": 871,
-      "size_bytes": 65899
-    },
-    {
-      "filename": "INV_SMA_STP_110-60_1.00.11.R.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "STP_110-60_1.00.11.R",
+      "model": "STP_110-60",
       "registers": 1211,
-      "size_bytes": 66324
-    },
-    {
-      "filename": "INV_SMA_STP_110-60_1.00.11.R_-full.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "STP_110-60_1.00.11.R_-full",
-      "registers": 1211,
-      "size_bytes": 66348
+      "size_bytes": 66568
     },
     {
       "filename": "INV_SMA_STP_5-10-SE40.csv",
@@ -3347,7 +3401,7 @@
       "manufacturer": "SMA",
       "model": "STP_5-10-SE40",
       "registers": 372,
-      "size_bytes": 24742
+      "size_bytes": 25100
     },
     {
       "filename": "INV_SMA_STP_X.csv",
@@ -3355,7 +3409,7 @@
       "manufacturer": "SMA",
       "model": "STP_X",
       "registers": 435,
-      "size_bytes": 36605
+      "size_bytes": 36979
     },
     {
       "filename": "INV_SMA_STPCORE1_50-41.csv",
@@ -3363,7 +3417,7 @@
       "manufacturer": "SMA",
       "model": "STPCORE1_50-41",
       "registers": 105,
-      "size_bytes": 6286
+      "size_bytes": 7702
     },
     {
       "filename": "INV_SMA_STPX.csv",
@@ -3371,7 +3425,7 @@
       "manufacturer": "SMA",
       "model": "STPX",
       "registers": 509,
-      "size_bytes": 40042
+      "size_bytes": 45269
     },
     {
       "filename": "INV_SMA_STPX_27_30_50_60.csv",
@@ -3382,52 +3436,92 @@
       "size_bytes": 32469
     },
     {
-      "filename": "INV_SMA_STPX_V02_02_07_R.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "STPX_V02_02_07_R",
-      "registers": 445,
-      "size_bytes": 32417
-    },
-    {
-      "filename": "INV_SMA_STPX_V03_02_07_CEME.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "STPX_V03_02_07_CEME",
-      "registers": 437,
-      "size_bytes": 31495
-    },
-    {
-      "filename": "INV_SMA_STPX_V03_02_07_Full.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "STPX_V03_02_07_Full",
-      "registers": 455,
-      "size_bytes": 38368
-    },
-    {
-      "filename": "INV_SMA_STPX_V03_02_07_R.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "STPX_V03_02_07_R",
-      "registers": 455,
-      "size_bytes": 32129
-    },
-    {
       "filename": "INV_SMA_SUNNY_CENTRAL.csv",
       "prefix": "INV",
       "manufacturer": "SMA",
       "model": "SUNNY_CENTRAL",
       "registers": 182,
-      "size_bytes": 6939
+      "size_bytes": 9254
+    },
+    {
+      "filename": "INV_SMA_SunnyBoy.csv",
+      "prefix": "INV",
+      "manufacturer": "SMA",
+      "model": "SunnyBoy",
+      "registers": 36,
+      "size_bytes": 2522
+    },
+    {
+      "filename": "INV_SMA_SunnyBoyStorage.csv",
+      "prefix": "INV",
+      "manufacturer": "SMA",
+      "model": "SunnyBoyStorage",
+      "registers": 45,
+      "size_bytes": 3178
+    },
+    {
+      "filename": "INV_SMA_SunnyCentral.csv",
+      "prefix": "INV",
+      "manufacturer": "SMA",
+      "model": "SunnyCentral",
+      "registers": 182,
+      "size_bytes": 9253
+    },
+    {
+      "filename": "INV_SMA_SunnyCentral_Storage.csv",
+      "prefix": "INV",
+      "manufacturer": "SMA",
+      "model": "SunnyCentral-Storage",
+      "registers": 193,
+      "size_bytes": 10064
+    },
+    {
+      "filename": "INV_SMA_SunnyIsland.csv",
+      "prefix": "INV",
+      "manufacturer": "SMA",
+      "model": "SunnyIsland",
+      "registers": 35,
+      "size_bytes": 2455
+    },
+    {
+      "filename": "INV_SMA_SunnyTripower.csv",
+      "prefix": "INV",
+      "manufacturer": "SMA",
+      "model": "SunnyTripower",
+      "registers": 59,
+      "size_bytes": 4108
+    },
+    {
+      "filename": "INV_SMA_SunnyTripower_SmartEnergy.csv",
+      "prefix": "INV",
+      "manufacturer": "SMA",
+      "model": "SunnyTripower-SmartEnergy",
+      "registers": 372,
+      "size_bytes": 25112
+    },
+    {
+      "filename": "INV_SMA_SunnyTripower_X.csv",
+      "prefix": "INV",
+      "manufacturer": "SMA",
+      "model": "SunnyTripower-X",
+      "registers": 435,
+      "size_bytes": 36989
     },
     {
       "filename": "INV_SMA_Sunspec.csv",
       "prefix": "INV",
       "manufacturer": "SMA",
       "model": "Sunspec",
-      "registers": 45,
-      "size_bytes": 2566
+      "registers": 29,
+      "size_bytes": 1932
+    },
+    {
+      "filename": "INV_SMA_SunSpec_Inverter.csv",
+      "prefix": "INV",
+      "manufacturer": "SMA",
+      "model": "SunSpec-Inverter",
+      "registers": 29,
+      "size_bytes": 1941
     },
     {
       "filename": "INV_SMA_SunSpec_inverter_SMA_Solar_Inverter_2.83.03.R_modbusTCP_STP25000TL30.csv",
@@ -3435,15 +3529,7 @@
       "manufacturer": "SMA",
       "model": "SunSpec_inverter_SMA_Solar_Inverter_2.83.03.R_modbusTCP_STP25000TL30",
       "registers": 591,
-      "size_bytes": 32180
-    },
-    {
-      "filename": "INV_SMA_WORK_MODBUS_SMA.csv",
-      "prefix": "INV",
-      "manufacturer": "SMA",
-      "model": "WORK_MODBUS_SMA",
-      "registers": 871,
-      "size_bytes": 27359
+      "size_bytes": 32177
     },
     {
       "filename": "INV_SNEF_Modbus.csv",
@@ -3480,7 +3566,7 @@
     {
       "filename": "INV_SofarSolar_GENERIC.csv",
       "prefix": "INV",
-      "manufacturer": "SofarSolar",
+      "manufacturer": "SOFARSOLAR",
       "model": "GENERIC",
       "registers": 547,
       "size_bytes": 25284
@@ -3488,7 +3574,7 @@
     {
       "filename": "INV_SofarSolar_HYD_G3.csv",
       "prefix": "INV",
-      "manufacturer": "SofarSolar",
+      "manufacturer": "SOFARSOLAR",
       "model": "HYD_G3",
       "registers": 538,
       "size_bytes": 24995
@@ -3560,7 +3646,7 @@
     {
       "filename": "INV_SolarEdge_FromIndia.csv",
       "prefix": "INV",
-      "manufacturer": "SolarEdge",
+      "manufacturer": "Solaredge",
       "model": "FromIndia",
       "registers": 38,
       "size_bytes": 1868
@@ -3568,7 +3654,7 @@
     {
       "filename": "INV_SolarEdge_Modbus_Sunspec.csv",
       "prefix": "INV",
-      "manufacturer": "SolarEdge",
+      "manufacturer": "SOLAREDGE",
       "model": "Modbus_Sunspec",
       "registers": 46,
       "size_bytes": 2189
@@ -3580,6 +3666,14 @@
       "model": "SE33.3K_SunSpec_regul",
       "registers": 69,
       "size_bytes": 3842
+    },
+    {
+      "filename": "INV_SolarEdge_SE_Series.csv",
+      "prefix": "INV",
+      "manufacturer": "SolarEdge",
+      "model": "SE-Series",
+      "registers": 28,
+      "size_bytes": 1908
     },
     {
       "filename": "INV_SolarEdge_STEPGUIDEL_SunSpec_inverter_SolarEdge_SE33.3K-RW00IBNJ4_0004.0016.0025_modbusRTU.csv",
@@ -3632,7 +3726,7 @@
     {
       "filename": "INV_SolaX_FORTH-MEGA_GENERIC.csv",
       "prefix": "INV",
-      "manufacturer": "SolaX",
+      "manufacturer": "Solax",
       "model": "FORTH-MEGA_GENERIC",
       "registers": 326,
       "size_bytes": 15156
@@ -3640,7 +3734,7 @@
     {
       "filename": "INV_SolaX_Generic.csv",
       "prefix": "INV",
-      "manufacturer": "SolaX",
+      "manufacturer": "Solax",
       "model": "Generic",
       "registers": 214,
       "size_bytes": 11548
@@ -3648,7 +3742,7 @@
     {
       "filename": "INV_SolaX_MICG2-PROG2.csv",
       "prefix": "INV",
-      "manufacturer": "SolaX",
+      "manufacturer": "Solax",
       "model": "MICG2-PROG2",
       "registers": 68,
       "size_bytes": 3916
@@ -3656,15 +3750,15 @@
     {
       "filename": "INV_SolaX_TCP.csv",
       "prefix": "INV",
-      "manufacturer": "SolaX",
+      "manufacturer": "Solax",
       "model": "TCP",
       "registers": 156,
-      "size_bytes": 7111
+      "size_bytes": 7108
     },
     {
       "filename": "INV_SolaX_Work_MODBUS_Solax.csv",
       "prefix": "INV",
-      "manufacturer": "SolaX",
+      "manufacturer": "Solax",
       "model": "Work_MODBUS_Solax",
       "registers": 139,
       "size_bytes": 4638
@@ -3672,7 +3766,7 @@
     {
       "filename": "INV_SolaX_X1-X3-GENERIC.csv",
       "prefix": "INV",
-      "manufacturer": "SolaX",
+      "manufacturer": "Solax",
       "model": "X1-X3-GENERIC",
       "registers": 156,
       "size_bytes": 9125
@@ -3680,7 +3774,7 @@
     {
       "filename": "INV_SolaX_X1-X3-GENERIC_TCP.csv",
       "prefix": "INV",
-      "manufacturer": "SolaX",
+      "manufacturer": "Solax",
       "model": "X1-X3-GENERIC_TCP",
       "registers": 156,
       "size_bytes": 9129
@@ -3688,7 +3782,7 @@
     {
       "filename": "INV_SolaX_X1-X3_Generic.csv",
       "prefix": "INV",
-      "manufacturer": "SolaX",
+      "manufacturer": "Solax",
       "model": "X1-X3_Generic",
       "registers": 157,
       "size_bytes": 9163
@@ -3696,7 +3790,7 @@
     {
       "filename": "INV_SolaX_X2.csv",
       "prefix": "INV",
-      "manufacturer": "SolaX",
+      "manufacturer": "Solax",
       "model": "X2",
       "registers": 57,
       "size_bytes": 2496
@@ -3712,7 +3806,7 @@
     {
       "filename": "INV_Solis_GENERIC_GridTied.csv",
       "prefix": "INV",
-      "manufacturer": "Solis",
+      "manufacturer": "SOLIS",
       "model": "GENERIC_GridTied",
       "registers": 690,
       "size_bytes": 34941
@@ -3782,10 +3876,18 @@
       "size_bytes": 7582
     },
     {
-      "filename": "INV_Solplanet_Generic.csv",
+      "filename": "INV_Solplanet_ASW_ThreePhase.csv",
       "prefix": "INV",
       "manufacturer": "Solplanet",
-      "model": "Generic",
+      "model": "ASW_ThreePhase",
+      "registers": 27,
+      "size_bytes": 1898
+    },
+    {
+      "filename": "INV_Solplanet_Generic.csv",
+      "prefix": "INV",
+      "manufacturer": "SOLPLANET",
+      "model": "GENERIC",
       "registers": 625,
       "size_bytes": 35862
     },
@@ -3862,6 +3964,14 @@
       "size_bytes": 5301
     },
     {
+      "filename": "INV_Sungrow_SG_Series.csv",
+      "prefix": "INV",
+      "manufacturer": "Sungrow",
+      "model": "SG-Series",
+      "registers": 29,
+      "size_bytes": 1913
+    },
+    {
       "filename": "INV_Sungrow_short.csv",
       "prefix": "INV",
       "manufacturer": "Sungrow",
@@ -3875,7 +3985,7 @@
       "manufacturer": "Sungrow",
       "model": "TCP_PM",
       "registers": 81,
-      "size_bytes": 5304
+      "size_bytes": 5301
     },
     {
       "filename": "INV_Sungrow_Updated.csv",
@@ -3904,7 +4014,7 @@
     {
       "filename": "INV_Tata_Generic.csv",
       "prefix": "INV",
-      "manufacturer": "Tata",
+      "manufacturer": "TATA",
       "model": "Generic",
       "registers": 20,
       "size_bytes": 1175
@@ -3928,7 +4038,7 @@
     {
       "filename": "INV_Victron_Generic.csv",
       "prefix": "INV",
-      "manufacturer": "Victron",
+      "manufacturer": "VICTRON",
       "model": "Generic",
       "registers": 12,
       "size_bytes": 731
@@ -3950,9 +4060,17 @@
       "size_bytes": 2247
     },
     {
+      "filename": "INV_X7_PCS.csv",
+      "prefix": "INV",
+      "manufacturer": "X7",
+      "model": "PCS",
+      "registers": 127,
+      "size_bytes": 8921
+    },
+    {
       "filename": "INV_ZeverSolar_Modbus.csv",
       "prefix": "INV",
-      "manufacturer": "ZeverSolar",
+      "manufacturer": "Zeversolar",
       "model": "Modbus",
       "registers": 75,
       "size_bytes": 3522
@@ -3960,7 +4078,7 @@
     {
       "filename": "INV_ZeverSolar_MODBUS_ZeverSolar.csv",
       "prefix": "INV",
-      "manufacturer": "ZeverSolar",
+      "manufacturer": "ZEVERSOLAR",
       "model": "MODBUS_ZeverSolar",
       "registers": 82,
       "size_bytes": 3926
@@ -3992,7 +4110,7 @@
     {
       "filename": "INV_Zucchetti_Centro_Sistemi_S.p.a_ZUCCHETTI_V3-V4.csv",
       "prefix": "INV",
-      "manufacturer": "Zucchetti",
+      "manufacturer": "ZUCCHETTI",
       "model": "Centro_Sistemi_S.p.a_ZUCCHETTI_V3-V4",
       "registers": 1778,
       "size_bytes": 107524
@@ -4072,7 +4190,7 @@
     {
       "filename": "MET_Algodue_UPM209.csv",
       "prefix": "MET",
-      "manufacturer": "Algodue",
+      "manufacturer": "ALGODUE",
       "model": "UPM209",
       "registers": 5,
       "size_bytes": 330
@@ -4118,12 +4236,44 @@
       "size_bytes": 2794
     },
     {
+      "filename": "MET_CarloGavazzi_EM111.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "EM111",
+      "registers": 41,
+      "size_bytes": 2319
+    },
+    {
+      "filename": "MET_CarloGavazzi_EM112.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "EM112",
+      "registers": 41,
+      "size_bytes": 2319
+    },
+    {
+      "filename": "MET_CarloGavazzi_EM21.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "EM21",
+      "registers": 35,
+      "size_bytes": 1803
+    },
+    {
       "filename": "MET_CarloGavazzi_EM210.csv",
       "prefix": "MET",
       "manufacturer": "CarloGavazzi",
       "model": "EM210",
       "registers": 115,
-      "size_bytes": 6474
+      "size_bytes": 6606
+    },
+    {
+      "filename": "MET_CarloGavazzi_EM210_MV.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "EM210_MV",
+      "registers": 115,
+      "size_bytes": 6609
     },
     {
       "filename": "MET_CarloGavazzi_EM24.csv",
@@ -4134,12 +4284,108 @@
       "size_bytes": 1140
     },
     {
+      "filename": "MET_CarloGavazzi_EM24_EM300.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "EM24-EM300",
+      "registers": 27,
+      "size_bytes": 1776
+    },
+    {
+      "filename": "MET_CarloGavazzi_EM271.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "EM271",
+      "registers": 25,
+      "size_bytes": 1290
+    },
+    {
       "filename": "MET_CarloGavazzi_EM300-ET300.csv",
       "prefix": "MET",
       "manufacturer": "CarloGavazzi",
       "model": "EM300-ET300",
       "registers": 147,
       "size_bytes": 5864
+    },
+    {
+      "filename": "MET_CarloGavazzi_EM330.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "EM330",
+      "registers": 65,
+      "size_bytes": 3532
+    },
+    {
+      "filename": "MET_CarloGavazzi_EM340.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "EM340",
+      "registers": 65,
+      "size_bytes": 3532
+    },
+    {
+      "filename": "MET_CarloGavazzi_EM530.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "EM530",
+      "registers": 143,
+      "size_bytes": 7538
+    },
+    {
+      "filename": "MET_CarloGavazzi_EM540.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "EM540",
+      "registers": 143,
+      "size_bytes": 7538
+    },
+    {
+      "filename": "MET_CarloGavazzi_ET112.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "ET112",
+      "registers": 41,
+      "size_bytes": 2319
+    },
+    {
+      "filename": "MET_CarloGavazzi_ET330.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "ET330",
+      "registers": 65,
+      "size_bytes": 3532
+    },
+    {
+      "filename": "MET_CarloGavazzi_ET340.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "ET340",
+      "registers": 65,
+      "size_bytes": 3532
+    },
+    {
+      "filename": "MET_CarloGavazzi_WM15.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "WM15",
+      "registers": 33,
+      "size_bytes": 1689
+    },
+    {
+      "filename": "MET_CarloGavazzi_WM20.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "WM20",
+      "registers": 40,
+      "size_bytes": 2169
+    },
+    {
+      "filename": "MET_CarloGavazzi_WM50.csv",
+      "prefix": "MET",
+      "manufacturer": "CarloGavazzi",
+      "model": "WM50",
+      "registers": 40,
+      "size_bytes": 2169
     },
     {
       "filename": "MET_Cefem_DEF_GridMeterChauvinArnouxUlysTT_M.csv",
@@ -4161,7 +4407,7 @@
       "filename": "MET_ChauvinArnoux_ULYS_FLEX.csv",
       "prefix": "MET",
       "manufacturer": "ChauvinArnoux",
-      "model": "ULYS_FLEX",
+      "model": "Ulys_Flex",
       "registers": 130,
       "size_bytes": 6435
     },
@@ -4174,17 +4420,33 @@
       "size_bytes": 969
     },
     {
+      "filename": "MET_Chint_DDSU666.csv",
+      "prefix": "MET",
+      "manufacturer": "CHINT",
+      "model": "DDSU666",
+      "registers": 14,
+      "size_bytes": 950
+    },
+    {
+      "filename": "MET_Chint_DTSU666-H.csv",
+      "prefix": "MET",
+      "manufacturer": "CHINT",
+      "model": "DTSU666-H",
+      "registers": 22,
+      "size_bytes": 1572
+    },
+    {
       "filename": "MET_Chint_DTSU666.csv",
       "prefix": "MET",
-      "manufacturer": "Chint",
+      "manufacturer": "CHINT",
       "model": "DTSU666",
-      "registers": 29,
-      "size_bytes": 1542
+      "registers": 41,
+      "size_bytes": 2866
     },
     {
       "filename": "MET_Chint_Power_CHINT_DTSU.csv",
       "prefix": "MET",
-      "manufacturer": "Chint",
+      "manufacturer": "CHINT",
       "model": "Power_CHINT_DTSU",
       "registers": 29,
       "size_bytes": 1232
@@ -4192,7 +4454,7 @@
     {
       "filename": "MET_Circutor_CVME3MINI.csv",
       "prefix": "MET",
-      "manufacturer": "Circutor",
+      "manufacturer": "CIRCUTOR",
       "model": "CVME3MINI",
       "registers": 31,
       "size_bytes": 1724
@@ -4200,7 +4462,7 @@
     {
       "filename": "MET_Circutor_MODBUS_PM_RTU_CIRCUTOR_CVME3MINI_carte2.csv",
       "prefix": "MET",
-      "manufacturer": "Circutor",
+      "manufacturer": "CIRCUTOR",
       "model": "MODBUS_PM_RTU_CIRCUTOR_CVME3MINI_carte2",
       "registers": 19,
       "size_bytes": 972
@@ -4208,7 +4470,7 @@
     {
       "filename": "MET_Circutor_MODBUS_PM_RTU_CIRCUTOR_CVME3MINI_kW.csv",
       "prefix": "MET",
-      "manufacturer": "Circutor",
+      "manufacturer": "CIRCUTOR",
       "model": "MODBUS_PM_RTU_CIRCUTOR_CVME3MINI_kW",
       "registers": 16,
       "size_bytes": 796
@@ -4224,7 +4486,7 @@
     {
       "filename": "MET_Eastron_SMART-X96-5E.csv",
       "prefix": "MET",
-      "manufacturer": "Eastron",
+      "manufacturer": "EASTRON",
       "model": "SMART-X96-5E",
       "registers": 125,
       "size_bytes": 7142
@@ -4235,7 +4497,7 @@
       "manufacturer": "EcoAdapt",
       "model": "MODBUS_PowerElec6",
       "registers": 221,
-      "size_bytes": 11383
+      "size_bytes": 11380
     },
     {
       "filename": "MET_EcoAdapt_POWERELEC_6.csv",
@@ -4313,7 +4575,7 @@
       "filename": "MET_FoxESS_H3_Pro.csv",
       "prefix": "MET",
       "manufacturer": "FoxESS",
-      "model": "H3_Pro",
+      "model": "H3 Pro",
       "registers": 61,
       "size_bytes": 4338
     },
@@ -4366,9 +4628,17 @@
       "size_bytes": 8255
     },
     {
+      "filename": "MET_Goodwe_GM1000_GM3000.csv",
+      "prefix": "MET",
+      "manufacturer": "GoodWe",
+      "model": "GM1000-GM3000",
+      "registers": 18,
+      "size_bytes": 1213
+    },
+    {
       "filename": "MET_Hager_Generic.csv",
       "prefix": "MET",
-      "manufacturer": "Hager",
+      "manufacturer": "HAGER",
       "model": "Generic",
       "registers": 102,
       "size_bytes": 5360
@@ -4382,6 +4652,14 @@
       "size_bytes": 21695
     },
     {
+      "filename": "MET_Huawei_DTSU666-H.csv",
+      "prefix": "MET",
+      "manufacturer": "Huawei",
+      "model": "DTSU666-H",
+      "registers": 22,
+      "size_bytes": 1573
+    },
+    {
       "filename": "MET_Huawei_INV_METER.csv",
       "prefix": "MET",
       "manufacturer": "Huawei",
@@ -4392,7 +4670,7 @@
     {
       "filename": "MET_Huawei_Power_Meter.csv",
       "prefix": "MET",
-      "manufacturer": "Huawei",
+      "manufacturer": "HUAWEI",
       "model": "Power_Meter",
       "registers": 44,
       "size_bytes": 2962
@@ -4433,7 +4711,7 @@
       "filename": "MET_IME_Generic.csv",
       "prefix": "MET",
       "manufacturer": "IME",
-      "model": "Generic",
+      "model": "GENERIC",
       "registers": 85,
       "size_bytes": 5760
     },
@@ -4448,7 +4726,7 @@
     {
       "filename": "MET_Imesys_NEMO_96HDLe.csv",
       "prefix": "MET",
-      "manufacturer": "Imesys",
+      "manufacturer": "IMESYS",
       "model": "NEMO_96HDLe",
       "registers": 797,
       "size_bytes": 53807
@@ -4475,7 +4753,7 @@
       "manufacturer": "Janitza",
       "model": "12926-UB_MODBUS_COMPTEUR_JANITZA_UMG604-PRO",
       "registers": 71,
-      "size_bytes": 4463
+      "size_bytes": 4460
     },
     {
       "filename": "MET_Janitza_Generic.csv",
@@ -4499,7 +4777,7 @@
       "manufacturer": "Janitza",
       "model": "GENERIC_TCP",
       "registers": 61,
-      "size_bytes": 2258
+      "size_bytes": 2255
     },
     {
       "filename": "MET_Janitza_MODBUS_Janitza.csv",
@@ -4507,7 +4785,7 @@
       "manufacturer": "Janitza",
       "model": "MODBUS_Janitza",
       "registers": 61,
-      "size_bytes": 2281
+      "size_bytes": 2278
     },
     {
       "filename": "MET_Janitza_Modbus_Janitza_UMG103CBM.csv",
@@ -4531,7 +4809,7 @@
       "manufacturer": "Janitza",
       "model": "UMG-604",
       "registers": 4,
-      "size_bytes": 285
+      "size_bytes": 282
     },
     {
       "filename": "MET_Janitza_UMG604-PRO.csv",
@@ -4545,9 +4823,9 @@
       "filename": "MET_Janitza_UMG604_PRO.csv",
       "prefix": "MET",
       "manufacturer": "Janitza",
-      "model": "UMG604_PRO",
+      "model": "UMG604-PRO",
       "registers": 71,
-      "size_bytes": 5144
+      "size_bytes": 5141
     },
     {
       "filename": "MET_Janitza_UMG604_RTU.csv",
@@ -4576,7 +4854,7 @@
     {
       "filename": "MET_Lacecal_ITR2_0.csv",
       "prefix": "MET",
-      "manufacturer": "Lacecal",
+      "manufacturer": "LACECAL",
       "model": "ITR2_0",
       "registers": 67,
       "size_bytes": 2517
@@ -4600,7 +4878,7 @@
     {
       "filename": "MET_Legrand_CF_Generic.csv",
       "prefix": "MET",
-      "manufacturer": "Legrand",
+      "manufacturer": "LEGRAND",
       "model": "CF_Generic",
       "registers": 11,
       "size_bytes": 516
@@ -4681,7 +4959,7 @@
       "filename": "MET_Lettel_MAP4_34RJ.csv",
       "prefix": "MET",
       "manufacturer": "Lettel",
-      "model": "MAP4_34RJ",
+      "model": "MAP4-34RJ",
       "registers": 405,
       "size_bytes": 21418
     },
@@ -4832,7 +5110,7 @@
     {
       "filename": "MET_MarsEnergy_Meter.csv",
       "prefix": "MET",
-      "manufacturer": "MarsEnergy",
+      "manufacturer": "MarsRenewable",
       "model": "Meter",
       "registers": 11,
       "size_bytes": 873
@@ -4851,7 +5129,7 @@
       "manufacturer": "OG",
       "model": "NHEOBOX_OG_NHEOBOX",
       "registers": 96,
-      "size_bytes": 5963
+      "size_bytes": 5960
     },
     {
       "filename": "MET_Panasonic_AKW8115.csv",
@@ -4872,7 +5150,7 @@
     {
       "filename": "MET_Polier_MTR5LMOD.csv",
       "prefix": "MET",
-      "manufacturer": "Polier",
+      "manufacturer": "POLIER",
       "model": "MTR5LMOD",
       "registers": 33,
       "size_bytes": 1843
@@ -4880,7 +5158,7 @@
     {
       "filename": "MET_Polier_MTROGMOD.csv",
       "prefix": "MET",
-      "manufacturer": "Polier",
+      "manufacturer": "POLIER",
       "model": "MTROGMOD",
       "registers": 308,
       "size_bytes": 16691
@@ -4888,7 +5166,7 @@
     {
       "filename": "MET_Polier_PROMOD380.csv",
       "prefix": "MET",
-      "manufacturer": "Polier",
+      "manufacturer": "POLIER",
       "model": "PROMOD380",
       "registers": 88,
       "size_bytes": 4432
@@ -4896,7 +5174,7 @@
     {
       "filename": "MET_Saci_MDL3-MID_M1DL3T-MID.csv",
       "prefix": "MET",
-      "manufacturer": "Saci",
+      "manufacturer": "SACI",
       "model": "MDL3-MID_M1DL3T-MID",
       "registers": 86,
       "size_bytes": 4461
@@ -4912,7 +5190,7 @@
     {
       "filename": "MET_Schneider_EM1200.csv",
       "prefix": "MET",
-      "manufacturer": "Schneider",
+      "manufacturer": "schneider",
       "model": "EM1200",
       "registers": 96,
       "size_bytes": 5171
@@ -5094,6 +5372,14 @@
       "size_bytes": 814
     },
     {
+      "filename": "MET_Schneider_PM5000_IEM3000.csv",
+      "prefix": "MET",
+      "manufacturer": "Schneider",
+      "model": "PM5000-iEM3000",
+      "registers": 24,
+      "size_bytes": 1611
+    },
+    {
       "filename": "MET_Schneider_PM5xxx.csv",
       "prefix": "MET",
       "manufacturer": "Schneider",
@@ -5174,12 +5460,20 @@
       "size_bytes": 1691
     },
     {
-      "filename": "MET_SMA_Smappee_Infinity_Modbus_energy_meter_registers.csv",
+      "filename": "MET_SMA_EnergyMeter.csv",
       "prefix": "MET",
       "manufacturer": "SMA",
-      "model": "Smappee_Infinity_Modbus_energy_meter_registers",
-      "registers": 1661,
-      "size_bytes": 81776
+      "model": "EnergyMeter",
+      "registers": 26,
+      "size_bytes": 1779
+    },
+    {
+      "filename": "MET_SMA_HomeManager.csv",
+      "prefix": "MET",
+      "manufacturer": "SMA",
+      "model": "HomeManager",
+      "registers": 26,
+      "size_bytes": 1779
     },
     {
       "filename": "MET_Socomec_A10.csv",
@@ -5208,7 +5502,7 @@
     {
       "filename": "MET_Socomec_COUNTIS_E23.csv",
       "prefix": "MET",
-      "manufacturer": "Socomec",
+      "manufacturer": "SOCOMEC",
       "model": "COUNTIS_E23",
       "registers": 59,
       "size_bytes": 4611
@@ -5232,7 +5526,7 @@
     {
       "filename": "MET_Socomec_Countis_E33_E43.csv",
       "prefix": "MET",
-      "manufacturer": "Socomec",
+      "manufacturer": "SOCOMEC",
       "model": "Countis_E33_E43",
       "registers": 73,
       "size_bytes": 4824
@@ -5248,8 +5542,8 @@
     {
       "filename": "MET_Socomec_Countis_P44.csv",
       "prefix": "MET",
-      "manufacturer": "Socomec",
-      "model": "Countis_P44",
+      "manufacturer": "SOCOMEC",
+      "model": "COUNTIS_P44",
       "registers": 37,
       "size_bytes": 2058
     },
@@ -5264,10 +5558,18 @@
     {
       "filename": "MET_Socomec_Diris_A40.csv",
       "prefix": "MET",
-      "manufacturer": "Socomec",
+      "manufacturer": "SOCOMEC",
       "model": "Diris_A40",
       "registers": 35,
       "size_bytes": 2379
+    },
+    {
+      "filename": "MET_Socomec_Diris_A_Countis_E.csv",
+      "prefix": "MET",
+      "manufacturer": "Socomec",
+      "model": "Diris-A-Countis-E",
+      "registers": 30,
+      "size_bytes": 2112
     },
     {
       "filename": "MET_Socomec_Diris_Axx.csv",
@@ -5280,7 +5582,7 @@
     {
       "filename": "MET_Socomec_DIRIS_B10.csv",
       "prefix": "MET",
-      "manufacturer": "Socomec",
+      "manufacturer": "SOCOMEC",
       "model": "DIRIS_B10",
       "registers": 23,
       "size_bytes": 1466
@@ -5296,7 +5598,7 @@
     {
       "filename": "MET_Socomec_DIRIS_DIGIWARE_I35.csv",
       "prefix": "MET",
-      "manufacturer": "Socomec",
+      "manufacturer": "SOCOMEC",
       "model": "DIRIS_DIGIWARE_I35",
       "registers": 26,
       "size_bytes": 1361
@@ -5336,7 +5638,7 @@
     {
       "filename": "MET_Socomec_E33_E43.csv",
       "prefix": "MET",
-      "manufacturer": "Socomec",
+      "manufacturer": "SOCOMEC",
       "model": "E33_E43",
       "registers": 73,
       "size_bytes": 5648
@@ -5352,7 +5654,7 @@
     {
       "filename": "MET_Socomec_ElectricMotionWebdyn_modbusRTU_Meter_SOCOMEC_DIRIS_B10.csv",
       "prefix": "MET",
-      "manufacturer": "Socomec",
+      "manufacturer": "SOCOMEC",
       "model": "ElectricMotionWebdyn_modbusRTU_Meter_SOCOMEC_DIRIS_B10",
       "registers": 19,
       "size_bytes": 1286
@@ -5384,7 +5686,7 @@
     {
       "filename": "MET_Socomec_W_SOCOMEC_COUNTIS_E23.csv",
       "prefix": "MET",
-      "manufacturer": "Socomec",
+      "manufacturer": "SOCOMEC",
       "model": "W_SOCOMEC_COUNTIS_E23",
       "registers": 59,
       "size_bytes": 4688
@@ -5400,7 +5702,7 @@
     {
       "filename": "MET_Socomec_W_SOCOMEC_Diris_A40.csv",
       "prefix": "MET",
-      "manufacturer": "Socomec",
+      "manufacturer": "SOCOMEC",
       "model": "W_SOCOMEC_Diris_A40",
       "registers": 35,
       "size_bytes": 2451
@@ -5408,7 +5710,7 @@
     {
       "filename": "MET_Socomec_W_SOCOMEC_DIRIS_B10.csv",
       "prefix": "MET",
-      "manufacturer": "Socomec",
+      "manufacturer": "SOCOMEC",
       "model": "W_SOCOMEC_DIRIS_B10",
       "registers": 23,
       "size_bytes": 1489
@@ -5432,7 +5734,7 @@
     {
       "filename": "MET_Socomec_W_SOCOMEC_E33_E43.csv",
       "prefix": "MET",
-      "manufacturer": "Socomec",
+      "manufacturer": "SOCOMEC",
       "model": "W_SOCOMEC_E33_E43",
       "registers": 73,
       "size_bytes": 5725
@@ -5448,7 +5750,7 @@
     {
       "filename": "MET_SolarEdge_SE-MTR-3Y-400V-A.csv",
       "prefix": "MET",
-      "manufacturer": "SolarEdge",
+      "manufacturer": "SOLAREDGE",
       "model": "SE-MTR-3Y-400V-A",
       "registers": 246,
       "size_bytes": 11772
@@ -5464,7 +5766,7 @@
     {
       "filename": "MET_SolarLog_PRO380_WORK.csv",
       "prefix": "MET",
-      "manufacturer": "SolarLog",
+      "manufacturer": "SOLARLOG",
       "model": "PRO380_WORK",
       "registers": 148,
       "size_bytes": 6814
@@ -5475,7 +5777,7 @@
       "manufacturer": "SolarLog",
       "model": "SOLARLOG",
       "registers": 17,
-      "size_bytes": 718
+      "size_bytes": 715
     },
     {
       "filename": "MET_Ticmaster_ICE_SAPHIR.csv",
@@ -5496,7 +5798,7 @@
     {
       "filename": "MET_Ticmaster_PME-PMI.csv",
       "prefix": "MET",
-      "manufacturer": "Ticmaster",
+      "manufacturer": "TicMaster",
       "model": "PME-PMI",
       "registers": 6,
       "size_bytes": 367
@@ -5504,7 +5806,7 @@
     {
       "filename": "MET_Ticmaster_PME-PMI_VOIE2.csv",
       "prefix": "MET",
-      "manufacturer": "Ticmaster",
+      "manufacturer": "TicMaster",
       "model": "PME-PMI_VOIE2",
       "registers": 6,
       "size_bytes": 373
@@ -5512,7 +5814,7 @@
     {
       "filename": "MET_Ticmaster_PME-PMI_VOIE3.csv",
       "prefix": "MET",
-      "manufacturer": "Ticmaster",
+      "manufacturer": "TicMaster",
       "model": "PME-PMI_VOIE3",
       "registers": 6,
       "size_bytes": 373
@@ -5532,6 +5834,14 @@
       "model": "610",
       "registers": 122,
       "size_bytes": 7740
+    },
+    {
+      "filename": "MET_X7_Meters.csv",
+      "prefix": "MET",
+      "manufacturer": "X7",
+      "model": "Meters",
+      "registers": 66,
+      "size_bytes": 5811
     },
     {
       "filename": "MET_Zelec_EM3100PURSM.csv",
@@ -5698,7 +6008,7 @@
       "prefix": "OTH",
       "manufacturer": "ABB",
       "model": "SUNSPEC_PVS-100_120_PICS_Rev_005",
-      "registers": 1145,
+      "registers": 1143,
       "size_bytes": 46142
     },
     {
@@ -5714,7 +6024,7 @@
       "prefix": "OTH",
       "manufacturer": "ABB",
       "model": "SUNSPEC_PVS-175_PICS_Rev_003",
-      "registers": 1070,
+      "registers": 1068,
       "size_bytes": 42910
     },
     {
@@ -5747,7 +6057,7 @@
       "manufacturer": "ABB",
       "model": "Terra_AC_Charger",
       "registers": 20,
-      "size_bytes": 1276
+      "size_bytes": 1273
     },
     {
       "filename": "OTH_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv",
@@ -5912,26 +6222,10 @@
     {
       "filename": "OTH_Cefem_Modbus_TrioSunTrioTop.csv",
       "prefix": "OTH",
-      "manufacturer": "Cefem",
+      "manufacturer": "CEFEM",
       "model": "Modbus_TrioSunTrioTop",
       "registers": 68,
       "size_bytes": 3711
-    },
-    {
-      "filename": "OTH_Cefem_Table_Modbus_Trio-Sun_Trio-Top_2020_07_01.csv",
-      "prefix": "OTH",
-      "manufacturer": "Cefem",
-      "model": "Table_Modbus_Trio-Sun_Trio-Top_2020_07_01",
-      "registers": 33,
-      "size_bytes": 1681
-    },
-    {
-      "filename": "OTH_ChauvinArnoux_ULYS-TT_M.csv",
-      "prefix": "OTH",
-      "manufacturer": "ChauvinArnoux",
-      "model": "ULYS-TT_M",
-      "registers": 19,
-      "size_bytes": 822
     },
     {
       "filename": "OTH_ChauvinArnoux_ULYS_FLEX.csv",
@@ -5944,7 +6238,7 @@
     {
       "filename": "OTH_Chint_Power_CHINT_IO_NM8N-MCCB.csv",
       "prefix": "OTH",
-      "manufacturer": "Chint",
+      "manufacturer": "CHINT",
       "model": "Power_CHINT_IO_NM8N-MCCB",
       "registers": 35,
       "size_bytes": 2167
@@ -5960,7 +6254,7 @@
     {
       "filename": "OTH_Cyberpower_Cyberpower3Ph_50000ETL.csv",
       "prefix": "OTH",
-      "manufacturer": "Cyberpower",
+      "manufacturer": "CyberPower",
       "model": "Cyberpower3Ph_50000ETL",
       "registers": 80,
       "size_bytes": 3877
@@ -5968,7 +6262,7 @@
     {
       "filename": "OTH_Cyberpower_Modbus_1Ph.csv",
       "prefix": "OTH",
-      "manufacturer": "Cyberpower",
+      "manufacturer": "CyberPower",
       "model": "Modbus_1Ph",
       "registers": 85,
       "size_bytes": 4969
@@ -5976,7 +6270,7 @@
     {
       "filename": "OTH_Cyberpower_Modbus_3Ph.csv",
       "prefix": "OTH",
-      "manufacturer": "Cyberpower",
+      "manufacturer": "CyberPower",
       "model": "Modbus_3Ph",
       "registers": 71,
       "size_bytes": 4086
@@ -6350,22 +6644,6 @@
       "size_bytes": 10489
     },
     {
-      "filename": "OTH_Goodwe_20220125_SCB3000-IEC104_data_list_20220223.csv",
-      "prefix": "OTH",
-      "manufacturer": "Goodwe",
-      "model": "20220125_SCB3000-IEC104_data_list_20220223",
-      "registers": 3,
-      "size_bytes": 179
-    },
-    {
-      "filename": "OTH_Goodwe_CHARP1.csv",
-      "prefix": "OTH",
-      "manufacturer": "Goodwe",
-      "model": "CHARP1",
-      "registers": 539,
-      "size_bytes": 29780
-    },
-    {
       "filename": "OTH_Greenheiss_GH-I_Style_GH-IT_2M.csv",
       "prefix": "OTH",
       "manufacturer": "Greenheiss",
@@ -6384,7 +6662,7 @@
     {
       "filename": "OTH_Hager_Generic.csv",
       "prefix": "OTH",
-      "manufacturer": "Hager",
+      "manufacturer": "HAGER",
       "model": "Generic",
       "registers": 102,
       "size_bytes": 4154
@@ -6590,20 +6868,12 @@
       "size_bytes": 13669
     },
     {
-      "filename": "OTH_Hukseflux_Generic.csv",
-      "prefix": "OTH",
-      "manufacturer": "Hukseflux",
-      "model": "Generic",
-      "registers": 27,
-      "size_bytes": 1726
-    },
-    {
       "filename": "OTH_Hypercharger_by_alpitronic_EV_Charger_ALPITRONIC_HYPERCHARGER.csv",
       "prefix": "OTH",
       "manufacturer": "Hypercharger",
       "model": "by_alpitronic_EV_Charger_ALPITRONIC_HYPERCHARGER",
       "registers": 80,
-      "size_bytes": 3756
+      "size_bytes": 3753
     },
     {
       "filename": "OTH_ICPDAS_M-7000.csv",
@@ -6640,7 +6910,7 @@
     {
       "filename": "OTH_Imesys_NEMO_96HDLe.csv",
       "prefix": "OTH",
-      "manufacturer": "Imesys",
+      "manufacturer": "IMESYS",
       "model": "NEMO_96HDLe",
       "registers": 797,
       "size_bytes": 56303
@@ -6648,9 +6918,9 @@
     {
       "filename": "OTH_Imesys_PR139FR.csv",
       "prefix": "OTH",
-      "manufacturer": "Imesys",
+      "manufacturer": "IMESYS",
       "model": "PR139FR",
-      "registers": 66,
+      "registers": 57,
       "size_bytes": 3737
     },
     {
@@ -6692,14 +6962,6 @@
       "model": "Si-RS485-TC-2T-v",
       "registers": 7,
       "size_bytes": 406
-    },
-    {
-      "filename": "OTH_IngenieurBuro_Si-RS485TC-3T-MB.csv",
-      "prefix": "OTH",
-      "manufacturer": "IngenieurBuro",
-      "model": "Si-RS485TC-3T-MB",
-      "registers": 10,
-      "size_bytes": 544
     },
     {
       "filename": "OTH_IngenieurBuro_Tx-RS485-MB.csv",
@@ -6859,7 +7121,7 @@
       "manufacturer": "K",
       "model": "star",
       "registers": 36,
-      "size_bytes": 2029
+      "size_bytes": 2026
     },
     {
       "filename": "OTH_k_star_power_reduction.csv",
@@ -6906,7 +7168,7 @@
       "prefix": "OTH",
       "manufacturer": "Kehua",
       "model": "SinglePhase_Work",
-      "registers": 155,
+      "registers": 149,
       "size_bytes": 7143
     },
     {
@@ -7090,7 +7352,7 @@
       "prefix": "OTH",
       "manufacturer": "Legrand",
       "model": "Nemo_Work",
-      "registers": 172,
+      "registers": 169,
       "size_bytes": 9693
     },
     {
@@ -7114,7 +7376,7 @@
       "prefix": "OTH",
       "manufacturer": "Lettel",
       "model": "map4-345m_table_modbus_fr",
-      "registers": 349,
+      "registers": 326,
       "size_bytes": 20767
     },
     {
@@ -7883,7 +8145,7 @@
       "manufacturer": "Schneider",
       "model": "SE_EVSE_EVLink_ProAC",
       "registers": 49,
-      "size_bytes": 2340
+      "size_bytes": 2337
     },
     {
       "filename": "OTH_Schneider_SEPAM_S48.csv",
@@ -7920,7 +8182,7 @@
     {
       "filename": "OTH_Siebert_AFFICHEUR_SIEBERT_XC4XX.csv",
       "prefix": "OTH",
-      "manufacturer": "Siebert",
+      "manufacturer": "SIEBERT",
       "model": "AFFICHEUR_SIEBERT_XC4XX",
       "registers": 3,
       "size_bytes": 188
@@ -7928,15 +8190,15 @@
     {
       "filename": "OTH_Siebert_AFFICHEUR_SIEBERT_XC4XX_TCP.csv",
       "prefix": "OTH",
-      "manufacturer": "Siebert",
+      "manufacturer": "SIEBERT",
       "model": "AFFICHEUR_SIEBERT_XC4XX_TCP",
       "registers": 3,
-      "size_bytes": 237
+      "size_bytes": 234
     },
     {
       "filename": "OTH_Siebert_XC4XX.csv",
       "prefix": "OTH",
-      "manufacturer": "Siebert",
+      "manufacturer": "SIEBERT",
       "model": "XC4XX",
       "registers": 3,
       "size_bytes": 210
@@ -7955,7 +8217,7 @@
       "manufacturer": "Siebert",
       "model": "XC4XX_TCP",
       "registers": 3,
-      "size_bytes": 225
+      "size_bytes": 222
     },
     {
       "filename": "OTH_Siel_10TL.csv",
@@ -8019,7 +8281,7 @@
       "manufacturer": "Sineng",
       "model": "central_New",
       "registers": 43,
-      "size_bytes": 1966
+      "size_bytes": 1963
     },
     {
       "filename": "OTH_SLEnergy_bms5_p1_1.csv",
@@ -8044,14 +8306,6 @@
       "model": "DG",
       "registers": 615,
       "size_bytes": 41655
-    },
-    {
-      "filename": "OTH_SLEnergy_Generator.csv",
-      "prefix": "OTH",
-      "manufacturer": "SLEnergy",
-      "model": "Generator",
-      "registers": 16,
-      "size_bytes": 713
     },
     {
       "filename": "OTH_SLEnergy_PCS.csv",
@@ -8086,30 +8340,6 @@
       "size_bytes": 38159
     },
     {
-      "filename": "OTH_SMA_16KW.csv",
-      "prefix": "OTH",
-      "manufacturer": "SMA",
-      "model": "16KW",
-      "registers": 30,
-      "size_bytes": 1650
-    },
-    {
-      "filename": "OTH_SMA_ClusterControler1.csv",
-      "prefix": "OTH",
-      "manufacturer": "SMA",
-      "model": "ClusterControler1",
-      "registers": 197,
-      "size_bytes": 9574
-    },
-    {
-      "filename": "OTH_SMA_ClusterControler2.csv",
-      "prefix": "OTH",
-      "manufacturer": "SMA",
-      "model": "ClusterControler2",
-      "registers": 41,
-      "size_bytes": 3037
-    },
-    {
       "filename": "OTH_SMA_CORE2_STP_110-60_Sunspec_Modbus_Model_PICS_Overview_V12.csv",
       "prefix": "OTH",
       "manufacturer": "SMA",
@@ -8118,20 +8348,12 @@
       "size_bytes": 9125
     },
     {
-      "filename": "OTH_SMA_CORE2_Sunspec_Modbus_Model_prelim210114_1.csv",
-      "prefix": "OTH",
-      "manufacturer": "SMA",
-      "model": "CORE2_Sunspec_Modbus_Model_prelim210114_1",
-      "registers": 206,
-      "size_bytes": 9111
-    },
-    {
       "filename": "OTH_SMA_Revised.csv",
       "prefix": "OTH",
       "manufacturer": "SMA",
       "model": "Revised",
       "registers": 36,
-      "size_bytes": 1831
+      "size_bytes": 1828
     },
     {
       "filename": "OTH_SMA_STP-X_STP_xx-50_Sunspec_Modbus_Model_PICS_Overview_V1.csv",
@@ -8140,22 +8362,6 @@
       "model": "STP-X_STP_xx-50_Sunspec_Modbus_Model_PICS_Overview_V1",
       "registers": 820,
       "size_bytes": 36880
-    },
-    {
-      "filename": "OTH_SMA_STP125-70_Sunspec_Modbus_Model_PICS_Overview_V1.csv",
-      "prefix": "OTH",
-      "manufacturer": "SMA",
-      "model": "STP125-70_Sunspec_Modbus_Model_PICS_Overview_V1",
-      "registers": 1202,
-      "size_bytes": 52452
-    },
-    {
-      "filename": "OTH_SMA_Sunspec_Modbus_Model_prelim210114_1.csv",
-      "prefix": "OTH",
-      "manufacturer": "SMA",
-      "model": "Sunspec_Modbus_Model_prelim210114_1",
-      "registers": 206,
-      "size_bytes": 9105
     },
     {
       "filename": "OTH_SNEF_Modbus.csv",
@@ -8526,6 +8732,14 @@
       "size_bytes": 1955
     },
     {
+      "filename": "OTH_X7_Cabinet.csv",
+      "prefix": "OTH",
+      "manufacturer": "X7",
+      "model": "Cabinet",
+      "registers": 45,
+      "size_bytes": 4059
+    },
+    {
       "filename": "OTH_ZeverSolar_Modbus.csv",
       "prefix": "OTH",
       "manufacturer": "ZeverSolar",
@@ -8560,7 +8774,7 @@
     {
       "filename": "SEN_Atersa_DATASOLMET.csv",
       "prefix": "SEN",
-      "manufacturer": "Atersa",
+      "manufacturer": "ATERSA",
       "model": "DATASOLMET",
       "registers": 5,
       "size_bytes": 401
@@ -8584,7 +8798,7 @@
     {
       "filename": "SEN_DeltaOhm_HD523D.csv",
       "prefix": "SEN",
-      "manufacturer": "DeltaOhm",
+      "manufacturer": "DELTAOHM",
       "model": "HD523D",
       "registers": 10,
       "size_bytes": 959
@@ -8737,7 +8951,7 @@
       "filename": "SEN_IngenieurBuro_TX-RS485-MB.csv",
       "prefix": "SEN",
       "manufacturer": "IngenieurBuro",
-      "model": "TX-RS485-MB",
+      "model": "Tx-RS485-MB",
       "registers": 6,
       "size_bytes": 499
     },
@@ -8768,7 +8982,7 @@
     {
       "filename": "SEN_KippZonen_RT1.csv",
       "prefix": "SEN",
-      "manufacturer": "KippZonen",
+      "manufacturer": "KIPPZONEN",
       "model": "RT1",
       "registers": 15,
       "size_bytes": 763
@@ -8824,10 +9038,10 @@
     {
       "filename": "SEN_MarsEnergy_PV.csv",
       "prefix": "SEN",
-      "manufacturer": "MarsEnergy",
+      "manufacturer": "MarsRenewable",
       "model": "PV",
       "registers": 49,
-      "size_bytes": 3622
+      "size_bytes": 3624
     },
     {
       "filename": "SEN_Maximet_GMX600.csv",
@@ -8850,7 +9064,7 @@
       "prefix": "SEN",
       "manufacturer": "MeierNT",
       "model": "MEIER_ADL-SR",
-      "registers": 19,
+      "registers": 18,
       "size_bytes": 995
     },
     {
@@ -8939,7 +9153,7 @@
       "manufacturer": "Thermokon",
       "model": "AGS55_tcp",
       "registers": 66,
-      "size_bytes": 3268
+      "size_bytes": 3265
     },
     {
       "filename": "SEN_Thies_CLIMA.csv",
@@ -8952,7 +9166,7 @@
     {
       "filename": "SEN_Thies_Wind_Transmitter_Thies.csv",
       "prefix": "SEN",
-      "manufacturer": "Thies",
+      "manufacturer": "THIES",
       "model": "Wind_Transmitter_Thies",
       "registers": 91,
       "size_bytes": 6860
@@ -8960,7 +9174,7 @@
     {
       "filename": "SEN_Trackso_SOZ03.csv",
       "prefix": "SEN",
-      "manufacturer": "Trackso",
+      "manufacturer": "TRACKSO",
       "model": "SOZ03",
       "registers": 2,
       "size_bytes": 147

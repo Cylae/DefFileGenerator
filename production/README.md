@@ -2,7 +2,7 @@
 
 Bibliothèque officielle de définitions d'équipements industriels validées pour déploiement en production sur les concentrateurs et passerelles Webdyn (SunPM, Hub, Flex).
 
-Comprend **1139 fichiers de définition certifiés** couvrant **331,776 registres Modbus** et **32,633 tags SunPM canoniques** à travers **191 constructeurs mondiaux**.
+Comprend **1154 fichiers de définition certifiés** couvrant **332,733 registres Modbus** et **33,061 tags SunPM canoniques** à travers **191 constructeurs mondiaux**.
 
 ---
 
@@ -10,8 +10,8 @@ Comprend **1139 fichiers de définition certifiés** couvrant **331,776 registre
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Tags Actifs | Exemples Constructeurs |
 |---|---|---|---|---|---|
-| Onduleurs & Convertisseurs (Inverter) | `INV_` | 431 | 112,526 | 15,943 | 5, ABB, APsystems, ATESS, AnswerDrives (+86) |
-| Compteurs & Analyseurs Réseau (Meter) | `MET_` | 204 | 27,838 | 2,812 | ABB, AEberle, ALGODUE, Acrel, Algodue (+58) |
+| Onduleurs & Convertisseurs (Inverter) | `INV_` | 431 | 112,526 | 15,966 | 5, ABB, APsystems, ATESS, AnswerDrives (+86) |
+| Compteurs & Analyseurs Réseau (Meter) | `MET_` | 219 | 28,795 | 3,217 | ABB, AEberle, ALGODUE, Acrel, Algodue (+58) |
 | Systèmes BESS & Batteries (Battery) | `BAT_` | 53 | 52,489 | 3,217 | ATMOCE, AlroSolar, Dyness, FOX ESS, FoxESS (+11) |
 | Capteurs Météo & Pyranomètres (Sensor) | `SEN_` | 53 | 1,326 | 169 | ATERSA, BD, Blet, DELTAOHM, DeltaOhm (+20) |
 | Passerelles & Loggers (Logger) | `COM_` | 34 | 31,653 | 1,585 | ATMOCE, FoxESS, GoodWe, Greenheiss, HOYMILES (+7) |
@@ -29,9 +29,10 @@ Comprend **1139 fichiers de définition certifiés** couvrant **331,776 registre
 | **MarsEnergy** | 57 | 38,938 | 1,090 | Battery, Inverter, Logger, Meter, Other |
 | **Huawei** | 56 | 9,372 | 1,901 | Battery, Inverter, Logger, Meter, Other |
 | **Delta** | 35 | 20,387 | 1,095 | Inverter, Other |
-| **SMA** | 34 | 9,151 | 1,336 | Inverter, Logger, Meter, Other |
+| **SMA** | 34 | 9,151 | 1,359 | Inverter, Logger, Meter, Other |
 | **Fronius** | 33 | 8,864 | 1,039 | Inverter, Meter, Other, Sensor |
 | **FoxESS** | 27 | 11,376 | 2,285 | Battery, Inverter, Logger, Meter, Other, Storage |
+| **CarloGavazzi** | 25 | 1,601 | 460 | Meter, Other |
 | **Socomec** | 24 | 1,608 | 225 | Inverter, Meter, Other |
 | **Sungrow** | 24 | 9,329 | 1,986 | Battery, Inverter, Logger, Other |
 | **Ingeteam** | 19 | 1,099 | 296 | Inverter, Other |
@@ -48,7 +49,6 @@ Comprend **1139 fichiers de définition certifiés** couvrant **331,776 registre
 | **SOCOMEC** | 12 | 535 | 129 | Meter |
 | **Solplanet** | 12 | 4,392 | 784 | Inverter, Logger, Other |
 | **SIEL** | 11 | 215 | 3 | Inverter |
-| **CarloGavazzi** | 10 | 644 | 55 | Meter, Other |
 | **CyberPower** | 10 | 834 | 128 | Inverter, Other |
 | **KippZonen** | 10 | 346 | 17 | Other, Sensor |
 | **HUAWEI** | 9 | 1,235 | 180 | Battery, Inverter, Meter |
@@ -359,12 +359,27 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`OTH_CarloGavazzi_72RVV23XOSX.csv`](./OTH_CarloGavazzi_72RVV23XOSX.csv) | Other | CarloGavazzi | 72RVV23XOSX | Modbus | 7 | 2 |
 | [`MET_CarloGavazzi_EM-ET300.csv`](./MET_CarloGavazzi_EM-ET300.csv) | Meter | CarloGavazzi | EM-ET300 | Modbus | 70 | 1 |
 | [`OTH_CarloGavazzi_EM-ET300.csv`](./OTH_CarloGavazzi_EM-ET300.csv) | Other | CarloGavazzi | EM-ET300 | Modbus | 69 | 1 |
-| [`MET_CarloGavazzi_EM210.csv`](./MET_CarloGavazzi_EM210.csv) | Meter | CarloGavazzi | EM210 | Modbus | 115 | 4 |
+| [`MET_CarloGavazzi_EM111.csv`](./MET_CarloGavazzi_EM111.csv) | Meter | CarloGavazzi | EM111 | Modbus | 41 | 10 |
+| [`MET_CarloGavazzi_EM112.csv`](./MET_CarloGavazzi_EM112.csv) | Meter | CarloGavazzi | EM112 | Modbus | 41 | 10 |
+| [`MET_CarloGavazzi_EM21.csv`](./MET_CarloGavazzi_EM21.csv) | Meter | CarloGavazzi | EM21 | Modbus | 35 | 29 |
+| [`MET_CarloGavazzi_EM210.csv`](./MET_CarloGavazzi_EM210.csv) | Meter | CarloGavazzi | EM210 | Modbus | 115 | 29 |
+| [`MET_CarloGavazzi_EM210_MV.csv`](./MET_CarloGavazzi_EM210_MV.csv) | Meter | CarloGavazzi | EM210_MV | Modbus | 115 | 29 |
 | [`MET_CarloGavazzi_EM24.csv`](./MET_CarloGavazzi_EM24.csv) | Meter | CarloGavazzi | EM24 | Modbus | 28 | 8 |
 | [`OTH_CarloGavazzi_EM24.csv`](./OTH_CarloGavazzi_EM24.csv) | Other | CarloGavazzi | EM24 | Modbus | 28 | 8 |
 | [`MET_CarloGavazzi_EM24_EM300.csv`](./MET_CarloGavazzi_EM24_EM300.csv) | Meter | CarloGavazzi | EM24-EM300 | Modbus | 27 | 27 |
+| [`MET_CarloGavazzi_EM271.csv`](./MET_CarloGavazzi_EM271.csv) | Meter | CarloGavazzi | EM271 | Modbus | 25 | 17 |
 | [`MET_CarloGavazzi_EM300-ET300.csv`](./MET_CarloGavazzi_EM300-ET300.csv) | Meter | CarloGavazzi | EM300-ET300 | Modbus | 147 | 1 |
 | [`OTH_CarloGavazzi_EM300-ET300.csv`](./OTH_CarloGavazzi_EM300-ET300.csv) | Other | CarloGavazzi | EM300-ET300 | Modbus | 146 | 1 |
+| [`MET_CarloGavazzi_EM330.csv`](./MET_CarloGavazzi_EM330.csv) | Meter | CarloGavazzi | EM330 | Modbus | 65 | 30 |
+| [`MET_CarloGavazzi_EM340.csv`](./MET_CarloGavazzi_EM340.csv) | Meter | CarloGavazzi | EM340 | Modbus | 65 | 30 |
+| [`MET_CarloGavazzi_EM530.csv`](./MET_CarloGavazzi_EM530.csv) | Meter | CarloGavazzi | EM530 | Modbus | 143 | 31 |
+| [`MET_CarloGavazzi_EM540.csv`](./MET_CarloGavazzi_EM540.csv) | Meter | CarloGavazzi | EM540 | Modbus | 143 | 31 |
+| [`MET_CarloGavazzi_ET112.csv`](./MET_CarloGavazzi_ET112.csv) | Meter | CarloGavazzi | ET112 | Modbus | 41 | 10 |
+| [`MET_CarloGavazzi_ET330.csv`](./MET_CarloGavazzi_ET330.csv) | Meter | CarloGavazzi | ET330 | Modbus | 65 | 30 |
+| [`MET_CarloGavazzi_ET340.csv`](./MET_CarloGavazzi_ET340.csv) | Meter | CarloGavazzi | ET340 | Modbus | 65 | 30 |
+| [`MET_CarloGavazzi_WM15.csv`](./MET_CarloGavazzi_WM15.csv) | Meter | CarloGavazzi | WM15 | Modbus | 33 | 31 |
+| [`MET_CarloGavazzi_WM20.csv`](./MET_CarloGavazzi_WM20.csv) | Meter | CarloGavazzi | WM20 | Modbus | 40 | 31 |
+| [`MET_CarloGavazzi_WM50.csv`](./MET_CarloGavazzi_WM50.csv) | Meter | CarloGavazzi | WM50 | Modbus | 40 | 31 |
 | [`MET_Cefem_DEF_GridMeterChauvinArnouxUlysTT_M.csv`](./MET_Cefem_DEF_GridMeterChauvinArnouxUlysTT_M.csv) | Meter | Cefem | DEF_GridMeterChauvinArnouxUlysTT_M | Modbus | 19 | 4 |
 | [`MET_ChauvinArnoux_ULYS-TT_M.csv`](./MET_ChauvinArnoux_ULYS-TT_M.csv) | Meter | ChauvinArnoux | ULYS-TT_M | Modbus | 19 | 4 |
 | [`OTH_ChauvinArnoux_ULYS_FLEX.csv`](./OTH_ChauvinArnoux_ULYS_FLEX.csv) | Other | ChauvinArnoux | ULYS_FLEX | Modbus | 130 | 29 |
@@ -1050,20 +1065,20 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`INV_SMA_Core2.csv`](./INV_SMA_Core2.csv) | Inverter | SMA | Core2 | Modbus | 1,211 | 71 |
 | [`COM_SMA_DataManager_M.csv`](./COM_SMA_DataManager_M.csv) | Logger | SMA | DataManager-M | Modbus | 28 | 27 |
 | [`MET_SMA_EnergyMeter.csv`](./MET_SMA_EnergyMeter.csv) | Meter | SMA | EnergyMeter | Modbus | 26 | 25 |
-| [`INV_SMA_Generic.csv`](./INV_SMA_Generic.csv) | Inverter | SMA | Generic | Modbus | 857 | 95 |
+| [`INV_SMA_Generic.csv`](./INV_SMA_Generic.csv) | Inverter | SMA | Generic | Modbus | 857 | 96 |
 | [`MET_SMA_HomeManager.csv`](./MET_SMA_HomeManager.csv) | Meter | SMA | HomeManager | Modbus | 26 | 25 |
 | [`INV_SMA_MODBUS_SMA_Sunspec.csv`](./INV_SMA_MODBUS_SMA_Sunspec.csv) | Inverter | SMA | MODBUS_SMA_Sunspec | Modbus | 45 | 20 |
 | [`INV_SMA_Modbus.csv`](./INV_SMA_Modbus.csv) | Inverter | SMA | Modbus | Modbus | 29 | 29 |
 | [`OTH_SMA_Revised.csv`](./OTH_SMA_Revised.csv) | Other | SMA | Revised | Modbus | 36 | 17 |
 | [`INV_SMA_SC2xxx.csv`](./INV_SMA_SC2xxx.csv) | Inverter | SMA | SC2xxx | Modbus | 78 | 5 |
-| [`INV_SMA_SC_Webbox.csv`](./INV_SMA_SC_Webbox.csv) | Inverter | SMA | SC_Webbox | Modbus | 350 | 50 |
+| [`INV_SMA_SC_Webbox.csv`](./INV_SMA_SC_Webbox.csv) | Inverter | SMA | SC_Webbox | Modbus | 350 | 52 |
 | [`OTH_SMA_STP-X_STP_xx-50_Sunspec_Modbus_Model_PICS_Overview_V1.csv`](./OTH_SMA_STP-X_STP_xx-50_Sunspec_Modbus_Model_PICS_Overview_V1.csv) | Other | SMA | STP-X_STP_xx-50_Sunspec_Modbus_Model_PICS_Overview_V1 | Modbus | 820 | 24 |
 | [`INV_SMA_STPCORE1_50-41.csv`](./INV_SMA_STPCORE1_50-41.csv) | Inverter | SMA | STPCORE1_50-41 | Modbus | 105 | 70 |
-| [`INV_SMA_STPX.csv`](./INV_SMA_STPX.csv) | Inverter | SMA | STPX | Modbus | 509 | 30 |
+| [`INV_SMA_STPX.csv`](./INV_SMA_STPX.csv) | Inverter | SMA | STPX | Modbus | 509 | 46 |
 | [`INV_SMA_STPX_27_30_50_60.csv`](./INV_SMA_STPX_27_30_50_60.csv) | Inverter | SMA | STPX_27_30_50_60 | Modbus | 391 | 6 |
 | [`INV_SMA_STP_110-60.csv`](./INV_SMA_STP_110-60.csv) | Inverter | SMA | STP_110-60 | Modbus | 1,211 | 71 |
-| [`INV_SMA_STP_5-10-SE40.csv`](./INV_SMA_STP_5-10-SE40.csv) | Inverter | SMA | STP_5-10-SE40 | Modbus | 372 | 58 |
-| [`INV_SMA_STP_X.csv`](./INV_SMA_STP_X.csv) | Inverter | SMA | STP_X | Modbus | 435 | 55 |
+| [`INV_SMA_STP_5-10-SE40.csv`](./INV_SMA_STP_5-10-SE40.csv) | Inverter | SMA | STP_5-10-SE40 | Modbus | 372 | 59 |
+| [`INV_SMA_STP_X.csv`](./INV_SMA_STP_X.csv) | Inverter | SMA | STP_X | Modbus | 435 | 56 |
 | [`INV_SMA_SUNNY_CENTRAL.csv`](./INV_SMA_SUNNY_CENTRAL.csv) | Inverter | SMA | SUNNY_CENTRAL | Modbus | 182 | 5 |
 | [`INV_SMA_SunSpec_Inverter.csv`](./INV_SMA_SunSpec_Inverter.csv) | Inverter | SMA | SunSpec-Inverter | Modbus | 29 | 29 |
 | [`INV_SMA_SunSpec_inverter_SMA_Solar_Inverter_2.83.03.R_modbusTCP_STP25000TL30.csv`](./INV_SMA_SunSpec_inverter_SMA_Solar_Inverter_2.83.03.R_modbusTCP_STP25000TL30.csv) | Inverter | SMA | SunSpec_inverter_SMA_Solar_Inverter_2.83.03.R_modbusTCP_STP25000TL30 | Modbus | 591 | 37 |
@@ -1073,8 +1088,8 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`INV_SMA_SunnyCentral_Storage.csv`](./INV_SMA_SunnyCentral_Storage.csv) | Inverter | SMA | SunnyCentral-Storage | Modbus | 193 | 16 |
 | [`INV_SMA_SunnyIsland.csv`](./INV_SMA_SunnyIsland.csv) | Inverter | SMA | SunnyIsland | Modbus | 35 | 34 |
 | [`INV_SMA_SunnyTripower.csv`](./INV_SMA_SunnyTripower.csv) | Inverter | SMA | SunnyTripower | Modbus | 59 | 59 |
-| [`INV_SMA_SunnyTripower_SmartEnergy.csv`](./INV_SMA_SunnyTripower_SmartEnergy.csv) | Inverter | SMA | SunnyTripower-SmartEnergy | Modbus | 372 | 58 |
-| [`INV_SMA_SunnyTripower_X.csv`](./INV_SMA_SunnyTripower_X.csv) | Inverter | SMA | SunnyTripower-X | Modbus | 435 | 55 |
+| [`INV_SMA_SunnyTripower_SmartEnergy.csv`](./INV_SMA_SunnyTripower_SmartEnergy.csv) | Inverter | SMA | SunnyTripower-SmartEnergy | Modbus | 372 | 59 |
+| [`INV_SMA_SunnyTripower_X.csv`](./INV_SMA_SunnyTripower_X.csv) | Inverter | SMA | SunnyTripower-X | Modbus | 435 | 56 |
 | [`INV_SMA_Sunspec.csv`](./INV_SMA_Sunspec.csv) | Inverter | SMA | Sunspec | Modbus | 29 | 29 |
 | [`INV_SNEF_Modbus.csv`](./INV_SNEF_Modbus.csv) | Inverter | SNEF | Modbus | Modbus | 16 | 13 |
 | [`OTH_SNEF_Modbus.csv`](./OTH_SNEF_Modbus.csv) | Other | SNEF | Modbus | Modbus | 16 | 13 |
