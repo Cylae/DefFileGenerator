@@ -42,6 +42,7 @@ EXPECTED_SMA_FILES = [
     "INV_SMA_Core2.csv",
     "INV_SMA_STPCORE1_50-41.csv",
     "INV_SMA_STP_110-60.csv",
+    "INV_SMA_STP_125-70.csv",
     # Hybrid & Energy Storage
     "INV_SMA_SunnyTripower_SmartEnergy.csv",
     "INV_SMA_STP_5-10-SE40.csv",
@@ -68,10 +69,10 @@ EXPECTED_SMA_FILES = [
 
 
 class TestSmaDefinitionsSuite(unittest.TestCase):
-    """Test suite certifying all 27 SMA ecosystem definitions."""
+    """Test suite certifying all 28 SMA ecosystem definitions."""
 
     def test_all_files_exist_in_all_target_directories(self) -> None:
-        """Ensure all 27 files exist in production, Definitions/SMA, Definitions, generated_definitions, and tagged_definitions."""
+        """Ensure all 28 files exist in production, Definitions/SMA, Definitions, generated_definitions, and tagged_definitions."""
         for fname in EXPECTED_SMA_FILES:
             for d in (
                 PRODUCTION_DIR,
@@ -183,7 +184,7 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
                 )
 
             # Core 1 and Core 2 inverters must have multi-MPPT monitoring
-            if "Core" in fname or "CORE" in fname or "110-60" in fname:
+            if "Core" in fname or "CORE" in fname or "110-60" in fname or "125-70" in fname:
                 self.assertIn("I_DC_1", tags, f"Missing I_DC_1 in {fname}")
                 self.assertIn("I_DC_6", tags, f"Missing I_DC_6 in {fname}")
 
@@ -383,6 +384,90 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
                 fpath.read_bytes(),
                 f"Multi-run idempotency violated for {fname}",
             )
+
+
+    def test_sma_stp_125_70_core2_specifications(self) -> None:
+        """Verify SMA Sunny Tripower CORE2 125kW (STP 125-70) specific domain contracts."""
+        fname = "INV_SMA_STP_125-70.csv"
+        fpath = PRODUCTION_DIR / fname
+        with open(fpath, encoding="utf-8", newline="") as fp:
+            reader = list(csv.reader(fp, delimiter=";"))
+
+        # Header check
+        header = reader[0]
+        self.assertEqual(header[0], "Modbus")
+        self.assertEqual(header[1], "Inverter")
+        self.assertEqual(header[2], "SMA")
+        self.assertEqual(header[3], "STP_125-70")
+
+        # Exact register count: 464 data rows + 1 header = 465 lines
+        self.assertEqual(len(reader), 465)
+
+        # Extract address map and tag map
+        addr_to_row = {r[2].strip(): r for r in reader[1:]}
+        tags = {r[6].strip() for r in reader[1:] if r[6].strip()}
+
+        # Canonical single tags
+        expected_core_tags = [
+            "P_AC",
+            "P_AC_1",
+            "P_AC_2",
+            "P_AC_3",
+            "Q_AC",
+            "Q_AC_1",
+            "Q_AC_2",
+            "Q_AC_3",
+            "S_AC",
+            "S_AC_1",
+            "S_AC_2",
+            "S_AC_3",
+            "FREQ",
+            "PF",
+            "E_TOT",
+            "E_DAY",
+            "U_AC_1",
+            "U_AC_2",
+            "U_AC_3",
+            "U_AC_L1L2",
+            "U_AC_L2L3",
+            "U_AC_L3L1",
+            "I_AC",
+            "I_AC_1",
+            "I_AC_2",
+            "I_AC_3",
+            "U_DC",
+            "P_DC",
+            "I_DC",
+            "TEMP",
+            "STATE",
+            "MODEL",
+            "SERIAL",
+            "MANUFACTURER",
+            "CMD_P_ENA",
+            "CMD_P_AC_SET_PERCENT",
+            "CMD_P_AC_SET_ABS",
+        ]
+        for t in expected_core_tags:
+            self.assertIn(t, tags, f"Missing canonical tag {t} in {fname}")
+
+        # Multi-MPPT tracking across 11 trackers
+        for i in range(1, 12):
+            self.assertIn(f"U_DC_{i}", tags, f"Missing MPPT voltage U_DC_{i}")
+            self.assertIn(f"I_DC_{i}", tags, f"Missing MPPT current I_DC_{i}")
+            self.assertIn(f"P_DC_{i}", tags, f"Missing MPPT power P_DC_{i}")
+
+        # Key registers verification
+        self.assertEqual(addr_to_row["30053"][6], "MODEL")
+        self.assertEqual(addr_to_row["30055"][6], "MANUFACTURER")
+        self.assertEqual(addr_to_row["30057"][6], "SERIAL")
+        self.assertEqual(addr_to_row["30513"][6], "E_TOT")
+        self.assertEqual(addr_to_row["30775"][6], "P_AC")
+        self.assertEqual(addr_to_row["30803"][6], "FREQ")
+        self.assertEqual(addr_to_row["31497"][6], "Q_AC")
+        self.assertEqual(addr_to_row["30813"][6], "S_AC")
+        self.assertEqual(addr_to_row["34113"][6], "TEMP")
+        self.assertEqual(addr_to_row["34113"][7], "0.100000")
+        self.assertEqual(addr_to_row["34113"][9], "°C")
 
 
 if __name__ == "__main__":

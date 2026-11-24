@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 CLI Master Generator & Production Governor for SMA Product Ecosystem.
-Generates, validates, and certifies all 27 SMA definition files across the 5 Apollo-Standard Pillars.
+Generates, validates, and certifies all 28 SMA definition files across the 5 Apollo-Standard Pillars.
 """
 
 from __future__ import annotations

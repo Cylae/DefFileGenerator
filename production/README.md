@@ -2,7 +2,7 @@
 
 Bibliothèque officielle de définitions d'équipements industriels validées pour déploiement en production sur les concentrateurs et passerelles Webdyn (SunPM, Hub, Flex).
 
-Comprend **1193 fichiers de définition certifiés** couvrant **358,875 registres Modbus** et **35,970 tags SunPM canoniques** à travers **189 constructeurs mondiaux**.
+Comprend **1194 fichiers de définition certifiés** couvrant **359,339 registres Modbus** et **36,042 tags SunPM canoniques** à travers **189 constructeurs mondiaux**.
 
 ---
 
@@ -10,7 +10,7 @@ Comprend **1193 fichiers de définition certifiés** couvrant **358,875 registre
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Tags Actifs | Exemples Constructeurs |
 |---|---|---|---|---|---|
-| Onduleurs & Convertisseurs (Inverter) | `INV_` | 482 | 131,622 | 17,557 | 5, ABB, APsystems, ATESS, AnswerDrives (+85) |
+| Onduleurs & Convertisseurs (Inverter) | `INV_` | 483 | 132,086 | 17,629 | 5, ABB, APsystems, ATESS, AnswerDrives (+85) |
 | Compteurs & Analyseurs Réseau (Meter) | `MET_` | 232 | 31,485 | 3,606 | ABB, AEberle, ALGODUE, Acrel, Algodue (+57) |
 | Systèmes BESS & Batteries (Battery) | `BAT_` | 56 | 55,004 | 3,282 | ATMOCE, AlroSolar, Dyness, FOX ESS, FoxESS (+11) |
 | Capteurs Météo & Pyranomètres (Sensor) | `SEN_` | 55 | 1,434 | 181 | ATERSA, BD, Blet, DELTAOHM, DeltaOhm (+20) |
@@ -30,7 +30,7 @@ Comprend **1193 fichiers de définition certifiés** couvrant **358,875 registre
 | **MarsEnergy** | 57 | 38,938 | 1,090 | Battery, Inverter, Logger, Meter, Other |
 | **Fronius** | 47 | 11,479 | 1,477 | Inverter, Meter, Other, Sensor |
 | **Delta** | 35 | 20,387 | 1,095 | Inverter, Other |
-| **SMA** | 34 | 9,151 | 1,359 | Inverter, Logger, Meter, Other |
+| **SMA** | 35 | 9,615 | 1,431 | Inverter, Logger, Meter, Other |
 | **Socomec** | 33 | 2,190 | 378 | Inverter, Meter, Other |
 | **Sungrow** | 30 | 13,329 | 2,965 | Battery, Inverter, Logger, Other |
 | **CarloGavazzi** | 27 | 1,710 | 546 | Meter, Other |
@@ -1127,6 +1127,7 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`INV_SMA_STPX.csv`](./INV_SMA_STPX.csv) | Inverter | SMA | STPX | Modbus | 509 | 46 |
 | [`INV_SMA_STPX_27_30_50_60.csv`](./INV_SMA_STPX_27_30_50_60.csv) | Inverter | SMA | STPX_27_30_50_60 | Modbus | 391 | 6 |
 | [`INV_SMA_STP_110-60.csv`](./INV_SMA_STP_110-60.csv) | Inverter | SMA | STP_110-60 | Modbus | 1,211 | 71 |
+| [`INV_SMA_STP_125-70.csv`](./INV_SMA_STP_125-70.csv) | Inverter | SMA | STP_125-70 | Modbus | 464 | 72 |
 | [`INV_SMA_STP_5-10-SE40.csv`](./INV_SMA_STP_5-10-SE40.csv) | Inverter | SMA | STP_5-10-SE40 | Modbus | 372 | 59 |
 | [`INV_SMA_STP_X.csv`](./INV_SMA_STP_X.csv) | Inverter | SMA | STP_X | Modbus | 435 | 56 |
 | [`INV_SMA_SUNNY_CENTRAL.csv`](./INV_SMA_SUNNY_CENTRAL.csv) | Inverter | SMA | SUNNY_CENTRAL | Modbus | 182 | 5 |

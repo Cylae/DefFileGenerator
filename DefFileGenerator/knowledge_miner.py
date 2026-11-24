@@ -306,7 +306,7 @@ def is_canonical_sunpm_tag(tag: str) -> bool:
         return True
     if tag.startswith("STATE_") and tag[6:].isdigit():
         return True
-    return any(
+    if any(
         tag.startswith(pref)
         for pref in (
             "U_DC_MPPT_",
@@ -315,7 +315,9 @@ def is_canonical_sunpm_tag(tag: str) -> bool:
             "U_DC_STRING_",
             "I_DC_STRING_",
         )
-    )
+    ):
+        return True
+    return bool(re.match(r"^[IUP]_DC_\d+$", tag))
 
 
 # -----------------------------------------------------------------------------

@@ -25,9 +25,10 @@ Strictly enforces:
 from __future__ import annotations
 
 import csv
+from html.parser import HTMLParser
+from pathlib import Path
 import re
 import shutil
-from pathlib import Path
 from typing import Any
 
 from DefFileGenerator.knowledge_miner import infer_sunpm_tag, is_canonical_sunpm_tag
@@ -40,7 +41,7 @@ def normalize_sma_unit(unit: str) -> str:
     Enforces invariant #5 / #10: strict multi-run idempotency and character purity.
     """
     u = unit.strip()
-    if not u:
+    if not u or u in ("‒", "-", "0 to 4294967294", "0 to 4294967295", "0 to 65535", "0 to 255"):
         return ""
 
     # Specific known corrupted non-temperature units
@@ -56,6 +57,12 @@ def normalize_sma_unit(unit: str) -> str:
         r"(?:Degree\s+[°]*Celsius|[°]+C)", u
     ):
         return "°C"
+
+    # Strip enum / setting list descriptions (e.g. "1129: Yes (Yes)...", "8001: Solar Inverters...")
+    if re.search(r"^\d+:", u) or ":" in u:
+        return ""
+    if re.search(r"\bto\b", u) or re.search(r"^[0-9,.\s]+$", u):
+        return ""
 
     return u
 
@@ -726,6 +733,271 @@ def build_sma_core1_core2_rows() -> list[dict[str, Any]]:
     )
 
     return classic_core()
+
+
+class SmaHtmlTableParser(HTMLParser):
+    """HTML parser extracting table cells from SMA parameterlist HTML files."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.headers: list[str] = []
+        self.rows: list[list[str]] = []
+        self.current_row: list[str] = []
+        self.current_cell: list[str] = []
+        self.in_th: bool = False
+        self.in_td: bool = False
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag == "tr":
+            self.current_row = []
+        elif tag == "th":
+            self.in_th = True
+            self.current_cell = []
+        elif tag == "td":
+            self.in_td = True
+            self.current_cell = []
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "tr":
+            if self.current_row:
+                self.rows.append(self.current_row)
+        elif tag == "th":
+            self.in_th = False
+            self.headers.append("".join(self.current_cell).strip())
+        elif tag == "td":
+            self.in_td = False
+            self.current_row.append("".join(self.current_cell).strip())
+
+    def handle_data(self, data: str) -> None:
+        if self.in_th or self.in_td:
+            self.current_cell.append(data)
+
+
+def build_sma_stp_125_70_rows(
+    workspace_dir: Path | str | None = None,
+) -> list[dict[str, Any]]:
+    """
+    Builds the authoritative 464-register definition for SMA Sunny Tripower CORE2 125kW (STP 125-70).
+    Directly extracted and certified from the official SMA Parameter List HTML (PARAMETER-HTML_STP125-70_GG10_V10).
+    """
+    ws = Path(workspace_dir) if workspace_dir else Path.cwd()
+    candidates = [
+        ws / "Sources" / "SMA" / "STP125-70" / "parameterlist_en.html",
+        ws / "Sources" / "SMA" / "STP125-70" / "PARAMETER-HTML_STP125-70_GG10_V10" / "parameterlist_en.html",
+    ]
+    html_path = next((p for p in candidates if p.is_file()), None)
+
+    if not html_path:
+        csv_fallback = (
+            ws / "production" / "INV_SMA_STP_125-70.csv"
+            if (ws / "production" / "INV_SMA_STP_125-70.csv").exists()
+            else ws / "Definitions" / "SMA" / "INV_SMA_STP_125-70.csv"
+        )
+        if csv_fallback.exists():
+            return clean_and_enrich_raw_file(csv_fallback)
+        return []
+
+    parser = SmaHtmlTableParser()
+    with open(html_path, "r", encoding="utf-8", errors="ignore") as f:
+        parser.feed(f.read())
+
+    def get_scaling(dformat: str) -> tuple[float, float]:
+        fmt = dformat.strip().upper()
+        if fmt == "FIX0":
+            return 1.0, 0.0
+        elif fmt == "FIX1":
+            return 0.1, 0.0
+        elif fmt == "FIX2":
+            return 0.01, 0.0
+        elif fmt == "FIX3":
+            return 0.001, 0.0
+        elif fmt == "FIX4":
+            return 0.0001, 0.0
+        elif fmt == "TEMP":
+            return 0.1, 0.0
+        return 1.0, 0.0
+
+    def get_webdyn_type(dtype: str) -> str:
+        dt = dtype.strip().upper()
+        if dt == "U32":
+            return "U32"
+        elif dt == "S32":
+            return "I32"
+        elif dt == "U64":
+            return "U64"
+        elif dt == "S16":
+            return "I16"
+        elif dt == "U16":
+            return "U16"
+        elif dt in ("STR32", "STRING"):
+            return "STRING"
+        return "U32"
+
+    seen_addrs: dict[str, list[str]] = {}
+    for r in parser.rows:
+        if len(r) < 15:
+            continue
+        addr = r[10].strip()
+        if not addr or not addr.isdigit():
+            continue
+        if addr not in seen_addrs:
+            seen_addrs[addr] = r
+        else:
+            existing = seen_addrs[addr]
+            if len(r[2]) > len(existing[2]) or (existing[2] == "‒" and r[2] != "‒"):
+                seen_addrs[addr] = r
+
+    sorted_addrs = sorted(seen_addrs.keys(), key=lambda a: int(a))
+
+    TAG_MAP = {
+        "30053": "MODEL",
+        "30055": "MANUFACTURER",
+        "30057": "SERIAL",
+        "30201": "STATE",
+        "30513": "E_TOT",
+        "30517": "E_DAY",
+        "30775": "P_AC",
+        "30777": "P_AC_1",
+        "30779": "P_AC_2",
+        "30781": "P_AC_3",
+        "30783": "U_AC_1",
+        "30785": "U_AC_2",
+        "30787": "U_AC_3",
+        "30789": "U_AC_L1L2",
+        "30791": "U_AC_L2L3",
+        "30793": "U_AC_L3L1",
+        "30795": "I_AC",
+        "30977": "I_AC_1",
+        "30979": "I_AC_2",
+        "30981": "I_AC_3",
+        "30803": "FREQ",
+        "30805": "Q_AC",
+        "31497": "Q_AC",
+        "30807": "Q_AC_1",
+        "30809": "Q_AC_2",
+        "30811": "Q_AC_3",
+        "30813": "S_AC",
+        "30815": "S_AC_1",
+        "30817": "S_AC_2",
+        "30819": "S_AC_3",
+        "30949": "PF",
+        "30771": "U_DC",
+        "30773": "P_DC",
+        "30769": "I_DC",
+        "34113": "TEMP",
+        "34609": "TEMP_AMB",
+        "30225": "R_ISO",
+        # MPPT 1..11 Voltages
+        "30959": "U_DC_1",
+        "30965": "U_DC_2",
+        "30971": "U_DC_3",
+        "31211": "U_DC_4",
+        "31217": "U_DC_5",
+        "31551": "U_DC_6",
+        "31557": "U_DC_7",
+        "31563": "U_DC_8",
+        "31569": "U_DC_9",
+        "31575": "U_DC_10",
+        "31581": "U_DC_11",
+        # MPPT 1..11 Currents
+        "30957": "I_DC_1",
+        "30963": "I_DC_2",
+        "30969": "I_DC_3",
+        "31209": "I_DC_4",
+        "31215": "I_DC_5",
+        "31549": "I_DC_6",
+        "31555": "I_DC_7",
+        "31561": "I_DC_8",
+        "31567": "I_DC_9",
+        "31573": "I_DC_10",
+        "31579": "I_DC_11",
+        # MPPT 1..11 Powers
+        "30961": "P_DC_1",
+        "30967": "P_DC_2",
+        "30973": "P_DC_3",
+        "31213": "P_DC_4",
+        "31219": "P_DC_5",
+        "31553": "P_DC_6",
+        "31559": "P_DC_7",
+        "31565": "P_DC_8",
+        "31571": "P_DC_9",
+        "31577": "P_DC_10",
+        "31583": "P_DC_11",
+        # Commands & Controls
+        "40149": "CMD_P_ENA",
+        "40151": "CMD_P_AC_SET_PERCENT",
+        "40212": "CMD_P_AC_SET_ABS",
+    }
+
+    results: list[dict[str, Any]] = []
+    seen_tags: set[str] = set()
+
+    for addr in sorted_addrs:
+        r = seen_addrs[addr]
+        ch = r[0].strip()
+        obj_type = r[1].strip()
+        name = r[2].strip()
+        group = r[4].strip()
+        unit_raw = r[5].strip()
+        count = r[11].strip()
+        dtype_raw = r[12].strip()
+        dformat = r[13].strip()
+        access = r[14].strip().upper()
+
+        if not name or name == "‒":
+            name = ch
+
+        webdyn_type = get_webdyn_type(dtype_raw)
+        if webdyn_type == "STRING":
+            try:
+                cnt_int = int(count)
+                addr_str = f"{addr}_{cnt_int * 2}"
+            except ValueError:
+                addr_str = f"{addr}_32"
+        else:
+            addr_str = addr
+
+        coef_a, coef_b = get_scaling(dformat)
+        unit = normalize_sma_unit(unit_raw)
+
+        if "WO" in access or (
+            "RW" in access
+            and (
+                "WCtl" in ch
+                or "WSpt" in ch
+                or "DevRstr" in ch
+                or "ValRs" in ch
+                or "CntrySet" in ch
+            )
+        ):
+            action = "1"
+        elif "Status" in group or "Health" in ch or "Evt" in ch or "Stt" in ch:
+            action = "9"
+        elif "Measured value" in obj_type or "Messwert" in obj_type or "Measurement" in group:
+            action = "4"
+        else:
+            action = "0"
+
+        tag = ""
+        if addr in TAG_MAP:
+            candidate = TAG_MAP[addr]
+            if candidate not in seen_tags:
+                tag = candidate
+                seen_tags.add(tag)
+
+        results.append({
+            "fc": "3",
+            "address": addr_str,
+            "data_type": webdyn_type,
+            "name": name,
+            "tag": tag,
+            "coef_a": coef_a,
+            "coef_b": coef_b,
+            "unit": unit,
+            "action": action,
+        })
+
+    return results
 
 
 # ==============================================================================
@@ -2296,7 +2568,7 @@ def clean_and_enrich_raw_file(
 def get_all_sma_targets(
     workspace_dir: Path,
 ) -> list[tuple[str, str, str, str, list[dict[str, Any]]]]:
-    """Returns the comprehensive certified catalog of all 27 SMA definition targets."""
+    """Returns the comprehensive certified catalog of all 28 SMA definition targets."""
     mfg = "SMA"
 
     # Base builders
@@ -2345,6 +2617,9 @@ def get_all_sma_targets(
     core2_full_rows = (
         clean_and_enrich_raw_file(core2_src, tag_map) if core2_src.exists() else core1_core2_rows
     )
+
+    # 4b. Core 2 125kW (STP 125-70) full (464 rows)
+    core2_125_rows = build_sma_stp_125_70_rows(workspace_dir)
 
     # 5. Sunny Central (182 rows)
     sc_src = prod_dir / "INV_SMA_SUNNY_CENTRAL.csv"
@@ -2507,6 +2782,7 @@ def get_all_sma_targets(
         ("INV_SMA_Core2.csv", "Inverter", mfg, "Core2", core2_full_rows),
         ("INV_SMA_STPCORE1_50-41.csv", "Inverter", mfg, "STPCORE1_50-41", core1_full_rows),
         ("INV_SMA_STP_110-60.csv", "Inverter", mfg, "STP_110-60", core2_full_rows),
+        ("INV_SMA_STP_125-70.csv", "Inverter", mfg, "STP_125-70", core2_125_rows),
         # Hybrid & Energy Storage
         (
             "INV_SMA_SunnyTripower_SmartEnergy.csv",
@@ -2540,7 +2816,7 @@ def get_all_sma_targets(
 
 def generate_all_sma_definitions(workspace_dir: Path | str) -> dict[str, Path]:
     """
-    Generates and certifies all 27 SMA definitions across:
+    Generates and certifies all 28 SMA definitions across:
     - production/
     - Definitions/SMA/
     - Definitions/

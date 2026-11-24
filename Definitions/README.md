@@ -1,6 +1,6 @@
 # 📚 Webdyn Definitions Library
 
-Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **290 fichiers de définition** validés couvrant **60 538 registres Modbus** à travers plus de 60 constructeurs mondiaux.
+Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **291 fichiers de définition** validés couvrant **61 002 registres Modbus** à travers plus de 60 constructeurs mondiaux.
 
 ---
 
@@ -8,7 +8,7 @@ Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. 
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Constructeurs Notables |
 |-----------|---------|----------|-----------------|------------------------|
-| Onduleurs & Convertisseurs (Inverters) | `INV_` | 164 | 41 921 | ABB, Answer Drives, CyberPower, Cyberpower, EFACEC (+25) |
+| Onduleurs & Convertisseurs (Inverters) | `INV_` | 165 | 42 385 | ABB, Answer Drives, CyberPower, Cyberpower, EFACEC (+25) |
 | Compteurs & Analyseurs Réseau (Meters) | `MET_` | 73 | 8 121 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+20) |
 | Systèmes de Stockage BESS (Batteries) | `BAT_` | 11 | 7 491 | Dyness, GoodWe, Huawei, Sungrow |
 | Capteurs & Pyranomètres (Sensors) | `SEN_` | 22 | 500 | ATERSA, BD_SENSOR, DELTAOHM, DELTA_OHM, EKO (+12) |
@@ -58,7 +58,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 
 ## 📑 Catalogue Détaillé
 
-### Onduleurs & Convertisseurs (Inverters) (164 fichiers)
+### Onduleurs & Convertisseurs (Inverters) (165 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
@@ -187,6 +187,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_SMA_SC2xxx.csv`](./INV_SMA_SC2xxx.csv) | SMA | SC2xxx | Modbus | 78 |
 | [`INV_SMA_SC_Webbox.csv`](./INV_SMA_SC_Webbox.csv) | SMA | SC_Webbox | Modbus | 350 |
 | [`INV_SMA_STP_110-60.csv`](./INV_SMA_STP_110-60.csv) | SMA | STP_110-60 | Modbus | 1211 |
+| [`INV_SMA_STP_125-70.csv`](./INV_SMA_STP_125-70.csv) | SMA | STP_125-70 | Modbus | 464 |
 | [`INV_SMA_STP_5-10-SE40.csv`](./INV_SMA_STP_5-10-SE40.csv) | SMA | STP_5-10-SE40 | Modbus | 372 |
 | [`INV_SMA_STP_X.csv`](./INV_SMA_STP_X.csv) | SMA | STP_X | Modbus | 435 |
 | [`INV_SMA_STPCORE1_50-41.csv`](./INV_SMA_STPCORE1_50-41.csv) | SMA | STPCORE1_50-41 | Modbus | 105 |

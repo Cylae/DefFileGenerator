@@ -1,9 +1,9 @@
 {
-  "total_files": 1193,
+  "total_files": 1194,
   "prefixes": {
     "BAT": 55,
     "COM": 35,
-    "INV": 456,
+    "INV": 457,
     "MET": 228,
     "OTH": 364,
     "SEN": 55
@@ -17,7 +17,7 @@
     "Fronius": 48,
     "Delta": 37,
     "Socomec": 37,
-    "SMA": 34,
+    "SMA": 35,
     "FoxESS": 30,
     "Sungrow": 30,
     "Goodwe": 29,
@@ -3726,6 +3726,14 @@
       "model": "STP_110-60",
       "registers": 1211,
       "size_bytes": 66568
+    },
+    {
+      "filename": "INV_SMA_STP_125-70.csv",
+      "prefix": "INV",
+      "manufacturer": "SMA",
+      "model": "STP_125-70",
+      "registers": 464,
+      "size_bytes": 33899
     },
     {
       "filename": "INV_SMA_STP_5-10-SE40.csv",
@@ -13272,6 +13280,14 @@
       "model": "STP_110-60",
       "registers": 1211,
       "size_bytes": 66568
+    },
+    {
+      "filename": "INV_SMA_STP_125-70.csv",
+      "prefix": "INV",
+      "manufacturer": "SMA",
+      "model": "STP_125-70",
+      "registers": 464,
+      "size_bytes": 33899
     },
     {
       "filename": "INV_SMA_STP_5-10-SE40.csv",
