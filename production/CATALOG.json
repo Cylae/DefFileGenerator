@@ -8,7 +8,7 @@
     "OTH": 364,
     "SEN": 55
   },
-  "manufacturers_count": 139,
+  "manufacturers_count": 136,
   "manufacturers": {
     "Schneider": 82,
     "Huawei": 77,
@@ -18,9 +18,9 @@
     "Delta": 37,
     "Socomec": 37,
     "SMA": 35,
+    "GoodWe": 32,
     "FoxESS": 30,
     "Sungrow": 30,
-    "Goodwe": 29,
     "Kaco": 27,
     "CarloGavazzi": 27,
     "Ingeteam": 26,
@@ -39,12 +39,12 @@
     "SolaX": 12,
     "Kostal": 12,
     "IngenieurBuro": 12,
+    "Kstar": 11,
     "KippZonen": 11,
     "SofarSolar": 9,
     "Deye": 8,
     "Efacec": 8,
     "Jema": 8,
-    "Kstar": 8,
     "Webdyn": 8,
     "AlroSolar": 7,
     "Hoymiles": 7,
@@ -74,7 +74,6 @@
     "SolarLog": 4,
     "EKO": 4,
     "Thermokon": 4,
-    "GoodWe": 3,
     "INVT": 3,
     "Kerneli": 3,
     "Refusol": 3,
@@ -99,7 +98,6 @@
     "Autarco": 2,
     "Eastron": 2,
     "Hitachi": 2,
-    "k": 2,
     "Sigenergy": 2,
     "Sineng": 2,
     "SNEF": 2,
@@ -137,7 +135,6 @@
     "Hypercharger": 1,
     "Inaccess": 1,
     "Intelec": 1,
-    "K": 1,
     "Monichek": 1,
     "Power": 1,
     "Riello": 1,
@@ -290,7 +287,7 @@
     {
       "filename": "BAT_Goodwe_Lynx_Home_HV.csv",
       "prefix": "BAT",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "Lynx_Home_HV",
       "registers": 18,
       "size_bytes": 1433
@@ -626,7 +623,7 @@
     {
       "filename": "COM_Goodwe_Ezlogger3000.csv",
       "prefix": "COM",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "Ezlogger3000",
       "registers": 25,
       "size_bytes": 1986
@@ -634,7 +631,7 @@
     {
       "filename": "COM_Goodwe_EzLogger_Pro.csv",
       "prefix": "COM",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "EzLogger_Pro",
       "registers": 25,
       "size_bytes": 1986
@@ -642,7 +639,7 @@
     {
       "filename": "COM_Goodwe_SCB3000.csv",
       "prefix": "COM",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SCB3000",
       "registers": 29,
       "size_bytes": 2332
@@ -1229,7 +1226,7 @@
       "manufacturer": "AnswerDrives",
       "model": "Solargate",
       "registers": 288,
-      "size_bytes": 23672
+      "size_bytes": 23666
     },
     {
       "filename": "INV_AnswerDrives_SOLARGATE_2009_WebdynSunPM.csv",
@@ -1938,7 +1935,7 @@
     {
       "filename": "INV_Goodwe_ES-EM-SBP-BP.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ES-EM-SBP-BP",
       "registers": 49,
       "size_bytes": 3515
@@ -1946,7 +1943,7 @@
     {
       "filename": "INV_Goodwe_ES_EM_S-BP_BP_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ES_EM_S-BP_BP_Series",
       "registers": 370,
       "size_bytes": 21542
@@ -1954,7 +1951,7 @@
     {
       "filename": "INV_Goodwe_ES_EM_SBP.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ES_EM_SBP",
       "registers": 49,
       "size_bytes": 3519
@@ -1962,7 +1959,7 @@
     {
       "filename": "INV_Goodwe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU",
       "registers": 79,
       "size_bytes": 5834
@@ -1970,7 +1967,7 @@
     {
       "filename": "INV_Goodwe_ET_EH_BT_BH_EHB_AES_ABP_BTC_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ET_EH_BT_BH_EHB_AES_ABP_BTC_Series",
       "registers": 530,
       "size_bytes": 30901
@@ -1978,7 +1975,7 @@
     {
       "filename": "INV_Goodwe_ET_EH_Hybrid_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ET_EH_Hybrid_Series",
       "registers": 79,
       "size_bytes": 5838
@@ -1986,7 +1983,7 @@
     {
       "filename": "INV_Goodwe_ET_EH_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ET_EH_Series",
       "registers": 79,
       "size_bytes": 5831
@@ -1994,7 +1991,7 @@
     {
       "filename": "INV_Goodwe_ET_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ET_Series",
       "registers": 79,
       "size_bytes": 5828
@@ -2010,15 +2007,15 @@
     {
       "filename": "INV_Goodwe_GT-SERIES.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "GT-SERIES",
-      "registers": 305,
-      "size_bytes": 21714
+      "registers": 91,
+      "size_bytes": 6641
     },
     {
       "filename": "INV_Goodwe_HT1100.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "HT1100",
       "registers": 277,
       "size_bytes": 19721
@@ -2026,7 +2023,7 @@
     {
       "filename": "INV_Goodwe_HT1500.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "HT1500",
       "registers": 288,
       "size_bytes": 20567
@@ -2034,7 +2031,7 @@
     {
       "filename": "INV_Goodwe_HT_others_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "HT_others_Series",
       "registers": 91,
       "size_bytes": 6648
@@ -2042,7 +2039,7 @@
     {
       "filename": "INV_Goodwe_HT_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "HT_Series",
       "registers": 294,
       "size_bytes": 20985
@@ -2058,7 +2055,7 @@
     {
       "filename": "INV_Goodwe_MS_DNS_XS.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "MS_DNS_XS",
       "registers": 50,
       "size_bytes": 3415
@@ -2066,7 +2063,7 @@
     {
       "filename": "INV_Goodwe_MT-Series_ModbusRTU.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "MT-Series_ModbusRTU",
       "registers": 68,
       "size_bytes": 4720
@@ -2074,7 +2071,7 @@
     {
       "filename": "INV_Goodwe_MT.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "MT",
       "registers": 95,
       "size_bytes": 6222
@@ -2090,7 +2087,7 @@
     {
       "filename": "INV_Goodwe_SDT_G2_G3.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SDT_G2_G3",
       "registers": 60,
       "size_bytes": 4165
@@ -2098,7 +2095,7 @@
     {
       "filename": "INV_Goodwe_SDTG2.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SDTG2",
       "registers": 116,
       "size_bytes": 7653
@@ -2106,7 +2103,7 @@
     {
       "filename": "INV_Goodwe_SMT.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SMT",
       "registers": 115,
       "size_bytes": 7618
@@ -2114,7 +2111,7 @@
     {
       "filename": "INV_Goodwe_SMT50K_SMT60K.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SMT50K_SMT60K",
       "registers": 119,
       "size_bytes": 7913
@@ -2122,7 +2119,7 @@
     {
       "filename": "INV_Goodwe_SMT_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SMT_Series",
       "registers": 68,
       "size_bytes": 4711
@@ -2130,7 +2127,7 @@
     {
       "filename": "INV_Goodwe_ThreePhase_SunSpec.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ThreePhase_SunSpec",
       "registers": 29,
       "size_bytes": 2002
@@ -2138,7 +2135,7 @@
     {
       "filename": "INV_Goodwe_XS-DNS-MS-SDT-G3_SERIES.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "XS-DNS-MS-SDT-G3_SERIES",
       "registers": 50,
       "size_bytes": 3429
@@ -2146,7 +2143,7 @@
     {
       "filename": "INV_Goodwe_XS_DNS_MS.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "XS_DNS_MS",
       "registers": 50,
       "size_bytes": 3422
@@ -2848,14 +2845,6 @@
       "size_bytes": 3534
     },
     {
-      "filename": "INV_k_star_power_reduction.csv",
-      "prefix": "INV",
-      "manufacturer": "k",
-      "model": "star_power_reduction",
-      "registers": 37,
-      "size_bytes": 2355
-    },
-    {
       "filename": "INV_Kaco_95308-LOGNON_SunSpec_inverter_KACO_new_energy_blueplanet_125_NX3_M10_IEC_5.0.3.3-ec484f_modbusRTU.csv",
       "prefix": "INV",
       "manufacturer": "Kaco",
@@ -3198,6 +3187,14 @@
       "model": "Modbus",
       "registers": 36,
       "size_bytes": 2035
+    },
+    {
+      "filename": "INV_Kstar_power_reduction.csv",
+      "prefix": "INV",
+      "manufacturer": "Kstar",
+      "model": "power_reduction",
+      "registers": 37,
+      "size_bytes": 2354
     },
     {
       "filename": "INV_Legrand_Trimod.csv",
@@ -5098,7 +5095,7 @@
     {
       "filename": "MET_Goodwe_GM1000_GM3000.csv",
       "prefix": "MET",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "GM1000_GM3000",
       "registers": 18,
       "size_bytes": 1213
@@ -7381,7 +7378,7 @@
       "manufacturer": "ICPDAS",
       "model": "M7028",
       "registers": 70,
-      "size_bytes": 4910
+      "size_bytes": 4907
     },
     {
       "filename": "OTH_IME_GENERIC.csv",
@@ -7610,18 +7607,10 @@
     {
       "filename": "OTH_K_star.csv",
       "prefix": "OTH",
-      "manufacturer": "K",
+      "manufacturer": "Kstar",
       "model": "star",
       "registers": 36,
       "size_bytes": 2026
-    },
-    {
-      "filename": "OTH_k_star_power_reduction.csv",
-      "prefix": "OTH",
-      "manufacturer": "k",
-      "model": "star_power_reduction",
-      "registers": 37,
-      "size_bytes": 1982
     },
     {
       "filename": "OTH_Kaco_sunspec_information_model_reference.csv",
@@ -7822,6 +7811,14 @@
       "model": "Modbus",
       "registers": 36,
       "size_bytes": 2032
+    },
+    {
+      "filename": "OTH_Kstar_power_reduction.csv",
+      "prefix": "OTH",
+      "manufacturer": "Kstar",
+      "model": "power_reduction",
+      "registers": 37,
+      "size_bytes": 1981
     },
     {
       "filename": "OTH_Lacecal_ITR2_0.csv",
@@ -9189,7 +9186,7 @@
       "manufacturer": "Webdyn",
       "model": "Sens_IO_8DI-6DO",
       "registers": 42,
-      "size_bytes": 2801
+      "size_bytes": 2778
     },
     {
       "filename": "OTH_Webdyn_Sens_IOs_Modbus_definition.csv",
@@ -9844,7 +9841,7 @@
     {
       "filename": "BAT_Goodwe_Lynx_Home_HV.csv",
       "prefix": "BAT",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "Lynx_Home_HV",
       "registers": 18,
       "size_bytes": 1433
@@ -10180,7 +10177,7 @@
     {
       "filename": "COM_Goodwe_Ezlogger3000.csv",
       "prefix": "COM",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "Ezlogger3000",
       "registers": 25,
       "size_bytes": 1986
@@ -10188,7 +10185,7 @@
     {
       "filename": "COM_Goodwe_EzLogger_Pro.csv",
       "prefix": "COM",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "EzLogger_Pro",
       "registers": 25,
       "size_bytes": 1986
@@ -10196,7 +10193,7 @@
     {
       "filename": "COM_Goodwe_SCB3000.csv",
       "prefix": "COM",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SCB3000",
       "registers": 29,
       "size_bytes": 2332
@@ -10783,7 +10780,7 @@
       "manufacturer": "AnswerDrives",
       "model": "Solargate",
       "registers": 288,
-      "size_bytes": 23672
+      "size_bytes": 23666
     },
     {
       "filename": "INV_AnswerDrives_SOLARGATE_2009_WebdynSunPM.csv",
@@ -11492,7 +11489,7 @@
     {
       "filename": "INV_Goodwe_ES-EM-SBP-BP.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ES-EM-SBP-BP",
       "registers": 49,
       "size_bytes": 3515
@@ -11500,7 +11497,7 @@
     {
       "filename": "INV_Goodwe_ES_EM_S-BP_BP_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ES_EM_S-BP_BP_Series",
       "registers": 370,
       "size_bytes": 21542
@@ -11508,7 +11505,7 @@
     {
       "filename": "INV_Goodwe_ES_EM_SBP.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ES_EM_SBP",
       "registers": 49,
       "size_bytes": 3519
@@ -11516,7 +11513,7 @@
     {
       "filename": "INV_Goodwe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU",
       "registers": 79,
       "size_bytes": 5834
@@ -11524,7 +11521,7 @@
     {
       "filename": "INV_Goodwe_ET_EH_BT_BH_EHB_AES_ABP_BTC_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ET_EH_BT_BH_EHB_AES_ABP_BTC_Series",
       "registers": 530,
       "size_bytes": 30901
@@ -11532,7 +11529,7 @@
     {
       "filename": "INV_Goodwe_ET_EH_Hybrid_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ET_EH_Hybrid_Series",
       "registers": 79,
       "size_bytes": 5838
@@ -11540,7 +11537,7 @@
     {
       "filename": "INV_Goodwe_ET_EH_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ET_EH_Series",
       "registers": 79,
       "size_bytes": 5831
@@ -11548,7 +11545,7 @@
     {
       "filename": "INV_Goodwe_ET_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ET_Series",
       "registers": 79,
       "size_bytes": 5828
@@ -11564,15 +11561,15 @@
     {
       "filename": "INV_Goodwe_GT-SERIES.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "GT-SERIES",
-      "registers": 305,
-      "size_bytes": 21714
+      "registers": 91,
+      "size_bytes": 6641
     },
     {
       "filename": "INV_Goodwe_HT1100.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "HT1100",
       "registers": 277,
       "size_bytes": 19721
@@ -11580,7 +11577,7 @@
     {
       "filename": "INV_Goodwe_HT1500.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "HT1500",
       "registers": 288,
       "size_bytes": 20567
@@ -11588,7 +11585,7 @@
     {
       "filename": "INV_Goodwe_HT_others_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "HT_others_Series",
       "registers": 91,
       "size_bytes": 6648
@@ -11596,7 +11593,7 @@
     {
       "filename": "INV_Goodwe_HT_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "HT_Series",
       "registers": 294,
       "size_bytes": 20985
@@ -11612,7 +11609,7 @@
     {
       "filename": "INV_Goodwe_MS_DNS_XS.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "MS_DNS_XS",
       "registers": 50,
       "size_bytes": 3415
@@ -11620,7 +11617,7 @@
     {
       "filename": "INV_Goodwe_MT-Series_ModbusRTU.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "MT-Series_ModbusRTU",
       "registers": 68,
       "size_bytes": 4720
@@ -11628,7 +11625,7 @@
     {
       "filename": "INV_Goodwe_MT.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "MT",
       "registers": 95,
       "size_bytes": 6222
@@ -11644,7 +11641,7 @@
     {
       "filename": "INV_Goodwe_SDT_G2_G3.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SDT_G2_G3",
       "registers": 60,
       "size_bytes": 4165
@@ -11652,7 +11649,7 @@
     {
       "filename": "INV_Goodwe_SDTG2.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SDTG2",
       "registers": 116,
       "size_bytes": 7653
@@ -11660,7 +11657,7 @@
     {
       "filename": "INV_Goodwe_SMT.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SMT",
       "registers": 115,
       "size_bytes": 7618
@@ -11668,7 +11665,7 @@
     {
       "filename": "INV_Goodwe_SMT50K_SMT60K.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SMT50K_SMT60K",
       "registers": 119,
       "size_bytes": 7913
@@ -11676,7 +11673,7 @@
     {
       "filename": "INV_Goodwe_SMT_Series.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "SMT_Series",
       "registers": 68,
       "size_bytes": 4711
@@ -11684,7 +11681,7 @@
     {
       "filename": "INV_Goodwe_ThreePhase_SunSpec.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "ThreePhase_SunSpec",
       "registers": 29,
       "size_bytes": 2002
@@ -11692,7 +11689,7 @@
     {
       "filename": "INV_Goodwe_XS-DNS-MS-SDT-G3_SERIES.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "XS-DNS-MS-SDT-G3_SERIES",
       "registers": 50,
       "size_bytes": 3429
@@ -11700,7 +11697,7 @@
     {
       "filename": "INV_Goodwe_XS_DNS_MS.csv",
       "prefix": "INV",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "XS_DNS_MS",
       "registers": 50,
       "size_bytes": 3422
@@ -12402,14 +12399,6 @@
       "size_bytes": 3534
     },
     {
-      "filename": "INV_k_star_power_reduction.csv",
-      "prefix": "INV",
-      "manufacturer": "k",
-      "model": "star_power_reduction",
-      "registers": 37,
-      "size_bytes": 2355
-    },
-    {
       "filename": "INV_Kaco_95308-LOGNON_SunSpec_inverter_KACO_new_energy_blueplanet_125_NX3_M10_IEC_5.0.3.3-ec484f_modbusRTU.csv",
       "prefix": "INV",
       "manufacturer": "Kaco",
@@ -12752,6 +12741,14 @@
       "model": "Modbus",
       "registers": 36,
       "size_bytes": 2035
+    },
+    {
+      "filename": "INV_Kstar_power_reduction.csv",
+      "prefix": "INV",
+      "manufacturer": "Kstar",
+      "model": "power_reduction",
+      "registers": 37,
+      "size_bytes": 2354
     },
     {
       "filename": "INV_Legrand_Trimod.csv",
@@ -14652,7 +14649,7 @@
     {
       "filename": "MET_Goodwe_GM1000_GM3000.csv",
       "prefix": "MET",
-      "manufacturer": "Goodwe",
+      "manufacturer": "GoodWe",
       "model": "GM1000_GM3000",
       "registers": 18,
       "size_bytes": 1213
@@ -16935,7 +16932,7 @@
       "manufacturer": "ICPDAS",
       "model": "M7028",
       "registers": 70,
-      "size_bytes": 4910
+      "size_bytes": 4907
     },
     {
       "filename": "OTH_IME_GENERIC.csv",
@@ -17164,18 +17161,10 @@
     {
       "filename": "OTH_K_star.csv",
       "prefix": "OTH",
-      "manufacturer": "K",
+      "manufacturer": "Kstar",
       "model": "star",
       "registers": 36,
       "size_bytes": 2026
-    },
-    {
-      "filename": "OTH_k_star_power_reduction.csv",
-      "prefix": "OTH",
-      "manufacturer": "k",
-      "model": "star_power_reduction",
-      "registers": 37,
-      "size_bytes": 1982
     },
     {
       "filename": "OTH_Kaco_sunspec_information_model_reference.csv",
@@ -17376,6 +17365,14 @@
       "model": "Modbus",
       "registers": 36,
       "size_bytes": 2032
+    },
+    {
+      "filename": "OTH_Kstar_power_reduction.csv",
+      "prefix": "OTH",
+      "manufacturer": "Kstar",
+      "model": "power_reduction",
+      "registers": 37,
+      "size_bytes": 1981
     },
     {
       "filename": "OTH_Lacecal_ITR2_0.csv",
@@ -18743,7 +18740,7 @@
       "manufacturer": "Webdyn",
       "model": "Sens_IO_8DI-6DO",
       "registers": 42,
-      "size_bytes": 2801
+      "size_bytes": 2778
     },
     {
       "filename": "OTH_Webdyn_Sens_IOs_Modbus_definition.csv",

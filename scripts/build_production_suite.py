@@ -21,6 +21,10 @@ WORKSPACE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(WORKSPACE_DIR))
 
 from DefFileGenerator.def_gen import Generator  # noqa: E402
+from DefFileGenerator.knowledge_miner import (  # noqa: E402
+    is_canonical_sunpm_tag,
+    normalize_tag_to_sunpm,
+)
 
 PROD_DIR = WORKSPACE_DIR / "production"
 DEFINITIONS_DIR = WORKSPACE_DIR / "Definitions"
@@ -286,6 +290,7 @@ COMPOUND_PREFIXES = [
     ("a-eberle", "AEberle"),
     ("mci_elec", "MCI"),
     ("pq_plus", "AEberle"),
+    ("k_star", "Kstar"),
 ]
 
 SKIP_INTERMEDIATES = {"india", "modbus", "sunspec", "modbusrtu", "inv", "meter", "sensor", "cpt"}
@@ -759,6 +764,10 @@ def sanitize_and_normalize_definition(
         dtype = clean_cell_str(row[3]) or "U16"
         name = clean_cell_str(row[5])
         tag = clean_cell_str(row[6])
+        if tag:
+            norm_tag = normalize_tag_to_sunpm(tag)
+            if norm_tag:
+                tag = norm_tag
         coef_a = clean_cell_str(row[7]) or "1.000000"
         coef_b = clean_cell_str(row[8]) or "0.000000"
         unit = clean_cell_str(row[9])
@@ -791,19 +800,8 @@ def sanitize_and_normalize_definition(
             if action in ("4", ""):
                 action = "9"
 
-        # Deduplicate single-instance tags
-        if tag in (
-            "P_AC",
-            "Q_AC",
-            "S_AC",
-            "P_DC",
-            "FREQ",
-            "PF",
-            "E_TOT",
-            "E_DAY",
-            "MODEL",
-            "SERIAL",
-        ):
+        # Enforce strict tag uniqueness per definition file (Webdyn SunPM invariant)
+        if tag:
             if tag in seen_unique_tags:
                 tag = ""
             else:
@@ -953,7 +951,10 @@ def generate_production_catalog(manifest_stats: list[dict]):
         size_bytes = csv_file.stat().st_size
         parts = csv_file.stem.split("_", 2)
         pfx = parts[0] if parts else ""
-        mfg = parts[1] if len(parts) > 1 else ""
+        raw_mfg = parts[1] if len(parts) > 1 else ""
+        mfg = MFG_REGISTRY.get(raw_mfg.lower(), raw_mfg)
+        if raw_mfg.lower() == "k" or csv_file.stem.lower().startswith(("inv_k_star", "oth_k_star")):
+            mfg = "Kstar"
         model = parts[2] if len(parts) > 2 else ""
 
         reg_count = 0

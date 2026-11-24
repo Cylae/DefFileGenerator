@@ -1,6 +1,6 @@
 # 📚 Webdyn Definitions Library
 
-Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **291 fichiers de définition** validés couvrant **61 002 registres Modbus** à travers plus de 60 constructeurs mondiaux.
+Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **291 fichiers de définition** validés couvrant **60 788 registres Modbus** à travers plus de 60 constructeurs mondiaux.
 
 ---
 
@@ -8,7 +8,7 @@ Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. 
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Constructeurs Notables |
 |-----------|---------|----------|-----------------|------------------------|
-| Onduleurs & Convertisseurs (Inverters) | `INV_` | 165 | 42 385 | ABB, Answer Drives, CyberPower, Cyberpower, EFACEC (+25) |
+| Onduleurs & Convertisseurs (Inverters) | `INV_` | 165 | 42 171 | ABB, Answer Drives, CyberPower, Cyberpower, EFACEC (+25) |
 | Compteurs & Analyseurs Réseau (Meters) | `MET_` | 73 | 8 121 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+20) |
 | Systèmes de Stockage BESS (Batteries) | `BAT_` | 11 | 7 491 | Dyness, GoodWe, Huawei, Sungrow |
 | Capteurs & Pyranomètres (Sensors) | `SEN_` | 22 | 500 | ATERSA, BD_SENSOR, DELTAOHM, DELTA_OHM, EKO (+12) |
@@ -102,7 +102,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_Goodwe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv`](./INV_Goodwe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv) | GoodWe | ET-EH-ModbusRTU | Modbus | 79 |
 | [`INV_Goodwe_ET_EH_Series.csv`](./INV_Goodwe_ET_EH_Series.csv) | GoodWe | ET-EH-Series | Modbus | 79 |
 | [`INV_Goodwe_ET_Series.csv`](./INV_Goodwe_ET_Series.csv) | GoodWe | ET-Series | Modbus | 79 |
-| [`INV_Goodwe_GT-SERIES.csv`](./INV_Goodwe_GT-SERIES.csv) | GoodWe | GT-SERIES | Modbus | 305 |
+| [`INV_Goodwe_GT-SERIES.csv`](./INV_Goodwe_GT-SERIES.csv) | GoodWe | GT-SERIES | Modbus | 91 |
 | [`INV_Goodwe_GT_Series.csv`](./INV_Goodwe_GT_Series.csv) | GoodWe | GT-Series | Modbus | 305 |
 | [`INV_Goodwe_HT_1500V.csv`](./INV_Goodwe_HT_1500V.csv) | GoodWe | HT-1500V-Series | Modbus | 288 |
 | [`INV_Goodwe_HT_others_Series.csv`](./INV_Goodwe_HT_others_Series.csv) | GoodWe | HT-Others-Series | Modbus | 91 |

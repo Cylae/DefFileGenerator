@@ -1166,6 +1166,10 @@ def infer_sunpm_tag(
                         re.search(r"\b(?:kw|mw|w)\b", low)
                     ):
                         learned = ""
+            if learned and re.match(r"^[IUP]_DC_\d+$", learned):
+                low = variable_name.lower()
+                if re.search(r"\b(?:pv|string)\s*\d+", low):
+                    learned = ""
             if learned and not is_canonical_sunpm_tag(learned):
                 norm = normalize_tag_to_sunpm(learned)
                 if norm and is_canonical_sunpm_tag(norm):

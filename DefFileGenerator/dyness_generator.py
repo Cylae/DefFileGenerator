@@ -43,7 +43,7 @@ for candidate_dir in [REPO_ROOT, Path(__file__).resolve().parent]:
         break
 
 from DefFileGenerator.def_gen import Generator  # noqa: E402
-from DefFileGenerator.knowledge_miner import infer_sunpm_tag  # noqa: E402
+from DefFileGenerator.knowledge_miner import infer_sunpm_tag, normalize_tag_to_sunpm  # noqa: E402
 
 __all__ = [
     "DynessDefinitionGenerator",
@@ -938,6 +938,8 @@ class DynessDefinitionGenerator:
                 elif "ambient temperature" in name_l:
                     candidate_tag = "T_AMB"
 
+            if candidate_tag:
+                candidate_tag = normalize_tag_to_sunpm(candidate_tag)
             final_tag = ""
             if candidate_tag and candidate_tag not in used_tags:
                 final_tag = candidate_tag

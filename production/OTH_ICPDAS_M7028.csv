@@ -49,7 +49,7 @@ Modbus;Other;ICPDAS;M7028;;;;;;;
 48;3;295;U16;;Analog output slew rate of channel 7;;1.000000;0.000000;;4
 49;3;480;U32;;Firmware version;;1.000000;0.000000;;4
 50;3;482;U32;;Module name;;1.000000;0.000000;;4
-51;3;484;U16;;Module address;DeviceAddr;1.000000;0.000000;;4
+51;3;484;U16;;Module address;UNIT_ID;1.000000;0.000000;;4
 52;3;485;U16;;Bus Config;BusConfig;1.000000;0.000000;;4
 53;3;487;U16;;Modbus response delay time;;1.000000;0.000000;ms;4
 54;3;488;U16;;Host watchdog timeout;;0.100000;0.000000;ms;4

@@ -2,7 +2,7 @@
 
 Bibliothèque officielle de définitions d'équipements industriels validées pour déploiement en production sur les concentrateurs et passerelles Webdyn (SunPM, Hub, Flex).
 
-Comprend **1194 fichiers de définition certifiés** couvrant **359,339 registres Modbus** et **36,056 tags SunPM canoniques** à travers **189 constructeurs mondiaux**.
+Comprend **1194 fichiers de définition certifiés** couvrant **358,911 registres Modbus** et **36,072 tags SunPM canoniques** à travers **188 constructeurs mondiaux**.
 
 ---
 
@@ -10,12 +10,12 @@ Comprend **1194 fichiers de définition certifiés** couvrant **359,339 registre
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Tags Actifs | Exemples Constructeurs |
 |---|---|---|---|---|---|
-| Onduleurs & Convertisseurs (Inverter) | `INV_` | 483 | 132,086 | 17,643 | 5, ABB, APsystems, ATESS, AnswerDrives (+85) |
+| Onduleurs & Convertisseurs (Inverter) | `INV_` | 483 | 131,658 | 17,659 | 5, ABB, APsystems, ATESS, AnswerDrives (+84) |
 | Compteurs & Analyseurs Réseau (Meter) | `MET_` | 232 | 31,485 | 3,606 | ABB, AEberle, ALGODUE, Acrel, Algodue (+57) |
 | Systèmes BESS & Batteries (Battery) | `BAT_` | 56 | 55,004 | 3,282 | ATMOCE, AlroSolar, Dyness, FOX ESS, FoxESS (+11) |
 | Capteurs Météo & Pyranomètres (Sensor) | `SEN_` | 55 | 1,434 | 181 | ATERSA, BD, Blet, DELTAOHM, DeltaOhm (+20) |
 | Passerelles & Loggers (Logger) | `COM_` | 38 | 33,386 | 2,437 | ATMOCE, FoxESS, GoodWe, Greenheiss, HOYMILES (+7) |
-| Modules IO & Afficheurs (Other) | `OTH_` | 364 | 105,944 | 8,907 | 5, ABB, AEberle, Advantech, Alan (+98) |
+| Modules IO & Afficheurs (Other) | `OTH_` | 364 | 105,944 | 8,907 | 5, ABB, AEberle, Advantech, Alan (+97) |
 
 ---
 
@@ -26,7 +26,7 @@ Comprend **1194 fichiers de définition certifiés** couvrant **359,339 registre
 | **Schneider** | 82 | 13,540 | 1,380 | Inverter, Meter, Other |
 | **ABB** | 75 | 39,509 | 2,641 | Inverter, Meter, Other |
 | **Huawei** | 69 | 11,630 | 2,259 | Battery, Inverter, Logger, Meter, Other |
-| **GoodWe** | 61 | 7,264 | 3,046 | Battery, Inverter, Logger, Meter |
+| **GoodWe** | 61 | 6,836 | 3,062 | Battery, Inverter, Logger, Meter |
 | **MarsEnergy** | 57 | 38,938 | 1,090 | Battery, Inverter, Logger, Meter, Other |
 | **Fronius** | 47 | 11,479 | 1,477 | Inverter, Meter, Other, Sensor |
 | **Delta** | 35 | 20,387 | 1,095 | Inverter, Other |
@@ -59,6 +59,7 @@ Comprend **1194 fichiers de définition certifiés** couvrant **359,339 registre
 | **AlroSolar** | 7 | 1,904 | 184 | Battery, Other |
 | **Efacec** | 7 | 820 | 113 | Inverter, Other |
 | **INGETEAM** | 7 | 423 | 108 | Inverter |
+| **Kstar** | 7 | 628 | 161 | Inverter, Other |
 | **SofarSolar** | 7 | 1,549 | 92 | Inverter |
 | **X7** | 7 | 1,588 | 1,492 | Battery, Inverter, Meter, Other |
 | **Hukseflux** | 6 | 136 | 18 | Sensor |
@@ -69,7 +70,6 @@ Comprend **1194 fichiers de définition certifiés** couvrant **359,339 registre
 | **AnswerDrives** | 5 | 742 | 338 | Inverter |
 | **CEFEM** | 5 | 265 | 65 | Inverter, Other |
 | **CHINT** | 5 | 141 | 92 | Meter, Other |
-| **Kstar** | 5 | 554 | 123 | Inverter, Other |
 | **Lufft** | 5 | 153 | 15 | Meter, Other, Sensor |
 | **MarsRenewable** | 5 | 6,860 | 54 | Inverter, Meter |
 | **Seven** | 5 | 181 | 30 | Sensor |
@@ -146,7 +146,6 @@ Comprend **1194 fichiers de définition certifiés** couvrant **359,339 registre
 | **Thies** | 2 | 201 | 11 | Other, Sensor |
 | **Waaree** | 2 | 92 | 10 | Inverter, Other |
 | **Zelec** | 2 | 268 | 40 | Meter |
-| **k** | 2 | 74 | 38 | Inverter, Other |
 | **ALGODUE** | 1 | 5 | 3 | Meter |
 | **ATERSA** | 1 | 5 | 0 | Sensor |
 | **ATESS** | 1 | 243 | 29 | Inverter |
@@ -593,8 +592,8 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`INV_GoodWe_G3_Series.csv`](./INV_GoodWe_G3_Series.csv) | Inverter | GoodWe | G3_Series | Modbus | 120 | 40 |
 | [`MET_GoodWe_GM1000_GM3000.csv`](./MET_GoodWe_GM1000_GM3000.csv) | Meter | GoodWe | GM1000-GM3000 | Modbus | 18 | 18 |
 | [`MET_Goodwe_GM1000_GM3000.csv`](./MET_Goodwe_GM1000_GM3000.csv) | Meter | GoodWe | GM1000-GM3000 | Modbus | 18 | 18 |
-| [`INV_GoodWe_GT-SERIES.csv`](./INV_GoodWe_GT-SERIES.csv) | Inverter | GoodWe | GT-SERIES | Modbus | 305 | 82 |
-| [`INV_Goodwe_GT-SERIES.csv`](./INV_Goodwe_GT-SERIES.csv) | Inverter | GoodWe | GT-SERIES | Modbus | 305 | 82 |
+| [`INV_GoodWe_GT-SERIES.csv`](./INV_GoodWe_GT-SERIES.csv) | Inverter | GoodWe | GT-SERIES | Modbus | 91 | 90 |
+| [`INV_Goodwe_GT-SERIES.csv`](./INV_Goodwe_GT-SERIES.csv) | Inverter | GoodWe | GT-SERIES | Modbus | 91 | 90 |
 | [`INV_GoodWe_HT_others_Series.csv`](./INV_GoodWe_HT_others_Series.csv) | Inverter | GoodWe | HT-Others-Series | Modbus | 91 | 90 |
 | [`INV_Goodwe_HT_others_Series.csv`](./INV_Goodwe_HT_others_Series.csv) | Inverter | GoodWe | HT-Others-Series | Modbus | 91 | 90 |
 | [`INV_GoodWe_HT_Series.csv`](./INV_GoodWe_HT_Series.csv) | Inverter | GoodWe | HT-Series | Modbus | 294 | 77 |
@@ -908,6 +907,8 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`INV_Kstar_KSG1-250K.csv`](./INV_Kstar_KSG1-250K.csv) | Inverter | Kstar | KSG1-250K | Modbus | 254 | 56 |
 | [`INV_Kstar_Modbus.csv`](./INV_Kstar_Modbus.csv) | Inverter | Kstar | Modbus | Modbus | 36 | 18 |
 | [`OTH_Kstar_Modbus.csv`](./OTH_Kstar_Modbus.csv) | Other | Kstar | Modbus | Modbus | 36 | 18 |
+| [`INV_Kstar_power_reduction.csv`](./INV_Kstar_power_reduction.csv) | Inverter | Kstar | power_reduction | Modbus | 37 | 19 |
+| [`OTH_Kstar_power_reduction.csv`](./OTH_Kstar_power_reduction.csv) | Other | Kstar | power_reduction | Modbus | 37 | 19 |
 | [`MET_Lacecal_ITR2_0.csv`](./MET_Lacecal_ITR2_0.csv) | Meter | LACECAL | ITR2_0 | Modbus | 67 | 0 |
 | [`MET_Legrand_CF_Generic.csv`](./MET_Legrand_CF_Generic.csv) | Meter | LEGRAND | CF_Generic | Modbus | 11 | 1 |
 | [`INV_Legrand_Trimod_RTU.csv`](./INV_Legrand_Trimod_RTU.csv) | Inverter | LEGRAND | Trimod_RTU | Modbus | 42 | 10 |
@@ -1459,6 +1460,4 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`INV_Zucchetti_Centro_Sistemi_S.p.a_ZCS_Hyd_3PH.csv`](./INV_Zucchetti_Centro_Sistemi_S.p.a_ZCS_Hyd_3PH.csv) | Inverter | Zucchetti | Centro_Sistemi_S.p.a_ZCS_Hyd_3PH | Modbus | 505 | 27 |
 | [`OTH_Zucchetti_Centro_Sistemi_S.p.a_ZCS_Hyd_3PH.csv`](./OTH_Zucchetti_Centro_Sistemi_S.p.a_ZCS_Hyd_3PH.csv) | Other | Zucchetti | Centro_Sistemi_S.p.a_ZCS_Hyd_3PH | Modbus | 505 | 27 |
 | [`INV_Fronius_Tauro_50-3-D_1.35.4-1_Float.csv`](./INV_Fronius_Tauro_50-3-D_1.35.4-1_Float.csv) | Inverter | fronius | Tauro_50-3-D_1.35.4-1_Float | Modbus | 193 | 34 |
-| [`INV_k_star_power_reduction.csv`](./INV_k_star_power_reduction.csv) | Inverter | k | star_power_reduction | Modbus | 37 | 19 |
-| [`OTH_k_star_power_reduction.csv`](./OTH_k_star_power_reduction.csv) | Other | k | star_power_reduction | Modbus | 37 | 19 |
 | [`MET_map_modbus_meter_slenergy6.csv`](./MET_map_modbus_meter_slenergy6.csv) | Meter | map | modbus_meter_slenergy6 | Modbus | 7 | 1 |

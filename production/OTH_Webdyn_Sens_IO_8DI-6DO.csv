@@ -1,8 +1,8 @@
 Modbus;Other;Webdyn;Sens_IO_8DI-6DO;;;;;;;
-1;3;0;U32;;Serial Number;DisplaySerialNumber;1.000000;0.000000;;4
+1;3;0;U32;;Serial Number;SERIAL;1.000000;0.000000;;4
 2;3;4;U16;;Firmware Version;;1.000000;0.000000;;4
-3;3;6_1;U8;;Device Address;DeviceAddr;1.000000;0.000000;;4
-4;3;7;U16;;Product Model;DisplayModel;1.000000;0.000000;;4
+3;3;6_1;U8;;Device Address;UNIT_ID;1.000000;0.000000;;4
+4;3;7;U16;;Product Model;MODEL;1.000000;0.000000;;4
 5;3;8;I16;;Hardware Version;;1.000000;0.000000;;4
 6;3;9;I16;;Baudrate Setting;BusConfig;1.000000;0.000000;;4
 7;3;100_1;U8;;Status digital Inputs;;1.000000;0.000000;;4
