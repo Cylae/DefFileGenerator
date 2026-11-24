@@ -122,9 +122,11 @@
             <h1>WebdynSunPM <span>DefGen Studio</span></h1>
         </div>
         <div class="header-badges" style="display: flex; gap: 8px; align-items: center;">
+            <button id="themeToggleBtn" class="btn btn-secondary btn-sm" style="padding: 4px 10px; font-size: 0.8rem; border-radius: 20px;" title="Toggle Light / Dark mode">🌓 Theme</button>
             <span id="knowledgePill" class="header-badge"
                 style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);">🧠
                 36,270+ variables</span>
+            <span id="headerModelsBadge" class="header-badge">🏛️ 1,194 Certified Models</span>
             <div class="header-badge">v1.0.0 Apollo Edition</div>
         </div>
     </header>
@@ -136,12 +138,14 @@
                 aria-controls="tab-convert" tabindex="0">📁 Convert Datasheet</button>
             <button class="nav-tab" id="tabBtnDiscovery" data-tab="tab-discovery" role="tab" aria-selected="false"
                 aria-controls="tab-discovery" tabindex="-1">🌐 Autonomous Discovery</button>
+            <button class="nav-tab" id="tabBtnSunspec" data-tab="tab-sunspec" role="tab" aria-selected="false"
+                aria-controls="tab-sunspec" tabindex="-1">☀️ SunSpec Studio</button>
             <button class="nav-tab" id="tabBtnTag" data-tab="tab-tag" role="tab" aria-selected="false"
                 aria-controls="tab-tag" tabindex="-1">🏷️ SunPM Tagger</button>
             <button class="nav-tab" id="tabBtnAudit" data-tab="tab-audit" role="tab" aria-selected="false"
                 aria-controls="tab-audit" tabindex="-1">🛡️ 5 Pillars & Auditor</button>
             <button class="nav-tab" id="tabBtnLibrary" data-tab="tab-library" role="tab" aria-selected="false"
-                aria-controls="tab-library" tabindex="-1">📚 Production Library (1,118)</button>
+                aria-controls="tab-library" tabindex="-1">📚 Production Library <span id="navLibraryCountBadge">(1,194)</span></button>
             <button class="nav-tab" id="tabBtnVersions" data-tab="tab-versions" role="tab" aria-selected="false"
                 aria-controls="tab-versions" tabindex="-1">🕒 Versions & Commits</button>
             <button class="nav-tab" id="tabBtnDuplicates" data-tab="tab-duplicates" role="tab" aria-selected="false"
@@ -211,6 +215,25 @@
                         <label for="forcedWriteInput">Forced Write Type (Optional)</label>
                         <input type="text" id="forcedWriteInput" placeholder="e.g. 3">
                     </div>
+                    <div class="form-group">
+                        <label for="sunspecModeSelect">SunSpec Generation</label>
+                        <select id="sunspecModeSelect">
+                            <option value="auto" selected>Auto (Relevance Gate)</option>
+                            <option value="force">Force (Generate SunSpec)</option>
+                            <option value="off">Off (Modbus Native Only)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sunspecBaseSelect">SunSpec Base Address</label>
+                        <select id="sunspecBaseSelect">
+                            <option value="40000" selected>40000 (Base 0)</option>
+                            <option value="40001">40001 (Base 1)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sunspecPortsInput">MPPT / DC Ports (NPrt)</label>
+                        <input type="number" id="sunspecPortsInput" placeholder="Auto" min="0" max="64" value="0">
+                    </div>
                     <div class="form-group" style="justify-content: center;">
                         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-top: 24px;">
                             <input type="checkbox" id="autoTagCheck" checked> Enrich with SunPM tags
@@ -261,6 +284,11 @@
                             Download Definition CSV
                         </button>
                     </div>
+                </div>
+
+                <div id="convertFileSwitcher" class="hidden" style="margin-bottom: 14px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                    <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 600;">Available Profiles:</span>
+                    <div id="convertProfilePills" style="display: flex; gap: 6px; flex-wrap: wrap;"></div>
                 </div>
 
                 <div class="table-wrapper">
@@ -377,6 +405,104 @@
                         </thead>
                         <tbody id="discoveryPreviewBody"></tbody>
                     </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- TAB SUNSPEC: SUNSPEC PROTOCOL STUDIO                     -->
+        <!-- ======================================================== -->
+        <div id="tab-sunspec" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnSunspec">
+            <section class="card">
+                <h2>☀️ SunSpec Protocol Studio & Relevance Evaluator</h2>
+                <p class="subtitle">Evaluates documentation against the Apollo SunSpec Relevance Gate, verifies official SunSpec Model IDs (1, 101–103, 120–126, 160, 201–204, 701–714, 802), parses PICS spreadsheets, and produces certified 11-column definition files with exact Modbus address chaining.</p>
+
+                <div class="drop-zone" id="sunspecDropZone">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                    <p>Drag & drop PICS workbook (.xlsx, .json), SunSpec datasheet, or <label for="sunspecFileInput" class="browse-link">browse</label></p>
+                    <span class="file-types">Supported: .xlsx, .xlsm, .json, .csv, .pdf, .txt</span>
+                    <input type="file" id="sunspecFileInput" accept=".xlsx,.xlsm,.json,.csv,.pdf,.txt" hidden>
+                </div>
+                <div id="sunspecFileDetails" class="file-details hidden">
+                    <span id="sunspecFileName">pics.xlsx</span>
+                    <button id="sunspecRemoveFileBtn" class="btn-text">&times; Remove</button>
+                </div>
+
+                <div class="config-grid" style="margin-top: 16px;">
+                    <div class="form-group">
+                        <label for="sunspecQueryInput">Equipment Name / Query (Optional)</label>
+                        <input type="text" id="sunspecQueryInput" placeholder="e.g. SMA STP 50-40, Sungrow SG110CX, Huawei...">
+                    </div>
+                    <div class="form-group">
+                        <label for="sunspecGateModeSelect">Evaluation Gate Mode</label>
+                        <select id="sunspecGateModeSelect">
+                            <option value="auto" selected>Auto (Strict Gate Check)</option>
+                            <option value="force">Force (Generate Even Without PICS)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sunspecStudioBaseSelect">Base Address</label>
+                        <select id="sunspecStudioBaseSelect">
+                            <option value="40000" selected>40000 (Base 0)</option>
+                            <option value="40001">40001 (Base 1)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sunspecStudioPortsInput">MPPT Strings / DC Ports</label>
+                        <input type="number" id="sunspecStudioPortsInput" placeholder="Auto" min="0" max="64" value="0">
+                    </div>
+                </div>
+
+                <div class="action-bar" style="display: flex; gap: 12px; justify-content: flex-end;">
+                    <button id="sunspecEvaluateBtn" class="btn btn-secondary">
+                        🔍 Evaluate Relevance Gate
+                    </button>
+                    <button id="sunspecGenerateBtn" class="btn btn-primary">
+                        ⚡ Generate Certified Definitions
+                    </button>
+                </div>
+
+                <div id="sunspecErrorBox" class="hidden" style="margin-top: 14px; padding: 14px; border-radius: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #ef4444; font-size: 0.9rem;">
+                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                        <span style="font-size: 1.2rem;">⚠️</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 4px;">SunSpec Error:</strong>
+                            <span id="sunspecErrorMessage"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SunSpec Decision & Target Section -->
+            <section id="sunspecResultsSection" class="card results-card hidden">
+                <div class="results-header">
+                    <div>
+                        <h2>SunSpec Gate Decision & Planned Targets</h2>
+                        <span id="sunspecGateBadge" class="badge">Evaluating...</span>
+                        <span id="sunspecModelsBadge" class="badge badge-info">0 Models</span>
+                    </div>
+                </div>
+
+                <div id="sunspecReasonBox" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 0.88rem;"></div>
+
+                <div style="margin-bottom: 16px;">
+                    <strong style="display: block; font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 8px;">Detected SunSpec Information Models:</strong>
+                    <div id="sunspecDetectedPills" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+                </div>
+
+                <div>
+                    <strong style="display: block; font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 8px;">Target SunSpec Definition Files:</strong>
+                    <div id="sunspecTargetsList" style="display: flex; flex-direction: column; gap: 10px;"></div>
                 </div>
             </section>
         </div>
@@ -604,11 +730,11 @@
                 <div class="results-header" style="margin-bottom: 12px;">
                     <div>
                         <h2>Certified Production Definition Library</h2>
-                        <span id="libraryCountBadge" class="badge badge-success">1,118 models</span>
+                        <span id="libraryCountBadge" class="badge badge-success">... models</span>
                     </div>
                     <div style="display: flex; gap: 8px;">
-                        <button id="sourceProductionBtn" class="btn btn-primary btn-sm">Production Directory (1,118)</button>
-                        <button id="sourceDefinitionsBtn" class="btn btn-secondary btn-sm">Historical Archives (136)</button>
+                        <button id="sourceProductionBtn" class="btn btn-primary btn-sm">Production Directory (<span id="sourceProdCount">1,194</span>)</button>
+                        <button id="sourceDefinitionsBtn" class="btn btn-secondary btn-sm">Historical Archives (<span id="sourceDefsCount">136</span>)</button>
                     </div>
                 </div>
                 <p class="subtitle">Certified Apollo 5-Pillar repository across 137 industrial manufacturers (Huawei, Solplanet, Sungrow, SMA, Dyness, FoxESS, ABB...).</p>
@@ -1023,6 +1149,72 @@
             <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 8px; padding-top: 14px; border-top: 1px solid var(--border);">
                 <button id="cancelRestoreBtn" class="btn btn-secondary">Cancel</button>
                 <button id="confirmRestoreBtn" class="btn btn-primary">Confirm Restore</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- INTERACTIVE DEFINITION INSPECTOR & EDITOR MODAL          -->
+    <!-- ======================================================== -->
+    <div id="inspectModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="inspectModalTitle">
+        <div class="modal-dialog" style="max-width: 980px; width: 95%;">
+            <div class="modal-header">
+                <div>
+                    <h3 id="inspectModalTitle" style="margin: 0; font-size: 1.15rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                        <span>👁️ Definition Inspector:</span>
+                        <code id="inspectModalFilename" style="color: var(--accent);">definition.csv</code>
+                    </h3>
+                    <div id="inspectModalMeta" style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;"></div>
+                </div>
+                <button id="closeInspectModalBtn" class="btn-text" style="font-size: 1.2rem; line-height: 1;" title="Close">✕</button>
+            </div>
+            <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
+                <!-- Toolbar -->
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                    <div style="display: flex; gap: 8px; align-items: center; flex: 1;">
+                        <input type="text" id="inspectFilterInput" class="filter-input" placeholder="🔍 Search registers in definition..." style="max-width: 320px;">
+                        <span id="inspectCountBadge" class="badge">0 registers</span>
+                        <span id="inspectPillarsBadge" class="badge badge-success">✓ 5 Pillars PASS</span>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <button id="inspectEditModeBtn" class="btn btn-secondary btn-sm">✏️ Edit Mode</button>
+                        <button id="inspectAddRowBtn" class="btn btn-secondary btn-sm hidden">+ Add Register</button>
+                        <button id="inspectCopyBtn" class="btn btn-secondary btn-sm">📋 Copy CSV</button>
+                        <button id="inspectSaveBtn" class="btn btn-primary btn-sm hidden">💾 Save & Re-validate</button>
+                        <a id="inspectDownloadLink" class="btn btn-success btn-sm" download>⬇️ Download CSV</a>
+                    </div>
+                </div>
+
+                <!-- Live Status / Issues banner in modal -->
+                <div id="inspectAlertBox" class="hidden" style="padding: 10px 14px; border-radius: 6px; font-size: 0.85rem;"></div>
+
+                <!-- Register Table -->
+                <div class="table-wrapper" style="max-height: 480px; overflow-y: auto;">
+                    <table id="inspectTable">
+                        <thead>
+                            <tr>
+                                <th style="width: 45px;">#</th>
+                                <th style="width: 50px;">FC</th>
+                                <th style="width: 80px;">Address</th>
+                                <th style="width: 75px;">Type</th>
+                                <th>Name</th>
+                                <th>SunPM Tag</th>
+                                <th style="width: 80px;">Factor</th>
+                                <th style="width: 70px;">Offset</th>
+                                <th style="width: 60px;">Unit</th>
+                                <th style="width: 50px;">Action</th>
+                                <th id="inspectActionsTh" class="hidden" style="width: 45px;">Del</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inspectTableBody">
+                            <tr><td colspan="11" style="text-align: center; color: var(--text-secondary);">Loading registers...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--border);">
+                <span style="font-size: 0.8rem; color: var(--text-secondary);">Certified WebdynSunPM 11-column architecture</span>
+                <button id="closeInspectModalFooterBtn" class="btn btn-secondary">Close</button>
             </div>
         </div>
     </div>

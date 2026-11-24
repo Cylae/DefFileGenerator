@@ -53,6 +53,7 @@ UPLOAD_PATHS = frozenset(
         "/api/audit",
         "/api/pillars",
         "/api/discovery/upload",
+        "/api/sunspec/evaluate",
     }
 )
 
@@ -160,6 +161,7 @@ app.add_middleware(
 class HealthResponse(BaseModel):
     status: str
     version: str
+    stats: dict[str, Any] = {}
 
 
 class ValidationIssueItem(BaseModel):
@@ -180,6 +182,105 @@ class ConvertResponse(BaseModel):
     csv_content: str
     issues: list[ValidationIssueItem]
     stats: dict[str, Any]
+    sunspec_generated: bool = False
+    sunspec_files: list[dict[str, Any]] = []
+    sunspec_reason: str | None = None
+
+
+class InspectResponse(BaseModel):
+    success: bool
+    filename: str
+    category: str
+    manufacturer: str
+    model: str
+    size_kb: float
+    register_count: int
+    pillars_valid: bool
+    pillar_issues: list[str] = []
+    header: dict[str, str] = {}
+    registers: list[dict[str, Any]] = []
+    csv_content: str = ""
+
+
+class RegisterEditItem(BaseModel):
+    index: int | None = None
+    reg_type: str = "3"
+    address: int | str
+    data_type: str = "U16"
+    operation: str = ""
+    name: str
+    tag: str = ""
+    factor: str | float = "1.000000"
+    offset: str | float = "0.000000"
+    unit: str = ""
+    action: str = "4"
+
+
+class RevalidateDefinitionRequest(BaseModel):
+    filename: str
+    protocol: str = "Modbus"
+    category: str = "Inverter"
+    manufacturer: str = "Vendor"
+    model: str = "Model"
+    registers: list[RegisterEditItem]
+    auto_tag: bool = True
+
+
+class RevalidateDefinitionResponse(BaseModel):
+    success: bool
+    is_valid: bool
+    filename: str
+    register_count: int
+    issues: list[str] = []
+    pillars: dict[str, bool] = {}
+    csv_content: str
+    preview: list[dict[str, Any]] = []
+
+
+class SunSpecTargetItem(BaseModel):
+    prefix: str
+    manufacturer: str
+    model_name: str
+    profile: str
+    topology: str
+    model_ids: list[int]
+    base_address: int
+    common_model_length: int
+    functional_scope: str
+    filename: str
+
+
+class SunSpecEvaluateResponse(BaseModel):
+    success: bool
+    should_generate: bool
+    is_skipped: bool
+    is_forced: bool
+    reason: str
+    detected_models: list[int] = []
+    detected_profiles: list[str] = []
+    targets: list[SunSpecTargetItem] = []
+
+
+class SunSpecGenerateRequest(BaseModel):
+    manufacturer: str = "Generic"
+    model: str = "SunSpec"
+    category: str = "Inverter"
+    base_address: int = 40000
+    common_model_len: int = 65
+    profile: str = "DER700"
+    topology: str = "ThreePhase"
+    model_ids: list[int] = []
+    mppt_ports: int = 0
+
+
+class SunSpecGenerateResponse(BaseModel):
+    success: bool
+    filename: str
+    register_count: int
+    is_valid: bool
+    issues: list[str] = []
+    csv_content: str
+    preview: list[dict[str, Any]] = []
 
 
 class ValidateResponse(BaseModel):
@@ -316,7 +417,27 @@ async def _save_upload(file: UploadFile, destination: str) -> None:
 
 @app.get("/api/health", response_model=HealthResponse)
 def health_check() -> HealthResponse:
-    return HealthResponse(status="ok", version=__version__)
+    prod_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "production"))
+    defs_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "Definitions"))
+    prod_count = (
+        len([f for f in os.listdir(prod_dir) if f.lower().endswith(".csv")])
+        if os.path.exists(prod_dir)
+        else 0
+    )
+    defs_count = (
+        len([f for f in os.listdir(defs_dir) if f.lower().endswith(".csv")])
+        if os.path.exists(defs_dir)
+        else 0
+    )
+    return HealthResponse(
+        status="ok",
+        version=__version__,
+        stats={
+            "production_models": prod_count,
+            "definitions_models": defs_count,
+            "total_certified_models": prod_count,
+        },
+    )
 
 
 @app.post("/api/convert", response_model=ConvertResponse)
@@ -329,6 +450,9 @@ async def convert_file(
     address_offset: int = Form(0),
     forced_write: str = Form(""),
     tag: bool = Form(True),
+    sunspec_mode: str = Form("auto"),
+    sunspec_base: int = Form(40000),
+    sunspec_ports: int = Form(0),
 ) -> ConvertResponse:
     """Converts an uploaded documentation file (PDF, Excel, CSV, XML) to a WebdynSunPM definition CSV."""
     if not file.filename:
@@ -365,6 +489,9 @@ async def convert_file(
             address_offset,
             forced_write,
             tag,
+            sunspec_mode,
+            sunspec_base,
+            sunspec_ports,
         )
         return ConvertResponse(**result)
 
@@ -381,6 +508,9 @@ def _convert_document(
     address_offset: int,
     forced_write: str,
     tag: bool = True,
+    sunspec_mode: str = "auto",
+    sunspec_base: int = 40000,
+    sunspec_ports: int = 0,
 ) -> dict[str, Any]:
     """Process the complete document outside the request event loop."""
     protocol = Generator.normalize_protocol(protocol)
@@ -503,6 +633,63 @@ def _convert_document(
     filename_model = model_clean or "model"
     out_filename = f"{filename_mfg}_{filename_model}_definition.csv"
 
+    sunspec_files: list[dict[str, Any]] = []
+    sunspec_reason = None
+    if sunspec_mode != "off":
+        try:
+            from DefFileGenerator.sunspec import (
+                SunSpecRelevanceEvaluator,
+                SunSpecDefinitionGenerator,
+                SunSpecCliMode,
+            )
+
+            evaluator = SunSpecRelevanceEvaluator()
+            mode_enum = (
+                SunSpecCliMode(sunspec_mode.lower())
+                if sunspec_mode in ("auto", "force", "off")
+                else SunSpecCliMode.AUTO
+            )
+            decision = evaluator.evaluate(
+                source_path=input_path,
+                raw_text=None,
+                intermediate_rows=full_mapped,
+                cli_mode=mode_enum,
+                manufacturer=manufacturer,
+                model=model,
+                category=category,
+                forced_base_address=sunspec_base,
+                forced_ports=sunspec_ports if sunspec_ports > 0 else None,
+            )
+            sunspec_reason = decision.reason
+            if decision.should_generate:
+                generator = SunSpecDefinitionGenerator()
+                out_dir = os.path.dirname(output_path)
+                for tgt in decision.targets:
+                    gen_res = generator.generate(
+                        target=tgt,
+                        output_dir=out_dir,
+                        pics_doc=decision.pics_doc,
+                        force_overwrite=True,
+                    )
+                    if gen_res.is_valid and gen_res.output_path.exists():
+                        with open(gen_res.output_path, encoding="utf-8-sig") as sf:
+                            s_content = sf.read()
+                        s_preview = definition_preview(s_content, limit=200)
+                        sunspec_files.append(
+                            {
+                                "filename": gen_res.output_path.name,
+                                "register_count": gen_res.register_count,
+                                "is_valid": gen_res.is_valid,
+                                "preview": s_preview,
+                                "csv_content": s_content,
+                                "profile": tgt.profile.value,
+                                "topology": tgt.topology.value,
+                            }
+                        )
+        except Exception as e:
+            logger.warning("SunSpec conditional generation evaluation error: %s", e)
+            sunspec_reason = f"SunSpec evaluation exception: {e}"
+
     return {
         "success": True,
         "is_valid": report.is_valid,
@@ -513,6 +700,9 @@ def _convert_document(
         "csv_content": csv_content,
         "issues": _serialize_issues(report),
         "stats": report.stats,
+        "sunspec_generated": len(sunspec_files) > 0,
+        "sunspec_files": sunspec_files,
+        "sunspec_reason": sunspec_reason,
     }
 
 
@@ -847,6 +1037,298 @@ def get_library(
             )
         )
     return catalog
+
+
+@app.get("/api/library/{filename}/inspect", response_model=InspectResponse)
+def inspect_library_file(filename: str) -> InspectResponse:
+    """Returns parsed registers, 5 Pillars status, and metadata for in-browser inspection."""
+    safe_filename = os.path.basename(filename.replace("\\", "/").strip())
+    if not safe_filename or not safe_filename.lower().endswith(".csv"):
+        raise HTTPException(status_code=400, detail="Invalid definition filename.")
+
+    production_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "production"))
+    definitions_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "Definitions"))
+
+    file_path = os.path.join(production_dir, safe_filename)
+    if not os.path.exists(file_path):
+        file_path = os.path.join(definitions_dir, safe_filename)
+    if not os.path.exists(file_path):
+        matches = list(Path(definitions_dir).rglob(safe_filename))
+        if matches:
+            file_path = str(matches[0])
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=404, detail=f"Definition '{safe_filename}' not found.")
+
+    from DefFileGenerator.production_governor import verify_file_pillars
+
+    pillars_valid, pillar_issues = verify_file_pillars(Path(file_path))
+
+    with open(file_path, encoding="utf-8-sig", errors="replace") as f:
+        csv_content = f.read()
+
+    lines = [ln.strip() for ln in csv_content.splitlines() if ln.strip()]
+    if not lines:
+        raise HTTPException(status_code=400, detail="Empty definition file.")
+
+    header_cols = lines[0].split(";")
+    protocol = header_cols[0] if len(header_cols) > 0 else "Modbus"
+    category = header_cols[1] if len(header_cols) > 1 else "Inverter"
+    mfg = header_cols[2] if len(header_cols) > 2 else "Unknown"
+    model = header_cols[3] if len(header_cols) > 3 else "Unknown"
+
+    registers = []
+    for line in lines[1:]:
+        cols = line.split(";")
+        if len(cols) < 11:
+            cols.extend([""] * (11 - len(cols)))
+        registers.append(
+            {
+                "index": int(cols[0]) if cols[0].isdigit() else len(registers) + 1,
+                "reg_type": cols[1],
+                "address": cols[2],
+                "data_type": cols[3],
+                "operation": cols[4],
+                "name": cols[5],
+                "tag": cols[6],
+                "factor": cols[7],
+                "offset": cols[8],
+                "unit": cols[9],
+                "action": cols[10],
+            }
+        )
+
+    size_kb = round(os.path.getsize(file_path) / 1024, 1)
+
+    return InspectResponse(
+        success=True,
+        filename=safe_filename,
+        category=category,
+        manufacturer=mfg,
+        model=model,
+        size_kb=size_kb,
+        register_count=len(registers),
+        pillars_valid=pillars_valid,
+        pillar_issues=pillar_issues,
+        header={
+            "protocol": protocol,
+            "category": category,
+            "manufacturer": mfg,
+            "model": model,
+        },
+        registers=registers,
+        csv_content=csv_content,
+    )
+
+
+@app.post("/api/definition/revalidate", response_model=RevalidateDefinitionResponse)
+async def revalidate_definition(
+    payload: RevalidateDefinitionRequest,
+) -> RevalidateDefinitionResponse:
+    """Revalidates user-edited definition registers against Apollo 5 Pillars and returns updated CSV."""
+    if not payload.registers:
+        raise HTTPException(status_code=400, detail="No registers provided in definition.")
+
+    safe_filename = os.path.basename(payload.filename.replace("\\", "/").strip())
+    if not safe_filename.lower().endswith(".csv"):
+        safe_filename += ".csv"
+
+    header_line = f"{payload.protocol};{payload.category};{payload.manufacturer};{payload.model};;;;;;;"
+    lines = [header_line]
+
+    for idx, reg in enumerate(payload.registers, start=1):
+        try:
+            f_val = float(reg.factor)
+            factor_str = f"{f_val:.6f}"
+        except Exception:
+            factor_str = str(reg.factor)
+        try:
+            o_val = float(reg.offset)
+            offset_str = f"{o_val:.6f}"
+        except Exception:
+            offset_str = str(reg.offset)
+
+        line = f"{idx};{reg.reg_type};{reg.address};{reg.data_type};{reg.operation};{reg.name};{reg.tag};{factor_str};{offset_str};{reg.unit};{reg.action}"
+        lines.append(line)
+
+    csv_content = "\r\n".join(lines) + "\r\n"
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        temp_file = os.path.join(temp_dir, safe_filename)
+        with open(temp_file, "wb") as f:
+            f.write(csv_content.encode("utf-8"))
+
+        if payload.auto_tag:
+            try:
+                from DefFileGenerator.knowledge_miner import enrich_definition_file
+
+                enrich_definition_file(temp_file, temp_file, equipment_type=payload.category)
+                with open(temp_file, "r", encoding="utf-8-sig") as f:
+                    csv_content = f.read()
+            except Exception as e:
+                logger.warning("Auto-tagging during revalidation error: %s", e)
+
+        from DefFileGenerator.production_governor import verify_file_pillars
+
+        pillars_valid, pillar_issues = verify_file_pillars(Path(temp_file))
+
+        report = Generator().validate_csv_detailed(temp_file, strict=False)
+        preview_rows = definition_preview(csv_content, limit=500)
+
+        pillars_status = {
+            "naming": not any(
+                "Filename" in iss or "prefix" in iss or "underscore" in iss for iss in pillar_issues
+            ),
+            "addressing": not any("address" in iss.lower() for iss in pillar_issues),
+            "function_codes": not any("function code" in iss.lower() for iss in pillar_issues),
+            "action_codes": not any("action code" in iss.lower() for iss in pillar_issues),
+            "tags": not any("tag" in iss.lower() for iss in pillar_issues),
+            "encoding_schema": not any(
+                "BOM" in iss or "columns" in iss or "header" in iss.lower()
+                for iss in pillar_issues
+            ),
+        }
+
+        return RevalidateDefinitionResponse(
+            success=True,
+            is_valid=pillars_valid and report.is_valid,
+            filename=safe_filename,
+            register_count=report.register_count,
+            issues=pillar_issues
+            + [iss.message for iss in report.issues if iss.severity == "ERROR"],
+            pillars=pillars_status,
+            csv_content=csv_content,
+            preview=preview_rows,
+        )
+
+
+@app.post("/api/sunspec/evaluate", response_model=SunSpecEvaluateResponse)
+async def sunspec_evaluate(
+    file: UploadFile | None = File(None),
+    query: str = Form(""),
+    mode: str = Form("auto"),
+    manufacturer: str = Form(""),
+    model: str = Form(""),
+    category: str = Form("Inverter"),
+    base_address: int = Form(40000),
+    mppt_ports: int = Form(0),
+) -> SunSpecEvaluateResponse:
+    """Evaluates whether an equipment or documentation qualifies for SunSpec generation."""
+    from DefFileGenerator.sunspec import SunSpecCliMode, SunSpecRelevanceEvaluator
+
+    evaluator = SunSpecRelevanceEvaluator()
+    input_path = None
+    raw_text = query.strip() if query.strip() else None
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        if file and file.filename:
+            safe_name = os.path.basename(file.filename.replace("\\", "/").strip())
+            input_path = os.path.join(temp_dir, safe_name)
+            await _save_upload(file, input_path)
+
+        mode_enum = (
+            SunSpecCliMode(mode.lower())
+            if mode in ("auto", "force", "off")
+            else SunSpecCliMode.AUTO
+        )
+        decision = evaluator.evaluate(
+            source_path=input_path,
+            raw_text=raw_text,
+            cli_mode=mode_enum,
+            manufacturer=manufacturer or None,
+            model=model or None,
+            category=category or None,
+            forced_base_address=base_address,
+            forced_ports=mppt_ports if mppt_ports > 0 else None,
+        )
+
+        target_items = [
+            SunSpecTargetItem(
+                prefix=t.prefix,
+                manufacturer=t.manufacturer,
+                model_name=t.model_name,
+                profile=t.profile.value,
+                topology=t.topology.value,
+                model_ids=t.model_ids,
+                base_address=t.base_address,
+                common_model_length=t.common_model_length,
+                functional_scope=t.functional_scope,
+                filename=t.output_filename or t.get_default_filename(),
+            )
+            for t in decision.targets
+        ]
+
+        return SunSpecEvaluateResponse(
+            success=True,
+            should_generate=decision.should_generate,
+            is_skipped=decision.is_skipped,
+            is_forced=decision.is_forced,
+            reason=decision.reason,
+            detected_models=decision.detected_models,
+            detected_profiles=[p.value for p in decision.detected_profiles],
+            targets=target_items,
+        )
+
+
+@app.post("/api/sunspec/generate", response_model=SunSpecGenerateResponse)
+def sunspec_generate(payload: SunSpecGenerateRequest) -> SunSpecGenerateResponse:
+    """Generates a certified 5-Pillars WebdynSunPM definition from SunSpec models."""
+    from DefFileGenerator.sunspec import (
+        SunSpecDefinitionGenerator,
+        SunSpecGenerationTarget,
+        SunSpecProfileGeneration,
+        SunSpecTopology,
+    )
+
+    prefix_map = {"Inverter": "INV", "Meter": "MET", "Battery": "BAT"}
+    prefix = prefix_map.get(payload.category, "INV")
+
+    profile_enum = (
+        SunSpecProfileGeneration.DER700
+        if "700" in payload.profile.upper()
+        else SunSpecProfileGeneration.LEGACY
+    )
+    topology_enum = (
+        SunSpecTopology.SINGLE_PHASE
+        if "SINGLE" in payload.topology.upper()
+        else SunSpecTopology.THREE_PHASE
+    )
+
+    models = payload.model_ids
+    if not models:
+        models = [1, 701, 702] if profile_enum == SunSpecProfileGeneration.DER700 else [1, 103]
+
+    target = SunSpecGenerationTarget(
+        prefix=prefix,
+        manufacturer=payload.manufacturer,
+        model_name=payload.model,
+        profile=profile_enum,
+        topology=topology_enum,
+        model_ids=models,
+        base_address=payload.base_address,
+        common_model_length=payload.common_model_len,
+        repeating_counts={160: payload.mppt_ports, 714: payload.mppt_ports}
+        if payload.mppt_ports > 0
+        else {},
+    )
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        generator = SunSpecDefinitionGenerator()
+        result = generator.generate(target, output_dir=temp_dir, force_overwrite=True)
+
+        with open(result.output_path, encoding="utf-8-sig") as f:
+            csv_content = f.read()
+
+        preview_rows = definition_preview(csv_content, limit=500)
+
+        return SunSpecGenerateResponse(
+            success=True,
+            filename=result.output_path.name,
+            register_count=result.register_count,
+            is_valid=result.is_valid,
+            issues=result.issues,
+            csv_content=csv_content,
+            preview=preview_rows,
+        )
 
 
 @app.get("/api/library/{filename}")

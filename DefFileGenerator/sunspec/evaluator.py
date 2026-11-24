@@ -224,6 +224,20 @@ class SunSpecRelevanceEvaluator:
                     forced_ports=forced_ports,
                 )
 
+        # 6. Check raw text for explicit Model IDs
+        if raw_text:
+            models_from_text = self._detect_models_from_text(raw_text)
+            if models_from_text:
+                return self._plan_targets_from_models(
+                    models=models_from_text,
+                    source_path=source_path,
+                    manufacturer=manufacturer,
+                    model=model,
+                    category=category,
+                    forced_base_address=forced_base_address,
+                    forced_ports=forced_ports,
+                )
+
         # Default fallback: No actionable SunSpec detected
         return SunSpecRelevanceDecision(
             should_generate=False,
@@ -312,6 +326,20 @@ class SunSpecRelevanceEvaluator:
             if addr_str in ("40000", "40001") and ("suns" in name.lower() or "suns" in desc.lower()):
                 detected.add(1)
 
+        return sorted(detected)
+
+    def _detect_models_from_text(self, text: str) -> list[int]:
+        """Scans raw text for explicit SunSpec Model IDs."""
+        if not text:
+            return []
+        detected = set()
+        matches = re.finditer(r"\b(?:sunspec\s+)?(?:model|bloc|profile)\s*(\d{1,4})\b", text, re.IGNORECASE)
+        for m in matches:
+            mid = int(m.group(1))
+            if mid in (1, 101, 102, 103, 120, 123, 124, 160, 201, 202, 203, 204, 701, 702, 704, 714, 802):
+                detected.add(mid)
+        if re.search(r"\b0x53756E53\b", text, re.IGNORECASE) or re.search(r"\b4000[0-2]\b", text):
+            detected.add(1)
         return sorted(detected)
 
     def _plan_targets_from_pics(

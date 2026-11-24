@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabBindings = [
         { btnId: 'tabBtnConvert', paneId: 'tab-convert' },
         { btnId: 'tabBtnDiscovery', paneId: 'tab-discovery' },
+        { btnId: 'tabBtnSunspec', paneId: 'tab-sunspec' },
         { btnId: 'tabBtnTag', paneId: 'tab-tag' },
         { btnId: 'tabBtnAudit', paneId: 'tab-audit' },
         {
@@ -178,21 +179,60 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
 
-    // Load Knowledge Base Stats on startup
+    // Load Knowledge Base Stats & Dynamic Certified Counts on startup
     async function loadKnowledgeStats() {
         const pill = document.getElementById('knowledgePill');
-        if (!pill) return;
         try {
-            const res = await fetch('/api/knowledge-stats');
-            if (res.ok) {
-                const data = await res.json();
-                if (data && data.total_mappings) {
-                    pill.textContent = `🧠 ${data.total_mappings.toLocaleString()} variables apprises`;
+            const [kbRes, healthRes] = await Promise.all([
+                fetch('/api/knowledge-stats'),
+                fetch('/api/health')
+            ]);
+            if (kbRes.ok) {
+                const data = await kbRes.json();
+                if (pill && data && data.total_mappings) {
+                    pill.textContent = `🧠 ${data.total_mappings.toLocaleString()} variables`;
                 }
             }
-        } catch {}
+            if (healthRes.ok) {
+                const healthData = await healthRes.json();
+                if (healthData && healthData.stats) {
+                    const prodCount = healthData.stats.production_models || 1194;
+                    const defsCount = healthData.stats.definitions_models || 136;
+                    const headerBadge = document.getElementById('headerModelsBadge');
+                    if (headerBadge) {
+                        headerBadge.textContent = `🏛️ ${prodCount.toLocaleString()} Certified Models`;
+                    }
+                    const navBadge = document.getElementById('navLibraryCountBadge');
+                    if (navBadge) {
+                        navBadge.textContent = `(${prodCount.toLocaleString()})`;
+                    }
+                    const sourceProd = document.getElementById('sourceProdCount');
+                    if (sourceProd) {
+                        sourceProd.textContent = prodCount.toLocaleString();
+                    }
+                    const sourceDefs = document.getElementById('sourceDefsCount');
+                    if (sourceDefs) {
+                        sourceDefs.textContent = defsCount.toLocaleString();
+                    }
+                }
+            }
+        } catch (_) {}
     }
     loadKnowledgeStats();
+
+    // Theme Toggle (Light / Dark Mode)
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    if (themeToggleBtn) {
+        if (localStorage.getItem('webdyn_theme') === 'light') {
+            document.body.classList.add('light-theme');
+        }
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            localStorage.setItem('webdyn_theme', isLight ? 'light' : 'dark');
+            showToast(`Theme switched to ${isLight ? 'Light' : 'Dark'} mode`, 'info');
+        });
+    }
 
     // =========================================================================
     // Helper: Wire Drag & Drop for a Zone
@@ -305,6 +345,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const forcedWrite = (document.getElementById('forcedWriteInput').value || '').trim();
             const autoTagCheck = document.getElementById('autoTagCheck');
             const doTag = autoTagCheck ? autoTagCheck.checked : true;
+            const sunspecMode = document.getElementById('sunspecModeSelect') ? document.getElementById('sunspecModeSelect').value : 'auto';
+            const sunspecBase = document.getElementById('sunspecBaseSelect') ? document.getElementById('sunspecBaseSelect').value : '40000';
+            const sunspecPorts = document.getElementById('sunspecPortsInput') ? document.getElementById('sunspecPortsInput').value : '0';
 
             const convertErrorBox = document.getElementById('convertErrorBox');
             const convertErrorMessage = document.getElementById('convertErrorMessage');
@@ -318,6 +361,9 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append('category', category);
             formData.append('address_offset', offset);
             formData.append('tag', doTag);
+            formData.append('sunspec_mode', sunspecMode);
+            formData.append('sunspec_base', sunspecBase);
+            formData.append('sunspec_ports', sunspecPorts);
             if (forcedWrite) formData.append('forced_write', forcedWrite);
 
             const convertLabel = convertBtn.innerHTML;
@@ -369,6 +415,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (copyBtn) copyBtn.disabled = data.is_valid !== true;
                 renderConvertPreview(data.preview || []);
                 resultsSection.classList.remove('hidden');
+
+                // Multi-profile handling (Native + SunSpec files)
+                const currentFiles = [{
+                    filename: data.filename,
+                    csv_content: data.csv_content,
+                    preview: data.preview,
+                    register_count: data.register_count,
+                    label: 'Modbus Native'
+                }];
+                if (data.sunspec_files && data.sunspec_files.length) {
+                    data.sunspec_files.forEach(sf => {
+                        currentFiles.push({
+                            filename: sf.filename,
+                            csv_content: sf.csv_content,
+                            preview: sf.preview,
+                            register_count: sf.register_count,
+                            label: `SunSpec ${sf.profile} (${sf.topology})`
+                        });
+                    });
+                }
+                const switcher = document.getElementById('convertFileSwitcher');
+                const pillsContainer = document.getElementById('convertProfilePills');
+                if (switcher && pillsContainer) {
+                    if (currentFiles.length > 1) {
+                        switcher.classList.remove('hidden');
+                        pillsContainer.innerHTML = '';
+                        currentFiles.forEach((fileObj, idx) => {
+                            const btn = document.createElement('button');
+                            btn.className = `pill-btn ${idx === 0 ? 'active' : ''}`;
+                            btn.textContent = `${fileObj.label} (${fileObj.register_count})`;
+                            btn.addEventListener('click', () => {
+                                pillsContainer.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+                                btn.classList.add('active');
+                                convertedCsvContent = fileObj.csv_content;
+                                convertedFilename = fileObj.filename;
+                                registerBadge.textContent = `${fileObj.register_count} registers`;
+                                renderConvertPreview(fileObj.preview || []);
+                            });
+                            pillsContainer.appendChild(btn);
+                        });
+                        showToast(`Generated ${currentFiles.length} profiles (Native + SunSpec)`, 'info');
+                    } else {
+                        switcher.classList.add('hidden');
+                    }
+                }
 
             } catch (err) {
                 if (version === requestVersion && err.name !== 'AbortError') {
@@ -1183,9 +1274,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td><span class="badge badge-success" style="font-size: 0.72rem;">✓ 5 Pillars PASS</span></td>
                 <td>${sizeKb} KB</td>
                 <td>
-                    <a href="/api/library/${encodeURIComponent(item.filename)}" class="btn btn-primary btn-sm" download>
-                        Download CSV
-                    </a>
+                    <div style="display: flex; gap: 6px;">
+                        <button class="btn btn-secondary btn-sm inspect-lib-btn" data-file="${escapeHtml(item.filename)}">
+                            👁️ Inspect
+                        </button>
+                        <a href="/api/library/${encodeURIComponent(item.filename)}" class="btn btn-primary btn-sm" download>
+                            ⬇️ CSV
+                        </a>
+                    </div>
                 </td>
             `;
             libraryTableBody.appendChild(tr);
@@ -1971,5 +2067,516 @@ document.addEventListener('DOMContentLoaded', () => {
             filterTable(aliasBody);
             filterTable(hardwareFamilyBody);
         });
+    }
+
+    // =========================================================================
+    // MODAL: Definition Inspector & Interactive Editor
+    // =========================================================================
+    const inspectModal = document.getElementById('inspectModal');
+    const inspectModalFilename = document.getElementById('inspectModalFilename');
+    const inspectModalMeta = document.getElementById('inspectModalMeta');
+    const inspectTableBody = document.getElementById('inspectTableBody');
+    const inspectCountBadge = document.getElementById('inspectCountBadge');
+    const inspectPillarsBadge = document.getElementById('inspectPillarsBadge');
+    const inspectDownloadLink = document.getElementById('inspectDownloadLink');
+    const inspectFilterInput = document.getElementById('inspectFilterInput');
+    const inspectEditModeBtn = document.getElementById('inspectEditModeBtn');
+    const inspectAddRowBtn = document.getElementById('inspectAddRowBtn');
+    const inspectCopyBtn = document.getElementById('inspectCopyBtn');
+    const inspectSaveBtn = document.getElementById('inspectSaveBtn');
+    const inspectAlertBox = document.getElementById('inspectAlertBox');
+    const closeInspectModalBtn = document.getElementById('closeInspectModalBtn');
+    const closeInspectModalFooterBtn = document.getElementById('closeInspectModalFooterBtn');
+    const inspectActionsTh = document.getElementById('inspectActionsTh');
+
+    let currentInspectData = null;
+    let isInspectEditMode = false;
+
+    function closeInspectModal() {
+        if (inspectModal) inspectModal.classList.add('hidden');
+        currentInspectData = null;
+        isInspectEditMode = false;
+    }
+    if (closeInspectModalBtn) closeInspectModalBtn.addEventListener('click', closeInspectModal);
+    if (closeInspectModalFooterBtn) closeInspectModalFooterBtn.addEventListener('click', closeInspectModal);
+
+    function updateInspectEditModeUI() {
+        if (inspectEditModeBtn) {
+            inspectEditModeBtn.textContent = isInspectEditMode ? '👁️ View Mode' : '✏️ Edit Mode';
+            inspectEditModeBtn.className = `btn btn-sm ${isInspectEditMode ? 'btn-primary' : 'btn-secondary'}`;
+        }
+        if (inspectAddRowBtn) inspectAddRowBtn.classList.toggle('hidden', !isInspectEditMode);
+        if (inspectSaveBtn) inspectSaveBtn.classList.toggle('hidden', !isInspectEditMode);
+        if (inspectActionsTh) inspectActionsTh.classList.toggle('hidden', !isInspectEditMode);
+    }
+
+    if (inspectEditModeBtn) {
+        inspectEditModeBtn.addEventListener('click', () => {
+            if (!currentInspectData) return;
+            isInspectEditMode = !isInspectEditMode;
+            updateInspectEditModeUI();
+            renderInspectRows(currentInspectData.registers);
+        });
+    }
+
+    if (inspectAddRowBtn) {
+        inspectAddRowBtn.addEventListener('click', () => {
+            if (!currentInspectData) return;
+            const newIndex = (currentInspectData.registers.length || 0) + 1;
+            currentInspectData.registers.push({
+                index: newIndex,
+                reg_type: '3',
+                address: 40000 + newIndex,
+                data_type: 'U16',
+                operation: '',
+                name: `Register_${newIndex}`,
+                tag: '',
+                factor: '1.000000',
+                offset: '0.000000',
+                unit: '',
+                action: '4'
+            });
+            renderInspectRows(currentInspectData.registers);
+            if (inspectCountBadge) {
+                inspectCountBadge.textContent = `${currentInspectData.registers.length} registers`;
+            }
+        });
+    }
+
+    if (inspectCopyBtn) {
+        inspectCopyBtn.addEventListener('click', async () => {
+            if (!currentInspectData || !currentInspectData.csv_content) return;
+            try {
+                await navigator.clipboard.writeText(currentInspectData.csv_content);
+                showToast('Definition CSV copied to clipboard!', 'success');
+            } catch (_) {
+                showToast('Could not copy to clipboard', 'warning');
+            }
+        });
+    }
+
+    if (inspectSaveBtn) {
+        inspectSaveBtn.addEventListener('click', async () => {
+            if (!currentInspectData) return;
+            if (isInspectEditMode) {
+                const trs = inspectTableBody ? inspectTableBody.querySelectorAll('tr[data-idx]') : [];
+                const updatedRegs = [];
+                trs.forEach((tr, idx) => {
+                    const getVal = (name) => {
+                        const input = tr.querySelector(`input[name="${name}"]`);
+                        return input ? input.value.trim() : '';
+                    };
+                    updatedRegs.push({
+                        index: idx + 1,
+                        reg_type: getVal('reg_type') || '3',
+                        address: getVal('address') || '0',
+                        data_type: getVal('data_type') || 'U16',
+                        operation: '',
+                        name: getVal('name') || `Reg_${idx + 1}`,
+                        tag: getVal('tag') || '',
+                        factor: getVal('factor') || '1.000000',
+                        offset: getVal('offset') || '0.000000',
+                        unit: getVal('unit') || '',
+                        action: getVal('action') || '4'
+                    });
+                });
+                if (updatedRegs.length > 0) {
+                    currentInspectData.registers = updatedRegs;
+                }
+            }
+
+            inspectSaveBtn.disabled = true;
+            inspectSaveBtn.textContent = 'Re-validating...';
+
+            try {
+                const payload = {
+                    filename: currentInspectData.filename,
+                    protocol: currentInspectData.header ? currentInspectData.header.protocol : 'Modbus',
+                    category: currentInspectData.category || 'Inverter',
+                    manufacturer: currentInspectData.manufacturer || 'Vendor',
+                    model: currentInspectData.model || 'Model',
+                    registers: currentInspectData.registers,
+                    auto_tag: false
+                };
+                const res = await fetch('/api/definition/revalidate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+                const data = await res.json();
+
+                currentInspectData.csv_content = data.csv_content;
+                currentInspectData.register_count = data.register_count;
+                currentInspectData.pillars_valid = data.is_valid;
+
+                if (inspectPillarsBadge) {
+                    inspectPillarsBadge.textContent = data.is_valid ? '✓ 5 Pillars PASS' : '⚠️ 5 Pillars Issues';
+                    inspectPillarsBadge.className = `badge ${data.is_valid ? 'badge-success' : 'badge-error'}`;
+                }
+                if (inspectCountBadge) {
+                    inspectCountBadge.textContent = `${data.register_count} registers`;
+                }
+                if (inspectAlertBox) {
+                    if (data.is_valid) {
+                        inspectAlertBox.className = 'alert alert-success';
+                        inspectAlertBox.textContent = '✓ Definition validated and complies with Apollo 5 Pillars.';
+                    } else {
+                        inspectAlertBox.className = 'alert alert-error';
+                        inspectAlertBox.textContent = `Issues detected: ${data.issues.slice(0, 3).join(', ')}`;
+                    }
+                    inspectAlertBox.classList.remove('hidden');
+                }
+                showToast(data.is_valid ? 'Definition successfully re-validated!' : 'Validation failed', data.is_valid ? 'success' : 'error');
+            } catch (err) {
+                showToast(`Re-validation error: ${err.message}`, 'error');
+            } finally {
+                inspectSaveBtn.disabled = false;
+                inspectSaveBtn.textContent = '💾 Save & Re-validate';
+            }
+        });
+    }
+
+    function renderInspectRows(registers) {
+        if (!inspectTableBody) return;
+        inspectTableBody.innerHTML = '';
+        if (!registers || registers.length === 0) {
+            inspectTableBody.innerHTML = '<tr><td colspan="11" style="text-align: center; color: var(--text-secondary);">No registers match query.</td></tr>';
+            return;
+        }
+
+        const maxDisplay = 1000;
+        const displayList = registers.slice(0, maxDisplay);
+
+        displayList.forEach((reg, i) => {
+            const tr = document.createElement('tr');
+            tr.setAttribute('data-idx', i);
+
+            if (isInspectEditMode) {
+                tr.innerHTML = `
+                    <td style="color: var(--text-secondary); font-size: 0.75rem;">${i + 1}</td>
+                    <td><input type="text" name="reg_type" class="cell-input" value="${escapeHtml(reg.reg_type || '3')}" style="width: 38px;"></td>
+                    <td><input type="text" name="address" class="cell-input" value="${escapeHtml(reg.address || '')}" style="width: 70px;"></td>
+                    <td><input type="text" name="data_type" class="cell-input" value="${escapeHtml(reg.data_type || 'U16')}" style="width: 65px;"></td>
+                    <td><input type="text" name="name" class="cell-input" value="${escapeHtml(reg.name || '')}"></td>
+                    <td><input type="text" name="tag" class="cell-input" value="${escapeHtml(reg.tag || '')}"></td>
+                    <td><input type="text" name="factor" class="cell-input" value="${escapeHtml(reg.factor || '1.000000')}" style="width: 75px;"></td>
+                    <td><input type="text" name="offset" class="cell-input" value="${escapeHtml(reg.offset || '0.000000')}" style="width: 65px;"></td>
+                    <td><input type="text" name="unit" class="cell-input" value="${escapeHtml(reg.unit || '')}" style="width: 55px;"></td>
+                    <td><input type="text" name="action" class="cell-input" value="${escapeHtml(reg.action || '4')}" style="width: 38px;"></td>
+                    <td><button type="button" class="btn-text del-row-btn" style="color: #ef4444; font-size: 1rem;">&times;</button></td>
+                `;
+                const delBtn = tr.querySelector('.del-row-btn');
+                if (delBtn) {
+                    delBtn.addEventListener('click', () => {
+                        const targetIdx = currentInspectData.registers.indexOf(reg);
+                        if (targetIdx !== -1) {
+                            currentInspectData.registers.splice(targetIdx, 1);
+                            renderInspectRows(currentInspectData.registers);
+                            if (inspectCountBadge) {
+                                inspectCountBadge.textContent = `${currentInspectData.registers.length} registers`;
+                            }
+                        }
+                    });
+                }
+            } else {
+                const tagBadge = reg.tag ? `<span class="tag-pill">${escapeHtml(reg.tag)}</span>` : '<span style="color: var(--text-secondary);">-</span>';
+                tr.innerHTML = `
+                    <td style="color: var(--text-secondary); font-size: 0.75rem;">${i + 1}</td>
+                    <td><code>${escapeHtml(reg.reg_type || '3')}</code></td>
+                    <td><strong>${escapeHtml(reg.address || '')}</strong></td>
+                    <td><span class="badge" style="background: rgba(255,255,255,0.06); font-size: 0.75rem;">${escapeHtml(reg.data_type || '')}</span></td>
+                    <td>${escapeHtml(reg.name || '')}</td>
+                    <td>${tagBadge}</td>
+                    <td style="font-family: monospace; font-size: 0.8rem;">${escapeHtml(reg.factor || '1.000000')}</td>
+                    <td style="font-family: monospace; font-size: 0.8rem;">${escapeHtml(reg.offset || '0.000000')}</td>
+                    <td>${escapeHtml(reg.unit || '')}</td>
+                    <td><code>${escapeHtml(reg.action || '4')}</code></td>
+                `;
+            }
+            inspectTableBody.appendChild(tr);
+        });
+
+        if (registers.length > maxDisplay) {
+            const trMore = document.createElement('tr');
+            trMore.innerHTML = `<td colspan="11" style="text-align: center; color: var(--text-secondary); font-style: italic;">... and ${registers.length - maxDisplay} more registers</td>`;
+            inspectTableBody.appendChild(trMore);
+        }
+    }
+
+    async function openInspectModal(filename) {
+        if (!inspectModal) return;
+        inspectModal.classList.remove('hidden');
+        if (inspectModalFilename) inspectModalFilename.textContent = filename;
+        if (inspectModalMeta) inspectModalMeta.textContent = 'Loading definition metadata...';
+        if (inspectTableBody) inspectTableBody.innerHTML = '<tr><td colspan="11" style="text-align: center; color: var(--text-secondary);">Loading registers...</td></tr>';
+        if (inspectDownloadLink) {
+            inspectDownloadLink.href = `/api/library/${encodeURIComponent(filename)}`;
+            inspectDownloadLink.setAttribute('download', filename);
+        }
+        if (inspectAlertBox) inspectAlertBox.classList.add('hidden');
+        if (inspectFilterInput) inspectFilterInput.value = '';
+
+        currentInspectData = null;
+        isInspectEditMode = false;
+        updateInspectEditModeUI();
+
+        try {
+            const res = await fetch(`/api/library/${encodeURIComponent(filename)}/inspect`);
+            if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+            const data = await res.json();
+            currentInspectData = data;
+
+            if (inspectModalMeta) {
+                metaText = `${data.manufacturer} • ${data.model} • ${data.category} • ${data.size_kb} KB`;
+                inspectModalMeta.textContent = metaText;
+            }
+            if (inspectCountBadge) {
+                inspectCountBadge.textContent = `${data.register_count} registers`;
+            }
+            if (inspectPillarsBadge) {
+                inspectPillarsBadge.textContent = data.pillars_valid ? '✓ 5 Pillars PASS' : '⚠️ 5 Pillars Issues';
+                inspectPillarsBadge.className = `badge ${data.pillars_valid ? 'badge-success' : 'badge-error'}`;
+            }
+
+            renderInspectRows(data.registers);
+        } catch (err) {
+            if (inspectTableBody) {
+                inspectTableBody.innerHTML = `<tr><td colspan="11" style="text-align: center; color: #ef4444;">Failed to load definition: ${escapeHtml(err.message)}</td></tr>`;
+            }
+        }
+    }
+
+    if (inspectFilterInput) {
+        inspectFilterInput.addEventListener('input', () => {
+            if (!currentInspectData) return;
+            const q = inspectFilterInput.value.trim().toLowerCase();
+            if (!q) {
+                renderInspectRows(currentInspectData.registers);
+                return;
+            }
+            const filtered = currentInspectData.registers.filter(r =>
+                (r.name && r.name.toLowerCase().includes(q)) ||
+                (r.tag && r.tag.toLowerCase().includes(q)) ||
+                (r.address != null && String(r.address).includes(q)) ||
+                (r.data_type && r.data_type.toLowerCase().includes(q))
+            );
+            renderInspectRows(filtered);
+        });
+    }
+
+    if (libraryTableBody) {
+        libraryTableBody.addEventListener('click', (e) => {
+            const btn = e.target.closest('.inspect-lib-btn');
+            if (btn) {
+                const fname = btn.getAttribute('data-file');
+                if (fname) openInspectModal(fname);
+            }
+        });
+    }
+
+    // =========================================================================
+    // TAB SUNSPEC: SunSpec Protocol Studio & Relevance Evaluator
+    // =========================================================================
+    const sunspecDropZone = document.getElementById('sunspecDropZone');
+    const sunspecFileInput = document.getElementById('sunspecFileInput');
+    const sunspecFileDetails = document.getElementById('sunspecFileDetails');
+    const sunspecFileName = document.getElementById('sunspecFileName');
+    const sunspecRemoveFileBtn = document.getElementById('sunspecRemoveFileBtn');
+    const sunspecEvaluateBtn = document.getElementById('sunspecEvaluateBtn');
+    const sunspecGenerateBtn = document.getElementById('sunspecGenerateBtn');
+    const sunspecResultsSection = document.getElementById('sunspecResultsSection');
+    const sunspecGateBadge = document.getElementById('sunspecGateBadge');
+    const sunspecModelsBadge = document.getElementById('sunspecModelsBadge');
+    const sunspecReasonBox = document.getElementById('sunspecReasonBox');
+    const sunspecDetectedPills = document.getElementById('sunspecDetectedPills');
+    const sunspecTargetsList = document.getElementById('sunspecTargetsList');
+    const sunspecErrorBox = document.getElementById('sunspecErrorBox');
+    const sunspecErrorMessage = document.getElementById('sunspecErrorMessage');
+
+    let sunspecSelectedFile = null;
+
+    setupDropZone(sunspecDropZone, sunspecFileInput, (file) => {
+        sunspecSelectedFile = file;
+        sunspecFileName.textContent = `${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+        sunspecDropZone.classList.add('hidden');
+        sunspecFileDetails.classList.remove('hidden');
+    });
+
+    if (sunspecRemoveFileBtn) {
+        sunspecRemoveFileBtn.addEventListener('click', () => {
+            sunspecSelectedFile = null;
+            if (sunspecFileInput) sunspecFileInput.value = '';
+            sunspecDropZone.classList.remove('hidden');
+            sunspecFileDetails.classList.add('hidden');
+        });
+    }
+
+    async function runSunSpecEvaluation(autoGenerate = false) {
+        const query = (document.getElementById('sunspecQueryInput')?.value || '').trim();
+        const mode = document.getElementById('sunspecGateModeSelect')?.value || 'auto';
+        const base = document.getElementById('sunspecStudioBaseSelect')?.value || '40000';
+        const ports = document.getElementById('sunspecStudioPortsInput')?.value || '0';
+
+        if (!sunspecSelectedFile && !query) {
+            showToast('Please upload a PICS document or enter an equipment query', 'warning');
+            return;
+        }
+
+        if (sunspecErrorBox) sunspecErrorBox.classList.add('hidden');
+        if (sunspecEvaluateBtn) sunspecEvaluateBtn.disabled = true;
+        if (sunspecGenerateBtn) sunspecGenerateBtn.disabled = true;
+
+        const formData = new FormData();
+        if (sunspecSelectedFile) formData.append('file', sunspecSelectedFile);
+        formData.append('query', query);
+        formData.append('mode', mode);
+        formData.append('base_address', base);
+        formData.append('mppt_ports', ports);
+
+        try {
+            const res = await fetch('/api/sunspec/evaluate', {
+                method: 'POST',
+                body: formData
+            });
+            if (!res.ok) {
+                const errData = await res.json().catch(() => ({}));
+                throw new Error(errData.detail || `HTTP ${res.status}`);
+            }
+            const data = await res.json();
+            renderSunSpecResults(data, autoGenerate);
+        } catch (err) {
+            showToast(`SunSpec evaluation error: ${err.message}`, 'error');
+            if (sunspecErrorBox && sunspecErrorMessage) {
+                sunspecErrorMessage.textContent = err.message;
+                sunspecErrorBox.classList.remove('hidden');
+            }
+        } finally {
+            if (sunspecEvaluateBtn) sunspecEvaluateBtn.disabled = false;
+            if (sunspecGenerateBtn) sunspecGenerateBtn.disabled = false;
+        }
+    }
+
+    function renderSunSpecResults(data, autoGenerate) {
+        if (!sunspecResultsSection) return;
+        sunspecResultsSection.classList.remove('hidden');
+
+        if (sunspecGateBadge) {
+            if (data.should_generate) {
+                sunspecGateBadge.textContent = data.is_forced ? '⚡ FORCED: Manual SunSpec' : '✓ GATE PASS: SunSpec Relevant';
+                sunspecGateBadge.className = 'badge badge-success';
+            } else {
+                sunspecGateBadge.textContent = '⚠️ GATE REJECT: Skipped';
+                sunspecGateBadge.className = 'badge badge-warning';
+            }
+        }
+
+        if (sunspecModelsBadge) {
+            sunspecModelsBadge.textContent = `${(data.detected_models || []).length} Models Detected`;
+        }
+
+        if (sunspecReasonBox) {
+            sunspecReasonBox.innerHTML = `<strong>Gate Decision Reason:</strong> ${escapeHtml(data.reason || 'None')}`;
+        }
+
+        if (sunspecDetectedPills) {
+            sunspecDetectedPills.innerHTML = '';
+            if (!data.detected_models || data.detected_models.length === 0) {
+                sunspecDetectedPills.innerHTML = '<span style="color: var(--text-secondary); font-size: 0.85rem;">No explicit SunSpec Model IDs detected.</span>';
+            } else {
+                const modelNames = {
+                    1: 'Common Model',
+                    101: '1-Phase Inverter',
+                    102: 'Split-Phase Inverter',
+                    103: '3-Phase Inverter',
+                    120: 'Nameplate',
+                    123: 'Immediate Controls',
+                    124: 'Storage Controls',
+                    160: 'Multiple MPPT',
+                    201: '1-Phase Meter',
+                    203: '3-Phase Wye Meter',
+                    204: '3-Phase Delta Meter',
+                    701: 'DER AC Measurements',
+                    702: 'DER Capacity',
+                    704: 'DER Controls',
+                    714: 'DER DC Multiple Ports',
+                    802: 'BESS Battery Base'
+                };
+                data.detected_models.forEach(id => {
+                    const span = document.createElement('span');
+                    span.className = 'model-pill';
+                    span.textContent = `Model ${id} (${modelNames[id] || 'SunSpec Point'})`;
+                    sunspecDetectedPills.appendChild(span);
+                });
+            }
+        }
+
+        if (sunspecTargetsList) {
+            sunspecTargetsList.innerHTML = '';
+            if (!data.targets || data.targets.length === 0) {
+                sunspecTargetsList.innerHTML = '<span style="color: var(--text-secondary); font-size: 0.85rem;">No SunSpec targets planned for generation.</span>';
+            } else {
+                data.targets.forEach(tgt => {
+                    const card = document.createElement('div');
+                    card.className = 'sunspec-target-card';
+                    card.innerHTML = `
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.95rem;">${escapeHtml(tgt.filename)}</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">
+                                Profile: <strong>${escapeHtml(tgt.profile)}</strong> • Topology: <strong>${escapeHtml(tgt.topology)}</strong> • Models: <code>${tgt.model_ids.join(', ')}</code> • Base: ${tgt.base_address}
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-sm gen-target-btn">
+                            ⬇️ Generate Definition
+                        </button>
+                    `;
+                    const btn = card.querySelector('.gen-target-btn');
+                    if (btn) {
+                        btn.addEventListener('click', async () => {
+                            await generateSingleSunSpecTarget(tgt);
+                        });
+                    }
+                    sunspecTargetsList.appendChild(card);
+                });
+            }
+        }
+
+        if (autoGenerate && data.targets && data.targets.length > 0) {
+            data.targets.forEach(tgt => generateSingleSunSpecTarget(tgt));
+        }
+    }
+
+    async function generateSingleSunSpecTarget(tgt) {
+        try {
+            const payload = {
+                manufacturer: tgt.manufacturer,
+                model: tgt.model_name,
+                category: tgt.prefix === 'MET' ? 'Meter' : (tgt.prefix === 'BAT' ? 'Battery' : 'Inverter'),
+                base_address: tgt.base_address,
+                common_model_len: tgt.common_model_length,
+                profile: tgt.profile,
+                topology: tgt.topology,
+                model_ids: tgt.model_ids,
+                mppt_ports: (tgt.model_ids.includes(160) || tgt.model_ids.includes(714)) ? 4 : 0
+            };
+            const res = await fetch('/api/sunspec/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const data = await res.json();
+            triggerDownload(data.csv_content, data.filename);
+            showToast(`Generated & downloaded ${data.filename} (${data.register_count} registers)`, 'success');
+        } catch (err) {
+            showToast(`Generation failed: ${err.message}`, 'error');
+        }
+    }
+
+    if (sunspecEvaluateBtn) {
+        sunspecEvaluateBtn.addEventListener('click', () => runSunSpecEvaluation(false));
+    }
+    if (sunspecGenerateBtn) {
+        sunspecGenerateBtn.addEventListener('click', () => runSunSpecEvaluation(true));
     }
 });
