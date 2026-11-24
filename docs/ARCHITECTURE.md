@@ -71,8 +71,9 @@ flowchart TD
   - `extractor.py` : Analyseur universel de documents (PDF, Excel, CSV, XML).
   - `def_gen.py` : Moteur de normalisation, conversion d'adresses hex/dec et formatage CSV 11 colonnes.
   - `knowledge_miner.py` : Moteur d'inférence sémantique entraîné pour attribuer les tags SunPM normalisés.
+  - `sunspec/` : Moteur de génération conditionnelle SunSpec (analyseur PICS, gate de pertinence, modèles officiels, conformité 5 Piliers).
   - `production_governor.py` : Règle de vérification des 5 Piliers Apollo.
-  - `tests/` : Suite complète de tests unitaires, fuzzing, red-team et intégration (4 653 tests).
+  - `tests/` : Suite complète de tests unitaires, fuzzing, red-team et intégration (4 684 tests).
 - **`scripts/`** : Scripts CLI opérationnels (build, validation, extraction, journalisation d'audit).
 
 ### 4. 🔄 Sas de Transition, Miroirs & Bundles Dédiés

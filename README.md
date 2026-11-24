@@ -38,6 +38,7 @@
   - [3. Local Web Interface (FastAPI Browser App)](#3-local-web-interface-fastapi-browser-app)
   - [4. Python Programmatic API](#4-python-programmatic-api)
 - [🧠 Semantic Knowledge Miner & SunPM Tagging Engine](#-semantic-knowledge-miner--sunpm-tagging-engine)
+- [☀️ SunSpec Alliance Conditional Generation Engine](#-sunspec-alliance-conditional-generation-engine)
 - [📊 Technical Audit & Quality Reporting Engine](#-technical-audit--quality-reporting-engine)
 - [🔋 Industrial Equipment Suites (Mars Renewable, FoxESS & Dyness BESS)](#-industrial-equipment-suites-mars-renewable-foxess--dyness-bess)
 - [🏛️ Apollo-Standard Engineering Architecture & Ledgers](#️-apollo-standard-engineering-architecture--ledgers)
@@ -543,6 +544,53 @@ The knowledge miner incorporates multi-signal context disambiguation rules prior
   - `9`: Status, fault alarm, or warning indicator bitfield (`ALARM_*`, `FAULT_CODE`).
   - `1`: Modbus command / control setpoint (`CMD_*`, Coils, Holding write registers).
   - `0`: Reserved / unmapped memory slot.
+
+---
+
+## ☀️ SunSpec Alliance Conditional Generation Engine
+
+The **SunSpec Alliance Engine** (`DefFileGenerator/sunspec/`) provides intelligent, standards-compliant generation of Webdyn definition files from SunSpec Information Models and PICS (Protocol Implementation Conformance Statement) documents.
+
+### 1. Strict Relevance Gate (`SunSpecRelevanceEvaluator`)
+SunSpec definitions are **never hallucinated or forced blindly**. The engine enforces strict gating criteria:
+- **Generates ONLY IF**: Actionable Model IDs (`1`, `101–103`, `120–126`, `160`, `201–204`, `701–714`, `802+`), PICS workbooks, or `SunS` markers (`0x53756E53` at base 40000/40001) are verified.
+- **Skips Cleanly IF**:
+  - The source contains only proprietary Modbus maps (e.g. Huawei 32000..37000, Sungrow 4999..13000).
+  - "SunSpec" appears only as commercial marketing text without model specifications.
+  - All operational points in detected models are marked unimplemented in PICS.
+  - `--sunspec=off` is specified.
+
+### 2. Intelligent Architectural Decoupling
+To prevent invalid monoliths, models are automatically partitioned into decoupled, specialized definition files:
+- **Architectural Generation Separation**:
+  - **Legacy Profile**: Model 1 (Common) + Model 101/102/103 + optional 120–126, 160.
+  - **DER 700 Profile**: Model 1 (Common) + Model 701 (IEEE 1547-2018 DER AC) + 702, 704, 714.
+  - *Model 103 and Model 701 are never mixed in the same definition file.*
+- **Topological Decoupling**: Single-Phase (101/201), Split-Phase (102/202), Three-Phase (103/203/204).
+- **Functional Slices**: Core Inverter measurements vs. Storage (Model 124/802) vs. Controls/Curtailment (Model 123/704).
+- **Deterministic Naming**: `INV_<Manufacturer>_<Model>_SunSpec_<Profile>_<Topology>.csv` complying with Apollo 5 Pillars.
+
+### 3. Protocol Exactness & Scale Factors (`sunssf`)
+- **Address Chaining**: Exact Modbus address chaining: $\text{addr}_{i+1} = \text{addr}_i + 2 + L$.
+- **Common Model 1 Length**: Dynamically detects $L = 65$ (standard) vs. $L = 66$ (64-bit alignment pad).
+- **Base Addressing**: Auto-detects Base 0 (`40000`) and Base 1 (`40001`).
+- **Scale Factors**:
+  - When fixed scale factors are guaranteed in PICS/datasheet: applies $10^{\text{SF}}$ (e.g. $\text{A\_SF} = -1 \rightarrow 0.100000$).
+  - When dynamic: preserves multiplier `1.000000`, documents `[Dynamic SF: <point>]`, and exposes the scale factor register.
+- **Repeating Blocks**: Expands Model 160 (MPPT strings) and Model 714 (DC ports) from PICS data or `--sunspec-ports`.
+- **Filtering**: Filters out padding words (`pad`) and unimplemented points; documents sentinel null-values (`0x8000`, `0xFFFF`, `0x80000000`, `0xFFFFFFFF`).
+
+### 4. CLI Controls
+```powershell
+# Auto-generate SunSpec definitions when technically confirmed (default)
+deffilegen run pics.xlsx --manufacturer "ABB" --model "PVS-100" --sunspec=auto
+
+# Force generation using standard SunSpec models
+deffilegen run register_map.csv --manufacturer "Generic" --model "Inverter" --sunspec=force --sunspec-ports=4
+
+# Explicitly disable SunSpec generation
+deffilegen run manual.pdf --manufacturer "Huawei" --model "SUN2000" --sunspec=off
+```
 
 ---
 

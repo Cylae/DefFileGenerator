@@ -623,6 +623,49 @@ def generate_command(args: argparse.Namespace) -> None:
         generate_single_definition_report(output, output_report_path=report_path)
         logging.info(f"Technical report generated: {report_path}")
 
+    sunspec_mode = getattr(args, "sunspec", "auto")
+    if sunspec_mode != "off" and not template and input_file:
+        try:
+            from DefFileGenerator.sunspec import (
+                SunSpecDefinitionGenerator,
+                SunSpecRelevanceEvaluator,
+            )
+
+            evaluator = SunSpecRelevanceEvaluator()
+            decision = evaluator.evaluate(
+                source_path=input_file,
+                cli_mode=sunspec_mode,
+                manufacturer=m_name,
+                model=m_model,
+                category=getattr(args, "category", "Inverter"),
+                forced_base_address=getattr(args, "sunspec_base", None),
+                forced_ports=getattr(args, "sunspec_ports", None),
+            )
+            if decision.should_generate:
+                ss_gen = SunSpecDefinitionGenerator()
+                out_dir = os.path.dirname(output) if output else "generated_definitions"
+                out_dir = out_dir if out_dir else "."
+                for target in decision.targets:
+                    res = ss_gen.generate(
+                        target,
+                        output_dir=out_dir,
+                        pics_doc=decision.pics_doc,
+                        force_overwrite=getattr(args, "force", False),
+                    )
+                    if res.is_valid:
+                        logging.info(
+                            f"SunSpec definition generated: {res.output_path.name} "
+                            f"({res.register_count} registers)"
+                        )
+                    else:
+                        logging.warning(
+                            f"SunSpec definition validation rejected {res.output_path.name}: {res.issues}"
+                        )
+            else:
+                logging.info(f"SunSpec generation skipped: {decision.reason}")
+        except Exception as ss_err:
+            logging.warning(f"SunSpec conditional generation encountered error: {ss_err}")
+
 
 def run_command(args: argparse.Namespace) -> None:
     """
@@ -697,6 +740,49 @@ def run_command(args: argparse.Namespace) -> None:
             logging.error("Post-generation validation failed.")
             sys.exit(1)
 
+    sunspec_mode = getattr(args, "sunspec", "auto")
+    if sunspec_mode != "off" and not template and input_file:
+        try:
+            from DefFileGenerator.sunspec import (
+                SunSpecDefinitionGenerator,
+                SunSpecRelevanceEvaluator,
+            )
+
+            evaluator = SunSpecRelevanceEvaluator()
+            decision = evaluator.evaluate(
+                source_path=input_file,
+                cli_mode=sunspec_mode,
+                manufacturer=m_name,
+                model=m_model,
+                category=getattr(args, "category", "Inverter"),
+                forced_base_address=getattr(args, "sunspec_base", None),
+                forced_ports=getattr(args, "sunspec_ports", None),
+            )
+            if decision.should_generate:
+                ss_gen = SunSpecDefinitionGenerator()
+                out_dir = os.path.dirname(output_file) if output_file else "generated_definitions"
+                out_dir = out_dir if out_dir else "."
+                for target in decision.targets:
+                    res = ss_gen.generate(
+                        target,
+                        output_dir=out_dir,
+                        pics_doc=decision.pics_doc,
+                        force_overwrite=getattr(args, "force", False),
+                    )
+                    if res.is_valid:
+                        logging.info(
+                            f"SunSpec definition generated: {res.output_path.name} "
+                            f"({res.register_count} registers)"
+                        )
+                    else:
+                        logging.warning(
+                            f"SunSpec definition validation rejected {res.output_path.name}: {res.issues}"
+                        )
+            else:
+                logging.info(f"SunSpec generation skipped: {decision.reason}")
+        except Exception as ss_err:
+            logging.warning(f"SunSpec conditional generation encountered error: {ss_err}")
+
 
 def _convert_single_doc(
     doc: Path,
@@ -707,6 +793,9 @@ def _convert_single_doc(
     do_tag: bool,
     strict: bool,
     force: bool,
+    sunspec: str = "auto",
+    sunspec_base: int | None = None,
+    sunspec_ports: int | None = None,
 ) -> tuple[bool, str, str | None, str]:
     """
     Process a single document within the batch conversion pipeline.
@@ -777,6 +866,40 @@ def _convert_single_doc(
         if not val_rep.is_valid and strict:
             return False, doc.name, None, "Strict validation rejected definition."
 
+        if sunspec != "off":
+            try:
+                from DefFileGenerator.sunspec import (
+                    SunSpecDefinitionGenerator,
+                    SunSpecRelevanceEvaluator,
+                )
+
+                evaluator = SunSpecRelevanceEvaluator()
+                decision = evaluator.evaluate(
+                    source_path=doc,
+                    cli_mode=sunspec,
+                    manufacturer=mfg,
+                    model=model,
+                    category=category,
+                    forced_base_address=sunspec_base,
+                    forced_ports=sunspec_ports,
+                )
+                if decision.should_generate:
+                    ss_gen = SunSpecDefinitionGenerator()
+                    for target in decision.targets:
+                        res = ss_gen.generate(
+                            target,
+                            output_dir=output_dir,
+                            pics_doc=decision.pics_doc,
+                            force_overwrite=force,
+                        )
+                        if res.is_valid:
+                            logging.info(
+                                f"Batch generated SunSpec definition: {res.output_path.name} "
+                                f"({res.register_count} registers)"
+                            )
+            except Exception as ss_err:
+                logging.debug(f"Batch SunSpec conversion skipped: {ss_err}")
+
         return True, doc.name, out_file, f"OK: {val_rep.register_count} registers"
     except Exception as e:
         return False, doc.name, None, f"Exception: {e}"
@@ -845,6 +968,9 @@ def batch_command(args: argparse.Namespace) -> None:
     do_tag = getattr(args, "tag", False)
     strict = getattr(args, "strict", False)
     force = getattr(args, "force", False)
+    sunspec = getattr(args, "sunspec", "auto")
+    sunspec_base = getattr(args, "sunspec_base", None)
+    sunspec_ports = getattr(args, "sunspec_ports", None)
     report_path = getattr(args, "report", None)
     recursive = getattr(args, "recursive", False)
     jobs = max(1, getattr(args, "jobs", 1) or 1)
@@ -887,6 +1013,9 @@ def batch_command(args: argparse.Namespace) -> None:
                     do_tag,
                     strict,
                     force,
+                    sunspec,
+                    sunspec_base,
+                    sunspec_ports,
                 ): doc
                 for doc in supported_files
             }
@@ -920,6 +1049,9 @@ def batch_command(args: argparse.Namespace) -> None:
                 do_tag,
                 strict,
                 force,
+                sunspec,
+                sunspec_base,
+                sunspec_ports,
             )
             if success and out_file:
                 success_count += 1
@@ -1026,6 +1158,49 @@ def discover_command(args: argparse.Namespace) -> None:
         with staged_text_output(report_path, encoding="utf-8") as f:
             f.write(result.evidence_report)
         logging.info(f"Cryptographic evidence ledger saved to: {report_path}")
+
+    sunspec_mode = getattr(args, "sunspec", "auto")
+    if sunspec_mode != "off":
+        try:
+            from DefFileGenerator.sunspec import (
+                SunSpecDefinitionGenerator,
+                SunSpecRelevanceEvaluator,
+            )
+
+            evaluator = SunSpecRelevanceEvaluator()
+            decision = evaluator.evaluate(
+                source_path=doc_arg,
+                raw_text=result.evidence_report if result else None,
+                cli_mode=sunspec_mode,
+                manufacturer=result.identity.manufacturer if result.identity else None,
+                model=result.identity.exact_model if result.identity else None,
+                category=result.model.category if result.model else None,
+                forced_base_address=getattr(args, "sunspec_base", None),
+                forced_ports=getattr(args, "sunspec_ports", None),
+            )
+            if decision.should_generate:
+                ss_gen = SunSpecDefinitionGenerator()
+                out_dir = os.path.dirname(output_path) if output_path else "."
+                out_dir = out_dir if out_dir else "."
+                for target in decision.targets:
+                    res = ss_gen.generate(
+                        target,
+                        output_dir=out_dir,
+                        pics_doc=decision.pics_doc,
+                        force_overwrite=getattr(args, "force", False),
+                    )
+                    if res.is_valid:
+                        logging.info(
+                            f"SunSpec definition discovered and certified [{res.register_count} registers] -> {res.output_path}"
+                        )
+                    else:
+                        logging.warning(
+                            f"SunSpec definition validation rejected {res.output_path.name}: {res.issues}"
+                        )
+            else:
+                logging.info(f"SunSpec discovery skipped: {decision.reason}")
+        except Exception as ss_err:
+            logging.debug(f"SunSpec discovery evaluation skipped: {ss_err}")
 
 
 def report_command(args: argparse.Namespace) -> None:
@@ -1301,6 +1476,27 @@ def _run_cli(argv: list[str] | None = None) -> None:
             "-q", "--quiet", action="store_true", default=argparse.SUPPRESS, help="Quiet logging"
         )
 
+    def add_sunspec_flags(p: argparse.ArgumentParser) -> None:
+        p.add_argument(
+            "--sunspec",
+            choices=["auto", "force", "off"],
+            default="auto",
+            help="Conditional SunSpec definition file generation mode (default: auto)",
+        )
+        p.add_argument(
+            "--sunspec-base",
+            type=int,
+            choices=[40000, 40001, 30000],
+            default=None,
+            help="Modbus base address for SunSpec models (default: auto-detected, 40000)",
+        )
+        p.add_argument(
+            "--sunspec-ports",
+            type=int,
+            default=None,
+            help="Explicit number of MPPT strings or DC ports for repeating models 160 / 714",
+        )
+
     # GUI
     parser_gui = subparsers.add_parser("gui", help="Launch Windows 11 Desktop Application")
     add_common_flags(parser_gui)
@@ -1311,6 +1507,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
         help="Autonomously discover Modbus documentation online and generate certified definition",
     )
     add_common_flags(parser_discover)
+    add_sunspec_flags(parser_discover)
     parser_discover.add_argument(
         "query",
         help="Equipment reference query (e.g. 'Huawei SUN2000-100KTL', 'Sungrow SG110CX')",
@@ -1370,6 +1567,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
     # Generate
     parser_generate = subparsers.add_parser("generate", help="Generate definition from CSV")
     add_common_flags(parser_generate)
+    add_sunspec_flags(parser_generate)
     parser_generate.add_argument("input_file", nargs="?", help="Input CSV")
     parser_generate.add_argument("-o", "--output", help="Output definition CSV")
     parser_generate.add_argument("--manufacturer", help="Manufacturer name")
@@ -1394,6 +1592,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
     # Run
     parser_run = subparsers.add_parser("run", help="Extract and Generate in one step")
     add_common_flags(parser_run)
+    add_sunspec_flags(parser_run)
     parser_run.add_argument("input_file", nargs="?", help="Source file (PDF/Excel/CSV/XML)")
     parser_run.add_argument("-o", "--output", help="Output definition CSV")
     parser_run.add_argument("--manufacturer", help="Manufacturer name")
@@ -1486,6 +1685,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
         "batch", help="Batch convert a directory of documentation files into definition CSVs"
     )
     add_common_flags(parser_batch)
+    add_sunspec_flags(parser_batch)
     parser_batch.add_argument(
         "input_dir", help="Directory or file containing documentation manuals"
     )
