@@ -763,7 +763,8 @@ uv build --offline
 |---|---|
 | 📖 **[`QUICKSTART.md`](QUICKSTART.md)** | Practical walkthrough with real-world manufacturer file conversions (GoodWe, SMA, ABB). |
 | 📋 **[`docs/input-format.md`](docs/input-format.md)** | Technical reference for input columns, BITS compound rules, and data types. |
-| 🏛️ **[`docs/architecture.md`](docs/architecture.md)** | Detailed architecture flowcharts, component invariants, and public interfaces. |
+| 🏛️ **[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)** | Architecture globale, taxonomie des 5 domaines, diagrammes de flux et règles de gouvernance. |
+| 🗺️ **[`docs/DIRECTORY_TAXONOMY.md`](docs/DIRECTORY_TAXONOMY.md)** | Cartographie détaillée et rôle de chaque répertoire du projet. |
 | 🛡️ **[`docs/security.md`](docs/security.md)** | In-depth security model, CSV injection defense, and automation protections. |
 | 📑 **[`docs/WEBDYN_TAGS_REFERENCE.md`](docs/WEBDYN_TAGS_REFERENCE.md)** | Official SunPM tag dictionary & supervisory telemetry reference. |
 | 🔋 **[`docs/RAPPORT_TECHNIQUE_MARS_RENEWABLE.md`](docs/RAPPORT_TECHNIQUE_MARS_RENEWABLE.md)** | Technical report on Mars Renewable BESS Local Controller V7.0 definition generation. |
@@ -781,61 +782,54 @@ uv build --offline
 
 ---
 
-## 📂 Repository Structure
+## 📂 Repository Structure & 5 Functional Domains
+
+L'arborescence du projet est structurée en **5 domaines fonctionnels étanches** pour une clarté et une intuitivité absolues (voir guide complet : [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)) :
 
 ```text
 DefFileGenerator/
-├── DefFileGenerator/         # Core Python package
-│   ├── def_gen.py            # Modbus normalization, validation & CSV generation
-│   ├── extractor.py          # Multi-format parser (PDF, Excel, CSV, XML)
-│   ├── gui.py                # Desktop GUI application (CustomTkinter / Tkinter)
-│   ├── io_utils.py           # Atomic file IO and preview utilities
-│   ├── knowledge_miner.py    # Semantic SunPM tag inference (1,280,000+ registers dataset)
-│   ├── dyness_generator.py   # Dyness DH-Series BESS (DH200Y, DH200F, DH100F) generator
-│   ├── mars_generator.py     # Mars Renewable BESS & EMS multi-slave generator
-│   ├── report_generator.py   # Technical audit & quality reporting engine
-│   ├── main.py               # Unified CLI entrypoint (deffilegen)
-│   └── tests/                # Comprehensive test suite (3,542 tests, 92% coverage)
-├── web/                      # FastAPI Web Application & UI
-│   ├── app.py                # REST API endpoints (/api/convert, /api/validate)
-│   └── static/               # Responsive Vanilla JS / CSS frontend
-├── production/               # Production Webdyn CSV definitions (1,193 models, 100% 5-pillar compliant)
-├── Definitions/              # Reference industrial equipment definitions library (135 models)
-├── Dyness_DH_Series_Definitions/ # Dedicated Dyness DH-series definitions
-├── FoxESS_P3_H3_Pro_Definitions/ # Dedicated FoxESS P3 / H3 Pro definitions
-├── generated_definitions/    # Generated Webdyn CSV definitions (34+ models)
-├── tagged_definitions/       # Canonical SunPM-tagged production definitions
-├── stress_test_data/         # Real-world vendor datasets for stress testing
-├── docs/                     # Full technical documentation & audit reports
-│   ├── architecture.md       # Architecture & flowcharts
-│   ├── WEBDYN_TAGS_REFERENCE.md # Official SunPM tag dictionary & supervisory telemetry reference
-│   ├── AUDIT_REPORT.md       # Security & code audit evidence
-│   ├── RAPPORT_AUDIT_DOCUMENTS_TECHNIQUES_WEBDYN.md # Technical audit report
-│   ├── RAPPORT_TECHNIQUE_MARS_RENEWABLE.md # Mars Renewable BESS technical report
-│   ├── RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md # FoxESS P3/H3 Pro technical report
-│   ├── input-format.md       # Input format reference
-│   ├── security.md           # Security policy and mitigation models
-│   ├── quickstart.md         # Quick start cheatsheet
-│   └── audit/                # Durable Apollo engineering audit ledgers
-│       ├── PLAN.md           # Engineering plan & milestones
-│       ├── REVIEW_MATRIX.md  # Module LOC, hazards & verification matrix
-│       ├── FINDINGS.md       # Defect tracking & resolution evidence
-│       ├── VALIDATION.md     # Gate verification & coverage ledger
-│       ├── PERFORMANCE.md    # Performance benchmarks & optimization data
-│       └── HANDOFF.md        # Maintenance & operational handoff
-├── scripts/                  # Cross-platform environment bootstrap scripts
-│   ├── bootstrap.ps1         # Windows PowerShell setup & gate verification
-│   └── bootstrap.sh          # Linux/macOS bash setup & gate verification
-├── AGENTS.md                 # Apollo-Standard Autonomous Constitution
-├── CLAUDE.md                 # Agent onboarding pointing to AGENTS.md
-├── MASTER_CODEX_MISSION.md   # Universal Codex mission specification
-├── doc_to_webdyn.py          # Standalone convenience CLI wrapper
-├── generate_webdyn_def.py    # Programmatic generator API wrapper
-├── build_exe.py              # PyInstaller executable builder
-├── pyproject.toml            # Project packaging & tool configuration
-├── DEVELOPER_GUIDE.md        # Architecture and developer manual
-├── QUICKSTART.md             # Beginner walkthrough
-└── README.md                 # Primary project overview
+├── 🏭 1. RÉFÉRENTIEL MAÎTRE DE PRODUCTION (Single Source of Truth)
+│   └── production/                 # 1 194 fichiers CSV 100% conformes aux 5 Piliers Apollo
+│       ├── CATALOG.json            # Index complet de recherche (catégories, fabricants, tags)
+│       ├── SOURCES.md              # Matrice de traçabilité liant chaque modèle à sa doc source
+│       └── README.md               # Guide d'utilisation et règles de certification
+│
+├── 📚 2. SOURCES TECHNIQUES OFFICIELLES (Vérité Terrain)
+│   └── sources/                    # 110 documents officiels (PDF, XLSX, HTML)
+│       ├── MANIFEST.json           # Grand livre cryptographique scellé par empreintes SHA-256
+│       ├── README.md               # Inventaire général et règles de lecture seule
+│       └── <Fabricant>/<Catégorie>/<Gamme>/ # CarloGavazzi, ABB, SMA, Huawei, Sungrow...
+│
+├── ⚙️ 3. CŒUR LOGICIEL, SCRIPTS & APPLICATION WEB
+│   ├── DefFileGenerator/           # Package Python (parseurs, extraction, normalisation, tags SunPM)
+│   │   ├── tests/                  # Suite de validation exhaustive (4 653 tests unitaires et fuzzing)
+│   │   ├── extractor.py            # Parseur multi-format universel (PDF, Excel, CSV, XML)
+│   │   ├── def_gen.py              # Générateur et validateur des 11 colonnes Webdyn
+│   │   ├── knowledge_miner.py      # Inférence sémantique des tags SunPM (1,280,000+ registres)
+│   │   └── production_governor.py  # Moteur de certification des 5 Piliers
+│   ├── scripts/                    # Boîte à outils CLI d'automatisation, de build et de validation
+│   │   ├── validate_production.py  # Auditeur strict des 5 Piliers sur production/
+│   │   ├── build_production_suite.py # Compilateur et synchroniseur du catalogue maître
+│   │   ├── import_and_organize_sources.py # Ingestion réseau et calcul des hachages SHA-256
+│   │   └── generate_*_definitions.py # Générateurs d'équipements dédiés par constructeur
+│   └── web/                        # Studio Web moderne & API REST (FastAPI + Vanilla JS)
+│       ├── app.py                  # API Endpoints (/api/convert, /api/catalog, /api/versions)
+│       └── static/                 # Interface WebdynSunPM Studio (conversion, diff, monitoring)
+│
+├── 🔄 4. SAS DE TRANSITION & BUNDLES DÉDIÉS
+│   ├── generated_definitions/      # Sas d'extraction brute des parseurs (staging raw)
+│   ├── tagged_definitions/         # Sas de qualification sémantique SunPM
+│   ├── Definitions/                # Miroir historique et rétrocompatibilité multi-sites (701 fichiers)
+│   ├── definitions_history/        # Magasin d'objets immuables CAS (versioning web type Git)
+│   └── *_Definitions/              # Bundles de livraison dédiés (Dyness, FoxESS, Mars, X7)
+│
+└── 📖 5. CONNAISSANCES, AUDIT & GOUVERNANCE
+    ├── docs/                       # Guides d'ingénierie, dictionnaires et audits
+    │   ├── ARCHITECTURE.md         # Architecture globale, taxonomie et flux de données
+    │   ├── DIRECTORY_TAXONOMY.md   # Cartographie détaillée des répertoires
+    │   ├── WEBDYN_TAGS_REFERENCE.md# Dictionnaire de référence des tags SunPM
+    │   └── audit/                  # Journal d'audit chronologique et matrices de revue
+    └── logs/audit_trail/           # Registre d'audit append-only immuable (audit_log.jsonl)
 ```
 
 ---
