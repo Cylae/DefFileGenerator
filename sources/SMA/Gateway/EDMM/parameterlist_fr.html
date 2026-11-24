@@ -1,0 +1,3212 @@
+<!DOCTYPE html>
+<html>
+<head><title>Param&egrave;tres et valeurs de mesure</title>
+    <script type="text/javascript" src="scripts\jquery-1.11.2.js"></script>
+    <script type="text/javascript" src="scripts\jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="scripts\floatingheader.js"></script>
+    <link rel="stylesheet" href="images\parameterlist.css">
+    <link rel="shortcut icon" type="image/x-icon" href="images\favicon.ico">
+    <meta charset="UTF-8">
+    <script>
+        $(document).ready(function() {createFloatingTableHeader();$("#paraTable").tablesorter( {sortList:[[0,0]]} );});
+
+    </script>
+</head>
+<body>
+<header>
+    <nav></nav>
+    <div id="header"><img src="images\sma_logo.png" alt="SMA Solar Technology AG"/>
+        <div id="headercontent"><h1>Param&egrave;tres et valeurs de mesure</h1>
+            <h2>EDMM-10</h2>
+            <p>Cette liste est valable &agrave; partir de la version de micrologiciel&nbsp;: 1.15.0.R</p></div>
+    </div>
+</header>
+<section>
+    <table class="tableWithFloatingHeader" id="paraTable">
+        <thead>
+        <tr>
+            <th><p>Adresse de registre SMA Modbus</p></th>
+            <th><p>Nom</p></th>
+            <th><p>Accès SMA Modbus</p></th>
+            <th><p>Unit ID</p></th>
+            <th><p>Type de données SMA Modbus</p></th>
+            <th><p>Format des données SMA Modbus</p></th>
+            <th><p>Gradation</p></th>
+            <th><p>Groupe</p></th>
+            <th><p>Canal</p></th>
+            <th><p>Unité / valeurs de consigne</p></th>
+            <th><p>Valeur par défaut</p></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><p><span>31235</span></p></td>
+                <td><p><span>Valeur prescrite pour la limitation de la puissance active par l’entrée numérique</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.InOut.DigIn.CurWCtlNom</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31237</span></p></td>
+                <td><p><span>Presc. limit. puiss. active par entrée analogique</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.InOut.AnIn.CurWCtlNom</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31239</span></p></td>
+                <td><p><span>Limitation de puissance PV par communication</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.WModCfg.WCtlComCfg.WNom</span> <img src="images\aso.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44039</span></p></td>
+                <td><p><span>Puissance active maximum</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.WModCfg.WCtlComCfg.WSptMaxNom</span> <img src="images\aso.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44041</span></p></td>
+                <td><p><span>Puissance active minimum</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.WModCfg.WCtlComCfg.WSptMinNom</span> <img src="images\aso.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31243</span></p></td>
+                <td><p><span>Limitation de puissance PV minimale</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.Operation.WMaxLimNom</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31245</span></p></td>
+                <td><p><span>Limitation de puissance PV interne</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.Operation.WMaxLimNom</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31249</span></p></td>
+                <td><p><span>Puiss. effective au pt de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntW</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31251</span></p></td>
+                <td><p><span>Puiss. réactive au pt de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntVAr</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44051</span></p></td>
+                <td><p><span>P(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.XVal[0]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>1,1 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44053</span></p></td>
+                <td><p><span>P(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.XVal[1]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>1,12 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31253</span></p></td>
+                <td><p><span>Tension du réseau phase L1</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.PhV.phsA</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44055</span></p></td>
+                <td><p><span>P(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.XVal[2]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>2 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31255</span></p></td>
+                <td><p><span>Tension du réseau phase L2</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.PhV.phsB</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>40472</span></p></td>
+                <td><p><span>Tension nominale de réseau</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Parameter.Inverter.PlntCtl.VRef</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>230 V</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30233</span></p></td>
+                <td><p><span>Lim. de puiss. active réglée</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Appareil</span></p></td>
+                <td><p><span>Parameter.Inverter.WMax</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44057</span></p></td>
+                <td><p><span>P(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.XVal[3]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>2 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32281</span></p></td>
+                <td><p><span>Température du point de rosée</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TEMPERATURE</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.DewPtTmp</span> </p></td>
+                <td><p> °C</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31257</span></p></td>
+                <td><p><span>Tension du réseau phase L3</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.PhV.phsC</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44059</span></p></td>
+                <td><p><span>P(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.XVal[4]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>2 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32283</span></p></td>
+                <td><p><span>pression d’air absolue</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.AirPresAbs</span> </p></td>
+                <td><p> hPa</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31259</span></p></td>
+                <td><p><span>Puissance d’injection dans le réseau L1</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.W.phsA</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44061</span></p></td>
+                <td><p><span>P(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.XVal[5]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>2 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32285</span></p></td>
+                <td><p><span>pression d’air relative</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.AirPresRel</span> </p></td>
+                <td><p> hPa</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31261</span></p></td>
+                <td><p><span>Puissance d’injection dans le réseau L2</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.W.phsB</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44063</span></p></td>
+                <td><p><span>P(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.XVal[6]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>2 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32287</span></p></td>
+                <td><p><span>Vitesse du vent écart standard</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX1</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.WdSpdDv</span> </p></td>
+                <td><p> m/s</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31263</span></p></td>
+                <td><p><span>Puissance d’injection dans le réseau L3</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.W.phsC</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44065</span></p></td>
+                <td><p><span>P(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.XVal[7]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>2 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32289</span></p></td>
+                <td><p><span>Vitesse du vent écart standard</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX1</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.WdDirDv</span> </p></td>
+                <td><p> °</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44067</span></p></td>
+                <td><p><span>P(U), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.YVal[0]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>100 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32291</span></p></td>
+                <td><p><span>Qualité de la mesure du vent</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.WdMsQual</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44069</span></p></td>
+                <td><p><span>P(U), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.YVal[1]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32293</span></p></td>
+                <td><p><span>Quantité absolue des précipitations</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.PrecipRteAbs</span> </p></td>
+                <td><p> mm</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44071</span></p></td>
+                <td><p><span>P(U), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.YVal[2]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32295</span></p></td>
+                <td><p><span>Quantité différentielle des précipitations</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.PrecipRteDif</span> </p></td>
+                <td><p> mm</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31271</span></p></td>
+                <td><p><span>Puiss. réact. d’injection dans le réseau phase L1</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.VAr.phsA</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44073</span></p></td>
+                <td><p><span>P(U), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.YVal[3]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32297</span></p></td>
+                <td><p><span>Intensité des précipitations</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.PrecipInts</span> </p></td>
+                <td><p> mm/h</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31273</span></p></td>
+                <td><p><span>Puiss. réact. d’injection dans le réseau phase L2</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.VAr.phsB</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44075</span></p></td>
+                <td><p><span>P(U), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.YVal[4]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32299</span></p></td>
+                <td><p><span>Type de précipitations</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.PrecipTyp</span> </p></td>
+                <td><p>4921: Pas de précipitation (NoPrecip)<br>4922: Précipitations liquides (pluie par ex.) (LiqPrecip)<br>4923: Précipitations solides (neige par ex.) (SolidPrecip)<br>4924: Précipitations non définies (UnSpecPrecip)<br>4925: Pluie verglaçante (FrzRn)<br>4926: Pluie et neige mêlées (RnSnw)<br>4927: Grêle (Hail) </p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31275</span></p></td>
+                <td><p><span>Puiss. réact. d’injection dans le réseau phase L3</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.VAr.phsC</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>40492</span></p></td>
+                <td><p><span>Consigne de puissance réactive normalisée par commande installation via distributeur direct</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S16</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.DctMrk.VArModCfg.VArCtlComCfg.VArNomPrc</span> <img src="images\aso.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>40493</span></p></td>
+                <td><p><span>Limite puissance effective normalisée via commande installation par distributeur direct</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S16</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.DctMrk.WModCfg.WCtlComCfg.WNomPrc</span> <img src="images\aso.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44077</span></p></td>
+                <td><p><span>P(U), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.YVal[5]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31277</span></p></td>
+                <td><p><span>Puissance réactive d’injection dans le réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.TotVAr</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44079</span></p></td>
+                <td><p><span>P(U), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.YVal[6]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32303</span></p></td>
+                <td><p><span>Evénements de foudre</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.LgtEvt</span> </p></td>
+                <td><p>-</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44081</span></p></td>
+                <td><p><span>P(U), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlVolCfg.Crv.YVal[7]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32305</span></p></td>
+                <td><p><span>Evénements de foudre (intervalle)</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.LgtEvtIntv</span> </p></td>
+                <td><p>-</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32307</span></p></td>
+                <td><p><span>Sonde de température externe</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>TEMPERATURE</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.ExSnsTmp</span> </p></td>
+                <td><p> °C</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30775</span></p></td>
+                <td><p><span>Puissance</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.GridMs.TotW.Pv</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32311</span></p></td>
+                <td><p><span>Direction du vent</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX1</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.WndDir</span> </p></td>
+                <td><p> °</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32315</span></p></td>
+                <td><p><span>Rayonnement écart standard</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX1</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.TotInSolDv</span> </p></td>
+                <td><p> W/m²</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44095</span></p></td>
+                <td><p><span>Procédure de puissance réactive, grandeur de référence pour consigne de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArNomRefMod</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>4405: Puissance active maximum WMax (WMaxInOut)<br>4406: Puissance réactive maximum VArMax (VArMaxQ) </p></td>
+                <td><p>4405: Puissance active maximum WMax (WMaxInOut)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>35403</span></p></td>
+                <td><p><span>Taux de variation normalisé de la puissance active au point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntWNomGraCalc</span> </p></td>
+                <td><p> %/s</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>35405</span></p></td>
+                <td><p><span>Taux de variation de la puissance active au point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntWGraCalc</span> </p></td>
+                <td><p> W/s</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>40015</span></p></td>
+                <td><p><span>Lim. puis. réact. normalisée via cde install.</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S16</span></p></td>
+                <td><p>FIX1</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.VArModCfg.VArCtlComCfg.VArNom</span> <img src="images\aso.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>40016</span></p></td>
+                <td><p><span>Limite puissance alim normalisée via cde install.</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S16</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.WModCfg.WCtlComCfg.WNom</span> <img src="images\aso.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>40018</span></p></td>
+                <td><p><span>Mise hors service rapide</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.PlantControl.Inverter.FstStop</span> <img src="images\aso.png"/></p></td>
+                <td><p>381: Arrêt (Stop)<br>1467: Démarrage (Str)<br>1749: Arrêt total (FulStop) </p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30805</span></p></td>
+                <td><p><span>Puissance réactive</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.GridMs.TotVAr</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>40022</span></p></td>
+                <td><p><span>Consigne de puissance réactive externe</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S16</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.VArModCfg.VArCtlComCfg.VArNom</span> <img src="images\aso.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>40023</span></p></td>
+                <td><p><span>Limite puissance alim normalisée via cde install.</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S16</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.WModCfg.WCtlComCfg.WNom</span> <img src="images\aso.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>35415</span></p></td>
+                <td><p><span>Puiss. effective (prélèv.) au pt de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntCsmpW</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>40024</span></p></td>
+                <td><p><span>Consigne externe cos φ, consigne de cos φ avec puissance active délivrée</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U16</span></p></td>
+                <td><p>FIX4</p></td>
+                <td><p><span>0,0001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.VArModCfg.PFCtlComCfg.PF</span> <img src="images\aso.png"/></p></td>
+                <td><p>-</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>40025</span></p></td>
+                <td><p><span>Consigne externe cos φ, type d’excitation avec puissance active délivrée</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.VArModCfg.PFCtlComCfg.PFExt</span> <img src="images\aso.png"/></p></td>
+                <td><p>1041: Surexcitation (OvExt)<br>1042: Sous-excitation (UnExt) </p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32345</span></p></td>
+                <td><p><span>Capteur degré d’encrassement</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX1</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.SoilDeg[0]</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>35417</span></p></td>
+                <td><p><span>Prélèv. d’énergie sur le point de raccord. du réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U64</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntCsmpWh</span> </p></td>
+                <td><p> Wh</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32347</span></p></td>
+                <td><p><span>Capteur degré d’encrassement</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX1</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.SoilDeg[1]</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>40029</span></p></td>
+                <td><p><span>État de fonctionnement général</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>État</span></p></td>
+                <td><p><span>Measurement.Operation.OpStt</span> </p></td>
+                <td><p>295: MPP (Mpp)<br>309: Fonctionnement (Operation)<br>375: Autotest (SlfTst)<br>381: Arrêt (Stop)<br>817: Sécurité (Sec)<br>1392: Erreur (Flt)<br>1393: Att. tension PV (WaitPV)<br>1394: Att. réseau AC valide (WaitGri)<br>1438: Automatique (Auto)<br>1466: Attendre (Wait)<br>1467: Démarrage (Str)<br>1469: Procédure d’arrêt (Shtdwn)<br>1480: Attend société de distribution de l’électricité (WaitUtil)<br>1787: Initialisation (Init)<br>2119: Réduction de puissance (Drt)<br>3128: Service distant (RemSvc)<br>3129: Mode manuel (ManMod)<br>3130: Mode esclave (SlvMod)<br>3521: Le FW est défectueux (FwFltStt)<br>3522: Mise à jour du FW en cours (UpdStt)<br>3523: L'appareil effectue une réinitialisation (SysRsStt)<br>3524: Connexion AC (ConnAcStt)<br>3525: Connexion DC (ConnDcStt)<br>3526: Injecter (FeedStt)<br>3527: Fault Ride Through (FRTStt)<br>3528: Pas d'injection à l'appareil, tous les contacteurs sont fermés (SbyStt)<br>3529: Injection de puissance réactive (VArDmdStt)<br>3530: Arrêt de puissance injectée (WGraStt)<br>3531: Service piloté (OpnCtlStt)<br>3532: Service comme source AC (VLoop)<br>3533: IO test actif (InOutTst)<br>3534: Service comme source DC (DcSrc)<br>3535: Service piloté avec référence externe (réseau AC) (OpnCtlRef)<br>3536: Service piloté avec référence externe (réseau AC) pour surveillance du réseau (OpnCtlRefGri)<br>3537: Mise en service sans réseau (CmWoGri)<br>3538: Mise en service sans réseau en service MPP (CmMpp)<br>3752: Mode amorçage (BltMod) </p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>35421</span></p></td>
+                <td><p><span>Energie injectée au point de raccordement du réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U64</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntWh</span> </p></td>
+                <td><p> Wh</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44141</span></p></td>
+                <td><p><span>Consigne cos φ externe, valeur de consigne cos φ en cas de puissance active absorbée</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX4</p></td>
+                <td><p><span>0,0001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.VArModCfg.PFCtlComCfg.PFIn</span> <img src="images\aso.png"/></p></td>
+                <td><p>-</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32365</span></p></td>
+                <td><p><span>Capteur perte de transmission</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX1</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.TxLos[0]</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44143</span></p></td>
+                <td><p><span>Consigne cos φ externe, type d'excitation en cas de puissance active absorbée</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.VArModCfg.PFCtlComCfg.PFExtIn</span> <img src="images\aso.png"/></p></td>
+                <td><p>1041: Surexcitation (OvExt)<br>1042: Sous-excitation (UnExt) </p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32367</span></p></td>
+                <td><p><span>Capteur perte de transmission</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX1</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.TxLos[1]</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44147</span></p></td>
+                <td><p><span>Q(P), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.XVal[0]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>50 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44149</span></p></td>
+                <td><p><span>Q(P), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.XVal[1]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>60 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44151</span></p></td>
+                <td><p><span>Q(P), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.XVal[2]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>90 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44153</span></p></td>
+                <td><p><span>Q(P), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.XVal[3]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>100 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44155</span></p></td>
+                <td><p><span>Q(P), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.XVal[4]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>100 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30845</span></p></td>
+                <td><p><span>Etat de charge actuel de la batterie</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Batterie</span></p></td>
+                <td><p><span>Measurement.Bat.ChaStt</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44157</span></p></td>
+                <td><p><span>Q(P), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.XVal[5]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>100 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44159</span></p></td>
+                <td><p><span>Q(P), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.XVal[6]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>100 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44161</span></p></td>
+                <td><p><span>Q(P), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.XVal[7]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>100 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44163</span></p></td>
+                <td><p><span>Q(P), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.YVal[0]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44165</span></p></td>
+                <td><p><span>Q(P), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.YVal[1]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-5 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44167</span></p></td>
+                <td><p><span>Q(P), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.YVal[2]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-33 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32391</span></p></td>
+                <td><p><span>Saisie manuelle de la valeur de mesure de la fréquence au point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.PlntCtl.ManOvr.Frq.PCCMs.PlntHz</span> </p></td>
+                <td><p> Hz</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44169</span></p></td>
+                <td><p><span>Q(P), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.YVal[3]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-33 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32393</span></p></td>
+                <td><p><span>Saisie manuelle de la tension d’installation du conducteur de ligne L1</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.PlntCtl.ManOvr.Vol.PCCMs.PlntPhV.phsA</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44171</span></p></td>
+                <td><p><span>Q(P), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.YVal[4]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-33 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32395</span></p></td>
+                <td><p><span>Saisie manuelle de la tension d’installation du conducteur de ligne L2</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.PlntCtl.ManOvr.Vol.PCCMs.PlntPhV.phsB</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44173</span></p></td>
+                <td><p><span>Q(P), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.YVal[5]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-33 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32397</span></p></td>
+                <td><p><span>Saisie manuelle de la tension d’installation du conducteur de ligne L3</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.PlntCtl.ManOvr.Vol.PCCMs.PlntPhV.phsC</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44175</span></p></td>
+                <td><p><span>Q(P), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.YVal[6]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-33 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32399</span></p></td>
+                <td><p><span>Saisie manuelle de la tension d’installation des conducteurs de ligne L1 - L2 au point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.PlntCtl.ManOvr.Vol.PCCMs.PlntPhV.phsA2B</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44177</span></p></td>
+                <td><p><span>Q(P), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.YVal[7]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-33 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32401</span></p></td>
+                <td><p><span>Saisie manuelle de la tension d’installation des conducteurs de ligne L2 - L3 au point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.PlntCtl.ManOvr.Vol.PCCMs.PlntPhV.phsB2C</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30865</span></p></td>
+                <td><p><span>Puissance de prélèvement</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.TotWIn</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32403</span></p></td>
+                <td><p><span>Saisie manuelle de la tension d’installation des conducteurs de ligne L3 - L1 au point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.PlntCtl.ManOvr.Vol.PCCMs.PlntPhV.phsC2A</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30867</span></p></td>
+                <td><p><span>Puissance d’injection dans le réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.TotWOut</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31393</span></p></td>
+                <td><p><span>Chargement batterie momentané</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Batterie</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.TotWIn.Bat</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31395</span></p></td>
+                <td><p><span>Décharg. batterie momentané</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Batterie</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.TotWOut.Bat</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31397</span></p></td>
+                <td><p><span>Chargement batterie</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U64</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Batterie</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.TotWhIn.Bat</span> </p></td>
+                <td><p> Wh</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31401</span></p></td>
+                <td><p><span>Déchargement batterie</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U64</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Batterie</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.TotWhOut.Bat</span> </p></td>
+                <td><p> Wh</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44211</span></p></td>
+                <td><p><span>Q(U), Valeur prescrite externe de la tension de référence par unité</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.PlantControl.Inverter.VArModCfg.VArCtlVolCfg.VolRef.VolRefPu</span> <img src="images\aso.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31433</span></p></td>
+                <td><p><span>Facteur de déphasage</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.TotPF</span> </p></td>
+                <td><p>-</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31435</span></p></td>
+                <td><p><span>Courant du réseau phase L1</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.A.phsA</span> </p></td>
+                <td><p> A</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31437</span></p></td>
+                <td><p><span>Courant du réseau phase L2</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.A.phsB</span> </p></td>
+                <td><p> A</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41167</span></p></td>
+                <td><p><span>Limitation puiss. active réglée man. pour inst. totale</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCnstCfg.WNomPrc</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>100 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31439</span></p></td>
+                <td><p><span>Courant du réseau phase L3</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.A.phsC</span> </p></td>
+                <td><p> A</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31441</span></p></td>
+                <td><p><span>Puissance apparente L1</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.VA.phsA</span> </p></td>
+                <td><p> VA</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31443</span></p></td>
+                <td><p><span>Puissance apparente L2</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.VA.phsB</span> </p></td>
+                <td><p> VA</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31445</span></p></td>
+                <td><p><span>Puissance apparente L3</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.VA.phsC</span> </p></td>
+                <td><p> VA</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31447</span></p></td>
+                <td><p><span>Fréquence du réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.Hz</span> </p></td>
+                <td><p> Hz</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31449</span></p></td>
+                <td><p><span>Tension de réseau phase L3 contre L1</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.PhV.phsA2B</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31451</span></p></td>
+                <td><p><span>Tension de réseau phase L1 contre L2</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.PhV.phsB2C</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31453</span></p></td>
+                <td><p><span>Tension de réseau phase L2 contre L3</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.PhV.phsC2A</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31455</span></p></td>
+                <td><p><span>Puissance apparente</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.TotVA</span> </p></td>
+                <td><p> VA</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31501</span></p></td>
+                <td><p><span>Type d’excitation du cos φ</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.TotPFExt</span> </p></td>
+                <td><p>1041: Surexcitation (OvExt)<br>1042: Sous-excitation (UnExt) </p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31503</span></p></td>
+                <td><p><span>Puissance injection réseau conducteur de ligne L1 au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntW.phsA</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31505</span></p></td>
+                <td><p><span>Puissance injection réseau conducteur de ligne L2 au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntW.phsB</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31507</span></p></td>
+                <td><p><span>Puissance injection réseau conducteur de ligne L3 au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntW.phsC</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31509</span></p></td>
+                <td><p><span>Puissance réactive injection réseau conducteur de ligne L1 au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntVAr.phsA</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31511</span></p></td>
+                <td><p><span>Puissance réactive injection réseau conducteur de ligne L2 au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntVAr.phsB</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31513</span></p></td>
+                <td><p><span>Puissance réactive injection réseau conducteur de ligne L3 au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntVAr.phsC</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31515</span></p></td>
+                <td><p><span>Tension du réseau conducteur de ligne L1 par rapport à L2 au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntPhV.phsA2B</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31517</span></p></td>
+                <td><p><span>Tension du réseau conducteur de ligne L2 par rapport à L3 au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntPhV.phsB2C</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31519</span></p></td>
+                <td><p><span>Tension du réseau conducteur de ligne L3 par rapport à L1 au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntPhV.phsC2A</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31521</span></p></td>
+                <td><p><span>Valeur moyenne tension du réseau L-N au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntPhV.AvgLN</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31523</span></p></td>
+                <td><p><span>Valeur moyenne tension du réseau L-L au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntPhV.AvgLL</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31525</span></p></td>
+                <td><p><span>Facteur de déphasage au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntPF</span> </p></td>
+                <td><p>-</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31527</span></p></td>
+                <td><p><span>Fréquence du réseau au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntHz</span> </p></td>
+                <td><p> Hz</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31529</span></p></td>
+                <td><p><span>Tension de l'installation Phase L1</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntPhV.phsA</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31531</span></p></td>
+                <td><p><span>Tension de l'installation Phase L2</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntPhV.phsB</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31533</span></p></td>
+                <td><p><span>Tension de l'installation Phase L3</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntPhV.phsC</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44333</span></p></td>
+                <td><p><span>Courbe caract. P(f)</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.Ena</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>303: Arrêté (Off)<br>308: Marche (On) </p></td>
+                <td><p>303: Arrêté (Off)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31535</span></p></td>
+                <td><p><span>Courant de sortie injection réseau conducteur de ligne L1 au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntA.phsA</span> </p></td>
+                <td><p> A</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44335</span></p></td>
+                <td><p><span>P(f), grandeur de référence pour puissance active en cas de surfréquence</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.RefModOv</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>4354: Puissance active fournie maximale (WMaxOut)<br>4443: Puissance momentanée (WSnpt)<br>4444: Puissance potentielle (WSnptMax) </p></td>
+                <td><p>4443: Puissance momentanée (WSnpt)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30513</span></p></td>
+                <td><p><span>Rendement total</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U64</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.TotWhOut.Pv</span> </p></td>
+                <td><p> Wh</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34609</span></p></td>
+                <td><p><span>Température extrérieure</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>TEMPERATURE</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.TmpVal</span> </p></td>
+                <td><p> °C</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31537</span></p></td>
+                <td><p><span>Courant de sortie injection réseau conducteur de ligne L2 au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntA.phsB</span> </p></td>
+                <td><p> A</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44337</span></p></td>
+                <td><p><span>P(f), grandeur de référence pour puissance active en cas de sous-fréquence</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.RefModUn</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>4354: Puissance active fournie maximale (WMaxOut)<br>4443: Puissance momentanée (WSnpt)<br>4444: Puissance potentielle (WSnptMax) </p></td>
+                <td><p>4443: Puissance momentanée (WSnpt)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30003</span></p></td>
+                <td><p><span>SUSy ID</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>1</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>RAW</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Plaque signalétique</span></p></td>
+                <td><p><span>Parameter.Nameplate.SusyId</span> </p></td>
+                <td><p>-</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31539</span></p></td>
+                <td><p><span>Courant de sortie injection réseau conducteur de ligne L3 au niveau du point de raccordement au réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Measurement.Metering.PCCMs.PlntA.phsC</span> </p></td>
+                <td><p> A</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44339</span></p></td>
+                <td><p><span>P(f), temps de réglage</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WTms</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> s</p></td>
+                <td><p>0,5 s</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30005</span></p></td>
+                <td><p><span>Numéro de série</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>1</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>RAW</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Plaque signalétique</span></p></td>
+                <td><p><span>Parameter.Nameplate.SerNum</span> </p></td>
+                <td><p>-</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30517</span></p></td>
+                <td><p><span>Énergie dégagée jour actuel</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U64</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.DyWhOut</span> </p></td>
+                <td><p> Wh</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34613</span></p></td>
+                <td><p><span>Rayonnement</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.TotInsol</span> </p></td>
+                <td><p> W/m²</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31541</span></p></td>
+                <td><p><span>Valeur moyenne tension du réseau conducteur de ligne L-N</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.PhV.AvgLN</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44341</span></p></td>
+                <td><p><span>P(f), hystérésis en cas de surfréquence</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HystEnaOv</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>303: Arrêté (Off)<br>308: Marche (On) </p></td>
+                <td><p>303: Arrêté (Off)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34615</span></p></td>
+                <td><p><span>Vitesse du vent</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.HorWSpd</span> </p></td>
+                <td><p> m/s</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31543</span></p></td>
+                <td><p><span>Valeur moyenne tension du réseau conducteur de ligne L-L</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.PhV.AvgLL</span> </p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44343</span></p></td>
+                <td><p><span>P(f), hystérésis en cas de sous-fréquence</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HystEnaUn</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>303: Arrêté (Off)<br>308: Marche (On) </p></td>
+                <td><p>303: Arrêté (Off)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34617</span></p></td>
+                <td><p><span>Humidité de l’air</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.Hmdt</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31545</span></p></td>
+                <td><p><span>Puissance nominale de l’installation disponible</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.Operation.WAval</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44345</span></p></td>
+                <td><p><span>P(f), surfréquence de coude</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzOv[0]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> Hz</p></td>
+                <td><p>50,2 Hz</p></td>
+            </tr>
+            <tr>
+                <td><p><span>31547</span></p></td>
+                <td><p><span>Puissance disponible de l’onduleur</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Appareil</span></p></td>
+                <td><p><span>Measurement.Inverter.WAval</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44347</span></p></td>
+                <td><p><span>P(f), surfréquence de coude</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzOv[1]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> Hz</p></td>
+                <td><p>66 Hz</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34621</span></p></td>
+                <td><p><span>Température des panneaux</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>TEMPERATURE</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Mdul.TmpVal</span> </p></td>
+                <td><p> °C</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44349</span></p></td>
+                <td><p><span>P(f), surfréquence de coude</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzOv[2]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> Hz</p></td>
+                <td><p>66 Hz</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34623</span></p></td>
+                <td><p><span>Rayonnement sur capteur externe</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.ExInsol</span> </p></td>
+                <td><p> W/m²</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44351</span></p></td>
+                <td><p><span>P(f), modification de la puissance active par Hz en cas de surfréquence</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzOvGra[0]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-40 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34625</span></p></td>
+                <td><p><span>Température extrérieure</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>TEMPERATURE</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.TmpVal</span> </p></td>
+                <td><p> °C</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44353</span></p></td>
+                <td><p><span>P(f), modification de la puissance active par Hz en cas de surfréquence</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzOvGra[1]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-40 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34627</span></p></td>
+                <td><p><span>Température extrérieure</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>TEMPERATURE</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.TmpVal</span> </p></td>
+                <td><p> °C</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44355</span></p></td>
+                <td><p><span>P(f), modification de la puissance active par Hz en cas de surfréquence</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzOvGra[2]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-40 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34629</span></p></td>
+                <td><p><span>Température des panneaux</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>TEMPERATURE</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Mdul.TmpVal</span> </p></td>
+                <td><p> °C</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44357</span></p></td>
+                <td><p><span>P(f), surfréquence de réinitialisation</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzOvStop</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> Hz</p></td>
+                <td><p>50,2 Hz</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34631</span></p></td>
+                <td><p><span>Température des panneaux</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>TEMPERATURE</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Mdul.TmpVal</span> </p></td>
+                <td><p> °C</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44359</span></p></td>
+                <td><p><span>P(f), sous-fréquence de coude</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzUn[0]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> Hz</p></td>
+                <td><p>49,8 Hz</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34633</span></p></td>
+                <td><p><span>Vitesse du vent</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.HorWSpd</span> </p></td>
+                <td><p> m/s</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44361</span></p></td>
+                <td><p><span>P(f), sous-fréquence de coude</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzUn[1]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> Hz</p></td>
+                <td><p>44 Hz</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34635</span></p></td>
+                <td><p><span>Vitesse du vent</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Météorologie</span></p></td>
+                <td><p><span>Measurement.Env.HorWSpd</span> </p></td>
+                <td><p> m/s</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44363</span></p></td>
+                <td><p><span>P(f), sous-fréquence de coude</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzUn[2]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> Hz</p></td>
+                <td><p>44 Hz</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44365</span></p></td>
+                <td><p><span>P(f), modification de la puissance active par Hz en cas de sous-fréquence</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzUnGra[0]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-40 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44367</span></p></td>
+                <td><p><span>P(f), modification de la puissance active par Hz en cas de sous-fréquence</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzUnGra[1]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-40 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44369</span></p></td>
+                <td><p><span>P(f), modification de la puissance active par Hz en cas de sous-fréquence</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzUnGra[2]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-40 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44371</span></p></td>
+                <td><p><span>P(f), sous-fréquence de réinitialisation</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzUnStop</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> Hz</p></td>
+                <td><p>49,8 Hz</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44373</span></p></td>
+                <td><p><span>P(f), retart au déclenchement</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.WCtlTmms</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> ms</p></td>
+                <td><p>0 ms</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44375</span></p></td>
+                <td><p><span>P(f), temps de poursuite</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>DURATION</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WCtlHzModCfg.WCtlHzCfg.HzStopWGraTms</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> s</p></td>
+                <td><p>0 s</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34653</span></p></td>
+                <td><p><span>Groupe d’entrée numérique 1 (DI1 .. DI4)</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Appareil</span></p></td>
+                <td><p><span>Measurement.InOut.GI1</span> </p></td>
+                <td><p>311: Ouvert (Opn)<br>2055: DI1 (DI1)<br>2063: DI2 (DI2)<br>2056: DI1 DI2 (DI1DI2)<br>2067: DI3 (DI3)<br>2060: DI1 DI3 (DI1DI3)<br>2064: DI2 DI3 (DI2DI3)<br>2057: DI1 DI2 DI3 (DI1DI2DI3)<br>2069: DI4 (DI4)<br>2062: DI1 DI4 (DI1DI4)<br>2066: DI2 DI4 (DI2DI4)<br>2059: DI1 DI2 DI4 (DI1DI2DI4)<br>2068: DI3 DI4 (DI3DI4)<br>2061: DI1 DI3 DI4 (DI1DI3DI4)<br>2065: DI2 DI3 DI4 (DI2DI3DI4)<br>2058: DI1 DI2 DI3 DI4 (DI1DI2DI3DI4) </p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44381</span></p></td>
+                <td><p><span>Puissance active nominale WMaxOut</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Parameter.Inverter.WMaxOut</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>0 W</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44383</span></p></td>
+                <td><p><span>Puissance active nominale WMaxIn</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Parameter.Inverter.WMaxIn</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>0 W</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30051</span></p></td>
+                <td><p><span>Classe d’appareil</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>1</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Plaque signalétique</span></p></td>
+                <td><p><span>Parameter.Nameplate.MainModel</span> </p></td>
+                <td><p>-</p></td>
+                <td><p>8128: Produits de communication (DevClss128)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41315</span></p></td>
+                <td><p><span>Mode de fonctionnement régulateur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Operation.PlntCtl.WCtlMod</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>3352: Commande (ModOpnCtl)<br>3353: Régulation (ModClsCtl) </p></td>
+                <td><p>3352: Commande (ModOpnCtl)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41317</span></p></td>
+                <td><p><span>Mode de fonctionnement pour limiteur puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Operation.PlntCtl.VArCtlMod</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>3352: Commande (ModOpnCtl)<br>3353: Régulation (ModClsCtl) </p></td>
+                <td><p>3352: Commande (ModOpnCtl)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41319</span></p></td>
+                <td><p><span>Procédure de puissance réactive en cas de puissance active délivrée</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArModOut</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>303: Arrêté (Off)<br>1069: Courbe caractéristique Q(U) (VArCtlVol)<br>1070: Q, consigne manuelle en % (VArCnstNom)<br>1071: Q, consigne manuelle en var (VArCnst)<br>1072: Q, consigne externe (VArCtlCom)<br>1073: Courbe caractéristique Q(P) (VArCtlW)<br>1074: cos φ, consigne manuelle (PFCnst)<br>1075: cos φ, consigne externe (PFCtlCom)<br>1076: Courbe caract. cos φ(P) (PFCtlW)<br>4562: Courbe caractétistique cos φ(U) (PFCtlVol) </p></td>
+                <td><p>303: Arrêté (Off)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41321</span></p></td>
+                <td><p><span>Procédure de puissance réactive en cas de puissance active absorbée</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArModIn</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>303: Arrêté (Off)<br>1069: Courbe caractéristique Q(U) (VArCtlVol)<br>1070: Q, consigne manuelle en % (VArCnstNom)<br>1071: Q, consigne manuelle en var (VArCnst)<br>1072: Q, consigne externe (VArCtlCom)<br>1073: Courbe caractéristique Q(P) (VArCtlW)<br>1075: cos φ, consigne externe (PFCtlCom)<br>1076: Courbe caract. cos φ(P) (PFCtlW)<br>1074: cos φ, consigne manuelle (PFCnst)<br>4562: Courbe caractétistique cos φ(U) (PFCtlVol) </p></td>
+                <td><p>303: Arrêté (Off)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44393</span></p></td>
+                <td><p><span>Puissance réactive nominale VArMaxQ1</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Parameter.Inverter.VArMaxQ1</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>0 var</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41323</span></p></td>
+                <td><p><span>Procédure de puissance réactive en cas de puissance active nulle</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArModZerW</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>303: Arrêté (Off)<br>1069: Courbe caractéristique Q(U) (VArCtlVol)<br>1070: Q, consigne manuelle en % (VArCnstNom)<br>1071: Q, consigne manuelle en var (VArCnst)<br>1072: Q, consigne externe (VArCtlCom)<br>1073: Courbe caractéristique Q(P) (VArCtlW) </p></td>
+                <td><p>303: Arrêté (Off)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44395</span></p></td>
+                <td><p><span>Puissance réactive nominale VArMaxQ2</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Parameter.Inverter.VArMaxQ2</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>0 var</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41325</span></p></td>
+                <td><p><span>Q(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.XVal[0]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>0,96 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44397</span></p></td>
+                <td><p><span>Puissance réactive nominale VArMaxQ3</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Parameter.Inverter.VArMaxQ3</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>0 var</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41327</span></p></td>
+                <td><p><span>Q(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.XVal[1]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>1,04 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44399</span></p></td>
+                <td><p><span>Puissance réactive nominale VArMaxQ4</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Parameter.Inverter.VArMaxQ4</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>0 var</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41329</span></p></td>
+                <td><p><span>Q(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.XVal[2]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>1 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41331</span></p></td>
+                <td><p><span>Q(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.XVal[3]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>1 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41333</span></p></td>
+                <td><p><span>Q(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.XVal[4]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>1 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30581</span></p></td>
+                <td><p><span>État du compteur de prélèvement</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.TotWhIn</span> </p></td>
+                <td><p> Wh</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41335</span></p></td>
+                <td><p><span>Q(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.XVal[5]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>1 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30583</span></p></td>
+                <td><p><span>Etat du compteur d’injection dans le réseau</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>10+</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Metering.GridMs.TotWhOut</span> </p></td>
+                <td><p> Wh</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41337</span></p></td>
+                <td><p><span>Q(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.XVal[6]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>1 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41339</span></p></td>
+                <td><p><span>Q(U), valeur de tension</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.XVal[7]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> p.u.</p></td>
+                <td><p>1 p.u.</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41341</span></p></td>
+                <td><p><span>Q(U), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.YVal[0]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>33 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41343</span></p></td>
+                <td><p><span>Q(U), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.YVal[1]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-33 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41345</span></p></td>
+                <td><p><span>Q(U), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.YVal[2]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41347</span></p></td>
+                <td><p><span>Q(U), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.YVal[3]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41349</span></p></td>
+                <td><p><span>Q(U), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.YVal[4]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41351</span></p></td>
+                <td><p><span>Q(U), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.YVal[5]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>34695</span></p></td>
+                <td><p><span>Cons. puissance réactive max.</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.Operation.VArMaxLimNom</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41353</span></p></td>
+                <td><p><span>Q(U), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.YVal[6]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41355</span></p></td>
+                <td><p><span>Q(U), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.YVal[7]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>0 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44449</span></p></td>
+                <td><p><span>Puissance active max. batterie</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.PlantControl.Bat.WCtlCom.WSptMaxNom</span> <img src="images\aso.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44457</span></p></td>
+                <td><p><span>Consigne de puissance active du système de batterie</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Bat.WCtlCom.WSptNomPrc</span> <img src="images\aso.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44461</span></p></td>
+                <td><p><span>Consigne de puissance active externe 2, filtre de valeur de consigne</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlComCfg2.Dyn.WTmEna</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>303: Arrêté (Off)<br>308: Marche (On) </p></td>
+                <td><p>303: Arrêté (Off)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44463</span></p></td>
+                <td><p><span>Consigne de puissance active externe 2, limitation du taux de changement</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlComCfg2.Dyn.WGraEna</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>303: Arrêté (Off)<br>308: Marche (On) </p></td>
+                <td><p>308: Marche (On)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44465</span></p></td>
+                <td><p><span>Consigne de puissance active externe 2, taux d'augmentation</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlComCfg2.Dyn.WGraPos</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %/s</p></td>
+                <td><p>0,5 %/s</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44467</span></p></td>
+                <td><p><span>Consigne de puissance active externe 2, taux de réduction</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlComCfg2.Dyn.WGraNeg</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %/s</p></td>
+                <td><p>0,5 %/s</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44469</span></p></td>
+                <td><p><span>Q(P), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.XVal[8]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>100 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44471</span></p></td>
+                <td><p><span>Q(P), valeur de puissance active</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.XVal[9]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>100 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32185</span></p></td>
+                <td><p><span>Limitation de puissance réactive PV interne</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.Operation.VArMaxLimNom</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44473</span></p></td>
+                <td><p><span>Q(P), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.YVal[8]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-33 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32187</span></p></td>
+                <td><p><span>Puissance réactive sous-excitée disponible</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Operation.CurAvailVArUnExt</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44475</span></p></td>
+                <td><p><span>Q(P), valeur de puissance réactive</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX3</p></td>
+                <td><p><span>0,001</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlWCfg.Crv.YVal[9]</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p> %</p></td>
+                <td><p>-33 %</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32189</span></p></td>
+                <td><p><span>Puissance réactive surexcitée disponible</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Operation.CurAvailVArOvExt</span> </p></td>
+                <td><p> var</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32191</span></p></td>
+                <td><p><span>Puissance nominale de l’installation théoriquement disponible</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.Operation.WAvalTheo</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44479</span></p></td>
+                <td><p><span>Mode de sensibilité à la fréquence (FSM)</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlHzFsmCfg.Ena</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>303: Arrêté (Off)<br>308: Marche (On) </p></td>
+                <td><p>303: Arrêté (Off)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32193</span></p></td>
+                <td><p><span>Disponibilité de l’installation de génération</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.Operation.CurAvailPlnt</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32195</span></p></td>
+                <td><p><span>Réduction de la puissance active externe</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Measurement.Operation.WRedEx</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32197</span></p></td>
+                <td><p><span>Puissance réactive capacitive disponible</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Operation.CurAvailVArUnExtNom</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>32199</span></p></td>
+                <td><p><span>Puissance réactive inductive disponible</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX2</p></td>
+                <td><p><span>0,01</span></p></td>
+                <td><p><span>Côté AC</span></p></td>
+                <td><p><span>Measurement.Operation.CurAvailVArOvExtNom</span> </p></td>
+                <td><p> %</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44493</span></p></td>
+                <td><p><span>Limite puissance alimentation via cde install.</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>S32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.WModCfg.WCtlComCfg.W</span> <img src="images\aso.png"/></p></td>
+                <td><p> W</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>44511</span></p></td>
+                <td><p><span>Préréglage de la courbe caractéristique Q(U)</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.VArModCfg.VArCtlVolCfg.Crv.PreSet</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>4306: Courbe caractéristique linéaire (DrpChr)<br>4307: Courbe caractéristique avec 4 points de référence et hystérésis (8PntHystChr)<br>4308: Courbe caractéristique avec 6 points de référence (6PntChr)<br>4309: Courbe caractéristique avec 8 points de référence (8PntChr)<br>4316: Courbe caractéristique linéaire avec hystérésis (DrpHyst)<br>4317: Courbe caractéristique avec zone morte (DrpDb)<br>4318: Courbe caractéristique avec zone morte et hystérésis (DrpHystDb) </p></td>
+                <td><p>4306: Courbe caractéristique linéaire (DrpChr)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41443</span></p></td>
+                <td><p><span>Q(U), Valeur prescrite externe de la tension de référence en V</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX1</p></td>
+                <td><p><span>0,1</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Setpoint.ExternalPlantControl.Inverter.VArModCfg.VArCtlVolCfg.VolRef.VolRef</span> <img src="images\aso.png"/></p></td>
+                <td><p> V</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41455</span></p></td>
+                <td><p><span>Fréquence locale intégrale, activation via Modbus</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>Commande d’install. et d’appareils</span></p></td>
+                <td><p><span>Parameter.Inverter.WModCfg.WCtlHzILFCfg.MbEna</span> <img src="images\statuswarning.png"/></p></td>
+                <td><p>303: Arrêté (Off)<br>308: Marche (On) </p></td>
+                <td><p>303: Arrêté (Off)</p></td>
+            </tr>
+            <tr>
+                <td><p><span>41463</span></p></td>
+                <td><p><span>Puissance totale de l’installation</span></p></td>
+                <td><p>RW</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>FIX0</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Raccordement réseau</span></p></td>
+                <td><p><span>Parameter.Plnt.WRtg</span> </p></td>
+                <td><p> W</p></td>
+                <td><p>0 W</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30201</span></p></td>
+                <td><p><span>État</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>TAGLIST</p></td>
+                <td><p><span>-</span></p></td>
+                <td><p><span>État</span></p></td>
+                <td><p><span>Measurement.Operation.Health</span> </p></td>
+                <td><p>35: Erreur (Alm)<br>55: Perturbation communication (ComFlt)<br>303: Arrêté (Off)<br>307: Ok (Ok)<br>455: Avertissement (Wrn) </p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30001</span></p></td>
+                <td><p><span>SMA Modbus profile revision</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>1</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>RAW</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Plaque signalétique</span></p></td>
+                <td><p><span>SMA Modbus profile revision</span> </p></td>
+                <td><p>-</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30007</span></p></td>
+                <td><p><span>Modbus data change count</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>1</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>RAW</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Plaque signalétique</span></p></td>
+                <td><p><span>Modbus data change count</span> </p></td>
+                <td><p>-</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30193</span></p></td>
+                <td><p><span>UTC system time</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>1</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>DateTime</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Plaque signalétique</span></p></td>
+                <td><p><span>UTC system time</span> </p></td>
+                <td><p>-</p></td>
+                <td><p>-</p></td>
+            </tr>
+            <tr>
+                <td><p><span>30193</span></p></td>
+                <td><p><span>UTC system time</span></p></td>
+                <td><p>RO</p></td>
+                <td><p>2</p></td>
+                <td><p><span>U32</span></p></td>
+                <td><p>DateTime</p></td>
+                <td><p><span>1</span></p></td>
+                <td><p><span>Plaque signalétique</span></p></td>
+                <td><p><span>UTC system time</span> </p></td>
+                <td><p>-</p></td>
+                <td><p>-</p></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<footer>
+    <div id="legend"><h2>L&eacute;gende</h2>
+        <p><img src="images\aso.png" alt="Objet de contr&ocirc;le du syst&egrave;me" title="Objet de contr&ocirc;le du syst&egrave;me"></img> - Objet de contr&ocirc;le du syst&egrave;me</p>
+        <p><img src="images\statuswarning.png" alt="Avertissement avant l&rsquo;&eacute;criture cyclique" title="Avertissement avant l&rsquo;&eacute;criture cyclique"></img>
+            - Une modification cyclique de ces param&egrave;tres entra&icirc;ne la destruction de la m&eacute;moire flash du produit</p></div>
+    <div id="footer"><p>&copy; Copyright 2023 - SMA Solar Technology AG</p></div>
+</footer>
+</body>
+</html>

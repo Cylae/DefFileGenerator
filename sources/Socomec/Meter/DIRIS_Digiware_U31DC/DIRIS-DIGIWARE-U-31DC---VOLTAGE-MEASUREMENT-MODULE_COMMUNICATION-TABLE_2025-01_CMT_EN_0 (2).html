@@ -1,0 +1,1426 @@
+--X33F-LB08-0PZ4-679cea73
+Content-Disposition: form-data; name=""; filename="DIRIS-DIGIWARE-U-31DC---VOLTAGE-MEASUREMENT-MODULE_COMMUNICATION-TABLE_2025-01_CMT_EN.html"
+Content-Type: application/octet-stream
+
+﻿<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <title>
+          MODBUS tables of DIRIS Digiware U-3x DC</title>
+    <style type="text/css">
+
+
+          /************************************************
+          *
+          * balises html
+          *
+          *************************************************/
+
+          body
+          {
+          font-family: Helvetica, Arial, sans-serif;
+          color: #003C93;
+          background-color: #ffffff;
+          margin:0;
+          height:100%;
+          }
+          h1.level2 {
+          font-size: 1.2em;
+          border-bottom: 1px;
+          border-bottom-style: solid;
+          border-bottom-color: #378fce;
+          }
+          h1.level3 {
+          font-size: 1.1em;
+          }
+          .version {
+          position: absolute;
+          top: 0px;
+          font-size: 1em;
+          right: 30px;
+          color: #C51A1B;
+          font-weight:bold;
+          font-style:italic;
+          font-family: serif;
+          }
+          .version > span{
+          color: white;
+          }
+          h1
+          {
+          font-style: bold;
+          font-size: 1.5em;
+          color:#378fce;
+          margin:0 0 0 0;
+          padding:0;
+          }
+          h2
+          {
+          font-style: italic;
+          color:black;
+          font-size:1.0em;
+          margin:0 0 5 0;
+          padding:0px;
+          }
+          h3
+          {
+          color:#808080;
+          font-size:0.8em;
+          margin:0 0 5 0;
+          padding:0px;
+          }
+          tr{
+          background-color:#ffffff;
+          color:#4d4d4e;
+          text-align:center;
+          font-size:0.8em;
+          }
+          li > p{
+          margin:0;
+          padding-top:40px;
+          height:100px;
+          width:100px;
+          }
+
+          /************************************************
+          *
+          * navigation
+          *
+          *************************************************/
+
+
+          #navigation-vue{
+          position:fixed;
+          top:0;
+          left:0;
+          width:100%;
+          border:none;
+          z-index:3;
+          background-color:black;
+          }
+
+
+          #navigation-tile li{
+          list-style-type:none;
+          background-color:#378fce;
+          vertical-align: middle;
+          width: 100px;
+          height: 100px;
+          text-align: center;
+          cursor: pointer;
+          overflow: hidden;
+          margin-right:20px;
+          margin-bottom:10px;
+          margin-left:-10px;
+          padding:0px;
+          float:left;
+          }
+
+          #navigation-tile li:hover{
+          background-color:#808080;
+          }
+
+          /************************************************
+          *
+          * panel
+          *
+          *************************************************/
+
+
+          #content {
+          position:absolute;
+          top:8em;
+          left:3em;
+          padding-bottom:20px;
+          }
+
+          #border-left{
+          position:fixed;
+          top:90px;
+          left:0;
+          width:30px;
+          height:100%;
+          background-color:black;
+          z-index:10;
+          }
+
+          #border-right{
+          position:fixed;
+          top:90px;
+          right:0;
+          width:30px;
+          height:100%;
+          background-color:black;
+          z-index:10;
+          }
+
+          #border-bottom{
+          position:fixed;
+          background-color:black;
+          bottom:0;
+          width:100%;
+          height:30px;
+          z-index:15;
+          }
+
+          #border-bottom > img{
+          float:right;
+          margin-right:30px;
+          }
+
+
+
+          /************************************************
+          *
+          * table and link
+          *
+          *************************************************/
+
+          a{
+          text-decoration:none;
+          color:#ffffff;
+          text-align:center;
+          font-size:12px;
+          font-weight:bold;
+          width:100px;
+          height:100px;
+          overflow:hidden;
+          }
+
+          .header
+          {
+          background-color:#378fce;
+          color:#ffffff;
+          font-size:0.8em;
+          text-align:center;
+          }
+
+          .lignereserved
+          {
+          background-color:lightgrey;
+          }
+
+          #content>table{
+          width:50em;
+          }
+
+          table{
+          border-style:solid;
+          border-width:1px;
+          border-color:#808080;
+          width: 50em;
+          }
+
+          .level1{
+          padding-top:5.8em;
+          position:relative;
+          top:-5.5em;
+          margin-bottom:-5.5em;
+          }
+
+        </style>
+  </head>
+  <body>
+    <div id="navigation-vue">
+      <div class="version"><span>MODBUS TABLES - </span>V
+            87.197</div>
+      <ul id="navigation-tile"><a href="#Identification"><li>
+            <p>Identification</p>
+          </li></a><a href="#Date Time"><li>
+            <p>Date Time</p>
+          </li></a><a href="#Communication"><li>
+            <p>Communication</p>
+          </li></a><a href="#Commissioning"><li>
+            <p>Commissioning</p>
+          </li></a><a href="#Power Monitoring DC"><li>
+            <p>Power Monitoring DC</p>
+          </li></a><a href="#Maintenance"><li>
+            <p>Maintenance</p>
+          </li></a></ul>
+    </div>
+    <div id="border-left"></div>
+    <div id="border-right"></div>
+    <div id="border-bottom"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAeCAYAAAG55dfBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkMyQUJDQTEyREE3QjExRTJCMTk0QTdFMjE5MEMyRTJCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkMyQUJDQTEzREE3QjExRTJCMTk0QTdFMjE5MEMyRTJCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QzJBQkNBMTBEQTdCMTFFMkIxOTRBN0UyMTkwQzJFMkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QzJBQkNBMTFEQTdCMTFFMkIxOTRBN0UyMTkwQzJFMkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4dRdQmAAANeUlEQVR42mL8//8/A7UA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" alt="logosocomec.png"></div>
+    <div id="content">
+      <h1 align="left" id="Identification" class="level1">Identification</h1><BR><h1 align="left" id="Product" class="level2">Product</h1><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">Product identification</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>50000</TD>
+          <TD><text>0x</text>C350</TD>
+          <TD>Info</TD>
+          <TD>69</TD>
+          <TD>NONE</TD>
+          <TD>READ</TD>
+          <TD>READ</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>50000</TD>
+          <TD><text>0x</text>C350</TD>
+          <TD align="center">4</TD>
+          <TD align="left">"SOCO"</TD>
+          <TD align="center">-</TD>
+          <TD align="center">STRING_16</TD>
+        </TR>
+        <TR>
+          <TD>50004</TD>
+          <TD><text>0x</text>C354</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Product order ID (Countis:100, Protection:200, Atys:300, Diris:400)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50005</TD>
+          <TD><text>0x</text>C355</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Product ID (EX: 1000 ATS3)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50006</TD>
+          <TD><text>0x</text>C356</TD>
+          <TD align="center">1</TD>
+          <TD align="left">MODBUS Table Version</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50007</TD>
+          <TD><text>0x</text>C357</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Product software version (EX: 100 Version 1.00)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50008</TD>
+          <TD><text>0x</text>C358</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Serial_AA_SS</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16_HEX</TD>
+        </TR>
+        <TR>
+          <TD>50009</TD>
+          <TD><text>0x</text>C359</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Serial_SST_L</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16_HEX</TD>
+        </TR>
+        <TR>
+          <TD>50010</TD>
+          <TD><text>0x</text>C35A</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Serial_order</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50011</TD>
+          <TD><text>0x</text>C35B</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Serial_Reserve</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>50013</TD>
+          <TD><text>0x</text>C35D</TD>
+          <TD align="center">4</TD>
+          <TD align="left">See "Code table" tab for more details</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U64_HEX</TD>
+        </TR>
+        <TR>
+          <TD>50017</TD>
+          <TD><text>0x</text>C361</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Customization data loaded (True/False)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U8</TD>
+        </TR>
+        <TR>
+          <TD>50018</TD>
+          <TD><text>0x</text>C362</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Product version (Major)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50019</TD>
+          <TD><text>0x</text>C363</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Product version (Minor)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50020</TD>
+          <TD><text>0x</text>C364</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Product version (Revision)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50021</TD>
+          <TD><text>0x</text>C365</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Product version (Build)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50022</TD>
+          <TD><text>0x</text>C366</TD>
+          <TD align="center">3</TD>
+          <TD align="left">Product build date</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME_3</TD>
+        </TR>
+        <TR>
+          <TD>50025</TD>
+          <TD><text>0x</text>C369</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Software technical base version (Major)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50026</TD>
+          <TD><text>0x</text>C36A</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Software technical base version (Minor)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50027</TD>
+          <TD><text>0x</text>C36B</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Software technical base version (Revision)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50028</TD>
+          <TD><text>0x</text>C36C</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Customization version (Major)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50029</TD>
+          <TD><text>0x</text>C36D</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Customization version (Minor)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50030</TD>
+          <TD><text>0x</text>C36E</TD>
+          <TD align="center">4</TD>
+          <TD align="left">Product VLO (EX : "880100")</TD>
+          <TD align="center">-</TD>
+          <TD align="center">STRING_NORM</TD>
+        </TR>
+        <TR>
+          <TD>50034</TD>
+          <TD><text>0x</text>C372</TD>
+          <TD align="center">4</TD>
+          <TD align="left">Customization VLO (EX : "880700")</TD>
+          <TD align="center">-</TD>
+          <TD align="center">STRING_NORM</TD>
+        </TR>
+        <TR>
+          <TD>50038</TD>
+          <TD><text>0x</text>C376</TD>
+          <TD align="center">4</TD>
+          <TD align="left">Software technical base VLO (EX : "880600")</TD>
+          <TD align="center">-</TD>
+          <TD align="center">STRING_NORM</TD>
+        </TR>
+        <TR>
+          <TD>50042</TD>
+          <TD><text>0x</text>C37A</TD>
+          <TD align="center">8</TD>
+          <TD align="left">Vendor name (EX : "SOCOMEC")</TD>
+          <TD align="center">-</TD>
+          <TD align="center">STRING_NORM</TD>
+        </TR>
+        <TR>
+          <TD>50050</TD>
+          <TD><text>0x</text>C382</TD>
+          <TD align="center">8</TD>
+          <TD align="left">Product name (EX : "PMD EE")</TD>
+          <TD align="center">-</TD>
+          <TD align="center">STRING_NORM</TD>
+        </TR>
+        <TR>
+          <TD>50058</TD>
+          <TD><text>0x</text>C38A</TD>
+          <TD align="center">8</TD>
+          <TD align="left">Extended name</TD>
+          <TD align="center">-</TD>
+          <TD align="center">STRING_NORM</TD>
+        </TR>
+        <TR>
+          <TD>50066</TD>
+          <TD><text>0x</text>C392</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Ressource version (Build 2)</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>50067</TD>
+          <TD><text>0x</text>C393</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Net ID</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U32_HEX</TD>
+        </TR>
+      </TABLE><BR><BR><h1 align="left" id="LED blink command" class="level2">LED blink command</h1><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">Identification by LED blink</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>57864</TD>
+          <TD><text>0x</text>E208</TD>
+          <TD>Commands</TD>
+          <TD>1</TD>
+          <TD>NONE</TD>
+          <TD>WRITE</TD>
+          <TD>WRITE</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>57864</TD>
+          <TD><text>0x</text>E208</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Action<br>1<text> : </text>Start blinking</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+      </TABLE><BR><BR><BR><h1 align="left" id="Date Time" class="level1">Date Time</h1><BR><h1 align="left" id="Date/time configured" class="level2">Date/time configured</h1><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">Date/time</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>57600</TD>
+          <TD><text>0x</text>E100</TD>
+          <TD>Settings</TD>
+          <TD>6</TD>
+          <TD>NONE</TD>
+          <TD>READ | WRITE | WRITE_MANY</TD>
+          <TD>READ | WRITE | WRITE_MANY</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>57600</TD>
+          <TD><text>0x</text>E100</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Day</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U8</TD>
+        </TR>
+        <TR>
+          <TD>57601</TD>
+          <TD><text>0x</text>E101</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Month</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U8</TD>
+        </TR>
+        <TR>
+          <TD>57602</TD>
+          <TD><text>0x</text>E102</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Year</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>57603</TD>
+          <TD><text>0x</text>E103</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Hour</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U8</TD>
+        </TR>
+        <TR>
+          <TD>57604</TD>
+          <TD><text>0x</text>E104</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Minute</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U8</TD>
+        </TR>
+        <TR>
+          <TD>57605</TD>
+          <TD><text>0x</text>E105</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Second</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U8</TD>
+        </TR>
+      </TABLE><BR><BR><h1 align="left" id="Hour Counter" class="level2">Hour Counter</h1><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">Operating hours counters</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>512</TD>
+          <TD><text>0x</text>0200</TD>
+          <TD>Info</TD>
+          <TD>4</TD>
+          <TD>NONE</TD>
+          <TD>READ</TD>
+          <TD>READ</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>512</TD>
+          <TD><text>0x</text>0200</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Total operating hours counter</TD>
+          <TD align="center">s</TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>514</TD>
+          <TD><text>0x</text>0202</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Partial operating hours counter</TD>
+          <TD align="center">s</TD>
+          <TD align="center">U32</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">Partial operating hours counter reset</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>528</TD>
+          <TD><text>0x</text>0210</TD>
+          <TD>Commands</TD>
+          <TD>1</TD>
+          <TD>USER</TD>
+          <TD>NONE</TD>
+          <TD>WRITE</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>528</TD>
+          <TD><text>0x</text>0210</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Reset command<br>0<text> : </text>Reset partial operating hours counter</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+      </TABLE><BR><BR><BR><h1 align="left" id="Communication" class="level1">Communication</h1><BR><h1 align="left" id="Modbus" class="level2">Modbus</h1><BR><h1 align="left" id="Access" class="level3">Access</h1><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">Modbus address</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>57344</TD>
+          <TD><text>0x</text>E000</TD>
+          <TD>Settings</TD>
+          <TD>1</TD>
+          <TD>USER</TD>
+          <TD>READ</TD>
+          <TD>READ | WRITE | WRITE_MANY</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>57344</TD>
+          <TD><text>0x</text>E000</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Slave Address</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U8</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">Lock system</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>58112</TD>
+          <TD><text>0x</text>E300</TD>
+          <TD>Settings</TD>
+          <TD>2</TD>
+          <TD>NONE</TD>
+          <TD>READ | WRITE | WRITE_MANY</TD>
+          <TD>READ | WRITE | WRITE_MANY</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>58112</TD>
+          <TD><text>0x</text>E300</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Code to submit</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>58113</TD>
+          <TD><text>0x</text>E301</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Delocker ID</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+      </TABLE><BR><BR><BR><BR><h1 align="left" id="Commissioning" class="level1">Commissioning</h1><BR><h1 align="left" id="Network" class="level2">Network</h1><BR><h1 align="left" id="Settings" class="level3">Settings</h1><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">Electrical network settings</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>12288</TD>
+          <TD><text>0x</text>3000</TD>
+          <TD>Settings</TD>
+          <TD>4</TD>
+          <TD>NONE</TD>
+          <TD>READ | WRITE | WRITE_MANY</TD>
+          <TD>READ | WRITE | WRITE_MANY</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>12288</TD>
+          <TD><text>0x</text>3000</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Electrical network type<br>0<text> : </text>Not defined<br>6<text> : </text>DC</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U8</TD>
+        </TR>
+        <TR>
+          <TD>12289</TD>
+          <TD><text>0x</text>3001</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Nominal Voltage</TD>
+          <TD align="center">-</TD>
+          <TD align="center">S32</TD>
+        </TR>
+        <TR>
+          <TD>12291</TD>
+          <TD><text>0x</text>3003</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Voltage Adaptor<br>0<text> : </text>None<br>1<text> : </text>U500dc<br>2<text> : </text>U1000dc<br>3<text> : </text>U1500dc</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U8</TD>
+        </TR>
+      </TABLE><BR><BR><BR><BR><h1 align="left" id="Power Monitoring DC" class="level1">Power Monitoring DC</h1><BR><h1 align="left" id="Settings" class="level2">Settings</h1><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">Power measurement settings</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>34816</TD>
+          <TD><text>0x</text>8800</TD>
+          <TD>Settings</TD>
+          <TD>2</TD>
+          <TD>USER</TD>
+          <TD>READ</TD>
+          <TD>READ | WRITE | WRITE_MANY</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>34816</TD>
+          <TD><text>0x</text>8800</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Integration period for instantaneous values</TD>
+          <TD align="center">s<text> / </text>5</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>34817</TD>
+          <TD><text>0x</text>8801</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Integration period for average values</TD>
+          <TD align="center">min</TD>
+          <TD align="center">U16</TD>
+        </TR>
+      </TABLE><BR><BR><h1 align="left" id="DC measurements" class="level2">DC measurements</h1><BR><h1 align="left" id="Instantaneous measurements" class="level3">Instantaneous measurements</h1><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">DC Inst. </h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>36864</TD>
+          <TD><text>0x</text>9000</TD>
+          <TD>Info</TD>
+          <TD>11</TD>
+          <TD>NONE</TD>
+          <TD>READ</TD>
+          <TD>READ</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>36864</TD>
+          <TD><text>0x</text>9000</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of last instance</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+        <TR>
+          <TD>36866</TD>
+          <TD><text>0x</text>9002</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Integration period</TD>
+          <TD align="center">s<text> / </text>5</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>36867</TD>
+          <TD><text>0x</text>9003</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Packet Index</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>36869</TD>
+          <TD><text>0x</text>9005</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Vrms</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>36871</TD>
+          <TD><text>0x</text>9007</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Vdc</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">S32</TD>
+        </TR>
+        <TR>
+          <TD>36873</TD>
+          <TD><text>0x</text>9009</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Vripple</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">U32</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">DC Inst. min/max</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>37760</TD>
+          <TD><text>0x</text>9380</TD>
+          <TD>Info</TD>
+          <TD>24</TD>
+          <TD>NONE</TD>
+          <TD>READ</TD>
+          <TD>READ</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>37760</TD>
+          <TD><text>0x</text>9380</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Maximum Vrms</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>37762</TD>
+          <TD><text>0x</text>9382</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of maximum Vrms</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+        <TR>
+          <TD>37764</TD>
+          <TD><text>0x</text>9384</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Maximum Vdc</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">S32</TD>
+        </TR>
+        <TR>
+          <TD>37766</TD>
+          <TD><text>0x</text>9386</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of maximum Vdc</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+        <TR>
+          <TD>37768</TD>
+          <TD><text>0x</text>9388</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Maximum Vripple</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>37770</TD>
+          <TD><text>0x</text>938A</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of maximum Vripple</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+        <TR>
+          <TD>37772</TD>
+          <TD><text>0x</text>938C</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Minimum Vrms</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>37774</TD>
+          <TD><text>0x</text>938E</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of minimum Vrms</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+        <TR>
+          <TD>37776</TD>
+          <TD><text>0x</text>9390</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Minimum Vdc</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">S32</TD>
+        </TR>
+        <TR>
+          <TD>37778</TD>
+          <TD><text>0x</text>9392</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of minimum Vdc</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+        <TR>
+          <TD>37780</TD>
+          <TD><text>0x</text>9394</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Minimum Vripple</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>37782</TD>
+          <TD><text>0x</text>9396</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of minimum Vripple</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+      </TABLE><BR><BR><h1 align="left" id="Average measurements" class="level3">Average measurements</h1><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">DC Avg</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>36944</TD>
+          <TD><text>0x</text>9050</TD>
+          <TD>Info</TD>
+          <TD>11</TD>
+          <TD>NONE</TD>
+          <TD>READ</TD>
+          <TD>READ</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>36944</TD>
+          <TD><text>0x</text>9050</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of last instance</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+        <TR>
+          <TD>36946</TD>
+          <TD><text>0x</text>9052</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Integration period</TD>
+          <TD align="center">min</TD>
+          <TD align="center">U16</TD>
+        </TR>
+        <TR>
+          <TD>36947</TD>
+          <TD><text>0x</text>9053</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Packet Index</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>36949</TD>
+          <TD><text>0x</text>9055</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Vrms</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>36951</TD>
+          <TD><text>0x</text>9057</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Vdc</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">S32</TD>
+        </TR>
+        <TR>
+          <TD>36953</TD>
+          <TD><text>0x</text>9059</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Vripple</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">U32</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">DC Avg min/max</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>37888</TD>
+          <TD><text>0x</text>9400</TD>
+          <TD>Info</TD>
+          <TD>24</TD>
+          <TD>NONE</TD>
+          <TD>READ</TD>
+          <TD>READ</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>37888</TD>
+          <TD><text>0x</text>9400</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Maximum Vrms</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>37890</TD>
+          <TD><text>0x</text>9402</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of maximum Vrms</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+        <TR>
+          <TD>37892</TD>
+          <TD><text>0x</text>9404</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Maximum Vdc</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">S32</TD>
+        </TR>
+        <TR>
+          <TD>37894</TD>
+          <TD><text>0x</text>9406</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of maximum Vdc</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+        <TR>
+          <TD>37896</TD>
+          <TD><text>0x</text>9408</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Maximum Vripple</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>37898</TD>
+          <TD><text>0x</text>940A</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of maximum Vripple</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+        <TR>
+          <TD>37900</TD>
+          <TD><text>0x</text>940C</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Minimum Vrms</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>37902</TD>
+          <TD><text>0x</text>940E</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of minimum Vrms</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+        <TR>
+          <TD>37904</TD>
+          <TD><text>0x</text>9410</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Minimum Vdc</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">S32</TD>
+        </TR>
+        <TR>
+          <TD>37906</TD>
+          <TD><text>0x</text>9412</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of minimum Vdc</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+        <TR>
+          <TD>37908</TD>
+          <TD><text>0x</text>9414</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Minimum Vripple</TD>
+          <TD align="center">V<text> 10⁻²</text></TD>
+          <TD align="center">U32</TD>
+        </TR>
+        <TR>
+          <TD>37910</TD>
+          <TD><text>0x</text>9416</TD>
+          <TD align="center">2</TD>
+          <TD align="left">Date of minimum Vripple</TD>
+          <TD align="center">-</TD>
+          <TD align="center">DATETIME</TD>
+        </TR>
+      </TABLE><BR><BR><h1 align="left" id="Reset" class="level3">Reset</h1><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">Reset min/max measurements</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>37744</TD>
+          <TD><text>0x</text>9370</TD>
+          <TD>Commands</TD>
+          <TD>2</TD>
+          <TD>NONE</TD>
+          <TD>WRITE_MANY</TD>
+          <TD>WRITE_MANY</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>37744</TD>
+          <TD><text>0x</text>9370</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Reset min/max AVG<br>0x0001<text> : </text>AVG Min/Max V<br>0xFFFF<text> : </text>AVG Min/Max ALL</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16_HEX</TD>
+        </TR>
+        <TR>
+          <TD>37745</TD>
+          <TD><text>0x</text>9371</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Reset min/max INST<br>0x0001<text> : </text>INST Min/Max V<br>0xFFFF<text> : </text>INST Min/Max ALL</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16_HEX</TD>
+        </TR>
+      </TABLE><BR><BR><BR><BR><h1 align="left" id="Maintenance" class="level1">Maintenance</h1><BR><h1 align="left" id="Actions" class="level2">Actions</h1><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">Action system</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>57856</TD>
+          <TD><text>0x</text>E200</TD>
+          <TD>Commands</TD>
+          <TD>1</TD>
+          <TD>NONE</TD>
+          <TD>WRITE</TD>
+          <TD>WRITE</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>57856</TD>
+          <TD><text>0x</text>E200</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Action :<br>0xA1<text> : </text>Save product configuration<br>0xB2<text> : </text>Product reboot<br>0xE5<text> : </text>Reset to factory default settings</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U8_HEX</TD>
+        </TR>
+      </TABLE><BR><BR><h1 align="left" id="Memory" class="level2">Memory</h1><BR><TABLE border="1" cellspacing="0" cellpadding="2">
+        <CAPTION>
+          <h2 align="left">Reset product history</h2><BR></CAPTION>
+        <TR class="header">
+          <TH width="100">Dec start address</TH>
+          <TH width="100">Hex start address</TH>
+          <TH width="100">Type</TH>
+          <TH width="100">Size</TH>
+          <TH width="100">Lock level</TH>
+          <TH width="150">Locked fcts</TH>
+          <TH width="150">Unlocked fcts</TH>
+        </TR>
+        <TR align="center">
+          <TD>544</TD>
+          <TD><text>0x</text>0220</TD>
+          <TD>Commands</TD>
+          <TD>1</TD>
+          <TD>USER</TD>
+          <TD>NONE</TD>
+          <TD>WRITE</TD>
+        </TR>
+      </TABLE><BR><TABLE border="1" cellspacing="1" cellpadding="2">
+        <TR class="header">
+          <TH width="75">Dec address</TH>
+          <TH width="75">Hex address</TH>
+          <TH width="75">Words count</TH>
+          <TH width="400">Description</TH>
+          <TH width="75">Unit</TH>
+          <TH width="75">Data type</TH>
+        </TR>
+        <TR>
+          <TD>544</TD>
+          <TD><text>0x</text>0220</TD>
+          <TD align="center">1</TD>
+          <TD align="left">Action<br>0<text> : </text>No action<br>1<text> : </text>Reset alarms history<br>16<text> : </text>Reset average trends</TD>
+          <TD align="center">-</TD>
+          <TD align="center">U16</TD>
+        </TR>
+      </TABLE><BR><BR><BR></div>
+  </body>
+</html>
+--X33F-LB08-0PZ4-679cea73--

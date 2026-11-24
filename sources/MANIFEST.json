@@ -1,210 +1,3586 @@
 {
-  "schema_version": "1.0.0",
-  "last_updated": "2026-11-19T15:32:22.330071+00:00",
-  "total_documents": 6,
+  "schema_version": "2.0.0",
+  "last_updated": "2026-11-24T13:46:31.211049+00:00",
+  "total_documents": 110,
+  "total_manufacturers": 26,
   "documents": [
     {
-      "document_id": "SRC-CP-001",
-      "manufacturer": "CyberPower",
-      "title": "CyberPower Grid-Tied PV Inverter Modbus Protocol",
+      "document_id": "SRC-ABB-001",
+      "manufacturer": "ABB",
+      "category": "EVCharger",
+      "range_or_family": "Terra",
+      "title": "ABB Terra AC Charger ModbusCommunication v1.7",
+      "filename": "ABB_Terra_AC_Charger_ModbusCommunication_v1.7.pdf",
+      "relative_path": "sources/ABB/EVCharger/Terra/ABB_Terra_AC_Charger_ModbusCommunication_v1.7.pdf",
+      "file_format": "PDF",
+      "size_bytes": 394364,
+      "sha256": "2c149197516379c107b2a64f212e7cb614d3f1493730510bda6d589fc0b8defe",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "Terra"
+      ],
+      "definitions_generated": [
+        "OTH_ABB_Terra_AC_Charger.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.094676+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-002",
+      "manufacturer": "ABB",
+      "category": "Inverter",
+      "range_or_family": "PVS800",
+      "title": "PVS800 57B   Manuel firmware(table modbus)",
+      "filename": "PVS800-57B - Manuel firmware(table modbus).pdf",
+      "relative_path": "sources/ABB/Inverter/PVS800/PVS800-57B - Manuel firmware(table modbus).pdf",
+      "file_format": "PDF",
+      "size_bytes": 3569543,
+      "sha256": "46924a54d5b52325a02fe3f7b1ff53e90ca2c65c3cd508e109183e6b01d86d29",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "PVS800"
+      ],
+      "definitions_generated": [
+        "INV_ABB_PVS800-57B.csv",
+        "INV_ABB_PVS800.csv",
+        "INV_ABB_PVS800_Work.csv",
+        "INV_ABB_PVS800_en_cours.csv",
+        "INV_ABB_PVS800_en_cours_noBitfield.csv",
+        "OTH_ABB_PVS800.csv",
+        "OTH_ABB_PVS800_Work.csv",
+        "OTH_ABB_PVS800_en_cours.csv",
+        "OTH_ABB_PVS800_en_cours_noBitfield.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.097621+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-003",
+      "manufacturer": "ABB",
+      "category": "Inverter",
+      "range_or_family": "PVS_SunSpec",
+      "title": "SUNSPEC PVS 100 120 PICS Rev 005",
+      "filename": "SUNSPEC_PVS-100_120_PICS_Rev_005.xlsx",
+      "relative_path": "sources/ABB/Inverter/PVS_SunSpec/SUNSPEC_PVS-100_120_PICS_Rev_005.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 159976,
+      "sha256": "78a48c453d1bb5ea899e3e3dfc41d81026bd8d87fc48adb6fc63d24148351ec1",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "PVS SunSpec"
+      ],
+      "definitions_generated": [
+        "INV_ABB_5583-CHEVALIERP2_SunSpec_inverter_ABB_3Q4200_2117B_modbusRTU.csv",
+        "INV_ABB_LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
+        "INV_ABB_Modbus_ABB_SunSpec_Light.csv",
+        "INV_ABB_PVS-100_120.csv",
+        "INV_ABB_PVS-100_120_PVS1xx_TCP_PICS.csv",
+        "INV_ABB_PVS-10_12.5_15_20_30_33.csv",
+        "INV_ABB_PVS-175.csv",
+        "INV_ABB_PVS-30-TL.csv",
+        "INV_ABB_PVS-50_60.csv",
+        "INV_ABB_PVS1xx_SunSpec.csv",
+        "INV_ABB_PVS50_MODBUS_light.csv",
+        "INV_ABB_PVS800-57B.csv",
+        "INV_ABB_PVS800.csv",
+        "INV_ABB_PVS800_Work.csv",
+        "INV_ABB_PVS800_en_cours.csv",
+        "INV_ABB_PVS800_en_cours_noBitfield.csv",
+        "INV_ABB_PVS_100_120_SunspecLight.csv",
+        "INV_ABB_SUNSPEC_PVS1xx_PICS_V002_GL20181011.csv",
+        "INV_ABB_SunSpec_IM_1_103_160.csv",
+        "INV_ABB_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
+        "INV_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv",
+        "INV_ABB_Velux_SunSpec_inverter_FIMER_-3Q15-_2201B_modbusTCP.csv",
+        "OTH_ABB_Modbus_ABB_SunSpec.csv",
+        "OTH_ABB_Modbus_ABB_SunSpec_Light.csv",
+        "OTH_ABB_Modbus_ABB_SunSpec_full.csv",
+        "OTH_ABB_PVS-100_120_PVS1xx_TCP_PICS.csv",
+        "OTH_ABB_PVS50_MODBUS_light.csv",
+        "OTH_ABB_PVS800.csv",
+        "OTH_ABB_PVS800_Work.csv",
+        "OTH_ABB_PVS800_en_cours.csv",
+        "OTH_ABB_PVS800_en_cours_noBitfield.csv",
+        "OTH_ABB_PVS_100_120_SunspecLight.csv",
+        "OTH_ABB_SUNSPEC_PVS-100_120_PICS_Rev_005.csv",
+        "OTH_ABB_SUNSPEC_PVS-10_12.5_15_20_30_33_PICS_Rev_001.csv",
+        "OTH_ABB_SUNSPEC_PVS-175_PICS_Rev_003.csv",
+        "OTH_ABB_SUNSPEC_PVS-50_60_PICS_Rev_3.csv",
+        "OTH_ABB_SUNSPEC_PVS1xx_PICS_V002_GL20181011.csv",
+        "OTH_ABB_SunSpec_IM_1_103_160.csv",
+        "OTH_ABB_SunSpec_PVS.csv",
+        "OTH_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.098540+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-004",
+      "manufacturer": "ABB",
+      "category": "Inverter",
+      "range_or_family": "PVS_SunSpec",
+      "title": "SUNSPEC PVS 10 12.5 15 20 30 33 PICS Rev 001",
+      "filename": "SUNSPEC_PVS-10_12.5_15_20_30_33_PICS_Rev_001.xlsx",
+      "relative_path": "sources/ABB/Inverter/PVS_SunSpec/SUNSPEC_PVS-10_12.5_15_20_30_33_PICS_Rev_001.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 127737,
+      "sha256": "f12c282fc0709852d6752eaaff37a8e9a98d7bf8b956e55a31c9b931d01d6837",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "PVS SunSpec"
+      ],
+      "definitions_generated": [
+        "INV_ABB_5583-CHEVALIERP2_SunSpec_inverter_ABB_3Q4200_2117B_modbusRTU.csv",
+        "INV_ABB_LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
+        "INV_ABB_Modbus_ABB_SunSpec_Light.csv",
+        "INV_ABB_PVS-100_120.csv",
+        "INV_ABB_PVS-100_120_PVS1xx_TCP_PICS.csv",
+        "INV_ABB_PVS-10_12.5_15_20_30_33.csv",
+        "INV_ABB_PVS-175.csv",
+        "INV_ABB_PVS-30-TL.csv",
+        "INV_ABB_PVS-50_60.csv",
+        "INV_ABB_PVS1xx_SunSpec.csv",
+        "INV_ABB_PVS50_MODBUS_light.csv",
+        "INV_ABB_PVS800-57B.csv",
+        "INV_ABB_PVS800.csv",
+        "INV_ABB_PVS800_Work.csv",
+        "INV_ABB_PVS800_en_cours.csv",
+        "INV_ABB_PVS800_en_cours_noBitfield.csv",
+        "INV_ABB_PVS_100_120_SunspecLight.csv",
+        "INV_ABB_SUNSPEC_PVS1xx_PICS_V002_GL20181011.csv",
+        "INV_ABB_SunSpec_IM_1_103_160.csv",
+        "INV_ABB_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
+        "INV_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv",
+        "INV_ABB_Velux_SunSpec_inverter_FIMER_-3Q15-_2201B_modbusTCP.csv",
+        "OTH_ABB_Modbus_ABB_SunSpec.csv",
+        "OTH_ABB_Modbus_ABB_SunSpec_Light.csv",
+        "OTH_ABB_Modbus_ABB_SunSpec_full.csv",
+        "OTH_ABB_PVS-100_120_PVS1xx_TCP_PICS.csv",
+        "OTH_ABB_PVS50_MODBUS_light.csv",
+        "OTH_ABB_PVS800.csv",
+        "OTH_ABB_PVS800_Work.csv",
+        "OTH_ABB_PVS800_en_cours.csv",
+        "OTH_ABB_PVS800_en_cours_noBitfield.csv",
+        "OTH_ABB_PVS_100_120_SunspecLight.csv",
+        "OTH_ABB_SUNSPEC_PVS-100_120_PICS_Rev_005.csv",
+        "OTH_ABB_SUNSPEC_PVS-10_12.5_15_20_30_33_PICS_Rev_001.csv",
+        "OTH_ABB_SUNSPEC_PVS-175_PICS_Rev_003.csv",
+        "OTH_ABB_SUNSPEC_PVS-50_60_PICS_Rev_3.csv",
+        "OTH_ABB_SUNSPEC_PVS1xx_PICS_V002_GL20181011.csv",
+        "OTH_ABB_SunSpec_IM_1_103_160.csv",
+        "OTH_ABB_SunSpec_PVS.csv",
+        "OTH_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.098960+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-005",
+      "manufacturer": "ABB",
+      "category": "Inverter",
+      "range_or_family": "PVS_SunSpec",
+      "title": "SUNSPEC PVS 175 PICS Rev 003",
+      "filename": "SUNSPEC_PVS-175_PICS_Rev_003.xlsx",
+      "relative_path": "sources/ABB/Inverter/PVS_SunSpec/SUNSPEC_PVS-175_PICS_Rev_003.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 151580,
+      "sha256": "7a34f3e385d6148f3509fedd677020b1aaebbceb679604f9459973b03023c90d",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "PVS SunSpec"
+      ],
+      "definitions_generated": [
+        "INV_ABB_5583-CHEVALIERP2_SunSpec_inverter_ABB_3Q4200_2117B_modbusRTU.csv",
+        "INV_ABB_LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
+        "INV_ABB_Modbus_ABB_SunSpec_Light.csv",
+        "INV_ABB_PVS-100_120.csv",
+        "INV_ABB_PVS-100_120_PVS1xx_TCP_PICS.csv",
+        "INV_ABB_PVS-10_12.5_15_20_30_33.csv",
+        "INV_ABB_PVS-175.csv",
+        "INV_ABB_PVS-30-TL.csv",
+        "INV_ABB_PVS-50_60.csv",
+        "INV_ABB_PVS1xx_SunSpec.csv",
+        "INV_ABB_PVS50_MODBUS_light.csv",
+        "INV_ABB_PVS800-57B.csv",
+        "INV_ABB_PVS800.csv",
+        "INV_ABB_PVS800_Work.csv",
+        "INV_ABB_PVS800_en_cours.csv",
+        "INV_ABB_PVS800_en_cours_noBitfield.csv",
+        "INV_ABB_PVS_100_120_SunspecLight.csv",
+        "INV_ABB_SUNSPEC_PVS1xx_PICS_V002_GL20181011.csv",
+        "INV_ABB_SunSpec_IM_1_103_160.csv",
+        "INV_ABB_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
+        "INV_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv",
+        "INV_ABB_Velux_SunSpec_inverter_FIMER_-3Q15-_2201B_modbusTCP.csv",
+        "OTH_ABB_Modbus_ABB_SunSpec.csv",
+        "OTH_ABB_Modbus_ABB_SunSpec_Light.csv",
+        "OTH_ABB_Modbus_ABB_SunSpec_full.csv",
+        "OTH_ABB_PVS-100_120_PVS1xx_TCP_PICS.csv",
+        "OTH_ABB_PVS50_MODBUS_light.csv",
+        "OTH_ABB_PVS800.csv",
+        "OTH_ABB_PVS800_Work.csv",
+        "OTH_ABB_PVS800_en_cours.csv",
+        "OTH_ABB_PVS800_en_cours_noBitfield.csv",
+        "OTH_ABB_PVS_100_120_SunspecLight.csv",
+        "OTH_ABB_SUNSPEC_PVS-100_120_PICS_Rev_005.csv",
+        "OTH_ABB_SUNSPEC_PVS-10_12.5_15_20_30_33_PICS_Rev_001.csv",
+        "OTH_ABB_SUNSPEC_PVS-175_PICS_Rev_003.csv",
+        "OTH_ABB_SUNSPEC_PVS-50_60_PICS_Rev_3.csv",
+        "OTH_ABB_SUNSPEC_PVS1xx_PICS_V002_GL20181011.csv",
+        "OTH_ABB_SunSpec_IM_1_103_160.csv",
+        "OTH_ABB_SunSpec_PVS.csv",
+        "OTH_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.099257+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-006",
+      "manufacturer": "ABB",
+      "category": "Inverter",
+      "range_or_family": "PVS_SunSpec",
+      "title": "SUNSPEC PVS 50 60 PICS Rev 3",
+      "filename": "SUNSPEC_PVS-50_60_PICS_Rev_3.xlsx",
+      "relative_path": "sources/ABB/Inverter/PVS_SunSpec/SUNSPEC_PVS-50_60_PICS_Rev_3.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 138052,
+      "sha256": "9a742648f9e3a077f57e18b8a2d824674c8e28ebe64abe0ba3d4f298cba2e7f3",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "PVS SunSpec"
+      ],
+      "definitions_generated": [
+        "INV_ABB_5583-CHEVALIERP2_SunSpec_inverter_ABB_3Q4200_2117B_modbusRTU.csv",
+        "INV_ABB_LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
+        "INV_ABB_Modbus_ABB_SunSpec_Light.csv",
+        "INV_ABB_PVS-100_120.csv",
+        "INV_ABB_PVS-100_120_PVS1xx_TCP_PICS.csv",
+        "INV_ABB_PVS-10_12.5_15_20_30_33.csv",
+        "INV_ABB_PVS-175.csv",
+        "INV_ABB_PVS-30-TL.csv",
+        "INV_ABB_PVS-50_60.csv",
+        "INV_ABB_PVS1xx_SunSpec.csv",
+        "INV_ABB_PVS50_MODBUS_light.csv",
+        "INV_ABB_PVS800-57B.csv",
+        "INV_ABB_PVS800.csv",
+        "INV_ABB_PVS800_Work.csv",
+        "INV_ABB_PVS800_en_cours.csv",
+        "INV_ABB_PVS800_en_cours_noBitfield.csv",
+        "INV_ABB_PVS_100_120_SunspecLight.csv",
+        "INV_ABB_SUNSPEC_PVS1xx_PICS_V002_GL20181011.csv",
+        "INV_ABB_SunSpec_IM_1_103_160.csv",
+        "INV_ABB_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
+        "INV_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv",
+        "INV_ABB_Velux_SunSpec_inverter_FIMER_-3Q15-_2201B_modbusTCP.csv",
+        "OTH_ABB_Modbus_ABB_SunSpec.csv",
+        "OTH_ABB_Modbus_ABB_SunSpec_Light.csv",
+        "OTH_ABB_Modbus_ABB_SunSpec_full.csv",
+        "OTH_ABB_PVS-100_120_PVS1xx_TCP_PICS.csv",
+        "OTH_ABB_PVS50_MODBUS_light.csv",
+        "OTH_ABB_PVS800.csv",
+        "OTH_ABB_PVS800_Work.csv",
+        "OTH_ABB_PVS800_en_cours.csv",
+        "OTH_ABB_PVS800_en_cours_noBitfield.csv",
+        "OTH_ABB_PVS_100_120_SunspecLight.csv",
+        "OTH_ABB_SUNSPEC_PVS-100_120_PICS_Rev_005.csv",
+        "OTH_ABB_SUNSPEC_PVS-10_12.5_15_20_30_33_PICS_Rev_001.csv",
+        "OTH_ABB_SUNSPEC_PVS-175_PICS_Rev_003.csv",
+        "OTH_ABB_SUNSPEC_PVS-50_60_PICS_Rev_3.csv",
+        "OTH_ABB_SUNSPEC_PVS1xx_PICS_V002_GL20181011.csv",
+        "OTH_ABB_SunSpec_IM_1_103_160.csv",
+        "OTH_ABB_SunSpec_PVS.csv",
+        "OTH_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.099534+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-007",
+      "manufacturer": "ABB",
+      "category": "Inverter",
+      "range_or_family": "TRIO",
+      "title": "ABB TRIO 50.0 TM OUTD SunSpec RTU PICS",
+      "filename": "ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.xlsx",
+      "relative_path": "sources/ABB/Inverter/TRIO/ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 82913,
+      "sha256": "fddd40aa431d337013f04fa52cc126ea724d4a337371bf1b1cf486e945ceb835",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "TRIO"
+      ],
+      "definitions_generated": [
+        "INV_ABB_Modbus_TRIO.csv",
+        "INV_ABB_TRIO-50.0-TM-OUTD.csv",
+        "INV_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv",
+        "INV_ABB_TRIO20-27-6.csv",
+        "INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv",
+        "INV_ABB_TRIO_200_276_FR.csv",
+        "OTH_ABB_Modbus_TRIO.csv",
+        "OTH_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv",
+        "OTH_ABB_TRIO_200_276_FR.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.099849+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-008",
+      "manufacturer": "ABB",
+      "category": "Inverter",
+      "range_or_family": "TRIO",
+      "title": "Modbus RTU register map for TRIO 20.0(27.6) TL OUTD Revision 1.6",
+      "filename": "Modbus_RTU_register_map_for_TRIO-20.0(27.6)-TL-OUTD_Revision_1.6.pdf",
+      "relative_path": "sources/ABB/Inverter/TRIO/Modbus_RTU_register_map_for_TRIO-20.0(27.6)-TL-OUTD_Revision_1.6.pdf",
+      "file_format": "PDF",
+      "size_bytes": 945841,
+      "sha256": "47cba6ba9de6469bebc49d52037470bd837f95d7d18594e6c07a4cc5f6735afa",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "TRIO"
+      ],
+      "definitions_generated": [
+        "INV_ABB_Modbus_TRIO.csv",
+        "INV_ABB_TRIO-50.0-TM-OUTD.csv",
+        "INV_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv",
+        "INV_ABB_TRIO20-27-6.csv",
+        "INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv",
+        "INV_ABB_TRIO_200_276_FR.csv",
+        "OTH_ABB_Modbus_TRIO.csv",
+        "OTH_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv",
+        "OTH_ABB_TRIO_200_276_FR.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.100596+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-009",
+      "manufacturer": "ABB",
+      "category": "Inverter",
+      "range_or_family": "TRIO",
+      "title": "Modbus RTU register map for TRIO 50 0 60 0 Revision 3 1",
+      "filename": "Modbus_RTU_register_map_for_TRIO-50 0_60 0_Revision_3 1.pdf",
+      "relative_path": "sources/ABB/Inverter/TRIO/Modbus_RTU_register_map_for_TRIO-50 0_60 0_Revision_3 1.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1358951,
+      "sha256": "f7b3ed83d41d10a0f911965a4f2c6ad6fc2167c7a3629a94b184b9bb89a6113c",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "TRIO"
+      ],
+      "definitions_generated": [
+        "INV_ABB_Modbus_TRIO.csv",
+        "INV_ABB_TRIO-50.0-TM-OUTD.csv",
+        "INV_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv",
+        "INV_ABB_TRIO20-27-6.csv",
+        "INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv",
+        "INV_ABB_TRIO_200_276_FR.csv",
+        "OTH_ABB_Modbus_TRIO.csv",
+        "OTH_ABB_TRIO-50.0-TM-OUTD_SunSpec_RTU_PICS.csv",
+        "OTH_ABB_TRIO_200_276_FR.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.101636+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-010",
+      "manufacturer": "ABB",
+      "category": "Inverter",
+      "range_or_family": "ULTRA",
+      "title": "Ultra   ModBus RTU revELV33",
+      "filename": "Ultra - ModBus RTU revELV33.pdf",
+      "relative_path": "sources/ABB/Inverter/ULTRA/Ultra - ModBus RTU revELV33.pdf",
+      "file_format": "PDF",
+      "size_bytes": 573906,
+      "sha256": "d2c1ce6dcdfc1ae2347fde4e73d17589c5283249cb4f5a7dc4aa5dbb254d1f42",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "ULTRA"
+      ],
+      "definitions_generated": [
+        "INV_ABB_MODBUS_POWERONE_Ultra_Inverter_Module.csv",
+        "INV_ABB_Modbus_Ultra_Module.csv",
+        "INV_ABB_Ultra_Inverter_Module.csv",
+        "OTH_ABB_Modbus_Ultra_Module.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.102299+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-011",
+      "manufacturer": "ABB",
+      "category": "Logger",
+      "range_or_family": "VSN700",
+      "title": "VSN700 Data Logger Product Manual EN",
+      "filename": "VSN700 Data Logger Product Manual_EN.pdf",
+      "relative_path": "sources/ABB/Logger/VSN700/VSN700 Data Logger Product Manual_EN.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1541515,
+      "sha256": "386dfc931fa778378abae767ab46750052bca32548dbae3e49fa8e4028c36bb7",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "VSN700"
+      ],
+      "definitions_generated": [
+        "INV_ABB_10.0_et_12.5_ABB_PVIMODBUS.csv",
+        "INV_ABB_10.5.csv",
+        "INV_ABB_5583-CHEVALIERP2_SunSpec_inverter_ABB_3Q4200_2117B_modbusRTU.csv",
+        "INV_ABB_AURORA_CENTRAL.csv",
+        "INV_ABB_LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
+        "INV_ABB_MODBUS_POWERONE_Ultra_Inverter_Module.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.103604+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-012",
+      "manufacturer": "ABB",
+      "category": "Meter",
+      "range_or_family": "B21_B23_B24",
+      "title": "2CMC485003M0201 Ctemp en B23 B24 User Manual",
+      "filename": "2CMC485003M0201_Ctemp_en_B23_B24_User_Manual.pdf",
+      "relative_path": "sources/ABB/Meter/B21_B23_B24/2CMC485003M0201_Ctemp_en_B23_B24_User_Manual.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1896807,
+      "sha256": "02d9207cf9a154e5243d7a94333799881ce75964536483fb9ae553b71476e255",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "B21 B23 B24"
+      ],
+      "definitions_generated": [
+        "MET_ABB_B21-B23-B24.csv",
+        "MET_ABB_B21_B23_B24.csv",
+        "MET_ABB_Modbus_mapping_Meter_ABB_B21.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.105116+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-013",
+      "manufacturer": "ABB",
+      "category": "Meter",
+      "range_or_family": "B21_B23_B24",
+      "title": "Modbus mapping Meter ABB B21",
+      "filename": "Modbus mapping Meter ABB B21.xlsx",
+      "relative_path": "sources/ABB/Meter/B21_B23_B24/Modbus mapping Meter ABB B21.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 19931,
+      "sha256": "b56393e2bb1df42f2490f5fb8cf7eebac2e67b122c7c8fd237209c7a59679f1a",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "B21 B23 B24"
+      ],
+      "definitions_generated": [
+        "MET_ABB_B21-B23-B24.csv",
+        "MET_ABB_B21_B23_B24.csv",
+        "MET_ABB_Modbus_mapping_Meter_ABB_B21.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.105298+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-014",
+      "manufacturer": "ABB",
+      "category": "Meter",
+      "range_or_family": "M4M",
+      "title": "M4M 20 User Manual",
+      "filename": "M4M 20_User_Manual.pdf",
+      "relative_path": "sources/ABB/Meter/M4M/M4M 20_User_Manual.pdf",
+      "file_format": "PDF",
+      "size_bytes": 16219544,
+      "sha256": "2bf10b6ca27395ef823f74e3d1b16576814320d661a1e81a1b22f3a33f57b963",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "M4M"
+      ],
+      "definitions_generated": [
+        "MET_ABB_M4M.csv",
+        "MET_ABB_M4M_NetworkAnalyzer.csv",
+        "OTH_ABB_M4M_Modbus_map_-_v.1.3N.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.116547+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-015",
+      "manufacturer": "ABB",
+      "category": "Meter",
+      "range_or_family": "M4M",
+      "title": "M4M Modbus map   v.1.3N",
+      "filename": "M4M Modbus map - v.1.3N.xlsx",
+      "relative_path": "sources/ABB/Meter/M4M/M4M Modbus map - v.1.3N.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 132851,
+      "sha256": "3899f94a7084243d1ab154360fad596badcefd339910a88f5d0397d8d6646610",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "M4M"
+      ],
+      "definitions_generated": [
+        "MET_ABB_M4M.csv",
+        "MET_ABB_M4M_NetworkAnalyzer.csv",
+        "OTH_ABB_M4M_Modbus_map_-_v.1.3N.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.116932+00:00"
+    },
+    {
+      "document_id": "SRC-ABB-016",
+      "manufacturer": "ABB",
+      "category": "Sensor",
+      "range_or_family": "VSN800",
+      "title": "FIMER VSN800 Quick Installation Guide EN RevD",
+      "filename": "FIMER_VSN800_Quick Installation Guide_EN_RevD.pdf",
+      "relative_path": "sources/ABB/Sensor/VSN800/FIMER_VSN800_Quick Installation Guide_EN_RevD.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1548990,
+      "sha256": "11ed0246ed88585364b0f3d864cf4ef6f5a3fda06eeb8cc214cb69f0c14ca486",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based and SunSpec 40001+ offset",
+        "word_order": "Big-Endian / SunSpec Float32"
+      },
+      "models_covered": [
+        "VSN800"
+      ],
+      "definitions_generated": [
+        "INV_ABB_10.0_et_12.5_ABB_PVIMODBUS.csv",
+        "INV_ABB_10.5.csv",
+        "INV_ABB_5583-CHEVALIERP2_SunSpec_inverter_ABB_3Q4200_2117B_modbusRTU.csv",
+        "INV_ABB_AURORA_CENTRAL.csv",
+        "INV_ABB_LM1_SunSpec_inverter_FIMER_PVS-30-TL_2117E_modbusTCP.csv",
+        "INV_ABB_MODBUS_POWERONE_Ultra_Inverter_Module.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.118321+00:00"
+    },
+    {
+      "document_id": "SRC-ACR-001",
+      "manufacturer": "Acrel",
+      "category": "Meter",
+      "range_or_family": "DTSD1352",
+      "title": "DTSD1352 Manual",
+      "filename": "DTSD1352-Manual.pdf",
+      "relative_path": "sources/Acrel/Meter/DTSD1352/DTSD1352-Manual.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1372782,
+      "sha256": "c625318b4b99cb9eb2d7d7ef0dfcca26b6d753c2c06ab1f4a0be68b173c49652",
+      "protocol_details": {
+        "baud_rate": "9600 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03)",
+        "address_base": "0-based (Registers 0x0000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "DTSD1352"
+      ],
+      "definitions_generated": [
+        "MET_Acrel_DTSD1352.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.119562+00:00"
+    },
+    {
+      "document_id": "SRC-CAR-001",
+      "manufacturer": "CarloGavazzi",
+      "category": "Meter",
+      "range_or_family": "EM111_EM112",
+      "title": "em111 em112 et112 cp",
+      "filename": "em111_em112_et112_cp.pdf",
+      "relative_path": "sources/CarloGavazzi/Meter/EM111_EM112/em111_em112_et112_cp.pdf",
+      "file_format": "PDF",
+      "size_bytes": 512239,
+      "sha256": "293e703256661673c2cc2c59aa8cf170cb9e0aac7f13ce96645106ee876bb573",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400, 115200 bps",
+        "data_format": "8 data bits, No/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based / 1-based (Holding Registers 40001..)",
+        "word_order": "Big-Endian (AB CD / MSW first)"
+      },
+      "models_covered": [
+        "EM111 EM112"
+      ],
+      "definitions_generated": [
+        "MET_CarloGavazzi_EM111.csv",
+        "MET_CarloGavazzi_EM112.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.120260+00:00"
+    },
+    {
+      "document_id": "SRC-CAR-002",
+      "manufacturer": "CarloGavazzi",
+      "category": "Meter",
+      "range_or_family": "EM210",
+      "title": "EM210 MV   CP Ver.1 Rev.4   20220826",
+      "filename": "EM210_MV - CP Ver.1 Rev.4 - 20220826.pdf",
+      "relative_path": "sources/CarloGavazzi/Meter/EM210/EM210_MV - CP Ver.1 Rev.4 - 20220826.pdf",
+      "file_format": "PDF",
+      "size_bytes": 442853,
+      "sha256": "440574a1ede6e4a839c1edad352947a08b2e7752da0f9f67f84e84e11b5f59e6",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400, 115200 bps",
+        "data_format": "8 data bits, No/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based / 1-based (Holding Registers 40001..)",
+        "word_order": "Big-Endian (AB CD / MSW first)"
+      },
+      "models_covered": [
+        "EM210"
+      ],
+      "definitions_generated": [
+        "MET_CarloGavazzi_EM210.csv",
+        "MET_CarloGavazzi_EM210_MV.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.120770+00:00"
+    },
+    {
+      "document_id": "SRC-CAR-003",
+      "manufacturer": "CarloGavazzi",
+      "category": "Meter",
+      "range_or_family": "EM24",
+      "title": "em24 modbus table",
+      "filename": "em24_modbus_table.pdf",
+      "relative_path": "sources/CarloGavazzi/Meter/EM24/em24_modbus_table.pdf",
+      "file_format": "PDF",
+      "size_bytes": 658909,
+      "sha256": "b0480349f67080d66770c3a8b7f957feabe405bddd86b6d67891d4af5b1b20f6",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400, 115200 bps",
+        "data_format": "8 data bits, No/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based / 1-based (Holding Registers 40001..)",
+        "word_order": "Big-Endian (AB CD / MSW first)"
+      },
+      "models_covered": [
+        "EM24"
+      ],
+      "definitions_generated": [
+        "MET_CarloGavazzi_EM24.csv",
+        "MET_CarloGavazzi_EM24_EM300.csv",
+        "OTH_CarloGavazzi_EM24.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.121411+00:00"
+    },
+    {
+      "document_id": "SRC-CAR-004",
+      "manufacturer": "CarloGavazzi",
+      "category": "Meter",
+      "range_or_family": "EM271",
+      "title": "EM271 CP V0R0 ENG.PDF",
+      "filename": "EM271 CP V0R0 ENG.PDF",
+      "relative_path": "sources/CarloGavazzi/Meter/EM271/EM271 CP V0R0 ENG.PDF",
+      "file_format": "PDF",
+      "size_bytes": 143868,
+      "sha256": "9343ad00b0f290f845e44e158edad4e07e00ff4206421aa85a8cd2c900f164e6",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400, 115200 bps",
+        "data_format": "8 data bits, No/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based / 1-based (Holding Registers 40001..)",
+        "word_order": "Big-Endian (AB CD / MSW first)"
+      },
+      "models_covered": [
+        "EM271"
+      ],
+      "definitions_generated": [
+        "MET_CarloGavazzi_EM271.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.121705+00:00"
+    },
+    {
+      "document_id": "SRC-CAR-005",
+      "manufacturer": "CarloGavazzi",
+      "category": "Meter",
+      "range_or_family": "EM330_EM340",
+      "title": "em330 em340 et330 et340 cp",
+      "filename": "em330_em340_et330_et340_cp.pdf",
+      "relative_path": "sources/CarloGavazzi/Meter/EM330_EM340/em330_em340_et330_et340_cp.pdf",
+      "file_format": "PDF",
+      "size_bytes": 528563,
+      "sha256": "9f5be6503aa5bb0f3adf2316ca09dbad8d87f48eef48210696dc544b32f51009",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400, 115200 bps",
+        "data_format": "8 data bits, No/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based / 1-based (Holding Registers 40001..)",
+        "word_order": "Big-Endian (AB CD / MSW first)"
+      },
+      "models_covered": [
+        "EM330 EM340"
+      ],
+      "definitions_generated": [
+        "MET_CarloGavazzi_EM330.csv",
+        "MET_CarloGavazzi_EM340.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.122234+00:00"
+    },
+    {
+      "document_id": "SRC-CAR-006",
+      "manufacturer": "CarloGavazzi",
+      "category": "Meter",
+      "range_or_family": "EM530_EM540",
+      "title": "EM530 EM540 Modbus Communication Protocol",
+      "filename": "EM530_EM540_Modbus_Communication_Protocol.pdf",
+      "relative_path": "sources/CarloGavazzi/Meter/EM530_EM540/EM530_EM540_Modbus_Communication_Protocol.pdf",
+      "file_format": "PDF",
+      "size_bytes": 686222,
+      "sha256": "a8e58408f1437a82a7b41e68e4bca8af879fd116e288ff4e84432814f550a3b0",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400, 115200 bps",
+        "data_format": "8 data bits, No/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based / 1-based (Holding Registers 40001..)",
+        "word_order": "Big-Endian (AB CD / MSW first)"
+      },
+      "models_covered": [
+        "EM530 EM540"
+      ],
+      "definitions_generated": [
+        "MET_CarloGavazzi_EM530.csv",
+        "MET_CarloGavazzi_EM540.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.122996+00:00"
+    },
+    {
+      "document_id": "SRC-CAR-007",
+      "manufacturer": "CarloGavazzi",
+      "category": "Meter",
+      "range_or_family": "WM15",
+      "title": "WM15 modbus registers V1 1 20192510",
+      "filename": "WM15-modbus_registers-V1-1-20192510.pdf",
+      "relative_path": "sources/CarloGavazzi/Meter/WM15/WM15-modbus_registers-V1-1-20192510.pdf",
+      "file_format": "PDF",
+      "size_bytes": 807895,
+      "sha256": "838c15f69920fcedffb04af5b749d37107bd80ca2c4386d8c7aac084839221eb",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400, 115200 bps",
+        "data_format": "8 data bits, No/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based / 1-based (Holding Registers 40001..)",
+        "word_order": "Big-Endian (AB CD / MSW first)"
+      },
+      "models_covered": [
+        "WM15"
+      ],
+      "definitions_generated": [
+        "MET_CarloGavazzi_WM15.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.123797+00:00"
+    },
+    {
+      "document_id": "SRC-CAR-008",
+      "manufacturer": "CarloGavazzi",
+      "category": "Meter",
+      "range_or_family": "WM20",
+      "title": "WM20 modbus registers",
+      "filename": "WM20-modbus_registers.pdf",
+      "relative_path": "sources/CarloGavazzi/Meter/WM20/WM20-modbus_registers.pdf",
+      "file_format": "PDF",
+      "size_bytes": 607630,
+      "sha256": "9a84d1cffe7f4ba36023c427085f04733aae7c9338e5aecc92f5e17ff1a7cb82",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400, 115200 bps",
+        "data_format": "8 data bits, No/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based / 1-based (Holding Registers 40001..)",
+        "word_order": "Big-Endian (AB CD / MSW first)"
+      },
+      "models_covered": [
+        "WM20"
+      ],
+      "definitions_generated": [
+        "MET_CarloGavazzi_WM20.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.124422+00:00"
+    },
+    {
+      "document_id": "SRC-CAR-009",
+      "manufacturer": "CarloGavazzi",
+      "category": "Meter",
+      "range_or_family": "WM50",
+      "title": "wm50 modbus registers",
+      "filename": "wm50_modbus_registers.pdf",
+      "relative_path": "sources/CarloGavazzi/Meter/WM50/wm50_modbus_registers.pdf",
+      "file_format": "PDF",
+      "size_bytes": 934888,
+      "sha256": "33bf99cec4b5211822106404cb8e08205c4e229c0518436b6bbeb18f66b8ab14",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400, 115200 bps",
+        "data_format": "8 data bits, No/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based / 1-based (Holding Registers 40001..)",
+        "word_order": "Big-Endian (AB CD / MSW first)"
+      },
+      "models_covered": [
+        "WM50"
+      ],
+      "definitions_generated": [
+        "MET_CarloGavazzi_WM50.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.125587+00:00"
+    },
+    {
+      "document_id": "SRC-CHI-001",
+      "manufacturer": "Chint",
+      "category": "Inverter",
+      "range_or_family": "CPS_100_125K",
+      "title": "Chint 100kW125kW 1500V CPS",
+      "filename": "Chint-100kW125kW_1500V-CPS.pdf",
+      "relative_path": "sources/Chint/Inverter/CPS_100_125K/Chint-100kW125kW_1500V-CPS.pdf",
+      "file_format": "PDF",
+      "size_bytes": 910121,
+      "sha256": "c4c34cea7404f14f3e54f625f55acf3defd3e0e4092b206865968970f6ed5017",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 0x0000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "CPS 100 125K"
+      ],
+      "definitions_generated": [
+        "MET_Chint_DDSU666.csv",
+        "MET_Chint_DTSU666-H.csv",
+        "MET_Chint_DTSU666.csv",
+        "MET_Chint_Power_CHINT_DTSU.csv",
+        "OTH_Chint_Power_CHINT_IO_NM8N-MCCB.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.126888+00:00"
+    },
+    {
+      "document_id": "SRC-CHI-002",
+      "manufacturer": "Chint",
+      "category": "Inverter",
+      "range_or_family": "CPS_275K",
+      "title": "Chint 275kW 12Boost CPS Inverter Model Data Mapping Specification 403X",
+      "filename": "Chint-275kW_12Boost-CPS-Inverter-Model-Data-Mapping-Specification-403X.pdf",
+      "relative_path": "sources/Chint/Inverter/CPS_275K/Chint-275kW_12Boost-CPS-Inverter-Model-Data-Mapping-Specification-403X.pdf",
+      "file_format": "PDF",
+      "size_bytes": 979353,
+      "sha256": "65a73b62485066cc42a30f4c6ed1d368109921a3c6fc0845ab89177c596f4c62",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 0x0000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "CPS 275K"
+      ],
+      "definitions_generated": [
+        "MET_Chint_DDSU666.csv",
+        "MET_Chint_DTSU666-H.csv",
+        "MET_Chint_DTSU666.csv",
+        "MET_Chint_Power_CHINT_DTSU.csv",
+        "OTH_Chint_Power_CHINT_IO_NM8N-MCCB.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.127896+00:00"
+    },
+    {
+      "document_id": "SRC-CHI-003",
+      "manufacturer": "Chint",
+      "category": "Inverter",
+      "range_or_family": "CPS_50_60K",
+      "title": "Chint 50 60kW Modbus Map Spec",
+      "filename": "Chint-50-60kW-Modbus-Map-Spec.pdf",
+      "relative_path": "sources/Chint/Inverter/CPS_50_60K/Chint-50-60kW-Modbus-Map-Spec.pdf",
+      "file_format": "PDF",
+      "size_bytes": 829533,
+      "sha256": "82330bea650eb1c285dd520c6cd2b468928f7a06742d963124a5defd88da45b2",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 0x0000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "CPS 50 60K"
+      ],
+      "definitions_generated": [
+        "MET_Chint_DDSU666.csv",
+        "MET_Chint_DTSU666-H.csv",
+        "MET_Chint_DTSU666.csv",
+        "MET_Chint_Power_CHINT_DTSU.csv",
+        "OTH_Chint_Power_CHINT_IO_NM8N-MCCB.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.129046+00:00"
+    },
+    {
+      "document_id": "SRC-CHI-004",
+      "manufacturer": "Chint",
+      "category": "Inverter",
+      "range_or_family": "CPS_General",
+      "title": "Chint CPS Modbus Comm User Manual",
+      "filename": "Chint-CPS-Modbus-Comm-User-Manual.pdf",
+      "relative_path": "sources/Chint/Inverter/CPS_General/Chint-CPS-Modbus-Comm-User-Manual.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1317397,
+      "sha256": "2effef605950294a8614e0a5ad0450f1b7f7d3d1569621d024806e2b9d554a45",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 0x0000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "CPS General"
+      ],
+      "definitions_generated": [
+        "MET_Chint_DDSU666.csv",
+        "MET_Chint_DTSU666-H.csv",
+        "MET_Chint_DTSU666.csv",
+        "MET_Chint_Power_CHINT_DTSU.csv",
+        "OTH_Chint_Power_CHINT_IO_NM8N-MCCB.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.130909+00:00"
+    },
+    {
+      "document_id": "SRC-CHI-005",
+      "manufacturer": "Chint",
+      "category": "Meter",
+      "range_or_family": "DTSU666",
+      "title": "DTSU666Manual",
+      "filename": "DTSU666Manual.pdf",
+      "relative_path": "sources/Chint/Meter/DTSU666/DTSU666Manual.pdf",
+      "file_format": "PDF",
+      "size_bytes": 469455,
+      "sha256": "ee99f721c5429e94b71baa6434fc57bfe00c9e03ae034dd01ec287837ede2b8d",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 0x0000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "DTSU666"
+      ],
+      "definitions_generated": [
+        "MET_Chint_DTSU666-H.csv",
+        "MET_Chint_DTSU666.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.131933+00:00"
+    },
+    {
+      "document_id": "SRC-CYB-001",
+      "manufacturer": "Cyberpower",
+      "category": "Inverter",
+      "range_or_family": "CPSPV",
+      "title": "CyberPower Grid tied PV Inverter Modbus Protocol(V0104) 1",
       "filename": "CyberPower Grid_tied PV Inverter Modbus Protocol(V0104) 1.pdf",
-      "relative_path": "sources/manuals/CyberPower/CyberPower Grid_tied PV Inverter Modbus Protocol(V0104) 1.pdf",
+      "relative_path": "sources/Cyberpower/Inverter/CPSPV/CyberPower Grid_tied PV Inverter Modbus Protocol(V0104) 1.pdf",
+      "file_format": "PDF",
       "size_bytes": 1602998,
       "sha256": "53a807570b4bb742d455652dba1dd88337737f1d1a4811ef4bdee82846bed4c9",
-      "version": "V1.04",
-      "release_date": "2024-05-13",
-      "protocol": "Modbus RTU / TCP (FC 03, 04, 06, 16)",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Holding Registers 40001..)",
+        "word_order": "Big-Endian"
+      },
       "models_covered": [
-        "CPSPV3000ETLA",
-        "CPSPV3600ETLA",
-        "CPSPV6000ETLA",
-        "CPSPV8000ETLA",
-        "CPSPV10000ETLA",
-        "CPSPV12000ETLA",
-        "CPSPV15000ETLA",
-        "CPSPV22000ETLA-WB",
-        "CPSPV30000ETLA-WB",
-        "CPSPV33000ETLA-WB",
-        "CPSPV36000ETLA-WB",
-        "CPSPV50000ETL-WB",
-        "CPSPV55000ETL-WB",
-        "CPSPV66000ETL-WB",
-        "CPSPV120KETL",
-        "CPSPV140KETL"
+        "CPSPV"
       ],
       "definitions_generated": [
-        "INV_Cyberpower_GENERIC.csv",
-        "INV_Cyberpower_1-Phase.csv",
-        "INV_Cyberpower_3-Phases.csv",
-        "INV_Cyberpower_CPSPV120K-140K.csv"
+        "INV_Cyberpower_CPSPV120K-140K.csv",
+        "INV_Cyberpower_GENERIC.csv"
       ],
-      "indexed_at": "2026-11-17T14:07:19.530349"
+      "indexed_at": "2026-11-24T13:46:31.133496+00:00"
     },
     {
-      "document_id": "SRC-FX-001",
+      "document_id": "SRC-DEL-001",
+      "manufacturer": "Delta",
+      "category": "Inverter",
+      "range_or_family": "RPI_M",
+      "title": "DELTA Modbus Definition RPI M6A M10A M15A M20A M30A M50A M88H 3 Phase (V01.05 20180314)",
+      "filename": "DELTA Modbus Definition_RPI-M6A_M10A_M15A_M20A_M30A_M50A_M88H_3 Phase (V01.05 20180314).pdf",
+      "relative_path": "sources/Delta/Inverter/RPI_M/DELTA Modbus Definition_RPI-M6A_M10A_M15A_M20A_M30A_M50A_M88H_3 Phase (V01.05 20180314).pdf",
+      "file_format": "PDF",
+      "size_bytes": 1201888,
+      "sha256": "b78de3334b3632ed6b7d1537b4231f1001cbdaf15cde03ef48b53286e05c0f8a",
+      "protocol_details": {
+        "baud_rate": "19200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based / SunSpec 40000..",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "RPI M"
+      ],
+      "definitions_generated": [
+        "INV_Delta_1043_Ur_PM_SunSpec_inverter_Delta_RPI-M88H_modbusRTU.csv",
+        "INV_Delta_2962CASTELSOLTISNERATPM_Delta_RPI-M88H.csv",
+        "INV_Delta_866LABATJ173PM_Delta_RPI-M88H.csv",
+        "INV_Delta_SunSpec_Inverter_Delta_RPI-M88H_modbusRTU.csv",
+        "OTH_Delta_2962CASTELSOLTISNERATPM_Delta_RPI-M88H.csv",
+        "OTH_Delta_866LABATJ173PM_Delta_RPI-M88H.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.134822+00:00"
+    },
+    {
+      "document_id": "SRC-DEL-002",
+      "manufacturer": "Delta",
+      "category": "Inverter",
+      "range_or_family": "SunSpec",
+      "title": "Delta Sunspec protocol v1.23 20220906",
+      "filename": "Delta-Sunspec protocol_v1.23_20220906.xlsx",
+      "relative_path": "sources/Delta/Inverter/SunSpec/Delta-Sunspec protocol_v1.23_20220906.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 233828,
+      "sha256": "bb6eefa44426d0beab615663da93ac56a7198eb42b950621d8744c2f50b0ef6a",
+      "protocol_details": {
+        "baud_rate": "19200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / SunSpec (FC 03, 04, 06, 16)",
+        "address_base": "0-based / SunSpec 40000..",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "SunSpec"
+      ],
+      "definitions_generated": [
+        "INV_Delta_1043_Ur_PM_SunSpec_inverter_Delta_RPI-M88H_modbusRTU.csv",
+        "INV_Delta_6409FORSANS_SunSpec_inverter_Delta_M50A_260_01.14_modbusRTU_M50AFLEX.csv",
+        "INV_Delta_MARKET_SunSpec_inverter_Delta_M70A_260_01.28_modbusRTU.csv",
+        "INV_Delta_MODBUS_DELTA_M15A_Flex_Sunspec.csv",
+        "INV_Delta_MODBUS_DELTA_M88H-COM1.20-Sunspec.csv",
+        "INV_Delta_SunSpec_Inverter_Delta_RPI-M88H_modbusRTU.csv",
+        "INV_Delta_Sunspec_Light.csv",
+        "INV_Delta_Sunspec_V1.20.csv",
+        "OTH_Delta_MODBUS_DELTA_M15A_Flex_Sunspec.csv",
+        "OTH_Delta_MODBUS_DELTA_M88H-COM1.20-Sunspec.csv",
+        "OTH_Delta_SunSpec-Delta_ed00_adding_FW_versions.csv",
+        "OTH_Delta_Sunspec_Light.csv",
+        "OTH_Delta_Sunspec_V1.20.csv",
+        "OTH_Delta_Sunspec_forM30-50AandM88H_170120_fromDelta.csv",
+        "OTH_Delta_Sunspec_protocol_v1.11_20180725.csv",
+        "OTH_Delta_Sunspec_protocol_v1.12_20190403.csv",
+        "OTH_Delta_Sunspec_protocol_v1.16_20210318.csv",
+        "OTH_Delta_Sunspec_protocol_v1.23_20220906.csv",
+        "OTH_Delta_Sunspec_protocol_v1_03_20170907.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.135294+00:00"
+    },
+    {
+      "document_id": "SRC-DYN-001",
+      "manufacturer": "Dyness",
+      "category": "Battery",
+      "range_or_family": "DH200",
+      "title": "Dyness DH200Y DH200F DH100F）to third party communication protocol（EN） V2.2 (1)",
+      "filename": "Dyness DH200Y DH200F DH100F）to third-party communication protocol（EN）-V2.2 (1).xlsx",
+      "relative_path": "sources/Dyness/Battery/DH200/Dyness DH200Y DH200F DH100F）to third-party communication protocol（EN）-V2.2 (1).xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 161149,
+      "sha256": "9055623d77daec8d2904d5b9385198f62e49d977b1ddb29b6c897f3049fd4b43",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 0x1000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "DH200"
+      ],
+      "definitions_generated": [
+        "BAT_Dyness_DH200F.csv",
+        "BAT_Dyness_DH200Y.csv",
+        "BAT_Dyness_DH_Series_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.135743+00:00"
+    },
+    {
+      "document_id": "SRC-FOX-001",
       "manufacturer": "FoxESS",
-      "title": "FoxESS Modbus Protocol Specification",
+      "category": "Inverter_Battery",
+      "range_or_family": "H3_P3_R",
+      "title": "FoxESS Modbus Protocol  20260701 (V1.05.05.00)",
       "filename": "FoxESS Modbus Protocol--20260701 (V1.05.05.00).pdf",
-      "relative_path": "sources/manuals/FoxESS/FoxESS Modbus Protocol--20260701 (V1.05.05.00).pdf",
+      "relative_path": "sources/FoxESS/Inverter_Battery/H3_P3_R/FoxESS Modbus Protocol--20260701 (V1.05.05.00).pdf",
+      "file_format": "PDF",
       "size_bytes": 2212603,
       "sha256": "2b1642aa345db58c00206237d051cd6a4098ba234c1333088b89c16378bd4b59",
-      "version": "V1.05.05.00",
-      "release_date": "2026-07-01",
-      "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+      "protocol_details": {
+        "baud_rate": "9600 bps",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Holding Registers 30000.. / 40000..)",
+        "word_order": "Big-Endian"
+      },
       "models_covered": [
-        "H3-Pro",
-        "P3-Pro",
-        "R Series",
-        "G-MAX Storage"
+        "H3 P3 R"
       ],
       "definitions_generated": [
-        "INV_FoxESS_H3_Pro.csv",
-        "INV_FoxESS_P3_Pro.csv",
-        "INV_FoxESS_P3_H3_Pro_AllInOne.csv",
-        "INV_FoxESS_RSeries.csv",
-        "BAT_FoxESS_GMax_Storage.csv",
         "BAT_FoxESS_H3_Pro.csv",
+        "BAT_FoxESS_P3_H3_PRO.csv",
+        "BAT_FoxESS_P3_H3_PRO_BATTERY.csv",
         "BAT_FoxESS_P3_Pro.csv",
-        "BAT_FoxESS_RSeries.csv"
+        "INV_FoxESS_H3_Pro.csv",
+        "INV_FoxESS_P3_H3_PRO.csv",
+        "INV_FoxESS_P3_H3_PRO_INVERTER.csv",
+        "INV_FoxESS_P3_H3_Pro_AllInOne.csv",
+        "INV_FoxESS_P3_Pro.csv",
+        "INV_FoxESS_R_V_H3plus_GmaxPlus.csv",
+        "INV_FoxESS_SunSpec_RV_H3Plus.csv",
+        "MET_FoxESS_H3_Pro.csv",
+        "MET_FoxESS_P3_H3_PRO.csv",
+        "MET_FoxESS_P3_H3_PRO_METER.csv",
+        "OTH_FoxESS_R_V_H3plus_GmaxPlus.csv"
       ],
-      "indexed_at": "2026-11-17T14:07:19.533204"
+      "indexed_at": "2026-11-24T13:46:31.137533+00:00"
     },
     {
-      "document_id": "SRC-MR-001",
+      "document_id": "SRC-FRO-001",
+      "manufacturer": "Fronius",
+      "category": "Inverter",
+      "range_or_family": "Datamanager",
+      "title": "Fronius Datamanager Modbus TCP & RTU(System monitoring)[42,0410,2049 010 15022017]",
+      "filename": "Fronius Datamanager Modbus TCP & RTU(System monitoring)[42,0410,2049 010-15022017].pdf",
+      "relative_path": "sources/Fronius/Inverter/Datamanager/Fronius Datamanager Modbus TCP & RTU(System monitoring)[42,0410,2049 010-15022017].pdf",
+      "file_format": "PDF",
+      "size_bytes": 5795993,
+      "sha256": "dd60bdca293b3b563494c4ebc8f2d1f57bf0600a14bcd4a3e3bc0e98d31e5c8e",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "SunSpec Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "SunSpec 40001 (Float or Int+SF model)",
+        "word_order": "Big-Endian (Float32 / int16)"
+      },
+      "models_covered": [
+        "Datamanager"
+      ],
+      "definitions_generated": [
+        "INV_Fronius_ECO_Inverter_Register_Map_Int_SF.csv",
+        "INV_Fronius_ECO_Series.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Float.csv",
+        "INV_Fronius_Gen24_Primo_Symo_IntSF.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Float.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Float_storage.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.141632+00:00"
+    },
+    {
+      "document_id": "SRC-FRO-002",
+      "manufacturer": "Fronius",
+      "category": "Inverter",
+      "range_or_family": "Gen24_Primo_Symo",
+      "title": "Gen24 Primo Symo Inverter Register Map Float",
+      "filename": "Gen24_Primo_Symo_Inverter_Register_Map_Float.xlsx",
+      "relative_path": "sources/Fronius/Inverter/Gen24_Primo_Symo/Gen24_Primo_Symo_Inverter_Register_Map_Float.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 32507,
+      "sha256": "bcea32ab7dfcc5b2437547a2b1b29cad2df8420b843c329b9fba424cf8e88862",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "SunSpec Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "SunSpec 40001 (Float or Int+SF model)",
+        "word_order": "Big-Endian (Float32 / int16)"
+      },
+      "models_covered": [
+        "Gen24 Primo Symo"
+      ],
+      "definitions_generated": [
+        "INV_Fronius_Gen24_Primo_Symo_Float.csv",
+        "INV_Fronius_Gen24_Primo_Symo_IntSF.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Float.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Float_storage.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Int_SF.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Int_SF_storage.csv",
+        "INV_Fronius_Register_Map_Float_v1.0_with_SYMOHYBRID_MODEL_124.csv",
+        "INV_Fronius_Register_Map_Int_SF_v1.0_with_SYMOHYBRID_MODEL_124.csv",
+        "INV_Fronius_SunSpec_inverter_Fronius_Symo_GEN24.csv",
+        "INV_Fronius_Symo_10_20.csv",
+        "INV_Fronius_Symo_GEN24_Plus.csv",
+        "INV_Fronius_Symo_Primo_Gen24.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.141923+00:00"
+    },
+    {
+      "document_id": "SRC-FRO-003",
+      "manufacturer": "Fronius",
+      "category": "Inverter",
+      "range_or_family": "Gen24_Primo_Symo",
+      "title": "Gen24 Primo Symo Inverter Register Map Int&SF",
+      "filename": "Gen24_Primo_Symo_Inverter_Register_Map_Int&SF.xlsx",
+      "relative_path": "sources/Fronius/Inverter/Gen24_Primo_Symo/Gen24_Primo_Symo_Inverter_Register_Map_Int&SF.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 33762,
+      "sha256": "902414a1f1a3ab05f767a6aebf8b2303bde2bb47fc73d0c26cbb838e0434f2a7",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "SunSpec Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "SunSpec 40001 (Float or Int+SF model)",
+        "word_order": "Big-Endian (Float32 / int16)"
+      },
+      "models_covered": [
+        "Gen24 Primo Symo"
+      ],
+      "definitions_generated": [
+        "INV_Fronius_Gen24_Primo_Symo_Float.csv",
+        "INV_Fronius_Gen24_Primo_Symo_IntSF.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Float.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Float_storage.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Int_SF.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Int_SF_storage.csv",
+        "INV_Fronius_Register_Map_Float_v1.0_with_SYMOHYBRID_MODEL_124.csv",
+        "INV_Fronius_Register_Map_Int_SF_v1.0_with_SYMOHYBRID_MODEL_124.csv",
+        "INV_Fronius_SunSpec_inverter_Fronius_Symo_GEN24.csv",
+        "INV_Fronius_Symo_10_20.csv",
+        "INV_Fronius_Symo_GEN24_Plus.csv",
+        "INV_Fronius_Symo_Primo_Gen24.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.142086+00:00"
+    },
+    {
+      "document_id": "SRC-FRO-004",
+      "manufacturer": "Fronius",
+      "category": "Inverter",
+      "range_or_family": "Tauro",
+      "title": "Tauro Inverter Register Map Float",
+      "filename": "Tauro_Inverter_Register_Map_Float.xlsx",
+      "relative_path": "sources/Fronius/Inverter/Tauro/Tauro_Inverter_Register_Map_Float.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 33317,
+      "sha256": "b80541884da817c0e67b85e50ecbaeda8227e3acb5b6d54d2355730df0dcd339",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "SunSpec Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "SunSpec 40001 (Float or Int+SF model)",
+        "word_order": "Big-Endian (Float32 / int16)"
+      },
+      "models_covered": [
+        "Tauro"
+      ],
+      "definitions_generated": [
+        "INV_Fronius_Tauro_50-3-D.csv",
+        "INV_Fronius_Tauro_50-3-D_1.35.4-1_Float.csv",
+        "INV_Fronius_Tauro_ECO_100-3-D.csv",
+        "INV_Fronius_Tauro_ECO_Inverter_Register_Map_Float.csv",
+        "INV_Fronius_Tauro_ECO_Inverter_Register_Map_Int_SF.csv",
+        "INV_Fronius_Tauro_Inverter_Register_Map_Float.csv",
+        "INV_Fronius_Tauro_Inverter_Register_Map_Int_SF.csv",
+        "OTH_Fronius_Tauro_50-3-D_1.35.4-1_Float.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.142330+00:00"
+    },
+    {
+      "document_id": "SRC-FRO-005",
+      "manufacturer": "Fronius",
+      "category": "Meter",
+      "range_or_family": "SmartMeter",
+      "title": "Smart Meter Register Map Float",
+      "filename": "Smart_Meter_Register_Map_Float.xlsx",
+      "relative_path": "sources/Fronius/Meter/SmartMeter/Smart_Meter_Register_Map_Float.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 16061,
+      "sha256": "eea65f2c1d15bbae295831ae58671632b5745e21eda247f0bdc26915ff9e1fdf",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "SunSpec Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "SunSpec 40001 (Float or Int+SF model)",
+        "word_order": "Big-Endian (Float32 / int16)"
+      },
+      "models_covered": [
+        "SmartMeter"
+      ],
+      "definitions_generated": [
+        "INV_Fronius_ECO_Inverter_Register_Map_Int_SF.csv",
+        "INV_Fronius_ECO_Series.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Float.csv",
+        "INV_Fronius_Gen24_Primo_Symo_IntSF.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Float.csv",
+        "INV_Fronius_Gen24_Primo_Symo_Inverter_Register_Map_Float_storage.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.142588+00:00"
+    },
+    {
+      "document_id": "SRC-GOO-001",
+      "manufacturer": "Goodwe",
+      "category": "Inverter",
+      "range_or_family": "DNS_MS_SDT",
+      "title": "GoodWe grid tied MTG2SMTSDTG2MSDNSXS Series Modbus Protocol Costomer Ver1.6",
+      "filename": "GoodWe grid-tied MTG2SMTSDTG2MSDNSXS Series Modbus Protocol-Costomer Ver1.6.pdf",
+      "relative_path": "sources/Goodwe/Inverter/DNS_MS_SDT/GoodWe grid-tied MTG2SMTSDTG2MSDNSXS Series Modbus Protocol-Costomer Ver1.6.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1295330,
+      "sha256": "162292750f5e1c1bed43b7740bddc2cd2df6c1761a0732b0961cbb3a6ec826e3",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 06, 16)",
+        "address_base": "0-based / Register 0x0100.. / 0x8000..",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "DNS MS SDT"
+      ],
+      "definitions_generated": [
+        "INV_Goodwe_MS_DNS_XS.csv",
+        "INV_Goodwe_SDTG2.csv",
+        "INV_Goodwe_SDT_G2_G3.csv",
+        "INV_Goodwe_XS-DNS-MS-SDT-G3_SERIES.csv",
+        "INV_Goodwe_XS_DNS_MS.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.143800+00:00"
+    },
+    {
+      "document_id": "SRC-GOO-002",
+      "manufacturer": "Goodwe",
+      "category": "Inverter",
+      "range_or_family": "GT_SMT",
+      "title": "GoodWe grid tied SMT60K G2 SMT80K  GT series Modubus Protocol customer version V1.2 Malik Ding 20251013",
+      "filename": "GoodWe grid-tied SMT60K-G2 SMT80K  GT-series Modubus Protocol-customer version_V1.2_Malik Ding_20251013.pdf",
+      "relative_path": "sources/Goodwe/Inverter/GT_SMT/GoodWe grid-tied SMT60K-G2 SMT80K  GT-series Modubus Protocol-customer version_V1.2_Malik Ding_20251013.pdf",
+      "file_format": "PDF",
+      "size_bytes": 577409,
+      "sha256": "895823e1dc7ec13a9729cb3643bd53f24eb1125606880e52cfddd976e588e77b",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 06, 16)",
+        "address_base": "0-based / Register 0x0100.. / 0x8000..",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "GT SMT"
+      ],
+      "definitions_generated": [
+        "INV_Goodwe_GT-SERIES.csv",
+        "INV_Goodwe_SMT.csv",
+        "INV_Goodwe_SMT50K_SMT60K.csv",
+        "INV_Goodwe_SMT_Series.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.144525+00:00"
+    },
+    {
+      "document_id": "SRC-GOO-003",
+      "manufacturer": "Goodwe",
+      "category": "Inverter",
+      "range_or_family": "HT",
+      "title": "GoodWe grid tied HT series Modbus Protocol customer version V1.3",
+      "filename": "GoodWe grid-tied HT-series Modbus Protocol-customer version_V1.3.pdf",
+      "relative_path": "sources/Goodwe/Inverter/HT/GoodWe grid-tied HT-series Modbus Protocol-customer version_V1.3.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1193066,
+      "sha256": "f9ff45d92ff20def4b5d4044f456f33419f112b51bd11e82699047024c6e359b",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 06, 16)",
+        "address_base": "0-based / Register 0x0100.. / 0x8000..",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "HT"
+      ],
+      "definitions_generated": [
+        "INV_Goodwe_HT1100.csv",
+        "INV_Goodwe_HT1500.csv",
+        "INV_Goodwe_HT_Series.csv",
+        "INV_Goodwe_HT_others_Series.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.145803+00:00"
+    },
+    {
+      "document_id": "SRC-GOO-004",
+      "manufacturer": "Goodwe",
+      "category": "Inverter",
+      "range_or_family": "Hybrid_ET_EH",
+      "title": "Modbus Protocol Hybrid (ARM205) V1.9(ET,EH,BT,BH,EHB,AES,ABP,BTC) 20210726",
+      "filename": "Modbus_Protocol_Hybrid_(ARM205)_V1.9(ET,EH,BT,BH,EHB,AES,ABP,BTC) 20210726.pdf",
+      "relative_path": "sources/Goodwe/Inverter/Hybrid_ET_EH/Modbus_Protocol_Hybrid_(ARM205)_V1.9(ET,EH,BT,BH,EHB,AES,ABP,BTC) 20210726.pdf",
+      "file_format": "PDF",
+      "size_bytes": 781603,
+      "sha256": "9d2e03a1cb44b6b631c8ca81393fd33a185bae4c2e9fb3c1620cadb586391c55",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 06, 16)",
+        "address_base": "0-based / Register 0x0100.. / 0x8000..",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "Hybrid ET EH"
+      ],
+      "definitions_generated": [
+        "INV_Goodwe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv",
+        "INV_Goodwe_ET_EH_BT_BH_EHB_AES_ABP_BTC_Series.csv",
+        "INV_Goodwe_ET_EH_Hybrid_Series.csv",
+        "INV_Goodwe_ET_EH_Series.csv",
+        "INV_Goodwe_ET_Series.csv",
+        "MET_Goodwe_GM1000_GM3000.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.146655+00:00"
+    },
+    {
+      "document_id": "SRC-GOO-005",
+      "manufacturer": "Goodwe",
+      "category": "Inverter",
+      "range_or_family": "SunSpec",
+      "title": "GOODWE three phase grid tied inverter PICS",
+      "filename": "GOODWE_three_phase_grid-tied_inverter_PICS.xlsx",
+      "relative_path": "sources/Goodwe/Inverter/SunSpec/GOODWE_three_phase_grid-tied_inverter_PICS.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 58810,
+      "sha256": "4a83942ca18b183f066483e1d0e1f305a9bddb54ead0bbc1888c2a2f08c3a8dd",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP / SunSpec (FC 03, 06, 16)",
+        "address_base": "0-based / Register 0x0100.. / 0x8000..",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "SunSpec"
+      ],
+      "definitions_generated": [
+        "INV_Goodwe_ThreePhase_SunSpec.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.146982+00:00"
+    },
+    {
+      "document_id": "SRC-GRO-001",
+      "manufacturer": "Growatt",
+      "category": "Inverter",
+      "range_or_family": "MAX",
+      "title": "Growatt PV Inverter Modbus RS485 RTU Protocol V3 14",
+      "filename": "Growatt PV Inverter Modbus RS485 RTU Protocol V3 14.pdf",
+      "relative_path": "sources/Growatt/Inverter/MAX/Growatt PV Inverter Modbus RS485 RTU Protocol V3 14.pdf",
+      "file_format": "PDF",
+      "size_bytes": 903274,
+      "sha256": "599cb825d3e8f83f88043b41a144d8b4f4d1f5697c7e30f2041e9f9080b00006",
+      "protocol_details": {
+        "baud_rate": "9600, 115200 bps",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06)",
+        "address_base": "0-based (Holding Registers 0.. / Input Registers 0..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "MAX"
+      ],
+      "definitions_generated": [
+        "INV_Growatt_Generic.csv",
+        "INV_Growatt_MAX1500V_MAX-XLV_Series.csv",
+        "INV_Growatt_MAX_Series.csv",
+        "INV_Growatt_W_Growatt_Generic.csv",
+        "INV_Growatt_W_Growatt_MAX1500V_MAX-XLV_Series.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.148220+00:00"
+    },
+    {
+      "document_id": "SRC-HUA-001",
+      "manufacturer": "Huawei",
+      "category": "Battery",
+      "range_or_family": "LUNA2000",
+      "title": "LUNA2000C Modbus Port Definitions",
+      "filename": "LUNA2000C Modbus Port Definitions.pdf",
+      "relative_path": "sources/Huawei/Battery/LUNA2000/LUNA2000C Modbus Port Definitions.pdf",
+      "file_format": "PDF",
+      "size_bytes": 740946,
+      "sha256": "e41c774e2e645eb1e4a3aa559f3d90f67e2301ae2d44e3c5d0cb64d36db824f4",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 06, 16)",
+        "address_base": "0-based (Holding Registers 30000.. / 40000..)",
+        "word_order": "Big-Endian (AB CD)"
+      },
+      "models_covered": [
+        "LUNA2000"
+      ],
+      "definitions_generated": [
+        "BAT_Huawei_LUNA2000.csv",
+        "BAT_Huawei_LUNA2000_Storage.csv",
+        "INV_Huawei_GENERIC.csv",
+        "INV_Huawei_SUN2000-V4_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.149121+00:00"
+    },
+    {
+      "document_id": "SRC-HUA-002",
+      "manufacturer": "Huawei",
+      "category": "Inverter",
+      "range_or_family": "SUN2000_LC",
+      "title": "SUN2000LC V100R023C10 ModbusInterfaceDefinitions issue10 2025",
+      "filename": "SUN2000LC_V100R023C10_ModbusInterfaceDefinitions_issue10_2025.pdf",
+      "relative_path": "sources/Huawei/Inverter/SUN2000_LC/SUN2000LC_V100R023C10_ModbusInterfaceDefinitions_issue10_2025.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1381051,
+      "sha256": "ad635d997af4775f3e918bd5548512f4f7777b4bae7f09e36a1547b7f8352c3d",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 06, 16)",
+        "address_base": "0-based (Holding Registers 30000.. / 40000..)",
+        "word_order": "Big-Endian (AB CD)"
+      },
+      "models_covered": [
+        "SUN2000 LC"
+      ],
+      "definitions_generated": [
+        "INV_Huawei_GENERIC.csv",
+        "INV_Huawei_SUN2000-2_5KTL.csv",
+        "INV_Huawei_SUN2000-30_40KTL-M3.csv",
+        "INV_Huawei_SUN2000-33A_36_42KTL.csv",
+        "INV_Huawei_SUN2000-50_70KTL-M0.csv",
+        "INV_Huawei_SUN2000-60KTL-HV.csv",
+        "INV_Huawei_SUN2000-8_20KTL.csv",
+        "INV_Huawei_SUN2000-90_105KTL.csv",
+        "INV_Huawei_SUN2000-All_V3.csv",
+        "INV_Huawei_SUN2000-M3.csv",
+        "INV_Huawei_SUN2000-Utility.csv",
+        "INV_Huawei_SUN2000-V3.csv",
+        "INV_Huawei_SUN2000-V4_Generic.csv",
+        "INV_Huawei_SUN2000C00.csv",
+        "INV_Huawei_SUN2000C00_MODBUS_Protocol.csv",
+        "INV_Huawei_SUN2000C11.csv",
+        "INV_Huawei_SUN2000C11_MODBUS_Protocol.csv",
+        "INV_Huawei_SUN2000MA_V100R001C00.csv",
+        "INV_Huawei_SUN2000_V4.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.150432+00:00"
+    },
+    {
+      "document_id": "SRC-HUA-003",
+      "manufacturer": "Huawei",
+      "category": "Inverter",
+      "range_or_family": "SUN2000_MA_MB0",
+      "title": "SUN2000 12~25K MB0 ModbusInterfaceDefinitions issue01 2023",
+      "filename": "SUN2000-12~25K-MB0 ModbusInterfaceDefinitions_issue01_2023.pdf",
+      "relative_path": "sources/Huawei/Inverter/SUN2000_MA_MB0/SUN2000-12~25K-MB0 ModbusInterfaceDefinitions_issue01_2023.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1262865,
+      "sha256": "07a0ce50cd8db105e8bd2dbcb018e3b407668314e736828d453e01d1a0890859",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 06, 16)",
+        "address_base": "0-based (Holding Registers 30000.. / 40000..)",
+        "word_order": "Big-Endian (AB CD)"
+      },
+      "models_covered": [
+        "SUN2000 MA MB0"
+      ],
+      "definitions_generated": [
+        "COM_Huawei_DEF_HUAWEI_SmartLogger_VSeries.csv",
+        "COM_Huawei_SmartLogger3000.csv",
+        "COM_Huawei_SmartLogger_VSeries.csv",
+        "INV_Huawei_GENERIC.csv",
+        "INV_Huawei_ModbusV3_small.csv",
+        "INV_Huawei_SUN2000-2_5KTL.csv",
+        "INV_Huawei_SUN2000-30_40KTL-M3.csv",
+        "INV_Huawei_SUN2000-33A_36_42KTL.csv",
+        "INV_Huawei_SUN2000-50_70KTL-M0.csv",
+        "INV_Huawei_SUN2000-60KTL-HV.csv",
+        "INV_Huawei_SUN2000-8_20KTL.csv",
+        "INV_Huawei_SUN2000-90_105KTL.csv",
+        "INV_Huawei_SUN2000-All_V3.csv",
+        "INV_Huawei_SUN2000-M3.csv",
+        "INV_Huawei_SUN2000-Utility.csv",
+        "INV_Huawei_SUN2000-V3.csv",
+        "INV_Huawei_SUN2000-V4_Generic.csv",
+        "INV_Huawei_SUN2000C00.csv",
+        "INV_Huawei_SUN2000C00_MODBUS_Protocol.csv",
+        "INV_Huawei_SUN2000C11.csv",
+        "INV_Huawei_SUN2000C11_MODBUS_Protocol.csv",
+        "INV_Huawei_SUN2000MA_V100R001C00.csv",
+        "INV_Huawei_SUN2000_V4.csv",
+        "INV_Huawei_SmartLogger3000.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.151486+00:00"
+    },
+    {
+      "document_id": "SRC-HUA-004",
+      "manufacturer": "Huawei",
+      "category": "Inverter",
+      "range_or_family": "SUN2000_MA_MB0",
+      "title": "SUN2000MA V100R001C00 ModbusInterfaceDefinitions issue08 2024",
+      "filename": "SUN2000MA_V100R001C00_ModbusInterfaceDefinitions_issue08_2024.pdf",
+      "relative_path": "sources/Huawei/Inverter/SUN2000_MA_MB0/SUN2000MA_V100R001C00_ModbusInterfaceDefinitions_issue08_2024.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1382385,
+      "sha256": "27493fbbeb0eec03cc195c5ae20df77ad3db907d782e2289c1541e0f48c5da98",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 06, 16)",
+        "address_base": "0-based (Holding Registers 30000.. / 40000..)",
+        "word_order": "Big-Endian (AB CD)"
+      },
+      "models_covered": [
+        "SUN2000 MA MB0"
+      ],
+      "definitions_generated": [
+        "COM_Huawei_DEF_HUAWEI_SmartLogger_VSeries.csv",
+        "COM_Huawei_SmartLogger3000.csv",
+        "COM_Huawei_SmartLogger_VSeries.csv",
+        "INV_Huawei_GENERIC.csv",
+        "INV_Huawei_ModbusV3_small.csv",
+        "INV_Huawei_SUN2000-2_5KTL.csv",
+        "INV_Huawei_SUN2000-30_40KTL-M3.csv",
+        "INV_Huawei_SUN2000-33A_36_42KTL.csv",
+        "INV_Huawei_SUN2000-50_70KTL-M0.csv",
+        "INV_Huawei_SUN2000-60KTL-HV.csv",
+        "INV_Huawei_SUN2000-8_20KTL.csv",
+        "INV_Huawei_SUN2000-90_105KTL.csv",
+        "INV_Huawei_SUN2000-All_V3.csv",
+        "INV_Huawei_SUN2000-M3.csv",
+        "INV_Huawei_SUN2000-Utility.csv",
+        "INV_Huawei_SUN2000-V3.csv",
+        "INV_Huawei_SUN2000-V4_Generic.csv",
+        "INV_Huawei_SUN2000C00.csv",
+        "INV_Huawei_SUN2000C00_MODBUS_Protocol.csv",
+        "INV_Huawei_SUN2000C11.csv",
+        "INV_Huawei_SUN2000C11_MODBUS_Protocol.csv",
+        "INV_Huawei_SUN2000MA_V100R001C00.csv",
+        "INV_Huawei_SUN2000_V4.csv",
+        "INV_Huawei_SmartLogger3000.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.152587+00:00"
+    },
+    {
+      "document_id": "SRC-HUA-005",
+      "manufacturer": "Huawei",
+      "category": "Logger",
+      "range_or_family": "SmartLogger",
+      "title": "SmartLogger V300R024C00SPC100 ModBus Interface Definitions 19092024",
+      "filename": "SmartLogger V300R024C00SPC100 ModBus Interface Definitions_19092024.pdf",
+      "relative_path": "sources/Huawei/Logger/SmartLogger/SmartLogger V300R024C00SPC100 ModBus Interface Definitions_19092024.pdf",
+      "file_format": "PDF",
+      "size_bytes": 813215,
+      "sha256": "3f7f74d8dbfc48dba93b87b64ceac69a0c5746a43100b112881b782c5cc58981",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 06, 16)",
+        "address_base": "0-based (Holding Registers 30000.. / 40000..)",
+        "word_order": "Big-Endian (AB CD)"
+      },
+      "models_covered": [
+        "SmartLogger"
+      ],
+      "definitions_generated": [
+        "COM_Huawei_DEF_HUAWEI_SmartLogger_VSeries.csv",
+        "COM_Huawei_SmartLogger3000.csv",
+        "COM_Huawei_SmartLogger_VSeries.csv",
+        "INV_Huawei_GENERIC.csv",
+        "INV_Huawei_SUN2000-V4_Generic.csv",
+        "INV_Huawei_SmartLogger3000.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.153376+00:00"
+    },
+    {
+      "document_id": "SRC-HUA-006",
+      "manufacturer": "Huawei",
+      "category": "Meter",
+      "range_or_family": "DTSU666",
+      "title": "DTSU666 H 100 A and 250 A Smart Power Sensor User Manual",
+      "filename": "DTSU666-H 100 A and 250 A Smart Power Sensor User Manual.pdf",
+      "relative_path": "sources/Huawei/Meter/DTSU666/DTSU666-H 100 A and 250 A Smart Power Sensor User Manual.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1066557,
+      "sha256": "6333c9370a82ea881a7cf4b9bb248ce7aebfe8ad2851a2c91424a0c036659b48",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 06, 16)",
+        "address_base": "0-based (Holding Registers 30000.. / 40000..)",
+        "word_order": "Big-Endian (AB CD)"
+      },
+      "models_covered": [
+        "DTSU666"
+      ],
+      "definitions_generated": [
+        "INV_Huawei_GENERIC.csv",
+        "INV_Huawei_SUN2000-V4_Generic.csv",
+        "MET_Huawei_DTSU666-H.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.154553+00:00"
+    },
+    {
+      "document_id": "SRC-ING-001",
+      "manufacturer": "Ingeteam",
+      "category": "EVCharger",
+      "range_or_family": "Rapid_Fusion",
+      "title": "Modbus Map Rapid Fusion EN",
+      "filename": "Modbus_Map_Rapid_Fusion_EN.xlsx",
+      "relative_path": "sources/Ingeteam/EVCharger/Rapid_Fusion/Modbus_Map_Rapid_Fusion_EN.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 16587,
+      "sha256": "d13aae6a3efaacd1cf2b82b0e291097e64d5b75b8ab2f9db14976dfb6507452f",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 0x0000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "Rapid Fusion"
+      ],
+      "definitions_generated": [
+        "OTH_Ingeteam_Modbus_Map_Rapid_Fusion_EN.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.154961+00:00"
+    },
+    {
+      "document_id": "SRC-ING-002",
+      "manufacturer": "Ingeteam",
+      "category": "Inverter",
+      "range_or_family": "Ingecon_Sun",
+      "title": "AAS1100IMB08 I Protocole Modbus",
+      "filename": "AAS1100IMB08_I_Protocole Modbus.pdf",
+      "relative_path": "sources/Ingeteam/Inverter/Ingecon_Sun/AAS1100IMB08_I_Protocole Modbus.pdf",
+      "file_format": "PDF",
+      "size_bytes": 433374,
+      "sha256": "8d4f87e9af7ae8847d445f5b807c3378b7a8a3ca77bb255d3f526f56e34898d2",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 0x0000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "Ingecon Sun"
+      ],
+      "definitions_generated": [
+        "INV_Ingeteam_1play_ABE1000.csv",
+        "INV_Ingeteam_1play_ABF1000.csv",
+        "INV_Ingeteam_3Phases.csv",
+        "INV_Ingeteam_3play_ABI_1000_ABI_1004.csv",
+        "INV_Ingeteam_3play_ABS1004_todo.csv",
+        "INV_Ingeteam_AAA0030IMB02.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.155487+00:00"
+    },
+    {
+      "document_id": "SRC-JAN-001",
+      "manufacturer": "Janitza",
+      "category": "Meter",
+      "range_or_family": "UMG104",
+      "title": "Janitza Manual UMG104 Modbus address and formulary en",
+      "filename": "Janitza-Manual-UMG104-Modbus-address-and-formulary-en.pdf",
+      "relative_path": "sources/Janitza/Meter/UMG104/Janitza-Manual-UMG104-Modbus-address-and-formulary-en.pdf",
+      "file_format": "PDF",
+      "size_bytes": 970615,
+      "sha256": "eda9a10611368828abfd44f210ca5cf96b46cc08ddbc1b5c0e9cb54b3f4cc97e",
+      "protocol_details": {
+        "baud_rate": "19200, 38400, 115200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "0-based (Registers 19000.. / 200..)",
+        "word_order": "Big-Endian (Float32)"
+      },
+      "models_covered": [
+        "UMG104"
+      ],
+      "definitions_generated": [
+        "MET_Janitza_GENERIC_TCP.csv",
+        "MET_Janitza_Generic.csv",
+        "MET_Janitza_Generic_RTU.csv",
+        "MET_Janitza_W_Janitza_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.156444+00:00"
+    },
+    {
+      "document_id": "SRC-JAN-002",
+      "manufacturer": "Janitza",
+      "category": "Meter",
+      "range_or_family": "UMG604",
+      "title": "UMG604 PRO Modbus adresses 02 2026",
+      "filename": "UMG604_PRO_Modbus_adresses_02_2026.pdf",
+      "relative_path": "sources/Janitza/Meter/UMG604/UMG604_PRO_Modbus_adresses_02_2026.pdf",
+      "file_format": "PDF",
+      "size_bytes": 8996703,
+      "sha256": "2c88c28fbd88ed0c94dd3a354035865c387617e53762ca99c1ff530acb8cb30d",
+      "protocol_details": {
+        "baud_rate": "19200, 38400, 115200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "0-based (Registers 19000.. / 200..)",
+        "word_order": "Big-Endian (Float32)"
+      },
+      "models_covered": [
+        "UMG604"
+      ],
+      "definitions_generated": [
+        "MET_Janitza_12926-UB_MODBUS_COMPTEUR_JANITZA_UMG604-PRO.csv",
+        "MET_Janitza_GENERIC_TCP.csv",
+        "MET_Janitza_Generic.csv",
+        "MET_Janitza_Generic_RTU.csv",
+        "MET_Janitza_UMG604-PRO.csv",
+        "MET_Janitza_UMG604PRO_COMPLET.csv",
+        "MET_Janitza_UMG604_PRO.csv",
+        "MET_Janitza_UMG604_RTU.csv",
+        "MET_Janitza_W_Janitza_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.163110+00:00"
+    },
+    {
+      "document_id": "SRC-JAN-003",
+      "manufacturer": "Janitza",
+      "category": "Meter",
+      "range_or_family": "UMG96RM",
+      "title": "Modbus Adress list and formulary UMG96RM",
+      "filename": "Modbus Adress-list and formulary UMG96RM.pdf",
+      "relative_path": "sources/Janitza/Meter/UMG96RM/Modbus Adress-list and formulary UMG96RM.pdf",
+      "file_format": "PDF",
+      "size_bytes": 912303,
+      "sha256": "957a8873028748b054ad0c3859ad061f6b93741985acc2e4fb1aee36a0d16769",
+      "protocol_details": {
+        "baud_rate": "19200, 38400, 115200 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "0-based (Registers 19000.. / 200..)",
+        "word_order": "Big-Endian (Float32)"
+      },
+      "models_covered": [
+        "UMG96RM"
+      ],
+      "definitions_generated": [
+        "MET_Janitza_GENERIC_TCP.csv",
+        "MET_Janitza_Generic.csv",
+        "MET_Janitza_Generic_RTU.csv",
+        "MET_Janitza_W_Janitza_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.164136+00:00"
+    },
+    {
+      "document_id": "SRC-KAC-001",
+      "manufacturer": "Kaco",
+      "category": "Inverter",
+      "range_or_family": "Blueplanet_NX",
+      "title": "NX1 Modbus",
+      "filename": "NX1 Modbus.pdf",
+      "relative_path": "sources/Kaco/Inverter/Blueplanet_NX/NX1 Modbus.pdf",
+      "file_format": "PDF",
+      "size_bytes": 558687,
+      "sha256": "c094fa0d55159547a83688384c9fe7f85e56f49d114ec2307cfe28d7e75d306f",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps (RS485) / SunSpec TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / SunSpec (FC 03, 04, 16)",
+        "address_base": "0-based / SunSpec 40000..",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "Blueplanet NX"
+      ],
+      "definitions_generated": [
+        "INV_Kaco_95308-LOGNON_SunSpec_inverter_KACO_new_energy_blueplanet_125_NX3_M10_IEC_5.0.3.3-ec484f_modbusRTU.csv",
+        "INV_Kaco_97636-CARTOUX_SunSpec_inverter_KACO_new_energy_blueplanet_125_NX3_M10_IEC_5.1.10.1-1e3c4_modbusTCP.csv",
+        "INV_Kaco_CHAZE_SunSpec_inverter_KACO_new_energy_blueplanet_50.0_TL3_WM_V3.52_modbusTCP.csv",
+        "INV_Kaco_CHRISTIANS_SunSpec_inverter_KACO_new_energy_blueplanet_15.0_TL3_V5.20_modbusTCP_1.csv",
+        "INV_Kaco_GOUSSARD_SunSpec_inverter_KACO_new_energy_blueplanet_50.0_TL3_WM_V5.24_modbusTCP.csv",
+        "INV_Kaco_MOURLON_SunSpec_inverter_KACO_new_energy_blueplanet_20.0_TL3_V5.20_modbusTCP_1.csv",
+        "INV_Kaco_NX1-NX3_ModbusRTU.csv",
+        "INV_Kaco_NX1-NX3_Series.csv",
+        "INV_Kaco_NX1.csv",
+        "INV_Kaco_NX3_G2_G3_SunSpec.csv",
+        "INV_Kaco_SunSpec_inverter_KACO_new_energy_blueplanet_100_NX3_M8_IEC_5.0.3.3-ec484f_modbusRTU.csv",
+        "INV_Kaco_blueplanet_100_NX3_M8.csv",
+        "INV_Kaco_blueplanet_125_NX3_M10.csv",
+        "INV_Kaco_blueplanet_125_TL3.csv",
+        "INV_Kaco_blueplanet_15.0_TL3.csv",
+        "INV_Kaco_blueplanet_20.0_TL3.csv",
+        "INV_Kaco_blueplanet_50.0_NX3_M5.csv",
+        "INV_Kaco_blueplanet_50.0_TL3.csv",
+        "INV_Kaco_blueplanet_NX1.csv",
+        "INV_Kaco_blueplanet_NX3.csv",
+        "OTH_Kaco_SUNSPEC_NX3_G2_G3_1xx_7xx.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.164966+00:00"
+    },
+    {
+      "document_id": "SRC-KAC-002",
+      "manufacturer": "Kaco",
+      "category": "Inverter",
+      "range_or_family": "Modbus_Protocol",
+      "title": "APL Modbus Protocol 12 220315 en",
+      "filename": "APL_Modbus-Protocol_12_220315_en.pdf",
+      "relative_path": "sources/Kaco/Inverter/Modbus_Protocol/APL_Modbus-Protocol_12_220315_en.pdf",
+      "file_format": "PDF",
+      "size_bytes": 3443806,
+      "sha256": "81ce778eeef4ac475e2cdc8fe3c6114160d9eb44a4efa0a570f84707f92c174e",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps (RS485) / SunSpec TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / SunSpec (FC 03, 04, 16)",
+        "address_base": "0-based / SunSpec 40000..",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "Modbus Protocol"
+      ],
+      "definitions_generated": [
+        "INV_Kaco_95308-LOGNON_SunSpec_inverter_KACO_new_energy_blueplanet_125_NX3_M10_IEC_5.0.3.3-ec484f_modbusRTU.csv",
+        "INV_Kaco_97636-CARTOUX_SunSpec_inverter_KACO_new_energy_blueplanet_125_NX3_M10_IEC_5.1.10.1-1e3c4_modbusTCP.csv",
+        "INV_Kaco_CHAZE_SunSpec_inverter_KACO_new_energy_blueplanet_50.0_TL3_WM_V3.52_modbusTCP.csv",
+        "INV_Kaco_CHRISTIAENS_SunSpec_inverter_KACO_new_energy_Powador_60.0_TL3_V3.52_modbusTCP.csv",
+        "INV_Kaco_CHRISTIANS_SunSpec_inverter_KACO_new_energy_blueplanet_15.0_TL3_V5.20_modbusTCP_1.csv",
+        "INV_Kaco_GOUSSARD_SunSpec_inverter_KACO_new_energy_blueplanet_50.0_TL3_WM_V5.24_modbusTCP.csv",
+        "INV_Kaco_MOURLON_SunSpec_inverter_KACO_new_energy_blueplanet_20.0_TL3_V5.20_modbusTCP_1.csv",
+        "INV_Kaco_NX1-NX3_ModbusRTU.csv",
+        "INV_Kaco_SunSpec_inverter_KACO_new_energy_blueplanet_100_NX3_M8_IEC_5.0.3.3-ec484f_modbusRTU.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.167563+00:00"
+    },
+    {
+      "document_id": "SRC-KAC-003",
+      "manufacturer": "Kaco",
+      "category": "Inverter",
+      "range_or_family": "RS485_Protocol",
+      "title": "APL RS485protocol KACO Communication between inverter and data logger en 211209",
+      "filename": "APL_RS485protocol_KACO_Communication between inverter and data logger_en_211209.pdf",
+      "relative_path": "sources/Kaco/Inverter/RS485_Protocol/APL_RS485protocol_KACO_Communication between inverter and data logger_en_211209.pdf",
+      "file_format": "PDF",
+      "size_bytes": 704332,
+      "sha256": "dbaf16843ec7eac9435d2332f0436499e6c80268290f542fdca138a10923713a",
+      "protocol_details": {
+        "baud_rate": "9600, 19200 bps (RS485) / SunSpec TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / SunSpec (FC 03, 04, 16)",
+        "address_base": "0-based / SunSpec 40000..",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "RS485 Protocol"
+      ],
+      "definitions_generated": [
+        "INV_Kaco_95308-LOGNON_SunSpec_inverter_KACO_new_energy_blueplanet_125_NX3_M10_IEC_5.0.3.3-ec484f_modbusRTU.csv",
+        "INV_Kaco_97636-CARTOUX_SunSpec_inverter_KACO_new_energy_blueplanet_125_NX3_M10_IEC_5.1.10.1-1e3c4_modbusTCP.csv",
+        "INV_Kaco_CHAZE_SunSpec_inverter_KACO_new_energy_blueplanet_50.0_TL3_WM_V3.52_modbusTCP.csv",
+        "INV_Kaco_CHRISTIAENS_SunSpec_inverter_KACO_new_energy_Powador_60.0_TL3_V3.52_modbusTCP.csv",
+        "INV_Kaco_CHRISTIANS_SunSpec_inverter_KACO_new_energy_blueplanet_15.0_TL3_V5.20_modbusTCP_1.csv",
+        "INV_Kaco_GOUSSARD_SunSpec_inverter_KACO_new_energy_blueplanet_50.0_TL3_WM_V5.24_modbusTCP.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.168362+00:00"
+    },
+    {
+      "document_id": "SRC-LEG-001",
+      "manufacturer": "Legrand",
+      "category": "Meter",
+      "range_or_family": "EMDX",
+      "title": "F02226EN 00(table de registres)",
+      "filename": "F02226EN-00(table de registres).pdf",
+      "relative_path": "sources/Legrand/Meter/EMDX/F02226EN-00(table de registres).pdf",
+      "file_format": "PDF",
+      "size_bytes": 2226919,
+      "sha256": "e3c886875323fea09c3545f293ea27bca68eab6a7a86cbd3fa4f07b7cf018db1",
+      "protocol_details": {
+        "baud_rate": "19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04)",
+        "address_base": "0-based (Registers 0x0800..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "EMDX"
+      ],
+      "definitions_generated": [
+        "MET_Legrand_CF-GENERIC.csv",
+        "MET_Legrand_CF_Generic.csv",
+        "MET_Legrand_EMDX.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.170149+00:00"
+    },
+    {
+      "document_id": "SRC-LEG-002",
+      "manufacturer": "Legrand",
+      "category": "Meter",
+      "range_or_family": "EMS",
+      "title": "ModbusTable EMS 414922 24 25 27 3PN",
+      "filename": "ModbusTable_EMS_414922-24-25-27_3PN.pdf",
+      "relative_path": "sources/Legrand/Meter/EMS/ModbusTable_EMS_414922-24-25-27_3PN.pdf",
+      "file_format": "PDF",
+      "size_bytes": 294350,
+      "sha256": "dfca7a22cf814876f6d08d4a421a0ae4993b14eb933ec3bb9dda6bd17c9fca06",
+      "protocol_details": {
+        "baud_rate": "19200 bps",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04)",
+        "address_base": "0-based (Registers 0x0800..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "EMS"
+      ],
+      "definitions_generated": [
+        "MET_Legrand_CF-GENERIC.csv",
+        "MET_Legrand_CF_Generic.csv",
+        "MET_Legrand_EMSCX3.csv",
+        "MET_Legrand_EMS_414922-24-25-27.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.170601+00:00"
+    },
+    {
+      "document_id": "SRC-MAR-001",
       "manufacturer": "MarsEnergy",
-      "title": "Mars Local Controller IO List Modbus TCP",
+      "category": "Controller_BMS",
+      "range_or_family": "LocalController",
+      "title": "MarsLocalController IO List ModbusTCP V7.0",
       "filename": "MarsLocalController_IO List_ModbusTCP_V7.0.xlsx",
-      "relative_path": "sources/manuals/MarsEnergy/MarsLocalController_IO List_ModbusTCP_V7.0.xlsx",
+      "relative_path": "sources/MarsEnergy/Controller_BMS/LocalController/MarsLocalController_IO List_ModbusTCP_V7.0.xlsx",
+      "file_format": "XLSX",
       "size_bytes": 67198,
       "sha256": "a7604630355335c47c2f48e9d8b028770e507b1389c604b3cd3c2313a9fcd835",
-      "version": "V7.0",
-      "release_date": "2024-02-15",
-      "protocol": "Modbus TCP",
+      "protocol_details": {
+        "baud_rate": "TCP Port 502",
+        "data_format": "Modbus TCP encapsulation",
+        "protocol": "Modbus TCP (FC 03, 04, 06, 16)",
+        "address_base": "0-based",
+        "word_order": "Big-Endian"
+      },
       "models_covered": [
-        "Local Controller LC",
-        "PCS-Bank",
-        "Rack-Cell BMS",
-        "PV"
+        "LocalController"
       ],
       "definitions_generated": [
-        "OTH_MarsEnergy_LC.csv",
-        "OTH_MarsEnergy_PCS-Bank.csv",
-        "BAT_MarsEnergy_Rack-Cell.csv",
-        "SEN_MarsEnergy_PV.csv"
+        "BAT_MarsEnergy_LocalController_AllInOne.csv",
+        "BAT_MarsEnergy_LocalController_V7.0.csv",
+        "BAT_MarsEnergy_MARS_LocalController_V7_Rack_Un_seul_element_WebdynSunPM.csv",
+        "BAT_MarsEnergy_MarsLocalController_V7.0_EMS_Slave247.csv",
+        "BAT_MarsEnergy_MarsLocalController_V7.0_RackCell_SlaveN.csv",
+        "BAT_MarsEnergy_MarsLocalController_V7.0_webdyn.csv",
+        "COM_MarsEnergy_MARS_LocalController_V7_1_Slave.csv",
+        "COM_MarsEnergy_MARS_LocalController_V7_Complet.csv",
+        "COM_MarsEnergy_MARS_LocalController_V7_Rack_Un_seul_element_WebdynSunPM.csv",
+        "COM_MarsEnergy_MARS_LocalController_V7_Unit1_Un_seul_element_WebdynSunPM.csv",
+        "COM_MarsEnergy_MARS_LocalController_V7_Unit247_Un_seul_element_WebdynSunPM.csv",
+        "OTH_MarsEnergy_MARS_LocalController_V7_1_Slave.csv",
+        "OTH_MarsEnergy_MARS_LocalController_V7_Complet.csv",
+        "OTH_MarsEnergy_MARS_LocalController_V7_Rack_Un_seul_element_WebdynSunPM.csv",
+        "OTH_MarsEnergy_MARS_LocalController_V7_Unit1_Un_seul_element_WebdynSunPM.csv",
+        "OTH_MarsEnergy_MARS_LocalController_V7_Unit247_Un_seul_element_WebdynSunPM.csv",
+        "OTH_MarsEnergy_MarsLocalController_IO_List_ModbusTCP_V7.0.csv",
+        "OTH_MarsEnergy_MarsLocalController_V7.0_EMS_Slave247.csv",
+        "OTH_MarsEnergy_MarsLocalController_V7.0_RackCell_SlaveN.csv",
+        "OTH_MarsEnergy_MarsLocalController_V7.0_webdyn.csv"
       ],
-      "indexed_at": "2026-11-17T14:07:19.533921"
+      "indexed_at": "2026-11-24T13:46:31.171306+00:00"
     },
     {
-      "document_id": "SRC-SP-001",
+      "document_id": "SRC-SAJ-001",
+      "manufacturer": "SAJ",
+      "category": "Inverter",
+      "range_or_family": "H2_Hybrid",
+      "title": "H2 3~6K S2 single phase communication protocol  2022.12.02 EN",
+      "filename": "H2-3~6K-S2 single phase communication protocol -2022.12.02-EN.pdf",
+      "relative_path": "sources/SAJ/Inverter/H2_Hybrid/H2-3~6K-S2 single phase communication protocol -2022.12.02-EN.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1460670,
+      "sha256": "5a07485335e123aa1d6a3ca0ab958eee47deb558c6b18c1f8eb87953d760771b",
+      "protocol_details": {
+        "baud_rate": "9600 bps",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 0x3000.. / 0x4000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "H2 Hybrid"
+      ],
+      "definitions_generated": [
+        "INV_SAJ_Generic.csv",
+        "OTH_SAJ_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.172568+00:00"
+    },
+    {
+      "document_id": "SRC-SAJ-002",
+      "manufacturer": "SAJ",
+      "category": "Inverter",
+      "range_or_family": "R5_R6_C6",
+      "title": "SAJ MODBUS communication protocol R5R6C6 V7.2 (004)",
+      "filename": "SAJ_MODBUS-communication protocol-R5R6C6 V7.2 (004).pdf",
+      "relative_path": "sources/SAJ/Inverter/R5_R6_C6/SAJ_MODBUS-communication protocol-R5R6C6 V7.2 (004).pdf",
+      "file_format": "PDF",
+      "size_bytes": 1068205,
+      "sha256": "05f83b64cf6a23f118716dd1dc43ff5a8027561833645f2f203b28aaee8c0daf",
+      "protocol_details": {
+        "baud_rate": "9600 bps",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 0x3000.. / 0x4000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "R5 R6 C6"
+      ],
+      "definitions_generated": [
+        "INV_SAJ_C6.csv",
+        "INV_SAJ_Generic.csv",
+        "INV_SAJ_PLUS_R5.csv",
+        "INV_SAJ_R5_R6_C6.csv",
+        "INV_SAJ_R6.csv",
+        "INV_SAJ_R6_v2.csv",
+        "OTH_SAJ_C6.csv",
+        "OTH_SAJ_Generic.csv",
+        "OTH_SAJ_PLUS_R5.csv",
+        "OTH_SAJ_R5_R6_C6.csv",
+        "OTH_SAJ_R6.csv",
+        "OTH_SAJ_R6_v2.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.173466+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-001",
+      "manufacturer": "SMA",
+      "category": "Gateway",
+      "range_or_family": "ClusterController",
+      "title": "ClusterController MODBUS TI en 17",
+      "filename": "ClusterController_MODBUS-TI-en-17.pdf",
+      "relative_path": "sources/SMA/Gateway/ClusterController/ClusterController_MODBUS-TI-en-17.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1066892,
+      "sha256": "2720c97559f24fe73f11f011b161816fa7532fa9e17a08cfad020652fa5bb414",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "ClusterController"
+      ],
+      "definitions_generated": [
+        "COM_SMA_ClusterController.csv",
+        "INV_SMA_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.179781+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-002",
+      "manufacturer": "SMA",
+      "category": "Gateway",
+      "range_or_family": "EDMM",
+      "title": "parameterlist fr",
+      "filename": "parameterlist_fr.html",
+      "relative_path": "sources/SMA/Gateway/EDMM/parameterlist_fr.html",
+      "file_format": "HTML",
+      "size_bytes": 159916,
+      "sha256": "f8a2d172a250294f19093e388d4bce4fd8d42e2c90315b0bc0435e8ef3704e15",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "EDMM"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.180106+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-003",
+      "manufacturer": "SMA",
+      "category": "Inverter",
+      "range_or_family": "Core1_STP50",
+      "title": "SMA Modbus TI en 15",
+      "filename": "SMA_Modbus-TI-en-15.pdf",
+      "relative_path": "sources/SMA/Inverter/Core1_STP50/SMA_Modbus-TI-en-15.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1554274,
+      "sha256": "e4bf8d97f891aed6521ae01a9d583f4bc38afe578683088f311afff034341ed4",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "Core1 STP50"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Core1.csv",
+        "INV_SMA_Core1_Core2.csv",
+        "INV_SMA_Generic.csv",
+        "INV_SMA_STPCORE1_50-41.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.181383+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-004",
+      "manufacturer": "SMA",
+      "category": "Inverter",
+      "range_or_family": "Core1_STP50",
+      "title": "SMA Modbus TI en 22",
+      "filename": "SMA_Modbus-TI-en-22.xlsx",
+      "relative_path": "sources/SMA/Inverter/Core1_STP50/SMA_Modbus-TI-en-22.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 266584,
+      "sha256": "cbd315ef834060c49a53fd8a5220eac75afbf9412882ad60fe8bcc3df66a9e96",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "Core1 STP50"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Core1.csv",
+        "INV_SMA_Core1_Core2.csv",
+        "INV_SMA_Generic.csv",
+        "INV_SMA_STPCORE1_50-41.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.181699+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-005",
+      "manufacturer": "SMA",
+      "category": "Inverter",
+      "range_or_family": "Core1_STP50",
+      "title": "parameterlist fr STP50 41",
+      "filename": "parameterlist_fr_STP50-41.html",
+      "relative_path": "sources/SMA/Inverter/Core1_STP50/parameterlist_fr_STP50-41.html",
+      "file_format": "HTML",
+      "size_bytes": 498993,
+      "sha256": "ae5ebcf5e7b181ec6f3323c37d125b7b557c2748f0f656fabf0f41efb767e488",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "Core1 STP50"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Core1.csv",
+        "INV_SMA_Core1_Core2.csv",
+        "INV_SMA_Generic.csv",
+        "INV_SMA_STPCORE1_50-41.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.182138+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-006",
+      "manufacturer": "SMA",
+      "category": "Inverter",
+      "range_or_family": "General",
+      "title": "SMA Modbus general TI en 10",
+      "filename": "SMA-Modbus-general-TI-en-10.pdf",
+      "relative_path": "sources/SMA/Inverter/General/SMA-Modbus-general-TI-en-10.pdf",
+      "file_format": "PDF",
+      "size_bytes": 293123,
+      "sha256": "2e1e8910de1e7c29bd73022b4368ccc433935526d1aa6160fac830c88f82608e",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "General"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.182512+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-007",
+      "manufacturer": "SMA",
+      "category": "Meter",
+      "range_or_family": "Smappee",
+      "title": "Smappee Infinity Modbus energy meter registers",
+      "filename": "Smappee Infinity Modbus energy meter registers.xlsx",
+      "relative_path": "sources/SMA/Meter/Smappee/Smappee Infinity Modbus energy meter registers.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 159885,
+      "sha256": "94ef9fea4ac8461c9ab7a343f92836dde6534b216443bf20411f45b9bb92483a",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "Smappee"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.182863+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-008",
+      "manufacturer": "SMA",
+      "category": "STP125-70",
+      "range_or_family": "General",
+      "title": "SMA Modbus TI de 10",
+      "filename": "SMA-Modbus-TI-de-10.pdf",
+      "relative_path": "sources/SMA/STP125-70/SMA-Modbus-TI-de-10.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1487231,
+      "sha256": "1a86423f40bb17fe2933b2129dbc9be36c222fb8bea4ba07e66cde9679ef27e1",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "General"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.184108+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-009",
+      "manufacturer": "SMA",
+      "category": "STP125-70",
+      "range_or_family": "General",
+      "title": "SMA Modbus TI en 10",
+      "filename": "SMA-Modbus-TI-en-10.pdf",
+      "relative_path": "sources/SMA/STP125-70/SMA-Modbus-TI-en-10.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1483443,
+      "sha256": "cd2acca7d960b099c8a083f5474d93bed5a82010d4bb94f7a141b029aa889d28",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "General"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.185334+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-010",
+      "manufacturer": "SMA",
+      "category": "STP125-70",
+      "range_or_family": "General",
+      "title": "parameterlist de",
+      "filename": "parameterlist_de.html",
+      "relative_path": "sources/SMA/STP125-70/parameterlist_de.html",
+      "file_format": "HTML",
+      "size_bytes": 364834,
+      "sha256": "4ccadd7409851f034e7be543eb8b194ce33e197e26726c880243d28c166d920a",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "General"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.185740+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-011",
+      "manufacturer": "SMA",
+      "category": "STP125-70",
+      "range_or_family": "General",
+      "title": "parameterlist en",
+      "filename": "parameterlist_en.html",
+      "relative_path": "sources/SMA/STP125-70/parameterlist_en.html",
+      "file_format": "HTML",
+      "size_bytes": 359990,
+      "sha256": "72d0ff885a87eb6e738c8494f895942156fb82662622b1401c6d446c9d6f314b",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "General"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.186092+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-012",
+      "manufacturer": "SMA",
+      "category": "STP125-70",
+      "range_or_family": "General",
+      "title": "parameterlist fr",
+      "filename": "parameterlist_fr.html",
+      "relative_path": "sources/SMA/STP125-70/parameterlist_fr.html",
+      "file_format": "HTML",
+      "size_bytes": 375022,
+      "sha256": "8e73810510c55f3106d748de5709e0768b45a1dcda39677e273f18d524b7bf7d",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "General"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.186443+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-013",
+      "manufacturer": "SMA",
+      "category": "STP125-70",
+      "range_or_family": "PARAMETER-HTML_STP125-70_GG10_V10",
+      "title": "SMA Modbus TI de 10",
+      "filename": "SMA-Modbus-TI-de-10.pdf",
+      "relative_path": "sources/SMA/STP125-70/PARAMETER-HTML_STP125-70_GG10_V10/SMA-Modbus-TI-de-10.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1487231,
+      "sha256": "1a86423f40bb17fe2933b2129dbc9be36c222fb8bea4ba07e66cde9679ef27e1",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "PARAMETER-HTML STP125-70 GG10 V10"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv",
+        "INV_SMA_STP_125-70.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.187732+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-014",
+      "manufacturer": "SMA",
+      "category": "STP125-70",
+      "range_or_family": "PARAMETER-HTML_STP125-70_GG10_V10",
+      "title": "SMA Modbus TI en 10",
+      "filename": "SMA-Modbus-TI-en-10.pdf",
+      "relative_path": "sources/SMA/STP125-70/PARAMETER-HTML_STP125-70_GG10_V10/SMA-Modbus-TI-en-10.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1483443,
+      "sha256": "cd2acca7d960b099c8a083f5474d93bed5a82010d4bb94f7a141b029aa889d28",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "PARAMETER-HTML STP125-70 GG10 V10"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv",
+        "INV_SMA_STP_125-70.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.189030+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-015",
+      "manufacturer": "SMA",
+      "category": "STP125-70",
+      "range_or_family": "PARAMETER-HTML_STP125-70_GG10_V10",
+      "title": "parameterlist de",
+      "filename": "parameterlist_de.html",
+      "relative_path": "sources/SMA/STP125-70/PARAMETER-HTML_STP125-70_GG10_V10/parameterlist_de.html",
+      "file_format": "HTML",
+      "size_bytes": 364834,
+      "sha256": "4ccadd7409851f034e7be543eb8b194ce33e197e26726c880243d28c166d920a",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "PARAMETER-HTML STP125-70 GG10 V10"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv",
+        "INV_SMA_STP_125-70.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.189447+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-016",
+      "manufacturer": "SMA",
+      "category": "STP125-70",
+      "range_or_family": "PARAMETER-HTML_STP125-70_GG10_V10",
+      "title": "parameterlist en",
+      "filename": "parameterlist_en.html",
+      "relative_path": "sources/SMA/STP125-70/PARAMETER-HTML_STP125-70_GG10_V10/parameterlist_en.html",
+      "file_format": "HTML",
+      "size_bytes": 359990,
+      "sha256": "72d0ff885a87eb6e738c8494f895942156fb82662622b1401c6d446c9d6f314b",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "PARAMETER-HTML STP125-70 GG10 V10"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv",
+        "INV_SMA_STP_125-70.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.189850+00:00"
+    },
+    {
+      "document_id": "SRC-SMA-017",
+      "manufacturer": "SMA",
+      "category": "STP125-70",
+      "range_or_family": "PARAMETER-HTML_STP125-70_GG10_V10",
+      "title": "parameterlist fr",
+      "filename": "parameterlist_fr.html",
+      "relative_path": "sources/SMA/STP125-70/PARAMETER-HTML_STP125-70_GG10_V10/parameterlist_fr.html",
+      "file_format": "HTML",
+      "size_bytes": 375022,
+      "sha256": "8e73810510c55f3106d748de5709e0768b45a1dcda39677e273f18d524b7bf7d",
+      "protocol_details": {
+        "baud_rate": "19200 bps (RS485) / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "SMA Speedwire / Modbus TCP / SunSpec (FC 03, 04)",
+        "address_base": "0-based / Register 30001..",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "PARAMETER-HTML STP125-70 GG10 V10"
+      ],
+      "definitions_generated": [
+        "INV_SMA_Generic.csv",
+        "INV_SMA_STP_125-70.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.190823+00:00"
+    },
+    {
+      "document_id": "SRC-SCH-001",
+      "manufacturer": "Schneider",
+      "category": "Inverter",
+      "range_or_family": "Conext_CL",
+      "title": "CL Series Modbus Interface Guide 990 91443",
+      "filename": "CL-Series-Modbus-Interface-Guide_990-91443.pdf",
+      "relative_path": "sources/Schneider/Inverter/Conext_CL/CL-Series-Modbus-Interface-Guide_990-91443.pdf",
+      "file_format": "PDF",
+      "size_bytes": 439162,
+      "sha256": "dc7110da7aa536d62c2fb14bbcb2b256c2792f5fa888f508d237f16b3a121d9f",
+      "protocol_details": {
+        "baud_rate": "19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, Even/No parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "1-based (Register 3001.. / 4001..)",
+        "word_order": "Big-Endian (AB CD)"
+      },
+      "models_covered": [
+        "Conext CL"
+      ],
+      "definitions_generated": [
+        "INV_Schneider_30-33-50-CL.csv",
+        "INV_Schneider_CL30-33-50.csv",
+        "INV_Schneider_CONEXT_CORE_XC.csv",
+        "INV_Schneider_CONEXT_CORE_XC_RTU.csv",
+        "INV_Schneider_Conext_CL.csv",
+        "INV_Schneider_Conext_CL_30-33-50.csv",
+        "MET_Schneider_Generic.csv",
+        "OTH_Schneider_30-33-50-CL.csv",
+        "OTH_Schneider_CL30-33-50.csv",
+        "OTH_Schneider_Generic.csv",
+        "OTH_Schneider_XANTREX_GENERIC.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.174110+00:00"
+    },
+    {
+      "document_id": "SRC-SCH-002",
+      "manufacturer": "Schneider",
+      "category": "Meter",
+      "range_or_family": "IEM3000",
+      "title": "Energy Meters A9MEM3555 table de registre",
+      "filename": "Energy-Meters_A9MEM3555 table de registre.pdf",
+      "relative_path": "sources/Schneider/Meter/IEM3000/Energy-Meters_A9MEM3555 table de registre.pdf",
+      "file_format": "PDF",
+      "size_bytes": 2502042,
+      "sha256": "0bc0683f8b42e2770c782289a16721995cc2732b9bef63285831a1d2c0f781b4",
+      "protocol_details": {
+        "baud_rate": "19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, Even/No parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "1-based (Register 3001.. / 4001..)",
+        "word_order": "Big-Endian (AB CD)"
+      },
+      "models_covered": [
+        "IEM3000"
+      ],
+      "definitions_generated": [
+        "MET_Schneider_Generic.csv",
+        "MET_Schneider_PM5000_IEM3000.csv",
+        "MET_Schneider_iem3000.csv",
+        "OTH_Schneider_Generic.csv",
+        "OTH_Schneider_XANTREX_GENERIC.csv",
+        "OTH_Schneider_iem3000.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.176455+00:00"
+    },
+    {
+      "document_id": "SRC-SCH-003",
+      "manufacturer": "Schneider",
+      "category": "Meter",
+      "range_or_family": "ION9000",
+      "title": "ION9000 Modbus Map 004.005.000",
+      "filename": "ION9000_Modbus_Map_004.005.000.xlsx",
+      "relative_path": "sources/Schneider/Meter/ION9000/ION9000_Modbus_Map_004.005.000.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 233515,
+      "sha256": "fd046c845dc43a119583ddd28c1c0eff8aef6edc6e82bbfd4a8eab692ffd6e4a",
+      "protocol_details": {
+        "baud_rate": "19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, Even/No parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "1-based (Register 3001.. / 4001..)",
+        "word_order": "Big-Endian (AB CD)"
+      },
+      "models_covered": [
+        "ION9000"
+      ],
+      "definitions_generated": [
+        "MET_Schneider_Generic.csv",
+        "OTH_Schneider_Generic.csv",
+        "OTH_Schneider_ION9000_Modbus_Map_004.005.000.csv",
+        "OTH_Schneider_XANTREX_GENERIC.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.176953+00:00"
+    },
+    {
+      "document_id": "SRC-SCH-004",
+      "manufacturer": "Schneider",
+      "category": "Meter",
+      "range_or_family": "PM5000",
+      "title": "PM51xx PM53xx PMC Register List v2011 v2021 R01",
+      "filename": "PM51xx_PM53xx_PMC Register List_v2011_v2021_R01.xls",
+      "relative_path": "sources/Schneider/Meter/PM5000/PM51xx_PM53xx_PMC Register List_v2011_v2021_R01.xls",
+      "file_format": "XLS",
+      "size_bytes": 902656,
+      "sha256": "4895b7c5a5caa8fab38c3acd71fb88aee750985eb1349b23cdf2d1ff20fff621",
+      "protocol_details": {
+        "baud_rate": "19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, Even/No parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "1-based (Register 3001.. / 4001..)",
+        "word_order": "Big-Endian (AB CD)"
+      },
+      "models_covered": [
+        "PM5000"
+      ],
+      "definitions_generated": [
+        "MET_Schneider_Generic.csv",
+        "MET_Schneider_PM5000_IEM3000.csv",
+        "OTH_Schneider_Generic.csv",
+        "OTH_Schneider_XANTREX_GENERIC.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.177822+00:00"
+    },
+    {
+      "document_id": "SRC-SCH-005",
+      "manufacturer": "Schneider",
+      "category": "Meter",
+      "range_or_family": "PM5560",
+      "title": "PM5560 PM5563 PM5563RD ModbusRegisterList v2.3.0",
+      "filename": "PM5560_PM5563_PM5563RD_ModbusRegisterList_v2.3.0.xlsx",
+      "relative_path": "sources/Schneider/Meter/PM5560/PM5560_PM5563_PM5563RD_ModbusRegisterList_v2.3.0.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 351463,
+      "sha256": "086689adea7d57135477942083e4bcfa6985aff06c0ec3b84c87e6f3f41f25c7",
+      "protocol_details": {
+        "baud_rate": "19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, Even/No parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "1-based (Register 3001.. / 4001..)",
+        "word_order": "Big-Endian (AB CD)"
+      },
+      "models_covered": [
+        "PM5560"
+      ],
+      "definitions_generated": [
+        "MET_Schneider_Generic.csv",
+        "OTH_Schneider_Generic.csv",
+        "OTH_Schneider_PM5560_PM5563_PM5563RD_ModbusRegisterList_v2.3.0.csv",
+        "OTH_Schneider_XANTREX_GENERIC.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.178292+00:00"
+    },
+    {
+      "document_id": "SRC-SCH-006",
+      "manufacturer": "Schneider",
+      "category": "Meter",
+      "range_or_family": "PM8000",
+      "title": "PM8000 Modbus Map",
+      "filename": "PM8000_Modbus_Map.xlsx",
+      "relative_path": "sources/Schneider/Meter/PM8000/PM8000_Modbus_Map.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 269151,
+      "sha256": "e710e03b3885900a4ae43673920ffa8da622ef97dec685b8011f33b60668f4b6",
+      "protocol_details": {
+        "baud_rate": "19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, Even/No parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04)",
+        "address_base": "1-based (Register 3001.. / 4001..)",
+        "word_order": "Big-Endian (AB CD)"
+      },
+      "models_covered": [
+        "PM8000"
+      ],
+      "definitions_generated": [
+        "MET_Schneider_Generic.csv",
+        "OTH_Schneider_Generic.csv",
+        "OTH_Schneider_PM8000_Modbus_Map.csv",
+        "OTH_Schneider_XANTREX_GENERIC.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.178696+00:00"
+    },
+    {
+      "document_id": "SRC-SOC-001",
+      "manufacturer": "Socomec",
+      "category": "Gateway",
+      "range_or_family": "DIRIS_M50_M70",
+      "title": "DIRIS DIGIWARE M & D COMMUNICATION TABLE 2025 01 CMT SNMP OID LIST EN",
+      "filename": "DIRIS-DIGIWARE-M-&-D_COMMUNICATION-TABLE_2025-01_CMT-SNMP-OID-LIST_EN.xlsx",
+      "relative_path": "sources/Socomec/Gateway/DIRIS_M50_M70/DIRIS-DIGIWARE-M-&-D_COMMUNICATION-TABLE_2025-01_CMT-SNMP-OID-LIST_EN.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 212583,
+      "sha256": "063210b6a7735bf4f31425c4c3773570e814beec6357c7205979f340937004d5",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "JBUS / Modbus RTU / TCP (FC 03)",
+        "address_base": "0-based (Hex/Dec addresses)",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "DIRIS M50 M70"
+      ],
+      "definitions_generated": [
+        "MET_Socomec_DIRIS_B10.csv",
+        "MET_Socomec_DIRIS_DIGIWARE_I35.csv",
+        "MET_Socomec_Diris_A10.csv",
+        "MET_Socomec_Diris_A40.csv",
+        "MET_Socomec_Diris_A_Countis_E.csv",
+        "MET_Socomec_Diris_Axx.csv",
+        "MET_Socomec_Diris_B30.csv",
+        "MET_Socomec_Diris_I30.csv",
+        "MET_Socomec_Diris_I35.csv",
+        "MET_Socomec_ElectricMotionWebdyn_modbusRTU_Meter_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_Diris_A40.csv",
+        "MET_Socomec_W_Socomec_Diris_A10.csv",
+        "MET_Socomec_W_Socomec_Diris_B30.csv",
+        "MET_Socomec_W_Socomec_Diris_I30.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.191705+00:00"
+    },
+    {
+      "document_id": "SRC-SOC-002",
+      "manufacturer": "Socomec",
+      "category": "Meter",
+      "range_or_family": "DIRIS_A10",
+      "title": "DIRIS A 10   MULTI FUNCTION METERS COMMUNICATION TABLE 2023 02 CMT EN (1)",
+      "filename": "DIRIS-A-10---MULTI-FUNCTION-METERS_COMMUNICATION-TABLE_2023-02_CMT_EN (1).html",
+      "relative_path": "sources/Socomec/Meter/DIRIS_A10/DIRIS-A-10---MULTI-FUNCTION-METERS_COMMUNICATION-TABLE_2023-02_CMT_EN (1).html",
+      "file_format": "HTML",
+      "size_bytes": 172126,
+      "sha256": "4ee4dbcd639420df113404a9194964e12ff0248753006214ab77b3a0512311d2",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "JBUS / Modbus RTU / TCP (FC 03)",
+        "address_base": "0-based (Hex/Dec addresses)",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "DIRIS A10"
+      ],
+      "definitions_generated": [
+        "MET_Socomec_A10.csv",
+        "MET_Socomec_DIRIS_B10.csv",
+        "MET_Socomec_DIRIS_DIGIWARE_I35.csv",
+        "MET_Socomec_Diris_A10.csv",
+        "MET_Socomec_Diris_A40.csv",
+        "MET_Socomec_Diris_A_Countis_E.csv",
+        "MET_Socomec_Diris_Axx.csv",
+        "MET_Socomec_Diris_B30.csv",
+        "MET_Socomec_Diris_I30.csv",
+        "MET_Socomec_Diris_I35.csv",
+        "MET_Socomec_ElectricMotionWebdyn_modbusRTU_Meter_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_Diris_A40.csv",
+        "MET_Socomec_W_Socomec_Diris_A10.csv",
+        "MET_Socomec_W_Socomec_Diris_B30.csv",
+        "MET_Socomec_W_Socomec_Diris_I30.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.192397+00:00"
+    },
+    {
+      "document_id": "SRC-SOC-003",
+      "manufacturer": "Socomec",
+      "category": "Meter",
+      "range_or_family": "DIRIS_A20",
+      "title": "DIRIS A20 HTML COMMUNICATION TABLE 2018 01 CMT EN",
+      "filename": "DIRIS-A20-HTML_COMMUNICATION-TABLE_2018-01_CMT_EN.html",
+      "relative_path": "sources/Socomec/Meter/DIRIS_A20/DIRIS-A20-HTML_COMMUNICATION-TABLE_2018-01_CMT_EN.html",
+      "file_format": "HTML",
+      "size_bytes": 179042,
+      "sha256": "538e9759ab4c0f00ffc41caf0657bd05c8842e7c31aa9cc500e477aadcc12746",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "JBUS / Modbus RTU / TCP (FC 03)",
+        "address_base": "0-based (Hex/Dec addresses)",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "DIRIS A20"
+      ],
+      "definitions_generated": [
+        "MET_Socomec_DIRIS_B10.csv",
+        "MET_Socomec_DIRIS_DIGIWARE_I35.csv",
+        "MET_Socomec_Diris_A10.csv",
+        "MET_Socomec_Diris_A40.csv",
+        "MET_Socomec_Diris_A_Countis_E.csv",
+        "MET_Socomec_Diris_Axx.csv",
+        "MET_Socomec_Diris_B30.csv",
+        "MET_Socomec_Diris_I30.csv",
+        "MET_Socomec_Diris_I35.csv",
+        "MET_Socomec_ElectricMotionWebdyn_modbusRTU_Meter_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_Diris_A40.csv",
+        "MET_Socomec_W_Socomec_Diris_A10.csv",
+        "MET_Socomec_W_Socomec_Diris_B30.csv",
+        "MET_Socomec_W_Socomec_Diris_I30.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.192776+00:00"
+    },
+    {
+      "document_id": "SRC-SOC-004",
+      "manufacturer": "Socomec",
+      "category": "Meter",
+      "range_or_family": "DIRIS_A30",
+      "title": "DIRIS A30 COMMUNICATION TABLE 2018 01 CMT EN",
+      "filename": "DIRIS-A30_COMMUNICATION-TABLE_2018-01_CMT_EN.html",
+      "relative_path": "sources/Socomec/Meter/DIRIS_A30/DIRIS-A30_COMMUNICATION-TABLE_2018-01_CMT_EN.html",
+      "file_format": "HTML",
+      "size_bytes": 502145,
+      "sha256": "e49e5afb680f2dc60ce25893ecbcb02587c89ee0a4740b3d7e63df8a129d8235",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "JBUS / Modbus RTU / TCP (FC 03)",
+        "address_base": "0-based (Hex/Dec addresses)",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "DIRIS A30"
+      ],
+      "definitions_generated": [
+        "MET_Socomec_DIRIS_B10.csv",
+        "MET_Socomec_DIRIS_DIGIWARE_I35.csv",
+        "MET_Socomec_Diris_A10.csv",
+        "MET_Socomec_Diris_A40.csv",
+        "MET_Socomec_Diris_A_Countis_E.csv",
+        "MET_Socomec_Diris_Axx.csv",
+        "MET_Socomec_Diris_B30.csv",
+        "MET_Socomec_Diris_I30.csv",
+        "MET_Socomec_Diris_I35.csv",
+        "MET_Socomec_ElectricMotionWebdyn_modbusRTU_Meter_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_Diris_A40.csv",
+        "MET_Socomec_W_Socomec_Diris_A10.csv",
+        "MET_Socomec_W_Socomec_Diris_B30.csv",
+        "MET_Socomec_W_Socomec_Diris_I30.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.193341+00:00"
+    },
+    {
+      "document_id": "SRC-SOC-005",
+      "manufacturer": "Socomec",
+      "category": "Meter",
+      "range_or_family": "DIRIS_A40",
+      "title": "DIRIS A 40 COMMUNICATION TABLE 2019 03 CMT EN",
+      "filename": "DIRIS-A-40_COMMUNICATION-TABLE_2019-03_CMT_EN.html",
+      "relative_path": "sources/Socomec/Meter/DIRIS_A40/DIRIS-A-40_COMMUNICATION-TABLE_2019-03_CMT_EN.html",
+      "file_format": "HTML",
+      "size_bytes": 1276452,
+      "sha256": "d9d2a05625575fba6adf98dcc932053f5bb7445372c0f0281dc0a8ea95bada33",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "JBUS / Modbus RTU / TCP (FC 03)",
+        "address_base": "0-based (Hex/Dec addresses)",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "DIRIS A40"
+      ],
+      "definitions_generated": [
+        "MET_Socomec_DIRIS_B10.csv",
+        "MET_Socomec_DIRIS_DIGIWARE_I35.csv",
+        "MET_Socomec_Diris_A10.csv",
+        "MET_Socomec_Diris_A40.csv",
+        "MET_Socomec_Diris_A_Countis_E.csv",
+        "MET_Socomec_Diris_Axx.csv",
+        "MET_Socomec_Diris_B30.csv",
+        "MET_Socomec_Diris_I30.csv",
+        "MET_Socomec_Diris_I35.csv",
+        "MET_Socomec_ElectricMotionWebdyn_modbusRTU_Meter_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_Diris_A40.csv",
+        "MET_Socomec_W_Socomec_Diris_A10.csv",
+        "MET_Socomec_W_Socomec_Diris_B30.csv",
+        "MET_Socomec_W_Socomec_Diris_I30.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.194411+00:00"
+    },
+    {
+      "document_id": "SRC-SOC-006",
+      "manufacturer": "Socomec",
+      "category": "Meter",
+      "range_or_family": "DIRIS_B10",
+      "title": "DIRIS B 10 1.5.0 COMMUNICATION TABLE 2022 05 CMT EN",
+      "filename": "DIRIS-B-10-1.5.0_COMMUNICATION-TABLE_2022-05_CMT_EN.html",
+      "relative_path": "sources/Socomec/Meter/DIRIS_B10/DIRIS-B-10-1.5.0_COMMUNICATION-TABLE_2022-05_CMT_EN.html",
+      "file_format": "HTML",
+      "size_bytes": 1299859,
+      "sha256": "82aaeea0b2eaf582d407f94f4d89289146ca8afcf0ea83ed46be30482c57375b",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "JBUS / Modbus RTU / TCP (FC 03)",
+        "address_base": "0-based (Hex/Dec addresses)",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "DIRIS B10"
+      ],
+      "definitions_generated": [
+        "MET_Socomec_B10.csv",
+        "MET_Socomec_DIRIS_B10.csv",
+        "MET_Socomec_DIRIS_DIGIWARE_I35.csv",
+        "MET_Socomec_Diris_A10.csv",
+        "MET_Socomec_Diris_A40.csv",
+        "MET_Socomec_Diris_A_Countis_E.csv",
+        "MET_Socomec_Diris_Axx.csv",
+        "MET_Socomec_Diris_B30.csv",
+        "MET_Socomec_Diris_I30.csv",
+        "MET_Socomec_Diris_I35.csv",
+        "MET_Socomec_ElectricMotionWebdyn_modbusRTU_Meter_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_Diris_A40.csv",
+        "MET_Socomec_W_Socomec_Diris_A10.csv",
+        "MET_Socomec_W_Socomec_Diris_B30.csv",
+        "MET_Socomec_W_Socomec_Diris_I30.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.195480+00:00"
+    },
+    {
+      "document_id": "SRC-SOC-007",
+      "manufacturer": "Socomec",
+      "category": "Meter",
+      "range_or_family": "DIRIS_B30",
+      "title": "DIRIS B 30 1.10.0 COMMUNICATION TABLE 2022 05 CMT EN",
+      "filename": "DIRIS-B-30-1.10.0_COMMUNICATION-TABLE_2022-05_CMT_EN.html",
+      "relative_path": "sources/Socomec/Meter/DIRIS_B30/DIRIS-B-30-1.10.0_COMMUNICATION-TABLE_2022-05_CMT_EN.html",
+      "file_format": "HTML",
+      "size_bytes": 1850087,
+      "sha256": "6b70ccad88de605aa54c0da5fc91780af50723c96e4f5c72e3dbe8d67ad67909",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "JBUS / Modbus RTU / TCP (FC 03)",
+        "address_base": "0-based (Hex/Dec addresses)",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "DIRIS B30"
+      ],
+      "definitions_generated": [
+        "MET_Socomec_B30.csv",
+        "MET_Socomec_DIRIS_B10.csv",
+        "MET_Socomec_DIRIS_DIGIWARE_I35.csv",
+        "MET_Socomec_Diris_A10.csv",
+        "MET_Socomec_Diris_A40.csv",
+        "MET_Socomec_Diris_A_Countis_E.csv",
+        "MET_Socomec_Diris_Axx.csv",
+        "MET_Socomec_Diris_B30.csv",
+        "MET_Socomec_Diris_I30.csv",
+        "MET_Socomec_Diris_I35.csv",
+        "MET_Socomec_ElectricMotionWebdyn_modbusRTU_Meter_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_Diris_A40.csv",
+        "MET_Socomec_W_Socomec_Diris_A10.csv",
+        "MET_Socomec_W_Socomec_Diris_B30.csv",
+        "MET_Socomec_W_Socomec_Diris_I30.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.196860+00:00"
+    },
+    {
+      "document_id": "SRC-SOC-008",
+      "manufacturer": "Socomec",
+      "category": "Meter",
+      "range_or_family": "DIRIS_Digiware_I30",
+      "title": "DIRIS DIGIWARE I 30AC MID   CURRENT MEASUREMENT MODULE COMMUNICATION TABLE 2025 02 CMT HTML CLIENT EN (1)",
+      "filename": "DIRIS-DIGIWARE-I-30AC-MID---CURRENT-MEASUREMENT-MODULE_COMMUNICATION-TABLE_2025-02_CMT-HTML-CLIENT_EN (1).html",
+      "relative_path": "sources/Socomec/Meter/DIRIS_Digiware_I30/DIRIS-DIGIWARE-I-30AC-MID---CURRENT-MEASUREMENT-MODULE_COMMUNICATION-TABLE_2025-02_CMT-HTML-CLIENT_EN (1).html",
+      "file_format": "HTML",
+      "size_bytes": 306898,
+      "sha256": "a34627e8a8176e56790fecf4636771eaa6fd94abaafd2e044d2253c4abaa113e",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "JBUS / Modbus RTU / TCP (FC 03)",
+        "address_base": "0-based (Hex/Dec addresses)",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "DIRIS Digiware I30"
+      ],
+      "definitions_generated": [
+        "MET_Socomec_DIRIS_B10.csv",
+        "MET_Socomec_DIRIS_DIGIWARE_I35.csv",
+        "MET_Socomec_Diris_A10.csv",
+        "MET_Socomec_Diris_A40.csv",
+        "MET_Socomec_Diris_A_Countis_E.csv",
+        "MET_Socomec_Diris_Axx.csv",
+        "MET_Socomec_Diris_B30.csv",
+        "MET_Socomec_Diris_I30.csv",
+        "MET_Socomec_Diris_I35.csv",
+        "MET_Socomec_ElectricMotionWebdyn_modbusRTU_Meter_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_I30.csv",
+        "MET_Socomec_W_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_Diris_A40.csv",
+        "MET_Socomec_W_Socomec_Diris_A10.csv",
+        "MET_Socomec_W_Socomec_Diris_B30.csv",
+        "MET_Socomec_W_Socomec_Diris_I30.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.197260+00:00"
+    },
+    {
+      "document_id": "SRC-SOC-009",
+      "manufacturer": "Socomec",
+      "category": "Meter",
+      "range_or_family": "DIRIS_Digiware_U31DC",
+      "title": "DIRIS DIGIWARE U 31DC   VOLTAGE MEASUREMENT MODULE COMMUNICATION TABLE 2025 01 CMT EN 0 (2)",
+      "filename": "DIRIS-DIGIWARE-U-31DC---VOLTAGE-MEASUREMENT-MODULE_COMMUNICATION-TABLE_2025-01_CMT_EN_0 (2).html",
+      "relative_path": "sources/Socomec/Meter/DIRIS_Digiware_U31DC/DIRIS-DIGIWARE-U-31DC---VOLTAGE-MEASUREMENT-MODULE_COMMUNICATION-TABLE_2025-01_CMT_EN_0 (2).html",
+      "file_format": "HTML",
+      "size_bytes": 55192,
+      "sha256": "a4b647b949dde23d6faaf734ec2de028c64a1b2f9d5c31764cea493bf0ce5c98",
+      "protocol_details": {
+        "baud_rate": "9600, 19200, 38400 bps / TCP 502",
+        "data_format": "8 data bits, None/Even parity, 1 stop bit",
+        "protocol": "JBUS / Modbus RTU / TCP (FC 03)",
+        "address_base": "0-based (Hex/Dec addresses)",
+        "word_order": "Big-Endian (MSW first)"
+      },
+      "models_covered": [
+        "DIRIS Digiware U31DC"
+      ],
+      "definitions_generated": [
+        "MET_Socomec_DIRIS_B10.csv",
+        "MET_Socomec_DIRIS_DIGIWARE_I35.csv",
+        "MET_Socomec_Diris_A10.csv",
+        "MET_Socomec_Diris_A40.csv",
+        "MET_Socomec_Diris_A_Countis_E.csv",
+        "MET_Socomec_Diris_Axx.csv",
+        "MET_Socomec_Diris_B30.csv",
+        "MET_Socomec_Diris_I30.csv",
+        "MET_Socomec_Diris_I35.csv",
+        "MET_Socomec_ElectricMotionWebdyn_modbusRTU_Meter_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_DIRIS_B10.csv",
+        "MET_Socomec_W_SOCOMEC_Diris_A40.csv",
+        "MET_Socomec_W_Socomec_Diris_A10.csv",
+        "MET_Socomec_W_Socomec_Diris_B30.csv",
+        "MET_Socomec_W_Socomec_Diris_I30.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.197513+00:00"
+    },
+    {
+      "document_id": "SRC-SOL-001",
+      "manufacturer": "SolarEdge",
+      "category": "Inverter",
+      "range_or_family": "PowerControl",
+      "title": "Power Control Open Protocol for SolarEdge Inverters",
+      "filename": "Power Control Open Protocol for SolarEdge Inverters.pdf",
+      "relative_path": "sources/SolarEdge/Inverter/PowerControl/Power Control Open Protocol for SolarEdge Inverters.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1178683,
+      "sha256": "ef2bbde6b899f2e2b03a1e2ba9c6c56199fe5ac0eea1d8e5f1142ab3b82b0e3f",
+      "protocol_details": {
+        "baud_rate": "115200 bps / TCP 502 / 1502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "SunSpec Modbus RTU / TCP (FC 03, 04, 06, 16)",
+        "address_base": "0-based (SunSpec base 40000..)",
+        "word_order": "Big-Endian / SunSpec standard"
+      },
+      "models_covered": [
+        "PowerControl"
+      ],
+      "definitions_generated": [
+        "INV_SolarEdge_ActivePowerControl.csv",
+        "INV_SolarEdge_EnhancedPowerControl.csv",
+        "INV_SolarEdge_EnhancedPowerControlBlock.csv",
+        "INV_SolarEdge_SunSpec_Generic.csv",
+        "OTH_SolarEdge_ActivePowerControl.csv",
+        "OTH_SolarEdge_EnhancedPowerControlBlock.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.198590+00:00"
+    },
+    {
+      "document_id": "SRC-SOL-002",
+      "manufacturer": "SolarEdge",
+      "category": "Inverter",
+      "range_or_family": "SunSpec",
+      "title": "SolarEdge Sunspec Implementation Technical Note",
+      "filename": "SolarEdge_Sunspec-Implementation-Technical-Note.pdf",
+      "relative_path": "sources/SolarEdge/Inverter/SunSpec/SolarEdge_Sunspec-Implementation-Technical-Note.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1594914,
+      "sha256": "98b79c7b4025c51227a90c8c009c550416be5a603cdbea7982f599954a456beb",
+      "protocol_details": {
+        "baud_rate": "115200 bps / TCP 502 / 1502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "SunSpec Modbus RTU / TCP (FC 03, 04, 06, 16)",
+        "address_base": "0-based (SunSpec base 40000..)",
+        "word_order": "Big-Endian / SunSpec standard"
+      },
+      "models_covered": [
+        "SunSpec"
+      ],
+      "definitions_generated": [
+        "INV_SolarEdge_Modbus_Sunspec.csv",
+        "INV_SolarEdge_SE25K_SunSpec.csv",
+        "INV_SolarEdge_SE33.3K_SunSpec.csv",
+        "INV_SolarEdge_SE33.3K_SunSpec_regul.csv",
+        "INV_SolarEdge_STEPGUIDEL_SunSpec_inverter_SolarEdge_SE33.3K-RW00IBNJ4_0004.0016.0025_modbusRTU.csv",
+        "INV_SolarEdge_STEPGUIDEL_SunSpec_inverter_SolarEdge_SE33.3K-RW00IBNJ4_0004.0016.0025_modbusRTU_ORI.csv",
+        "INV_SolarEdge_STEPGUIDEL_SunSpec_inverter_SolarEdge_SE33.3K-RW00IBNJ4_0004.0016.0025_modbusRTU_regul.csv",
+        "INV_SolarEdge_SunSpec_Generic.csv",
+        "INV_SolarEdge_Sunspec.csv",
+        "OTH_SolarEdge_Modbus_Sunspec.csv",
+        "OTH_SolarEdge_SE33.3K_SunSpec_regul.csv",
+        "OTH_SolarEdge_Sunspec.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.199791+00:00"
+    },
+    {
+      "document_id": "SRC-SOL-003",
+      "manufacturer": "SolarEdge",
+      "category": "Meter",
+      "range_or_family": "WND",
+      "title": "SolarEdge WND Modbus Meter DS",
+      "filename": "SolarEdge WND Modbus Meter_DS.pdf",
+      "relative_path": "sources/SolarEdge/Meter/WND/SolarEdge WND Modbus Meter_DS.pdf",
+      "file_format": "PDF",
+      "size_bytes": 542758,
+      "sha256": "40dadd87248449d73f35a3ea4cd3e2e8122b056bf512f11414b010874e67f310",
+      "protocol_details": {
+        "baud_rate": "115200 bps / TCP 502 / 1502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "SunSpec Modbus RTU / TCP (FC 03, 04, 06, 16)",
+        "address_base": "0-based (SunSpec base 40000..)",
+        "word_order": "Big-Endian / SunSpec standard"
+      },
+      "models_covered": [
+        "WND"
+      ],
+      "definitions_generated": [
+        "INV_SolarEdge_SunSpec_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.200404+00:00"
+    },
+    {
+      "document_id": "SRC-SOL-004",
+      "manufacturer": "Solis",
+      "category": "Inverter",
+      "range_or_family": "GridTied",
+      "title": "RS485 MODBUS Solis PV Grid Connected Inverter",
+      "filename": "RS485_MODBUS Solis PV Grid-Connected Inverter.pdf",
+      "relative_path": "sources/Solis/Inverter/GridTied/RS485_MODBUS Solis PV Grid-Connected Inverter.pdf",
+      "file_format": "PDF",
+      "size_bytes": 949267,
+      "sha256": "e33c82d8a368eddee8d3c336372dd2b3b4aaaa915ee122e8bd2640296354db4e",
+      "protocol_details": {
+        "baud_rate": "9600 bps",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 3000.. / 33000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "GridTied"
+      ],
+      "definitions_generated": [
+        "INV_Solis_GENERIC.csv",
+        "INV_Solis_GENERIC_GridTied.csv",
+        "INV_Solis_GENERIC_Work.csv",
+        "INV_Solis_SOLIS_GENERIC.csv",
+        "INV_Solis_SOLIS_GENERIC_GridTied.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.201430+00:00"
+    },
+    {
+      "document_id": "SRC-SOL-005",
+      "manufacturer": "Solis",
+      "category": "Inverter",
+      "range_or_family": "Hybrid",
+      "title": "RS485 Solis HybridInverters",
+      "filename": "RS485_Solis_HybridInverters.pdf",
+      "relative_path": "sources/Solis/Inverter/Hybrid/RS485_Solis_HybridInverters.pdf",
+      "file_format": "PDF",
+      "size_bytes": 705839,
+      "sha256": "1a19b92441fa3047796864e281b6cc0c468f84342f104228eb47667501669194",
+      "protocol_details": {
+        "baud_rate": "9600 bps",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 3000.. / 33000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "Hybrid"
+      ],
+      "definitions_generated": [
+        "INV_Solis_GENERIC.csv",
+        "INV_Solis_GENERIC_GridTied.csv",
+        "INV_Solis_GENERIC_Work.csv",
+        "INV_Solis_SOLIS_GENERIC.csv",
+        "INV_Solis_SOLIS_GENERIC_GridTied.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.202224+00:00"
+    },
+    {
+      "document_id": "SRC-SOL-006",
+      "manufacturer": "Solis",
+      "category": "Inverter",
+      "range_or_family": "SunSpec",
+      "title": "sunspec pics solis 25 66k us 001 for white labeling 1 2 updated 7 15",
+      "filename": "sunspec-pics-solis-25-66k-us-001-for-white-labeling_1_2_updated_7-15.xlsx",
+      "relative_path": "sources/Solis/Inverter/SunSpec/sunspec-pics-solis-25-66k-us-001-for-white-labeling_1_2_updated_7-15.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 34684,
+      "sha256": "d58a97fcd0d0dfe2b30ad4d074e8392afd84bdadcc432c9b898ab219b46499ca",
+      "protocol_details": {
+        "baud_rate": "9600 bps",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+        "address_base": "0-based (Registers 3000.. / 33000..)",
+        "word_order": "Big-Endian"
+      },
+      "models_covered": [
+        "SunSpec"
+      ],
+      "definitions_generated": [
+        "INV_Solis_GENERIC.csv",
+        "INV_Solis_GENERIC_GridTied.csv",
+        "INV_Solis_GENERIC_Work.csv",
+        "INV_Solis_SOLIS_GENERIC.csv",
+        "INV_Solis_SOLIS_GENERIC_GridTied.csv",
+        "INV_Solis_SunSpec_25_66K.csv",
+        "INV_Solis_sunspec-pics-solis-25-66k-us-001-for-white-labeling_1_2_updated_7-15.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.202471+00:00"
+    },
+    {
+      "document_id": "SRC-SOL-007",
       "manufacturer": "Solplanet",
-      "title": "Solplanet Ai-Logger Modbus TCP User Manual",
+      "category": "Gateway",
+      "range_or_family": "AiLogger",
+      "title": "Ailogger modbus TCP user manual V1.2 202404",
       "filename": "Ailogger modbus TCP user manual V1.2 202404.pdf",
-      "relative_path": "sources/manuals/Solplanet/Ailogger modbus TCP user manual V1.2 202404.pdf",
+      "relative_path": "sources/Solplanet/Gateway/AiLogger/Ailogger modbus TCP user manual V1.2 202404.pdf",
+      "file_format": "PDF",
       "size_bytes": 5963239,
       "sha256": "40a9ba06b5198685ea443e4fd4e02a0e49dd3b7c37d2836ae7d671bb7725f2b2",
-      "version": "V1.2",
-      "release_date": "2024-04-24",
-      "protocol": "Modbus TCP (Slave ID 239 & RTU Proxy, FC 04, 06, 16)",
+      "protocol_details": {
+        "baud_rate": "TCP Port 502 / RS485 9600",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus TCP / RTU (FC 03, 04)",
+        "address_base": "0-based",
+        "word_order": "Big-Endian"
+      },
       "models_covered": [
-        "Ai-Logger",
-        "Ai-Logger 1000"
+        "AiLogger"
       ],
       "definitions_generated": [
-        "COM_Solplanet_Ai-Logger.csv"
+        "INV_Solplanet_Generic.csv"
       ],
-      "indexed_at": "2026-11-17T14:07:19.540232"
+      "indexed_at": "2026-11-24T13:46:31.207275+00:00"
     },
     {
-      "document_id": "SRC-SP-002",
-      "manufacturer": "Solplanet",
-      "title": "Solplanet SunPM Real-World Telemetry Definition Profiles (Method 1 Multi-Drop)",
-      "filename": "solplanet_V1_Addr[3-9]_PM.csv",
-      "relative_path": "sources/telemetry/Solplanet/",
-      "files_count": 7,
-      "files": [
-        {
-          "filename": "solplanet_V1_Addr3_PM.csv",
-          "size_bytes": 136,
-          "sha256": "d9fa6d14d9a71a7100474b046cf7550af99ce51e4fd895663d1f0c3036864736"
-        },
-        {
-          "filename": "solplanet_V1_Addr4_PM.csv",
-          "size_bytes": 136,
-          "sha256": "d5c445eba5f864cabaac05ea6dddfbd2865de3cd2910870673a26255210d6d87"
-        },
-        {
-          "filename": "solplanet_V1_Addr5_PM.csv",
-          "size_bytes": 136,
-          "sha256": "fdc5159a3b611dd8d471386c94e911b822cec6f30a5841abb86d750711a33ac9"
-        },
-        {
-          "filename": "solplanet_V1_Addr6_PM.csv",
-          "size_bytes": 136,
-          "sha256": "e6503c4ecc4ee85fe046515674c31afd5a83c6d23917e4d7324854d4eb4ae52e"
-        },
-        {
-          "filename": "solplanet_V1_Addr7_PM.csv",
-          "size_bytes": 136,
-          "sha256": "e50404cca28850ac026de5067095f155f21c2c3de3df3116aa6f3e975d876864"
-        },
-        {
-          "filename": "solplanet_V1_Addr8_PM.csv",
-          "size_bytes": 136,
-          "sha256": "447690bd7e6b699e4a22fd4e9f80498f322d9594d5991bbab8faf4b1b9a7bf7c"
-        },
-        {
-          "filename": "solplanet_V1_Addr9_PM.csv",
-          "size_bytes": 136,
-          "sha256": "59476eca753a49f0b3a7a9919de559572625100f8503e648a655127e89398d7e"
-        }
-      ],
-      "protocol": "Modbus TCP (Ai-Logger Slave ID 239, Function Code 03)",
-      "models_covered": [
-        "Solplanet Inverter Addr3 (COM1 ID 3)",
-        "Solplanet Inverter Addr4 (COM1 ID 4)",
-        "Solplanet Inverter Addr5 (COM1 ID 5)",
-        "Solplanet Inverter Addr6 (COM1 ID 6)",
-        "Solplanet Inverter Addr7 (COM1 ID 7)",
-        "Solplanet Inverter Addr8 (COM1 ID 8)",
-        "Solplanet Inverter Addr9 (COM1 ID 9)"
-      ],
-      "addressing_formula": {
-        "base_start": 1000,
-        "step_per_inverter": 390,
-        "modbus_address_offset": 1,
-        "active_power_offset": 370
+      "document_id": "SRC-SUN-001",
+      "manufacturer": "Sungrow",
+      "category": "Battery",
+      "range_or_family": "LC300",
+      "title": "TI 20251013 LC300 Modbus Communication Protocol V8 EN",
+      "filename": "TI_20251013_LC300_Modbus Communication Protocol_V8_EN.xlsx",
+      "relative_path": "sources/Sungrow/Battery/LC300/TI_20251013_LC300_Modbus Communication Protocol_V8_EN.xlsx",
+      "file_format": "XLSX",
+      "size_bytes": 256793,
+      "sha256": "0dce735215336f75f63b91e852df9277342f0ca227c9cfa4706be85205506936",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04, 06, 16)",
+        "address_base": "1-based / Register 5000.. / 13000..",
+        "word_order": "Big-Endian / SunSpec"
       },
-      "indexed_at": "2026-11-17T15:27:58.145641+00:00"
+      "models_covered": [
+        "LC300"
+      ],
+      "definitions_generated": [
+        "BAT_Sungrow_LC3000.csv",
+        "COM_Sungrow_LC300_Modbus.csv",
+        "COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN.csv",
+        "COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN.csv",
+        "INV_Sungrow_GENERIC_V.1.1.58.csv",
+        "INV_Sungrow_Generic.csv",
+        "INV_Sungrow_SG_Series_Generic.csv",
+        "OTH_Sungrow_LC3000.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.208042+00:00"
+    },
+    {
+      "document_id": "SRC-SUN-002",
+      "manufacturer": "Sungrow",
+      "category": "Inverter",
+      "range_or_family": "Hybrid",
+      "title": "TI 20250620 Communication Protocol of Residential Hybrid Inverter V1.1.9 EN",
+      "filename": "TI_20250620_Communication Protocol of Residential Hybrid Inverter_V1.1.9_EN.pdf",
+      "relative_path": "sources/Sungrow/Inverter/Hybrid/TI_20250620_Communication Protocol of Residential Hybrid Inverter_V1.1.9_EN.pdf",
+      "file_format": "PDF",
+      "size_bytes": 480252,
+      "sha256": "db6092da65a92f6b014716a12a0e82dd35706af68027d402f19af146c7ac99c8",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04, 06, 16)",
+        "address_base": "1-based / Register 5000.. / 13000..",
+        "word_order": "Big-Endian / SunSpec"
+      },
+      "models_covered": [
+        "Hybrid"
+      ],
+      "definitions_generated": [
+        "INV_Sungrow_GENERIC_V.1.1.58.csv",
+        "INV_Sungrow_Generic.csv",
+        "INV_Sungrow_SG_Series_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.208874+00:00"
+    },
+    {
+      "document_id": "SRC-SUN-003",
+      "manufacturer": "Sungrow",
+      "category": "Inverter",
+      "range_or_family": "Residential_Commercial_PV",
+      "title": "TI 20240929 Communication Protocol of Residential & Commercial PV Grid Connected Inverters V1.1.73 EN",
+      "filename": "TI_20240929_Communication Protocol of Residential & Commercial PV Grid-Connected Inverters_V1.1.73_EN.pdf",
+      "relative_path": "sources/Sungrow/Inverter/Residential_Commercial_PV/TI_20240929_Communication Protocol of Residential & Commercial PV Grid-Connected Inverters_V1.1.73_EN.pdf",
+      "file_format": "PDF",
+      "size_bytes": 1242660,
+      "sha256": "0d179bc361f315cc2c1ac6a8d42a57e6687b29922722a46eda081d52317edd4b",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04, 06, 16)",
+        "address_base": "1-based / Register 5000.. / 13000..",
+        "word_order": "Big-Endian / SunSpec"
+      },
+      "models_covered": [
+        "Residential Commercial PV"
+      ],
+      "definitions_generated": [
+        "INV_Sungrow_GENERIC_V.1.1.58.csv",
+        "INV_Sungrow_Generic.csv",
+        "INV_Sungrow_PVCombinerBox.csv",
+        "INV_Sungrow_SG_Series_Generic.csv",
+        "OTH_Sungrow_PVCombinerBox.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.210006+00:00"
+    },
+    {
+      "document_id": "SRC-SUN-004",
+      "manufacturer": "Sungrow",
+      "category": "Logger",
+      "range_or_family": "Logger1000",
+      "title": "TI 20210113 Logger Communication Protocol V1.0.2.5 EN",
+      "filename": "TI_20210113_Logger_Communication Protocol_V1.0.2.5_EN.pdf",
+      "relative_path": "sources/Sungrow/Logger/Logger1000/TI_20210113_Logger_Communication Protocol_V1.0.2.5_EN.pdf",
+      "file_format": "PDF",
+      "size_bytes": 343479,
+      "sha256": "1285718eef85bb0d66fe263627f4cd6772a3d0459b5032703a5c290381c65aec",
+      "protocol_details": {
+        "baud_rate": "9600 bps / TCP 502",
+        "data_format": "8 data bits, None parity, 1 stop bit",
+        "protocol": "Modbus RTU / TCP (FC 03, 04, 06, 16)",
+        "address_base": "1-based / Register 5000.. / 13000..",
+        "word_order": "Big-Endian / SunSpec"
+      },
+      "models_covered": [
+        "Logger1000"
+      ],
+      "definitions_generated": [
+        "COM_Sungrow_Logger1000_3000.csv",
+        "COM_Sungrow_MODBUS_SUNGROW_Logger1000-3000.csv",
+        "COM_Sungrow_MODBUS_SUNGROW_Logger1000-3000RTU.csv",
+        "INV_Sungrow_GENERIC_V.1.1.58.csv",
+        "INV_Sungrow_Generic.csv",
+        "INV_Sungrow_SG_Series_Generic.csv"
+      ],
+      "indexed_at": "2026-11-24T13:46:31.210566+00:00"
     },
     {
       "document_id": "SRC-X7-001",
       "manufacturer": "X7",
-      "title": "X7 Modbus TCP Communication Protocol (EMS, BMS, PCS, Meters, Cabinet)",
+      "category": "Inverter",
+      "range_or_family": "X7",
+      "title": "X7 ModbusTcp PORT502 20261105 V1.0.6 Beta",
       "filename": "X7-ModbusTcp-PORT502-20261105-V1.0.6-Beta.xlsx",
-      "relative_path": "sources/manuals/X7/X7-ModbusTcp-PORT502-20261105-V1.0.6-Beta.xlsx",
+      "relative_path": "sources/X7/Inverter/X7/X7-ModbusTcp-PORT502-20261105-V1.0.6-Beta.xlsx",
+      "file_format": "XLSX",
       "size_bytes": 57075,
       "sha256": "17630570efc930b43e01e76a7679f653d3b8fc6c32f82cb0887f76341351dae2",
-      "version": "V1.0.6",
-      "release_date": "2026-11-05",
-      "protocol": "Modbus (Port 502, FC 02, 03, 04, 06, 16)",
+      "protocol_details": {
+        "baud_rate": "TCP Port 502",
+        "data_format": "Modbus TCP encapsulation",
+        "protocol": "Modbus TCP (FC 03, 04, 06, 16)",
+        "address_base": "0-based",
+        "word_order": "Big-Endian"
+      },
       "models_covered": [
-        "X7 C&I BESS All-In-One",
-        "X7 EMS Controller",
-        "X7 BMS Rack",
-        "X7 PCS Inverter",
-        "X7 Power Meters (Grid, PV, Gen)",
-        "X7 Cabinet Peripherals & Auxiliaries"
+        "X7"
       ],
       "definitions_generated": [
         "BAT_X7_BESS-AllInOne.csv",
-        "BAT_X7_EMS.csv",
-        "BAT_X7_BMS.csv",
         "BAT_X7_BMS-Cells.csv",
-        "MET_X7_Meters.csv",
+        "BAT_X7_BMS.csv",
+        "BAT_X7_EMS.csv",
         "INV_X7_PCS.csv",
+        "MET_X7_Meters.csv",
         "OTH_X7_Cabinet.csv"
       ],
-      "indexed_at": "2026-11-19T15:32:22.330059+00:00"
+      "indexed_at": "2026-11-24T13:46:31.211022+00:00"
     }
   ]
 }

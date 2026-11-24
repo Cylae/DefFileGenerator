@@ -1461,3 +1461,43 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`OTH_Zucchetti_Centro_Sistemi_S.p.a_ZCS_Hyd_3PH.csv`](./OTH_Zucchetti_Centro_Sistemi_S.p.a_ZCS_Hyd_3PH.csv) | Other | Zucchetti | Centro_Sistemi_S.p.a_ZCS_Hyd_3PH | Modbus | 505 | 27 |
 | [`INV_Fronius_Tauro_50-3-D_1.35.4-1_Float.csv`](./INV_Fronius_Tauro_50-3-D_1.35.4-1_Float.csv) | Inverter | fronius | Tauro_50-3-D_1.35.4-1_Float | Modbus | 193 | 34 |
 | [`MET_map_modbus_meter_slenergy6.csv`](./MET_map_modbus_meter_slenergy6.csv) | Meter | map | modbus_meter_slenergy6 | Modbus | 7 | 1 |
+
+
+## 📚 Documents Sources & Traçabilité Constructeurs
+
+Tous les fichiers de définition de cette bibliothèque sont rigoureusement documentés et dérivés de manuels fabricants officiels conservés localement sous [`sources/`](file:///C:/Users/alexandre.calais/Documents/GitHub/DefFileGenerator/sources/).
+
+Pour consulter la liste complète et détaillée des sources par équipementier, gamme, modèle, paramètres de communication (baud rate, parité, codes fonctions, ordre des mots) et empreintes cryptographiques SHA-256 :
+👉 **Voir le grand livre de traçabilité : [`production/SOURCES.md`](file:///C:/Users/alexandre.calais/Documents/GitHub/DefFileGenerator/production/SOURCES.md)** ainsi que le manifeste machine [`sources/MANIFEST.json`](file:///C:/Users/alexandre.calais/Documents/GitHub/DefFileGenerator/sources/MANIFEST.json).
+
+### Synthèse des Équipementiers Documentés :
+| Équipementier | Catégories Couvertes | Documents Disponibles | Définitions Webdyn Produites |
+|---|---|:---:|:---:|
+| **ABB** | EVCharger, Inverter, Logger, Meter, Sensor | `16` source(s) | `225` fichiers |
+| **Acrel** | Meter | `1` source(s) | `1` fichiers |
+| **CarloGavazzi** | Meter | `9` source(s) | `15` fichiers |
+| **Chint** | Inverter, Meter | `5` source(s) | `22` fichiers |
+| **Cyberpower** | Inverter | `1` source(s) | `2` fichiers |
+| **Delta** | Inverter | `2` source(s) | `25` fichiers |
+| **Dyness** | Battery | `1` source(s) | `3` fichiers |
+| **FoxESS** | Inverter_Battery | `1` source(s) | `15` fichiers |
+| **Fronius** | Inverter, Meter | `5` source(s) | `44` fichiers |
+| **Goodwe** | Inverter | `5` source(s) | `20` fichiers |
+| **Growatt** | Inverter | `1` source(s) | `5` fichiers |
+| **Huawei** | Battery, Inverter, Logger, Meter | `6` source(s) | `80` fichiers |
+| **Ingeteam** | EVCharger, Inverter | `2` source(s) | `7` fichiers |
+| **Janitza** | Meter | `3` source(s) | `17` fichiers |
+| **Kaco** | Inverter | `3` source(s) | `36` fichiers |
+| **Legrand** | Meter | `2` source(s) | `7` fichiers |
+| **MarsEnergy** | Controller_BMS | `1` source(s) | `20` fichiers |
+| **SAJ** | Inverter | `2` source(s) | `14` fichiers |
+| **SMA** | Gateway, Inverter, Meter, STP125-70 | `17` source(s) | `32` fichiers |
+| **Schneider** | Inverter, Meter | `6` source(s) | `33` fichiers |
+| **Socomec** | Gateway, Meter | `9` source(s) | `139` fichiers |
+| **SolarEdge** | Inverter, Meter | `3` source(s) | `19` fichiers |
+| **Solis** | Inverter | `3` source(s) | `17` fichiers |
+| **Solplanet** | Gateway | `1` source(s) | `1` fichiers |
+| **Sungrow** | Battery, Inverter, Logger | `4` source(s) | `22` fichiers |
+| **X7** | Inverter | `1` source(s) | `7` fichiers |
+
+---
