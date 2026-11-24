@@ -456,10 +456,20 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
             self.assertIn(f"I_DC_{i}", tags, f"Missing MPPT current I_DC_{i}")
             self.assertIn(f"P_DC_{i}", tags, f"Missing MPPT power P_DC_{i}")
 
+        # String currents 1..12
+        for s in range(1, 13):
+            self.assertIn(f"I_DC_STRING_{s}", tags, f"Missing string current I_DC_STRING_{s}")
+
         # Key registers verification
+        self.assertEqual(addr_to_row["30001"][5], "SMA Modbus profile version")
+        self.assertEqual(addr_to_row["30003"][5], "SUSyID module")
+        self.assertEqual(addr_to_row["30005"][5], "Serial number")
+        self.assertEqual(addr_to_row["30193"][5], "System time")
         self.assertEqual(addr_to_row["30053"][6], "MODEL")
         self.assertEqual(addr_to_row["30055"][6], "MANUFACTURER")
         self.assertEqual(addr_to_row["30057"][6], "SERIAL")
+        self.assertEqual(addr_to_row["30217"][6], "STATE_1")
+        self.assertEqual(addr_to_row["30247"][6], "ALARM_1")
         self.assertEqual(addr_to_row["30513"][6], "E_TOT")
         self.assertEqual(addr_to_row["30775"][6], "P_AC")
         self.assertEqual(addr_to_row["30803"][6], "FREQ")

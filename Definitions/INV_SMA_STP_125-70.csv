@@ -1,13 +1,13 @@
 Modbus;Inverter;SMA;STP_125-70;;;;;;;
-1;3;30001;U32;;Versionsnummer SMA Modbus-Profil;;1.000000;0.000000;;4
-2;3;30003;U32;;SUSyID Modul;;1.000000;0.000000;;4
-3;3;30005;U32;;Seriennummer;;1.000000;0.000000;;4
+1;3;30001;U32;;SMA Modbus profile version;;1.000000;0.000000;;4
+2;3;30003;U32;;SUSyID module;;1.000000;0.000000;;4
+3;3;30005;U32;;Serial number;;1.000000;0.000000;;4
 4;3;30051;U32;;Device class;;1.000000;0.000000;;0
 5;3;30053;U32;;Device type;MODEL;1.000000;0.000000;;0
 6;3;30055;U32;;Manufacturer;MANUFACTURER;1.000000;0.000000;;0
 7;3;30057;U32;;Serial number;SERIAL;1.000000;0.000000;;0
 8;3;30059;U32;;Firmware version;;1.000000;0.000000;;0
-9;3;30193;U32;;Systemzeit;;1.000000;0.000000;;4
+9;3;30193;U32;;System time;;1.000000;0.000000;;4
 10;3;30199;U32;;Waiting time until feed-in;;1.000000;0.000000;s;9
 11;3;30201;U32;;Condition;STATE;1.000000;0.000000;;9
 12;3;30203;U32;;Nominal power in Ok Mode;;1.000000;0.000000;W;9
@@ -16,11 +16,11 @@ Modbus;Inverter;SMA;STP_125-70;;;;;;;
 15;3;30211;U32;;Recommended action;;1.000000;0.000000;;9
 16;3;30213;U32;;Message;;1.000000;0.000000;;9
 17;3;30215;U32;;Fault correction measure;;1.000000;0.000000;;9
-18;3;30217;U32;;Grid relay/contactor;;1.000000;0.000000;;9
+18;3;30217;U32;;Grid relay/contactor;STATE_1;1.000000;0.000000;;9
 19;3;30225;U32;;Insulation resistance;R_ISO;1.000000;0.000000;Ohm;4
 20;3;30231;U32;;Rated active power WMaxOutRtg;;1.000000;0.000000;W;0
 21;3;30233;U32;;Set active power limit;;1.000000;0.000000;W;0
-22;3;30247;U32;;Current event number for manufacturer;;1.000000;0.000000;;9
+22;3;30247;U32;;Current event number for manufacturer;ALARM_1;1.000000;0.000000;;9
 23;3;30251;U32;;Block status;;1.000000;0.000000;;9
 24;3;30513;U64;;Total yield;E_TOT;1.000000;0.000000;Wh;4
 25;3;30517;U64;;Daily yield;E_DAY;1.000000;0.000000;Wh;4
@@ -150,18 +150,18 @@ Modbus;Inverter;SMA;STP_125-70;;;;;;;
 149;3;31579;I32;;DC current input;I_DC_11;0.001000;0.000000;A;4
 150;3;31581;I32;;DC voltage input;U_DC_11;0.010000;0.000000;V;4
 151;3;31583;I32;;DC power input;P_DC_11;1.000000;0.000000;W;4
-152;3;31793;I32;;DC current input;;0.001000;0.000000;A;4
-153;3;31795;I32;;DC current input;;0.001000;0.000000;A;4
-154;3;31797;I32;;DC current input;;0.001000;0.000000;A;4
-155;3;31799;I32;;DC current input;;0.001000;0.000000;A;4
-156;3;31801;I32;;DC current input;;0.001000;0.000000;A;4
-157;3;31803;I32;;DC current input;;0.001000;0.000000;A;4
-158;3;31805;I32;;DC current input;;0.001000;0.000000;A;4
-159;3;31807;I32;;DC current input;;0.001000;0.000000;A;4
-160;3;31809;I32;;DC current input;;0.001000;0.000000;A;4
-161;3;31811;I32;;DC current input;;0.001000;0.000000;A;4
-162;3;31813;I32;;DC current input;;0.001000;0.000000;A;4
-163;3;31815;I32;;DC current input;;0.001000;0.000000;A;4
+152;3;31793;I32;;DC current input;I_DC_STRING_1;0.001000;0.000000;A;4
+153;3;31795;I32;;DC current input;I_DC_STRING_2;0.001000;0.000000;A;4
+154;3;31797;I32;;DC current input;I_DC_STRING_3;0.001000;0.000000;A;4
+155;3;31799;I32;;DC current input;I_DC_STRING_4;0.001000;0.000000;A;4
+156;3;31801;I32;;DC current input;I_DC_STRING_5;0.001000;0.000000;A;4
+157;3;31803;I32;;DC current input;I_DC_STRING_6;0.001000;0.000000;A;4
+158;3;31805;I32;;DC current input;I_DC_STRING_7;0.001000;0.000000;A;4
+159;3;31807;I32;;DC current input;I_DC_STRING_8;0.001000;0.000000;A;4
+160;3;31809;I32;;DC current input;I_DC_STRING_9;0.001000;0.000000;A;4
+161;3;31811;I32;;DC current input;I_DC_STRING_10;0.001000;0.000000;A;4
+162;3;31813;I32;;DC current input;I_DC_STRING_11;0.001000;0.000000;A;4
+163;3;31815;I32;;DC current input;I_DC_STRING_12;0.001000;0.000000;A;4
 164;3;32201;U64;;Current charging power;;1.000000;0.000000;Wh;4
 165;3;32205;U64;;Current discharging power;;1.000000;0.000000;Wh;4
 166;3;32341;I32;;Power grid feed-in;;1.000000;0.000000;W;4
@@ -315,8 +315,8 @@ Modbus;Inverter;SMA;STP_125-70;;;;;;;
 314;3;41457;U32;;Dependent reference reactive power setpoint;;1.000000;0.000000;;0
 315;3;41459;U32;;Dependent reference Q(V) reactive power curve point;;1.000000;0.000000;;0
 316;3;41461;U32;;Dependent reference Q(P) reactive power curve point;;1.000000;0.000000;;0
-317;3;42109;U64;;Unit ID des Wechselrichters;;1.000000;0.000000;;4
-318;3;43090;U32;;SMA Grid Guard-Code;;1.000000;0.000000;;4
+317;3;42109;U64;;Inverter Unit ID;;1.000000;0.000000;;4
+318;3;43090;U32;;SMA Grid Guard code;;1.000000;0.000000;;4
 319;3;44001;U32;;Soft start-up rate P;;1.000000;0.000000;%/min;0
 320;3;44009;U32;;Reconnection time upon restart;;0.001000;0.000000;s;0
 321;3;44011;U32;;Reconnect gradient after grid fault;;1.000000;0.000000;%/min;0

@@ -849,11 +849,23 @@ def build_sma_stp_125_70_rows(
 
     sorted_addrs = sorted(seen_addrs.keys(), key=lambda a: int(a))
 
+    NAME_TRANSLATIONS = {
+        "30001": "SMA Modbus profile version",
+        "30003": "SUSyID module",
+        "30005": "Serial number",
+        "30055": "Manufacturer",
+        "30193": "System time",
+        "42109": "Inverter Unit ID",
+        "43090": "SMA Grid Guard code",
+    }
+
     TAG_MAP = {
         "30053": "MODEL",
         "30055": "MANUFACTURER",
         "30057": "SERIAL",
         "30201": "STATE",
+        "30217": "STATE_1",
+        "30247": "ALARM_1",
         "30513": "E_TOT",
         "30517": "E_DAY",
         "30775": "P_AC",
@@ -871,7 +883,6 @@ def build_sma_stp_125_70_rows(
         "30979": "I_AC_2",
         "30981": "I_AC_3",
         "30803": "FREQ",
-        "30805": "Q_AC",
         "31497": "Q_AC",
         "30807": "Q_AC_1",
         "30809": "Q_AC_2",
@@ -923,6 +934,19 @@ def build_sma_stp_125_70_rows(
         "31571": "P_DC_9",
         "31577": "P_DC_10",
         "31583": "P_DC_11",
+        # String currents 1..12
+        "31793": "I_DC_STRING_1",
+        "31795": "I_DC_STRING_2",
+        "31797": "I_DC_STRING_3",
+        "31799": "I_DC_STRING_4",
+        "31801": "I_DC_STRING_5",
+        "31803": "I_DC_STRING_6",
+        "31805": "I_DC_STRING_7",
+        "31807": "I_DC_STRING_8",
+        "31809": "I_DC_STRING_9",
+        "31811": "I_DC_STRING_10",
+        "31813": "I_DC_STRING_11",
+        "31815": "I_DC_STRING_12",
         # Commands & Controls
         "40149": "CMD_P_ENA",
         "40151": "CMD_P_AC_SET_PERCENT",
@@ -944,7 +968,9 @@ def build_sma_stp_125_70_rows(
         dformat = r[13].strip()
         access = r[14].strip().upper()
 
-        if not name or name == "‒":
+        if addr in NAME_TRANSLATIONS:
+            name = NAME_TRANSLATIONS[addr]
+        elif not name or name == "‒":
             name = ch
 
         webdyn_type = get_webdyn_type(dtype_raw)

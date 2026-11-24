@@ -3733,7 +3733,7 @@
       "manufacturer": "SMA",
       "model": "STP_125-70",
       "registers": 464,
-      "size_bytes": 33899
+      "size_bytes": 34058
     },
     {
       "filename": "INV_SMA_STP_5-10-SE40.csv",
@@ -13287,7 +13287,7 @@
       "manufacturer": "SMA",
       "model": "STP_125-70",
       "registers": 464,
-      "size_bytes": 33899
+      "size_bytes": 34058
     },
     {
       "filename": "INV_SMA_STP_5-10-SE40.csv",
