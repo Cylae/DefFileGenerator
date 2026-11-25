@@ -21,6 +21,8 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
+from DefFileGenerator.io_utils import find_definition_file
+
 from DefFileGenerator.production_governor import verify_file_pillars
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -54,21 +56,21 @@ class TestAbbDefinitionsSuite:
     def test_all_abb_definitions_exist(self) -> None:
         """Verify that all target ABB definition files exist in production/."""
         for pfx, model in ABB_MODELS:
-            file_path = PROD_DIR / f"{pfx}_ABB_{model}.csv"
+            file_path = find_definition_file(PROD_DIR, f"{pfx}_ABB_{model}.csv")
             assert file_path.is_file(), f"Missing definition file for {model} at {file_path}"
             assert file_path.stat().st_size > 500, f"File suspiciously small: {file_path.name}"
 
     def test_all_abb_5pillars_strict_certification(self) -> None:
         """Verify that all ABB definitions satisfy the 5 Webdyn Pillars with strict CRLF."""
         for pfx, model in ABB_MODELS:
-            file_path = PROD_DIR / f"{pfx}_ABB_{model}.csv"
+            file_path = find_definition_file(PROD_DIR, f"{pfx}_ABB_{model}.csv")
             valid, issues = verify_file_pillars(file_path, strict_crlf=True)
             assert valid, f"{file_path.name} failed 5-pillars certification: {issues}"
 
     def test_pvs_series_sunspec_telemetry(self) -> None:
         """Verify SunSpec inverter models have valid telemetry and canonical tags."""
         for model in ["PVS-100_120", "PVS-175", "PVS-50_60"]:
-            file_path = PROD_DIR / f"INV_ABB_{model}.csv"
+            file_path = find_definition_file(PROD_DIR, f"INV_ABB_{model}.csv")
             with open(file_path, encoding="utf-8") as f:
                 reader = csv.reader(f, delimiter=";")
                 header = next(reader)
@@ -82,7 +84,7 @@ class TestAbbDefinitionsSuite:
 
     def test_pvs800_central_inverter_spec(self) -> None:
         """Verify PVS800-57B utility central inverter registers and telemetry."""
-        file_path = PROD_DIR / "INV_ABB_PVS800-57B.csv"
+        file_path = find_definition_file(PROD_DIR, "INV_ABB_PVS800-57B.csv")
         with open(file_path, encoding="utf-8") as f:
             reader = csv.reader(f, delimiter=";")
             header = next(reader)
@@ -102,7 +104,7 @@ class TestAbbDefinitionsSuite:
 
     def test_trio_series_spec(self) -> None:
         """Verify TRIO 20/27.6 and TRIO 50 commercial string inverters."""
-        trio20_path = PROD_DIR / "INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv"
+        trio20_path = find_definition_file(PROD_DIR, "INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv")
         with open(trio20_path, encoding="utf-8") as f:
             reader = csv.reader(f, delimiter=";")
             header = next(reader)
@@ -116,7 +118,7 @@ class TestAbbDefinitionsSuite:
 
     def test_meter_series_spec(self) -> None:
         """Verify B21/B23/B24 and M4M meters."""
-        b24_path = PROD_DIR / "MET_ABB_B21_B23_B24.csv"
+        b24_path = find_definition_file(PROD_DIR, "MET_ABB_B21_B23_B24.csv")
         with open(b24_path, encoding="utf-8") as f:
             reader = csv.reader(f, delimiter=";")
             header = next(reader)
@@ -129,7 +131,7 @@ class TestAbbDefinitionsSuite:
             assert float(e_import[7]) == 0.01
             assert e_import[9] == "kWh"
 
-        m4m_path = PROD_DIR / "MET_ABB_M4M.csv"
+        m4m_path = find_definition_file(PROD_DIR, "MET_ABB_M4M.csv")
         with open(m4m_path, encoding="utf-8") as f:
             reader = csv.reader(f, delimiter=";")
             header = next(reader)
@@ -139,7 +141,7 @@ class TestAbbDefinitionsSuite:
 
     def test_terra_ac_charger_spec(self) -> None:
         """Verify Terra AC EV charger definition."""
-        terra_path = PROD_DIR / "OTH_ABB_Terra_AC_Charger.csv"
+        terra_path = find_definition_file(PROD_DIR, "OTH_ABB_Terra_AC_Charger.csv")
         with open(terra_path, encoding="utf-8") as f:
             reader = csv.reader(f, delimiter=";")
             header = next(reader)
@@ -151,11 +153,11 @@ class TestAbbDefinitionsSuite:
         """Verify that definitions are mirrored byte-identically across all mirror folders."""
         for pfx, model in ABB_MODELS:
             filename = f"{pfx}_ABB_{model}.csv"
-            prod_file = PROD_DIR / filename
+            prod_file = find_definition_file(PROD_DIR, filename)
             prod_bytes = prod_file.read_bytes()
 
-            for target_name in ["Definitions/ABB", "Definitions", "generated_definitions", "tagged_definitions"]:
-                target_file = REPO_ROOT / target_name / filename
+            for target_name in ["Definitions", "generated_definitions", "tagged_definitions"]:
+                target_file = find_definition_file(REPO_ROOT / target_name, filename)
                 assert target_file.is_file(), f"Missing mirror file in {target_name}: {filename}"
                 assert (
                     target_file.read_bytes() == prod_bytes

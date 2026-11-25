@@ -91,7 +91,9 @@ class DuplicateDetector:
 
     def scan(self) -> DuplicateReport:
         """Performs full analysis of duplicate definitions in the directory."""
-        csv_files = sorted(self.directory.glob("*.csv"))
+        csv_files = sorted(
+            p for p in self.directory.rglob("*.csv") if "sources" not in p.parts
+        )
         file_data: dict[str, dict[str, Any]] = {}
 
         for f in csv_files:

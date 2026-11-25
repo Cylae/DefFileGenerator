@@ -52,8 +52,13 @@ function application() {
     const alerts = [];
     const copied = [];
     const timers = [];
+    const storage = new Map();
     const context = {
         AbortController, Blob,
+        localStorage: {
+            getItem: key => (storage.has(key) ? storage.get(key) : null),
+            setItem: (key, val) => storage.set(key, String(val)),
+        },
         FormData: class { append() {} },
         navigator: {
             clipboard: {

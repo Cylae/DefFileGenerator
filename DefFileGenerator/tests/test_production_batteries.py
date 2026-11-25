@@ -29,6 +29,7 @@ from pathlib import Path
 import pytest
 
 from DefFileGenerator.def_gen import Generator
+from DefFileGenerator.io_utils import find_definition_file, iter_definition_csvs
 from DefFileGenerator.production_governor import verify_file_pillars
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -40,12 +41,12 @@ VALID_ACTIONS = {str(i) for i in range(13)}
 
 def get_battery_files() -> list[Path]:
     """Retrieve all production battery files sorted canonically."""
-    return sorted(PROD_DIR.glob("BAT_*.csv"))
+    return sorted(p for p in PROD_DIR.rglob("BAT_*.csv") if "sources" not in p.parts)
 
 
 def get_sensor_files() -> list[Path]:
     """Retrieve all production sensor files sorted canonically."""
-    return sorted(PROD_DIR.glob("SEN_*.csv"))
+    return sorted(p for p in PROD_DIR.rglob("SEN_*.csv") if "sources" not in p.parts)
 
 
 @pytest.fixture(scope="module")
@@ -145,10 +146,10 @@ class TestProductionBatteriesAndSensorsSuite:
     def test_dyness_bess_ecosystem(self) -> None:
         """Deep domain audit of Dyness BESS definitions (DH100F, DH200F, DH200Y, Generic)."""
         dyness_files = [
-            PROD_DIR / "BAT_Dyness_DH100F.csv",
-            PROD_DIR / "BAT_Dyness_DH200F.csv",
-            PROD_DIR / "BAT_Dyness_DH200Y.csv",
-            PROD_DIR / "BAT_Dyness_DH_Series_Generic.csv",
+            find_definition_file(PROD_DIR, "BAT_Dyness_DH100F.csv"),
+            find_definition_file(PROD_DIR, "BAT_Dyness_DH200F.csv"),
+            find_definition_file(PROD_DIR, "BAT_Dyness_DH200Y.csv"),
+            find_definition_file(PROD_DIR, "BAT_Dyness_DH_Series_Generic.csv"),
         ]
         for f in dyness_files:
             assert f.is_file(), f"Missing critical Dyness file: {f.name}"
@@ -167,7 +168,9 @@ class TestProductionBatteriesAndSensorsSuite:
 
     def test_foxess_bess_ecosystem(self) -> None:
         """Deep domain audit of FoxESS battery definitions."""
-        fox_files = sorted(PROD_DIR.glob("BAT_FoxESS_*.csv"))
+        fox_files = sorted(
+            p for p in PROD_DIR.rglob("BAT_FoxESS_*.csv") if "sources" not in p.parts
+        )
         assert len(fox_files) >= 6, f"Expected >= 6 FoxESS battery files, found {len(fox_files)}"
 
         for f in fox_files:
@@ -207,10 +210,10 @@ class TestProductionBatteriesAndSensorsSuite:
     def test_sl_energy_bess_ecosystem(self) -> None:
         """Deep domain audit of SL Energy battery and generator definitions."""
         sl_files = [
-            PROD_DIR / "BAT_SLEnergy_Battery.csv",
-            PROD_DIR / "BAT_SLEnergy_bms5_p1_1.csv",
-            PROD_DIR / "BAT_SLEnergy_Generator.csv",
-            PROD_DIR / "BAT_SLEnergy_PCS.csv",
+            find_definition_file(PROD_DIR, "BAT_SLEnergy_Battery.csv"),
+            find_definition_file(PROD_DIR, "BAT_SLEnergy_bms5_p1_1.csv"),
+            find_definition_file(PROD_DIR, "BAT_SLEnergy_Generator.csv"),
+            find_definition_file(PROD_DIR, "BAT_SLEnergy_PCS.csv"),
         ]
         for f in sl_files:
             assert f.is_file(), f"Missing SL Energy file: {f.name}"
@@ -238,7 +241,7 @@ class TestProductionBatteriesAndSensorsSuite:
 
     def test_hukseflux_sensor_ecosystem(self) -> None:
         """Deep domain audit of Hukseflux pyranometers (SR05, SR20, SR30)."""
-        hukseflux_files = sorted(PROD_DIR.glob("SEN_Hukseflux_*.csv"))
+        hukseflux_files = iter_definition_csvs(PROD_DIR, "SEN_Hukseflux_*.csv")
         assert len(hukseflux_files) >= 4, (
             f"Expected >= 4 Hukseflux files, found {len(hukseflux_files)}"
         )
@@ -257,7 +260,7 @@ class TestProductionBatteriesAndSensorsSuite:
 
     def test_ingenieurburo_sensor_ecosystem(self) -> None:
         """Deep domain audit of IngenieurBuro sensors."""
-        ib_files = sorted(PROD_DIR.glob("SEN_IngenieurBuro_*.csv"))
+        ib_files = iter_definition_csvs(PROD_DIR, "SEN_IngenieurBuro_*.csv")
         assert len(ib_files) >= 6, (
             f"Expected >= 6 IngenieurBuro sensor files, found {len(ib_files)}"
         )
@@ -276,7 +279,7 @@ class TestProductionBatteriesAndSensorsSuite:
 
     def test_kipp_zonen_sensor_ecosystem(self) -> None:
         """Deep domain audit of Kipp & Zonen pyranometers."""
-        kz_files = sorted(PROD_DIR.glob("SEN_KippZonen_*.csv"))
+        kz_files = iter_definition_csvs(PROD_DIR, "SEN_KippZonen_*.csv")
         assert len(kz_files) >= 5, f"Expected >= 5 Kipp & Zonen files, found {len(kz_files)}"
 
         for f in kz_files:

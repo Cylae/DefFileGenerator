@@ -1,0 +1,811 @@
+Modbus;Inverter;Huawei;SUN2000MC_V200R023C00InterfaceDefinitions issue01_2023;;;;;;;
+1;3;30000_15;STRING;;Mod el;mod_el;1.000000;0.000000;;4
+2;3;30015_10;STRING;;SN;DisplaySerialNumber;1.000000;0.000000;;4
+3;3;30025_10;STRING;;PN;pn;1.000000;0.000000;;4
+4;3;30035_15;STRING;;Firm ware Versi on;firm_ware_versi_on;1.000000;0.000000;;4
+5;3;30050_15;STRING;;Soft ware versi on;soft_ware_versi_on;1.000000;0.000000;;4
+6;3;30068;U32;;Prot ocol versi on [Mo dbus ];prot_ocol_versi_on_mo_dbus;1.000000;0.000000;;4
+7;3;30070;U16;;Mod el ID;mod_el_id;1.000000;0.000000;;4
+8;3;30071;U16;;Num ber of PV strin gs;num_ber_of_pv_strin_gs;1.000000;0.000000;;4
+9;3;30072;U16;;Num ber of MPP Ts;num_ber_of_mpp_ts;1.000000;0.000000;;4
+10;3;30073;U32;;Rate d pow er;rate_d_pow_er;0.001000;0.000000;k W;4
+11;3;30075;U32;;Maxi mu m activ e pow er (Pm ax);maxi_mu_m_activ_e_pow_er_pm_ax;0.001000;0.000000;k W;4
+12;3;30077;U32;;Maxi mu m appa rent (Sm ax);maxi_mu_m_appa_rent_sm_ax;0.001000;0.000000;kV A;4
+13;3;30079;I32;;Real - time maxi mu m react ive pow er (Qm ax, fed to the pow er grid);real_time_maxi_mu_m_react_ive_pow_er_qm_ax_fed_to_the_pow_er_grid;0.001000;0.000000;kV ar;4
+14;3;30081;I32;;Real - time maxi mu m react ive pow er (- Qma x, abso rbed from the pow er grid);real_time_maxi_mu_m_react_ive_pow_er_qma_x_abso_rbed_from_the_pow_er_grid;0.001000;0.000000;kV ar;4
+15;3;30083;U32;;Maxi mu m activ e pow er (Pm ax_r eal);maxi_mu_m_activ_e_pow_er_pm_ax_r_eal;0.001000;0.000000;k W;4
+16;3;30085;U32;;Maxi mu m appa rent capa bility (Sm ax_r eal);maxi_mu_m_appa_rent_capa_bility_sm_ax_r_eal;0.001000;0.000000;kV A;4
+17;3;30105_2;STRING;;Prod uct sales area;prod_uct_sales_area;1.000000;0.000000;;4
+18;3;30107;U16;;Prod uct soft ware ID;prod_uct_soft_ware_id;1.000000;0.000000;;4
+19;3;30108;U16;;Prod uct Soft ware Versi on Num ber;prod_uct_soft_ware_versi_on_num_ber;1.000000;0.000000;;4
+20;3;30109;U16;;Pow er Grid Stan dard Code Prot ocol Versi on;pow_er_grid_stan_dard_code_prot_ocol_versi_on;1.000000;0.000000;;4
+21;3;30110;U16;;Uniq ue ID of the soft ware .;uniq_ue_id_of_the_soft_ware;1.000000;0.000000;;4
+22;3;30111;U16;;Num ber of upgr ade pack ages;num_ber_of_upgr_ade_pack_ages;1.000000;0.000000;;4
+23;3;30112;U32;;Infor mati on abou t subp acka ge 1;infor_mati_on_abou_t_subp_acka_ge_1;1.000000;0.000000;;4
+24;3;30114;U32;;Subp acka ge 2 infor mati on;subp_acka_ge_2_infor_mati_on;1.000000;0.000000;;4
+25;3;30116;U32;;Infor mati on abou t subp acka ge 3;infor_mati_on_abou_t_subp_acka_ge_3;1.000000;0.000000;;4
+26;3;30118;U32;;Subp acka ge 4 infor mati on;subp_acka_ge_4_infor_mati_on;1.000000;0.000000;;4
+27;3;30120;U32;;Subp acka ge 5 infor mati on;subp_acka_ge_5_infor_mati_on;1.000000;0.000000;;4
+28;3;30122;U32;;Infor mati on abou t subp acka ge 6;infor_mati_on_abou_t_subp_acka_ge_6;1.000000;0.000000;;4
+29;3;30124;U32;;Subp acka ge 7 infor mati on;subp_acka_ge_7_infor_mati_on;1.000000;0.000000;;4
+30;3;30126;U32;;Subp acka ge 8 infor mati on;subp_acka_ge_8_infor_mati_on;1.000000;0.000000;;4
+31;3;30128;U32;;Subp acka ge 9 infor mati on;subp_acka_ge_9_infor_mati_on;1.000000;0.000000;;4
+32;3;30130;U32;;Infor mati on abou t subp acka ge 10;infor_mati_on_abou_t_subp_acka_ge_10;1.000000;0.000000;;4
+33;3;30191_10;STRING;;[Thir d- part y label ing] SN;thir_d_part_y_label_ing_sn;1.000000;0.000000;;4
+34;3;30201;U16;;[Thir d- part y label ] Man ufact urer mod el;thir_d_part_y_label_man_ufact_urer_mod_el;1.000000;0.000000;;4
+35;3;30207;U32;;Subd evice Supp ort ID;subd_evice_supp_ort_id;1.000000;0.000000;;4
+36;3;30209;U32;;Subd evice pres ence flag.;subd_evice_pres_ence_flag;1.000000;0.000000;;4
+37;3;30500;U16;;Num ber of uniq ue sout hbou nd soft ware IDs;num_ber_of_uniq_ue_sout_hbou_nd_soft_ware_ids;1.000000;0.000000;;4
+38;3;30501;U16;;Uniq ue ID 1 of the sout hbou nd soft ware .;uniq_ue_id_1_of_the_sout_hbou_nd_soft_ware;1.000000;0.000000;;4
+39;3;30502;U16;;Uniq ue ID 2 of the sout hbou nd soft ware;uniq_ue_id_2_of_the_sout_hbou_nd_soft_ware;1.000000;0.000000;;4
+40;3;30506;U16;;Num ber of upgr ade pack ages for sout hbou nd devic e 1;num_ber_of_upgr_ade_pack_ages_for_sout_hbou_nd_devic_e_1;1.000000;0.000000;;4
+41;3;30507;U32;;Infor mati on abou t subp acka ge 1 of sout hbou nd devic e 1;infor_mati_on_abou_t_subp_acka_ge_1_of_sout_hbou_nd_devic_e_1;1.000000;0.000000;;4
+42;3;30509;U32;;Infor mati on abou t subp acka ge 2 of sout hbou nd devic e 1;infor_mati_on_abou_t_subp_acka_ge_2_of_sout_hbou_nd_devic_e_1;1.000000;0.000000;;4
+43;3;30511;U32;;Infor mati on abou t subp acka ge 3 of sout hbou nd devic e 1;infor_mati_on_abou_t_subp_acka_ge_3_of_sout_hbou_nd_devic_e_1;1.000000;0.000000;;4
+44;3;30517;U16;;Num ber of upgr ade pack ages for sout hbou nd devic e 2;num_ber_of_upgr_ade_pack_ages_for_sout_hbou_nd_devic_e_2;1.000000;0.000000;;4
+45;3;30518;U32;;Infor mati on abou t subp acka ge 1 of sout hbou nd devic e 2;infor_mati_on_abou_t_subp_acka_ge_1_of_sout_hbou_nd_devic_e_2;1.000000;0.000000;;4
+46;3;30520;U32;;Infor mati on abou t subp acka ge 2 of sout hbou nd devic e 2;infor_mati_on_abou_t_subp_acka_ge_2_of_sout_hbou_nd_devic_e_2;1.000000;0.000000;;4
+47;3;30522;U32;;Infor mati on abou t subp acka ge 3 of sout hbou nd devic e 2;infor_mati_on_abou_t_subp_acka_ge_3_of_sout_hbou_nd_devic_e_2;1.000000;0.000000;;4
+48;3;30524;U32;;Infor mati on abou t subp acka ge 4 of sout hbou nd devic e 2;infor_mati_on_abou_t_subp_acka_ge_4_of_sout_hbou_nd_devic_e_2;1.000000;0.000000;;4
+49;3;30561_15;STRING;;Offe ring nam e of sout hbou nd devic e 1;offe_ring_nam_e_of_sout_hbou_nd_devic_e_1;1.000000;0.000000;;4
+50;3;30576_15;STRING;;Offe ring nam e of sout hbou nd devic e 2;offe_ring_nam_e_of_sout_hbou_nd_devic_e_2;1.000000;0.000000;;4
+51;3;30591_15;STRING;;Offe ring nam e of sout hbou nd devic e 3.;offe_ring_nam_e_of_sout_hbou_nd_devic_e_3;1.000000;0.000000;;4
+52;3;31000_15;STRING;;Hard ware versi on;hard_ware_versi_on;1.000000;0.000000;;4
+53;3;31015_10;STRING;;Mon itori ng Boar d SN;mon_itori_ng_boar_d_sn;1.000000;0.000000;;4
+54;3;31025_15;STRING;;Mon itori ng soft ware versi on;mon_itori_ng_soft_ware_versi_on;1.000000;0.000000;;4
+55;3;31040_15;STRING;;Main DSP versi on;main_dsp_versi_on;1.000000;0.000000;;4
+56;3;31070_15;STRING;;CPL D versi on num ber;cpl_d_versi_on_num_ber;1.000000;0.000000;;4
+57;3;31085_15;STRING;;AFCI versi on num ber;afci_versi_on_num_ber;1.000000;0.000000;;4
+58;3;31115_15;STRING;;DC- MBU S versi on num ber;dc_mbu_s_versi_on_num_ber;1.000000;0.000000;;4
+59;3;31200_10;STRING;;Regi strati on code;regi_strati_on_code;1.000000;0.000000;;4
+60;3;32000;U16;;[Re mot e com mun icati on] Singl e- node rem ote com mun icati on;re_mot_e_com_mun_icati_on_singl_e_node_rem_ote_com_mun_icati_on;1.000000;0.000000;;4
+61;3;32002;U16;;[Re mot e sign al] Run ning statu s (mo nitor ing);re_mot_e_sign_al_run_ning_statu_s_mo_nitor_ing;1.000000;0.000000;;4
+62;3;32003;U32;;[Re mot e sign al] Run ning statu s (po wer proc essin g);re_mot_e_sign_al_run_ning_statu_s_po_wer_proc_essin_g;1.000000;0.000000;;4
+63;3;32008;U16;;[Re mot e sign al] Alar m 1;re_mot_e_sign_al_alar_m_1;1.000000;0.000000;;4
+64;3;32009;U16;;[Re mot e sign al] Alar m 2;re_mot_e_sign_al_alar_m_2;1.000000;0.000000;;4
+65;3;32010;U16;;[Re mot e sign al] Alar m 3;re_mot_e_sign_al_alar_m_3;1.000000;0.000000;;4
+66;3;32011;U16;;[Re mot e sign al] Alar m 4;re_mot_e_sign_al_alar_m_4;1.000000;0.000000;;4
+67;3;32012;U16;;[Re mot e sign al] Alar m 5;re_mot_e_sign_al_alar_m_5;1.000000;0.000000;;4
+68;3;32013;U16;;[Re mot e sign al] Alar m 6;re_mot_e_sign_al_alar_m_6;1.000000;0.000000;;4
+69;3;32015;U16;;Devi ce SN feat ure code;devi_ce_sn_feat_ure_code;1.000000;0.000000;;4
+70;3;32016;I16;;PV1 volta ge;pv1_volta_ge;0.100000;0.000000;V;4
+71;3;32017;I16;;PV1 curre nt;pv1_curre_nt;0.010000;0.000000;A;4
+72;3;32018;I16;;PV2 Volt age;pv2_volt_age;0.100000;0.000000;V;4
+73;3;32019;I16;;PV2 curre nt;pv2_curre_nt;0.010000;0.000000;A;4
+74;3;32020;I16;;PV3 Volt age;pv3_volt_age;0.100000;0.000000;V;4
+75;3;32021;I16;;PV3 curre nt;pv3_curre_nt;0.010000;0.000000;A;4
+76;3;32022;I16;;PV4 Volt age;pv4_volt_age;0.100000;0.000000;V;4
+77;3;32023;I16;;PV4 curre nt;pv4_curre_nt;0.010000;0.000000;A;4
+78;3;32024;I16;;PV5 volta ge;pv5_volta_ge;0.100000;0.000000;V;4
+79;3;32025;I16;;PV5 curre nt;pv5_curre_nt;0.010000;0.000000;A;4
+80;3;32026;I16;;PV6 volta ge;pv6_volta_ge;0.100000;0.000000;V;4
+81;3;32027;I16;;PV6 curre nt;pv6_curre_nt;0.010000;0.000000;A;4
+82;3;32028;I16;;PV7 Volt age;pv7_volt_age;0.100000;0.000000;V;4
+83;3;32029;I16;;PV7 curre nt;pv7_curre_nt;0.010000;0.000000;A;4
+84;3;32030;I16;;PV8 Volt age;pv8_volt_age;0.100000;0.000000;V;4
+85;3;32031;I16;;PV8 curre nt;pv8_curre_nt;0.010000;0.000000;A;4
+86;3;32064;I32;;DC pow er;dc_pow_er;0.001000;0.000000;k W;4
+87;3;32066;U16;;Pow er grid line A and B volta ge;pow_er_grid_line_a_and_b_volta_ge;0.100000;0.000000;V;4
+88;3;32067;U16;;Pow er grid B/C line volta ge;pow_er_grid_bc_line_volta_ge;0.100000;0.000000;V;4
+89;3;32068;U16;;Pow er grid CA line volta ge;pow_er_grid_ca_line_volta_ge;0.100000;0.000000;V;4
+90;3;32069;U16;;Pow er grid phas e A volta ge;pow_er_grid_phas_e_a_volta_ge;0.100000;0.000000;V;4
+91;3;32070;U16;;Pow er grid phas e B volta ge;pow_er_grid_phas_e_b_volta_ge;0.100000;0.000000;V;4
+92;3;32071;U16;;Pow er grid phas e C volta ge;pow_er_grid_phas_e_c_volta_ge;0.100000;0.000000;V;4
+93;3;32072;I32;;Pow er grid phas e A curre nt;pow_er_grid_phas_e_a_curre_nt;0.001000;0.000000;A;4
+94;3;32074;I32;;Pow er grid phas e B curre nt;pow_er_grid_phas_e_b_curre_nt;0.001000;0.000000;A;4
+95;3;32076;I32;;Pow er grid phas e C curre nt;pow_er_grid_phas_e_c_curre_nt;0.001000;0.000000;A;4
+96;3;32078;I32;;Peak activ e pow er of the curre nt day;peak_activ_e_pow_er_of_the_curre_nt_day;0.001000;0.000000;k W;4
+97;3;32080;I32;;Activ e pow er;activ_e_pow_er;0.001000;0.000000;k W;4
+98;3;32082;I32;;react ive pow er;react_ive_pow_er;0.001000;0.000000;kV ar;4
+99;3;32084;I16;;Pow er facto r;pow_er_facto_r;0.001000;0.000000;;4
+100;3;32085;U16;;Grid freq uenc y;grid_freq_uenc_y;0.010000;0.000000;Hz;4
+101;3;32086;U16;;Inver ter effici ency;inver_ter_effici_ency;0.010000;0.000000;%;4
+102;3;32087;I16;;Inter nal tem pera ture;inter_nal_tem_pera_ture;0.100000;0.000000;°C;4
+103;3;32088;U16;;Insul atio n impe danc e;insul_atio_n_impe_danc_e;0.001000;0.000000;M Ω;4
+104;3;32089;U16;;Devi ce Stat us;devi_ce_stat_us;1.000000;0.000000;;4
+105;3;32090;U16;;Fault Code;fault_code;1.000000;0.000000;;9
+106;3;32095;I32;;Activ e pow er [fast ];activ_e_pow_er_fast;0.001000;0.000000;k W;4
+107;3;32106;U32;;Accu mula ted pow er gene ratio n;accu_mula_ted_pow_er_gene_ratio_n;0.010000;0.000000;k W h;4
+108;3;32108;U32;;Total DC Inpu t Pow er;total_dc_inpu_t_pow_er;0.010000;0.000000;k W h;4
+109;3;32112;U32;;Curr ent Hour Elect ricity;curr_ent_hour_elect_ricity;0.010000;0.000000;k W h;4
+110;3;32114;U32;;Curr ent- day pow er gene ratio n;curr_ent_day_pow_er_gene_ratio_n;0.010000;0.000000;k W h;4
+111;3;32116;U32;;Elect ricity gene rate d in the curre nt mon th;elect_ricity_gene_rate_d_in_the_curre_nt_mon_th;0.010000;0.000000;k W h;4
+112;3;32118;U32;;Elect ricity gene rate d in the curre nt year;elect_ricity_gene_rate_d_in_the_curre_nt_year;0.010000;0.000000;k W h;4
+113;3;32151;U16;;Num ber of critic al alar ms;num_ber_of_critic_al_alar_ms;1.000000;0.000000;;4
+114;3;32152;U16;;Num ber of majo r alar ms;num_ber_of_majo_r_alar_ms;1.000000;0.000000;;4
+115;3;32153;U16;;Num ber of Min or Alar ms;num_ber_of_min_or_alar_ms;1.000000;0.000000;;4
+116;3;32154;U16;;Num ber of War ning Alar ms;num_ber_of_war_ning_alar_ms;1.000000;0.000000;;4
+117;3;32155;U16;;Alar m clear ance SN;alar_m_clear_ance_sn;1.000000;0.000000;;4
+118;3;32158;U32;;Elect ricity gene rate d in the previ ous hour;elect_ricity_gene_rate_d_in_the_previ_ous_hour;0.010000;0.000000;k W h;4
+119;3;32162;U32;;Elect ricity gene rate d in the previ ous day;elect_ricity_gene_rate_d_in_the_previ_ous_day;0.010000;0.000000;k W h;4
+120;3;32166;U32;;Elect ricity gene rate d in the previ ous mon th;elect_ricity_gene_rate_d_in_the_previ_ous_mon_th;0.010000;0.000000;k W h;4
+121;3;32170;U32;;Elect ricity gene rate d in the previ ous year;elect_ricity_gene_rate_d_in_the_previ_ous_year;0.010000;0.000000;k W h;4
+122;3;32172;U32;;Seria l num ber of the lates t activ e alar m.;seria_l_num_ber_of_the_lates_t_activ_e_alar_m;1.000000;0.000000;;4
+123;3;32174;U32;;Late st Hist orica l Alar m Seria l Num ber;late_st_hist_orica_l_alar_m_seria_l_num_ber;1.000000;0.000000;;4
+124;3;32176;I16;;Total bus volta ge;total_bus_volta_ge;0.100000;0.000000;V;4
+125;3;32177;I16;;Maxi mu m PV volta ge;maxi_mu_m_pv_volta_ge;0.100000;0.000000;V;4
+126;3;32178;I16;;Mini mu m PV volta ge;mini_mu_m_pv_volta_ge;0.100000;0.000000;V;4
+127;3;32179;I16;;Aver age PV nega tive- to- grou nd volta ge;aver_age_pv_nega_tive_to_grou_nd_volta_ge;0.100000;0.000000;V;4
+128;3;32180;I16;;Maxi mu m PV posit ive- to- grou nd volta ge;maxi_mu_m_pv_posit_ive_to_grou_nd_volta_ge;0.100000;0.000000;V;4
+129;3;32181;I16;;Mini mu m PV nega tive- to- grou nd volta ge;mini_mu_m_pv_nega_tive_to_grou_nd_volta_ge;0.100000;0.000000;V;4
+130;3;32182;U16;;Inver ter- to- PE with stan d volta ge;inver_ter_to_pe_with_stan_d_volta_ge;1.000000;0.000000;V;4
+131;3;32183;U16;;ISO feat ure infor mati on;iso_feat_ure_infor_mati_on;1.000000;0.000000;;4
+132;3;32190;U16;;Built -in PID runn ing statu s;built_in_pid_runn_ing_statu_s;1.000000;0.000000;;4
+133;3;32191;I16;;PV nega tive- to- grou nd volta ge;pv_nega_tive_to_grou_nd_volta_ge;0.100000;0.000000;V;4
+134;3;32192;U16;;Dire ction of the built -in PID com pens atio n;dire_ction_of_the_built_in_pid_com_pens_atio_n;1.000000;0.000000;;4
+135;3;32212;U32;;Total DC ener gy yield of MPP T1;total_dc_ener_gy_yield_of_mpp_t1;0.010000;0.000000;k W h;4
+136;3;32214;U32;;Total DC ener gy yield of MPP T2;total_dc_ener_gy_yield_of_mpp_t2;0.010000;0.000000;k W h;4
+137;3;32216;U32;;MPP T3 DC Total Ener gy Yield;mpp_t3_dc_total_ener_gy_yield;0.010000;0.000000;k W h;4
+138;3;32218;U32;;MPP T4 DC Accu mula ted Ener gy Yield;mpp_t4_dc_accu_mula_ted_ener_gy_yield;0.010000;0.000000;k W h;4
+139;3;32252;U16;;Mon itori ng alar m 1;mon_itori_ng_alar_m_1;1.000000;0.000000;;4
+140;3;32253;U16;;Mon itori ng alar m 2;mon_itori_ng_alar_m_2;1.000000;0.000000;;4
+141;3;32254;U16;;Mon itor alar m 3;mon_itor_alar_m_3;1.000000;0.000000;;4
+142;3;32255;U16;;[Exte rnal] Pow er alar m 1;exte_rnal_pow_er_alar_m_1;1.000000;0.000000;;4
+143;3;32256;U16;;[Exte rnal] Pow er alar m 2;exte_rnal_pow_er_alar_m_2;1.000000;0.000000;;4
+144;3;32257;U16;;[Exte rnal] Pow er alar m 3;exte_rnal_pow_er_alar_m_3;1.000000;0.000000;;4
+145;3;32258;U16;;[Exte rnal] Pow er alar m 4;exte_rnal_pow_er_alar_m_4;1.000000;0.000000;;4
+146;3;32259;U16;;[Exte rnal] Pow er alar m 5;exte_rnal_pow_er_alar_m_5;1.000000;0.000000;;4
+147;3;32260;U16;;[Exte rnal] Pow er alar m 6;exte_rnal_pow_er_alar_m_6;1.000000;0.000000;;4
+148;3;32261;U16;;[Exte rnal] Pow er alar m 7;exte_rnal_pow_er_alar_m_7;1.000000;0.000000;;4
+149;3;32262;U16;;[Exte rnal] Pow er alar m 8;exte_rnal_pow_er_alar_m_8;1.000000;0.000000;;4
+150;3;32263;U16;;[Exte rnal] Pow er alar m 9;exte_rnal_pow_er_alar_m_9;1.000000;0.000000;;4
+151;3;32264;U16;;[Exte rnal] Pow er alar m 10;exte_rnal_pow_er_alar_m_10;1.000000;0.000000;;4
+152;3;32265;U16;;[Exte rnal] Pow er alar m 11;exte_rnal_pow_er_alar_m_11;1.000000;0.000000;;4
+153;3;32266;U16;;[Exte rnal] Pow er alar m 12;exte_rnal_pow_er_alar_m_12;1.000000;0.000000;;4
+154;3;32267;U16;;[Exte rnal] Pow er alar m 13;exte_rnal_pow_er_alar_m_13;1.000000;0.000000;;4
+155;3;32268;U16;;[Exte rnal] Pow er alar m 14;exte_rnal_pow_er_alar_m_14;1.000000;0.000000;;4
+156;3;32269;U16;;[Exte rnal] Pow er alar m 15;exte_rnal_pow_er_alar_m_15;1.000000;0.000000;;4
+157;3;32270;U16;;[Exte rnal] Pow er alar m 16;exte_rnal_pow_er_alar_m_16;1.000000;0.000000;;4
+158;3;32271;U16;;Mon itor alar m 4;mon_itor_alar_m_4;1.000000;0.000000;;4
+159;3;32272;U16;;Mon itor alar m 5;mon_itor_alar_m_5;1.000000;0.000000;;4
+160;3;32273;U16;;[Exte rnal] Pow er alar m 17;exte_rnal_pow_er_alar_m_17;1.000000;0.000000;;4
+161;3;32300;U16;;Strin g 1 acce ss statu s;strin_g_1_acce_ss_statu_s;1.000000;0.000000;;4
+162;3;32301;U16;;Strin g 2 acce ss statu s;strin_g_2_acce_ss_statu_s;1.000000;0.000000;;4
+163;3;32302;U16;;Strin g 3 acce ss statu s;strin_g_3_acce_ss_statu_s;1.000000;0.000000;;4
+164;3;32303;U16;;Strin g 4 acce ss statu s;strin_g_4_acce_ss_statu_s;1.000000;0.000000;;4
+165;3;32304;U16;;Strin g 5 acce ss statu s;strin_g_5_acce_ss_statu_s;1.000000;0.000000;;4
+166;3;32305;U16;;Con necti on statu s of strin g 6;con_necti_on_statu_s_of_strin_g_6;1.000000;0.000000;;4
+167;3;32306;U16;;Strin g 7 acce ss statu s;strin_g_7_acce_ss_statu_s;1.000000;0.000000;;4
+168;3;32307;U16;;Strin g 8 acce ss statu s;strin_g_8_acce_ss_statu_s;1.000000;0.000000;;4
+169;3;34000;U32;;Sten t Syst em Stat us;sten_t_syst_em_stat_us;1.000000;0.000000;;4
+170;3;34002;I16;;Tilt angl e 1 sam pling;tilt_angl_e_1_sam_pling;0.010000;0.000000;°;4
+171;3;34003;I16;;Azim uth 1 sam pling;azim_uth_1_sam_pling;0.010000;0.000000;°;4
+172;3;34004;I16;;Tilt angl e 2 sam pling;tilt_angl_e_2_sam_pling;0.010000;0.000000;°;4
+173;3;34005;I16;;Azim uth 2 sam pling;azim_uth_2_sam_pling;0.010000;0.000000;°;4
+174;3;34006;I16;;Tilt angl e 3 sam pling;tilt_angl_e_3_sam_pling;0.010000;0.000000;°;4
+175;3;34007;I16;;Azim uth 3 sam pling;azim_uth_3_sam_pling;0.010000;0.000000;°;4
+176;3;34008;I16;;Tilt angl e 4 sam pling;tilt_angl_e_4_sam_pling;0.010000;0.000000;°;4
+177;3;34009;I16;;Azim uth 4 sam pling;azim_uth_4_sam_pling;0.010000;0.000000;°;4
+178;3;34010;I16;;Tilt angl e 5 sam pling;tilt_angl_e_5_sam_pling;0.010000;0.000000;°;4
+179;3;34011;I16;;Azim uth 5 sam pling;azim_uth_5_sam_pling;0.010000;0.000000;°;4
+180;3;34012;I16;;Tilt angl e 6 sam pling;tilt_angl_e_6_sam_pling;0.010000;0.000000;°;4
+181;3;34013;I16;;Azim uth 6 sam pling;azim_uth_6_sam_pling;0.010000;0.000000;°;4
+182;3;34014;I16;;Tilt angl e 7 sam pling;tilt_angl_e_7_sam_pling;0.010000;0.000000;°;4
+183;3;34015;I16;;Azim uth 7 sam pling;azim_uth_7_sam_pling;0.010000;0.000000;°;4
+184;3;34016;I16;;Tilt angl e 8 sam pling;tilt_angl_e_8_sam_pling;0.010000;0.000000;°;4
+185;3;34017;I16;;Azim uth 8 sam pling;azim_uth_8_sam_pling;0.010000;0.000000;°;4
+186;3;34018;I16;;Tilt angl e 9 sam pling;tilt_angl_e_9_sam_pling;0.010000;0.000000;°;4
+187;3;34019;I16;;Azim uth 9 sam pling;azim_uth_9_sam_pling;0.010000;0.000000;°;4
+188;3;34020;I16;;Tilt angl e 10 sam pling;tilt_angl_e_10_sam_pling;0.010000;0.000000;°;4
+189;3;34021;I16;;Azim uth 10 sam pling;azim_uth_10_sam_pling;0.010000;0.000000;°;4
+190;3;34022;I16;;Tilt angl e 11 sam pling;tilt_angl_e_11_sam_pling;0.010000;0.000000;°;4
+191;3;34023;I16;;Azim uth 11 sam pling;azim_uth_11_sam_pling;0.010000;0.000000;°;4
+192;3;34024;I16;;Tilt angl e 12 sam pling;tilt_angl_e_12_sam_pling;0.010000;0.000000;°;4
+193;3;34025;I16;;Azim uth 12 sam pling;azim_uth_12_sam_pling;0.010000;0.000000;°;4
+194;3;34026;I16;;Tilt angl e 13 sam pling;tilt_angl_e_13_sam_pling;0.010000;0.000000;°;4
+195;3;34027;I16;;Beari ng 13 sam pling;beari_ng_13_sam_pling;0.010000;0.000000;°;4
+196;3;34028;I16;;Tilt angl e 14 sam pling;tilt_angl_e_14_sam_pling;0.010000;0.000000;°;4
+197;3;34029;I16;;Azim uth 14 sam pling;azim_uth_14_sam_pling;0.010000;0.000000;°;4
+198;3;34030;I16;;Tilt angl e 15 sam pling;tilt_angl_e_15_sam_pling;0.010000;0.000000;°;4
+199;3;34031;I16;;Beari ng angl e 15 sam pling;beari_ng_angl_e_15_sam_pling;0.010000;0.000000;°;4
+200;3;34032;I16;;Tilt angl e 16 sam pling;tilt_angl_e_16_sam_pling;0.010000;0.000000;°;4
+201;3;34033;I16;;Beari ng 16 sam pling;beari_ng_16_sam_pling;0.010000;0.000000;°;4
+202;3;34034;U16;;Trac king syste m cont rolle r;trac_king_syste_m_cont_rolle_r;1.000000;0.000000;;4
+203;3;34035;U16;;Supp ort Syst em Type;supp_ort_syst_em_type;1.000000;0.000000;;4
+204;3;34036;U16;;Oper atin g mod e;oper_atin_g_mod_e;1.000000;0.000000;;4
+205;3;34037;U16;;Total num ber of stent s;total_num_ber_of_stent_s;1.000000;0.000000;;4
+206;3;34038;U32;;Supp ort acce ss statu s;supp_ort_acce_ss_statu_s;1.000000;0.000000;;4
+207;3;34040;U32;;Wor king mod e mas k;wor_king_mod_e_mas_k;1.000000;0.000000;;4
+208;3;34075;U16;;Supp ort 1 Gen eral Fault Stat us;supp_ort_1_gen_eral_fault_stat_us;1.000000;0.000000;;9
+209;3;34076;U16;;Supp ort 1 user- defin ed fault statu s;supp_ort_1_user_defin_ed_fault_statu_s;1.000000;0.000000;;9
+210;3;34077;U16;;Supp ort 2 Gen eral Fault Stat us;supp_ort_2_gen_eral_fault_stat_us;1.000000;0.000000;;9
+211;3;34078;U16;;Supp ort 2 Cust om Fault Stat us;supp_ort_2_cust_om_fault_stat_us;1.000000;0.000000;;9
+212;3;34079;U16;;Supp ort 3 Gen eral Fault Stat us;supp_ort_3_gen_eral_fault_stat_us;1.000000;0.000000;;9
+213;3;34080;U16;;Supp ort 3 user- defin ed fault statu s;supp_ort_3_user_defin_ed_fault_statu_s;1.000000;0.000000;;9
+214;3;34081;U16;;Supp ort 4 Gen eral Fault Stat us;supp_ort_4_gen_eral_fault_stat_us;1.000000;0.000000;;9
+215;3;34082;U16;;Supp ort 4 Cust om Fault Stat us;supp_ort_4_cust_om_fault_stat_us;1.000000;0.000000;;9
+216;3;34083;U16;;Supp ort 5 Gen eral Fault Stat us;supp_ort_5_gen_eral_fault_stat_us;1.000000;0.000000;;9
+217;3;34084;U16;;Supp ort 5 Cust om Fault Stat us;supp_ort_5_cust_om_fault_stat_us;1.000000;0.000000;;9
+218;3;34085;U16;;Supp ort 6 Gen eral Fault Stat us;supp_ort_6_gen_eral_fault_stat_us;1.000000;0.000000;;9
+219;3;34086;U16;;Supp ort 6 Cust om Fault Stat us;supp_ort_6_cust_om_fault_stat_us;1.000000;0.000000;;9
+220;3;34087;U16;;Supp ort 7 Gen eral Fault Stat us;supp_ort_7_gen_eral_fault_stat_us;1.000000;0.000000;;9
+221;3;34088;U16;;Supp ort 7 Cust om Fault Stat us;supp_ort_7_cust_om_fault_stat_us;1.000000;0.000000;;9
+222;3;34089;U16;;Supp ort 8 Gen eral Fault Stat us;supp_ort_8_gen_eral_fault_stat_us;1.000000;0.000000;;9
+223;3;34090;U16;;Supp ort 8 Cust om Fault Stat us;supp_ort_8_cust_om_fault_stat_us;1.000000;0.000000;;9
+224;3;34091;U16;;Supp ort 9 Gen eral Fault Stat us;supp_ort_9_gen_eral_fault_stat_us;1.000000;0.000000;;9
+225;3;34092;U16;;Supp ort 9 Cust om Fault Stat us;supp_ort_9_cust_om_fault_stat_us;1.000000;0.000000;;9
+226;3;34093;U16;;Supp ort 10 Gen eral Fault Stat us;supp_ort_10_gen_eral_fault_stat_us;1.000000;0.000000;;9
+227;3;34094;U16;;Supp ort 10 Cust om Fault Stat us;supp_ort_10_cust_om_fault_stat_us;1.000000;0.000000;;9
+228;3;34095;U16;;Supp ort 11 Gen eral Fault Stat us;supp_ort_11_gen_eral_fault_stat_us;1.000000;0.000000;;9
+229;3;34096;U16;;Supp ort 11 Cust om Fault Stat us;supp_ort_11_cust_om_fault_stat_us;1.000000;0.000000;;9
+230;3;34097;U16;;Supp ort 12 Gen eral Fault Stat us;supp_ort_12_gen_eral_fault_stat_us;1.000000;0.000000;;9
+231;3;34098;U16;;Supp ort 12 Cust om Fault Stat us;supp_ort_12_cust_om_fault_stat_us;1.000000;0.000000;;9
+232;3;34099;U16;;Supp ort 13 Gen eral Fault Stat us;supp_ort_13_gen_eral_fault_stat_us;1.000000;0.000000;;9
+233;3;34100;U16;;Supp ort 13 Cust om Fault Stat us;supp_ort_13_cust_om_fault_stat_us;1.000000;0.000000;;9
+234;3;34101;U16;;Supp ort 14 Gen eral Fault Stat us;supp_ort_14_gen_eral_fault_stat_us;1.000000;0.000000;;9
+235;3;34102;U16;;Supp ort 14 Cust om Fault Stat us;supp_ort_14_cust_om_fault_stat_us;1.000000;0.000000;;9
+236;3;34103;U16;;Supp ort 15 Gen eral Fault Stat us;supp_ort_15_gen_eral_fault_stat_us;1.000000;0.000000;;9
+237;3;34104;U16;;Supp ort 15 Cust om Fault Stat us;supp_ort_15_cust_om_fault_stat_us;1.000000;0.000000;;9
+238;3;34105;U16;;Supp ort 16 Gen eral Fault Stat us;supp_ort_16_gen_eral_fault_stat_us;1.000000;0.000000;;9
+239;3;34106;U16;;Supp ort 16 Cust om Fault Stat us;supp_ort_16_cust_om_fault_stat_us;1.000000;0.000000;;9
+240;3;35000;U32;;Run ning time of capa citor bank;run_ning_time_of_capa_citor_bank;0.100000;0.000000;ho ur;4
+241;3;35002;U32;;Inter nal fan 1 runn ing time;inter_nal_fan_1_runn_ing_time;0.100000;0.000000;ho ur;4
+242;3;35010;U16;;Inter nal alar m;inter_nal_alar_m;1.000000;0.000000;V;4
+243;3;35021;I16;;Inter nal Tem pera ture 1;inter_nal_tem_pera_ture_1;0.100000;0.000000;°C;4
+244;3;35022;I16;;Inter nal Tem pera ture 2;inter_nal_tem_pera_ture_2;0.100000;0.000000;°C;4
+245;3;35023;I16;;Inter nal Tem pera ture 3;inter_nal_tem_pera_ture_3;0.100000;0.000000;°C;4
+246;3;35024;I16;;Inter nal Tem pera ture 4;inter_nal_tem_pera_ture_4;0.100000;0.000000;°C;4
+247;3;35025;I16;;Inter nal Tem pera ture 5;inter_nal_tem_pera_ture_5;0.100000;0.000000;°C;4
+248;3;35026;I16;;Inter nal Tem pera ture 6;inter_nal_tem_pera_ture_6;0.100000;0.000000;°C;4
+249;3;35027;I16;;Inter nal tem pera ture 7;inter_nal_tem_pera_ture_7;0.100000;0.000000;°C;4
+250;3;35028;I16;;Inter nal tem pera ture 8;inter_nal_tem_pera_ture_8;0.100000;0.000000;°C;4
+251;3;35029;I16;;Inter nal tem pera ture 9;inter_nal_tem_pera_ture_9;0.100000;0.000000;°C;4
+252;3;35030;I16;;Inter nal tem pera ture 10;inter_nal_tem_pera_ture_10;0.100000;0.000000;°C;4
+253;3;35031;I16;;Inter nal tem pera ture 11;inter_nal_tem_pera_ture_11;0.100000;0.000000;°C;4
+254;3;35032;I16;;Inter nal tem pera ture 12;inter_nal_tem_pera_ture_12;0.100000;0.000000;°C;4
+255;3;35038;I16;;Phas e A DC com pone nt DCI;phas_e_a_dc_com_pone_nt_dci;0.001000;0.000000;A;4
+256;3;35039;I16;;Phas e B DC com pone nt DCI;phas_e_b_dc_com_pone_nt_dci;0.001000;0.000000;A;4
+257;3;35040;I16;;Phas e C DC com pone nt DCI;phas_e_c_dc_com_pone_nt_dci;0.001000;0.000000;A;4
+258;3;35041;I16;;Leak age curre nt RCD;leak_age_curre_nt_rcd;1.000000;0.000000;m A;4
+259;3;35042;I16;;Posit ive bus volta ge;posit_ive_bus_volta_ge;0.100000;0.000000;V;4
+260;3;35043;I16;;Neg ative bus volta ge;neg_ative_bus_volta_ge;0.100000;0.000000;V;4
+261;3;35044;I16;;BUS nega tive volta ge to grou nd;bus_nega_tive_volta_ge_to_grou_nd;0.100000;0.000000;V;4
+262;3;35094;U16;;I-V scan statu s;iv_scan_statu_s;1.000000;0.000000;;4
+263;3;35095;U16;;I-V scan ning capa bility;iv_scan_ning_capa_bility;1.000000;0.000000;;4
+264;3;35102;U32;;[Ma nage men t Syst em] NMS IP addr ess;ma_nage_men_t_syst_em_nms_ip_addr_ess;1.000000;0.000000;;4
+265;3;35104;U16;;[STA ] Wire less Rout ing Acce ss Sign al Stre ngth;sta_wire_less_rout_ing_acce_ss_sign_al_stre_ngth;1.000000;0.000000;;4
+266;3;35105;U16;;[STA ] WLA N list scan ning statu s;sta_wla_n_list_scan_ning_statu_s;1.000000;0.000000;;4
+267;3;35112;U16;;[NTP ] Last NTP sync hron izati on statu s.;ntp_last_ntp_sync_hron_izati_on_statu_s;1.000000;0.000000;;4
+268;3;35113;U32;;[NTP ] NTP Last Sync hron izati on Time;ntp_ntp_last_sync_hron_izati_on_time;1.000000;0.000000;;4
+269;3;35115;U16;;Defe rred activ atio n state;defe_rred_activ_atio_n_state;1.000000;0.000000;;4
+270;3;35116;U32;;[4G] Mon thly used traffi c;v_4g_mon_thly_used_traffi_c;0.010000;0.000000;M B;4
+271;3;35118;U32;;[4G] Mon thly Rem ainin g Traff ic;v_4g_mon_thly_rem_ainin_g_traff_ic;0.010000;0.000000;M B;4
+272;3;35120;U32;;[4G] Aver age daily traffi c usag e;v_4g_aver_age_daily_traffi_c_usag_e;0.010000;0.000000;M B;4
+273;3;35122;U16;;[4G] Traff ic statu s;v_4g_traff_ic_statu_s;1.000000;0.000000;;4
+274;3;35124;U16;;[STA ] Rout er conn ectio n time;sta_rout_er_conn_ectio_n_time;1.000000;0.000000;s;4
+275;3;35125;U16;;[STA ] Rout er conn ectio n statu s;sta_rout_er_conn_ectio_n_statu_s;1.000000;0.000000;;4
+276;3;35126;U16;;[FE] Con necti on statu s;fe_con_necti_on_statu_s;1.000000;0.000000;;4
+277;3;35136;U32;;[Sm art I- V-V- Diag nosis ] Auth oriza tion Func tion;sm_art_i_vv_diag_nosis_auth_oriza_tion_func_tion;1.000000;0.000000;;4
+278;3;35138;U16;;Sma rt I- V-V- Diag nosis (Lice nse) Stat us;sma_rt_i_vv_diag_nosis_lice_nse_stat_us;1.000000;0.000000;;4
+279;3;35145_10;STRING;;Lice nse SN;lice_nse_sn;1.000000;0.000000;;4
+280;3;35155_64;STRING;;Inval idati on code .;inval_idati_on_code;1.000000;0.000000;;4
+281;3;35219;U16;;Auth oriza tion Feat ure Sign atur e;auth_oriza_tion_feat_ure_sign_atur_e;1.000000;0.000000;;4
+282;3;35221;U16;;[Stri ng moni torin g] Lice nse statu s;stri_ng_moni_torin_g_lice_nse_statu_s;1.000000;0.000000;;4
+283;3;35249;U16;;[4G] Mod ule statu s;v_4g_mod_ule_statu_s;1.000000;0.000000;;4
+284;3;35250;U32;;[4G] IP addr ess;v_4g_ip_addr_ess;1.000000;0.000000;;4
+285;3;35252;U32;;[4G] Subn et Mas k;v_4g_subn_et_mas_k;1.000000;0.000000;;4
+286;3;35254_10;STRING;;[4G] IMEI;v_4g_imei;1.000000;0.000000;;4
+287;3;35264;U16;;[4G] sign al stren gth;v_4g_sign_al_stren_gth;1.000000;0.000000;;4
+288;3;35265;U16;;[4G] PIN num ber inpu t time s;v_4g_pin_num_ber_inpu_t_time_s;1.000000;0.000000;;4
+289;3;35266;U16;;[4G] PIN chec k statu s;v_4g_pin_chec_k_statu_s;1.000000;0.000000;;4
+290;3;36033;U16;;Upgr ade statu s ID.;upgr_ade_statu_s_id;1.000000;0.000000;;4
+291;3;37000;U16;;[Mo dule 1] Run ning statu s of the batt ery;mo_dule_1_run_ning_statu_s_of_the_batt_ery;1.000000;0.000000;;4
+292;3;37100;U16;;Met er Stat us;met_er_stat_us;1.000000;0.000000;;4
+293;3;37101;I32;;Grid volta ge (pha se A volta ge);grid_volta_ge_pha_se_a_volta_ge;0.100000;0.000000;V;4
+294;3;37103;I32;;Phas e B volta ge;phas_e_b_volta_ge;0.100000;0.000000;V;4
+295;3;37105;I32;;Phas e C volta ge;phas_e_c_volta_ge;0.100000;0.000000;V;4
+296;3;37107;I32;;Grid curre nt (pha se A curre nt);grid_curre_nt_pha_se_a_curre_nt;0.010000;0.000000;A;4
+297;3;37109;I32;;Phas e B curre nt;phas_e_b_curre_nt;0.010000;0.000000;A;4
+298;3;37111;I32;;Phas e C curre nt;phas_e_c_curre_nt;0.010000;0.000000;A;4
+299;3;37113;I32;;Activ e pow er;activ_e_pow_er_1;1.000000;0.000000;W;4
+300;3;37115;I32;;react ive pow er;react_ive_pow_er_1;1.000000;0.000000;Va r;4
+301;3;37117;I16;;Pow er facto r;pow_er_facto_r_1;0.001000;0.000000;;4
+302;3;37118;I16;;Grid freq uenc y;grid_freq_uenc_y_1;0.010000;0.000000;Hz;4
+303;3;37119;I32;;Posit ive activ e pow er;posit_ive_activ_e_pow_er;0.010000;0.000000;k W h;4
+304;3;37121;I32;;Reve rse activ e pow er;reve_rse_activ_e_pow_er;0.010000;0.000000;k W h;4
+305;3;37123;I32;;Accu mula ted react ive pow er;accu_mula_ted_react_ive_pow_er;0.010000;0.000000;kV ar h;4
+306;3;37125;U16;;Met er Type;met_er_type;1.000000;0.000000;;4
+307;3;37126;I32;;A-B line volta ge;ab_line_volta_ge;0.100000;0.000000;V;4
+308;3;37128;I32;;BC line volta ge;bc_line_volta_ge;0.100000;0.000000;V;4
+309;3;37130;I32;;CA line volta ge;ca_line_volta_ge;0.100000;0.000000;V;4
+310;3;37132;I32;;Phas e A activ e pow er;phas_e_a_activ_e_pow_er;1.000000;0.000000;W;4
+311;3;37134;I32;;Phas e B activ e pow er;phas_e_b_activ_e_pow_er;1.000000;0.000000;W;4
+312;3;37136;I32;;Phas e C activ e pow er;phas_e_c_activ_e_pow_er;1.000000;0.000000;W;4
+313;3;37138;U16;;Met er Mod el Chec k Resu lt;met_er_mod_el_chec_k_resu_lt;1.000000;0.000000;;4
+314;3;37200;U16;;Total num ber of opti mize rs;total_num_ber_of_opti_mize_rs;1.000000;0.000000;;4
+315;3;37201;U16;;Num ber of onlin e opti mize rs;num_ber_of_onlin_e_opti_mize_rs;1.000000;0.000000;;4
+316;3;37202;U16;;Feat ure data sequ ence num ber;feat_ure_data_sequ_ence_num_ber;1.000000;0.000000;;4
+317;3;37203;U16;;Phys ical Loca tion Loca ting Prog ress;phys_ical_loca_tion_loca_ting_prog_ress;1.000000;0.000000;;4
+318;3;37204;U16;;Log expo rt prog ress;log_expo_rt_prog_ress;1.000000;0.000000;;4
+319;3;37205;U16;;Real - time data quer y prog ress;real_time_data_quer_y_prog_ress;1.000000;0.000000;;4
+320;3;37206;U16;;Curr ent statu s of the phys ical locat ion;curr_ent_statu_s_of_the_phys_ical_locat_ion;1.000000;0.000000;;4
+321;3;37207;U16;;Num ber of Sear ched Opti mize rs;num_ber_of_sear_ched_opti_mize_rs;1.000000;0.000000;;4
+322;3;37208;U16;;Rela tive Posit ionin g Stat us;rela_tive_posit_ionin_g_stat_us;1.000000;0.000000;;4
+323;3;37209;U16;;Layo ut File Stor age Prog ress;layo_ut_file_stor_age_prog_ress;1.000000;0.000000;%;4
+324;3;37210;U16;;Layo ut File Cha nge SN;layo_ut_file_cha_nge_sn;1.000000;0.000000;;4
+325;3;37211;U16;;Disc onne ction dete ction prog ress;disc_onne_ction_dete_ction_prog_ress;1.000000;0.000000;%;4
+326;3;37212;U16;;Disc onne cted statu s;disc_onne_cted_statu_s;1.000000;0.000000;;4
+327;3;37250;U16;;[DC- MBU S] Net work ing statu s;dc_mbu_s_net_work_ing_statu_s;1.000000;0.000000;;4
+328;3;37251;U16;;Num ber of Net work ed Net work s;num_ber_of_net_work_ed_net_work_s;1.000000;0.000000;;4
+329;3;37252;U16;;Num ber of neig hbor ing netw orks;num_ber_of_neig_hbor_ing_netw_orks;1.000000;0.000000;;4
+330;3;37253;U16;;Fast Shut dow n Self Test Stat us;fast_shut_dow_n_self_test_stat_us;1.000000;0.000000;;4
+331;3;37254;U16;;Run ning statu s;run_ning_statu_s;1.000000;0.000000;;4
+332;3;37255_10;STRING;;SN;sn;1.000000;0.000000;;4
+333;3;37400_10;STRING;;SN;sn_1;1.000000;0.000000;;4
+334;3;37410;U16;;Type;type;1.000000;0.000000;;4
+335;3;37429;U16;;Maxi mu m num ber of conn ecte d devic es;maxi_mu_m_num_ber_of_conn_ecte_d_devic_es;1.000000;0.000000;;4
+336;3;37430_10;STRING;;RAT;rat;1.000000;0.000000;;4
+337;3;37440_15;STRING;;Carri ers;carri_ers;1.000000;0.000000;;4
+338;3;37470;U32;;Total rate d capa city of grid- tied inver ters;total_rate_d_capa_city_of_grid_tied_inver_ters;0.001000;0.000000;k W;4
+339;3;37472;U32;;Conv ersio n facto r;conv_ersio_n_facto_r;0.001000;0.000000;;4
+340;3;37474;U16;;Curr ent Perc enta ge;curr_ent_perc_enta_ge;0.100000;0.000000;%;4
+341;3;37475;U16;;[Sch edul e serv er] Com mun icati on statu s;sch_edul_e_serv_er_com_mun_icati_on_statu_s;1.000000;0.000000;;4
+342;3;37476;U16;;[Sch edul e serv er] Late st conn ectio n statu s;sch_edul_e_serv_er_late_st_conn_ectio_n_statu_s;1.000000;0.000000;;4
+343;3;37477;U32;;[Sch edul e serv er] Late st conn ectio n time;sch_edul_e_serv_er_late_st_conn_ectio_n_time;1.000000;0.000000;;4
+344;3;37479_15;STRING;;Soft ware versi on;soft_ware_versi_on_1;1.000000;0.000000;;4
+345;3;37494;U16;;Num ber of conn ecte d devic es;num_ber_of_conn_ecte_d_devic_es;1.000000;0.000000;;4
+346;3;37496;U16;;Silen ce flag;silen_ce_flag;1.000000;0.000000;;4
+347;3;37497;U16;;Upgr ade Stat us;upgr_ade_stat_us;1.000000;0.000000;;4
+348;3;37518;U16;;Inver ter com preh ensiv e statu s;inver_ter_com_preh_ensiv_e_statu_s;1.000000;0.000000;;4
+349;3;37519;U16;;Inver ter integ rate d statu s supp ort flag;inver_ter_integ_rate_d_statu_s_supp_ort_flag;1.000000;0.000000;;4
+350;3;40037;U16;;Q-U char acter istic curv e mod e;qu_char_acter_istic_curv_e_mod_e;1.000000;0.000000;;1
+351;3;40038;I16;;Q-U Sche dulin g Trigg er Pow er Perc enta ge;qu_sche_dulin_g_trigg_er_pow_er_perc_enta_ge;1.000000;0.000000;%;1
+352;3;40120;U16;;Activ e pow er is dera ted by a fixed valu e.;activ_e_pow_er_is_dera_ted_by_a_fixed_valu_e;0.100000;0.000000;k W;1
+353;3;40122;I16;;Pow er facto r;pow_er_facto_r_2;0.001000;0.000000;;1
+354;3;40123;I16;;Reac tive pow er com pens atio n (Q/S ) [low preci sion];reac_tive_pow_er_com_pens_atio_n_qs_low_preci_sion;0.001000;0.000000;;1
+355;3;40124;U16;;Reac tive pow er adju stme nt time;reac_tive_pow_er_adju_stme_nt_time;1.000000;0.000000;s;1
+356;3;40125;I16;;Activ e pow er perc enta ge dera ting (low preci sion);activ_e_pow_er_perc_enta_ge_dera_ting_low_preci_sion;0.100000;0.000000;%;1
+357;3;40126;U32;;Activ e pow er is dera ted by a fixed valu e.;activ_e_pow_er_is_dera_ted_by_a_fixed_valu_e_1;1.000000;0.000000;W;1
+358;3;40128;I16;;Nigh t react ive pow er com pens atio n (Q/S );nigh_t_react_ive_pow_er_com_pens_atio_n_qs;0.001000;0.000000;;1
+359;3;40129;I32;;Fixe d valu e of react ive pow er at nigh t;fixe_d_valu_e_of_react_ive_pow_er_at_nigh_t;0.001000;0.000000;kV ar;1
+360;3;40196;U16;;[Cha racte ristic curv e] Reac tive pow er adju stme nt time;cha_racte_ristic_curv_e_reac_tive_pow_er_adju_stme_nt_time;1.000000;0.000000;s;1
+361;3;40198;I16;;Q-U Sche dulin g Exit Pow er Perc enta ge;qu_sche_dulin_g_exit_pow_er_perc_enta_ge;1.000000;0.000000;%;1
+362;3;40199;I16;;Activ e pow er perc enta ge cont rol [low preci sion];activ_e_pow_er_perc_enta_ge_cont_rol_low_preci_sion;0.100000;0.000000;%;1
+363;3;40200;U16;;Start the syste m.;start_the_syste_m;1.000000;0.000000;;1
+364;3;40201;U16;;Shut dow n.;shut_dow_n;1.000000;0.000000;;1
+365;3;40202;U16;;Quic k pow er- on and pow er- off;quic_k_pow_er_on_and_pow_er_off;1.000000;0.000000;;1
+366;3;40205;U16;;reset;reset;1.000000;0.000000;;1
+367;3;40206;U16;;Insul atio n impe danc e diag nosis;insul_atio_n_impe_danc_e_diag_nosis;1.000000;0.000000;;1
+368;3;40375;U16;;Q-U char acter istic curv e mini mu m PF limit;qu_char_acter_istic_curv_e_mini_mu_m_pf_limit;0.001000;0.000000;;1
+369;3;40376;U16;;Q-U char acter istic curv e valid ity dela y time;qu_char_acter_istic_curv_e_valid_ity_dela_y_time;1.000000;0.000000;s;1
+370;3;42000;U16;;Pow er grid stan dard code;pow_er_grid_stan_dard_code;1.000000;0.000000;;1
+371;3;42001;U16;;Outp ut mod e;outp_ut_mod_e;1.000000;0.000000;;1
+372;3;42002;U16;;Volt age level;volt_age_level;1.000000;0.000000;V;1
+373;3;42003;U16;;Freq uenc y Class;freq_uenc_y_class;1.000000;0.000000;Hz;1
+374;3;42012;U16;;Repl ace the targ et mod el.;repl_ace_the_targ_et_mod_el;1.000000;0.000000;;1
+375;3;42014;U16;;Rem ote pow er sche dulin g;rem_ote_pow_er_sche_dulin_g;1.000000;0.000000;;1
+376;3;42015;U32;;react ive pow er gradi ent;react_ive_pow_er_gradi_ent;0.001000;0.000000;'%/ s;1
+377;3;42017;U32;;Activ e pow er chan ge gradi ent;activ_e_pow_er_chan_ge_gradi_ent;0.001000;0.000000;'%/ s;1
+378;3;42019;U32;;Sche dule d instr uctio n hold time;sche_dule_d_instr_uctio_n_hold_time;1.000000;0.000000;s;1
+379;3;42021;U32;;Maxi mu m appa rent pow er;maxi_mu_m_appa_rent_pow_er;0.001000;0.000000;kV A;1
+380;3;42023;U32;;Maxi mu m activ e pow er;maxi_mu_m_activ_e_pow_er;0.001000;0.000000;k W;1
+381;3;42025;U32;;appa rent pow er refer ence;appa_rent_pow_er_refer_ence;0.001000;0.000000;kV ar;1
+382;3;42027;U32;;Activ e pow er refer ence;activ_e_pow_er_refer_ence;0.001000;0.000000;k W;1
+383;3;42029;U16;;Plan t activ e pow er gradi ent;plan_t_activ_e_pow_er_gradi_ent;1.000000;0.000000;mi n/ 10 0%;1
+384;3;42030;U32;;Plan t activ e aver age filter ing time;plan_t_activ_e_aver_age_filter_ing_time;1.000000;0.000000;ms;1
+385;3;42032;U16;;Filter ing time for PF-U volta ge dete ction;filter_ing_time_for_pfu_volta_ge_dete_ction;0.100000;0.000000;s;1
+386;3;42033;U16;;Dry cont act sche dulin g;dry_cont_act_sche_dulin_g;1.000000;0.000000;;1
+387;3;42034;U16;;Audi ble and visua l alar m;audi_ble_and_visua_l_alar_m;1.000000;0.000000;;1
+388;3;42040;U16;;Freq uenc y Activ e Pow er Dera ting Reco very Dela y Time;freq_uenc_y_activ_e_pow_er_dera_ting_reco_very_dela_y_time;1.000000;0.000000;s;1
+389;3;42041;U16;;Freq uenc y Activ e Pow er Dera ting Effec tive Dela y Time;freq_uenc_y_activ_e_pow_er_dera_ting_effec_tive_dela_y_time;1.000000;0.000000;ms;1
+390;3;42042;U16;;Freq uenc y activ e pow er dera ting hyst eresi s;freq_uenc_y_activ_e_pow_er_dera_ting_hyst_eresi_s;1.000000;0.000000;;1
+391;3;42043;U16;;Freq uenc y mod ulati on cont rol resp onse dead band;freq_uenc_y_mod_ulati_on_cont_rol_resp_onse_dead_band;0.001000;0.000000;Hz;1
+392;3;42044;U16;;Off- grid switc hove r mod e;off_grid_switc_hove_r_mod_e;1.000000;0.000000;;1
+393;3;42045;U16;;Off- grid mod e;off_grid_mod_e;1.000000;0.000000;;1
+394;3;42046;U16;;PQ mod e;pq_mod_e;1.000000;0.000000;;1
+395;3;42047;U16;;PV Pane l Type;pv_pane_l_type;1.000000;0.000000;;1
+396;3;42048;U16;;PID com pens atio n direc tion;pid_com_pens_atio_n_direc_tion;1.000000;0.000000;;1
+397;3;42049;U16;;Strin g conn ectio n mod e;strin_g_conn_ectio_n_mod_e;1.000000;0.000000;;1
+398;3;42050;U16;;Isola tion Setti ngs;isola_tion_setti_ngs;1.000000;0.000000;;1
+399;3;42051;U16;;Freq uenc y mod ulati on cont rol pow er chan ge gradi ent;freq_uenc_y_mod_ulati_on_cont_rol_pow_er_chan_ge_gradi_ent;1.000000;0.000000;'%/ mi n;1
+400;3;42052;U16;;Freq uenc y mod ulati on cont rol pow er chan ge limiti ng ampl itude;freq_uenc_y_mod_ulati_on_cont_rol_pow_er_chan_ge_limiti_ng_ampl_itude;0.100000;0.000000;%;1
+401;3;42053;U16;;FM cont rol dela y resp onse time;fm_cont_rol_dela_y_resp_onse_time;1.000000;0.000000;ms;1
+402;3;42054;U16;;MPP T mult imod al scan ning;mpp_t_mult_imod_al_scan_ning;1.000000;0.000000;;1
+403;3;42055;U16;;MPP T scan ning inter val;mpp_t_scan_ning_inter_val;1.000000;0.000000;mi n;1
+404;3;42056;U32;;Predi cted MPP T pow er;predi_cted_mpp_t_pow_er;0.001000;0.000000;k W;4
+405;3;42061;U16;;Pow er grid fault reco very auto mati c start up;pow_er_grid_fault_reco_very_auto_mati_c_start_up;1.000000;0.000000;;1
+406;3;42062;U16;;Pow er limit 0% shut dow n;pow_er_limit_0_shut_dow_n;1.000000;0.000000;;1
+407;3;42063;U16;;Auto mati c pow er- off whe n com mun icati on is disco nnec ted;auto_mati_c_pow_er_off_whe_n_com_mun_icati_on_is_disco_nnec_ted;1.000000;0.000000;;1
+408;3;42064;U16;;Auto mati c pow er- on after com mun icati on reco very;auto_mati_c_pow_er_on_after_com_mun_icati_on_reco_very;1.000000;0.000000;;1
+409;3;42065;U16;;Pow er Qual ity Opti miza tion Mod e;pow_er_qual_ity_opti_miza_tion_mod_e;1.000000;0.000000;;1
+410;3;42066;U16;;RCD Enha nce men t;rcd_enha_nce_men_t;1.000000;0.000000;;1
+411;3;42067;U16;;Nigh t react ive pow er;nigh_t_react_ive_pow_er;1.000000;0.000000;;1
+412;3;42068;U16;;Abn orm al grou ndin g shut dow n;abn_orm_al_grou_ndin_g_shut_dow_n;1.000000;0.000000;;1
+413;3;42069;U16;;Nigh t PID prot ectio n;nigh_t_pid_prot_ectio_n;1.000000;0.000000;;1
+414;3;42070;U16;;Nigh t react ive pow er para mete rs take effec t;nigh_t_react_ive_pow_er_para_mete_rs_take_effec_t;1.000000;0.000000;;1
+415;3;42072;U16;;Com mun icati on Disc onne ction Dete ction Time;com_mun_icati_on_disc_onne_ction_dete_ction_time;1.000000;0.000000;s;1
+416;3;42073;U16;;AFCI;afci;1.000000;0.000000;;1
+417;3;42074;U16;;AFCI dete ction adap tatio n mod e;afci_dete_ction_adap_tatio_n_mod_e;1.000000;0.000000;;1
+418;3;42075;U16;;Com mun icati on link failu re prot ectio n;com_mun_icati_on_link_failu_re_prot_ectio_n;1.000000;0.000000;;1
+419;3;42076;U16;;Failu re prot ectio n activ e pow er mod e;failu_re_prot_ectio_n_activ_e_pow_er_mod_e;1.000000;0.000000;;1
+420;3;42077;U32;;Activ e Pow er Limit for Failu re Prot ectio n [kW] [Low Preci sion];activ_e_pow_er_limit_for_failu_re_prot_ectio_n_kw_low_preci_sion;0.100000;0.000000;k W;1
+421;3;42079;U16;;Failu re prot ectio n react ive pow er mod e;failu_re_prot_ectio_n_react_ive_pow_er_mod_e;1.000000;0.000000;;1
+422;3;42080;U16;;Freq uenc y rate prot ectio n;freq_uenc_y_rate_prot_ectio_n;1.000000;0.000000;;1
+423;3;42081;U16;;Freq uenc y chan ge rate prot ectio n poin t;freq_uenc_y_chan_ge_rate_prot_ectio_n_poin_t;0.100000;0.000000;Hz /s;1
+424;3;42082;U16;;Freq uenc y chan ge rate prot ectio n time;freq_uenc_y_chan_ge_rate_prot_ectio_n_time;0.100000;0.000000;s;1
+425;3;42083;I16;;Reac tive pow er limit for failu re prot ectio n [Q/S ] [low preci sion];reac_tive_pow_er_limit_for_failu_re_prot_ectio_n_qs_low_preci_sion;0.001000;0.000000;;1
+426;3;42084;U16;;Pow er- on volta ge uppe r limit for grid conn ectio n;pow_er_on_volta_ge_uppe_r_limit_for_grid_conn_ectio_n;0.100000;0.000000;V;1
+427;3;42085;U16;;Pow er- on volta ge lowe r limit for grid conn ectio n;pow_er_on_volta_ge_lowe_r_limit_for_grid_conn_ectio_n;0.100000;0.000000;V;1
+428;3;42086;U16;;Pow er- on freq uenc y uppe r limit for grid conn ectio n;pow_er_on_freq_uenc_y_uppe_r_limit_for_grid_conn_ectio_n;0.010000;0.000000;Hz;1
+429;3;42087;U16;;Pow er- on freq uenc y lowe r limit for grid conn ectio n;pow_er_on_freq_uenc_y_lowe_r_limit_for_grid_conn_ectio_n;0.010000;0.000000;Hz;1
+430;3;42088;U16;;Pow er grid reco nnec tion volta ge uppe r limit;pow_er_grid_reco_nnec_tion_volta_ge_uppe_r_limit;0.100000;0.000000;V;1
+431;3;42089;U16;;Pow er Grid Reco nnec tion Volt age Low er Thre shol d;pow_er_grid_reco_nnec_tion_volt_age_low_er_thre_shol_d;0.100000;0.000000;V;1
+432;3;42090;U16;;Pow er grid reco nnec tion freq uenc y uppe r limit;pow_er_grid_reco_nnec_tion_freq_uenc_y_uppe_r_limit;0.010000;0.000000;Hz;1
+433;3;42091;U16;;Pow er grid reco nnec tion freq uenc y lowe r limit;pow_er_grid_reco_nnec_tion_freq_uenc_y_lowe_r_limit;0.010000;0.000000;Hz;1
+434;3;42092;U16;;Auto mati c Pow er Grid Reco nnec tion Time;auto_mati_c_pow_er_grid_reco_nnec_tion_time;1.000000;0.000000;s;1
+435;3;42097;U16;;Insul atio n impe danc e prot ectio n poin t;insul_atio_n_impe_danc_e_prot_ectio_n_poin_t;0.001000;0.000000;M Ω;1
+436;3;42098;U16;;Volt age unba lanc e prot ectio n thres hold;volt_age_unba_lanc_e_prot_ectio_n_thres_hold;0.100000;0.000000;%;1
+437;3;42099;U16;;Phas e prot ectio n poin t;phas_e_prot_ectio_n_poin_t;0.100000;0.000000;°;1
+438;3;42100;U16;;Pow er- on soft start time due to pow er grid fault s;pow_er_on_soft_start_time_due_to_pow_er_grid_fault_s;1.000000;0.000000;s;1
+439;3;42101;U16;;Cos? - P/Pn trigg er volta ge;cos_ppn_trigg_er_volta_ge;1.000000;0.000000;%;1
+440;3;42102;U16;;Cos? - P/Pn exit volta ge;cos_ppn_exit_volta_ge;1.000000;0.000000;%;1
+441;3;42103;U16;;Start up soft start time;start_up_soft_start_time;1.000000;0.000000;s;1
+442;3;42104;U16;;Pow er grid fault reco very time;pow_er_grid_fault_reco_very_time;1.000000;0.000000;s;1
+443;3;42105;U32;;Time for dete rmin ing short - term pow er grid inter rupti on;time_for_dete_rmin_ing_short_term_pow_er_grid_inter_rupti_on;1.000000;0.000000;ms;1
+444;3;42107;U32;;Shut dow n gradi ent;shut_dow_n_gradi_ent;0.001000;0.000000;'%/ s;1
+445;3;42109;U16;;Line loss com pens atio n;line_loss_com_pens_atio_n;0.100000;0.000000;%;1
+446;3;42110;U16;;Grid fault zero curre nt mod e;grid_fault_zero_curre_nt_mod_e;1.000000;0.000000;;1
+447;3;42111;U16;;Grid volta ge jump trigg er thres hold;grid_volta_ge_jump_trigg_er_thres_hold;0.100000;0.000000;%;1
+448;3;42112;U16;;HVR T;hvr_t;1.000000;0.000000;;1
+449;3;42113;U16;;HVR T Trigg er Thre shol d;hvr_t_trigg_er_thre_shol_d;0.100000;0.000000;V;1
+450;3;42114;U16;;HVR T posit ive sequ ence react ive pow er com pens atio n facto r;hvr_t_posit_ive_sequ_ence_react_ive_pow_er_com_pens_atio_n_facto_r;0.100000;0.000000;;1
+451;3;42115;U16;;V phas e to grou nd;v_phas_e_to_grou_nd;1.000000;0.000000;;1
+452;3;42116;U16;;Shor t- term pow er grid inter rupti on and quic k start up;shor_t_term_pow_er_grid_inter_rupti_on_and_quic_k_start_up;1.000000;0.000000;;1
+453;3;42118;U16;;LVRT activ e curre nt main tena nce coeff icien t;lvrt_activ_e_curre_nt_main_tena_nce_coeff_icien_t;0.010000;0.000000;;1
+454;3;42119;U16;;LVRT;lvrt;1.000000;0.000000;;1
+455;3;42120;U16;;LVRT Trigg er Thre shol d;lvrt_trigg_er_thre_shol_d;0.100000;0.000000;V;1
+456;3;42121;U16;;Pow er grid volta ge prot ectio n shiel d duri ng VRT;pow_er_grid_volta_ge_prot_ectio_n_shiel_d_duri_ng_vrt;1.000000;0.000000;;1
+457;3;42122;U16;;LVRT posit ive sequ ence react ive pow er com pens atio n facto r;lvrt_posit_ive_sequ_ence_react_ive_pow_er_com_pens_atio_n_facto_r;0.100000;0.000000;;1
+458;3;42123;U16;;VRT exit hyst eresi s thres hold;vrt_exit_hyst_eresi_s_thres_hold;0.100000;0.000000;V;1
+459;3;42124;U16;;VRT activ e curre nt limiti ng perc enta ge;vrt_activ_e_curre_nt_limiti_ng_perc_enta_ge;1.000000;0.000000;%;1
+460;3;42125;U16;;VRT activ e pow er reco very gradi ent;vrt_activ_e_pow_er_reco_very_gradi_ent;1.000000;0.000000;'%/ s;1
+461;3;42126;U16;;HVR T nega tive sequ ence react ive com pens atio n facto r;hvr_t_nega_tive_sequ_ence_react_ive_com_pens_atio_n_facto_r;0.100000;0.000000;;1
+462;3;42127;U16;;LVRT nega tive sequ ence react ive pow er com pens atio n facto r;lvrt_nega_tive_sequ_ence_react_ive_pow_er_com_pens_atio_n_facto_r;0.100000;0.000000;;1
+463;3;42128;U16;;phas e angl e devi atio n prot ectio n;phas_e_angl_e_devi_atio_n_prot_ectio_n;1.000000;0.000000;;1
+464;3;42129;U16;;Activ e Islan ding Prot ectio n;activ_e_islan_ding_prot_ectio_n;1.000000;0.000000;;1
+465;3;42130;U16;;Passi ve Islan ding Prot ectio n;passi_ve_islan_ding_prot_ectio_n;1.000000;0.000000;;1
+466;3;42131;U16;;OVG R Asso ciate d Shut dow n;ovg_r_asso_ciate_d_shut_dow_n;1.000000;0.000000;;1
+467;3;42132;U16;;Dry cont act func tion;dry_cont_act_func_tion;1.000000;0.000000;;1
+468;3;42133;U16;;LVRT react ive curre nt limiti ng perc enta ge;lvrt_react_ive_curre_nt_limiti_ng_perc_enta_ge;1.000000;0.000000;%;1
+469;3;42134;U16;;LVRT zero curre nt mod e thres hold;lvrt_zero_curre_nt_mod_e_thres_hold;0.100000;0.000000;V;1
+470;3;42135;U16;;LVRT mod e;lvrt_mod_e;1.000000;0.000000;;1
+471;3;42136;U16;;RCD curre nt limit;rcd_curre_nt_limit;0.100000;0.000000;m A;1
+472;3;42138;U16;;Volt age rise supp ressi on;volt_age_rise_supp_ressi_on;1.000000;0.000000;;1
+473;3;42139;U16;;Volt age rise supp ressi on react ive pow er adju stme nt poin t;volt_age_rise_supp_ressi_on_react_ive_pow_er_adju_stme_nt_poin_t;0.100000;0.000000;%;1
+474;3;42140;U16;;Volt age rise supp ressi on activ e dera ting thres hold;volt_age_rise_supp_ressi_on_activ_e_dera_ting_thres_hold;0.100000;0.000000;%;1
+475;3;42141;U16;;freq uenc y mod ulati on cont rol;freq_uenc_y_mod_ulati_on_cont_rol;1.000000;0.000000;;1
+476;3;42142;U16;;freq uenc y mod ulati on cont rol diffe renti al mod ulati on rate;freq_uenc_y_mod_ulati_on_cont_rol_diffe_renti_al_mod_ulati_on_rate;1.000000;0.000000;%;1
+477;3;42143;U16;;Over freq uenc y dera ting;over_freq_uenc_y_dera_ting;1.000000;0.000000;;1
+478;3;42144;U16;;Over freq uenc y dera ting cutof f freq uenc y;over_freq_uenc_y_dera_ting_cutof_f_freq_uenc_y;0.010000;0.000000;Hz;1
+479;3;42145;U16;;Over freq uenc y dera ting cut- off pow er;over_freq_uenc_y_dera_ting_cut_off_pow_er;1.000000;0.000000;%;1
+480;3;42146;U16;;Trigg ering freq uenc y of overf requ ency dera ting;trigg_ering_freq_uenc_y_of_overf_requ_ency_dera_ting;0.010000;0.000000;Hz;1
+481;3;42147;U16;;Over freq uenc y dera ting exit freq uenc y;over_freq_uenc_y_dera_ting_exit_freq_uenc_y;0.010000;0.000000;Hz;1
+482;3;42148;U16;;Over freq uenc y dera ting pow er reco very gradi ent;over_freq_uenc_y_dera_ting_pow_er_reco_very_gradi_ent;1.000000;0.000000;'%/ mi n;1
+483;3;42151;U16;;Und erfre quen cy Pow er Incre ase;und_erfre_quen_cy_pow_er_incre_ase;1.000000;0.000000;;1
+484;3;42152;U16;;Und erfre quen cy Pow er Incre ase Reco very Grad ient;und_erfre_quen_cy_pow_er_incre_ase_reco_very_grad_ient;1.000000;0.000000;'%/ mi n;1
+485;3;42176;U16;;Cutof f freq uenc y of unde rfreq uenc y pow er incre ase;cutof_f_freq_uenc_y_of_unde_rfreq_uenc_y_pow_er_incre_ase;0.010000;0.000000;Hz;1
+486;3;42177;U16;;Cut- off pow er for unde rfreq uenc y pow er incre ase;cut_off_pow_er_for_unde_rfreq_uenc_y_pow_er_incre_ase;1.000000;0.000000;%;1
+487;3;42178;U16;;Und erfre quen cy Pow er Incre ase Trigg ering Freq uenc y;und_erfre_quen_cy_pow_er_incre_ase_trigg_ering_freq_uenc_y;0.010000;0.000000;Hz;1
+488;3;42179;U16;;Und erfre quen cy Pow er Incre ase Exit Freq uenc y;und_erfre_quen_cy_pow_er_incre_ase_exit_freq_uenc_y;0.010000;0.000000;Hz;1
+489;3;42180;U16;;Built -in PID mod e;built_in_pid_mod_e;1.000000;0.000000;;1
+490;3;42181;I16;;PID outp ut volta ge;pid_outp_ut_volta_ge;0.100000;0.000000;V;1
+491;3;42182;U16;;PID;pid;1.000000;0.000000;;1
+492;3;42183;U16;;Nigh t off- grid repai r;nigh_t_off_grid_repai_r;1.000000;0.000000;;1
+493;3;42192;U32;;Activ e pow er chan ge gradi ent;activ_e_pow_er_chan_ge_gradi_ent_1;0.001000;0.000000;'%/ s;1
+494;3;42242;U16;;P-U curv e adju stme nt time;pu_curv_e_adju_stme_nt_time;0.010000;0.000000;s;1
+495;3;42287;U16;;Und ervol tage prot ectio n thres hold for 10 min utes;und_ervol_tage_prot_ectio_n_thres_hold_for_10_min_utes;0.100000;0.000000;V;1
+496;3;42288;U32;;Ten- min ute unde rvolt age prot ectio n time;ten_min_ute_unde_rvolt_age_prot_ectio_n_time;1.000000;0.000000;ms;1
+497;3;42290;U16;;Ten- min ute over volta ge prot ectio n thres hold;ten_min_ute_over_volta_ge_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+498;3;42291;U32;;Ten- min ute over volta ge prot ectio n time;ten_min_ute_over_volta_ge_prot_ectio_n_time;1.000000;0.000000;ms;1
+499;3;42293;U16;;Leve l-1 over volta ge prot ectio n thres hold;leve_l1_over_volta_ge_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+500;3;42294;U32;;Leve l-1 over volta ge prot ectio n time;leve_l1_over_volta_ge_prot_ectio_n_time;1.000000;0.000000;ms;1
+501;3;42296;U16;;Leve l-2 over volta ge prot ectio n thres hold;leve_l2_over_volta_ge_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+502;3;42297;U32;;Leve l 2 Over volta ge Prot ectio n Time;leve_l_2_over_volta_ge_prot_ectio_n_time;1.000000;0.000000;ms;1
+503;3;42299;U16;;Leve l-3 over volta ge prot ectio n thres hold;leve_l3_over_volta_ge_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+504;3;42300;U32;;Leve l-3 over volta ge prot ectio n time;leve_l3_over_volta_ge_prot_ectio_n_time;1.000000;0.000000;ms;1
+505;3;42302;U16;;Leve l-4 over volta ge prot ectio n thres hold;leve_l4_over_volta_ge_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+506;3;42303;U32;;Leve l-4 over volta ge prot ectio n time;leve_l4_over_volta_ge_prot_ectio_n_time;1.000000;0.000000;ms;1
+507;3;42305;U16;;Leve l-5 over volta ge prot ectio n thres hold;leve_l5_over_volta_ge_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+508;3;42306;U32;;Leve l-5 over volta ge prot ectio n time;leve_l5_over_volta_ge_prot_ectio_n_time;1.000000;0.000000;ms;1
+509;3;42308;U16;;Leve l-6 over volta ge prot ectio n thres hold;leve_l6_over_volta_ge_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+510;3;42309;U32;;Leve l-6 over volta ge prot ectio n time;leve_l6_over_volta_ge_prot_ectio_n_time;1.000000;0.000000;ms;1
+511;3;42311;U16;;Leve l-1 unde rvolt age prot ectio n thres hold;leve_l1_unde_rvolt_age_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+512;3;42312;U32;;Leve l-1 Und ervol tage Prot ectio n Time;leve_l1_und_ervol_tage_prot_ectio_n_time;1.000000;0.000000;ms;1
+513;3;42314;U16;;Leve l-2 unde rvolt age prot ectio n thres hold;leve_l2_unde_rvolt_age_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+514;3;42315;U32;;Leve l 2 Und ervol tage Prot ectio n Time;leve_l_2_und_ervol_tage_prot_ectio_n_time;1.000000;0.000000;ms;1
+515;3;42317;U16;;Leve l-3 unde rvolt age prot ectio n thres hold;leve_l3_unde_rvolt_age_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+516;3;42318;U32;;Leve l-3 Und ervol tage Prot ectio n Time;leve_l3_und_ervol_tage_prot_ectio_n_time;1.000000;0.000000;ms;1
+517;3;42320;U16;;Leve l-4 unde rvolt age prot ectio n thres hold;leve_l4_unde_rvolt_age_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+518;3;42321;U32;;Leve l-4 Und ervol tage Prot ectio n Time;leve_l4_und_ervol_tage_prot_ectio_n_time;1.000000;0.000000;ms;1
+519;3;42323;U16;;Leve l-5 unde rvolt age prot ectio n thres hold;leve_l5_unde_rvolt_age_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+520;3;42324;U32;;Leve l-5 Und ervol tage Prot ectio n Time;leve_l5_und_ervol_tage_prot_ectio_n_time;1.000000;0.000000;ms;1
+521;3;42326;U16;;Leve l-6 unde rvolt age prot ectio n thres hold;leve_l6_unde_rvolt_age_prot_ectio_n_thres_hold;0.100000;0.000000;V;1
+522;3;42327;U32;;Leve l-6 Und ervol tage Prot ectio n Time;leve_l6_und_ervol_tage_prot_ectio_n_time;1.000000;0.000000;ms;1
+523;3;42329;U16;;Leve l-1 overf requ ency prot ectio n thres hold;leve_l1_overf_requ_ency_prot_ectio_n_thres_hold;0.010000;0.000000;Hz;1
+524;3;42330;U32;;Leve l-1 Over freq uenc y Prot ectio n Time;leve_l1_over_freq_uenc_y_prot_ectio_n_time;1.000000;0.000000;ms;1
+525;3;42332;U16;;Leve l-2 overf requ ency prot ectio n thres hold;leve_l2_overf_requ_ency_prot_ectio_n_thres_hold;0.010000;0.000000;Hz;1
+526;3;42333;U32;;Leve l-2 overf requ ency prot ectio n time;leve_l2_overf_requ_ency_prot_ectio_n_time;1.000000;0.000000;ms;1
+527;3;42335;U16;;Leve l-3 overf requ ency prot ectio n thres hold;leve_l3_overf_requ_ency_prot_ectio_n_thres_hold;0.010000;0.000000;Hz;1
+528;3;42336;U32;;Leve l-3 overf requ ency prot ectio n time;leve_l3_overf_requ_ency_prot_ectio_n_time;1.000000;0.000000;ms;1
+529;3;42338;U16;;Leve l-4 overf requ ency prot ectio n thres hold;leve_l4_overf_requ_ency_prot_ectio_n_thres_hold;0.010000;0.000000;Hz;1
+530;3;42339;U32;;Leve l-4 overf requ ency prot ectio n time;leve_l4_overf_requ_ency_prot_ectio_n_time;1.000000;0.000000;ms;1
+531;3;42341;U16;;Leve l-5 overf requ ency prot ectio n thres hold;leve_l5_overf_requ_ency_prot_ectio_n_thres_hold;0.010000;0.000000;Hz;1
+532;3;42342;U32;;Leve l-5 overf requ ency prot ectio n time;leve_l5_overf_requ_ency_prot_ectio_n_time;1.000000;0.000000;ms;1
+533;3;42344;U16;;Leve l-6 overf requ ency prot ectio n thres hold;leve_l6_overf_requ_ency_prot_ectio_n_thres_hold;0.010000;0.000000;Hz;1
+534;3;42345;U32;;Six- level overf requ ency prot ectio n time;six_level_overf_requ_ency_prot_ectio_n_time;1.000000;0.000000;ms;1
+535;3;42347;U16;;Leve l-1 unde rfreq uenc y prot ectio n thres hold;leve_l1_unde_rfreq_uenc_y_prot_ectio_n_thres_hold;0.010000;0.000000;Hz;1
+536;3;42348;U32;;Leve l-1 Und erfre quen cy Prot ectio n Time;leve_l1_und_erfre_quen_cy_prot_ectio_n_time;1.000000;0.000000;ms;1
+537;3;42350;U16;;Leve l-2 unde rfreq uenc y prot ectio n thres hold;leve_l2_unde_rfreq_uenc_y_prot_ectio_n_thres_hold;0.010000;0.000000;Hz;1
+538;3;42351;U32;;Leve l-2 unde rfreq uenc y prot ectio n time;leve_l2_unde_rfreq_uenc_y_prot_ectio_n_time;1.000000;0.000000;ms;1
+539;3;42353;U16;;Leve l-3 unde rfreq uenc y prot ectio n thres hold;leve_l3_unde_rfreq_uenc_y_prot_ectio_n_thres_hold;0.010000;0.000000;Hz;1
+540;3;42354;U32;;Leve l-3 unde rfreq uenc y prot ectio n time;leve_l3_unde_rfreq_uenc_y_prot_ectio_n_time;1.000000;0.000000;ms;1
+541;3;42356;U16;;Leve l-4 unde rfreq uenc y prot ectio n thres hold;leve_l4_unde_rfreq_uenc_y_prot_ectio_n_thres_hold;0.010000;0.000000;Hz;1
+542;3;42357;U32;;Leve l-4 Und erfre quen cy Prot ectio n Time;leve_l4_und_erfre_quen_cy_prot_ectio_n_time;1.000000;0.000000;ms;1
+543;3;42359;U16;;Leve l-5 unde rfreq uenc y prot ectio n thres hold;leve_l5_unde_rfreq_uenc_y_prot_ectio_n_thres_hold;0.010000;0.000000;Hz;1
+544;3;42360;U32;;Leve l-5 Und erfre quen cy Prot ectio n Time;leve_l5_und_erfre_quen_cy_prot_ectio_n_time;1.000000;0.000000;ms;1
+545;3;42362;U16;;Leve l-6 unde rfreq uenc y prot ectio n thres hold;leve_l6_unde_rfreq_uenc_y_prot_ectio_n_thres_hold;0.010000;0.000000;Hz;1
+546;3;42363;U32;;Leve l-6 Und erfre quen cy Prot ectio n Time;leve_l6_und_erfre_quen_cy_prot_ectio_n_time;1.000000;0.000000;ms;1
+547;3;42400;U16;;Eme rgen cy stop switc h DI;eme_rgen_cy_stop_switc_h_di;1.000000;0.000000;;1
+548;3;42403;U16;;Outp ut impe danc e enha nce men t;outp_ut_impe_danc_e_enha_nce_men_t;1.000000;0.000000;;1
+549;3;42404;U16;;Outp ut impe danc e enha nce men t freq uenc y poin t;outp_ut_impe_danc_e_enha_nce_men_t_freq_uenc_y_poin_t;0.100000;0.000000;Hz;1
+550;3;42407;U16;;Micr ogri d adap tabili ty;micr_ogri_d_adap_tabili_ty;1.000000;0.000000;;1
+551;3;42409;U16;;Oper atin g mod e;oper_atin_g_mod_e_1;1.000000;0.000000;;1
+552;3;42429;U16;;Und erfre quen cy Pow er Incre ase Effec tive Dela y Time;und_erfre_quen_cy_pow_er_incre_ase_effec_tive_dela_y_time;1.000000;0.000000;ms;1
+553;3;42432;U16;;Strin g-to- grou nd short circu it prot ectio n auto mati c reco very;strin_gto_grou_nd_short_circu_it_prot_ectio_n_auto_mati_c_reco_very;1.000000;0.000000;;1
+554;3;42590;U16;;Dela yed upgr ade;dela_yed_upgr_ade;1.000000;0.000000;;1
+555;3;42594;U16;;Intell igent strin g moni torin g;intell_igent_strin_g_moni_torin_g;1.000000;0.000000;;1
+556;3;42595;U16;;Strin g dete ction refer ence asy mm etry coeff icien t;strin_g_dete_ction_refer_ence_asy_mm_etry_coeff_icien_t;0.010000;0.000000;;1
+557;3;42596;U16;;Strin g dete ction start pow er perc enta ge;strin_g_dete_ction_start_pow_er_perc_enta_ge;1.000000;0.000000;%;1
+558;3;42597;I16;;Com mun icati on Inter rupti on Time;com_mun_icati_on_inter_rupti_on_time;1.000000;0.000000;mi n;1
+559;3;42598;U16;;Com mun icati ons;com_mun_icati_ons;1.000000;0.000000;;1
+560;3;42599;U16;;[RS4 85-2 ] Com mun icati on;rs4_852_com_mun_icati_on;1.000000;0.000000;;1
+561;3;42730;U16;;PMI;pmi;1.000000;0.000000;;1
+562;3;42779;U16;;IV Curv e Scan ning;iv_curv_e_scan_ning;1.000000;0.000000;;1
+563;3;42900;U16;;Dayli ght Savi ng Time;dayli_ght_savi_ng_time;1.000000;0.000000;;1
+564;3;42901;I16;;[DST ] Offs et time;dst_offs_et_time;1.000000;0.000000;mi n;1
+565;3;42902;U16;;[DST ] Start Mon th;dst_start_mon_th;1.000000;0.000000;;1
+566;3;42903;U16;;[DST ] Start date;dst_start_date;1.000000;0.000000;;1
+567;3;42904;U16;;[DST ] Start time;dst_start_time;1.000000;0.000000;;1
+568;3;42905;U16;;[DST ] Start min ute;dst_start_min_ute;1.000000;0.000000;;1
+569;3;42906;U16;;[DST ] Start seco nd;dst_start_seco_nd;1.000000;0.000000;;1
+570;3;42907;U16;;[DST ] End mon th;dst_end_mon_th;1.000000;0.000000;;1
+571;3;42908;U16;;[DST ] End date;dst_end_date;1.000000;0.000000;;1
+572;3;42909;U16;;[Day light Savi ng Time ] Ends;day_light_savi_ng_time_ends;1.000000;0.000000;;1
+573;3;42910;U16;;[DST ] End min ute;dst_end_min_ute;1.000000;0.000000;;1
+574;3;42911;U16;;[DST ] End seco nd;dst_end_seco_nd;1.000000;0.000000;;1
+575;3;43000;U16;;[Syst em Time ] Year;syst_em_time_year;1.000000;0.000000;;1
+576;3;43001;U16;;[Syst em Time ] Mon th;syst_em_time_mon_th;1.000000;0.000000;;1
+577;3;43002;U16;;[Syst em time ] day;syst_em_time_day;1.000000;0.000000;;1
+578;3;43003;U16;;[Syst em time ] hour;syst_em_time_hour;1.000000;0.000000;;1
+579;3;43004;U16;;[Syst em Time ] Min.;syst_em_time_min;1.000000;0.000000;;1
+580;3;43005;U16;;[Syst em Time ] Seco nd;syst_em_time_seco_nd;1.000000;0.000000;;1
+581;3;43006;I16;;Time zone;time_zone;1.000000;0.000000;mi n;1
+582;3;43007;U16;;Cloc k sour ce;cloc_k_sour_ce;1.000000;0.000000;;1
+583;3;43008;U32;;City code;city_code;1.000000;0.000000;;1
+584;3;43014;I32;;Inver ter Insta llatio n Posit ion Long itude;inver_ter_insta_llatio_n_posit_ion_long_itude;0.000000;0.000000;°;1
+585;3;43016;I32;;Inver ter Insta llatio n Posit ion Latit ude;inver_ter_insta_llatio_n_posit_ion_latit_ude;0.000000;0.000000;°;1
+586;3;43018;U16;;[RS4 85-1 ] Prot ocol Type;rs4_851_prot_ocol_type;1.000000;0.000000;;1
+587;3;43019;U16;;[RS4 85-1 ] Com mun icati on addr ess;rs4_851_com_mun_icati_on_addr_ess;1.000000;0.000000;;1
+588;3;43020;U16;;[RS4 85-1 ] Baud Rate;rs4_851_baud_rate;1.000000;0.000000;;1
+589;3;43021;U16;;[RS4 85-1 ] Verif icati on mod e;rs4_851_verif_icati_on_mod_e;1.000000;0.000000;;1
+590;3;43022;U16;;[RS4 85-1 ] Port mod e;rs4_851_port_mod_e;1.000000;0.000000;;1
+591;3;43023;U16;;[RS4 85-1 ] Mod bus Prot ocol Mod el Versi on;rs4_851_mod_bus_prot_ocol_mod_el_versi_on;1.000000;0.000000;;1
+592;3;43033;U16;;[RS4 85-2 ] Prot ocol Type;rs4_852_prot_ocol_type;1.000000;0.000000;;1
+593;3;43034;U16;;[RS4 85-2 ] Com mun icati on addr ess;rs4_852_com_mun_icati_on_addr_ess;1.000000;0.000000;;1
+594;3;43035;U16;;[RS4 85-2 ] Baud Rate;rs4_852_baud_rate;1.000000;0.000000;;1
+595;3;43036;U16;;[RS4 85-2 ] Verif icati on Mod e;rs4_852_verif_icati_on_mod_e;1.000000;0.000000;;1
+596;3;43037;U16;;[RS4 85-2 ] Port mod e;rs4_852_port_mod_e;1.000000;0.000000;;1
+597;3;43047;U16;;Prot ocol Type;prot_ocol_type;1.000000;0.000000;;1
+598;3;43048;U16;;Box- type trans form er num ber;box_type_trans_form_er_num_ber;1.000000;0.000000;;1
+599;3;43049;U16;;Win ding No.;win_ding_no;1.000000;0.000000;;1
+600;3;43050;U16;;Mac Offs et;mac_offs_et;1.000000;0.000000;;1
+601;3;43052;U16;;Pow er setti ngs;pow_er_setti_ngs;1.000000;0.000000;dB;1
+602;3;43063;U16;;[Ma nage men t Syst em] TCP Fra me Leng th;ma_nage_men_t_syst_em_tcp_fra_me_leng_th;1.000000;0.000000;;1
+603;3;43064;U16;;[Ma nage men t Syst em] Appl icati on- Laye r Hear tbea t Inter val;ma_nage_men_t_syst_em_appl_icati_on_laye_r_hear_tbea_t_inter_val;1.000000;0.000000;mi n;1
+604;3;43065;U16;;[Ma nage men t Syst em] TCP Hear tbea t Inter val;ma_nage_men_t_syst_em_tcp_hear_tbea_t_inter_val;1.000000;0.000000;s;1
+605;3;43066;U16;;[Ma nage men t Syst em] Prot ocol Type;ma_nage_men_t_syst_em_prot_ocol_type;1.000000;0.000000;;1
+606;3;43067_30;STRING;;[Ma nage men t Syst em] Serv er;ma_nage_men_t_syst_em_serv_er;1.000000;0.000000;;1
+607;3;43097;U16;;[Ma nage men t syste m] Port 1;ma_nage_men_t_syste_m_port_1;1.000000;0.000000;;1
+608;3;43098;U16;;[Ma nage men t Syst em] TLS Encr yptio n;ma_nage_men_t_syst_em_tls_encr_yptio_n;1.000000;0.000000;;1
+609;3;43100;U16;;[Ma nage men t Syst em] Port mod e;ma_nage_men_t_syst_em_port_mod_e;1.000000;0.000000;;1
+610;3;43147;U16;;[STA ] Acce ssing a Wire less Rout er;sta_acce_ssing_a_wire_less_rout_er;1.000000;0.000000;;1
+611;3;43148_16;STRING;;[STA ] Wire less Rout ing Net work Nam e;sta_wire_less_rout_ing_net_work_nam_e;1.000000;0.000000;;1
+612;3;43164;U16;;[STA ] Wire less Rout ing Encr yptio n Mod e;sta_wire_less_rout_ing_encr_yptio_n_mod_e;1.000000;0.000000;;1
+613;3;43165_32;STRING;;[STA ] Wire less Rout er Logi n Pass word;sta_wire_less_rout_er_logi_n_pass_word;1.000000;0.000000;;1
+614;3;43197;U16;;[FE] DHC P;fe_dhc_p;1.000000;0.000000;;1
+615;3;43198;IP;;[FE] IP addr ess;fe_ip_addr_ess;1.000000;0.000000;;1
+616;3;43200;IP;;[FE] Subn et Mas k;fe_subn_et_mas_k;1.000000;0.000000;;1
+617;3;43202;IP;;[FE] Gate way addr ess;fe_gate_way_addr_ess;1.000000;0.000000;;1
+618;3;43204;U32;;[STA ] Prefe rred DNS Serv er;sta_prefe_rred_dns_serv_er;1.000000;0.000000;;1
+619;3;43206;U32;;[STA ] Stan dby DNS serv er;sta_stan_dby_dns_serv_er;1.000000;0.000000;;1
+620;3;43208;U16;;[FE] DHC P;fe_dhc_p_1;1.000000;0.000000;;1
+621;3;43209;U32;;[FE] IP addr ess;fe_ip_addr_ess_1;1.000000;0.000000;;1
+622;3;43211;U32;;[FE] Subn et Mas k;fe_subn_et_mas_k_1;1.000000;0.000000;;1
+623;3;43213;U32;;[FE] Gate way addr ess;fe_gate_way_addr_ess_1;1.000000;0.000000;;1
+624;3;43215;U32;;[FE] Prefe rred DNS serv er;fe_prefe_rred_dns_serv_er;1.000000;0.000000;;1
+625;3;43217;U32;;[FE] Seco ndar y DNS serv er;fe_seco_ndar_y_dns_serv_er;1.000000;0.000000;;1
+626;3;43236;U16;;WLA N O& M Polic y;wla_n_o_m_polic_y;1.000000;0.000000;;1
+627;3;43237;U16;;[AP] SSID broa dcas t;ap_ssid_broa_dcas_t;1.000000;0.000000;;1
+628;3;43238_16;STRING;;[AP] WLA N nam e;ap_wla_n_nam_e;1.000000;0.000000;;1
+629;3;43254_32;STRING;;[AP] WLA N Logi n Pass word;ap_wla_n_logi_n_pass_word;1.000000;0.000000;;1
+630;3;43287;U32;;[AP] Gate way IP addr ess;ap_gate_way_ip_addr_ess;1.000000;0.000000;;1
+631;3;43289;U32;;[AP] subn et mas k;ap_subn_et_mas_k;1.000000;0.000000;;1
+632;3;43311;U16;;[NTP ] NTP time sync hron izati on;ntp_ntp_time_sync_hron_izati_on;1.000000;0.000000;;1
+633;3;43312_30;STRING;;[NTP ] NTP serv er addr ess;ntp_ntp_serv_er_addr_ess;1.000000;0.000000;;1
+634;3;43342;U16;;[NTP ] NTP serv er port;ntp_ntp_serv_er_port;1.000000;0.000000;;1
+635;3;43343;U16;;[NTP ] NTP Servi ce Time Inter val;ntp_ntp_servi_ce_time_inter_val;1.000000;0.000000;mi n;1
+636;3;43349_10;STRING;;Devi ce nam e;devi_ce_nam_e;1.000000;0.000000;;1
+637;3;43359;U16;;[App ] Initia l pow er- on flag;app_initia_l_pow_er_on_flag;1.000000;0.000000;;1
+638;3;43361;U16;;Paral lel com mun icati on mod e;paral_lel_com_mun_icati_on_mod_e;1.000000;0.000000;;1
+639;3;43370;U16;;[4G] 4G mod ule;v_4g_4g_mod_ule;1.000000;0.000000;;1
+640;3;43430;U16;;[4G] Net work mod e;v_4g_net_work_mod_e;1.000000;0.000000;;1
+641;3;43431;U16;;[4G] APN mod e;v_4g_apn_mod_e;1.000000;0.000000;;1
+642;3;43433;U16;;[4G] [Def ault] Iden tity auth entic atio n type;v_4g_def_ault_iden_tity_auth_entic_atio_n_type;1.000000;0.000000;;1
+643;3;43434_16;STRING;;[4G] [Def ault] APN;v_4g_def_ault_apn;1.000000;0.000000;;1
+644;3;43466_16;STRING;;[4G] [Def ault] APN user nam e;v_4g_def_ault_apn_user_nam_e;1.000000;0.000000;;1
+645;3;43482_16;STRING;;[4G] [Def ault] APN user pass word;v_4g_def_ault_apn_user_pass_word;1.000000;0.000000;;1
+646;3;43499;U16;;[4G] Iden tity auth entic atio n type;v_4g_iden_tity_auth_entic_atio_n_type;1.000000;0.000000;;1
+647;3;43500_16;STRING;;[4G] APN;v_4g_apn;1.000000;0.000000;;1
+648;3;43516_16;STRING;;[4G] APN dial- up num ber;v_4g_apn_dial_up_num_ber;1.000000;0.000000;;1
+649;3;43532_16;STRING;;[4G] APN User Nam e;v_4g_apn_user_nam_e;1.000000;0.000000;;1
+650;3;43548_16;STRING;;[4G] APN user pass word;v_4g_apn_user_pass_word;1.000000;0.000000;;1
+651;3;43564;U32;;[4G] Traff ic pack age;v_4g_traff_ic_pack_age;0.010000;0.000000;M B;1
+652;3;43566;U32;;[4G] Mon thly used traffi c;v_4g_mon_thly_used_traffi_c_1;0.010000;0.000000;M B;1
+653;3;43632;U16;;Strin g acce ss dete ction;strin_g_acce_ss_dete_ction;1.000000;0.000000;;1
+654;3;43633;U16;;Start -up curre nt;start_up_curre_nt;0.010000;0.000000;A;1
+655;3;43634;U16;;Two- in- one dete ction start ing curre nt;two_in_one_dete_ction_start_ing_curre_nt;0.010000;0.000000;A;1
+656;3;43635;U16;;Strin g 1 acce ss type;strin_g_1_acce_ss_type;1.000000;0.000000;;1
+657;3;43636;U16;;Strin g 2 Acce ss Type;strin_g_2_acce_ss_type;1.000000;0.000000;;1
+658;3;43637;U16;;Strin g 3 Acce ss Type;strin_g_3_acce_ss_type;1.000000;0.000000;;1
+659;3;43638;U16;;Strin g 4 Acce ss Type;strin_g_4_acce_ss_type;1.000000;0.000000;;1
+660;3;43639;U16;;Strin g 5 Acce ss Type;strin_g_5_acce_ss_type;1.000000;0.000000;;1
+661;3;43640;U16;;Strin g 6 Acce ss Type;strin_g_6_acce_ss_type;1.000000;0.000000;;1
+662;3;43641;U16;;Strin g 7 Acce ss Type;strin_g_7_acce_ss_type;1.000000;0.000000;;1
+663;3;43642;U16;;Strin g 8 Acce ss Type;strin_g_8_acce_ss_type;1.000000;0.000000;;1
+664;3;44000;U16;;Supp ort Syst em Type;supp_ort_syst_em_type_1;1.000000;0.000000;;1
+665;3;44001;U16;;Oper atin g mod e;oper_atin_g_mod_e_2;1.000000;0.000000;;1
+666;3;44002;U16;;Cont rol perio d;cont_rol_perio_d;1.000000;0.000000;mi n;1
+667;3;44003;U16;;Start time of rever se traci ng in the mor ning (hou r);start_time_of_rever_se_traci_ng_in_the_mor_ning_hou_r;1.000000;0.000000;ho ur;1
+668;3;44004;U16;;Start time of rever se traci ng in the mor ning (min utes);start_time_of_rever_se_traci_ng_in_the_mor_ning_min_utes;1.000000;0.000000;mi n;1
+669;3;44005;U16;;Mor ning Back track ing Dura tion Min ute;mor_ning_back_track_ing_dura_tion_min_ute;1.000000;0.000000;mi n;1
+670;3;44010;U16;;Num ber of mot ors cont rolle d simu ltane ousl y;num_ber_of_mot_ors_cont_rolle_d_simu_ltane_ousl_y;1.000000;0.000000;;1
+671;3;44011;U16;;Start time of the rever se traci ng in the even ing (hou r);start_time_of_the_rever_se_traci_ng_in_the_even_ing_hou_r;1.000000;0.000000;ho ur;1
+672;3;44012;U16;;Start time of the rever se traci ng in the even ing (min ute);start_time_of_the_rever_se_traci_ng_in_the_even_ing_min_ute;1.000000;0.000000;mi n;1
+673;3;44013;U16;;Even ing Back track ing Dura tion Min ute;even_ing_back_track_ing_dura_tion_min_ute;1.000000;0.000000;mi n;1
+674;3;44014;U16;;Sens or insta llatio n direc tion;sens_or_insta_llatio_n_direc_tion;1.000000;0.000000;;1
+675;3;44015;U16;;Cont rolle r time sync hron izati on;cont_rolle_r_time_sync_hron_izati_on;1.000000;0.000000;;1
+676;3;44016;U16;;Num ber of cont rol boxe s;num_ber_of_cont_rol_boxe_s;1.000000;0.000000;;1
+677;3;44050;U16;;Total num ber of stent s;total_num_ber_of_stent_s_1;1.000000;0.000000;;1
+678;3;44051;I16;;Insta llatio n Long itude;insta_llatio_n_long_itude;0.010000;0.000000;°;1
+679;3;44052;I16;;Insta llatio n Dim ensi on;insta_llatio_n_dim_ensi_on;0.010000;0.000000;°;1
+680;3;44053;U16;;Cont rol addr ess 1;cont_rol_addr_ess_1;1.000000;0.000000;;1
+681;3;44054;U16;;Cont rol addr ess 2;cont_rol_addr_ess_2;1.000000;0.000000;;1
+682;3;44055;U16;;Sout hbou nd RS48 5 Chec k Mod e;sout_hbou_nd_rs48_5_chec_k_mod_e;1.000000;0.000000;;1
+683;3;44056;U16;;Sout hbou nd RS48 5 baud rate;sout_hbou_nd_rs48_5_baud_rate;1.000000;0.000000;;1
+684;3;44057;I16;;Tilt angl e cont rol uppe r limit;tilt_angl_e_cont_rol_uppe_r_limit;0.010000;0.000000;°;1
+685;3;44058;I16;;Tilt angl e cont rol lowe r limit;tilt_angl_e_cont_rol_lowe_r_limit;0.010000;0.000000;°;1
+686;3;44059;I16;;Upp er limit of azim uth cont rol;upp_er_limit_of_azim_uth_cont_rol;0.010000;0.000000;°;1
+687;3;44060;I16;;Low er limit for azim uth cont rol;low_er_limit_for_azim_uth_cont_rol;0.010000;0.000000;°;1
+688;3;44061;U16;;Sens or 1 addr ess;sens_or_1_addr_ess;1.000000;0.000000;;1
+689;3;44062;U16;;Sens or 2 Addr ess;sens_or_2_addr_ess;1.000000;0.000000;;1
+690;3;44063;U16;;Sens or 3 Addr ess;sens_or_3_addr_ess;1.000000;0.000000;;1
+691;3;44064;U16;;Sens or 4 Addr ess;sens_or_4_addr_ess;1.000000;0.000000;;1
+692;3;44065;U16;;Sens or 5 Addr ess;sens_or_5_addr_ess;1.000000;0.000000;;1
+693;3;44066;U16;;Sens or 6 Addr ess;sens_or_6_addr_ess;1.000000;0.000000;;1
+694;3;44067;U16;;Sens or 7 addr ess;sens_or_7_addr_ess;1.000000;0.000000;;1
+695;3;44068;U16;;Sens or 8 Addr ess;sens_or_8_addr_ess;1.000000;0.000000;;1
+696;3;44069;U16;;Sens or 9 Addr ess;sens_or_9_addr_ess;1.000000;0.000000;;1
+697;3;44070;U16;;Sens or 10 Addr ess;sens_or_10_addr_ess;1.000000;0.000000;;1
+698;3;44071;U16;;Sens or 11 addr ess;sens_or_11_addr_ess;1.000000;0.000000;;1
+699;3;44072;U16;;Sens or 12 Addr ess;sens_or_12_addr_ess;1.000000;0.000000;;1
+700;3;44073;U16;;Sens or 13 addr ess;sens_or_13_addr_ess;1.000000;0.000000;;1
+701;3;44074;U16;;Sens or 14 Addr ess;sens_or_14_addr_ess;1.000000;0.000000;;1
+702;3;44075;U16;;Sens or 15 Addr ess;sens_or_15_addr_ess;1.000000;0.000000;;1
+703;3;44076;U16;;Sens or 16 Addr ess;sens_or_16_addr_ess;1.000000;0.000000;;1
+704;3;44077;U16;;Trac king syste m cont rolle r;trac_king_syste_m_cont_rolle_r_1;1.000000;0.000000;;1
+705;3;44079;U16;;Cont rol addr ess 3;cont_rol_addr_ess_3;1.000000;0.000000;;1
+706;3;44080;U16;;Cont rol addr ess 4;cont_rol_addr_ess_4;1.000000;0.000000;;1
+707;3;44081;U16;;Sout hbou nd RS48 5 stop bit;sout_hbou_nd_rs48_5_stop_bit;1.000000;0.000000;;1
+708;3;44082;U16;;Supp ort Fault Clea ranc e;supp_ort_fault_clea_ranc_e;1.000000;0.000000;;1
+709;3;44083;U16;;GPS time (loca l time ): year;gps_time_loca_l_time_year;1.000000;0.000000;;1
+710;3;44089;U16;;wind spee d;wind_spee_d;1.000000;0.000000;m/ s;1
+711;3;44090;I16;;Time zone;time_zone_1;1.000000;0.000000;mi n;1
+712;3;44091;U16;;Cont rol addr ess 5;cont_rol_addr_ess_5;1.000000;0.000000;;1
+713;3;44092;U16;;Cont rol addr ess 6;cont_rol_addr_ess_6;1.000000;0.000000;;1
+714;3;44093;U16;;Cont rol addr ess 7;cont_rol_addr_ess_7;1.000000;0.000000;;1
+715;3;44094;U16;;Cont rol addr ess 8;cont_rol_addr_ess_8;1.000000;0.000000;;1
+716;3;44095;U16;;Cont rol addr ess 9;cont_rol_addr_ess_9;1.000000;0.000000;;1
+717;3;44096;U16;;Cont rol addr ess 10;cont_rol_addr_ess_10;1.000000;0.000000;;1
+718;3;44097;U16;;Cont rol addr ess 11;cont_rol_addr_ess_11;1.000000;0.000000;;1
+719;3;44098;U16;;Cont rol addr ess 12;cont_rol_addr_ess_12;1.000000;0.000000;;1
+720;3;44099;U16;;Cont rol addr ess 13;cont_rol_addr_ess_13;1.000000;0.000000;;1
+721;3;44100;U16;;Cont rol addr ess 14;cont_rol_addr_ess_14;1.000000;0.000000;;1
+722;3;44101;U16;;Cont rol addr ess 15;cont_rol_addr_ess_15;1.000000;0.000000;;1
+723;3;44102;U16;;Cont rol addr ess 16;cont_rol_addr_ess_16;1.000000;0.000000;;1
+724;3;44103;U16;;Scie nce and Tech nolo gy Jingk e Prot ocol Versi on;scie_nce_and_tech_nolo_gy_jingk_e_prot_ocol_versi_on;1.000000;0.000000;;1
+725;3;44104;U16;;Sens or Rang e;sens_or_rang_e;1.000000;0.000000;°;1
+726;3;44105;U16;;Cont rol preci sion;cont_rol_preci_sion;0.010000;0.000000;°;1
+727;3;44200;I16;;KP;kp;0.010000;0.000000;;1
+728;3;44201;I16;;KI;ki;0.010000;0.000000;;1
+729;3;44202;I16;;KD;kd;0.010000;0.000000;;1
+730;3;44300;U16;;wind spee d;wind_spee_d_1;1.000000;0.000000;m/ s;1
+731;3;44301;U16;;Win d direc tion;win_d_direc_tion;1.000000;0.000000;°;1
+732;3;44302;U16;;Start up cont rol;start_up_cont_rol;1.000000;0.000000;;1
+733;3;44304;U16;;Supp ort Fault Clea ranc e;supp_ort_fault_clea_ranc_e_1;1.000000;0.000000;;1
+734;3;44306;U16;;Stop cont rol;stop_cont_rol;1.000000;0.000000;;1
+735;3;44408;I16;;Tem pera ture 1;tem_pera_ture_1;0.100000;0.000000;°C;1
+736;3;44410;U16;;Hum idity 1;hum_idity_1;0.100000;0.000000;'% RH;1
+737;3;45000;U16;;Rest ore facto ry setti ngs.;rest_ore_facto_ry_setti_ngs;1.000000;0.000000;;1
+738;3;45005;U16;;Alar m clear ance;alar_m_clear_ance;1.000000;0.000000;;1
+739;3;45006;U16;;Alar m mas king;alar_m_mas_king;1.000000;0.000000;;1
+740;3;45007;U16;;AFCI self- chec k start;afci_self_chec_k_start;1.000000;0.000000;;1
+741;3;45008;U32;;Accu mula ted ener gy yield corre ction;accu_mula_ted_ener_gy_yield_corre_ction;0.010000;0.000000;k W h;1
+742;3;45010;U16;;Clea r histo rical batt ery level.;clea_r_histo_rical_batt_ery_level;1.000000;0.000000;;1
+743;3;45011;U16;;Clea r the runn ing time infor mati on.;clea_r_the_runn_ing_time_infor_mati_on;1.000000;0.000000;;1
+744;3;45012;U16;;Spot Chec k;spot_chec_k;1.000000;0.000000;;1
+745;3;45014;U16;;Clea r the flash me mor y.;clea_r_the_flash_me_mor_y;1.000000;0.000000;;1
+746;3;45015;U16;;ESN valid atio n com man d;esn_valid_atio_n_com_man_d;1.000000;0.000000;;1
+747;3;45026;U16;;[STA ] Start scan ning the avail able WLA N list.;sta_start_scan_ning_the_avail_able_wla_n_list;1.000000;0.000000;;1
+748;3;45037;U16;;Alar m port self- chec k start;alar_m_port_self_chec_k_start;1.000000;0.000000;;1
+749;3;45040;U16;;Audi ble and visua l alar m confi rmat ion;audi_ble_and_visua_l_alar_m_confi_rmat_ion;1.000000;0.000000;;1
+750;3;47001;U16;;Box- type trans form er num ber;box_type_trans_form_er_num_ber_1;1.000000;0.000000;;1
+751;3;47002;U16;;Win ding No.;win_ding_no_1;1.000000;0.000000;;1
+752;3;47003;U16;;Mac Offs et;mac_offs_et_1;1.000000;0.000000;;1
+753;3;47004;U16;;Oper atin g mod e;oper_atin_g_mod_e_3;1.000000;0.000000;;1
+754;3;47079;I32;;Pow er limit for grid- tied sites;pow_er_limit_for_grid_tied_sites;1.000000;0.000000;W;1
+755;3;47120;U16;;Opti mize r;opti_mize_r;1.000000;0.000000;;1
+756;3;47126;U16;;Singl e Opti mize r Data Quer y;singl_e_opti_mize_r_data_quer_y;1.000000;0.000000;;1
+757;3;47140;U16;;Phys ical locat ion;phys_ical_locat_ion;1.000000;0.000000;;1
+758;3;47141;U16;;Imp ortin g Logs;imp_ortin_g_logs;1.000000;0.000000;;1
+759;3;47143;U16;;Brok en line dete ction;brok_en_line_dete_ction;1.000000;0.000000;;1
+760;3;47144;U16;;Expo rt com plete logs.;expo_rt_com_plete_logs;1.000000;0.000000;;1
+761;3;47150;U16;;Baud Rate;baud_rate;1.000000;0.000000;;1
+762;3;47151;U16;;Anti- cross talk;anti_cross_talk;1.000000;0.000000;;1
+763;3;47152;U16;;Net work freq uenc y band;net_work_freq_uenc_y_band;1.000000;0.000000;;1
+764;3;47153;U16;;Net work ing;net_work_ing;1.000000;0.000000;;1
+765;3;47154;U16;;Pack et loss rate test;pack_et_loss_rate_test;1.000000;0.000000;;1
+766;3;47156;U16;;Secu rity mod e;secu_rity_mod_e;1.000000;0.000000;;1
+767;3;47157;U16;;Fast pow er- dow n enab le;fast_pow_er_dow_n_enab_le;1.000000;0.000000;;1
+768;3;47158;U16;;Fast Shut dow n Self- Test;fast_shut_dow_n_self_test;1.000000;0.000000;;1
+769;3;47300;U16;;Forw ard pow er;forw_ard_pow_er;1.000000;0.000000;;1
+770;3;47301;U16;;Cabl e conn ectio n posit ion;cabl_e_conn_ectio_n_posit_ion;1.000000;0.000000;;1
+771;3;47302;U16;;CT rate d curre nt;ct_rate_d_curre_nt;1.000000;0.000000;A;1
+772;3;47303;U16;;Met er mod el;met_er_mod_el;1.000000;0.000000;;1
+773;3;47304;U16;;Met er addr ess;met_er_addr_ess;1.000000;0.000000;;1
+774;3;47400;U16;;Enab le auto mati c addr ess alloc atio n.;enab_le_auto_mati_c_addr_ess_alloc_atio_n;1.000000;0.000000;;1
+775;3;47401;U16;;Start addr ess for auto mati c addr ess assig nme nt;start_addr_ess_for_auto_mati_c_addr_ess_assig_nme_nt;1.000000;0.000000;;1
+776;3;47414;U16;;Com mun icati on mod ule addr ess;com_mun_icati_on_mod_ule_addr_ess;1.000000;0.000000;;1
+777;3;47415;U16;;Activ e pow er cont rol mod e;activ_e_pow_er_cont_rol_mod_e;1.000000;0.000000;;1
+778;3;47416;I32;;Maxi mu m pow er fed to the grid (kW);maxi_mu_m_pow_er_fed_to_the_grid_kw;0.001000;0.000000;k W;1
+779;3;47418;I16;;Maxi mu m Feed Grid Pow er (%);maxi_mu_m_feed_grid_pow_er;0.100000;0.000000;%;1
+780;3;47419;U16;;Restr ictio n mod e;restr_ictio_n_mod_e;1.000000;0.000000;;1
+781;3;47420;U16;;Pow er decr ease adju stme nt perio d;pow_er_decr_ease_adju_stme_nt_perio_d;0.100000;0.000000;s;1
+782;3;47421;U16;;Maxi mu m prot ectio n time;maxi_mu_m_prot_ectio_n_time;0.100000;0.000000;s;1
+783;3;47422;U32;;Pow er Incre ase Thre shol d;pow_er_incre_ase_thre_shol_d;0.001000;0.000000;k W;1
+784;3;47424;I16;;Activ e pow er limit for fail prot ectio n [%] [low preci sion];activ_e_pow_er_limit_for_fail_prot_ectio_n_low_preci_sion;0.100000;0.000000;%;1
+785;3;47425;U16;;react ive pow er cont rol mod e;react_ive_pow_er_cont_rol_mod_e;1.000000;0.000000;;1
+786;3;47426;I32;;Reac tive fixed valu e;reac_tive_fixed_valu_e;0.001000;0.000000;kV ar;1
+787;3;47428;I16;;targ et pow er facto r;targ_et_pow_er_facto_r;0.001000;0.000000;;1
+788;3;47429;U16;;Reac tive pow er adju stme nt perio d;reac_tive_pow_er_adju_stme_nt_perio_d;0.100000;0.000000;s;1
+789;3;47430;U16;;Adju sting Dea d Zone;adju_sting_dea_d_zone;0.001000;0.000000;;1
+790;3;47431;U16;;Com pens atin g dela y;com_pens_atin_g_dela_y;0.100000;0.000000;s;1
+791;3;47432;I16;;Failu re prot ectio n react ive pow er limit [PF];failu_re_prot_ectio_n_react_ive_pow_er_limit_pf;0.001000;0.000000;;1
+792;3;47433;U32;;Plan t capa city;plan_t_capa_city;0.001000;0.000000;k W;1
+793;3;47435;U32;;Pow er plan t DC capa city;pow_er_plan_t_dc_capa_city;0.001000;0.000000;k W;1
+794;3;47437;U16;;[Re mot e Outp ut] Certif icate;re_mot_e_outp_ut_certif_icate;1.000000;0.000000;;1
+795;3;47451_30;STRING;;[Re mot e outp ut] Rem ote outp ut cont rol serv er;re_mot_e_outp_ut_rem_ote_outp_ut_cont_rol_serv_er;1.000000;0.000000;;1
+796;3;47481;U16;;[Re mot e Outp ut] Rem ote Outp ut Cont rol Time;re_mot_e_outp_ut_rem_ote_outp_ut_cont_rol_time;1.000000;0.000000;mi n;1
+797;3;47482;U16;;[Re mot e outp ut] Con necti ng to the disp atch serv er;re_mot_e_outp_ut_con_necti_ng_to_the_disp_atch_serv_er;1.000000;0.000000;;1
+798;3;47483;U16;;close d loop cont rolle r;close_d_loop_cont_rolle_r;1.000000;0.000000;;1
+799;3;47594;U16;;[Loc al Acce ss] Link Enab led;loc_al_acce_ss_link_enab_led;1.000000;0.000000;;1
+800;3;47595;IP;;[Loc al acce ss] Clien t 1 IP addr ess;loc_al_acce_ss_clien_t_1_ip_addr_ess;1.000000;0.000000;;1
+801;3;47674;U16;;Sche dule Task;sche_dule_task;1.000000;0.000000;;1
+802;3;47675;I32;;Maxi mu m Feed Grid Pow er Defa ult;maxi_mu_m_feed_grid_pow_er_defa_ult;0.001000;0.000000;k W;1
+803;3;47677;U32;;Defa ult activ e pow er chan ge gradi ent;defa_ult_activ_e_pow_er_chan_ge_gradi_ent;0.001000;0.000000;'%/ s;1
+804;3;47950;U16;;Feed ing pow er over- thres hold prot ectio n shut dow n;feed_ing_pow_er_over_thres_hold_prot_ectio_n_shut_dow_n;1.000000;0.000000;1;1
+805;3;47951;I32;;Feed thres hold - cross ing prot ectio n shut dow n thres hold;feed_thres_hold_cross_ing_prot_ectio_n_shut_dow_n_thres_hold;1.000000;0.000000;10 00;1
+806;3;47953;U16;;Feed thres hold - cross ing prot ectio n shut dow n time;feed_thres_hold_cross_ing_prot_ectio_n_shut_dow_n_time;1.000000;0.000000;1;1
+807;3;48021;U16;;[Ma nage men t Syst em - 1] Man age men t Syst em Acce ss;ma_nage_men_t_syst_em_1_man_age_men_t_syst_em_acce_ss;1.000000;0.000000;N/ A;1
+808;3;48087;U16;;[Ma nage men t Syst em- 1] Prot ocol Type;ma_nage_men_t_syst_em_1_prot_ocol_type;1.000000;0.000000;;1
+809;3;48090;U16;;Grou nd short circu it prot ectio n;grou_nd_short_circu_it_prot_ectio_n;1.000000;0.000000;;1
+810;3;0;U16;;Register_0;register_0;1.000000;0.000000;;1

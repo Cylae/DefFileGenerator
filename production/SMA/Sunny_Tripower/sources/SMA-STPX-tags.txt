@@ -1,0 +1,14 @@
+
+30775 RealPower											(index 17)
+33019 Nominal power (-1000) ??
+30231 Nominal Power (15000 / 20000)						(index 13)
+33017 Puissance apparente nominale						(index 97)
+33025 Puissance apparente nominale						(index 99)
+40210 fonctionnement du pilotage de puissance ->(1078)	(index 129)
+40214 cmdPwrPercent 									(index 131)
+40212 cmdPwr											(index 130)
+
+40063/30059 Version 									(index 118)
+40029 Etat												(index 117)
+
+Freq 30803

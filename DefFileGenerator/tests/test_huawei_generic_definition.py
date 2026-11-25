@@ -6,6 +6,8 @@ and its synchronization across repository definition suites.
 import csv
 from pathlib import Path
 
+from DefFileGenerator.io_utils import find_definition_file
+
 import pytest
 
 from DefFileGenerator.def_gen import Generator
@@ -23,9 +25,9 @@ def generator():
 
 def test_huawei_generic_files_exist():
     """Verify that INV_Huawei_GENERIC.csv exists in all canonical suites and OTH is purged."""
-    def_file = DEFINITIONS_DIR / "INV_Huawei_GENERIC.csv"
-    tagged_file = TAGGED_DIR / "INV_Huawei_GENERIC.csv"
-    gen_file = GENERATED_DIR / "INV_Huawei_GENERIC.csv"
+    def_file = find_definition_file(DEFINITIONS_DIR, "INV_Huawei_GENERIC.csv")
+    tagged_file = find_definition_file(TAGGED_DIR, "INV_Huawei_GENERIC.csv")
+    gen_file = find_definition_file(GENERATED_DIR, "INV_Huawei_GENERIC.csv")
 
     assert def_file.is_file(), f"Missing {def_file}"
     assert tagged_file.is_file(), f"Missing {tagged_file}"
@@ -43,7 +45,7 @@ def test_huawei_generic_files_exist():
 @pytest.mark.parametrize("suite_dir", [DEFINITIONS_DIR, TAGGED_DIR, GENERATED_DIR])
 def test_huawei_generic_encoding_and_schema(suite_dir):
     """Verify UTF-8 without BOM, 11-column CSV format, and exact header."""
-    file_path = suite_dir / "INV_Huawei_GENERIC.csv"
+    file_path = find_definition_file(suite_dir, "INV_Huawei_GENERIC.csv")
 
     # 1. Zero BOM
     with open(file_path, "rb") as fp:
@@ -76,7 +78,7 @@ def test_huawei_generic_encoding_and_schema(suite_dir):
 
 def test_huawei_generic_strict_validation(generator):
     """Verify that INV_Huawei_GENERIC.csv passes strict Webdyn validation with 0 issues."""
-    file_path = DEFINITIONS_DIR / "INV_Huawei_GENERIC.csv"
+    file_path = find_definition_file(DEFINITIONS_DIR, "INV_Huawei_GENERIC.csv")
     rep = generator.validate_csv_detailed(str(file_path), strict=True)
     assert rep.is_valid, f"Validation failed: {rep.issues}"
     assert len(rep.issues) == 0, f"Expected 0 issues, got {rep.issues}"
@@ -85,7 +87,7 @@ def test_huawei_generic_strict_validation(generator):
 
 def test_huawei_generic_sunpm_telemetry_tags():
     """Verify that telemetry and control tags are accurately assigned to real-time registers."""
-    file_path = DEFINITIONS_DIR / "INV_Huawei_GENERIC.csv"
+    file_path = find_definition_file(DEFINITIONS_DIR, "INV_Huawei_GENERIC.csv")
     with open(file_path, encoding="utf-8") as fp:
         reader = csv.reader(fp, delimiter=";")
         next(reader)
@@ -143,7 +145,7 @@ def test_huawei_generic_sunpm_telemetry_tags():
 
 def test_huawei_v4_phase_current_tags():
     """Verify that Definitions/INV_Huawei_V4.csv has full 3-phase current tags."""
-    v4_path = DEFINITIONS_DIR / "INV_Huawei_V4.csv"
+    v4_path = find_definition_file(DEFINITIONS_DIR, "INV_Huawei_V4.csv")
     with open(v4_path, encoding="utf-8") as fp:
         reader = csv.reader(fp, delimiter=";")
         next(reader)

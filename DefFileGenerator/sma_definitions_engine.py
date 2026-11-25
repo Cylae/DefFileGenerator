@@ -782,17 +782,18 @@ def build_sma_stp_125_70_rows(
     """
     ws = Path(workspace_dir) if workspace_dir else Path.cwd()
     candidates = [
-        ws / "Sources" / "SMA" / "STP125-70" / "parameterlist_en.html",
-        ws / "Sources" / "SMA" / "STP125-70" / "PARAMETER-HTML_STP125-70_GG10_V10" / "parameterlist_en.html",
+        ws / "sources" / "SMA" / "Inverter" / "STP125-70" / "parameterlist_en.html",
+        ws / "sources" / "SMA" / "STP125-70" / "parameterlist_en.html",
+        ws / "sources" / "SMA" / "STP125-70" / "PARAMETER-HTML_STP125-70_GG10_V10" / "parameterlist_en.html",
     ]
     html_path = next((p for p in candidates if p.is_file()), None)
 
     if not html_path:
-        csv_fallback = (
-            ws / "production" / "INV_SMA_STP_125-70.csv"
-            if (ws / "production" / "INV_SMA_STP_125-70.csv").exists()
-            else ws / "Definitions" / "SMA" / "INV_SMA_STP_125-70.csv"
-        )
+        from DefFileGenerator.io_utils import find_definition_file
+
+        csv_fallback = find_definition_file(ws / "production", "INV_SMA_STP_125-70.csv")
+        if not csv_fallback.exists():
+            csv_fallback = find_definition_file(ws / "Definitions", "INV_SMA_STP_125-70.csv")
         if csv_fallback.exists():
             return clean_and_enrich_raw_file(csv_fallback)
         return []
@@ -2614,32 +2615,34 @@ def get_all_sma_targets(
     tag_map = {str(r["address"]): r["tag"] for r in stp_rows if r.get("tag")}
     tag_map.update({str(r["address"]): r["tag"] for r in core1_core2_rows if r.get("tag")})
 
+    from DefFileGenerator.io_utils import find_definition_file
+
     # Rich specification tables (load and clean from production/ or Definitions/ if present)
     prod_dir = workspace_dir / "production"
     defs_dir = workspace_dir / "Definitions"
 
     # 1. STP-X (435 rows, 50 unique tags, certified French variable names)
-    stpx_src = prod_dir / "INV_SMA_STP_X.csv"
+    stpx_src = find_definition_file(prod_dir, "INV_SMA_STP_X.csv")
     if not stpx_src.exists():
-        stpx_src = defs_dir / "INV_SMA_STP_X.csv"
+        stpx_src = find_definition_file(defs_dir, "INV_SMA_STP_X.csv")
     stpx_rows = clean_and_enrich_raw_file(stpx_src) if stpx_src.exists() else stp_rows
 
     # 2. STP Smart Energy (372 rows)
-    se_src = prod_dir / "INV_SMA_STP_5-10-SE40.csv"
+    se_src = find_definition_file(prod_dir, "INV_SMA_STP_5-10-SE40.csv")
     se_rows = clean_and_enrich_raw_file(se_src, tag_map) if se_src.exists() else sbs_rows
 
     # 3. Core 1 full (105 rows)
-    core1_src = prod_dir / "INV_SMA_STPCORE1_50-41.csv"
+    core1_src = find_definition_file(prod_dir, "INV_SMA_STPCORE1_50-41.csv")
     core1_full_rows = (
         clean_and_enrich_raw_file(core1_src, tag_map) if core1_src.exists() else core1_core2_rows
     )
 
     # 4. Core 2 full (1,211 rows)
-    core2_src = workspace_dir / "tagged_definitions" / "INV_SMA_STP_110-60_1.00.11.R.csv"
+    core2_src = find_definition_file(workspace_dir / "tagged_definitions", "INV_SMA_STP_110-60_1.00.11.R.csv")
     if not core2_src.exists():
-        core2_src = prod_dir / "INV_SMA_STP_110-60.csv"
+        core2_src = find_definition_file(prod_dir, "INV_SMA_STP_110-60.csv")
     if not core2_src.exists():
-        core2_src = defs_dir / "INV_SMA_STP_110-60.csv"
+        core2_src = find_definition_file(defs_dir, "INV_SMA_STP_110-60.csv")
     core2_full_rows = (
         clean_and_enrich_raw_file(core2_src, tag_map) if core2_src.exists() else core1_core2_rows
     )
@@ -2782,17 +2785,17 @@ def get_all_sma_targets(
             scs_rows.append(br)
 
     # 6. SC2xxx (78 rows)
-    sc2_src = defs_dir / "INV_SMA_SC2xxx.csv"
+    sc2_src = find_definition_file(defs_dir, "INV_SMA_SC2xxx.csv")
     sc2_rows = clean_and_enrich_raw_file(sc2_src, tag_map) if sc2_src.exists() else sc_rows
 
     # 7. Webbox (350 rows)
-    webbox_src = prod_dir / "INV_SMA_SC_Webbox.csv"
+    webbox_src = find_definition_file(prod_dir, "INV_SMA_SC_Webbox.csv")
     webbox_rows = (
         clean_and_enrich_raw_file(webbox_src, tag_map) if webbox_src.exists() else edmm_rows
     )
 
     # 8. Generic (857 rows)
-    gen_src = defs_dir / "INV_SMA_Generic.csv"
+    gen_src = find_definition_file(defs_dir, "INV_SMA_Generic.csv")
     gen_rows = clean_and_enrich_raw_file(gen_src, tag_map) if gen_src.exists() else sunspec_rows
 
     return [
@@ -2861,23 +2864,26 @@ def generate_all_sma_definitions(workspace_dir: Path | str) -> dict[str, Path]:
     for d in (prod_dir, sma_dir, defs_dir, classic_dir, gen_dir, tag_dir):
         d.mkdir(parents=True, exist_ok=True)
 
+    from DefFileGenerator.io_utils import find_definition_file
+    from DefFileGenerator.webdynsun_ini import convert_sunpm_csv_to_webdynsun_ini
+
     targets = get_all_sma_targets(ws)
     generated: dict[str, Path] = {}
 
     for fname, cat, mfg, model, rows in targets:
-        # 1. Primary write into production/
-        prod_path = prod_dir / fname
+        # 1. Primary write into production/ (preserving <Manufacturer>/<Range>/ layout if present)
+        prod_path = find_definition_file(prod_dir, fname)
         write_sma_csv(prod_path, cat, mfg, model, rows)
+        convert_sunpm_csv_to_webdynsun_ini(prod_path, prod_path.with_suffix(".ini"))
         generated[fname] = prod_path
 
         # 2. Synchronize byte-identical copies
-        sync_targets = [sma_dir, defs_dir, gen_dir, tag_dir]
-        if fname in ("INV_SMA_SunnyTripower.csv", "INV_SMA_Core1_Core2.csv"):
-            sync_targets.append(classic_dir)
+        sync_targets = [defs_dir, gen_dir, tag_dir]
 
         for target_dir in sync_targets:
-            dest = target_dir / fname
+            dest = find_definition_file(target_dir, fname)
             shutil.copy2(prod_path, dest)
+            convert_sunpm_csv_to_webdynsun_ini(dest, dest.with_suffix(".ini"))
             is_valid, issues = verify_file_pillars(dest)
             if not is_valid:
                 raise ValueError(f"Pillar violation at {dest}:\n" + "\n".join(issues))

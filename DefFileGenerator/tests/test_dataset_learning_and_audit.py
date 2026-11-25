@@ -148,7 +148,9 @@ class TestDatasetLearningAndAudit(unittest.TestCase):
         if not definitions_dir.is_dir():
             definitions_dir = Path(__file__).parent.parent.parent / "Definitions"
 
-        target_file = definitions_dir / "INV_CyberPower_GENERIC.csv"
+        from DefFileGenerator.io_utils import find_definition_file
+
+        target_file = find_definition_file(definitions_dir, "INV_CyberPower_GENERIC.csv")
         self.assertTrue(target_file.is_file())
 
         report = audit_definition_file(target_file, strict_overlap=True)
@@ -323,7 +325,9 @@ class TestDatasetLearningAndAudit(unittest.TestCase):
         if not definitions_dir.is_dir():
             definitions_dir = Path(__file__).parent.parent.parent / "Definitions"
 
-        target_file = definitions_dir / "INV_CyberPower_GENERIC.csv"
+        from DefFileGenerator.io_utils import find_definition_file
+
+        target_file = find_definition_file(definitions_dir, "INV_CyberPower_GENERIC.csv")
 
         buf = io.StringIO()
         with redirect_stdout(buf):

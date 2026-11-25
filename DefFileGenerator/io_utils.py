@@ -6,7 +6,27 @@ import os
 import tempfile
 from collections.abc import Iterator
 from contextlib import contextmanager
+from pathlib import Path
 from typing import TextIO
+
+
+def iter_definition_csvs(root: Path, pattern: str = "*.csv") -> list[Path]:
+    """List definition CSV files under *root*, traversing subdirectories and skipping ``sources/``."""
+    if not root.exists():
+        return []
+    return sorted(p for p in root.rglob(pattern) if "sources" not in p.parts)
+
+
+def find_definition_file(root: Path, filename: str) -> Path:
+    """Resolve *filename* in *root* directly or recursively under `<Manufacturer>/<Range>/` (excluding ``sources/``)."""
+    direct = root / filename
+    if direct.is_file():
+        return direct
+    if root.exists():
+        for match in sorted(root.rglob(filename)):
+            if "sources" not in match.parts and match.is_file():
+                return match
+    return direct
 
 
 def paths_refer_to_same_file(source: str, destination: str) -> bool:

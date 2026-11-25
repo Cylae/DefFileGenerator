@@ -13,6 +13,7 @@ import unittest
 from pathlib import Path
 
 from DefFileGenerator.def_gen import Generator
+from DefFileGenerator.io_utils import iter_definition_csvs
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 DEFINITIONS_DIR = REPO_ROOT / "Definitions"
@@ -40,7 +41,7 @@ class TestDefinitionsLibrary(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.generator = Generator()
-        cls.csv_files = sorted(DEFINITIONS_DIR.glob("*.csv"))
+        cls.csv_files = iter_definition_csvs(DEFINITIONS_DIR)
 
     def test_definitions_directory_populated(self) -> None:
         """Verify Definitions directory exists and contains expected files."""
@@ -114,7 +115,7 @@ class TestDefinitionsLibrary(unittest.TestCase):
         self.assertTrue(readme_path.is_file(), "Definitions/README.md must exist")
         content = readme_path.read_text(encoding="utf-8")
 
-        self.assertIn(f"{len(self.csv_files)} fichiers de définition", content)
+        self.assertIn(f"{len(self.csv_files)} definition files", content)
         for pfx in VALID_PREFIXES:
             self.assertIn(f"`{pfx}_`", content)
 

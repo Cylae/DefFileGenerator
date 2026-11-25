@@ -1,0 +1,13 @@
+# Sungrow - TI_20251013 Sources
+
+Source documentation and traceability manifest for **Sungrow / TI_20251013**.
+
+## Generated Definition Files
+
+- **WebdynSunPM (`.csv`)**: `COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN.csv`, `COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN_part2.csv`, `COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN_part3.csv`, `COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN_part4.csv`, `COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN_part5.csv`, `COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN_part6.csv`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN.csv`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN_part10.csv`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN_part11.csv`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN_part5.csv`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN_part6.csv`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN_part7.csv`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN_part8.csv`
+- **WebdynSun (`.ini`)**: `COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN.ini`, `COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN_part2.ini`, `COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN_part3.ini`, `COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN_part4.ini`, `COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN_part5.ini`, `COM_Sungrow_TI_20251013_LC300_IEC104_Communication_Protocol_V9_EN_part6.ini`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN.ini`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN_part10.ini`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN_part11.ini`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN_part5.ini`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN_part6.ini`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN_part7.ini`, `COM_Sungrow_TI_20251013_LC300_Modbus_Communication_Protocol_V8_EN_part8.ini`
+
+## Source Documents
+
+Derived from the validated Webdyn manufacturer definition baseline / SunSpec model profile.
+No separate standalone PDF/XLSX manual file was bundled in local `sources/` for this legacy model.

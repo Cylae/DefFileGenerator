@@ -12,6 +12,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from DefFileGenerator.io_utils import find_definition_file
+
 
 def test_sources_manifest_integrity():
     """Verify that sources/MANIFEST.json matches reality on disk."""
@@ -90,11 +92,11 @@ def test_certified_definitions_redundancy():
     folders = ["Definitions", "tagged_definitions", "generated_definitions"]
 
     for fname in sample_definitions:
-        prod_path = Path("production") / fname
+        prod_path = find_definition_file(Path("production"), fname)
         assert prod_path.is_file(), f"Missing production file: {prod_path}"
         prod_bytes = prod_path.read_bytes()
 
         for fld in folders:
-            copy_path = Path(fld) / fname
+            copy_path = find_definition_file(Path(fld), fname)
             assert copy_path.is_file(), f"Missing redundant copy in {fld}/{fname}"
             assert copy_path.read_bytes() == prod_bytes, f"Byte mismatch in {fld}/{fname}"

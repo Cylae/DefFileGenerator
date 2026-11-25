@@ -1,8 +1,8 @@
-# 🏭 Webdyn Production Definitions Library
+# Webdyn Production Definitions Library
 
-Bibliothèque officielle de définitions d'équipements industriels validées pour déploiement en production sur les concentrateurs et passerelles Webdyn (SunPM, Hub, Flex).
+Official certified library of industrial equipment Modbus definitions organized by `<Manufacturer>/<Range>/` with **WebdynSunPM (`.csv`)**, **WebdynSun Classic (`.ini`)**, and corresponding **`sources/`** documentation.
 
-Comprend **1194 fichiers de définition certifiés** couvrant **358,911 registres Modbus** et **36,072 tags SunPM canoniques** à travers **188 constructeurs mondiaux**.
+Includes **1,194 certified WebdynSunPM definitions** and **1,194 WebdynSun Classic `.ini` companions** across **136+ global manufacturers** (see [`docs/PROJECT_ORGANIZATION.md`](../docs/PROJECT_ORGANIZATION.md)).
 
 ---
 

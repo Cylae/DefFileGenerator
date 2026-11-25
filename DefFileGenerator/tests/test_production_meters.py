@@ -25,6 +25,7 @@ from pathlib import Path
 import pytest
 
 from DefFileGenerator.def_gen import Generator
+from DefFileGenerator.io_utils import iter_definition_csvs
 from DefFileGenerator.production_governor import verify_file_pillars
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -55,7 +56,7 @@ VALID_TYPES = {
 
 def get_meter_files() -> list[Path]:
     """Retrieve all production meter files sorted canonically."""
-    return sorted(PROD_DIR.glob("MET_*.csv"))
+    return iter_definition_csvs(PROD_DIR, "MET_*.csv")
 
 
 @pytest.fixture(scope="module")
@@ -177,12 +178,14 @@ class TestProductionMetersSuite:
 
     def test_chint_meter_ecosystem(self) -> None:
         """Deep domain audit of CHINT meter definitions."""
+        from DefFileGenerator.io_utils import find_definition_file
+
         chint_files = [
-            PROD_DIR / "MET_Chint_DTSU666.csv",
-            PROD_DIR / "MET_Chint_DTSU666-H.csv",
-            PROD_DIR / "MET_Chint_DDSU666.csv",
-            PROD_DIR / "MET_Huawei_DTSU666-H.csv",
-            PROD_DIR / "MET_Chint_Power_CHINT_DTSU.csv",
+            find_definition_file(PROD_DIR, "MET_Chint_DTSU666.csv"),
+            find_definition_file(PROD_DIR, "MET_Chint_DTSU666-H.csv"),
+            find_definition_file(PROD_DIR, "MET_Chint_DDSU666.csv"),
+            find_definition_file(PROD_DIR, "MET_Huawei_DTSU666-H.csv"),
+            find_definition_file(PROD_DIR, "MET_Chint_Power_CHINT_DTSU.csv"),
         ]
         for f in chint_files:
             assert f.is_file(), f"Missing critical Chint file: {f.name}"
@@ -204,14 +207,14 @@ class TestProductionMetersSuite:
 
     def test_schneider_meter_ecosystem(self) -> None:
         """Deep domain audit of Schneider iEM31xx/35xx and PM series definitions."""
-        schneider_iem_files = sorted(PROD_DIR.glob("MET_Schneider_iem3*.csv")) + sorted(
-            PROD_DIR.glob("MET_Schneider_iEM3*.csv")
+        schneider_iem_files = iter_definition_csvs(PROD_DIR, "MET_Schneider_iem3*.csv") + iter_definition_csvs(
+            PROD_DIR, "MET_Schneider_iEM3*.csv"
         )
         assert len(schneider_iem_files) >= 10, (
             f"Expected at least 10 Schneider iEM files, found {len(schneider_iem_files)}"
         )
 
-        pm_files = sorted(PROD_DIR.glob("MET_Schneider_PM*.csv"))
+        pm_files = iter_definition_csvs(PROD_DIR, "MET_Schneider_PM*.csv")
         assert len(pm_files) >= 3, f"Expected Schneider PM files, found {len(pm_files)}"
 
         for f in schneider_iem_files + pm_files:
@@ -224,11 +227,11 @@ class TestProductionMetersSuite:
 
     def test_socomec_diris_meter_ecosystem(self) -> None:
         """Deep domain audit of Socomec Diris and Countis definitions."""
-        socomec_diris = sorted(PROD_DIR.glob("MET_Socomec_Diris*.csv")) + sorted(
-            PROD_DIR.glob("MET_Socomec_DIRIS*.csv")
+        socomec_diris = iter_definition_csvs(PROD_DIR, "MET_Socomec_Diris*.csv") + iter_definition_csvs(
+            PROD_DIR, "MET_Socomec_DIRIS*.csv"
         )
-        socomec_countis = sorted(PROD_DIR.glob("MET_Socomec_Countis*.csv")) + sorted(
-            PROD_DIR.glob("MET_Socomec_COUNTIS*.csv")
+        socomec_countis = iter_definition_csvs(PROD_DIR, "MET_Socomec_Countis*.csv") + iter_definition_csvs(
+            PROD_DIR, "MET_Socomec_COUNTIS*.csv"
         )
         assert len(socomec_diris) >= 8, f"Expected >= 8 Diris files, found {len(socomec_diris)}"
         assert len(socomec_countis) >= 5, (
@@ -245,7 +248,7 @@ class TestProductionMetersSuite:
 
     def test_carlo_gavazzi_meter_ecosystem(self) -> None:
         """Deep domain audit of Carlo Gavazzi energy meters (EM24, EM210, EM-ET300)."""
-        cg_files = sorted(PROD_DIR.glob("MET_CarloGavazzi_*.csv"))
+        cg_files = iter_definition_csvs(PROD_DIR, "MET_CarloGavazzi_*.csv")
         assert len(cg_files) >= 5, f"Expected >= 5 Carlo Gavazzi files, found {len(cg_files)}"
 
         em24_found = False

@@ -57,11 +57,14 @@ def test_x7_source_document_and_manifest():
     assert len(doc["definitions_generated"]) == 7
 
 
+from DefFileGenerator.io_utils import find_definition_file
+
+
 def test_x7_production_pillars_all_files():
     """Verify that all 7 X7 definitions in production/ comply strictly with 5 Apollo Pillars."""
     prod_dir = WORKSPACE_DIR / "production"
     for fname in X7_FILENAMES:
-        fpath = prod_dir / fname
+        fpath = find_definition_file(prod_dir, fname)
         assert fpath.is_file(), f"Production file missing: {fpath}"
         is_valid, issues = verify_file_pillars(fpath)
         assert is_valid, f"Pillar check failed for {fname}: {issues}"
@@ -74,23 +77,23 @@ def test_x7_production_pillars_all_files():
 def test_x7_redundancy_synchronization():
     """Verify byte-identical synchronization across all reference directories."""
     folders = [
-        WORKSPACE_DIR / "Definitions" / "X7",
+        WORKSPACE_DIR / "Definitions",
         WORKSPACE_DIR / "X7_Definitions",
         WORKSPACE_DIR / "generated_definitions",
         WORKSPACE_DIR / "tagged_definitions",
     ]
 
     for fname in X7_FILENAMES:
-        prod_bytes = (WORKSPACE_DIR / "production" / fname).read_bytes()
+        prod_bytes = find_definition_file(WORKSPACE_DIR / "production", fname).read_bytes()
         for fld in folders:
-            target = fld / fname
+            target = find_definition_file(fld, fname)
             assert target.is_file(), f"Redundant replica missing: {target}"
             assert target.read_bytes() == prod_bytes, f"Byte mismatch in {target}"
 
 
 def test_x7_all_in_one_structure_and_completeness():
     """Verify master All-In-One definition has 794 registers, sequential index, and unique keys."""
-    aio_path = WORKSPACE_DIR / "production" / "BAT_X7_BESS-AllInOne.csv"
+    aio_path = find_definition_file(WORKSPACE_DIR / "production", "BAT_X7_BESS-AllInOne.csv")
     lines = aio_path.read_text(encoding="utf-8").splitlines()
     assert len(lines) == 795, f"Expected 795 lines (1 header + 794 regs), got {len(lines)}"
 
@@ -120,7 +123,7 @@ def test_x7_all_in_one_structure_and_completeness():
 
 def test_x7_cell_instrumentation_precision():
     """Verify detailed individual cell voltage (240) and temperature (128) expansion."""
-    cells_path = WORKSPACE_DIR / "production" / "BAT_X7_BMS-Cells.csv"
+    cells_path = find_definition_file(WORKSPACE_DIR / "production", "BAT_X7_BMS-Cells.csv")
     with open(cells_path, encoding="utf-8") as fp:
         reader = list(csv.reader(fp, delimiter=";"))
 
@@ -154,7 +157,7 @@ def test_x7_cell_instrumentation_precision():
 
 def test_x7_safety_alarms_and_controls():
     """Verify cabinet safety alarms (FC 2) and control setpoints (FC 3)."""
-    cab_path = WORKSPACE_DIR / "production" / "OTH_X7_Cabinet.csv"
+    cab_path = find_definition_file(WORKSPACE_DIR / "production", "OTH_X7_Cabinet.csv")
     with open(cab_path, encoding="utf-8") as fp:
         cab_rows = {r[2]: r for r in list(csv.reader(fp, delimiter=";"))[1:]}
 
@@ -174,7 +177,7 @@ def test_x7_safety_alarms_and_controls():
     assert cab_rows["54211"][10] == "9"
 
     # EMS Controls in BAT_X7_EMS.csv
-    ems_path = WORKSPACE_DIR / "production" / "BAT_X7_EMS.csv"
+    ems_path = find_definition_file(WORKSPACE_DIR / "production", "BAT_X7_EMS.csv")
     with open(ems_path, encoding="utf-8") as fp:
         ems_rows = {r[2]: r for r in list(csv.reader(fp, delimiter=";"))[1:]}
 

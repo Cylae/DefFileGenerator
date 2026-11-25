@@ -1,0 +1,46 @@
+Tests du 04/06/2024
+2 Heure de décalage par rapport a UTC
+Carte SIM Orange : 06 79 73 42 56
+
+Onduleur 1 en Maître (System Manager)
+Serveur Modbus activer sur les deux onduleurs
+Communication avec l'onduleur 10 inexistante car en mode Subordonné
+
+Index 145 / reg 40210 / Tag = CtrlPwr_Ena -> Il semble que la valeur doit être a 1078 pour pouvoir faire l'écriture sur le registre 40214
+Index 147 / reg 40214 / Tag = cmdPwrPercent -> Semble être le registre a utiliser pour faire de la régulation lorsque 40210 = 1078.
+Index 32 / reg 30775 / RealPower + Index 33 34 35 Pac par phase
+Index 8 / reg 30203 / NominalPower
+Index 128 / reg 40016 / (Limite de puissance lorsque 40210 = 1079?)
+
+Index 14 Cause de la réduction de puissance ???? Pas plus d'info???
+Index 58 equivalent 145 en RO
+Index 60 equivalent 147 ou 128 en RO???
+Index 59 Puissance nom?
+Index 97 Etat de fonctionnement???
+
+
+Passage en gestion de puissance effective sur l'onduleur a partir de 15:47 soit 13:47 dans le fichier data
+
+Onduleur 1 Pnom = 15kW
+Onduleur 10 Pnom = 20kW
+
+04/06/2024
+16:27 Index 147 -- 0 -> 100% -- Prod ond = 47W
+16:34 Index 147 -> Index 128
+16:35 Index 128 -- 0 -> 100% -- Prod ond = 47W 
+16:47 Index 145 -- 1079 -> 1078 -- Prod ond = Max
+16:50 Index 128 -- 100 -> 0% -- Prod ond = Max ???
+16:52 Index 145 -- 1078 -> 1079 -- Prod ond = 47W
+16:54 Index 145 -- 1079 -> 1078 -- Prod ond = Max
+16:57 Index 128 -- 100 -> 33% -- Prod ond = Max ???
+16:58 Index 145 -- 1078 -> 1079 -- Prod ond = 47W
+16:59 Index 145 -- 1079 -> 1078 -- Prod ond = Max
+17:05 Index 128 -> Index 147
+17:06 Index 147 -- 100 -> 50% -- Prod ond = 7500W GOOD!!!
+
+05/06/2024
+10:27 Index 147 -- 50 -> 100% + ajout tag Test2 pour remettre index 128 a 100%
+10:40 Index 128 -- 33 -> 100%
+
+Pour le script de régulation : 
+Activation du script avec le tag cmdPwrPercent sur le registre 40214

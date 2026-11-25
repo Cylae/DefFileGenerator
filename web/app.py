@@ -420,12 +420,12 @@ def health_check() -> HealthResponse:
     prod_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "production"))
     defs_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "Definitions"))
     prod_count = (
-        len([f for f in os.listdir(prod_dir) if f.lower().endswith(".csv")])
+        len([p for p in Path(prod_dir).rglob("*.csv") if "sources" not in p.parts])
         if os.path.exists(prod_dir)
         else 0
     )
     defs_count = (
-        len([f for f in os.listdir(defs_dir) if f.lower().endswith(".csv")])
+        len([p for p in Path(defs_dir).rglob("*.csv") if "sources" not in p.parts])
         if os.path.exists(defs_dir)
         else 0
     )
@@ -993,9 +993,9 @@ def get_library(
     cat_filter = category.upper().strip() if category else None
     mfg_filter = manufacturer.lower().strip() if manufacturer else None
 
-    for entry in sorted(os.listdir(target_dir)):
-        if not entry.lower().endswith(".csv") or entry == "README.md":
-            continue
+    seen_paths = sorted(p for p in Path(target_dir).rglob("*.csv") if "sources" not in p.parts)
+    for filepath_obj in seen_paths:
+        entry = filepath_obj.name
         prefix = entry[:3].upper()
         cat = category_map.get(prefix, "Other")
         parts = entry[:-4].split("_")
@@ -1013,7 +1013,7 @@ def get_library(
         ):
             continue
 
-        filepath = os.path.join(target_dir, entry)
+        filepath = str(filepath_obj)
         size_bytes = os.path.getsize(filepath)
 
         reg_count = 0
@@ -1043,7 +1043,7 @@ def get_library(
 def inspect_library_file(filename: str) -> InspectResponse:
     """Returns parsed registers, 5 Pillars status, and metadata for in-browser inspection."""
     safe_filename = os.path.basename(filename.replace("\\", "/").strip())
-    if not safe_filename or not safe_filename.lower().endswith(".csv"):
+    if not safe_filename or not safe_filename.lower().endswith(".csv") or any(c in safe_filename for c in "*?[]"):
         raise HTTPException(status_code=400, detail="Invalid definition filename.")
 
     production_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "production"))
@@ -1341,7 +1341,7 @@ def sunspec_generate(payload: SunSpecGenerateRequest) -> SunSpecGenerateResponse
 def download_library_file(filename: str) -> FileResponse:
     """Downloads a definition CSV from the production or Definitions library."""
     safe_filename = os.path.basename(filename.replace("\\", "/").strip())
-    if not safe_filename or not safe_filename.lower().endswith(".csv"):
+    if not safe_filename or not safe_filename.lower().endswith(".csv") or any(c in safe_filename for c in "*?[]"):
         raise HTTPException(status_code=400, detail="Invalid definition filename.")
 
     production_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "production"))
@@ -1482,6 +1482,31 @@ def get_knowledge_stats() -> dict[str, Any]:
         return {"total_mappings": 0, "unique_tags": 0}
 
 
+_WORKSPACE_ROOT = Path(__file__).resolve().parent.parent
+
+
+def _confine_path(raw_path: str, *, allow_temp: bool = False) -> str:
+    """Resolve raw_path and ensure it stays within WORKSPACE_DIR (or temp dir if allowed)."""
+    if not raw_path or "\x00" in raw_path or raw_path.startswith("\\\\") or ".." in Path(raw_path).parts:
+        raise HTTPException(status_code=400, detail="Invalid or unsafe path.")
+    candidate = Path(raw_path)
+    if not candidate.is_absolute():
+        candidate = _WORKSPACE_ROOT / candidate
+    resolved = candidate.resolve()
+    allowed_roots = [_WORKSPACE_ROOT.resolve()]
+    if allow_temp:
+        allowed_roots.append(Path(tempfile.gettempdir()).resolve())
+    if not any(resolved == root or root in resolved.parents for root in allowed_roots):
+        raise HTTPException(status_code=403, detail="Path outside allowed workspace boundaries.")
+    return str(resolved)
+
+
+def _validate_commit_id(commit_id: str) -> str:
+    if not commit_id or any(c in commit_id for c in "/\\..\x00") or not commit_id.replace("-", "").replace("_", "").isalnum():
+        raise HTTPException(status_code=400, detail="Invalid commit identifier.")
+    return commit_id
+
+
 @app.get("/api/versions")
 def get_version_history(limit: int = 50, file_name: str | None = None) -> list[dict[str, Any]]:
     """Returns the version control commit history log."""
@@ -1494,6 +1519,7 @@ def get_version_history(limit: int = 50, file_name: str | None = None) -> list[d
 @app.get("/api/versions/{commit_id}")
 def get_version_commit(commit_id: str) -> dict[str, Any]:
     """Returns detailed metadata and file manifest for a specific commit."""
+    _validate_commit_id(commit_id)
     from DefFileGenerator.version_manager import DefinitionVersionControl
 
     vc = DefinitionVersionControl()
@@ -1509,6 +1535,9 @@ def get_version_diff(
     commit_id: str, target: str | None = None, file_name: str | None = None
 ) -> dict[str, Any]:
     """Returns semantic diff of registers between commits."""
+    _validate_commit_id(commit_id)
+    if target is not None:
+        _validate_commit_id(target)
     from DefFileGenerator.version_manager import DefinitionVersionControl
 
     vc = DefinitionVersionControl()
@@ -1521,13 +1550,14 @@ def get_version_diff(
 @app.post("/api/versions/commit")
 def create_version_commit(payload: CommitRequest) -> dict[str, Any]:
     """Creates a new version commit snapshot."""
+    safe_path = _confine_path(payload.path, allow_temp=True)
     from DefFileGenerator.version_manager import DefinitionVersionControl
 
     vc = DefinitionVersionControl()
     tags = [t.strip() for t in payload.tag.split(",") if t.strip()] if payload.tag else None
     try:
         commit = vc.commit(
-            source_dir=payload.path,
+            source_dir=safe_path,
             message=payload.message,
             author=payload.author or "Web API User",
             tags=tags,
@@ -1540,13 +1570,15 @@ def create_version_commit(payload: CommitRequest) -> dict[str, Any]:
 @app.post("/api/versions/restore")
 def restore_version_commit(payload: RestoreRequest) -> dict[str, Any]:
     """Restores definitions from a past commit."""
+    _validate_commit_id(payload.commit_id)
+    safe_target = _confine_path(payload.target_dir, allow_temp=True)
     from DefFileGenerator.version_manager import DefinitionVersionControl
 
     vc = DefinitionVersionControl()
     try:
         restored = vc.restore(
             commit_id=payload.commit_id,
-            target_dir=payload.target_dir,
+            target_dir=safe_target,
             file_name=payload.file_name,
         )
         return {
@@ -1563,9 +1595,10 @@ def restore_version_commit(payload: RestoreRequest) -> dict[str, Any]:
 @app.get("/api/duplicates")
 def get_duplicates_report(path: str = "production") -> dict[str, Any]:
     """Returns comprehensive duplicate detection analysis."""
+    safe_path = _confine_path(path, allow_temp=True)
     from DefFileGenerator.duplicate_detector import DuplicateDetector
 
-    detector = DuplicateDetector(path)
+    detector = DuplicateDetector(safe_path)
     report = detector.scan()
     return report.to_dict()
 

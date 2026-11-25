@@ -215,7 +215,7 @@ def analyze_definitions_directory(
     d_path = Path(directory_path)
     gen = generator if generator is not None else Generator()
 
-    csv_files = sorted(d_path.glob("*.csv"))
+    csv_files = sorted(p for p in d_path.rglob("*.csv") if "sources" not in p.parts)
     file_stats: list[DefinitionFileStats] = []
 
     cat_counts: Counter[str] = Counter()

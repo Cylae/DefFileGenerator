@@ -19,6 +19,7 @@ import csv
 import unittest
 from pathlib import Path
 
+from DefFileGenerator.io_utils import find_definition_file
 from DefFileGenerator.production_governor import verify_file_pillars
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -79,6 +80,8 @@ class TestGoodweDefinitionsSuite(unittest.TestCase):
 
     def test_all_files_exist_in_all_target_directories(self) -> None:
         """Ensure all 32 files exist in production, Definitions/GoodWe, generated_definitions, and tagged_definitions."""
+        from DefFileGenerator.io_utils import find_definition_file
+
         for fname in EXPECTED_GOODWE_FILES:
             for d in (
                 PRODUCTION_DIR,
@@ -87,15 +90,17 @@ class TestGoodweDefinitionsSuite(unittest.TestCase):
                 GENERATED_DIR,
                 TAGGED_DIR,
             ):
-                fpath = d / fname
+                fpath = find_definition_file(d, fname)
                 self.assertTrue(fpath.is_file(), f"Missing {fname} in {d.name}")
 
     def test_byte_identical_redundant_synchronization(self) -> None:
         """Verify byte-identical synchronization across redundant directories."""
+        from DefFileGenerator.io_utils import find_definition_file
+
         for fname in EXPECTED_GOODWE_FILES:
-            prod_bytes = (PRODUCTION_DIR / fname).read_bytes()
+            prod_bytes = find_definition_file(PRODUCTION_DIR, fname).read_bytes()
             for d in (DEFINITIONS_GOODWE_DIR, DEFINITIONS_DIR, GENERATED_DIR, TAGGED_DIR):
-                target_bytes = (d / fname).read_bytes()
+                target_bytes = find_definition_file(d, fname).read_bytes()
                 self.assertEqual(
                     prod_bytes,
                     target_bytes,
@@ -104,8 +109,10 @@ class TestGoodweDefinitionsSuite(unittest.TestCase):
 
     def test_five_apollo_pillars_compliance(self) -> None:
         """Verify each GoodWe file strictly complies with all 5 Apollo Pillars."""
+        from DefFileGenerator.io_utils import find_definition_file
+
         for fname in EXPECTED_GOODWE_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             is_valid, issues = verify_file_pillars(fpath)
             self.assertTrue(
                 is_valid,
@@ -114,8 +121,10 @@ class TestGoodweDefinitionsSuite(unittest.TestCase):
 
     def test_protocol_header_and_structure(self) -> None:
         """Verify protocol header begins with Modbus; and has 11 columns with canonical manufacturer GoodWe."""
+        from DefFileGenerator.io_utils import find_definition_file
+
         for fname in EXPECTED_GOODWE_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 reader = list(csv.reader(fp, delimiter=";"))
 
@@ -133,7 +142,7 @@ class TestGoodweDefinitionsSuite(unittest.TestCase):
         valid_actions = {"0", "1", "4", "9", "10"}
 
         for fname in EXPECTED_GOODWE_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 rows = list(csv.reader(fp, delimiter=";"))[1:]
 
@@ -178,7 +187,7 @@ class TestGoodweDefinitionsSuite(unittest.TestCase):
     def test_domain_telemetry_contracts(self) -> None:
         """Verify essential domain telemetry tags are present based on equipment role."""
         for fname in EXPECTED_GOODWE_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 rows = list(csv.reader(fp, delimiter=";"))[1:]
 

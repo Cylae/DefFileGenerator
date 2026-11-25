@@ -234,7 +234,7 @@ class DefinitionVersionControl:
             prev_manifest = prev_commit.manifest if prev_commit else {}
 
             target_files = (
-                sorted(src.glob("*.csv"))
+                sorted(p for p in src.rglob("*.csv") if "sources" not in p.parts)
                 if files is None
                 else [src / f for f in sorted(files) if (src / f).is_file()]
             )

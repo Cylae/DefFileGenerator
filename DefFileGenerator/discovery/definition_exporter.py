@@ -9,6 +9,7 @@ from __future__ import annotations
 import csv
 import io
 
+from DefFileGenerator.def_gen import Generator
 from DefFileGenerator.discovery.models import (
     CanonicalEquipmentModel,
     Endianness,
@@ -29,7 +30,7 @@ class DefinitionExporter:
         Exports CanonicalEquipmentModel to standard 11-column CSV format.
         """
         output = io.StringIO()
-        writer = csv.writer(output, delimiter=";", lineterminator="\n")
+        writer = csv.writer(output, delimiter=";", lineterminator="\r\n")
 
         # 1. Header Row
         raw_transport = (
@@ -46,10 +47,10 @@ class DefinitionExporter:
         else:
             transport_str = raw_transport
         header = [
-            transport_str,
-            model.category or "Inverter",
-            model.manufacturer or "Unknown",
-            model.model or "Generic",
+            Generator.sanitize_csv_field(transport_str),
+            Generator.sanitize_csv_field(model.category or "Inverter"),
+            Generator.sanitize_csv_field(model.manufacturer or "Unknown"),
+            Generator.sanitize_csv_field(model.model or "Generic"),
             "",
             "",
             "",
@@ -83,14 +84,14 @@ class DefinitionExporter:
             row = [
                 str(idx),
                 str(reg.read_fc),
-                str(reg.address),
+                Generator.sanitize_csv_field(str(reg.address)),
                 dtype_str,
                 "",  # Info4
-                unique_name,
-                tag_str,
+                Generator.sanitize_csv_field(unique_name),
+                Generator.sanitize_csv_field(tag_str),
                 coef_a_str,
                 coef_b_str,
-                reg.unit or "",
+                Generator.sanitize_csv_field(reg.unit or ""),
                 str(reg.action_code),
             ]
             writer.writerow(row)
@@ -104,6 +105,8 @@ class DefinitionExporter:
         target: ExportTarget,
     ) -> str:
         base = dtype.value
+        if target == ExportTarget.WEBDYN_CLASSIC:
+            return base
         # Word swapped Little-Endian formatting for 32-bit types in WebdynSunPM
         if endianness in (Endianness.LITTLE_ENDIAN, Endianness.MID_LITTLE_ENDIAN):
             if base in ("U32", "S32", "FLOAT32"):

@@ -1,0 +1,13 @@
+# AEberle - PQPlus_Generic Sources
+
+Source documentation and traceability manifest for **AEberle / PQPlus_Generic**.
+
+## Generated Definition Files
+
+- **WebdynSunPM (`.csv`)**: `MET_AEberle_PQPlus_Generic.csv`
+- **WebdynSun (`.ini`)**: `MET_AEberle_PQPlus_Generic.ini`
+
+## Source Documents
+
+Derived from the validated Webdyn manufacturer definition baseline / SunSpec model profile.
+No separate standalone PDF/XLSX manual file was bundled in local `sources/` for this legacy model.

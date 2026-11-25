@@ -295,11 +295,14 @@ class TestChintDtsu666Json(unittest.TestCase):
 
     def test_production_and_definitions_dtsu666_compliance(self) -> None:
         """Verifies that Definitions and production DTSU666 CSVs meet all 5 quality pillars."""
-        for rel_path in (
-            "Definitions/MET_CHINT_DTSU666.csv",
-            "production/MET_Chint_DTSU666.csv",
+        from DefFileGenerator.io_utils import find_definition_file
+
+        root_dir = Path(__file__).parent.parent.parent
+        for base_dir, fname in (
+            ("Definitions", "MET_CHINT_DTSU666.csv"),
+            ("production", "MET_Chint_DTSU666.csv"),
         ):
-            path = Path(__file__).parent.parent.parent / rel_path
+            path = find_definition_file(root_dir / base_dir, fname)
             self.assertTrue(path.is_file(), f"File {path} does not exist.")
 
             report = audit_definition_file(str(path), strict_overlap=True)

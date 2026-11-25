@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(toast);
             setTimeout(() => {
                 if (container.removeChild) {
-                    try { container.removeChild(toast); } catch {}
+                    try { container.removeChild(toast); } catch { }
                 }
             }, 3500);
         }
@@ -216,20 +216,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             }
-        } catch (_) {}
+        } catch (_) { }
     }
     loadKnowledgeStats();
 
     // Theme Toggle (Light / Dark Mode)
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     if (themeToggleBtn) {
-        if (localStorage.getItem('webdyn_theme') === 'light') {
+        const hasStorage = typeof localStorage !== 'undefined';
+        if (hasStorage && localStorage.getItem('webdyn_theme') === 'light') {
             document.body.classList.add('light-theme');
         }
         themeToggleBtn.addEventListener('click', () => {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('webdyn_theme', isLight ? 'light' : 'dark');
+            if (hasStorage) {
+                localStorage.setItem('webdyn_theme', isLight ? 'light' : 'dark');
+            }
             showToast(`Theme switched to ${isLight ? 'Light' : 'Dark'} mode`, 'info');
         });
     }
@@ -1316,10 +1319,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const filtered = libraryItems.filter(item => {
                 return (item.manufacturer && item.manufacturer.toLowerCase().includes(query)) ||
-                       (item.model && item.model.toLowerCase().includes(query)) ||
-                       (item.category && item.category.toLowerCase().includes(query)) ||
-                       (item.prefix && item.prefix.toLowerCase().includes(query)) ||
-                       (item.filename && item.filename.toLowerCase().includes(query));
+                    (item.model && item.model.toLowerCase().includes(query)) ||
+                    (item.category && item.category.toLowerCase().includes(query)) ||
+                    (item.prefix && item.prefix.toLowerCase().includes(query)) ||
+                    (item.filename && item.filename.toLowerCase().includes(query));
             });
             renderLibraryTable(filtered);
         });
@@ -1389,9 +1392,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const filtered = auditTrailItems.filter(ev => {
                 return (ev.action && ev.action.toLowerCase().includes(q)) ||
-                       (ev.manufacturer && ev.manufacturer.toLowerCase().includes(q)) ||
-                       (ev.equipment && ev.equipment.toLowerCase().includes(q)) ||
-                       (ev.details && ev.details.toLowerCase().includes(q));
+                    (ev.manufacturer && ev.manufacturer.toLowerCase().includes(q)) ||
+                    (ev.equipment && ev.equipment.toLowerCase().includes(q)) ||
+                    (ev.details && ev.details.toLowerCase().includes(q));
             });
             renderAuditTrailTable(filtered);
         });
@@ -1775,9 +1778,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const filtered = versionsList.filter(c => {
                 const tagsStr = (c.tags || []).join(' ').toLowerCase();
                 return (c.commit_id && c.commit_id.toLowerCase().includes(q)) ||
-                       (c.message && c.message.toLowerCase().includes(q)) ||
-                       (c.author && c.author.toLowerCase().includes(q)) ||
-                       tagsStr.includes(q);
+                    (c.message && c.message.toLowerCase().includes(q)) ||
+                    (c.author && c.author.toLowerCase().includes(q)) ||
+                    tagsStr.includes(q);
             });
             renderVersionsTable(filtered);
         });

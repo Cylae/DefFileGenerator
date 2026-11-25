@@ -16,6 +16,7 @@ import unittest
 from pathlib import Path
 
 from DefFileGenerator.def_gen import CSVHeaderConfig, Generator, GeneratorConfig
+from DefFileGenerator.io_utils import iter_definition_csvs
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
@@ -38,7 +39,7 @@ class TestUtf8WithoutBomAudit(unittest.TestCase):
         """Verify that every CSV in Definitions/ has no BOM and is valid UTF-8."""
         def_dir = REPO_ROOT / "Definitions"
         self.assertTrue(def_dir.is_dir(), "Definitions/ directory must exist")
-        csv_files = list(def_dir.glob("*.csv"))
+        csv_files = iter_definition_csvs(def_dir)
         self.assertGreaterEqual(len(csv_files), 130, "Definitions/ must contain >= 130 CSV files")
 
         bom_failures = []

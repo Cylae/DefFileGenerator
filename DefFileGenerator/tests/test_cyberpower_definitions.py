@@ -7,13 +7,14 @@ Tests 5-pillar compliance, register completeness, SunPM tagging, and redundancy.
 import csv
 from pathlib import Path
 
+from DefFileGenerator.io_utils import find_definition_file
 from DefFileGenerator.knowledge_miner import load_dataset_knowledge
 from DefFileGenerator.production_governor import verify_file_pillars
 
 
 def test_cyberpower_generic_pillars():
     """Verify that INV_Cyberpower_GENERIC.csv complies with 5 Apollo pillars."""
-    prod_file = Path("production/INV_Cyberpower_GENERIC.csv")
+    prod_file = find_definition_file(Path("production"), "INV_Cyberpower_GENERIC.csv")
     assert prod_file.is_file(), f"Missing {prod_file}"
 
     is_valid, issues = verify_file_pillars(prod_file)
@@ -22,7 +23,7 @@ def test_cyberpower_generic_pillars():
 
 def test_cyberpower_120k_140k_pillars():
     """Verify that INV_Cyberpower_CPSPV120K-140K.csv complies with 5 Apollo pillars."""
-    prod_file = Path("production/INV_Cyberpower_CPSPV120K-140K.csv")
+    prod_file = find_definition_file(Path("production"), "INV_Cyberpower_CPSPV120K-140K.csv")
     assert prod_file.is_file(), f"Missing {prod_file}"
 
     is_valid, issues = verify_file_pillars(prod_file)
@@ -35,16 +36,16 @@ def test_cyberpower_redundancy():
     folders = ["Definitions", "tagged_definitions", "generated_definitions"]
 
     for fname in filenames:
-        prod_bytes = (Path("production") / fname).read_bytes()
+        prod_bytes = find_definition_file(Path("production"), fname).read_bytes()
         for fld in folders:
-            target = Path(fld) / fname
+            target = find_definition_file(Path(fld), fname)
             assert target.is_file(), f"Missing {target}"
             assert target.read_bytes() == prod_bytes, f"Divergence in {target}"
 
 
 def test_cyberpower_telemetry_structure():
     """Verify detailed register mapping, types, units, and SunPM telemetry tags."""
-    prod_file = Path("production/INV_Cyberpower_GENERIC.csv")
+    prod_file = find_definition_file(Path("production"), "INV_Cyberpower_GENERIC.csv")
     with open(prod_file, encoding="utf-8") as f:
         reader = list(csv.reader(f, delimiter=";"))
 

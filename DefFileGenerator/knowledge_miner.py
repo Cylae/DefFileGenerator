@@ -2564,7 +2564,9 @@ def audit_definitions_directory(
     if not d_path.is_dir():
         return reports
 
-    for csv_file in sorted(d_path.glob("*.csv")):
+    from DefFileGenerator.io_utils import iter_definition_csvs
+
+    for csv_file in iter_definition_csvs(d_path):
         reports[str(csv_file)] = audit_definition_file(
             csv_file,
             strict_overlap=strict_overlap,

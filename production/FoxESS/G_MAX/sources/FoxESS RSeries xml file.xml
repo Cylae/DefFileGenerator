@@ -1,0 +1,2692 @@
+<ModbusData>
+  <Register>
+    <Address>40001</Address>
+    <Description>SunSpec ID (SID): 0x53756e53 = SunSpec Modbus Map</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40003</Address>
+    <Description>Model ID (ID): 1 = SunSpec Common Model</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+ 
+    <Address>40021</Address>
+    <Description>M <Register>
+    <Address>40004</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table (L): 66</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40005</Address>
+    <Description>Manufacturer (Mn): "fox"</Description>
+    <CNT_WORD>16</CNT_WORD>
+    <Type>string</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>odel (Md): "Solar Inverter"</Description>
+    <CNT_WORD>16</CNT_WORD>
+    <Type>string</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40037</Address>
+    <Description>Options</Description>
+    <CNT_WORD>8</CNT_WORD>
+    <Type>string</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40045</Address>
+    <Description>Version (Vr) (FOX: Firmware number)</Description>
+    <CNT_WORD>8</CNT_WORD>
+    <Type>string</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40053</Address>
+    <Description>Serial Number (SN)</Description>
+    <CNT_WORD>16</CNT_WORD>
+    <Type>string</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40069</Address>
+    <Description>Device Address</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+</ModbusData>
+
+
+
+
+<ModbusData>
+  <Register>
+    <Address>40071</Address>
+    <Description>Model ID (ID): 701 = SunSpec Inverter Model</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40072</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table (L): 31</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40073</Address>
+    <Description>AC Wiring Type (0) = Single Phase (1) = Split Phase (2) = Three Phase</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40074</Address>
+    <Description>Operating State of the DER: OFF (0) ON (1)</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40075</Address>
+    <Description>Inverter State: OFF (0) SLEEPING (1) STARTING (2) MPPT (3) THROTTLED (4) SHUTTING_DOWN (5) FAULT (6) STANDBY (7)</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40076</Address>
+    <Description>Grid Connection State: (0) = Disconnected (1) = Connected</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40077</Address>
+    <Description>Alarm Bitfield (Active alarms for the DER): (0) = Ground Fault (1) = DC Over Voltage (2) = AC Disconnect Open (3) = DC Disconnect Open (4) = Grid Disconnect (5) = Cabinet Open (6) = Manual Shutdown (7) = Over Temperature (8) = Frequency Above Limit (9) = Frequency Under Limit (10) = AC Voltage Above Limit (11) = AC Voltage Under Limit (12) = Blown String Fuse on Input (13) = Under Temperature (14) = Generic Memory or Communication Error (Internal) (15) = Hardware Test Failure (16) = Manufacturer Alarm</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40079</Address>
+    <Description>Active Power (Total AC active power): Scale Factor: 100 Units: W</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40080</Address>
+    <Description>Apparent Power: Scale Factor: 100 Units: VA</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40081</Address>
+    <Description>Reactive Power (Total apparent power): Scale Factor: 100 Units: Var</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40082</Address>
+    <Description>Power Factor: Scale Factor: 0.001</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40083</Address>
+    <Description>Frequency (AC frequency): Scale Factor: 0.01 Units: Hz</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40085</Address>
+    <Description>Total Energy Injected (Total active energy injected): Scale Factor: 100 Units: Wh</Description>
+    <CNT_WORD>4</CNT_WORD>
+    <Type>U64</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40089</Address>
+    <Description>Heat Sink Temperature: Scale Factor: 0.1 Units: C</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40090</Address>
+    <Description>Amps L1 (Current phase L1): Scale Factor: 0.1 Units: A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40091</Address>
+    <Description>Phase Voltage L1-L2 (Phase voltage L1-L2): Scale Factor: 0.1 Units: V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40092</Address>
+    <Description>Phase Voltage L1-N (Phase voltage L1-N): Scale Factor: 0.1 Units: V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40093</Address>
+    <Description>Current L2 (Current phase L2): Scale Factor: 0.1 Units: A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40094</Address>
+    <Description>Phase Voltage L2-L3 (Phase voltage L2-L3): Scale Factor: 0.1 Units: V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40095</Address>
+    <Description>Phase Voltage L2-N (Phase voltage L2-N): Scale Factor: 0.1 Units: V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40096</Address>
+    <Description>Current L3 (Current phase L3): Scale Factor: 0.1 Units: A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40097</Address>
+    <Description>Phase Voltage L3-L1 (Phase voltage L3-L1): Scale Factor: 0.1 Units: V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40098</Address>
+    <Description>Phase Voltage L3-N (Phase voltage L3-N): Scale Factor: 0.1 Units: V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40099</Address>
+    <Description>Current Scale Factor 1 SF</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>RO</Type>
+  </Register>
+  <Register>
+    <Address>40100</Address>
+    <Description>Voltage Scale Factor 1 SF</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>RO</Type>
+  </Register>
+  <Register>
+    <Address>40101</Address>
+    <Description>Frequency Scale Factor 1 SF</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>RO</Type>
+  </Register>
+  <Register>
+    <Address>40102</Address>
+    <Description>Active Power Scale Factor 1 SF</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>RO</Type>
+  </Register>
+  <Register>
+    <Address>40103</Address>
+    <Description>Power Factor Scale Factor 1 SF</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>RO</Type>
+  </Register>
+  <Register>
+    <Address>40104</Address>
+    <Description>Apparent Power Scale Factor 1 SF</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>RO</Type>
+  </Register>
+  <Register>
+    <Address>40104</Address>
+    <Description>Apparent Power Scale Factor 1 SF</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>RO</Type>
+  </Register>
+  <Register>
+    <Address>40105</Address>
+    <Description>Reactive Power Scale Factor 1 SF</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>RO</Type>
+  </Register>
+  <Register>
+    <Address>40106</Address>
+    <Description>Active Energy Scale Factor 1 SF</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>RO</Type>
+  </Register>
+  <Register>
+    <Address>40107</Address>
+    <Description>Temperature Scale Factor 1 SF</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>RO</Type>
+  </Register>
+</ModbusData>
+
+<ModbusData>
+  <Register>
+    <Address>40226</Address>
+    <Description>Model ID</Description>
+    <Value>702</Value>
+    <Type>ID</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnly>RO</ReadOnly>
+  </Register>
+  <Register>
+    <Address>40227</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table</Description>
+    <Value>50</Value>
+    <Type>L</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnly>RO</ReadOnly>
+  </Register>
+  <Register>
+    <Address>40228</Address>
+    <Description>Active Power Max Rating (Maximum active power rating at unity power factor in watts)</Description>
+    <Value>1</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnly>RO</ReadOnly>
+  </Register>
+  <!-- ...and so on for each register -->
+  <Register>
+    <Address>40253</Address>
+    <Description>Susceptance Scale Factor</Description>
+    <Value>1</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnly>RO</ReadOnly>
+  </Register>
+  <Register>
+    <Address>40254</Address>
+    <Description>Charge Rate Max Rating (Maximum active power charge rate setting used to adjust maximum active power charge rate rating)</Description>
+    <Value>1</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnly>RO</ReadOnly>
+  </Register>
+  <Register>
+    <Address>40255</Address>
+    <Description>Charge Rate Max VA Rating (Maximum apparent power charge rate setting used to adjust maximum apparent power charge rate rating)</Description>
+    <Value>1</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnly>RO</ReadOnly>
+  </Register>
+</ModbusData>
+
+<ModbusData>
+  <Register>
+    <Address>40278</Address>
+    <Description>Model ID</Description>
+    <Value>703</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40279</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table</Description>
+    <Value>17</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40280</Address>
+    <Description>Permit enter service</Description>
+    <Value>0</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40281</Address>
+    <Description>Enter service voltage high threshold as a percent of normal voltage.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>0.1</ScaleFactor>
+    <Units>Pct</Units>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40282</Address>
+    <Description>Enter service voltage low threshold as a percent of normal voltage.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>0.1</ScaleFactor>
+    <Units>Pct</Units>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <!-- ...and so on for each register -->
+  <Register>
+    <Address>40292</Address>
+    <Description>Frequency Scale Factor;</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <Units>SF</Units>
+    <ReadOnlyWrite>RO</ReadOnlyWrite>
+  </Register>
+</ModbusData>
+
+
+<ModbusData>
+  <Register>
+    <Address>40297</Address>
+    <Description>Model ID</Description>
+    <Value>704</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40298</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table</Description>
+    <Value>65</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40299</Address>
+    <Description>Power factor enable when injecting active power:</Description>
+    <Value>0</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <!-- ...and so on for each register -->
+  <Register>
+    <Address>40308</Address>
+    <Description>Power factor setpoint when injecting active power.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>0.001</ScaleFactor>
+    <Units>Pct</Units>
+    <Threshold>800~1000</Threshold>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40309</Address>
+    <Description>Power Factor Excitation (W Inj): Power factor excitation setpoint when injecting active power:</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+</ModbusData>
+
+
+<ModbusData>
+  <Register>
+    <Address>40364</Address>
+    <Description>Model ID</Description>
+    <Value>705</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RO</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40365</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table</Description>
+    <Value>91</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RO</ReadOnlyWrite>
+  </Register>
+  <!-- ...and so on for each register -->
+  <Register>
+    <Address>40383</Address>
+    <Description>ReadOnly_1 (Curve read-write access):</Description>
+    <Value>0</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40384</Address>
+    <Description>V1_1: Curve voltage point as a percentage.</Description>
+    <Value></Value>
+    <Type.U16</Type>
+    <Units>VRefPct</Units>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <!-- ...and so on for each register -->
+  <Register>
+    <Address>40395</Address>
+    <Description>Var6_1: Curve reactive power point as set in Dept Ref point.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>Dept Ref_SF</ScaleFactor>
+    <Units Dept Ref</Units>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+    <Register>
+    <Address>40396</Address>
+    <Description>V7_1: Curve voltage point as a percentage.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <Units>VRefPct</Units>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40397</Address>
+    <Description>Var7_1: Curve reactive power point as set in Dept Ref point.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>Dept Ref_SF</ScaleFactor>
+    <Units>Dept Ref</Units>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40398</Address>
+    <Description>V8_1: Curve voltage point as a percentage.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <Units>VRefPct</Units>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40399</Address>
+    <Description>Var8_1: Curve reactive power point as set in Dept Ref point.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>Dept Ref_SF</ScaleFactor>
+    <Units>Dept Ref</Units>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+</ModbusData>
+
+
+<ModbusData>
+  <Register>
+    <Address>40457</Address>
+    <Description>Model ID</Description>
+    <Value>706</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40458</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table</Description>
+    <Value>76</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40459</Address>
+    <Description>Ena: Volt-Watt control enable</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40460</Address>
+    <Description>AdptCrvReq: Index of curve points to adopt. The first curve index is 1.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40461</Address>
+    <Description>AdptCrvRslt: Result of last adopt curve operation</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40462</Address>
+    <Description>NPt: Number of curve points supported.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RO</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40463</Address>
+    <Description>NCrv: Number of stored curves supported.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RO</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40464</Address>
+    <Description>V_SF: Scale factor for curve voltage points.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40465</Address>
+    <Description>Dept Ref_SF: Scale factor for curve watt points.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40466</Address>
+    <Description>RspTms_SF: Open loop response time scale factor.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40467</Address>
+    <Description>Act Pt 1: Number of active points.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>2</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40468</Address>
+    <Description>Dept Ref_1: Curve dependent reference</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40469</Address>
+    <Description>RspTms_1: Open loop response time</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40471</Address>
+    <Description>ReadOnly_1: Curve read-write access.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40472</Address>
+    <Description>V1_1: Curve voltage point as percentage.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40473</Address>
+    <Description>W1_1: Active power in percent of rated active power.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40474</Address>
+    <Description>V2_1: Curve voltage point as percentage.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40475</Address>
+    <Description>W2_1: Active power in percent of rated active power.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40476</Address>
+    <Description>V3_1: Curve voltage point as percentage.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40477</Address>
+    <Description>W3_1: Active power in percent of rated active power.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40478</Address>
+    <Description>V4_1: Curve voltage point as percentage.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40479</Address>
+    <Description>W4_1: Active power in percent of rated active power.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40480</Address>
+    <Description>V5_1: Curve voltage point as percentage.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40481</Address>
+    <Description>W5_1: Active power in percent of rated active power.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40482</Address>
+    <Description>V6_1: Curve voltage point as percentage.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40483</Address>
+    <Description>W6_1: Active power in percent of rated active power.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40484</Address>
+    <Description>V7_1: Curve voltage point as percentage.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40485</Address>
+    <Description>W7_1: Active power in percent of rated active power.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40486</Address>
+    <Description>V8_1: Curve voltage point as percentage.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40487</Address>
+    <Description>W8_1: Active power in percent of rated active power.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40488</Address>
+    <Description>Act Pt_2: Number of active points.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>2</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40489</Address>
+    <Description>Dept Ref_2: Curve dependent reference</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40490</Address>
+    <Description>RspTms_2: Open loop response time</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40492</Address>
+    <Description>ReadOnly_2: Curve read-write access.</Description>
+    <Value></Value>
+    <Type>S16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+</ModbusData>
+
+
+<ModbusData>
+  <Register>
+    <Address>40535</Address>
+    <Description>Model ID</Description>
+    <Value>707</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RO</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40536</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table</Description>
+    <Value>56</Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RO</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40537</Address>
+    <Description>EnaDER: Low voltage trip control enable</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40538</Address>
+    <Description>AdptCrvReq: Index of curve points to adopt. The first curve index is 1.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40539</Address>
+    <Description>AdptCrvRslt: Result of last adopt curve operation.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40540</Address>
+    <Description>NPt: Number of curve points supported.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40541</Address>
+    <Description>NCrvSet: Number of stored curve sets supported.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40542</Address>
+    <Description>V_SF: Scale factor for curve voltage points.</Description>
+    <Value></Value>
+    <Type>SF</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RO</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40543</Address>
+    <Description>Tms_SF: Scale factor for curve time points.</Description>
+    <Value></Value>
+    <Type>SF</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RO</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40544</Address>
+    <Description>ReadOnly: Curve read-write access.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40545</Address>
+    <Description>MustTrip.Act Pt: Number of active points in must trip curve.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40546</Address>
+    <Description>MustTrip.V1: Curve voltage point as percentage of VRef.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>V_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40547</Address>
+    <Description>MustTrip.Tms1: Curve time point in seconds.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>Tms_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40549</Address>
+    <Description>MustTrip.V2: Curve voltage point as percentage of VRef.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>V_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40550</Address>
+    <Description>MustTrip.Tms2: Curve time point in seconds.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>Tms_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40552</Address>
+    <Description>MustTrip.V3: Curve voltage point as percentage of VRef.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>V_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40553</Address>
+    <Description>MustTrip.Tms3: Curve time point in seconds.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>Tms_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40555</Address>
+    <Description>MustTrip.V4: Curve voltage point as percentage of VRef.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>V_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40556</Address>
+    <Description>MustTrip.Tms4: Curve time point in seconds.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>Tms_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40558</Address>
+    <Description>MustTrip.V5: Curve voltage point as percentage of VRef.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>V_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40559</Address>
+    <Description>MustTrip.Tms5: Curve time point in seconds.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>Tms_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40561</Address>
+    <Description>MomCess.Act Pt: Number of active points in the momentary cessation curve.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40562</Address>
+    <Description>MomCess.V1: Curve voltage point as percentage of VRef.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>V_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40563</Address>
+    <Description>MomCess.Tms1: Curve time point in seconds.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>Tms_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40565</Address>
+    <Description>MomCess.V2: Curve voltage point as percentage of VRef.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>V_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40566</Address>
+    <Description>MomCess.Tms2: Curve time point in seconds.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>Tms_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40568</Address>
+    <Description>MomCess.V3: Curve voltage point as percentage of VRef.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>V_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40569</Address>
+    <Description>MomCess.Tms3: Curve time point in seconds.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>Tms_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40571</Address>
+    <Description>MomCess.V4: Curve voltage point as percentage of VRef.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>V_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40572</Address>
+    <Description>MomCess.Tms4: Curve time point in seconds.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>Tms_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40574</Address>
+    <Description>MomCess.V5: Curve voltage point as percentage of VRef.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>V_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40575</Address>
+    <Description>MomCess.Tms5: Curve time point in seconds.</Description>
+    <Value></Value>
+    <Type>U32</Type>
+    <ScaleFactor>Tms_SF</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40577</Address>
+    <Description>Reserved field</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40578</Address>
+    <Description>LVRT zero power mode</Description>
+    <Value></Value>
+    <Type>enum16</Type>
+    <ScaleFactor>1</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40579</Address>
+    <Description>LVRT K-factor: The ratio of reactive current to voltage variation.</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>14</ScaleFactor>
+    <ReadOnlyWrite>RW</ReadOnlyWrite>
+  </Register>
+  <Register>
+    <Address>40580</Address>
+    <Description>Reserved field</Description>
+    <Value></Value>
+    <Type>U16</Type>
+    <ScaleFactor>13</ScaleFactor>
+    <ReadOnlyWrite>RO</ReadOnlyWrite>
+  </Register>
+</ModbusData>
+
+
+<ModbusData>
+  <Register>
+    <Address>40593</Address>
+    <Description>Model ID (ID): 708</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40594</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table (L): 56</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40595</Address>
+    <Description>Ena DER low voltage trip control enable: DISABLED (0) = Disabled ENABLED (1) = Enabled</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40596</Address>
+    <Description>AdptCrvReq Index of curve points to adopt. The first curve index is 1.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40597</Address>
+    <Description>AdptCrvRslt Result of last adopt curve operation: IN_PROGRESS (0) = Update in Progress COMPLETED (1) = Update Complete FAILED (2) = Update Failed</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40598</Address>
+    <Description>NPt (Number of curve points supported.)</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40599</Address>
+    <Description>NCrvSet (Number of stored curve sets supported.)</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40600</Address>
+    <Description>V_SF (Scale factor for curve voltage points.)</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>SF</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40601</Address>
+    <Description>Tms_SF (Scale factor for curve time points.)</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>SF</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40602</Address>
+    <Description>ReadOnly Curve read-write access: RW (0) = Read-Write Access R (1) = Read-Only Access</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40603</Address>
+    <Description>MustTrip.Act Pt Number of active points in must trip curve.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40604</Address>
+    <Description>MustTrip.V1 Scale Factor: V_SF Units: VRefPct Curve voltage point as percentage of VRef.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40605</Address>
+    <Description>MustTrip.Tms1 Scale Factor: Tms_SF Units: Secs Curve time point in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40607</Address>
+    <Description>MustTrip.V2 Scale Factor: V_SF Units: VRefPct</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40608</Address>
+    <Description>MustTrip.Tms2 Scale Factor: Tms_SF Units: Secs Curve time point in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40610</Address>
+    <Description>MustTrip.V3 Scale Factor: V_SF Units: VRefPct</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40611</Address>
+    <Description>MustTrip.Tms3 Scale Factor: Tms_SF Units: Secs Curve time point in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40613</Address>
+    <Description>MustTrip.V4 Scale Factor: V_SF Units: VRefPct</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40614</Address>
+    <Description>MustTrip.Tms4 Scale Factor: Tms_SF Units: Secs Curve time point in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40616</Address>
+    <Description>MustTrip.V5 Scale Factor: V_SF Units: VRefPct</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40617</Address>
+    <Description>MustTrip.Tms5 Scale Factor: Tms_SF Units: Secs Curve time point in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40619</Address>
+    <Description>MomCess.Act Pt Number of active points in the momentary cessation curve.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40620</Address>
+    <Description>MomCess.V1 Scale Factor: V_SF Units: VRefPct Curve voltage point as percentage of VRef.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40621</Address>
+    <Description>MomCess.Tms1 Scale Factor: Tms_SF Units: Secs Curve time point in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40623</Address>
+    <Description>MomCess.V2 Scale Factor: V_SF Units: VRefPct Curve voltage point as percentage of VRef.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40624</Address>
+    <Description>MomCess.Tms2 Scale Factor: Tms_SF Units: Secs Curve time point in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40626</Address>
+    <Description>MomCess.V3 Scale Factor: V_SF Units: VRefPct Curve voltage point as percentage of VRef.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40627</Address>
+    <Description>MomCess.Tms3 Scale Factor: Tms_SF Units: Secs Curve time point in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40629</Address>
+    <Description>MomCess.V4 Scale Factor: V_SF Units: VRefPct Curve voltage point as percentage of VRef</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40630</Address>
+    <Description>MomCess.Tms4 Scale Factor: Tms_SF Units: Secs Curve time point in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40632</Address>
+    <Description>MomCess.V5 Scale Factor: V_SF Units: VRefPct Curve voltage point as percentage of VRef</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40633</Address>
+    <Description>MomCess.Tms5 Scale Factor: Tms_SF Units: Secs Curve time point in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40635</Address>
+    <Description>HVRT zero power mode 0xA0 Zero Power Mode, 0xA1 Reactive Power Mode, 0xA2 Active Power Mode</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>enum16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40636</Address>
+    <Description>HVRT K-factor The ratio of reactive current to voltage variation Units: 0.1 Value range: 0-600</Description>
+    <CNT_WORD>14</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40637</Address>
+    <Description>Reserved field</Description>
+    <CNT_WORD>13</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+</ModbusData>
+
+<ModbusData>
+  <Register>
+    <Address>40651</Address>
+    <Description>Model ID (ID): 709</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40652</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table (L): 71</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40653</Address>
+    <Description>Ena DER low frequency trip control enable: DISABLED (0) = Disabled ENABLED (1) = Enabled</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40654</Address>
+    <Description>AdptCrvReq Index of curve points to adopt. The first curve index is 1.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40655</Address>
+    <Description>AdptCrvRslt Result of last adopt curve operation: IN_PROGRESS (0) = Update In Progress COMPLETED (1) = Update Complete FAILED (2) = Update Failed</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40656</Address>
+    <Description>NPt Number of curve points supported</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40657</Address>
+    <Description>NCrvSet Number of stored curve sets supported</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40658</Address>
+    <Description>Hz_SF Scale Factor: Hz_SF Units: Hz</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>SF</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40659</Address>
+    <Description>Tms_SF Scale Factor: Tms_SF Units: Secs Curve time point in seconds</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>SF</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40660</Address>
+    <Description>ReadOnly</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40661</Address>
+    <Description>MustTrip.Act Pt Number of active points in the momentary cessation curve</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40662</Address>
+    <Description>Scale Factor: Hz_SF Units: Hz Curve frequency point 1.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40664</Address>
+    <Description>Scale Factor: Tms_SF Units: Secs Curve time point 1 in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40666</Address>
+    <Description>Scale Factor: Hz_SF Units: Hz Curve frequency point 2.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40668</Address>
+    <Description>Scale Factor: Tms_SF Units: Secs Curve time point 2 in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40670</Address>
+    <Description>Scale Factor: Hz_SF Units: Hz Curve frequency point 3.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40672</Address>
+    <Description>Scale Factor: Tms_SF Units: Secs Curve time point 3 in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40674</Address>
+    <Description>Scale Factor: Hz_SF Units: Hz Curve frequency point 4.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40676</Address>
+    <Description>Scale Factor: Tms_SF Units: Secs Curve time point 4 in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40678</Address>
+    <Description>Scale Factor: Hz_SF Units: Hz Curve frequency point 5.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40680</Address>
+    <Description>Scale Factor: Tms_SF Units: Secs Curve time point 5 in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40682</Address>
+    <Description>Reserved field</Description>
+    <CNT_WORD>42</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+</ModbusData>
+
+<ModbusData>
+  <Register>
+    <Address>40724</Address>
+    <Description>Model ID (ID): 710</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40725</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table (L): 71</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40726</Address>
+    <Description>Ena DER high frequency trip control enable: DISABLED (0) = Disabled ENABLED (1) = Enabled</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40727</Address>
+    <Description>AdptCrvReq Index of curve points to adopt. The first curve index is 1.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40728</Address>
+    <Description>AdptCrvRslt Result of last adopt curve operation: IN_PROGRESS (0) = Update In Progress COMPLETED (1) = Update Complete FAILED (2) = Update Failed</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40729</Address>
+    <Description>NPt Number of curve points supported.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40730</Address>
+    <Description>NCrvSet Number of stored curve sets supported.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40731</Address>
+    <Description>Hz_SF Scale Factor: Hz_SF Units: Hz</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>SF</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40732</Address>
+    <Description>Tms_SF Scale Factor: Tms_SF Units: Secs Curve time point in seconds.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>SF</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40733</Address>
+    <Description>ReadOnly</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40734</Address>
+    <Description>MustTrip.Act Pt Number of active points in the momentary cessation curve</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40735</Address>
+    <Description>Scale Factor: Hz_SF Units: Hz Curve frequency point 1</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40737</Address>
+    <Description>Scale Factor: Tms_SF Units: Secs Curve time point 1 in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40739</Address>
+    <Description>Scale Factor: Hz_SF Units: Hz Curve frequency point 2</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40741</Address>
+    <Description>Scale Factor: Tms_SF Units: Secs Curve time point 2 in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40743</Address>
+    <Description>Scale Factor: Hz_SF Units: Hz Curve frequency point 3</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40745</Address>
+    <Description>Scale Factor: Tms_SF Units: Secs Curve time point 3 in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40747</Address>
+    <Description>Scale Factor: Hz_SF Units: Hz Curve frequency point 4</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40749</Address>
+    <Description>Scale Factor: Tms_SF Units: Secs Curve time point 4 in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40751</Address>
+    <Description>Scale Factor: Hz_SF Units: Hz Curve frequency point 5</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40753</Address>
+    <Description>Scale Factor: Tms_SF Units: Secs Curve time point 5 in seconds</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40755</Address>
+    <Description>Reserved field</Description>
+    <CNT_WORD>42</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+</ModbusData>
+
+<ModbusData>
+  <Register>
+    <Address>40797</Address>
+    <Description>Model ID (ID): 711</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40798</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table (L): 72</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40799</Address>
+    <Description>Ena DER Frequency-Watt (Frequency-Droop) control enable: DISABLED (0) = Disabled ENABLED (1) = Enabled</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40800</Address>
+    <Description>AdptCtlReq Set active control: The first control index is 1.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40801</Address>
+    <Description>AdptCtlRslt Result of last set active control operation: IN_PROGRESS (0) = Update In Progress COMPLETED (1) = Update Complete FAILED (2) = Update Failed</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40802</Address>
+    <Description>NCtl Number of stored controls supported.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40803</Address>
+    <Description>Db SF Deadband scale factor.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40804</Address>
+    <Description>K SF Frequency change scale factor.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>SF</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40805</Address>
+    <Description>RspTms_SF Open loop response time scale factor.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>SF</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40806</Address>
+    <Description>DbOf_1 Scale Factor: Db_SF Units: Hz The deadband value for over-frequency conditions in Hz</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40808</Address>
+    <Description>Db Uf_1 Scale Factor: Db_SF Units: Hz The deadband value for under-frequency conditions in Hz.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40810</Address>
+    <Description>Kof_1 Scale Factor: K_SF Frequency droop per-unit frequency change for over-frequency conditions corresponding to 1 per-unit power output change.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40811</Address>
+    <Description>Kuf_1 Scale Factor: K_SF Frequency droop per-unit frequency change for under-frequency conditions corresponding to 1 per-unit power output change.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40812</Address>
+    <Description>RspTms_1 Scale Factor: RspTms_SF Units: Secs The open-loop response time in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40814</Address>
+    <Description>ReadOnly_1 Control read-write access: RW (0) = Read-Write Access R (1) = Read-Only Access</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40815</Address>
+    <Description>DbOf_2 Scale Factor: Db_SF Units: Hz The deadband value for over-frequency conditions in Hz</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40817</Address>
+    <Description>Db Uf_2 Scale Factor: Db_SF Units: Hz The deadband value for under-frequency conditions in Hz.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40819</Address>
+    <Description>Kof_2 Scale Factor: K_SF Frequency droop per-unit frequency change for over-frequency conditions corresponding to 1 per-unit power output change.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40820</Address>
+    <Description>Kuf_2 Scale Factor: K_SF Frequency droop per-unit frequency change for under-frequency conditions corresponding to 1 per-unit power output change.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40821</Address>
+    <Description>RspTms_2 Scale Factor: RspTms_SF Units: Secs The open-loop response time in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40823</Address>
+    <Description>ReadOnly_2 Control read-write access: RW (0) = Read-Write Access R (1) = Read-Only Access</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40824</Address>
+    <Description>DbOf_3 Scale Factor: Db_SF Units: Hz The deadband value for over-frequency conditions in Hz</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40826</Address>
+    <Description>Db Uf_3 Scale Factor: Db_SF Units: Hz The deadband value for under-frequency conditions in Hz.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40828</Address>
+    <Description>Kof_3 Scale Factor: K_SF Frequency droop per-unit frequency change for over-frequency conditions corresponding to 1 per-unit power output change.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40829</Address>
+    <Description>Kuf_3 Scale Factor: K_SF Frequency droop per-unit frequency change for under-frequency conditions corresponding to 1 per-unit power output change.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40830</Address>
+    <Description>RspTms_3 Scale Factor: RspTms_SF Units: Secs The open-loop response time in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40832</Address>
+    <Description>ReadOnly_3 Control read-write access: RW (0) = Read-Write Access R (1) = Read-Only Access</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40833</Address>
+    <Description>DbOf_4 Scale Factor: Db_SF Units: Hz The deadband value for over-frequency conditions in Hz</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40835</Address>
+    <Description>Db Uf_4 Scale Factor: Db_SF Units: Hz The deadband value for under-frequency conditions in Hz.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40837</Address>
+    <Description>Kof_4 Scale Factor: K_SF Frequency droop per-unit frequency change for over-frequency conditions corresponding to 1 per-unit power output change.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40838</Address>
+    <Description>Kuf_4 Scale Factor: K_SF Frequency droop per-unit frequency change for under-frequency conditions corresponding to 1 per-unit power output change.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40839</Address>
+    <Description>RspTms_4 Scale Factor: RspTms_SF Units: Secs The open-loop response time in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40841</Address>
+    <Description>ReadOnly_4 Control read-write access: RW (0) = Read-Write Access R (1) = Read-Only Access</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40842</Address>
+    <Description>DbOf_5 Scale Factor: Db_SF Units: Hz The deadband value for over-frequency conditions in Hz</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40844</Address>
+    <Description>Db Uf_5 Scale Factor: Db_SF Units: Hz The deadband value for under-frequency conditions in Hz.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40846</Address>
+    <Description>Kof_5 Scale Factor: K_SF Frequency droop per-unit frequency change for over-frequency conditions corresponding to 1 per-unit power output change.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40847</Address>
+    <Description>Kuf_5 Scale Factor: K_SF Frequency droop per-unit frequency change for under-frequency conditions corresponding to 1 per-unit power output change.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40848</Address>
+    <Description>RspTms_5 Scale Factor: RspTms_SF Units: Secs The open-loop response time in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40850</Address>
+    <Description>ReadOnly_5 Control read-write access: RW (0) = Read-Write Access R (1) = Read-Only Access</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40851</Address>
+    <Description>DbOf_6 Scale Factor: Db_SF Units: Hz The deadband value for over-frequency conditions in Hz</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40853</Address>
+    <Description>Db Uf_6 Scale Factor: Db_SF Units: Hz The deadband value for under-frequency conditions in Hz.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40855</Address>
+    <Description>Kof_6 Scale Factor: K_SF Frequency droop per-unit frequency change for over-frequency conditions corresponding to 1 per-unit power output change.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40856</Address>
+    <Description>Kuf_6 Scale Factor: K_SF Frequency droop per-unit frequency change for under-frequency conditions corresponding to 1 per-unit power output change.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40857</Address>
+    <Description>RspTms_6 Scale Factor: RspTms_SF Units: Secs The open-loop response time in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40859</Address>
+    <Description>ReadOnly_6 Control read-write access: RW (0) = Read-Write Access R (1) = Read-Only Access</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40860</Address>
+    <Description>RspTms_HF The open-loop response time in seconds.</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40862</Address>
+    <Description>Reserved field</Description>
+    <CNT_WORD>9</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+</ModbusData>
+
+<ModbusData>
+  <Register>
+    <Address>40871</Address>
+    <Description>Model ID (ID): 712</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40872</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table (L): 86</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40873</Address>
+    <Description>Ena DER Watt-Var control enable: DISABLED (0) = Disabled ENABLED (1) = Enabled</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40874</Address>
+    <Description>AdptCtlReq Set active control: The first control index is 1.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40875</Address>
+    <Description>AdptCtlRslt Result of last set active control operation: IN_PROGRESS (0) = Update In Progress COMPLETED (1) = Update Complete FAILED (2) = Update Failed</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40876</Address>
+    <Description>NPt Number of curve points supported.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40877</Address>
+    <Description>NCrv Number of stored curves supported.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40878</Address>
+    <Description>W_SF Units: WMaxPct Curve active power point as percentage.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>SF</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40879</Address>
+    <Description>Dept Ref SF Var Scale Factor</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>SF</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40880</Address>
+    <Description>Act Pt 1 Number of active points</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40881</Address>
+    <Description>Dept Ref_1 Curve dependent reference: W_MAX_PCT (0) = Percent Max Watts VAR_MAX_PCT (1) = Percent Max Vars VAR_AVAL_PCT (2) = Percent Available Vars VA_MAX_PCT (3) = Percent Max Apparent Power</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40882</Address>
+    <Description>Pri_1 Power priority: ACTIVE (0) = Active power priority REACTIVE (1) = Reactive power priority</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40883</Address>
+    <Description>ReadOnly_1 Curve read-write access: RW (0) = Read-Write Access R (1) = Read-Only Access</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40884</Address>
+    <Description>W1_1 Units: WMaxPct Curve active power point as percentage.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40885</Address>
+    <Description>Var1_1 Scale Factor: Dept Ref_SF Units: VarPct Curve reactive power point as set in Dept Ref point</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40886</Address>
+    <Description>W2_1 Units: WMaxPct Curve active power point as percentage.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40887</Address>
+    <Description>Var2_1 Scale Factor: Dept Ref_SF Units: VarPct Curve reactive power point as set in Dept Ref point</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40888</Address>
+    <Description>W3_1 Units: WMaxPct Curve active power point as percentage.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40889</Address>
+    <Description>Var3_1 Scale Factor: Dept Ref_SF Units: VarPct Curve reactive power point as set in Dept Ref point</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40890</Address>
+    <Description>W4_1 Units: WMaxPct Curve active power point as percentage.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40891</Address>
+    <Description>Var4_1 Scale Factor: Dept Ref_SF Units: VarPct Curve reactive power point as set in Dept Ref point</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40892</Address>
+    <Description>W5_1 Units: WMaxPct Curve active power point as percentage.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40893</Address>
+    <Description>Var5_1 Scale Factor: Dept Ref_SF Units: VarPct Curve reactive power point as set in Dept Ref point</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40894</Address>
+    <Description>W6_1 Units: WMaxPct Curve active power point as percentage.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40895</Address>
+    <Description>Var6_1 Scale Factor: Dept Ref_SF Units: VarPct Curve reactive power point as set in Dept Ref point</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40896</Address>
+    <Description>W7_1 Units: WMaxPct Curve active power point as percentage.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40897</Address>
+    <Description>Var7_1 Scale Factor: Dept Ref_SF Units: VarPct Curve reactive power point as set in Dept Ref point</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40898</Address>
+    <Description>W8_1 Units: WMaxPct Curve active power point as percentage.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40899</Address>
+    <Description>Var8_1 Scale Factor: Dept Ref_SF Units: VarPct Curve reactive power point as set in Dept Ref point</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40900</Address>
+    <Description>W9_1 Units: WMaxPct Curve active power point as percentage.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40901</Address>
+    <Description>Var9_1 Scale Factor: Dept Ref_SF Units: VarPct Curve reactive power point as set in Dept Ref point</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40902</Address>
+    <Description>W10_1 Units: WMaxPct Curve active power point as percentage.</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40903</Address>
+    <Description>Var10_1 Scale Factor: Dept Ref_SF Units: VarPct Curve reactive power point as set in Dept Ref point</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>S16</Type>
+    <RW>RW</RW>
+  </Register>
+  <Register>
+    <Address>40904</Address>
+    <Description>Reserved field</Description>
+    <CNT_WORD>55</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+</ModbusData>
+
+
+<ModbusData>
+  <Register>
+    <Address>40959</Address>
+    <Description>Model ID (ID): 65000</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40960</Address>
+    <Description>Number of the following Modbus registers in accordance with the PICS table (L): 156</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40961</Address>
+    <Description>Reserved field</Description>
+    <CNT_WORD>34</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40985</Address>
+    <Description>String 1 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40986</Address>
+    <Description>String 1 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40987</Address>
+    <Description>String 2 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40988</Address>
+    <Description>String 2 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40989</Address>
+    <Description>String 3 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40990</Address>
+    <Description>String 3 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40991</Address>
+    <Description>String 4 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40992</Address>
+    <Description>String 4 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40993</Address>
+    <Description>String 5 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40994</Address>
+    <Description>String 5 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40995</Address>
+    <Description>String 6 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40996</Address>
+    <Description>String 6 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40997</Address>
+    <Description>String 7 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40998</Address>
+    <Description>String 7 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>40999</Address>
+    <Description>String 8 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41000</Address>
+    <Description>String 8 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41001</Address>
+    <Description>String 9 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41002</Address>
+    <Description>String 9 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41003</Address>
+    <Description>String 10 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41004</Address>
+    <Description>String 10 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41005</Address>
+    <Description>String 11 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41006</Address>
+    <Description>String 11 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41007</Address>
+    <Description>String 12 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41008</Address>
+    <Description>String 12 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41009</Address>
+    <Description>String 13 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41010</Address>
+    <Description>String 13 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41011</Address>
+    <Description>String 14 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41012</Address>
+    <Description>String 14 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41013</Address>
+    <Description>String 15 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41014</Address>
+    <Description>String 15 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41015</Address>
+    <Description>String 16 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41016</Address>
+    <Description>String 16 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41017</Address>
+    <Description>String 17 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41018</Address>
+    <Description>String 17 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41019</Address>
+    <Description>String 18 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41020</Address>
+    <Description>String 18 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41021</Address>
+    <Description>String 19 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41022</Address>
+    <Description>String 19 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41023</Address>
+    <Description>String 20 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41024</Address>
+    <Description>String 20 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41025</Address>
+    <Description>String 21 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41026</Address>
+    <Description>String 21 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41027</Address>
+    <Description>String 22 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41028</Address>
+    <Description>String 22 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41029</Address>
+    <Description>String 23 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41030</Address>
+    <Description>String 23 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41031</Address>
+    <Description>String 24 Voltage Units: 0.1V</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41032</Address>
+    <Description>String 24 Current Units: 0.01A</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41033</Address>
+    <Description>Reserved field</Description>
+    <CNT_WORD>32</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41065</Address>
+    <Description>Number of faults</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41066</Address>
+    <Description>Fault 1</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41067</Address>
+    <Description>Fault 2</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41068</Address>
+    <Description>Fault 3</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41069</Address>
+    <Description>Fault 4</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41070</Address>
+    <Description>Fault 5</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41071</Address>
+    <Description>Fault 6</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41072</Address>
+    <Description>Fault 7</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41073</Address>
+    <Description>Fault 8</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41074</Address>
+    <Description>Fault 9</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41075</Address>
+    <Description>Fault 10</Description>
+    <CNT_WORD>1</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41076</Address>
+    <Description>Total DC power Units: 1W</Description>
+    <CNT_WORD>2</CNT_WORD>
+    <Type>U32</Type>
+    <RW>RO</RW>
+  </Register>
+  <Register>
+    <Address>41078</Address>
+    <Description>Reserved field</Description>
+    <CNT_WORD>39</CNT_WORD>
+    <Type>U16</Type>
+    <RW>RO</RW>
+  </Register>
+</ModbusData>

@@ -118,8 +118,12 @@ class TestDynessGeneratedDefinitions(unittest.TestCase):
             gen = DynessDefinitionGenerator(cls.parser, cls.gen_dir)
             cls.generated = gen.generate_all()
         else:
+            from DefFileGenerator.io_utils import find_definition_file
+
             cls.gen_dir = DEFINITIONS_DIR
-            cls.generated = {k: DEFINITIONS_DIR / v for k, v in EXPECTED_FILES.items()}
+            cls.generated = {
+                k: find_definition_file(DEFINITIONS_DIR, v) for k, v in EXPECTED_FILES.items()
+            }
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -134,7 +138,9 @@ class TestDynessGeneratedDefinitions(unittest.TestCase):
                 filepath.stat().st_size, 20_000, f"Definition file too small: {filename}"
             )
             # Verify committed definitions also exist
-            committed = DEFINITIONS_DIR / filename
+            from DefFileGenerator.io_utils import find_definition_file
+
+            committed = find_definition_file(DEFINITIONS_DIR, filename)
             self.assertTrue(committed.is_file(), f"Committed definition missing: {filename}")
 
     def test_strict_webdyn_validation(self) -> None:

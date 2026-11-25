@@ -24,10 +24,11 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from DefFileGenerator.def_gen import Generator  # noqa: E402
+from DefFileGenerator.io_utils import find_definition_file  # noqa: E402
 from DefFileGenerator.knowledge_miner import infer_sunpm_tag  # noqa: E402
 
-REPO_DEF_PATH = REPO_ROOT / "Definitions" / "INV_ABB_PVS800-57B.csv"
-REPO_DEF_2_PATH = REPO_ROOT / "Definitions" / "INV_ABB_PVS800-57B_2.csv"
+REPO_DEF_PATH = find_definition_file(REPO_ROOT / "Definitions", "INV_ABB_PVS800-57B.csv")
+REPO_DEF_2_PATH = find_definition_file(REPO_ROOT / "Definitions", "INV_ABB_PVS800-57B_2.csv")
 DOWNLOADS_DEF_PATH = Path(r"c:\Users\alexandre.calais\Downloads\PVS800.csv")
 
 DEF_PATHS = [REPO_DEF_PATH, REPO_DEF_2_PATH]

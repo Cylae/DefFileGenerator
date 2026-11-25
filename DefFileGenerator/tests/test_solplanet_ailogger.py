@@ -7,6 +7,7 @@ Validates definition compliance with the 5 Apollo Pillars and dataset knowledge 
 import csv
 from pathlib import Path
 
+from DefFileGenerator.io_utils import find_definition_file
 from DefFileGenerator.knowledge_miner import load_dataset_knowledge
 from DefFileGenerator.production_governor import verify_file_pillars
 
@@ -14,7 +15,7 @@ from DefFileGenerator.production_governor import verify_file_pillars
 def test_solplanet_ailogger_pillars():
     """Verify that COM_Solplanet_Ai-Logger.csv and INV_Solplanet_Ai-Logger.csv satisfy all 5 Apollo pillars."""
     for filename in ("COM_Solplanet_Ai-Logger.csv", "INV_Solplanet_Ai-Logger.csv"):
-        prod_file = Path("production") / filename
+        prod_file = find_definition_file(Path("production"), filename)
         assert prod_file.is_file(), f"Missing production file: {prod_file}"
 
         is_valid, issues = verify_file_pillars(prod_file)
@@ -25,18 +26,18 @@ def test_solplanet_ailogger_pillars():
 def test_solplanet_ailogger_copies():
     """Verify that all definition repositories contain identical certified copies."""
     for filename in ("COM_Solplanet_Ai-Logger.csv", "INV_Solplanet_Ai-Logger.csv"):
-        prod_file = Path("production") / filename
+        prod_file = find_definition_file(Path("production"), filename)
         content = prod_file.read_bytes()
 
         for folder in ("Definitions", "tagged_definitions", "generated_definitions"):
-            target = Path(folder) / filename
+            target = find_definition_file(Path(folder), filename)
             assert target.is_file(), f"Missing copy in {folder}"
             assert target.read_bytes() == content, f"Mismatch between production and {folder}"
 
 
 def test_solplanet_ailogger_gateway_structure():
     """Verify the internal structure, header, register count, and key telemetry points of the Gateway."""
-    prod_file = Path("production/COM_Solplanet_Ai-Logger.csv")
+    prod_file = find_definition_file(Path("production"), "COM_Solplanet_Ai-Logger.csv")
     with open(prod_file, encoding="utf-8") as f:
         reader = list(csv.reader(f, delimiter=";"))
 
@@ -130,7 +131,7 @@ def test_solplanet_ailogger_gateway_structure():
 
 def test_solplanet_ailogger_inverter_structure():
     """Verify the internal structure of INV_Solplanet_Ai-Logger.csv."""
-    prod_file = Path("production/INV_Solplanet_Ai-Logger.csv")
+    prod_file = find_definition_file(Path("production"), "INV_Solplanet_Ai-Logger.csv")
     with open(prod_file, encoding="utf-8") as f:
         reader = list(csv.reader(f, delimiter=";"))
 

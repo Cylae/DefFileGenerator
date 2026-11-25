@@ -20,6 +20,8 @@ import csv
 import unittest
 from pathlib import Path
 
+from DefFileGenerator.io_utils import find_definition_file
+
 from DefFileGenerator.production_governor import verify_file_pillars
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -81,15 +83,15 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
                 GENERATED_DIR,
                 TAGGED_DIR,
             ):
-                fpath = d / fname
+                fpath = find_definition_file(d, fname)
                 self.assertTrue(fpath.is_file(), f"Missing {fname} in {d.name}")
 
     def test_byte_identical_redundant_synchronization(self) -> None:
         """Verify byte-identical synchronization across redundant directories."""
         for fname in EXPECTED_SMA_FILES:
-            prod_bytes = (PRODUCTION_DIR / fname).read_bytes()
+            prod_bytes = find_definition_file(PRODUCTION_DIR, fname).read_bytes()
             for d in (DEFINITIONS_SMA_DIR, DEFINITIONS_DIR, GENERATED_DIR, TAGGED_DIR):
-                target_bytes = (d / fname).read_bytes()
+                target_bytes = find_definition_file(d, fname).read_bytes()
                 self.assertEqual(
                     prod_bytes,
                     target_bytes,
@@ -99,7 +101,7 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
     def test_five_apollo_pillars_compliance(self) -> None:
         """Verify each SMA file strictly complies with all 5 Apollo Pillars."""
         for fname in EXPECTED_SMA_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             is_valid, issues = verify_file_pillars(fpath)
             self.assertTrue(
                 is_valid,
@@ -109,7 +111,7 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
     def test_protocol_header_and_structure(self) -> None:
         """Verify protocol header begins with Modbus; and has 11 columns with canonical manufacturer SMA."""
         for fname in EXPECTED_SMA_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 reader = list(csv.reader(fp, delimiter=";"))
 
@@ -125,7 +127,7 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
         valid_actions = {"0", "1", "4", "9", "10"}
 
         for fname in EXPECTED_SMA_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 rows = list(csv.reader(fp, delimiter=";"))[1:]
 
@@ -170,7 +172,7 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
     def test_domain_telemetry_contracts(self) -> None:
         """Verify essential domain telemetry tags are present based on equipment role."""
         for fname in EXPECTED_SMA_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 rows = list(csv.reader(fp, delimiter=";"))[1:]
 
@@ -211,7 +213,7 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
         - 30813 is apparent power total (S_AC), never PF
         - Power factor (PF) is mapped to cos phi registers (30821, 30825, 30949, 31221, or 40092)
         """
-        stpx_path = PRODUCTION_DIR / "INV_SMA_STP_X.csv"
+        stpx_path = find_definition_file(PRODUCTION_DIR, "INV_SMA_STP_X.csv")
         with open(stpx_path, encoding="utf-8", newline="") as fp:
             rows = {r[2].strip(): (r[6].strip(), r[5].strip(), r[9].strip()) for r in csv.reader(fp, delimiter=";")}
 
@@ -236,7 +238,7 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
             "INV_SMA_STP_5-10-SE40.csv",
             "INV_SMA_SunnyTripower_SmartEnergy.csv",
         ):
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 addr_map = {r[2].strip(): r[6].strip() for r in csv.reader(fp, delimiter=";")}
 
@@ -269,7 +271,7 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
         }
 
         for fname in EXPECTED_SMA_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 rows = list(csv.reader(fp, delimiter=";"))[1:]
 
@@ -315,7 +317,7 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
     def test_sma_scale_factors_and_clean_units(self) -> None:
         """Verify canonical SMA scale factors (temperatures -1, voltages/frequency -2, currents -3) and pure units."""
         for fname in EXPECTED_SMA_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 rows = list(csv.reader(fp, delimiter=";"))[1:]
 
@@ -389,7 +391,7 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
     def test_sma_stp_125_70_core2_specifications(self) -> None:
         """Verify SMA Sunny Tripower CORE2 125kW (STP 125-70) specific domain contracts."""
         fname = "INV_SMA_STP_125-70.csv"
-        fpath = PRODUCTION_DIR / fname
+        fpath = find_definition_file(PRODUCTION_DIR, fname)
         with open(fpath, encoding="utf-8", newline="") as fp:
             reader = list(csv.reader(fp, delimiter=";"))
 

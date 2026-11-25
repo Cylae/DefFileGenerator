@@ -1,0 +1,13 @@
+# Siebert - XC4XX Sources
+
+Source documentation and traceability manifest for **Siebert / XC4XX**.
+
+## Generated Definition Files
+
+- **WebdynSunPM (`.csv`)**: `OTH_Siebert_XC4XX_RTU.csv`, `OTH_Siebert_XC4XX_TCP.csv`
+- **WebdynSun (`.ini`)**: `OTH_Siebert_XC4XX_RTU.ini`, `OTH_Siebert_XC4XX_TCP.ini`
+
+## Source Documents
+
+Derived from the validated Webdyn manufacturer definition baseline / SunSpec model profile.
+No separate standalone PDF/XLSX manual file was bundled in local `sources/` for this legacy model.

@@ -1,0 +1,13 @@
+# BD - SENSOR_FUEL Sources
+
+Source documentation and traceability manifest for **BD / SENSOR_FUEL**.
+
+## Generated Definition Files
+
+- **WebdynSunPM (`.csv`)**: `SEN_BD_SENSOR_FUEL_SENSOR.csv`
+- **WebdynSun (`.ini`)**: `SEN_BD_SENSOR_FUEL_SENSOR.ini`
+
+## Source Documents
+
+Derived from the validated Webdyn manufacturer definition baseline / SunSpec model profile.
+No separate standalone PDF/XLSX manual file was bundled in local `sources/` for this legacy model.

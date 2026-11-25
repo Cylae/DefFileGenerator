@@ -127,10 +127,12 @@ class TestSmaStpxLearning(unittest.TestCase):
 
     def test_sma_stpx_definition_files_compliance(self) -> None:
         """Verifies 100% compliance of both SMA STP-X definition files with the 5 Pillars."""
+        from DefFileGenerator.io_utils import find_definition_file
+
         gen = Generator()
         files = [
-            Path("production/INV_SMA_STP_X.csv"),
-            Path("Definitions/INV_SMA_STP_X.csv"),
+            find_definition_file(Path("production"), "INV_SMA_STP_X.csv"),
+            find_definition_file(Path("Definitions"), "INV_SMA_STP_X.csv"),
         ]
 
         for p in files:

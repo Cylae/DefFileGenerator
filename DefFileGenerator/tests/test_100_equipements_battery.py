@@ -38,6 +38,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator  # noqa: E402
 from DefFileGenerator.extractor import Extractor  # noqa: E402
+from DefFileGenerator.io_utils import find_definition_file  # noqa: E402
 
 DEFINITIONS_DIR = REPO_ROOT / "Definitions"
 STRESS_DATA_DIR = REPO_ROOT / "stress_test_data"
@@ -249,7 +250,7 @@ def test_equipment_profile(item: EquipmentItem) -> None:
       4. Webdyn schema validation via Generator.validate_csv_detailed
       5. Minimum register count threshold for the given hardware model
     """
-    file_path = DEFINITIONS_DIR / item.file_name
+    file_path = find_definition_file(DEFINITIONS_DIR, item.file_name)
     assert file_path.is_file(), f"Definition file missing: {file_path}"
     assert file_path.stat().st_size > 0, f"Definition file is empty: {file_path}"
 
@@ -619,7 +620,7 @@ def test_battery_diversity_and_totals() -> None:
 
     total_registers = 0
     for item in EQUIPMENT_CATALOG:
-        csv_file = DEFINITIONS_DIR / item.file_name
+        csv_file = find_definition_file(DEFINITIONS_DIR, item.file_name)
         assert csv_file.is_file(), f"File missing: {csv_file}"
         total_registers += count_csv_registers(csv_file)
 
@@ -649,7 +650,7 @@ def run_benchmark_and_generate_report() -> None:
 
     for idx, item in enumerate(EQUIPMENT_CATALOG, start=1):
         t0 = time.perf_counter()
-        file_path = DEFINITIONS_DIR / item.file_name
+        file_path = find_definition_file(DEFINITIONS_DIR, item.file_name)
         status = "PASS"
         regs = 0
         try:

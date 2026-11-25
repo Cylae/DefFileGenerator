@@ -14,6 +14,7 @@ WORKSPACE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(WORKSPACE_DIR))
 
 from DefFileGenerator.production_governor import verify_file_pillars  # noqa: E402
+from DefFileGenerator.webdynsun_ini import verify_webdynsun_ini  # noqa: E402
 
 
 def main():
@@ -38,8 +39,26 @@ def main():
     passed_count = 0
     failed_files: list[tuple[Path, list[str]]] = []
 
+    if not files_to_check:
+        print(f"ERROR: No definition CSV files found under '{target}'.")
+        sys.exit(1)
+
     for idx, f in enumerate(files_to_check, 1):
         is_valid, issues = verify_file_pillars(f)
+        if target.is_dir():
+            ini_file = f.with_suffix(".ini")
+            if not ini_file.is_file():
+                is_valid = False
+                issues.append(f"Missing companion WebdynSun .ini file: {ini_file.name}")
+            else:
+                ini_ok, ini_issues = verify_webdynsun_ini(ini_file)
+                if not ini_ok:
+                    is_valid = False
+                    issues.extend(ini_issues)
+            sources_dir = f.parent / "sources"
+            if not sources_dir.is_dir():
+                is_valid = False
+                issues.append(f"Missing range sources/ directory: {sources_dir}")
         if is_valid:
             passed_count += 1
             print(f"[{idx:03d}/{len(files_to_check)}] PASS: {f.name}")

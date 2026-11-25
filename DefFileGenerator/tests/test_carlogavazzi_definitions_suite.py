@@ -21,6 +21,8 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
+from DefFileGenerator.io_utils import find_definition_file
+
 from DefFileGenerator.production_governor import verify_file_pillars
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -54,21 +56,21 @@ class TestCarloGavazziDefinitionsSuite:
     def test_all_carlo_gavazzi_definitions_exist(self) -> None:
         """Verify that all target Carlo Gavazzi definition files exist in production/."""
         for model in CG_MODELS:
-            file_path = PROD_DIR / f"MET_CarloGavazzi_{model}.csv"
+            file_path = find_definition_file(PROD_DIR, f"MET_CarloGavazzi_{model}.csv")
             assert file_path.is_file(), f"Missing definition file for {model} at {file_path}"
             assert file_path.stat().st_size > 500, f"File suspiciously small: {file_path.name}"
 
     def test_all_carlo_gavazzi_5pillars_strict_certification(self) -> None:
         """Verify that all Carlo Gavazzi definitions satisfy the 5 Webdyn Pillars with strict CRLF."""
         for model in CG_MODELS:
-            file_path = PROD_DIR / f"MET_CarloGavazzi_{model}.csv"
+            file_path = find_definition_file(PROD_DIR, f"MET_CarloGavazzi_{model}.csv")
             valid, issues = verify_file_pillars(file_path, strict_crlf=True)
             assert valid, f"{file_path.name} failed 5-pillars certification: {issues}"
 
     def test_em210_mv_and_em210_domain_spec(self) -> None:
         """Verify Carlo Gavazzi EM210_MV and EM210 specifications from official PDF."""
         for model in ["EM210_MV", "EM210"]:
-            file_path = PROD_DIR / f"MET_CarloGavazzi_{model}.csv"
+            file_path = find_definition_file(PROD_DIR, f"MET_CarloGavazzi_{model}.csv")
             with open(file_path, encoding="utf-8") as f:
                 reader = csv.reader(f, delimiter=";")
                 header = next(reader)
@@ -105,7 +107,7 @@ class TestCarloGavazziDefinitionsSuite:
     def test_em530_and_em540_domain_spec(self) -> None:
         """Verify Carlo Gavazzi EM530 and EM540 specifications from official protocol."""
         for model in ["EM530", "EM540"]:
-            file_path = PROD_DIR / f"MET_CarloGavazzi_{model}.csv"
+            file_path = find_definition_file(PROD_DIR, f"MET_CarloGavazzi_{model}.csv")
             with open(file_path, encoding="utf-8") as f:
                 reader = csv.reader(f, delimiter=";")
                 header = next(reader)
@@ -154,7 +156,7 @@ class TestCarloGavazziDefinitionsSuite:
 
     def test_em24_domain_spec(self) -> None:
         """Verify Carlo Gavazzi EM24-DIN official Modbus specifications."""
-        file_path = PROD_DIR / "MET_CarloGavazzi_EM24.csv"
+        file_path = find_definition_file(PROD_DIR, "MET_CarloGavazzi_EM24.csv")
         with open(file_path, encoding="utf-8") as f:
             reader = csv.reader(f, delimiter=";")
             header = next(reader)
@@ -190,7 +192,7 @@ class TestCarloGavazziDefinitionsSuite:
     def test_em100_series_spec(self) -> None:
         """Verify EM111, EM112, ET112 1-phase specifications."""
         for model in ["EM111", "EM112", "ET112"]:
-            file_path = PROD_DIR / f"MET_CarloGavazzi_{model}.csv"
+            file_path = find_definition_file(PROD_DIR, f"MET_CarloGavazzi_{model}.csv")
             with open(file_path, encoding="utf-8") as f:
                 reader = csv.reader(f, delimiter=";")
                 header = next(reader)
@@ -210,7 +212,7 @@ class TestCarloGavazziDefinitionsSuite:
     def test_em300_series_spec(self) -> None:
         """Verify EM330, EM340, ET330, ET340 3-phase specifications."""
         for model in ["EM330", "EM340", "ET330", "ET340"]:
-            file_path = PROD_DIR / f"MET_CarloGavazzi_{model}.csv"
+            file_path = find_definition_file(PROD_DIR, f"MET_CarloGavazzi_{model}.csv")
             with open(file_path, encoding="utf-8") as f:
                 reader = csv.reader(f, delimiter=";")
                 header = next(reader)
@@ -226,7 +228,7 @@ class TestCarloGavazziDefinitionsSuite:
     def test_wm20_and_wm50_float_telemetry_spec(self) -> None:
         """Verify WM20 and WM50 IEEE 754 float telemetry and U64 energy counters."""
         for model in ["WM20", "WM50"]:
-            file_path = PROD_DIR / f"MET_CarloGavazzi_{model}.csv"
+            file_path = find_definition_file(PROD_DIR, f"MET_CarloGavazzi_{model}.csv")
             with open(file_path, encoding="utf-8") as f:
                 reader = csv.reader(f, delimiter=";")
                 header = next(reader)
@@ -252,16 +254,16 @@ class TestCarloGavazziDefinitionsSuite:
     def test_multi_directory_synchronization(self) -> None:
         """Verify that definitions are byte-identical across synchronization directories."""
         sync_dirs = [
-            REPO_ROOT / "Definitions" / "CarloGavazzi",
+            REPO_ROOT / "Definitions",
             REPO_ROOT / "Definitions",
             REPO_ROOT / "generated_definitions",
             REPO_ROOT / "tagged_definitions",
         ]
         for model in CG_MODELS:
-            prod_file = PROD_DIR / f"MET_CarloGavazzi_{model}.csv"
+            prod_file = find_definition_file(PROD_DIR, f"MET_CarloGavazzi_{model}.csv")
             prod_bytes = prod_file.read_bytes()
             for target_dir in sync_dirs:
-                target_file = target_dir / f"MET_CarloGavazzi_{model}.csv"
+                target_file = find_definition_file(target_dir, f"MET_CarloGavazzi_{model}.csv")
                 assert target_file.is_file(), f"Missing mirror file: {target_file}"
                 assert target_file.read_bytes() == prod_bytes, (
                     f"Mirror mismatch for {model} in {target_dir}"

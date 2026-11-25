@@ -1,0 +1,65 @@
+<mbmap addr="40000">
+  <regs offset="0">53 75 6e 53</regs>
+  <!-- Common (1) -->
+  <regs offset="2">00 01 00 42</regs>
+  <regs offset="4">44 65 6c 74 61 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 52 50 49 2d 4d 38 38 48 00 00 00 00 25 30 32 75 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 30 31 2e 31 35 00 00 00 00 00 00 00 00 00 00 00 4f 34 43 31 37 34 30 30 30 30 32 57 30 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 80 00</regs>
+  <!-- Inverter (Three Phase) (103) -->
+  <regs offset="70">00 67 00 32</regs>
+  <regs offset="72">ff ff 00 00 00 00 00 00 ff fe ff ff ff ff ff ff 00 00 00 00 00 00 ff ff 00 00 00 02 00 00 ff fe 00 00 00 02 00 00 00 02 00 00 ff fe 00 00 00 23 00 02 ff ff 80 00 ff ff 80 00 80 00 80 00 00 00 00 00 80 00 80 00 00 00 00 08 ff ff 00 00 00 00 ff ff ff ff 00 00 00 00 ff ff ff ff ff ff ff ff ff ff ff ff</regs>
+  <!-- Nameplate (120) -->
+  <regs offset="122">00 78 00 1a</regs>
+  <regs offset="124">00 04 22 60 00 01 22 60 00 01 80 00 14 a0 eb 60 80 00 00 01 01 3e 00 00 80 00 00 50 ff b0 80 00 ff fe ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 80 00</regs>
+  <!-- Basic Settings (121) -->
+  <regs offset="150">00 79 00 1e</regs>
+  <regs offset="152">22 60 ff ff 80 00 ff ff ff ff ff ff 80 00 80 00 80 00 80 00 17 70 80 00 80 00 80 00 80 00 ff ff ff ff ff ff ff ff ff ff 00 01 80 00 80 00 80 00 80 00 80 00 00 00 80 00 80 00 80 00</regs>
+  <!-- Measurements_Status (122) -->
+  <regs offset="182">00 7a 00 2c</regs>
+  <regs offset="184">00 03 ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00 80 00 ff ff 80 00 ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00 ff ff ff ff ff ff 00 00 00 03</regs>
+  <!-- Immediate Controls (123) -->
+  <regs offset="228">00 7b 00 18</regs>
+  <regs offset="230">ff ff ff ff 00 01 00 64 ff ff ff ff 00 3c 00 00 fc 18 ff ff ff ff 00 0a 00 00 00 00 80 00 80 00 ff ff ff ff 00 0a 00 01 00 00 00 00 ff fd 00 00</regs>
+  <!-- Static Volt-VAR (126) -->
+  <regs offset="254">00 7e 00 40</regs>
+  <regs offset="256">00 01 00 00 ff ff ff ff 00 0a 00 01 00 04 ff ff 00 00 80 00 00 04 ff ff 03 20 ff d4 03 e7 00 00 03 e7 00 00 04 4b 00 2c ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff ff ff 00 00</regs>
+  <!-- Freq-Watt Param (127) -->
+  <regs offset="320">00 7f 00 0a</regs>
+  <regs offset="322">00 42 13 9c 13 9c ff ff 00 01 00 64 00 00 ff fe 00 00 80 00</regs>
+  <!-- Dynamic Reactive Current (128) -->
+  <regs offset="332">00 80 00 0e</regs>
+  <regs offset="334">00 00 00 14 00 00 00 00 ff ff 00 5a 00 6e ff ff ff ff 06 40 ff ff ff ff 00 00 80 00</regs>
+  <!-- LVRTD (129) -->
+  <regs offset="348">00 81 00 3c</regs>
+  <regs offset="350">00 01 00 01 ff ff ff ff ff ff 00 01 00 03 ff fe ff ff 80 00 00 03 00 8c 01 f5 2e e0 03 70 01 f4 01 a3 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01</regs>
+  <!-- HVRTD (130) -->
+  <regs offset="410">00 82 00 3c</regs>
+  <regs offset="412">00 01 00 01 ff ff ff ff ff ff 00 01 00 02 ff fe ff ff 80 00 00 02 00 28 04 ae 2e e0 04 49 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01</regs>
+  <!-- Watt-PF (131) -->
+  <regs offset="472">00 83 00 40</regs>
+  <regs offset="474">00 01 00 00 ff ff ff ff ff ff 00 01 00 02 00 00 ff fd 80 00 00 02 00 00 fc 7c 00 64 03 84 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0a ff ff ff ff 00 00 80 00</regs>
+  <!-- Volt-Watt (132) -->
+  <regs offset="538">00 84 00 40</regs>
+  <regs offset="540">00 01 00 00 ff ff ff ff ff ff 00 01 00 02 ff ff 00 00 80 00 00 02 00 01 04 38 00 05 04 4b 00 14 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 ff ff 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 2c ff ff ff ff 00 00</regs>
+  <!-- LFRT (135) -->
+  <regs offset="604">00 87 00 3c</regs>
+  <regs offset="606">00 01 00 01 ff ff ff ff ff ff 00 01 00 02 ff fe ff fe 80 00 00 02 00 46 12 52 01 f4 11 94 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01</regs>
+  <!-- HFRT (136) -->
+  <regs offset="666">00 88 00 3c</regs>
+  <regs offset="668">00 01 00 01 ff ff ff ff ff ff 00 01 00 02 ff fe ff fe 80 00 00 02 00 46 14 5a 01 f4 19 64 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01</regs>
+  <!-- LVRTC (137) -->
+  <regs offset="728">00 89 00 3c</regs>
+  <regs offset="730">00 01 00 01 ff ff ff ff ff ff 00 01 00 03 ff fe ff ff 80 00 00 03 00 32 03 7b 00 32 03 7b 00 32 01 98 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01</regs>
+  <!-- HVRTC (138) -->
+  <regs offset="790">00 8a 00 3c</regs>
+  <regs offset="792">00 01 00 01 ff ff ff ff ff ff 00 01 00 02 ff fe ff ff 80 00 00 02 00 32 04 3e 00 32 04 42 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01</regs>
+  <!-- Multiple MPPT Inverter Extension Model (160) -->
+  <regs offset="852">00 a0 00 30</regs>
+  <regs offset="854">ff ff ff ff 00 01 80 00 ff ff ff ff 00 02 ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff 80 00 ff ff ff ff ff ff 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff 80 00 ff ff ff ff ff ff</regs>
+  <!-- String Combiner (Current) (401) -->
+  <regs offset="902">01 91 02 0e</regs>
+  <regs offset="904">ff fe 80 00 80 00 ff ff 00 12 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff ff ff 80 00 00 01 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 02 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 03 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 04 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 05 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 06 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 07 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 08 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 09 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 0a ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 0b ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 0c ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 0d ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 0e ff ff ff ff ff ff ff ff 00 00</regs>
+  <regs offset="1028">ff ff ff ff 00 0f ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 10 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 11 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff 00 12 ff ff ff ff ff ff ff ff 00 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff</regs>
+  <regs offset="1153">ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff</regs>
+  <regs offset="1278">ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff</regs>
+  <regs offset="1403">80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff ff ff ff ff ff ff ff ff ff ff 80 00 ff ff ff ff</regs>
+  <regs>ff ff 00 00</regs>
+</mbmap>

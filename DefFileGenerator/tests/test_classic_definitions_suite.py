@@ -16,11 +16,12 @@ import csv
 import unittest
 from pathlib import Path
 
+from DefFileGenerator.io_utils import find_definition_file
 from DefFileGenerator.production_governor import verify_file_pillars
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 PRODUCTION_DIR = REPO_ROOT / "production"
-DEFINITIONS_CLASSIC_DIR = REPO_ROOT / "Definitions" / "Classic"
+DEFINITIONS_CLASSIC_DIR = REPO_ROOT / "Definitions"
 GENERATED_DIR = REPO_ROOT / "generated_definitions"
 TAGGED_DIR = REPO_ROOT / "tagged_definitions"
 
@@ -62,18 +63,18 @@ class TestClassicDefinitionsSuite(unittest.TestCase):
     """Test suite certifying all 18 grand classic definitions."""
 
     def test_all_files_exist_in_all_target_directories(self) -> None:
-        """Ensure all 18 files exist in production, generated_definitions, tagged_definitions, and Definitions/Classic."""
+        """Ensure all 18 files exist in production, generated_definitions, tagged_definitions, and Definitions."""
         for fname in EXPECTED_CLASSIC_FILES:
             for d in (PRODUCTION_DIR, DEFINITIONS_CLASSIC_DIR, GENERATED_DIR, TAGGED_DIR):
-                fpath = d / fname
+                fpath = find_definition_file(d, fname)
                 self.assertTrue(fpath.is_file(), f"Missing {fname} in {d.name}")
 
     def test_byte_identical_redundant_synchronization(self) -> None:
         """Verify byte-identical synchronization across redundant directories."""
         for fname in EXPECTED_CLASSIC_FILES:
-            prod_bytes = (PRODUCTION_DIR / fname).read_bytes()
+            prod_bytes = find_definition_file(PRODUCTION_DIR, fname).read_bytes()
             for d in (DEFINITIONS_CLASSIC_DIR, GENERATED_DIR, TAGGED_DIR):
-                target_bytes = (d / fname).read_bytes()
+                target_bytes = find_definition_file(d, fname).read_bytes()
                 self.assertEqual(
                     prod_bytes,
                     target_bytes,
@@ -83,7 +84,7 @@ class TestClassicDefinitionsSuite(unittest.TestCase):
     def test_five_apollo_pillars_compliance(self) -> None:
         """Verify each file strictly complies with all 5 Apollo Pillars."""
         for fname in EXPECTED_CLASSIC_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             is_valid, issues = verify_file_pillars(fpath)
             self.assertTrue(
                 is_valid,
@@ -93,7 +94,7 @@ class TestClassicDefinitionsSuite(unittest.TestCase):
     def test_protocol_header_and_structure(self) -> None:
         """Verify protocol header begins with Modbus; and has 11 columns."""
         for fname in EXPECTED_CLASSIC_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 reader = list(csv.reader(fp, delimiter=";"))
 
@@ -108,7 +109,7 @@ class TestClassicDefinitionsSuite(unittest.TestCase):
         valid_actions = {"0", "1", "4", "9", "10"}
 
         for fname in EXPECTED_CLASSIC_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 rows = list(csv.reader(fp, delimiter=";"))[1:]
 
@@ -153,7 +154,7 @@ class TestClassicDefinitionsSuite(unittest.TestCase):
     def test_canonical_telemetry_tags_present(self) -> None:
         """Verify essential standard tags exist for inverters and meters."""
         for fname in EXPECTED_CLASSIC_FILES:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 rows = list(csv.reader(fp, delimiter=";"))[1:]
 
@@ -182,7 +183,7 @@ class TestClassicDefinitionsSuite(unittest.TestCase):
         ]
         direct_scale_tags = {"U_AC_1", "U_AC_L1L2", "I_AC_1", "FREQ", "PF"}
         for fname in target_meters:
-            fpath = PRODUCTION_DIR / fname
+            fpath = find_definition_file(PRODUCTION_DIR, fname)
             with open(fpath, encoding="utf-8", newline="") as fp:
                 rows = list(csv.reader(fp, delimiter=";"))[1:]
 

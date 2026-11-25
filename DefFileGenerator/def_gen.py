@@ -431,14 +431,26 @@ def _normalize_address_cached(s: str) -> str:
         except ValueError:
             return addr_part
 
-    # Parse as plain decimal — do NOT use int(x, 0) which treats leading-zero
-    # strings as octal (e.g. "0010" -> 8) and do NOT blindly accept bare
-    # [A-Fa-f0-9]+ strings as hex, since tokens like "DEAD", "BAD", "CAFE",
-    # "AC", "DC", "DEC" are common non-numeric column values in Modbus docs.
-    try:
-        return str(int(addr_part, 10))
-    except ValueError:
-        pass
+    if not addr_part.startswith("0") or addr_part == "0":
+        try:
+            return str(int(addr_part, 10))
+        except ValueError:
+            pass
+
+    # Parse bare hexadecimal strings (e.g. "A0", "FFFF", "012") while
+    # rejecting common English/Modbus non-address tokens ("DEAD", "BAD", "CAFE", "AC", "DC", "DEC").
+    if _ADDR_HEX_MATCH_RE.match(addr_part) and addr_part.upper() not in {
+        "DEAD",
+        "BAD",
+        "CAFE",
+        "AC",
+        "DC",
+        "DEC",
+    }:
+        try:
+            return str(int(addr_part, 16))
+        except ValueError:
+            return addr_part
 
     return addr_part
 

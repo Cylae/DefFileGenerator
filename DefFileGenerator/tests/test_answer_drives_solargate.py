@@ -9,10 +9,11 @@ import pytest
 
 from DefFileGenerator.def_gen import Generator
 from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.io_utils import find_definition_file
 from DefFileGenerator.main import infer_metadata_from_filename
 
 SOLARGATE_PDF_PATH = r"c:\Users\alexandre.calais\Downloads\ADSolargateManENHWSW 02-11-09 (1).pdf"
-SOLARGATE_DEF_PATH = Path("Definitions/INV_AnswerDrives_Solargate.csv")
+SOLARGATE_DEF_PATH = find_definition_file(Path("Definitions"), "INV_AnswerDrives_Solargate.csv")
 
 
 class TestAnswerDrivesSolargate:
