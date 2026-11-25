@@ -115,7 +115,7 @@ TYPE_SYNONYMS_COMPILED: tuple[tuple[re.Pattern[str], str], ...] = (
         "I32",
     ),
     (re.compile(r"\bunsigned\s*short(?:\s*int)?\b|\bushort\b|\buint16_t\b"), "U16"),
-    (re.compile(r"\bsigned\s*short(?:\s*int)?\b|\bsshort\b|\bshort(?:\s*int)?\b"), "I16"),
+    (re.compile(r"\bsigned\s*short(?:\s*int)?\b|\bsshort\b|\bshort(?:\s*int)?\b|\bint16_t\b"), "I16"),
     (re.compile(r"unsigned\s*(?:int(?:eger)?)?\s*16|uint16|\bu16\b|\bint16u\b"), "U16"),
     (
         re.compile(r"signed\s*(?:int(?:eger)?)?\s*16|sint16|\bint16\b|\bi16\b|\bs16\b|\bint16s\b"),
@@ -233,6 +233,9 @@ _SHORTHAND_TYPE_MAP: dict[str, str] = {
     "short": "I16",
     "sshort": "I16",
     "signedshort": "I16",
+    "s16": "I16",
+    "s32": "I32",
+    "s64": "I64",
     "long": "I32",
     "slong": "I32",
     "signedlong": "I32",
@@ -409,6 +412,18 @@ def _normalize_address_cached(s: str) -> str:
             return str(-val if is_neg else val)
         except ValueError:
             return addr_part
+    elif clean_addr.lower().startswith("0o"):
+        try:
+            val = int(clean_addr, 8)
+            return str(-val if is_neg else val)
+        except ValueError:
+            return addr_part
+    elif clean_addr.lower().startswith("0b"):
+        try:
+            val = int(clean_addr, 2)
+            return str(-val if is_neg else val)
+        except ValueError:
+            return addr_part
     elif clean_addr.lower().endswith("h"):
         try:
             val = int(clean_addr[:-1], 16)
@@ -416,17 +431,14 @@ def _normalize_address_cached(s: str) -> str:
         except ValueError:
             return addr_part
 
+    # Parse as plain decimal — do NOT use int(x, 0) which treats leading-zero
+    # strings as octal (e.g. "0010" -> 8) and do NOT blindly accept bare
+    # [A-Fa-f0-9]+ strings as hex, since tokens like "DEAD", "BAD", "CAFE",
+    # "AC", "DC", "DEC" are common non-numeric column values in Modbus docs.
     try:
-        return str(int(addr_part, 0))
+        return str(int(addr_part, 10))
     except ValueError:
         pass
-
-    # Try parsing plain hexadecimal string without 0x prefix
-    if _ADDR_HEX_MATCH_RE.match(addr_part):
-        try:
-            return str(int(addr_part, 16))
-        except ValueError:
-            return addr_part
 
     return addr_part
 
@@ -728,12 +740,22 @@ class Generator:
         if not dtype or not str(dtype).strip():
             return False
         dtype_upper = str(dtype).strip().upper()
+
+        # Reject types with no alphanumeric content (e.g. "---", "...")
+        if not any(c.isalnum() for c in dtype_upper):
+            return False
+
+        # Reject STR0 — zero-length strings are meaningless
+        str_conv_match = RE_TYPE_STR_CONV.match(dtype_upper)
+        if str_conv_match and int(str_conv_match.group(1)) <= 0:
+            return False
+
         norm_upper = Generator.normalize_type(dtype_upper)
         return (
             dtype_upper in _COMMON_VALID_NUMERIC
             or dtype_upper in _VALID_SPECIAL_TYPES
             or bool(RE_TYPE_NUMERIC.match(dtype_upper))
-            or bool(RE_TYPE_STR_CONV.match(dtype_upper))
+            or bool(str_conv_match)
             or norm_upper in _COMMON_VALID_NUMERIC
             or norm_upper in _VALID_SPECIAL_TYPES
             or bool(RE_TYPE_NUMERIC.match(norm_upper))
@@ -757,6 +779,8 @@ class Generator:
         Returns:
             str: Normalized base address in decimal string representation.
         """
+        if isinstance(addr_part, bool):
+            return ""
         if isinstance(addr_part, int):
             return str(addr_part)
         try:
@@ -997,7 +1021,9 @@ class Generator:
         Returns:
             str: Modified address string with offset applied.
         """
-        if not address:
+        if address is None or (isinstance(address, str) and not address.strip()):
+            return ""
+        if isinstance(address, bool):
             return ""
         if offset == 0 and isinstance(address, (int, str)):
             s_addr = str(address).strip()

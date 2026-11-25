@@ -27,7 +27,9 @@ def main():
     if target.is_file():
         files_to_check.append(target)
     else:
-        files_to_check = sorted(target.glob("*.csv"))
+        files_to_check = sorted(
+            p for p in target.rglob("*.csv") if "sources" not in p.parts
+        )
 
     print("=" * 80)
     print(f"APOLLO PRODUCTION 5-PILLAR VERIFIER: {len(files_to_check)} file(s)")

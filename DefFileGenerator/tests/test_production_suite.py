@@ -26,7 +26,7 @@ VALID_FUNCTION_CODES = {"1", "2", "3", "4"}
 
 
 def get_production_files() -> list[Path]:
-    return sorted(PROD_DIR.glob("*.csv"))
+    return sorted(p for p in PROD_DIR.rglob("*.csv") if "sources" not in p.parts)
 
 
 @pytest.fixture(scope="module")

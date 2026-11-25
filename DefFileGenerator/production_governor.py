@@ -69,9 +69,15 @@ def verify_file_pillars(file_path: Path, strict_crlf: bool = False) -> tuple[boo
             issues.append(f"File '{filename}' is not valid UTF-8: {e}")
 
         if strict_crlf:
-            if b"\n" in file_bytes and b"\r\n" not in file_bytes:
-                issues.append(f"File '{filename}' uses LF line endings instead of CRLF (\\r\\n)")
-            elif b"\r\r\n" in file_bytes:
+            # Check EVERY line ending strictly: reject bare \n without preceding \r
+            raw_lines = file_bytes.split(b"\n")
+            for line_idx, raw_line in enumerate(raw_lines[:-1]):  # skip last segment (after final \n)
+                if not raw_line.endswith(b"\r"):
+                    issues.append(
+                        f"File '{filename}' line {line_idx + 1}: bare LF without CR (must use CRLF)"
+                    )
+                    break  # one diagnostic is sufficient
+            if b"\r\r\n" in file_bytes:
                 issues.append(f"File '{filename}' contains corrupted double CR (\\r\\r\\n)")
     except Exception as e:
         issues.append(f"Cannot read file '{filename}': {e}")
@@ -91,6 +97,10 @@ def verify_file_pillars(file_path: Path, strict_crlf: bool = False) -> tuple[boo
             if proto_val.lower() in ("modbusrtu", "modbustcp", "modbus_rtu", "modbus_tcp"):
                 issues.append(
                     f"Header protocol '{proto_val}' in '{filename}' is deprecated; must be 'Modbus'"
+                )
+            elif proto_val != "Modbus":
+                issues.append(
+                    f"Header protocol '{proto_val}' in '{filename}' is not 'Modbus'"
                 )
 
             rows = list(reader)
@@ -136,15 +146,21 @@ def verify_file_pillars(file_path: Path, strict_crlf: bool = False) -> tuple[boo
                             )
                     else:
                         base_addr = addr.split("_")[0]
-                        if not base_addr.isdigit():
+                        if not (base_addr.isascii() and base_addr.isdigit()):
                             issues.append(
                                 f"Line {idx} in '{filename}': non-numeric address '{addr}'"
                             )
                         else:
                             iaddr = int(base_addr)
+                            reg_count = Generator.get_register_count(dtype, addr)
+                            end_addr = iaddr + reg_count - 1
                             if not (0 <= iaddr <= 65535):
                                 issues.append(
                                     f"Line {idx} in '{filename}': address '{addr}' out of 16-bit range"
+                                )
+                            elif end_addr > 65535:
+                                issues.append(
+                                    f"Line {idx} in '{filename}': address span {iaddr}-{end_addr} exceeds 16-bit range"
                                 )
 
                 # Action Code

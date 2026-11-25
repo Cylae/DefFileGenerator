@@ -1051,6 +1051,12 @@ def inspect_library_file(filename: str) -> InspectResponse:
 
     file_path = os.path.join(production_dir, safe_filename)
     if not os.path.exists(file_path):
+        prod_matches = [
+            p for p in Path(production_dir).rglob(safe_filename) if "sources" not in p.parts
+        ]
+        if prod_matches:
+            file_path = str(prod_matches[0])
+    if not os.path.exists(file_path):
         file_path = os.path.join(definitions_dir, safe_filename)
     if not os.path.exists(file_path):
         matches = list(Path(definitions_dir).rglob(safe_filename))
@@ -1342,6 +1348,12 @@ def download_library_file(filename: str) -> FileResponse:
     definitions_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "Definitions"))
 
     file_path = os.path.join(production_dir, safe_filename)
+    if not os.path.exists(file_path):
+        prod_matches = [
+            p for p in Path(production_dir).rglob(safe_filename) if "sources" not in p.parts
+        ]
+        if prod_matches:
+            file_path = str(prod_matches[0])
     if not os.path.exists(file_path):
         file_path = os.path.join(definitions_dir, safe_filename)
 
