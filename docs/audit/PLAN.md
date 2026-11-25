@@ -1,82 +1,56 @@
 # Apollo-Standard Engineering Plan: DefFileGenerator
 
-## 1. Project Profile and Mission Scope
+## 1. Starting State & Scope (Captured 2026-11-25)
 
-- **Repository**: DefFileGenerator (https://github.com/Cylae/DefFileGenerator.git)
-- **Local Path**: `C:\Users\alexandre.calais\Documents\GitHub\DefFileGenerator`
-- **Active Release**: v0.4.0
-- **Language / Runtime**: Python 3.10-3.15 (Active runtime: Python 3.15.0 x86_64 on Windows 11)
-- **Package Management**: `uv` with `pyproject.toml`
-- **Application Type**: Multi-interface system:
-  1. CLI (`DefFileGenerator/main.py`)
-  2. Desktop GUI (`DefFileGenerator/gui.py` via `customtkinter`)
-  3. Web REST API & SPA Studio (`web/app.py`, `web/static/` via FastAPI/Starlette)
-  4. Core Extractor & Engine (`DefFileGenerator/extractor.py`, `DefFileGenerator/def_gen.py`)
-  5. Semantic Knowledge Miner (`DefFileGenerator/knowledge_miner.py`)
-  6. Dedicated Industrial Generators:
-     - Mars Renewable BESS & EMS (`DefFileGenerator/mars_generator.py`, `generate_mars_definitions.py`)
-     - Dyness DH-Series Commercial & Industrial BESS (`DefFileGenerator/dyness_generator.py`, `generate_dyness_definitions.py`)
-     - FoxESS P3/H3 Pro Hybrid Inverter Suite (`generate_foxess_definitions.py`)
-  7. Technical Reporting & Validation Engine (`DefFileGenerator/report_generator.py`)
-- **Product Contract**: Accurate extraction of Modbus register maps from heterogeneous technical documents (PDF, Excel, CSV, XML) and generation of syntactically and semantically validated WebdynSunPM definition CSV files compliant with official Webdyn gateway specifications.
+- **Repository**: `https://github.com/Cylae/DefFileGenerator.git`
+- **Local Workspace**: `c:\Users\alexandre.calais\Documents\GitHub\DefFileGenerator`
+- **Starting Commit / Branch**: `main` at `346e4546` (clean working tree at start; 7 commits ahead of `origin/main`)
+- **Runtime & Toolchain**: Python 3.15.0 (`.venv`), `pytest` 9.1.1, `ruff` 0.17.0, `mypy` 2.4.0, `bandit` 1.9.4, `pyinstaller` 6.22.3, Node.js
+- **Shared Storage Constraint**: Never write/modify/delete on `\\WDN-FILES.WEBDYN.COM` without explicit user authorization.
+
+### Two Separate Workstreams
+1. **PHASE A — EXECUTE NOW**: Full-project audit, root-cause defect remediation, justified refactoring, falsifiable regression tests, packaging/CI verification, and ledger/doc synchronization across the entire first-party repository.
+2. **PHASE B — PREPARE NOW (DESIGN-ONLY)**: Produce/upgrade an implementation-ready specification, gap/reusability analysis, component contracts, acceptance policy, caching/versioning model, and executable test plan in `docs/AUTONOMOUS_MODBUS_DISCOVERY_SPECIFICATION.md` for autonomous online Modbus discovery. Do NOT enable live online search providers, site crawlers, or LLM extractors in Phase A.
 
 ---
 
-## 2. Milestones and Completion Status
+## 2. Baseline Measurements at `346e4546`
 
-```mermaid
-graph TD
-    M1[M1: Baseline, Toolchain & Full Reconnaissance - COMPLETE] --> M2[M2: SMB Timeout & Loopback Socket Hardening - COMPLETE]
-    M2 --> M3[M3: Semantic Knowledge Miner & DataType Coherence - COMPLETE]
-    M3 --> M4[M4: Comprehensive Subsystem Audit & Edge Hardening - COMPLETE]
-    M4 --> M5[M5: Extended Verification, Replay & Soak Testing - COMPLETE]
-    M5 --> M6[M6: Performance Benchmarking & Optimization - COMPLETE]
-    M6 --> M7[M7: Final Verification & v0.3.0 Release - COMPLETE]
-    M7 --> M8[M8: Dyness BESS, Global CSV Injection Neutralization & v0.4.0 Release - COMPLETE]
-```
+- `pytest -q`: **4,701 collected** -> **4,693 passed, 3 failed, 5 skipped** (`test_health_check`, `test_frontend_validity_download_and_stale_request_contracts`, `test_mypy_typecheck_passes`).
+- `ruff check .`: **43 errors** (`EXECUTED_FAIL`).
+- `ruff format --check .`: **18 unformatted files** (`EXECUTED_FAIL`).
+- `mypy DefFileGenerator web`: **1 error** (`web\app.py:1079`, `EXECUTED_FAIL`).
+- `bandit -r DefFileGenerator web -ll`: **0 Medium/High issues** (`EXECUTED_PASS`).
+- `node DefFileGenerator/tests/interface_frontend_contracts.js web/static/app.js`: **ReferenceError (`localStorage`)** (`EXECUTED_FAIL`).
+- `python scripts/validate_production.py`: **1,194 / 1,194 passed** (`EXECUTED_PASS`).
 
-### Milestone 1: Baseline, Toolchain & Full Reconnaissance [COMPLETE]
-- Full inventory of all source, test, configuration, and documentation files.
-- Baseline execution of linting (`ruff`), typing (`mypy`), security (`bandit`), and unit test suite.
-- Discovery of all initial issues and blockers cataloged in `FINDINGS.md`.
+---
 
-### Milestone 2: Environmental Hardening (SMB Timeouts & Loopback Socket) [COMPLETE]
-- Fast-fail UNC path probe and local drive preference eliminating 30-45s SMB stalls.
-- Identified and verified Windows loopback socket configuration for Python proactor loop in FastAPI `TestClient`.
+## 3. Execution Milestones
 
-### Milestone 3: Semantic Knowledge Miner & Type System Consistency [COMPLETE]
-- Type normalization correctly handles `bool`/`boolean` -> `BITS`, SunSpec types (`sunssf` -> `I16`, `acc32` -> `U32`, etc.).
-- Overlap detection, address boundaries, and multi-sheet coordinate mappings strictly validated across all 250+ supported devices.
+### Milestone A.1: Full Reconnaissance, Baseline Capture & Audit Ledgers [IN_PROGRESS]
+- Read 100% of all first-party Python, Web, JS/HTML/CSS, build, and script files via bounded chunks across 8 parallel explorers.
+- Establish `FEATURE_INVENTORY.md`, `REVIEW_MATRIX.md`, `FINDINGS.md` (`FIND-030`+), `PLAN.md`, `VALIDATION.md`, and `PERFORMANCE.md`.
 
-### Milestone 4: Subsystem Audit & Hardening [COMPLETE]
-- Review of all core files (`def_gen.py`, `extractor.py`, `gui.py`, `web/app.py`, `knowledge_miner.py`, `main.py`).
-- Single-source versioning established via `DefFileGenerator/_version.py`.
-- Frontend-backend API contract harmonized across `/api/tag`, `/api/audit`, and `/api/library`.
-- Dead legacy prototype `gen_mars_defs.py` removed.
+### Milestone A.2: Baseline CI & Core Pipeline Hardening
+- Fix immediate baseline failures (`web/app.py:1079` mypy, `app.js`/`interface_frontend_contracts.js` `localStorage`, `test_health_check` contract, all ruff lint/format errors).
+- Harden Stream 1 (`extractor.py`, `pdf_parser.py`, `excel_modbus_extractor.py`, `batch_parser.py`): bomb/size guards, handle closure, header/radix/scaling fixes, parallel batch safety.
+- Harden Stream 2 (`def_gen.py`, `knowledge_miner.py`, `production_governor.py`, `report_generator.py`, `duplicate_detector.py`, `version_manager.py`, `io_utils.py`): radix `0010`, `bool`-as-`int`, `strict_crlf` mixed-LF bypass, tag/index repairs, atomic persistence, `commit_id` traversal, diff FC keying.
 
-### Milestone 5: Extended Verification & Adversarial Testing [COMPLETE]
-- 1,090 collected tests (1,089 passed, 1 skipped for live network share requirement).
-- Node.js frontend contract tests verifying all 4 Web Studio tabs passing with 0 errors.
-- Zero bandit security issues across 23,740 LOC.
-- Zero mypy type issues across 102 source files.
-- Clean ruff lint and format checks across 138 files.
+### Milestone A.3: Interfaces, Existing Discovery Scaffold, SunSpec & Generators
+- Harden Stream 3 (`main.py`, `gui.py`, `DefFileGenerator/discovery/*`): CLI flags/guards/exit codes, non-blocking GUI sheet inspection/validation, SSRF DNS pinning + non-fabrication in `SourceDiscovery` + `WEBDYN_CLASSIC` export + real category/filename propagation.
+- Harden Stream 4 (`sunspec/*`, `dyness_generator.py`, `mars_generator.py`, `x7_generator.py`): SunSpec CSV injection, SF sentinel `-32768`, PICS `200`-row cap & handle leaks, Model 123 SF ref & registry fixes, X7 duplicate tags & `STRING_24` false positive, atomic staged writes across all domain generators.
 
-### Milestone 6: Performance Profiling & Optimization [COMPLETE]
-- Fast-path ASCII sanitization (3.09x speedup).
-- LRU cached address normalization (4.48x speedup).
-- Constant-time dictionary and set lookups for data types.
-- Measured definition generation benchmarks documented in `PERFORMANCE.md`.
+### Milestone A.4: Web Studio, Vendor Engines & Packaging/Scripts
+- Harden Stream 5 (`web/app.py`, `web/static/*`, `web/templates/index.html`, `interface_frontend_contracts.js`): fix broken Discovery UI contract, path confinement on `versions`/`duplicates`/`library`, CSV injection in `/api/definition/revalidate`, `inspectModal` >1000-row loss, async offloading, XSS escaping, CORS tightening.
+- Refactor & harden Stream 6 (`*_definitions_engine.py`, `DefFileGenerator.spec`, `build_exe.*`, `launch_gui.bat`, `generate_webdyn_def.py`, `doc_to_webdyn.py`, `scripts/*`): extract shared engine base module to eliminate 7x duplication, atomic staged writes, fix `Sungrow` `.xlsx`->CSV bug, `sma` case-sensitive `Sources/` bug, `.spec` hiddenimports, `.bat` `!ERRORLEVEL!` and exit-code propagation, `scripts/` error reporting & ruff cleanup.
 
-### Milestone 7: Documentation, Packaging & v0.3.0 Release [COMPLETE]
-- Complete synchronization of `README.md`, `DEVELOPER_GUIDE.md`, `CHANGELOG.md`, and all `docs/audit/` ledgers for the v0.3.0 release.
-- Standalone Windows binary build pipeline verified via GitHub Actions CI.
+### Milestone A.5: Falsifiable Verification, Benchmarks, Wheel & Clean-Install
+- Add falsifiable regression/fuzz/boundary tests for every fixed defect (`FIND-030`+).
+- Re-benchmark runtime & memory vs baseline and run soak check; verify wheel build and clean out-of-tree CLI/import execution.
 
-### Milestone 8: Dyness BESS, CSV Injection Neutralization, Deep Audit & v0.4.0 Release [COMPLETE]
-- Developed first-class generator `DefFileGenerator/dyness_generator.py` and CLI `generate_dyness_definitions.py` supporting `DH200Y` (liquid-cooled 232 kWh), `DH200F` (air-cooled 215 kWh), `DH100F` (air-cooled 100 kWh), and `DH_Series_Generic`.
-- Integrated 4 validated definitions into `Definitions/` (catalog expanded to 129 models), `Dyness_DH_Series_Definitions/`, `generated_definitions/`, and `tagged_definitions/`.
-- Generated 30 FoxESS P3/H3 Pro production definitions in `FoxESS_P3_H3_Pro_Definitions/`.
-- Implemented defense-in-depth CSV formula injection (DDE) sanitization via `Generator.sanitize_csv_field()` across all generator output streams (`mars_generator.py`, `dyness_generator.py`, `generate_mars_definitions.py`, `generate_dyness_definitions.py`, `def_gen.py`).
-- Added automatic `.venv` site-packages discovery across all root generator scripts to eliminate VS Code `ModuleNotFoundError`.
-- Executed full repository metrological audit (`scratch/deep_audit_all_definitions.py`): 2,360 definition files and 765,377 Modbus registers verified with 100.0% schema validity.
-- Expanded test battery to 1,113 automated tests (1,108 passing, 0 failures, 5 offline skipped).
-- Synchronized `CHANGELOG.md`, `README.md`, and all audit ledgers; bumped package release to `v0.4.0`.
+### Milestone B.0: Phase B Design-Only Specification Upgrade
+- Update `docs/AUTONOMOUS_MODBUS_DISCOVERY_SPECIFICATION.md` covering all Sections 11–27 (exact reuse analysis against audited `DefFileGenerator/discovery/*` & core modules, missing concrete interfaces, equipment identity/disambiguation, source ranking, retrieval SSRF/budgets, OCR/multi-format parsing, canonical IR, Modbus & SunSpec semantics, WebdynSunPM & Classic target profiles, completeness reconciliation, multi-dimensional confidence & discrete outcomes, 3-tier cache & versioning, optional bounded LLM policy, full offline/live test plan, milestones, and concrete unresolved product decisions).
+
+### Milestone A.6: Dual Independent Peer Reviews & Frozen-State Gatekeeper Verification
+- Run fresh-context Red-Team Failure Audit and Regression/Diff Audit (`reviewer` subagent) + full frozen-state validation (`ruff`, `mypy`, `bandit`, `pytest --cov`, `node`, `validate_production`, wheel check).

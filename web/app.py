@@ -1076,7 +1076,7 @@ def inspect_library_file(filename: str) -> InspectResponse:
     mfg = header_cols[2] if len(header_cols) > 2 else "Unknown"
     model = header_cols[3] if len(header_cols) > 3 else "Unknown"
 
-    registers = []
+    registers: list[dict[str, Any]] = []
     for line in lines[1:]:
         cols = line.split(";")
         if len(cols) < 11:

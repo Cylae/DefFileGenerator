@@ -274,7 +274,16 @@ class TestWebAPIWave16(unittest.TestCase):
     def test_health_check(self) -> None:
         response = self.client.get("/api/health")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {"status": "ok", "version": __version__})
+        payload = response.json()
+        self.assertEqual(payload.get("status"), "ok")
+        self.assertEqual(payload.get("version"), __version__)
+        stats = payload.get("stats")
+        self.assertIsInstance(stats, dict)
+        for key in ("production_models", "definitions_models", "total_certified_models"):
+            self.assertIn(key, stats)
+            self.assertIsInstance(stats[key], int)
+            self.assertNotIsInstance(stats[key], bool)
+            self.assertGreaterEqual(stats[key], 0)
 
     def test_validate_unsupported_extension(self) -> None:
         response = self.client.post(
